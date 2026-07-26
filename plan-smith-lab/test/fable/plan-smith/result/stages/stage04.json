@@ -1,0 +1,19 @@
+{
+  "id": 4,
+  "name": "이층집",
+  "birds": 3,
+  "platforms": [],
+  "blocks": [
+    { "shape": "box", "material": "wood", "x": 850, "y": 595, "w": 20, "h": 90 },
+    { "shape": "box", "material": "wood", "x": 970, "y": 595, "w": 20, "h": 90 },
+    { "shape": "box", "material": "wood", "x": 910, "y": 540, "w": 180, "h": 20 },
+    { "shape": "box", "material": "wood", "x": 870, "y": 494, "w": 18, "h": 72 },
+    { "shape": "box", "material": "wood", "x": 950, "y": 494, "w": 18, "h": 72 },
+    { "shape": "box", "material": "wood", "x": 910, "y": 449, "w": 150, "h": 18 }
+  ],
+  "pigs": [
+    { "x": 910, "y": 622, "r": 17 },
+    { "x": 910, "y": 513, "r": 17 }
+  ],
+  "solution": [{ "angle": 7, "power": 0.95 }, { "angle": 4, "power": 0.65 }]
+}

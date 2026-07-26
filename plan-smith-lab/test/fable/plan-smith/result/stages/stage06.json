@@ -1,0 +1,19 @@
+{
+  "id": 6,
+  "name": "공중 정원",
+  "birds": 3,
+  "platforms": [
+    { "x": 880, "y": 450, "w": 240, "h": 18 }
+  ],
+  "blocks": [
+    { "shape": "box", "material": "glass", "x": 790, "y": 406, "w": 14, "h": 70 },
+    { "shape": "box", "material": "glass", "x": 930, "y": 406, "w": 14, "h": 70 },
+    { "shape": "box", "material": "glass", "x": 860, "y": 364, "w": 160, "h": 14 },
+    { "shape": "box", "material": "stone", "x": 1050, "y": 595, "w": 24, "h": 90 }
+  ],
+  "pigs": [
+    { "x": 860, "y": 424, "r": 17 },
+    { "x": 1120, "y": 622, "r": 17 }
+  ],
+  "solution": [{ "angle": 22, "power": 0.95 }, { "angle": 55, "power": 0.75 }]
+}

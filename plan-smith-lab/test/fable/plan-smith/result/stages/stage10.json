@@ -1,0 +1,26 @@
+{
+  "id": 10,
+  "name": "최후의 성채",
+  "birds": 5,
+  "platforms": [
+    { "x": 1150, "y": 516, "w": 150, "h": 16 }
+  ],
+  "blocks": [
+    { "shape": "box", "material": "stone", "x": 700, "y": 572, "w": 26, "h": 136 },
+    { "shape": "box", "material": "wood", "x": 880, "y": 591, "w": 18, "h": 98 },
+    { "shape": "box", "material": "wood", "x": 990, "y": 591, "w": 18, "h": 98 },
+    { "shape": "box", "material": "wood", "x": 935, "y": 534, "w": 160, "h": 16 },
+    { "shape": "box", "material": "glass", "x": 900, "y": 492, "w": 14, "h": 68 },
+    { "shape": "box", "material": "glass", "x": 970, "y": 492, "w": 14, "h": 68 },
+    { "shape": "box", "material": "wood", "x": 935, "y": 450, "w": 140, "h": 16 },
+    { "shape": "box", "material": "glass", "x": 1105, "y": 474, "w": 12, "h": 68 },
+    { "shape": "box", "material": "glass", "x": 1195, "y": 474, "w": 12, "h": 68 },
+    { "shape": "box", "material": "glass", "x": 1150, "y": 433, "w": 110, "h": 14 }
+  ],
+  "pigs": [
+    { "x": 935, "y": 622, "r": 17 },
+    { "x": 935, "y": 509, "r": 17 },
+    { "x": 1150, "y": 491, "r": 17 }
+  ],
+  "solution": [{ "angle": 13, "power": 1 }, { "angle": 49, "power": 0.75 }, { "angle": 25, "power": 0.6 }]
+}

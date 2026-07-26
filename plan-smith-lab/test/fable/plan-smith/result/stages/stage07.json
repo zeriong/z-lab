@@ -1,0 +1,23 @@
+{
+  "id": 7,
+  "name": "삼형제 탑",
+  "birds": 4,
+  "platforms": [],
+  "blocks": [
+    { "shape": "box", "material": "wood", "x": 725, "y": 592, "w": 16, "h": 96 },
+    { "shape": "box", "material": "wood", "x": 795, "y": 592, "w": 16, "h": 96 },
+    { "shape": "box", "material": "wood", "x": 760, "y": 536, "w": 100, "h": 16 },
+    { "shape": "box", "material": "wood", "x": 915, "y": 592, "w": 16, "h": 96 },
+    { "shape": "box", "material": "wood", "x": 985, "y": 592, "w": 16, "h": 96 },
+    { "shape": "box", "material": "wood", "x": 950, "y": 536, "w": 100, "h": 16 },
+    { "shape": "box", "material": "wood", "x": 1105, "y": 592, "w": 16, "h": 96 },
+    { "shape": "box", "material": "wood", "x": 1175, "y": 592, "w": 16, "h": 96 },
+    { "shape": "box", "material": "wood", "x": 1140, "y": 536, "w": 100, "h": 16 }
+  ],
+  "pigs": [
+    { "x": 760, "y": 511, "r": 17 },
+    { "x": 950, "y": 511, "r": 17 },
+    { "x": 1140, "y": 511, "r": 17 }
+  ],
+  "solution": [{ "angle": 19, "power": 0.7 }, { "angle": 10, "power": 0.95 }]
+}

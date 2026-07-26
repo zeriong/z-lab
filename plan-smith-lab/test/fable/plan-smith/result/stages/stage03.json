@@ -1,0 +1,16 @@
+{
+  "id": 3,
+  "name": "유리 온실",
+  "birds": 3,
+  "platforms": [],
+  "blocks": [
+    { "shape": "box", "material": "glass", "x": 880, "y": 597, "w": 16, "h": 86 },
+    { "shape": "box", "material": "glass", "x": 960, "y": 597, "w": 16, "h": 86 },
+    { "shape": "box", "material": "glass", "x": 920, "y": 546, "w": 120, "h": 16 }
+  ],
+  "pigs": [
+    { "x": 920, "y": 622, "r": 17 },
+    { "x": 920, "y": 521, "r": 17 }
+  ],
+  "solution": [{ "angle": 7, "power": 0.85 }]
+}

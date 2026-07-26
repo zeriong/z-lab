@@ -1,0 +1,16 @@
+{
+  "id": 8,
+  "name": "무너지는 지붕",
+  "birds": 4,
+  "platforms": [],
+  "blocks": [
+    { "shape": "box", "material": "glass", "x": 860, "y": 582, "w": 20, "h": 116 },
+    { "shape": "box", "material": "stone", "x": 1040, "y": 582, "w": 20, "h": 116 },
+    { "shape": "box", "material": "stone", "x": 950, "y": 514, "w": 240, "h": 20 }
+  ],
+  "pigs": [
+    { "x": 900, "y": 622, "r": 17 },
+    { "x": 990, "y": 622, "r": 17 }
+  ],
+  "solution": [{ "angle": 10, "power": 0.9 }, { "angle": 4, "power": 0.7 }]
+}

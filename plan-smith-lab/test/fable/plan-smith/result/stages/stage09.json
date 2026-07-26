@@ -1,0 +1,16 @@
+{
+  "id": 9,
+  "name": "유리 창문",
+  "birds": 3,
+  "platforms": [],
+  "blocks": [
+    { "shape": "box", "material": "stone", "x": 840, "y": 612, "w": 26, "h": 56 },
+    { "shape": "box", "material": "glass", "x": 840, "y": 561, "w": 26, "h": 46 },
+    { "shape": "box", "material": "stone", "x": 840, "y": 500, "w": 26, "h": 76 }
+  ],
+  "pigs": [
+    { "x": 930, "y": 622, "r": 17 },
+    { "x": 840, "y": 445, "r": 17 }
+  ],
+  "solution": [{ "angle": 28, "power": 0.6 }]
+}

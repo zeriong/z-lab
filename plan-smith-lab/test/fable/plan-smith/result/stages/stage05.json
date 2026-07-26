@@ -1,0 +1,17 @@
+{
+  "id": 5,
+  "name": "돌벽 너머",
+  "birds": 3,
+  "platforms": [],
+  "blocks": [
+    { "shape": "box", "material": "stone", "x": 690, "y": 555, "w": 26, "h": 170 },
+    { "shape": "box", "material": "wood", "x": 990, "y": 600, "w": 16, "h": 80 },
+    { "shape": "box", "material": "wood", "x": 1070, "y": 600, "w": 16, "h": 80 },
+    { "shape": "box", "material": "wood", "x": 1030, "y": 552, "w": 120, "h": 16 }
+  ],
+  "pigs": [
+    { "x": 860, "y": 622, "r": 17 },
+    { "x": 1030, "y": 622, "r": 17 }
+  ],
+  "solution": [{ "angle": 7, "power": 0.95 }, { "angle": 4, "power": 0.9 }]
+}

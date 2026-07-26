@@ -1,0 +1,15 @@
+{
+  "id": 1,
+  "name": "첫 표적",
+  "birds": 3,
+  "platforms": [],
+  "blocks": [
+    { "shape": "box", "material": "wood", "x": 860, "y": 580, "w": 20, "h": 120 },
+    { "shape": "box", "material": "wood", "x": 940, "y": 580, "w": 20, "h": 120 },
+    { "shape": "box", "material": "wood", "x": 900, "y": 510, "w": 180, "h": 20 }
+  ],
+  "pigs": [
+    { "x": 900, "y": 622, "r": 17 }
+  ],
+  "solution": [{ "angle": 4, "power": 0.9 }]
+}

@@ -1,0 +1,14 @@
+{
+  "id": 2,
+  "name": "들판의 이인조",
+  "birds": 3,
+  "platforms": [],
+  "blocks": [
+    { "shape": "box", "material": "wood", "x": 950, "y": 585, "w": 22, "h": 110 }
+  ],
+  "pigs": [
+    { "x": 680, "y": 622, "r": 17 },
+    { "x": 1005, "y": 622, "r": 17 }
+  ],
+  "solution": [{ "angle": 7, "power": 0.95 }, { "angle": 4, "power": 0.55 }]
+}
