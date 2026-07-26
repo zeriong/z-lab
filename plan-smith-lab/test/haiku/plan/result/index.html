@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angry Birds Game</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #1a1a1a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .game-container {
+      position: relative;
+      width: 800px;
+      height: 600px;
+      background: linear-gradient(135deg, #87CEEB 0%, #E0F6FF 100%);
+      border: 3px solid #333;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    #gameCanvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Menu Screen */
+    #menuScreen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+
+    #menuScreen.hidden {
+      display: none;
+    }
+
+    .menu-content {
+      text-align: center;
+      color: white;
+    }
+
+    .menu-content h1 {
+      font-size: 48px;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .stage-buttons {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .stage-btn {
+      padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .stage-btn:hover {
+      background: #45a049;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .stage-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Pause Modal */
+    #pauseOverlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 200;
+    }
+
+    #pauseOverlay.visible {
+      display: flex;
+    }
+
+    .pause-modal {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+
+    .pause-modal h2 {
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .modal-btn {
+      padding: 15px 40px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      min-width: 150px;
+    }
+
+    #resumeBtn {
+      background: #4CAF50;
+      color: white;
+    }
+
+    #resumeBtn:hover {
+      background: #45a049;
+      transform: translateY(-2px);
+    }
+
+    #retryBtn {
+      background: #FF9800;
+      color: white;
+    }
+
+    #retryBtn:hover {
+      background: #E68900;
+      transform: translateY(-2px);
+    }
+
+    #menuBtn {
+      background: #2196F3;
+      color: white;
+    }
+
+    #menuBtn:hover {
+      background: #0b7dda;
+      transform: translateY(-2px);
+    }
+
+    /* Pause Button */
+    #pauseBtn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid #333;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 150;
+      transition: all 0.3s;
+    }
+
+    #pauseBtn:hover {
+      background: white;
+      transform: scale(1.05);
+    }
+
+    #pauseBtn.hidden {
+      display: none;
+    }
+
+    /* Result Screen */
+    #resultScreen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 250;
+    }
+
+    #resultScreen.visible {
+      display: flex;
+    }
+
+    .result-content {
+      background: white;
+      padding: 50px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .result-content h2 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .result-content .score {
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: #666;
+    }
+
+    .result-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .result-btn {
+      padding: 15px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      min-width: 140px;
+    }
+
+    #nextBtn {
+      background: #4CAF50;
+      color: white;
+    }
+
+    #nextBtn:hover {
+      background: #45a049;
+      transform: translateY(-2px);
+    }
+
+    #resultMenuBtn {
+      background: #2196F3;
+      color: white;
+    }
+
+    #resultMenuBtn:hover {
+      background: #0b7dda;
+      transform: translateY(-2px);
+    }
+
+    /* Stage Info */
+    #stageInfo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      z-index: 10;
+    }
+
+    #scoreInfo {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Menu Screen -->
+    <div id="menuScreen">
+      <div class="menu-content">
+        <h1>🐦 ANGRY BIRDS 🐦</h1>
+        <p style="font-size: 20px; margin-bottom: 40px;">Select a Stage</p>
+        <div class="stage-buttons" id="stageButtonsContainer"></div>
+      </div>
+    </div>
+
+    <!-- Game UI -->
+    <button id="pauseBtn" class="hidden">⏸ Pause</button>
+    <div id="stageInfo"></div>
+    <div id="scoreInfo"></div>
+
+    <!-- Pause Overlay -->
+    <div id="pauseOverlay">
+      <div class="pause-modal">
+        <h2>Game Paused</h2>
+        <div class="modal-buttons">
+          <button id="resumeBtn" class="modal-btn">Resume</button>
+          <button id="retryBtn" class="modal-btn">Retry</button>
+          <button id="menuBtn" class="modal-btn">Main Menu</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="resultScreen">
+      <div class="result-content">
+        <h2 id="resultTitle">Level Complete!</h2>
+        <div class="score">Score: <span id="resultScore">0</span></div>
+        <div class="result-buttons">
+          <button id="nextBtn" class="result-btn">Next Stage</button>
+          <button id="resultMenuBtn" class="result-btn">Main Menu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
