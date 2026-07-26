@@ -1,0 +1,66 @@
+{
+  "id": 4,
+  "name": "4. 유리와 돌",
+  "worldWidth": 1400,
+  "groundY": 640,
+  "slingshotAnchor": {
+    "x": 150,
+    "y": 520
+  },
+  "birds": [
+    "normal",
+    "normal",
+    "normal"
+  ],
+  "pigs": [
+    {
+      "x": 750,
+      "y": 558,
+      "r": 22
+    },
+    {
+      "x": 1100,
+      "y": 618,
+      "r": 22
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stone",
+      "shape": "rect",
+      "x": 750,
+      "y": 610,
+      "w": 260,
+      "h": 60,
+      "angle": 0
+    },
+    {
+      "type": "glass",
+      "shape": "rect",
+      "x": 699,
+      "y": 535,
+      "w": 18,
+      "h": 90,
+      "angle": 0
+    },
+    {
+      "type": "glass",
+      "shape": "rect",
+      "x": 801,
+      "y": 535,
+      "w": 18,
+      "h": 90,
+      "angle": 0
+    },
+    {
+      "type": "glass",
+      "shape": "rect",
+      "x": 750,
+      "y": 479,
+      "w": 120,
+      "h": 22,
+      "angle": 0
+    }
+  ],
+  "parScore": 4000
+}

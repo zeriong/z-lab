@@ -1,0 +1,116 @@
+{
+  "id": 8,
+  "name": "8. 정밀 사격",
+  "worldWidth": 1700,
+  "groundY": 640,
+  "slingshotAnchor": {
+    "x": 150,
+    "y": 520
+  },
+  "birds": [
+    "speedy",
+    "speedy",
+    "normal"
+  ],
+  "pigs": [
+    {
+      "x": 750,
+      "y": 622,
+      "r": 18
+    },
+    {
+      "x": 950,
+      "y": 622,
+      "r": 18
+    },
+    {
+      "x": 1150,
+      "y": 622,
+      "r": 18
+    }
+  ],
+  "blocks": [
+    {
+      "type": "glass",
+      "shape": "rect",
+      "x": 713,
+      "y": 605,
+      "w": 16,
+      "h": 70,
+      "angle": 0
+    },
+    {
+      "type": "glass",
+      "shape": "rect",
+      "x": 787,
+      "y": 605,
+      "w": 16,
+      "h": 70,
+      "angle": 0
+    },
+    {
+      "type": "glass",
+      "shape": "rect",
+      "x": 750,
+      "y": 559,
+      "w": 90,
+      "h": 22,
+      "angle": 0
+    },
+    {
+      "type": "glass",
+      "shape": "rect",
+      "x": 913,
+      "y": 590,
+      "w": 16,
+      "h": 100,
+      "angle": 0
+    },
+    {
+      "type": "glass",
+      "shape": "rect",
+      "x": 987,
+      "y": 590,
+      "w": 16,
+      "h": 100,
+      "angle": 0
+    },
+    {
+      "type": "glass",
+      "shape": "rect",
+      "x": 950,
+      "y": 529,
+      "w": 90,
+      "h": 22,
+      "angle": 0
+    },
+    {
+      "type": "glass",
+      "shape": "rect",
+      "x": 1113,
+      "y": 605,
+      "w": 16,
+      "h": 70,
+      "angle": 0
+    },
+    {
+      "type": "glass",
+      "shape": "rect",
+      "x": 1187,
+      "y": 605,
+      "w": 16,
+      "h": 70,
+      "angle": 0
+    },
+    {
+      "type": "glass",
+      "shape": "rect",
+      "x": 1150,
+      "y": 559,
+      "w": 90,
+      "h": 22,
+      "angle": 0
+    }
+  ],
+  "parScore": 5600
+}

@@ -1,0 +1,126 @@
+{
+  "id": 7,
+  "name": "7. 겹겹의 요새",
+  "worldWidth": 1650,
+  "groundY": 640,
+  "slingshotAnchor": {
+    "x": 150,
+    "y": 520
+  },
+  "birds": [
+    "normal",
+    "speedy",
+    "bomb",
+    "normal"
+  ],
+  "pigs": [
+    {
+      "x": 700,
+      "y": 538,
+      "r": 22
+    },
+    {
+      "x": 1000,
+      "y": 499,
+      "r": 22
+    },
+    {
+      "x": 1250,
+      "y": 618,
+      "r": 22
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stone",
+      "shape": "rect",
+      "x": 610,
+      "y": 610,
+      "w": 20,
+      "h": 60,
+      "angle": 0
+    },
+    {
+      "type": "stone",
+      "shape": "rect",
+      "x": 790,
+      "y": 610,
+      "w": 20,
+      "h": 60,
+      "angle": 0
+    },
+    {
+      "type": "stone",
+      "shape": "rect",
+      "x": 700,
+      "y": 570,
+      "w": 200,
+      "h": 20,
+      "angle": 0
+    },
+    {
+      "type": "wood",
+      "shape": "rect",
+      "x": 960,
+      "y": 624,
+      "w": 38,
+      "h": 30,
+      "angle": 0
+    },
+    {
+      "type": "wood",
+      "shape": "rect",
+      "x": 1000,
+      "y": 624,
+      "w": 38,
+      "h": 30,
+      "angle": 0
+    },
+    {
+      "type": "wood",
+      "shape": "rect",
+      "x": 1040,
+      "y": 624,
+      "w": 38,
+      "h": 30,
+      "angle": 0
+    },
+    {
+      "type": "wood",
+      "shape": "rect",
+      "x": 980,
+      "y": 592,
+      "w": 38,
+      "h": 30,
+      "angle": 0
+    },
+    {
+      "type": "wood",
+      "shape": "rect",
+      "x": 1020,
+      "y": 592,
+      "w": 38,
+      "h": 30,
+      "angle": 0
+    },
+    {
+      "type": "wood",
+      "shape": "rect",
+      "x": 1000,
+      "y": 560,
+      "w": 38,
+      "h": 30,
+      "angle": 0
+    },
+    {
+      "type": "glass",
+      "shape": "rect",
+      "x": 1000,
+      "y": 529,
+      "w": 130,
+      "h": 26,
+      "angle": 0
+    }
+  ],
+  "parScore": 5200
+}
