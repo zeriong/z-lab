@@ -1,20 +1,21 @@
 {
-  "name": "angry-birds-web",
+  "name": "angry-birds-opus-plan",
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "description": "Web browser Angry Birds style slingshot physics game (10 stages) - TypeScript + Vite + Matter.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "typecheck": "tsc --noEmit",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "matter-js": "0.20.0"
+    "matter-js": "^0.19.0"
   },
   "devDependencies": {
-    "@types/matter-js": "0.19.8",
-    "typescript": "5.6.3",
-    "vite": "5.4.11"
+    "@types/matter-js": "^0.19.6",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.8"
   }
 }

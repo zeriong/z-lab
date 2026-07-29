@@ -1,13 +1,73 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='17' r='12' fill='%23e23b3b'/%3E%3Ccircle cx='20' cy='13' r='4' fill='%23fff'/%3E%3Ccircle cx='21' cy='13' r='2' fill='%23222'/%3E%3Cpolygon points='27,16 32,15 32,19' fill='%23f6a723'/%3E%3C/svg%3E" />
-    <title>Angry Birds Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Angry Birds — 10 Stages</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <!-- 물리/게임 화면 -->
+      <canvas id="game-canvas"></canvas>
+
+      <!-- HUD (PLAYING/PAUSED에서 표시) -->
+      <div id="hud" class="hud hidden">
+        <div class="hud-left">
+          <span id="hud-stage" class="hud-chip">STAGE 1</span>
+          <span id="hud-score" class="hud-chip">0</span>
+        </div>
+        <div class="hud-right">
+          <div id="hud-birds" class="hud-birds"></div>
+          <!-- 일시정지 버튼: 인게임 우측 상단 고정 -->
+          <button id="pause-btn" class="pause-btn hidden" type="button" aria-label="일시정지">
+            <span class="pause-icon"><i></i><i></i></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 메인 화면 -->
+      <section id="menu-screen" class="screen">
+        <div class="menu-panel">
+          <h1 class="title">ANGRY BIRDS</h1>
+          <p class="subtitle">새총을 당겨 쏘아 돼지를 모두 제거하세요 — 10 STAGES</p>
+          <div id="stage-grid" class="stage-grid"></div>
+          <p class="hint">
+            조작: 새를 <b>드래그</b>해서 당기고 <b>놓으면 발사</b> · 우측 상단
+            <b>일시정지</b> 버튼으로 다시하기 / 메인으로
+          </p>
+          <button id="reset-progress" class="text-btn" type="button">진행 기록 초기화</button>
+        </div>
+      </section>
+
+      <!-- 일시정지 오버레이 -->
+      <section id="pause-overlay" class="overlay hidden">
+        <div class="overlay-panel">
+          <h2 class="overlay-title">일시정지</h2>
+          <div class="overlay-buttons">
+            <button id="btn-resume" class="btn btn-ghost" type="button">계속하기</button>
+            <button id="btn-restart" class="btn btn-primary" type="button">다시하기</button>
+            <button id="btn-to-menu" class="btn btn-ghost" type="button">메인으로</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 클리어 / 실패 오버레이 -->
+      <section id="result-overlay" class="overlay hidden">
+        <div class="overlay-panel">
+          <h2 id="result-title" class="overlay-title">STAGE CLEAR!</h2>
+          <div id="result-stars" class="stars"></div>
+          <p id="result-score" class="result-score">SCORE 0</p>
+          <div class="overlay-buttons">
+            <button id="btn-next" class="btn btn-primary" type="button">다음 스테이지</button>
+            <button id="btn-retry" class="btn btn-ghost" type="button">다시하기</button>
+            <button id="btn-result-menu" class="btn btn-ghost" type="button">메인으로</button>
+          </div>
+        </div>
+      </section>
+
+      <div id="fps" class="fps"></div>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

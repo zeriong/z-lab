@@ -1,170 +1,262 @@
-// The 10 stages, declared as pure data. Layout is built with small "resting"
-// helpers so every block/pig sits exactly on the ground (or on the piece below
-// it), which keeps structures stable on load instead of collapsing.
+import { GROUND_Y } from './constants';
+import type { BlockDef, Material, PigDef, StageDef } from './types';
 
-import { GROUND_Y, StageData, BlockSpec, PigSpec, MaterialName } from './types';
+/* ------------------------------------------------------------------ *
+ * 스테이지는 순수 데이터다 (플랜 §4). 아래 헬퍼는 좌표 계산 실수를
+ * 줄이기 위한 것이며, 결과물은 여전히 평범한 데이터 객체다.
+ * ------------------------------------------------------------------ */
 
-const ANCHOR = { x: 200, y: 500 };
-
-/** A block resting on the ground, or `up` pixels above it (for stacking). */
-function blk(x: number, w: number, h: number, material: MaterialName, up = 0, angle = 0): BlockSpec {
-  return { x, y: GROUND_Y - h / 2 - up, w, h, material, angle };
+/** baseY(기본: 지면) 위에 바닥을 붙인 세로 기둥 */
+function pillar(x: number, w: number, h: number, material: Material, baseY = GROUND_Y): BlockDef {
+  return { x, y: baseY - h / 2, w, h, material };
 }
 
-/** A pig resting on the ground, or `up` pixels above it. */
-function pig(x: number, up = 0, r = 22, hp = 50): PigSpec {
-  return { x, y: GROUND_Y - r - up, r, hp };
+/** 윗면이 topY에 오도록 놓는 수평 판 */
+function beam(x: number, w: number, h: number, material: Material, topY: number): BlockDef {
+  return { x, y: topY + h / 2, w, h, material };
 }
 
-const SKY_DAY: [string, string] = ['#7ec8e3', '#dff3fb'];
-const SKY_DUSK: [string, string] = ['#f6b17a', '#ffe6c7'];
-const SKY_NIGHT: [string, string] = ['#3a4a6b', '#8090b5'];
-const GROUND_GREEN = '#6aa84f';
-const GROUND_SAND = '#cb9a5b';
+/** baseY 위에 올라앉은 돼지 */
+function pig(x: number, r: number, baseY = GROUND_Y, hp?: number): PigDef {
+  return { x, y: baseY - r, r, hp };
+}
 
-export const STAGES: StageData[] = [
-  // 1 — Tutorial: a lone pig, straight shot.
+const SLING = { x: 190, y: 520 };
+
+export const STAGES: StageDef[] = [
+  /* ---------------- 1 ---------------- */
   {
-    id: 1, name: '첫 발사', birds: 3, slingshot: ANCHOR,
-    sky: SKY_DAY, ground: GROUND_GREEN,
-    pigs: [pig(980)],
-    blocks: [],
-    starThresholds: [1000, 3000, 5000],
+    id: 1,
+    name: '첫 발',
+    slingshot: SLING,
+    birds: 3,
+    background: 'day',
+    ground: 'grass',
+    blocks: [
+      pillar(900, 24, 110, 'wood'),
+      pillar(1000, 24, 110, 'wood'),
+      beam(950, 150, 22, 'wood', 530),
+    ],
+    pigs: [pig(950, 22)],
+    starThresholds: [8000, 14000, 20000],
   },
 
-  // 2 — A simple wooden shelter over one pig.
+  /* ---------------- 2 ---------------- */
   {
-    id: 2, name: '나무 오두막', birds: 3, slingshot: ANCHOR,
-    sky: SKY_DAY, ground: GROUND_GREEN,
-    pigs: [pig(1000)],
+    id: 2,
+    name: '유리창',
+    slingshot: SLING,
+    birds: 3,
+    background: 'day',
+    ground: 'grass',
     blocks: [
-      blk(930, 26, 120, 'wood'),
-      blk(1070, 26, 120, 'wood'),
-      blk(1000, 190, 24, 'wood', 120),
+      pillar(880, 22, 100, 'glass'),
+      pillar(970, 22, 100, 'glass'),
+      beam(925, 140, 22, 'wood', 540),
+      pillar(1080, 22, 80, 'glass'),
+      beam(1080, 90, 18, 'glass', 560),
     ],
-    starThresholds: [2000, 4000, 6000],
+    pigs: [pig(925, 20), pig(925, 20, 540)],
+    starThresholds: [10000, 17000, 24000],
   },
 
-  // 3 — Two pigs, each behind a pane of glass.
+  /* ---------------- 3 ---------------- */
   {
-    id: 3, name: '유리 방패', birds: 4, slingshot: ANCHOR,
-    sky: SKY_DAY, ground: GROUND_GREEN,
-    pigs: [pig(870), pig(1090)],
+    id: 3,
+    name: '돌 기초',
+    slingshot: SLING,
+    birds: 4,
+    background: 'dusk',
+    ground: 'grass',
     blocks: [
-      blk(805, 26, 100, 'glass'),
-      blk(1025, 26, 100, 'glass'),
-      blk(1090, 60, 20, 'wood', 100),
+      pillar(860, 28, 60, 'stone'),
+      pillar(980, 28, 60, 'stone'),
+      beam(920, 160, 20, 'wood', 580),
+      pillar(870, 22, 90, 'wood', 580),
+      pillar(970, 22, 90, 'wood', 580),
+      beam(920, 130, 18, 'glass', 490),
     ],
-    starThresholds: [3000, 5000, 8000],
+    pigs: [pig(920, 20), pig(920, 18, 580)],
+    starThresholds: [12000, 20000, 28000],
   },
 
-  // 4 — Stacked tower: one pig at the base, one on the roof.
+  /* ---------------- 4 ---------------- */
   {
-    id: 4, name: '이층집', birds: 5, slingshot: ANCHOR,
-    sky: SKY_DUSK, ground: GROUND_GREEN,
-    pigs: [pig(1000), pig(1000, 144)],
+    id: 4,
+    name: '쌍둥이 탑',
+    slingshot: SLING,
+    birds: 4,
+    background: 'dusk',
+    ground: 'sand',
     blocks: [
-      blk(950, 26, 120, 'wood'),
-      blk(1050, 26, 120, 'wood'),
-      blk(1000, 150, 24, 'wood', 120),
-      blk(860, 44, 72, 'stone'),
+      pillar(820, 24, 120, 'wood'),
+      pillar(900, 24, 120, 'wood'),
+      beam(860, 110, 20, 'wood', 520),
+      pillar(1020, 26, 120, 'stone'),
+      pillar(1100, 26, 120, 'stone'),
+      beam(1060, 110, 20, 'glass', 520),
     ],
-    starThresholds: [3500, 6000, 9000],
+    pigs: [pig(860, 20), pig(1060, 20), pig(860, 16, 520)],
+    starThresholds: [14000, 23000, 32000],
   },
 
-  // 5 — Three pigs on a raised stone platform.
+  /* ---------------- 5 ---------------- */
   {
-    id: 5, name: '돌 발코니', birds: 5, slingshot: ANCHOR,
-    sky: SKY_DUSK, ground: GROUND_SAND,
-    pigs: [pig(900, 178), pig(1000, 178), pig(1100, 178)],
+    id: 5,
+    name: '피라미드',
+    slingshot: SLING,
+    birds: 4,
+    background: 'day',
+    ground: 'sand',
     blocks: [
-      blk(850, 30, 150, 'stone'),
-      blk(1150, 30, 150, 'stone'),
-      blk(1000, 360, 28, 'stone', 150),
-      blk(1000, 46, 46, 'glass'),
+      pillar(840, 26, 80, 'stone'),
+      pillar(940, 26, 80, 'stone'),
+      pillar(1040, 26, 80, 'stone'),
+      beam(890, 120, 20, 'wood', 560),
+      beam(990, 120, 20, 'wood', 560),
+      pillar(890, 22, 70, 'wood', 560),
+      pillar(990, 22, 70, 'wood', 560),
+      beam(940, 140, 18, 'glass', 490),
     ],
-    starThresholds: [4000, 7000, 10000],
+    pigs: [pig(890, 18), pig(990, 18), pig(940, 16, 490)],
+    starThresholds: [16000, 26000, 36000],
   },
 
-  // 6 — Glass house with a lookout pig on the roof.
+  /* ---------------- 6 ---------------- */
   {
-    id: 6, name: '유리 저택', birds: 5, slingshot: ANCHOR,
-    sky: SKY_DAY, ground: GROUND_GREEN,
-    pigs: [pig(1000), pig(1000, 134)],
+    id: 6,
+    name: '유리 성채',
+    slingshot: SLING,
+    birds: 4,
+    background: 'dusk',
+    ground: 'grass',
     blocks: [
-      blk(920, 26, 110, 'glass'),
-      blk(1080, 26, 110, 'glass'),
-      blk(1000, 200, 24, 'wood', 110),
-      blk(830, 26, 96, 'glass'),
+      pillar(830, 20, 110, 'glass'),
+      pillar(910, 20, 110, 'glass'),
+      pillar(990, 20, 110, 'glass'),
+      pillar(1070, 20, 110, 'glass'),
+      beam(870, 100, 20, 'wood', 530),
+      beam(950, 100, 20, 'wood', 530),
+      beam(1030, 100, 20, 'wood', 530),
+      pillar(870, 22, 60, 'stone', 530),
+      pillar(1030, 22, 60, 'stone', 530),
+      beam(950, 220, 22, 'wood', 470),
     ],
-    starThresholds: [4000, 7000, 10000],
+    pigs: [pig(870, 18), pig(950, 18), pig(1030, 18)],
+    starThresholds: [18000, 29000, 40000],
   },
 
-  // 7 — A tall wooden tower to topple, plus a ground pig.
+  /* ---------------- 7 ---------------- */
   {
-    id: 7, name: '흔들탑', birds: 6, slingshot: ANCHOR,
-    sky: SKY_NIGHT, ground: GROUND_GREEN,
-    pigs: [pig(880), pig(1000, 150)],
+    id: 7,
+    name: '경사면',
+    slingshot: SLING,
+    birds: 5,
+    background: 'night',
+    ground: 'snow',
     blocks: [
-      blk(1000, 90, 50, 'wood'),
-      blk(1000, 90, 50, 'wood', 50),
-      blk(1000, 90, 50, 'wood', 100),
-      blk(820, 26, 90, 'glass'),
+      pillar(800, 26, 100, 'stone'),
+      pillar(900, 26, 100, 'stone'),
+      beam(850, 130, 20, 'wood', 540),
+      { x: 990, y: 560, w: 170, h: 18, angle: -0.5, material: 'wood' },
+      { x: 1105, y: 560, w: 170, h: 18, angle: 0.5, material: 'wood' },
+      pillar(1048, 20, 70, 'glass'),
     ],
-    starThresholds: [4500, 7500, 11000],
+    pigs: [pig(850, 20), pig(850, 16, 540), pig(1000, 18), pig(1160, 18)],
+    starThresholds: [20000, 32000, 44000],
   },
 
-  // 8 — Two separate strongholds, three pigs total.
+  /* ---------------- 8 ---------------- */
   {
-    id: 8, name: '쌍둥이 요새', birds: 6, slingshot: ANCHOR,
-    sky: SKY_DUSK, ground: GROUND_SAND,
-    pigs: [pig(780), pig(780, 134), pig(1080)],
+    id: 8,
+    name: '이중 요새',
+    slingshot: SLING,
+    birds: 5,
+    background: 'night',
+    ground: 'snow',
     blocks: [
-      // wooden hut on the left
-      blk(740, 26, 110, 'wood'),
-      blk(820, 26, 110, 'wood'),
-      blk(780, 150, 24, 'wood', 110),
-      // stone bunker on the right
-      blk(1020, 28, 120, 'stone'),
-      blk(1140, 28, 120, 'stone'),
-      blk(1080, 170, 26, 'stone', 120),
+      pillar(790, 28, 130, 'stone'),
+      pillar(870, 28, 130, 'stone'),
+      beam(830, 110, 22, 'stone', 510),
+      pillar(980, 22, 110, 'glass'),
+      pillar(1060, 22, 110, 'glass'),
+      beam(1020, 110, 20, 'wood', 530),
+      pillar(1150, 22, 90, 'wood'),
+      pillar(1210, 22, 90, 'wood'),
+      beam(1180, 90, 18, 'glass', 550),
     ],
-    starThresholds: [5000, 8000, 12000],
+    pigs: [pig(830, 20), pig(830, 16, 510), pig(1020, 20), pig(1180, 16)],
+    starThresholds: [24000, 36000, 50000],
   },
 
-  // 9 — A stone fortress with glass weak points and pigs behind the wall.
+  /* ---------------- 9 ---------------- */
   {
-    id: 9, name: '돌 성채', birds: 7, slingshot: ANCHOR,
-    sky: SKY_NIGHT, ground: GROUND_SAND,
-    pigs: [pig(980), pig(1100), pig(1040, 168)],
+    id: 9,
+    name: '고층',
+    slingshot: SLING,
+    birds: 5,
+    background: 'dusk',
+    ground: 'grass',
     blocks: [
-      blk(900, 30, 140, 'stone'),
-      blk(1180, 30, 140, 'stone'),
-      blk(1040, 340, 28, 'stone', 140),
-      blk(1040, 26, 110, 'glass'),
-      blk(820, 26, 100, 'glass'),
+      pillar(880, 28, 70, 'stone'),
+      pillar(1000, 28, 70, 'stone'),
+      beam(940, 160, 20, 'wood', 570),
+      pillar(890, 22, 70, 'wood', 570),
+      pillar(990, 22, 70, 'wood', 570),
+      beam(940, 140, 20, 'wood', 500),
+      pillar(905, 20, 60, 'glass', 500),
+      pillar(975, 20, 60, 'glass', 500),
+      beam(940, 120, 20, 'stone', 440),
+      pillar(1080, 20, 60, 'glass'),
+      pillar(1160, 20, 60, 'glass'),
+      beam(1120, 100, 18, 'wood', 580),
     ],
-    starThresholds: [6000, 9000, 13000],
+    pigs: [pig(940, 18), pig(940, 16, 570), pig(940, 16, 500), pig(1120, 18)],
+    starThresholds: [28000, 42000, 56000],
   },
 
-  // 10 — Boss fortress: five pigs across a stacked mixed structure.
+  /* ---------------- 10 ---------------- */
   {
-    id: 10, name: '왕 돼지의 성', birds: 8, slingshot: ANCHOR,
-    sky: SKY_NIGHT, ground: GROUND_SAND,
-    pigs: [pig(760), pig(940, 88), pig(1060, 88), pig(1000, 212), pig(1180)],
+    id: 10,
+    name: '최후의 요새',
+    slingshot: SLING,
+    birds: 5,
+    background: 'night',
+    ground: 'snow',
     blocks: [
-      // wide stone base platform
-      blk(820, 40, 60, 'stone'),
-      blk(1180, 40, 60, 'stone'),
-      blk(1000, 420, 28, 'stone', 60),
-      // wooden towers on the platform
-      blk(880, 28, 100, 'wood', 88),
-      blk(1120, 28, 100, 'wood', 88),
-      blk(1000, 300, 24, 'wood', 188),
-      // glass guards on the ground
-      blk(700, 26, 96, 'glass'),
-      blk(1240, 26, 96, 'glass'),
+      pillar(820, 30, 90, 'stone'),
+      pillar(940, 30, 90, 'stone'),
+      pillar(1060, 30, 90, 'stone'),
+      beam(880, 140, 22, 'wood', 550),
+      beam(1000, 140, 22, 'wood', 550),
+      pillar(880, 26, 80, 'stone', 550),
+      pillar(1000, 26, 80, 'stone', 550),
+      beam(940, 200, 22, 'wood', 470),
+      pillar(905, 20, 60, 'glass', 470),
+      pillar(975, 20, 60, 'glass', 470),
+      beam(940, 130, 20, 'stone', 410),
+      pillar(1110, 22, 70, 'wood'),
+      pillar(1190, 22, 70, 'wood'),
+      beam(1150, 100, 20, 'stone', 570),
     ],
-    starThresholds: [8000, 12000, 16000],
+    pigs: [
+      pig(880, 18, GROUND_Y, 26),
+      pig(1000, 18, GROUND_Y, 26),
+      pig(940, 16, 550),
+      pig(940, 16, 470),
+      pig(1150, 18),
+    ],
+    starThresholds: [34000, 50000, 68000],
   },
 ];
+
+export const STAGE_COUNT = STAGES.length;
+
+export function getStage(index: number): StageDef {
+  return STAGES[Math.max(0, Math.min(STAGES.length - 1, index))];
+}
+
+export function stageIndexById(id: number): number {
+  const i = STAGES.findIndex((s) => s.id === id);
+  return i < 0 ? 0 : i;
+}

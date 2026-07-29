@@ -1,72 +1,104 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Angry Slingshot — 10 Stages</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐦</text></svg>" />
-  <link rel="stylesheet" href="css/style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Angry Physics — 웹 앵그리버드</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div id="stage-wrap">
-    <div id="game-frame">
-      <canvas id="game" width="1280" height="720"></canvas>
+<div id="app">
+  <div id="stage-frame">
+    <canvas id="game" width="1280" height="720"></canvas>
 
-      <!-- in-game HUD: pause button lives on the RIGHT -->
-      <div id="hud">
-        <div id="hud-left">
-          <span id="hud-stage">Stage</span>
-          <span id="hud-birds" class="chip">🐦 0</span>
-          <span id="hud-pigs" class="chip">🐷 0</span>
-        </div>
-        <button id="btn-pause" title="일시정지" aria-label="일시정지">⏸</button>
+    <!-- 인게임 HUD: 좌측 정보 / 우측 일시정지 버튼 (하드 제약 ③) -->
+    <div id="hud" class="hidden">
+      <div class="hud-left">
+        <span id="hud-stage" class="hud-chip">STAGE 1</span>
+        <span id="hud-birds" class="hud-chip">남은 새 3</span>
+        <span id="hud-pigs" class="hud-chip">남은 돼지 1</span>
+        <span id="hud-score" class="hud-chip">점수 0</span>
       </div>
+      <div class="hud-right">
+        <button id="btn-pause" class="icon-btn" title="일시정지" aria-label="일시정지">
+          <span class="bar"></span><span class="bar"></span>
+        </button>
+      </div>
+    </div>
 
-      <!-- MAIN MENU -->
-      <div id="ov-menu" class="overlay">
-        <div class="panel wide">
-          <h1>ANGRY <span>SLINGSHOT</span></h1>
-          <p class="sub">새총을 당겨 쏴 돼지를 모두 없애세요 — 10개의 스테이지</p>
+    <!-- 메인 화면 -->
+    <div id="screen-menu" class="screen">
+      <div class="menu-panel">
+        <h1 class="title">ANGRY <span>PHYSICS</span></h1>
+        <p class="subtitle">새총을 당겨 쏘고, 구조물을 무너뜨려 돼지를 제거하라. 전체 10 스테이지.</p>
+        <button id="btn-start" class="big-btn">게임 시작</button>
+        <div class="stage-select">
+          <div class="stage-select-label">스테이지 선택</div>
           <div id="stage-grid" class="stage-grid"></div>
-          <p class="hint">드래그해서 조준 · 놓으면 발사 · 우측 ⏸ 로 일시정지</p>
         </div>
+        <p class="hint">조작: 새를 드래그해서 당기고 놓으면 발사. 점선은 예측 궤적(장애물 미반영).</p>
       </div>
+    </div>
 
-      <!-- PAUSE -->
-      <div id="ov-pause" class="overlay hidden">
-        <div class="panel">
-          <h2>일시정지</h2>
-          <button id="btn-resume" class="btn primary">계속하기</button>
-          <button id="btn-pause-restart" class="btn">다시하기</button>
-          <button id="btn-pause-menu" class="btn ghost">메인으로</button>
-        </div>
+    <!-- 일시정지 오버레이 -->
+    <div id="screen-pause" class="screen hidden">
+      <div class="overlay-panel">
+        <h2>일시정지</h2>
+        <button id="btn-resume" class="big-btn">계속하기</button>
+        <button id="btn-retry-pause" class="big-btn ghost">다시하기</button>
+        <button id="btn-home-pause" class="big-btn ghost">메인으로</button>
       </div>
+    </div>
 
-      <!-- CLEAR -->
-      <div id="ov-clear" class="overlay hidden">
-        <div class="panel">
-          <h2 id="clear-title">클리어!</h2>
-          <button id="btn-next" class="btn primary">다음 스테이지</button>
-          <button id="btn-clear-restart" class="btn">다시하기</button>
-          <button id="btn-clear-menu" class="btn ghost">메인으로</button>
-        </div>
+    <!-- 클리어 오버레이 -->
+    <div id="screen-clear" class="screen hidden">
+      <div class="overlay-panel">
+        <h2 class="ok">스테이지 클리어!</h2>
+        <p id="clear-score" class="result-score">점수 0</p>
+        <button id="btn-next" class="big-btn">다음 스테이지</button>
+        <button id="btn-retry-clear" class="big-btn ghost">다시하기</button>
+        <button id="btn-home-clear" class="big-btn ghost">메인으로</button>
       </div>
+    </div>
 
-      <!-- FAIL -->
-      <div id="ov-fail" class="overlay hidden">
-        <div class="panel">
-          <h2>실패…</h2>
-          <p class="sub">새가 모두 떨어졌어요. 다시 도전!</p>
-          <button id="btn-fail-restart" class="btn primary">다시하기</button>
-          <button id="btn-fail-menu" class="btn ghost">메인으로</button>
-        </div>
+    <!-- 실패 오버레이 -->
+    <div id="screen-fail" class="screen hidden">
+      <div class="overlay-panel">
+        <h2 class="bad">실패…</h2>
+        <p class="result-score">새를 모두 썼지만 돼지가 남았다.</p>
+        <button id="btn-retry-fail" class="big-btn">다시하기</button>
+        <button id="btn-home-fail" class="big-btn ghost">메인으로</button>
+      </div>
+    </div>
+
+    <!-- 엔진 로드 실패 진단 -->
+    <div id="screen-error" class="screen hidden">
+      <div class="overlay-panel">
+        <h2 class="bad">물리 엔진 로드 실패</h2>
+        <p class="result-score">Matter.js(CDN)를 불러오지 못했습니다. 네트워크 연결 또는<br>
+          <code>vendor/matter.min.js</code> 배치 후 새로고침하세요.</p>
       </div>
     </div>
   </div>
+</div>
 
-  <script src="vendor/matter.min.js"></script>
-  <script src="js/core.js"></script>
-  <script src="js/stages.js"></script>
-  <script src="js/game.js"></script>
+<!-- 물리 엔진: Matter.js (플랜 A1 → canon). CDN 우선, 로컬 vendor 폴백 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<script>
+  if (typeof Matter === 'undefined') {
+    document.write('<script src="vendor/matter.min.js"><\/script>');
+  }
+</script>
+
+<script src="js/config.js"></script>
+<script src="js/stages.js"></script>
+<script src="js/physics.js"></script>
+<script src="js/stage.js"></script>
+<script src="js/slingshot.js"></script>
+<script src="js/judge.js"></script>
+<script src="js/renderer.js"></script>
+<script src="js/fsm.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
