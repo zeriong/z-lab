@@ -1,0 +1,621 @@
+{
+  "stages": [
+    {
+      "id": 1,
+      "name": "Get Started",
+      "bodies": [
+        {
+          "type": "wood_block",
+          "x": 300,
+          "y": 600,
+          "width": 50,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "wood_block",
+          "x": 350,
+          "y": 600,
+          "width": 50,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "wood_block",
+          "x": 325,
+          "y": 550,
+          "width": 50,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "pig",
+          "x": 350,
+          "y": 500,
+          "radius": 15
+        }
+      ],
+      "slingshot": {
+        "x": 100,
+        "y": 600
+      },
+      "maxTime": 120
+    },
+    {
+      "id": 2,
+      "name": "Simple Tower",
+      "bodies": [
+        {
+          "type": "wood_block",
+          "x": 400,
+          "y": 630,
+          "width": 50,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "wood_block",
+          "x": 400,
+          "y": 580,
+          "width": 50,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "wood_block",
+          "x": 400,
+          "y": 530,
+          "width": 50,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "pig",
+          "x": 400,
+          "y": 480,
+          "radius": 15
+        },
+        {
+          "type": "pig",
+          "x": 450,
+          "y": 580,
+          "radius": 15
+        }
+      ],
+      "slingshot": {
+        "x": 100,
+        "y": 600
+      },
+      "maxTime": 120
+    },
+    {
+      "id": 3,
+      "name": "Basic Mix",
+      "bodies": [
+        {
+          "type": "stone_block",
+          "x": 350,
+          "y": 630,
+          "width": 50,
+          "height": 50,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "wood_block",
+          "x": 350,
+          "y": 550,
+          "width": 50,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "pig",
+          "x": 350,
+          "y": 500,
+          "radius": 15
+        },
+        {
+          "type": "pig",
+          "x": 400,
+          "y": 630,
+          "radius": 15
+        }
+      ],
+      "slingshot": {
+        "x": 100,
+        "y": 600
+      },
+      "maxTime": 120
+    },
+    {
+      "id": 4,
+      "name": "Complex Structure",
+      "bodies": [
+        {
+          "type": "wood_block",
+          "x": 300,
+          "y": 630,
+          "width": 50,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "wood_block",
+          "x": 350,
+          "y": 630,
+          "width": 50,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "stone_block",
+          "x": 325,
+          "y": 550,
+          "width": 50,
+          "height": 50,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "wood_block",
+          "x": 325,
+          "y": 460,
+          "width": 50,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "pig",
+          "x": 300,
+          "y": 420,
+          "radius": 15
+        },
+        {
+          "type": "pig",
+          "x": 350,
+          "y": 420,
+          "radius": 15
+        }
+      ],
+      "slingshot": {
+        "x": 100,
+        "y": 600
+      },
+      "maxTime": 120
+    },
+    {
+      "id": 5,
+      "name": "Ice Challenge",
+      "bodies": [
+        {
+          "type": "ice_block",
+          "x": 350,
+          "y": 630,
+          "width": 40,
+          "height": 40,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "ice_block",
+          "x": 350,
+          "y": 550,
+          "width": 40,
+          "height": 40,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "stone_block",
+          "x": 350,
+          "y": 470,
+          "width": 50,
+          "height": 50,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "pig",
+          "x": 350,
+          "y": 380,
+          "radius": 15
+        },
+        {
+          "type": "pig",
+          "x": 300,
+          "y": 470,
+          "radius": 15
+        }
+      ],
+      "slingshot": {
+        "x": 100,
+        "y": 600
+      },
+      "maxTime": 120
+    },
+    {
+      "id": 6,
+      "name": "Wide Base",
+      "bodies": [
+        {
+          "type": "stone_block",
+          "x": 280,
+          "y": 630,
+          "width": 50,
+          "height": 50,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "stone_block",
+          "x": 420,
+          "y": 630,
+          "width": 50,
+          "height": 50,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "wood_block",
+          "x": 350,
+          "y": 550,
+          "width": 100,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "pig",
+          "x": 320,
+          "y": 500,
+          "radius": 15
+        },
+        {
+          "type": "pig",
+          "x": 380,
+          "y": 500,
+          "radius": 15
+        }
+      ],
+      "slingshot": {
+        "x": 100,
+        "y": 600
+      },
+      "maxTime": 120
+    },
+    {
+      "id": 7,
+      "name": "Pyramid",
+      "bodies": [
+        {
+          "type": "wood_block",
+          "x": 300,
+          "y": 630,
+          "width": 50,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "wood_block",
+          "x": 400,
+          "y": 630,
+          "width": 50,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "stone_block",
+          "x": 325,
+          "y": 550,
+          "width": 50,
+          "height": 50,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "stone_block",
+          "x": 375,
+          "y": 550,
+          "width": 50,
+          "height": 50,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "wood_block",
+          "x": 350,
+          "y": 450,
+          "width": 50,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "pig",
+          "x": 350,
+          "y": 400,
+          "radius": 15
+        },
+        {
+          "type": "pig",
+          "x": 300,
+          "y": 550,
+          "radius": 15
+        },
+        {
+          "type": "pig",
+          "x": 400,
+          "y": 550,
+          "radius": 15
+        }
+      ],
+      "slingshot": {
+        "x": 100,
+        "y": 600
+      },
+      "maxTime": 120
+    },
+    {
+      "id": 8,
+      "name": "High Precision",
+      "bodies": [
+        {
+          "type": "stone_block",
+          "x": 350,
+          "y": 630,
+          "width": 50,
+          "height": 50,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "ice_block",
+          "x": 320,
+          "y": 540,
+          "width": 40,
+          "height": 40,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "ice_block",
+          "x": 380,
+          "y": 540,
+          "width": 40,
+          "height": 40,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "stone_block",
+          "x": 350,
+          "y": 440,
+          "width": 50,
+          "height": 50,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "pig",
+          "x": 350,
+          "y": 350,
+          "radius": 15
+        },
+        {
+          "type": "pig",
+          "x": 320,
+          "y": 540,
+          "radius": 15
+        },
+        {
+          "type": "pig",
+          "x": 380,
+          "y": 540,
+          "radius": 15
+        }
+      ],
+      "slingshot": {
+        "x": 100,
+        "y": 600
+      },
+      "maxTime": 120
+    },
+    {
+      "id": 9,
+      "name": "Masterpiece",
+      "bodies": [
+        {
+          "type": "wood_block",
+          "x": 250,
+          "y": 630,
+          "width": 50,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "stone_block",
+          "x": 300,
+          "y": 580,
+          "width": 50,
+          "height": 50,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "ice_block",
+          "x": 350,
+          "y": 580,
+          "width": 40,
+          "height": 40,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "stone_block",
+          "x": 400,
+          "y": 580,
+          "width": 50,
+          "height": 50,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "wood_block",
+          "x": 450,
+          "y": 630,
+          "width": 50,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "wood_block",
+          "x": 350,
+          "y": 480,
+          "width": 100,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "pig",
+          "x": 300,
+          "y": 530,
+          "radius": 15
+        },
+        {
+          "type": "pig",
+          "x": 350,
+          "y": 530,
+          "radius": 15
+        },
+        {
+          "type": "pig",
+          "x": 400,
+          "y": 530,
+          "radius": 15
+        },
+        {
+          "type": "pig",
+          "x": 350,
+          "y": 430,
+          "radius": 15
+        }
+      ],
+      "slingshot": {
+        "x": 100,
+        "y": 600
+      },
+      "maxTime": 120
+    },
+    {
+      "id": 10,
+      "name": "Final Challenge",
+      "bodies": [
+        {
+          "type": "stone_block",
+          "x": 280,
+          "y": 630,
+          "width": 50,
+          "height": 50,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "stone_block",
+          "x": 420,
+          "y": 630,
+          "width": 50,
+          "height": 50,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "ice_block",
+          "x": 320,
+          "y": 540,
+          "width": 40,
+          "height": 40,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "ice_block",
+          "x": 380,
+          "y": 540,
+          "width": 40,
+          "height": 40,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "stone_block",
+          "x": 350,
+          "y": 440,
+          "width": 50,
+          "height": 50,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "wood_block",
+          "x": 350,
+          "y": 340,
+          "width": 50,
+          "height": 10,
+          "rotation": 0,
+          "isStatic": false
+        },
+        {
+          "type": "pig",
+          "x": 280,
+          "y": 580,
+          "radius": 15
+        },
+        {
+          "type": "pig",
+          "x": 420,
+          "y": 580,
+          "radius": 15
+        },
+        {
+          "type": "pig",
+          "x": 320,
+          "y": 490,
+          "radius": 15
+        },
+        {
+          "type": "pig",
+          "x": 380,
+          "y": 490,
+          "radius": 15
+        },
+        {
+          "type": "pig",
+          "x": 350,
+          "y": 290,
+          "radius": 15
+        }
+      ],
+      "slingshot": {
+        "x": 100,
+        "y": 600
+      },
+      "maxTime": 120
+    }
+  ]
+}

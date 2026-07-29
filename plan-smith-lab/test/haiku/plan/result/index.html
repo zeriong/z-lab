@@ -13,7 +13,7 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #1a1a1a;
+      background-color: #87ceeb;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -21,222 +21,184 @@
       padding: 20px;
     }
 
-    .game-container {
+    #game-container {
       position: relative;
       width: 800px;
       height: 600px;
-      background: linear-gradient(135deg, #87CEEB 0%, #E0F6FF 100%);
-      border: 3px solid #333;
-      border-radius: 10px;
+      background: linear-gradient(180deg, #87ceeb 0%, #e0f6ff 100%);
+      border: 2px solid #333;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       overflow: hidden;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     }
 
-    #gameCanvas {
+    canvas {
       display: block;
       width: 100%;
       height: 100%;
     }
 
-    /* Menu Screen */
-    #menuScreen {
+    .pause-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 50px;
+      height: 50px;
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      z-index: 100;
+      transition: background-color 0.3s;
+    }
+
+    .pause-button:hover {
+      background-color: #ff5252;
+    }
+
+    .pause-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 200;
+    }
+
+    .pause-modal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      text-align: center;
+      z-index: 300;
+      min-width: 300px;
+    }
+
+    .pause-modal h2 {
+      margin-bottom: 30px;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .pause-modal-buttons {
       display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .pause-modal button {
+      padding: 15px 30px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      min-width: 120px;
+    }
+
+    .restart-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .restart-btn:hover {
+      background-color: #45a049;
+    }
+
+    .menu-btn {
+      background-color: #008CBA;
+      color: white;
+    }
+
+    .menu-btn:hover {
+      background-color: #007399;
+    }
+
+    .menu-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none;
+      z-index: 400;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      z-index: 100;
-    }
-
-    #menuScreen.hidden {
-      display: none;
     }
 
     .menu-content {
       text-align: center;
-      color: white;
     }
 
     .menu-content h1 {
       font-size: 48px;
-      margin-bottom: 30px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      color: white;
+      margin-bottom: 40px;
     }
 
-    .stage-buttons {
+    .stages-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 15px;
-      max-width: 500px;
-      margin: 0 auto;
+      grid-template-columns: repeat(5, 100px);
+      gap: 10px;
+      margin-bottom: 40px;
     }
 
     .stage-btn {
-      padding: 15px;
-      font-size: 18px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      background: #4CAF50;
+      width: 100px;
+      height: 100px;
+      font-size: 24px;
+      border: 2px solid white;
+      background-color: #4CAF50;
       color: white;
       cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      transition: background-color 0.3s;
     }
 
     .stage-btn:hover {
-      background: #45a049;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+      background-color: #45a049;
     }
 
-    .stage-btn:active {
-      transform: translateY(0);
-    }
-
-    /* Pause Modal */
-    #pauseOverlay {
+    .result-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.8);
       display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 200;
+      z-index: 500;
     }
 
-    #pauseOverlay.visible {
-      display: flex;
-    }
-
-    .pause-modal {
-      background: white;
+    .result-modal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
       padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      border-radius: 10px;
       text-align: center;
+      z-index: 510;
+      min-width: 350px;
     }
 
-    .pause-modal h2 {
-      font-size: 32px;
-      margin-bottom: 30px;
-      color: #333;
-    }
-
-    .modal-buttons {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .modal-btn {
-      padding: 15px 40px;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s;
-      min-width: 150px;
-    }
-
-    #resumeBtn {
-      background: #4CAF50;
-      color: white;
-    }
-
-    #resumeBtn:hover {
-      background: #45a049;
-      transform: translateY(-2px);
-    }
-
-    #retryBtn {
-      background: #FF9800;
-      color: white;
-    }
-
-    #retryBtn:hover {
-      background: #E68900;
-      transform: translateY(-2px);
-    }
-
-    #menuBtn {
-      background: #2196F3;
-      color: white;
-    }
-
-    #menuBtn:hover {
-      background: #0b7dda;
-      transform: translateY(-2px);
-    }
-
-    /* Pause Button */
-    #pauseBtn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      font-weight: bold;
-      background: rgba(255, 255, 255, 0.9);
-      border: 2px solid #333;
-      border-radius: 8px;
-      cursor: pointer;
-      z-index: 150;
-      transition: all 0.3s;
-    }
-
-    #pauseBtn:hover {
-      background: white;
-      transform: scale(1.05);
-    }
-
-    #pauseBtn.hidden {
-      display: none;
-    }
-
-    /* Result Screen */
-    #resultScreen {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 250;
-    }
-
-    #resultScreen.visible {
-      display: flex;
-    }
-
-    .result-content {
-      background: white;
-      padding: 50px;
-      border-radius: 15px;
-      text-align: center;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    }
-
-    .result-content h2 {
-      font-size: 40px;
+    .result-modal h2 {
+      font-size: 36px;
       margin-bottom: 20px;
       color: #333;
     }
 
-    .result-content .score {
+    .result-score {
       font-size: 24px;
       margin-bottom: 30px;
       color: #666;
@@ -248,104 +210,75 @@
       justify-content: center;
     }
 
-    .result-btn {
-      padding: 15px 30px;
+    .result-buttons button {
+      padding: 15px 25px;
       font-size: 16px;
-      font-weight: bold;
       border: none;
-      border-radius: 8px;
+      border-radius: 5px;
       cursor: pointer;
-      transition: all 0.3s;
-      min-width: 140px;
+      transition: background-color 0.3s;
     }
 
-    #nextBtn {
-      background: #4CAF50;
+    .next-stage-btn {
+      background-color: #4CAF50;
       color: white;
     }
 
-    #nextBtn:hover {
-      background: #45a049;
-      transform: translateY(-2px);
+    .next-stage-btn:hover {
+      background-color: #45a049;
     }
 
-    #resultMenuBtn {
-      background: #2196F3;
+    .result-menu-btn {
+      background-color: #008CBA;
       color: white;
     }
 
-    #resultMenuBtn:hover {
-      background: #0b7dda;
-      transform: translateY(-2px);
-    }
-
-    /* Stage Info */
-    #stageInfo {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 10px 15px;
-      border-radius: 5px;
-      font-weight: bold;
-      z-index: 10;
-    }
-
-    #scoreInfo {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 10px 15px;
-      border-radius: 5px;
-      font-weight: bold;
-      z-index: 10;
+    .result-menu-btn:hover {
+      background-color: #007399;
     }
   </style>
 </head>
 <body>
-  <div class="game-container">
+  <div id="game-container">
     <canvas id="gameCanvas"></canvas>
+    <button class="pause-button" id="pauseBtn">❚❚</button>
 
-    <!-- Menu Screen -->
-    <div id="menuScreen">
-      <div class="menu-content">
-        <h1>🐦 ANGRY BIRDS 🐦</h1>
-        <p style="font-size: 20px; margin-bottom: 40px;">Select a Stage</p>
-        <div class="stage-buttons" id="stageButtonsContainer"></div>
-      </div>
-    </div>
-
-    <!-- Game UI -->
-    <button id="pauseBtn" class="hidden">⏸ Pause</button>
-    <div id="stageInfo"></div>
-    <div id="scoreInfo"></div>
-
-    <!-- Pause Overlay -->
-    <div id="pauseOverlay">
+    <div class="pause-overlay" id="pauseOverlay">
       <div class="pause-modal">
         <h2>Game Paused</h2>
-        <div class="modal-buttons">
-          <button id="resumeBtn" class="modal-btn">Resume</button>
-          <button id="retryBtn" class="modal-btn">Retry</button>
-          <button id="menuBtn" class="modal-btn">Main Menu</button>
+        <div class="pause-modal-buttons">
+          <button class="restart-btn" id="restartBtn">Restart</button>
+          <button class="menu-btn" id="pauseMenuBtn">Main Menu</button>
         </div>
       </div>
     </div>
 
-    <!-- Result Screen -->
-    <div id="resultScreen">
-      <div class="result-content">
+    <div class="menu-overlay" id="menuOverlay">
+      <div class="menu-content">
+        <h1>Angry Birds</h1>
+        <div class="stages-grid" id="stagesGrid"></div>
+      </div>
+    </div>
+
+    <div class="result-overlay" id="resultOverlay">
+      <div class="result-modal">
         <h2 id="resultTitle">Level Complete!</h2>
-        <div class="score">Score: <span id="resultScore">0</span></div>
+        <div class="result-score" id="resultScore">Score: 0</div>
         <div class="result-buttons">
-          <button id="nextBtn" class="result-btn">Next Stage</button>
-          <button id="resultMenuBtn" class="result-btn">Main Menu</button>
+          <button class="next-stage-btn" id="nextStageBtn">Next Stage</button>
+          <button class="result-menu-btn" id="resultMenuBtn">Main Menu</button>
         </div>
       </div>
     </div>
   </div>
 
-  <script type="module" src="/src/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/2.0.20/matter.min.js"></script>
+  <script src="state.js"></script>
+  <script src="physics.js"></script>
+  <script src="slingshot.js"></script>
+  <script src="renderer.js"></script>
+  <script src="stage.js"></script>
+  <script src="ui.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>

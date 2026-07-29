@@ -3,237 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angry Birds Game</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: #f0f0f0;
-            font-family: Arial, sans-serif;
-        }
-
-        #gameContainer {
-            position: relative;
-            width: 1200px;
-            height: 700px;
-            background: #87CEEB;
-            border: 2px solid #333;
-            overflow: hidden;
-        }
-
-        canvas {
-            display: block;
-            background: #87CEEB;
-        }
-
-        #mainMenu {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-            color: white;
-        }
-
-        #mainMenu h1 {
-            font-size: 48px;
-            margin-bottom: 40px;
-        }
-
-        .stageGrid {
-            display: grid;
-            grid-template-columns: repeat(5, 100px);
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .stageButton {
-            padding: 15px;
-            font-size: 16px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .stageButton:hover {
-            background: #45a049;
-        }
-
-        .stageButton.completed {
-            background: #2196F3;
-        }
-
-        #pauseButton {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            background: #FF6B6B;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            z-index: 10;
-            display: none;
-        }
-
-        #pauseButton:hover {
-            background: #ee5a52;
-        }
-
-        #pauseOverlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 50;
-        }
-
-        .pauseMenu {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .pauseMenu h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .pauseMenu button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 14px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .pauseMenu button:hover {
-            background: #45a049;
-        }
-
-        #clearOverlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 50;
-        }
-
-        .clearMenu {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .clearMenu h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .clearMenu button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 14px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .clearMenu button:hover {
-            background: #45a049;
-        }
-
-        .info {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: white;
-            font-size: 16px;
-            z-index: 10;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-    </style>
+    <title>Angry Birds - Web Edition</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div id="gameContainer">
-        <canvas id="gameCanvas" width="1200" height="700"></canvas>
-
-        <div id="mainMenu">
-            <h1>Angry Birds</h1>
-            <div class="stageGrid" id="stageGrid"></div>
-        </div>
-
-        <div id="pauseButton">PAUSE</div>
-
-        <div id="pauseOverlay">
-            <div class="pauseMenu">
-                <h2>PAUSED</h2>
-                <button id="resumeBtn">Resume</button>
-                <button id="retryBtn">Retry</button>
-                <button id="mainBtn">Main Menu</button>
-            </div>
-        </div>
-
-        <div id="clearOverlay">
-            <div class="clearMenu">
-                <h2>Stage Clear!</h2>
-                <button id="nextBtn">Next Stage</button>
-                <button id="mainBtn2">Main Menu</button>
-            </div>
-        </div>
-
-        <div class="info" id="stageInfo"></div>
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
+        <button id="pause-btn" class="pause-btn">PAUSE</button>
     </div>
 
-    <script src="matter.min.js"></script>
-    <script src="stages.js"></script>
-    <script src="physics.js"></script>
-    <script src="renderer.js"></script>
-    <script src="slingshot.js"></script>
-    <script src="collision.js"></script>
-    <script src="game-state.js"></script>
-    <script src="ui.js"></script>
-    <script src="stage-loader.js"></script>
-    <script src="main.js"></script>
+    <!-- Pause Overlay -->
+    <div id="pause-overlay" class="overlay hidden">
+        <div class="overlay-content">
+            <h2>PAUSED</h2>
+            <button class="overlay-btn" id="resume-btn">Resume</button>
+            <button class="overlay-btn" id="restart-btn">Restart Level</button>
+            <button class="overlay-btn" id="menu-btn">Main Menu</button>
+        </div>
+    </div>
+
+    <!-- Clear Overlay -->
+    <div id="clear-overlay" class="overlay hidden">
+        <div class="overlay-content">
+            <h2>LEVEL CLEAR!</h2>
+            <p id="clear-message"></p>
+            <button class="overlay-btn" id="next-btn">Next Level</button>
+            <button class="overlay-btn" id="menu-btn-clear">Main Menu</button>
+        </div>
+    </div>
+
+    <!-- Main Menu -->
+    <div id="main-menu" class="overlay hidden">
+        <div class="overlay-content">
+            <h1>ANGRY BIRDS</h1>
+            <div id="stage-list" class="stage-list"></div>
+            <button class="overlay-btn" id="start-btn">Start Game</button>
+        </div>
+    </div>
+
+    <!-- Matter.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/2.0.20/matter.min.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
