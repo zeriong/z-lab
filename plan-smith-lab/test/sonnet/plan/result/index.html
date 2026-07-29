@@ -1,12 +1,51 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Sling Birds</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Slingshot Birds</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div id="app">
+  <section id="main-menu" class="screen active">
+    <h1>Slingshot Birds</h1>
+    <div id="stage-select"></div>
+  </section>
+
+  <section id="game-screen" class="screen">
+    <canvas id="game-canvas" width="960" height="540"></canvas>
+
+    <div id="hud">
+      <div id="hud-stage">스테이지 1</div>
+      <div id="hud-score">점수: 0</div>
+      <div id="hud-birds">남은 새: 0</div>
+    </div>
+
+    <button id="pause-btn" aria-label="일시정지">⏸</button>
+
+    <div id="pause-overlay" class="overlay hidden">
+      <div class="overlay-panel">
+        <h2>일시정지</h2>
+        <button id="restart-btn">다시하기</button>
+        <button id="mainmenu-btn">메인으로</button>
+      </div>
+    </div>
+
+    <div id="result-modal" class="overlay hidden">
+      <div class="overlay-panel">
+        <h2 id="result-title"></h2>
+        <p id="result-score"></p>
+        <button id="next-stage-btn">다음 스테이지</button>
+        <button id="retry-btn">다시하기</button>
+        <button id="mainmenu-btn-2">메인으로</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Matter.js loaded from CDN as a plain global (no build step available in this environment) -->
+<script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
 </html>

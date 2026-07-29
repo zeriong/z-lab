@@ -1,56 +1,157 @@
-/**
- * Bootstrap + main loop.
- *
- * Anchor A1×A3: physics is stepped with a FIXED delta inside an
- * accumulator, decoupled from the render frame rate. Matter.Runner is
- * never used — every Physics.step() call advances by exactly
- * Physics.FIXED_DT, so identical input at identical step-offsets
- * reproduces identical outcomes.
- */
+var AB = window.AB || (window.AB = {});
+
+// Bootstrap: owns the canvas, the physics world, the session (score/pigs/
+// birds), and the fixed-timestep accumulator loop (Step 6 -- reproducibility
+// contract: fixed dt, full teardown on load/restart, seeded RNG reset).
 (function () {
+  const CONFIG = AB.CONFIG;
+  const FIXED_DT = 1 / 120;
+  const MAX_STEPS = 6; // clamp to avoid the spiral-of-death if a frame stalls
+  const SETTLE_SPEED = 15; // px/s, declared arbitrary "at rest" threshold
+  const SETTLE_TIME = 0.6; // s, declared arbitrary
+
   const canvas = document.getElementById('game-canvas');
+  canvas.width = CONFIG.width;
+  canvas.height = CONFIG.height;
+  const ctx = canvas.getContext('2d');
 
-  window.Physics.init();
-  window.Render.init(canvas);
-  window.Slingshot.init(canvas, (vx, vy) => window.State.launchCurrentBird(vx, vy));
-  window.State.init();
+  const world = new AB.Physics.World(CONFIG.gravity);
 
-  let lastTime = performance.now();
+  const session = {
+    stageIndex: 0,
+    score: 0,
+    pigsRemaining: 0,
+    birdsRemaining: 0,
+    activeBird: null,
+    outcome: null,
+    restTimer: 0,
+    groundY: CONFIG.groundY,
+    slingAnchor: CONFIG.slingAnchor
+  };
+
+  let birdRadius = 14;
+
+  // Step 6: full physics teardown + RNG reseed on every load/restart, so a
+  // given stage always starts from the exact same state.
+  function loadStage(index) {
+    world.clear();
+    const data = AB.STAGES[index];
+    AB.RNG.seed(data.seed);
+    const info = AB.Stages.build(world, data);
+
+    session.stageIndex = index;
+    session.score = 0;
+    session.pigsRemaining = info.pigCount;
+    session.birdsRemaining = info.birdCount;
+    session.activeBird = null;
+    session.outcome = null;
+    session.restTimer = 0;
+    birdRadius = info.birdRadius;
+
+    spawnNextBird();
+  }
+
+  function spawnNextBird() {
+    if (session.birdsRemaining <= 0) { AB.Slingshot.setReady(false); return; }
+    AB.Slingshot.setReady(true, birdRadius);
+  }
+
+  function onLaunch(vx, vy) {
+    const anchor = session.slingAnchor;
+    const bird = AB.Physics.createCircle({
+      x: anchor.x, y: anchor.y, radius: birdRadius,
+      density: 1.2, restitution: 0.4, friction: 0.5,
+      tag: 'bird', breakImpulse: Infinity
+    });
+    bird.vx = vx;
+    bird.vy = vy;
+    world.add(bird);
+    session.activeBird = bird;
+    session.birdsRemaining -= 1;
+    session.restTimer = 0;
+  }
+
+  AB.Slingshot.init(canvas, { slingAnchor: CONFIG.slingAnchor, gravity: CONFIG.gravity }, onLaunch);
+
+  AB.StateMachine.onEnter('PLAYING', function (payload) {
+    const idx = (payload && payload.stageIndex != null) ? payload.stageIndex : session.stageIndex;
+    loadStage(idx);
+  });
+  AB.StateMachine.onEnter('PAUSED', function () { AB.Slingshot.setReady(false); });
+  AB.StateMachine.onExit('PAUSED', function () {
+    if (session.activeBird == null && session.birdsRemaining > 0) AB.Slingshot.setReady(true, birdRadius);
+  });
+
+  AB.UI.init({
+    onStageSelect: function (i) { AB.StateMachine.send('start', { stageIndex: i }); },
+    getStageIndex: function () { return session.stageIndex; },
+    getScore: function () { return session.score; }
+  });
+
+  function fixedUpdate() {
+    world.step(FIXED_DT);
+    AB.Judge.processCollisions(world, session);
+    world.cleanup();
+
+    if (session.activeBird && session.activeBird.destroyed) {
+      session.activeBird = null;
+      session.restTimer = 0;
+    } else if (session.activeBird) {
+      const b = session.activeBird;
+      const speed = Math.hypot(b.vx, b.vy);
+      if (speed < SETTLE_SPEED) {
+        session.restTimer += FIXED_DT;
+        if (session.restTimer > SETTLE_TIME) {
+          session.activeBird = null;
+          session.restTimer = 0;
+        }
+      } else {
+        session.restTimer = 0;
+      }
+    }
+
+    const outcome = AB.Judge.checkOutcome(session);
+    if (outcome === 'clear') {
+      AB.StateMachine.send('clear');
+    } else if (outcome === 'fail') {
+      AB.StateMachine.send('fail');
+    } else if (!session.activeBird && session.birdsRemaining > 0) {
+      spawnNextBird();
+    }
+  }
+
+  let lastTime = null;
   let accumulator = 0;
-  const FIXED_DT = window.Physics.FIXED_DT;
-  const MAX_ACCUMULATED = FIXED_DT * 5; // avoid a spiral of death after tab is backgrounded
 
   function loop(now) {
     requestAnimationFrame(loop);
-    let delta = now - lastTime;
-    lastTime = now;
-    if (delta > 250) delta = 250;
-    accumulator += delta;
-    if (accumulator > MAX_ACCUMULATED) accumulator = MAX_ACCUMULATED;
 
-    while (accumulator >= FIXED_DT) {
-      if (window.State.isRunning()) {
-        window.Physics.step();
-        window.State.tickMatch();
-      }
-      accumulator -= FIXED_DT;
+    if (AB.StateMachine.getState() !== 'PLAYING') {
+      lastTime = null;
+      render();
+      return;
     }
 
-    window.Render.frame();
-  }
-  requestAnimationFrame(loop);
+    if (lastTime == null) lastTime = now;
+    let frameTime = Math.min((now - lastTime) / 1000, 0.25);
+    lastTime = now;
+    accumulator += frameTime;
 
-  // ---- debug hooks (used by automated play-checks; harmless in normal play) ----
-  window.__launch = function (angleDeg, power) {
-    if (!window.State.isAiming()) return false;
-    const rad = (angleDeg * Math.PI) / 180;
-    const pull = Math.max(0, Math.min(1, power)) * window.Slingshot.MAX_PULL;
-    const vx = pull * Math.cos(rad) * window.Slingshot.POWER_MULT;
-    const vy = -pull * Math.sin(rad) * window.Slingshot.POWER_MULT;
-    window.State.launchCurrentBird(vx, vy);
-    return true;
-  };
-  window.__goStage = function (n) {
-    window.State.debugGoStage(n);
-  };
+    let steps = 0;
+    while (accumulator >= FIXED_DT && steps < MAX_STEPS) {
+      fixedUpdate();
+      accumulator -= FIXED_DT;
+      steps++;
+      if (AB.StateMachine.getState() !== 'PLAYING') break;
+    }
+
+    render();
+  }
+
+  function render() {
+    AB.UI.updateHUD(session);
+    AB.Renderer.render(ctx, world, session, AB.Slingshot.getAimState());
+  }
+
+  requestAnimationFrame(loop);
 })();

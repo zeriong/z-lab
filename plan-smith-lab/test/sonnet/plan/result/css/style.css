@@ -1,0 +1,176 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', 'Malgun Gothic', sans-serif;
+  background: #1b1f24;
+  color: #222;
+  overscroll-behavior: none;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* ---------- Main menu ---------- */
+
+#main-menu {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  color: #fff;
+  background: linear-gradient(#2a3a55, #16202f);
+}
+
+#main-menu h1 {
+  font-size: 2.4rem;
+  margin: 0;
+}
+
+#stage-select {
+  display: grid;
+  grid-template-columns: repeat(5, 72px);
+  gap: 12px;
+}
+
+.stage-btn {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  font-size: 1.4rem;
+  border-radius: 10px;
+  border: none;
+  background: #f2b134;
+  color: #222;
+  cursor: pointer;
+}
+
+.stage-btn:disabled {
+  background: #555b66;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.stage-btn.locked::after {
+  content: '\1F512';
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 0.7rem;
+}
+
+.stage-best {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  font-size: 0.6rem;
+  color: #333;
+}
+
+/* ---------- Game screen ---------- */
+
+#game-screen {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+#game-canvas {
+  touch-action: none;
+  max-width: 100%;
+  max-height: 100%;
+  background: #8fd3ff;
+}
+
+#hud {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* Pause button: fixed top-right of the in-game screen, always visible */
+#pause-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 48px;
+  height: 48px;
+  font-size: 1.4rem;
+  line-height: 1;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 10;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay-panel {
+  background: #fff;
+  padding: 28px 32px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 220px;
+  text-align: center;
+}
+
+.overlay-panel h2 {
+  margin: 0 0 8px;
+}
+
+.overlay-panel button {
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #f2b134;
+  cursor: pointer;
+}
+
+.overlay-panel button:hover {
+  background: #e0a020;
+}
