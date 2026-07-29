@@ -1,79 +1,62 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>슬링샷 스트라이크 — 물리 새총 게임</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><circle cx=%2216%22 cy=%2216%22 r=%2214%22 fill=%22%23d32f2f%22/><circle cx=%2221%22 cy=%2212%22 r=%224%22 fill=%22white%22/><circle cx=%2222%22 cy=%2212%22 r=%222%22 fill=%22black%22/><path d=%22M26 14 L32 16 L25 19 Z%22 fill=%22orange%22/></svg>" />
-  <link rel="stylesheet" href="css/style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>슬링샷 버드 — 물리 슬링샷 게임</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div id="stage-viewport">
-    <canvas id="game-canvas" width="1280" height="720"></canvas>
+<div id="game-wrap">
+  <canvas id="game" width="1280" height="720"></canvas>
 
-    <!-- 인게임 HUD -->
-    <div id="hud" class="hidden">
-      <div id="hud-left">
-        <span id="hud-stage">STAGE 1</span>
-        <span id="hud-birds" title="남은 새"></span>
-        <span id="hud-pigs" title="남은 돼지"></span>
-      </div>
-      <!-- 일시정지 버튼 — 인게임 우측 (요구사항 3) -->
+  <div id="hud" class="hidden">
+    <div id="hud-left">
+      <span id="stage-label"></span>
+      <span id="birds-label"></span>
+    </div>
+    <div id="hud-right">
+      <button id="btn-replay" class="hidden" title="솔루션 리플레이 (개발 모드)">▶ 리플레이</button>
       <button id="btn-pause" aria-label="일시정지">&#10074;&#10074;</button>
-    </div>
-
-    <!-- 메인 화면 -->
-    <div id="screen-main" class="screen">
-      <h1>슬링샷 스트라이크</h1>
-      <p class="tagline">새총을 당겨 초록 돼지들의 요새를 무너뜨리자!</p>
-      <div id="stage-grid"></div>
-      <p class="help">새를 드래그해서 당긴 뒤 놓으면 발사 · 모든 돼지를 제거하면 클리어</p>
-    </div>
-
-    <!-- 일시정지 오버레이 -->
-    <div id="overlay-pause" class="screen overlay hidden">
-      <div class="panel">
-        <h2>일시정지</h2>
-        <button class="btn" id="btn-resume">계속하기</button>
-        <button class="btn" id="btn-pause-restart">다시하기</button>
-        <button class="btn btn-sub" id="btn-pause-main">메인으로</button>
-      </div>
-    </div>
-
-    <!-- 클리어 오버레이 -->
-    <div id="overlay-clear" class="screen overlay hidden">
-      <div class="panel">
-        <h2 class="good">스테이지 클리어!</h2>
-        <p id="clear-stats"></p>
-        <button class="btn" id="btn-next">다음 스테이지</button>
-        <button class="btn" id="btn-clear-restart">다시하기</button>
-        <button class="btn btn-sub" id="btn-clear-main">메인으로</button>
-      </div>
-    </div>
-
-    <!-- 실패 오버레이 -->
-    <div id="overlay-fail" class="screen overlay hidden">
-      <div class="panel">
-        <h2 class="bad">실패&#8230;</h2>
-        <p>돼지가 아직 남아 있어요.</p>
-        <button class="btn" id="btn-fail-restart">다시하기</button>
-        <button class="btn btn-sub" id="btn-fail-main">메인으로</button>
-      </div>
-    </div>
-
-    <!-- 개발 모드 패널 (?dev=1) -->
-    <div id="dev-panel" class="hidden">
-      <div id="dev-counters"></div>
-      <div id="dev-actions">
-        <button id="dev-replay">솔루션 리플레이</button>
-        <button id="dev-verify">10/10 전체 검증</button>
-        <button id="dev-determinism">결정성 20회</button>
-      </div>
-      <pre id="dev-log"></pre>
     </div>
   </div>
 
-  <script src="vendor/matter.min.js"></script>
-  <script type="module" src="js/main.js"></script>
+  <div id="dev-info" class="hidden"></div>
+
+  <div id="screen-main" class="screen">
+    <h1>슬링샷 버드</h1>
+    <p class="subtitle">스테이지를 선택하세요</p>
+    <div id="stage-grid"></div>
+  </div>
+
+  <div id="overlay-pause" class="screen overlay hidden">
+    <div class="panel">
+      <h2>일시정지</h2>
+      <button id="btn-resume">계속하기</button>
+      <button id="btn-retry-pause">다시하기</button>
+      <button id="btn-main-pause">메인으로</button>
+    </div>
+  </div>
+
+  <div id="overlay-clear" class="screen overlay hidden">
+    <div class="panel">
+      <h2>스테이지 클리어!</h2>
+      <button id="btn-next">다음 스테이지</button>
+      <button id="btn-retry-clear">다시하기</button>
+      <button id="btn-main-clear">메인으로</button>
+    </div>
+  </div>
+
+  <div id="overlay-fail" class="screen overlay hidden">
+    <div class="panel">
+      <h2>실패...</h2>
+      <button id="btn-retry-fail">다시하기</button>
+      <button id="btn-main-fail">메인으로</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+<script type="module" src="js/main.js"></script>
 </body>
 </html>

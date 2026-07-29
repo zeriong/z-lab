@@ -1,246 +1,238 @@
-// 앱 부트스트랩 — 상태 머신 + 루프 골격 (플랜 1단계).
-// 핵심 계약(A3): rAF 루프가 물리 틱 호출을 소유한다. 상태가 'playing'일 때만
-// 고정 타임스텝 누산기로 session.step()을 호출하고, 그 외 상태에서는
-// 엔진 업데이트가 정확히 0회다(개발 패널의 stepsWhilePaused로 실측 가능).
+// 부트스트랩 + 게임 루프.
+// rAF 루프가 물리 틱 호출을 소유한다 — PLAYING 상태에서만 Engine.update가 실행되므로
+// 일시정지 중 물리 세계는 완전 정지한다(A3). 고정 dt 60Hz 누산기 방식(A1 리플레이 재현성).
 
-import { CONFIG } from './core/config.js';
-import { createSession } from './core/session.js';
-import { createAutopilot, runSolution } from './core/driver.js';
-import { createRenderer } from './render.js';
-import { createUI, loadProgress, saveProgress } from './ui.js';
+import {
+  WIDTH, HEIGHT, FIXED_DT, BIRD_SPENT_MS, BIRD_REST_MIN_MS,
+  SETTLE_SPEED, SETTLE_ANGULAR, STAGE_COUNT,
+} from './constants.js';
+import { fsm, States } from './state.js';
+import {
+  createPhysicsWorld, destroyPhysicsWorld, stepPhysics,
+  flushRemovals, countKind, bodyCount,
+} from './physics.js';
+import { loadStage, buildWorld, spawnBird } from './stage.js';
+import { Slingshot } from './slingshot.js';
+import { Judge } from './judge.js';
+import { render } from './renderer.js';
+import { Replay } from './replay.js';
+import { UI } from './ui.js';
 
-const Matter = window.Matter;
-const C = CONFIG;
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
 
-const canvas = document.getElementById('game-canvas');
-const renderer = createRenderer(canvas);
-
-// ── 앱 상태 ──────────────────────────────────────────
-// 상태 머신: main → playing ⇄ paused, playing → clear | fail
-const app = {
-  state: 'main', // 'main' | 'playing' | 'paused' | 'clear' | 'fail'
-  stages: [],
-  stageIndex: 0,
-  session: null,
-  pilot: null,        // 개발 모드 솔루션 리플레이 오토파일럿
-  cleared: loadProgress(),
-  finishCountdown: -1, // 판정 후 오버레이 표시까지의 프레임 지연(연출)
-  stepsWhilePaused: 0, // 항상 0이어야 한다 — A3 실측 카운터
-  speed: 1,            // 개발 모드 배속(고정 dt 유지 — 틱을 여러 번 돌릴 뿐)
+const game = {
+  stageNum: 1,
+  stageData: null,
+  ph: null,
+  sling: null,
+  judge: null,
+  replay: null,
+  birdsQueue: 0,
+  loadedBird: null,
+  activeBird: null,
+  birdAge: 0,
+  devMode: new URLSearchParams(location.search).has('dev'),
+  loading: false,
 };
 
-// ── 상태 전이 (UI 버튼은 전부 여기로만 들어온다) ─────────────
-function setState(next) {
-  app.state = next;
-  ui.sync(app);
-}
+// ---------- 스테이지 수명주기 ----------
 
-function disposeSession() {
-  if (app.session) { app.session.dispose(); app.session = null; }
-  app.pilot = null;
-}
-
-function startStage(index) {
-  disposeSession();
-  app.stageIndex = index;
-  app.session = createSession(Matter, app.stages[index]);
-  app.finishCountdown = -1;
-  renderer.reset();
-  setState('playing');
-}
-
-const actions = {
-  startStage,
-  pause() {
-    if (app.state !== 'playing') return;
-    app.session.cancelAim();
-    setState('paused');
-  },
-  resume() {
-    if (app.state !== 'paused') return;
-    setState('playing');
-  },
-  restart() {
-    if (!['paused', 'clear', 'fail'].includes(app.state)) return;
-    startStage(app.stageIndex);
-  },
-  toMain() {
-    disposeSession();
-    ui.buildStageGrid(app.stages, app.cleared);
-    setState('main');
-  },
-  next() {
-    if (app.state !== 'clear') return;
-    if (app.stageIndex + 1 < app.stages.length) startStage(app.stageIndex + 1);
-    else actions.toMain();
-  },
-};
-
-const ui = createUI(actions);
-
-function finishStage() {
-  const outcome = app.session.outcome;
-  if (outcome === 'clear') {
-    app.cleared.add(app.stages[app.stageIndex].id);
-    saveProgress(app.cleared);
+async function startStage(n) {
+  if (game.loading || n < 1 || n > STAGE_COUNT) return;
+  game.loading = true;
+  try {
+    const data = await loadStage(n);
+    game.stageNum = n;
+    game.stageData = data;
+    resetWorld(data);
+    if (fsm.state !== States.PLAYING) fsm.transition(States.PLAYING);
+    ui.updateHud(game);
+  } catch (err) {
+    console.error('[stage] 로드 실패', err);
+  } finally {
+    game.loading = false;
   }
-  setState(outcome === 'clear' ? 'clear' : 'fail');
 }
 
-// ── 고정 타임스텝 루프 — 물리 틱의 유일한 소유자 ─────────────
-let acc = 0;
-let last = performance.now();
+// 월드 전체 해체·재구축 — 다시하기/재진입의 유일한 경로(상태 오염 차단).
+function resetWorld(data) {
+  teardownWorld();
+  game.ph = createPhysicsWorld();
+  buildWorld(game.ph, data);
 
-function stepOnce() {
-  if (app.state === 'paused') { app.stepsWhilePaused++; return; } // 도달 불가 방어선
-  if (app.pilot && !app.pilot.done) app.pilot.tick();
-  app.session.step();
+  game.sling = new Slingshot(data.slingshot);
+  game.sling.onLaunch = (bird) => {
+    game.activeBird = bird;
+    game.loadedBird = null;
+    game.birdAge = 0;
+  };
+
+  game.judge = new Judge();
+  game.replay = null;
+  game.birdsQueue = data.birds;
+  game.activeBird = null;
+  game.loadedBird = null;
+  game.birdAge = 0;
+  loadNextBird();
 }
 
-function frame(now) {
-  requestAnimationFrame(frame);
-  const elapsed = Math.min(now - last, 100); // 탭 복귀 폭주 방지
-  last = now;
-
-  if (app.state === 'playing' && app.session) {
-    if (!app.session.finished) {
-      acc += elapsed;
-      let guard = 0;
-      while (acc >= C.DT_MS) {
-        for (let k = 0; k < app.speed && !app.session.finished; k++) stepOnce();
-        acc -= C.DT_MS;
-        if (++guard >= 5) { acc = 0; break; } // 스파이럴 가드
-      }
-    } else {
-      // 판정 완료 → 짧은 연출 지연 후 오버레이
-      if (app.finishCountdown < 0) app.finishCountdown = 40;
-      else if (--app.finishCountdown === 0) finishStage();
-    }
-    ui.updateHUD(app);
-  } else {
-    acc = 0; // 일시정지/메뉴 중 시간 적립 금지 — 재개 시 점프 방지
-  }
-
-  renderer.draw(app.session, { advanceFx: app.state === 'playing' });
-  if (dev.enabled) dev.updateCounters();
+function teardownWorld() {
+  if (!game.ph) return;
+  destroyPhysicsWorld(game.ph);
+  game.ph = null;
+  game.sling = null;
+  game.judge = null;
+  game.replay = null;
+  game.activeBird = null;
+  game.loadedBird = null;
 }
 
-// ── 입력 (포인터 → 월드 좌표 → 세션 조준 API) ────────────────
-let aiming = false;
+function loadNextBird() {
+  if (game.birdsQueue <= 0) return;
+  game.birdsQueue--;
+  game.loadedBird = spawnBird(game.ph, game.sling.anchor.x, game.sling.anchor.y);
+  game.sling.load(game.loadedBird);
+}
 
-function toWorld(e) {
-  const r = canvas.getBoundingClientRect();
+// ---------- UI 콜백 ----------
+
+const ui = new UI({
+  startStage: (n) => startStage(n),
+  pause: () => {
+    if (fsm.state === States.PLAYING) fsm.transition(States.PAUSED);
+  },
+  resume: () => {
+    if (fsm.state === States.PAUSED) fsm.transition(States.PLAYING);
+  },
+  retry: () => {
+    if (!game.stageData) return;
+    resetWorld(game.stageData);
+    if (fsm.state !== States.PLAYING) fsm.transition(States.PLAYING);
+    ui.updateHud(game);
+  },
+  toMain: () => {
+    fsm.transition(States.MAIN);
+  },
+  nextStage: () => {
+    if (game.stageNum < STAGE_COUNT) startStage(game.stageNum + 1);
+  },
+  replay: () => {
+    // 개발 모드: 월드 재구축 후 동봉 솔루션 시퀀스를 자동 발사.
+    if (!game.stageData) return;
+    resetWorld(game.stageData);
+    game.replay = new Replay(game);
+    game.replay.start(game.stageData.solution);
+    if (fsm.state !== States.PLAYING) fsm.transition(States.PLAYING);
+  },
+});
+
+ui.setDevMode(game.devMode);
+
+fsm.onChange((from, to) => {
+  if (to === States.MAIN) teardownWorld(); // 잔존 바디·리스너 0 보장
+  ui.sync(to, game);
+});
+ui.sync(fsm.state, game);
+
+// ---------- 입력 (포인터 이벤트 추상화 — 마우스 기준) ----------
+
+function canvasPos(ev) {
+  const rect = canvas.getBoundingClientRect();
   return {
-    x: (e.clientX - r.left) * canvas.width / r.width,
-    y: (e.clientY - r.top) * canvas.height / r.height,
+    x: (ev.clientX - rect.left) * (WIDTH / rect.width),
+    y: (ev.clientY - rect.top) * (HEIGHT / rect.height),
   };
 }
 
-canvas.addEventListener('pointerdown', (e) => {
-  if (app.state !== 'playing' || !app.session?.canLaunch) return;
-  const p = toWorld(e);
-  if (Math.hypot(p.x - C.SLING.x, p.y - C.SLING.y) > 150) return; // 새총 근처만 잡기
-  aiming = true;
-  try { canvas.setPointerCapture(e.pointerId); } catch { /* 합성 이벤트 등 캡처 불가 시 무시 */ }
-  app.session.setAim(p.x, p.y);
+function inputAllowed() {
+  return (
+    fsm.state === States.PLAYING &&
+    game.sling &&
+    !(game.replay && game.replay.active)
+  );
+}
+
+canvas.addEventListener('pointerdown', (ev) => {
+  if (!inputAllowed()) return;
+  game.sling.pointerDown(canvasPos(ev));
+});
+window.addEventListener('pointermove', (ev) => {
+  if (!inputAllowed()) return;
+  game.sling.pointerMove(canvasPos(ev));
+});
+window.addEventListener('pointerup', () => {
+  if (!inputAllowed()) return;
+  game.sling.pointerUp();
 });
 
-canvas.addEventListener('pointermove', (e) => {
-  if (!aiming || app.state !== 'playing') return;
-  const p = toWorld(e);
-  app.session.setAim(p.x, p.y);
-});
+// ---------- 게임 틱 ----------
 
-canvas.addEventListener('pointerup', () => {
-  if (!aiming) return;
-  aiming = false;
-  if (app.state === 'playing') app.session.release();
-});
+function tick(dt) {
+  stepPhysics(game.ph, dt);
+  flushRemovals(game.ph);
+  updateActiveBird(dt);
 
-canvas.addEventListener('pointercancel', () => {
-  if (!aiming) return;
-  aiming = false;
-  app.session?.cancelAim();
-});
+  if (game.replay) game.replay.tick(dt);
 
-window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' || e.key === 'p') {
-    if (app.state === 'playing') actions.pause();
-    else if (app.state === 'paused') actions.resume();
+  const pigs = countKind(game.ph, 'pig');
+  const birdsExhausted =
+    game.birdsQueue === 0 && !game.loadedBird && !game.activeBird;
+  const result = game.judge.tick(game.ph, dt, pigs, birdsExhausted);
+
+  ui.updateHud(game);
+
+  if (result === 'CLEAR') fsm.transition(States.CLEAR);
+  else if (result === 'FAIL') fsm.transition(States.FAIL);
+}
+
+// 발사체 소진: 화면 이탈 / 정지 / 시간 초과 → 제거 후 다음 새 장전.
+function updateActiveBird(dt) {
+  const b = game.activeBird;
+  if (!b) return;
+  game.birdAge += dt;
+
+  const off =
+    b.position.x < -100 || b.position.x > WIDTH + 150 || b.position.y > HEIGHT + 100;
+  const resting =
+    game.birdAge > BIRD_REST_MIN_MS &&
+    b.speed < SETTLE_SPEED &&
+    b.angularSpeed < SETTLE_ANGULAR;
+
+  if (off || resting || game.birdAge > BIRD_SPENT_MS) {
+    Matter.Composite.remove(game.ph.engine.world, b);
+    game.activeBird = null;
+    loadNextBird();
   }
-});
-
-// ── 개발 모드 (?dev=1) — 검증 하네스의 브라우저 노출 ──────────
-const dev = {
-  enabled: new URLSearchParams(location.search).get('dev') === '1',
-  log(msg) {
-    const pre = document.getElementById('dev-log');
-    pre.textContent += msg + '\n';
-    pre.scrollTop = pre.scrollHeight;
-    console.log('[dev]', msg);
-  },
-  updateCounters() {
-    const s = app.session;
-    document.getElementById('dev-counters').textContent =
-      `state=${app.state} tick=${s ? s.tick : '-'} bodies=${s ? s.bodyCount() : '-'} ` +
-      `listeners=${s ? s.listenerCount() : '-'} pigs=${s ? s.pigsLeft : '-'} birds=${s ? s.birdsLeft : '-'} ` +
-      `verdict=${s ? (s.outcome ?? '') + '/' + (s.verdictPath ?? '') : '-'} pausedSteps=${app.stepsWhilePaused}`;
-  },
-};
-
-// 10/10 헤드리스 검증 — Node 하네스와 동일한 드라이버를 브라우저에서 실행
-function verifyAll() {
-  const results = app.stages.map((stage) => {
-    const r = runSolution(Matter, stage, stage.solution);
-    return { id: stage.id, name: stage.name, cleared: r.cleared, path: r.verdictPath, shots: r.shotsFired, ticks: r.ticks };
-  });
-  const pass = results.filter(r => r.cleared).length;
-  if (dev.enabled) {
-    for (const r of results) dev.log(`${r.cleared ? '✓' : '✗'} stage${r.id} "${r.name}" path=${r.path} shots=${r.shots} ticks=${r.ticks}`);
-    dev.log(`=== ${pass}/${results.length} 클리어 ===`);
-  }
-  return results;
 }
 
-function determinism(times = 20) {
-  const stage = app.stages[app.stageIndex];
-  const hashes = new Set();
-  for (let i = 0; i < times; i++) hashes.add(runSolution(Matter, stage, stage.solution).hash);
-  const ok = hashes.size === 1;
-  if (dev.enabled) dev.log(`결정성 ${times}회: ${ok ? '동일(1종)' : `비재현(${hashes.size}종)`}`);
-  return ok;
-}
+// ---------- 루프 (고정 타임스텝 누산기) ----------
 
-function replayCurrent() {
-  startStage(app.stageIndex); // 항상 깨끗한 월드에서 시작
-  app.pilot = createAutopilot(app.session, app.stages[app.stageIndex].solution);
-  if (dev.enabled) dev.log(`stage${app.stages[app.stageIndex].id} 솔루션 리플레이 시작`);
-}
+let last = performance.now();
+let acc = 0;
 
-window.__dev = {
-  verifyAll, determinism, replayCurrent, app, actions,
-  setSpeed(n) { app.speed = Math.max(1, Math.min(16, n | 0)); return app.speed; },
-};
+function frame(now) {
+  const elapsed = Math.min(now - last, 100); // 탭 복귀 시 폭주 방지
+  last = now;
+  acc += elapsed;
 
-// ── 부트 ────────────────────────────────────────────
-async function boot() {
-  const files = Array.from({ length: 10 }, (_, i) => `stages/stage${String(i + 1).padStart(2, '0')}.json`);
-  app.stages = await Promise.all(files.map(f => fetch(f).then(r => {
-    if (!r.ok) throw new Error(`스테이지 로드 실패: ${f}`);
-    return r.json();
-  })));
-
-  ui.buildStageGrid(app.stages, app.cleared);
-  ui.sync(app);
-
-  if (dev.enabled) {
-    document.getElementById('dev-panel').classList.remove('hidden');
-    document.getElementById('dev-replay').addEventListener('click', replayCurrent);
-    document.getElementById('dev-verify').addEventListener('click', verifyAll);
-    document.getElementById('dev-determinism').addEventListener('click', () => determinism(20));
+  while (acc >= FIXED_DT) {
+    if (fsm.state === States.PLAYING && game.ph) tick(FIXED_DT);
+    acc -= FIXED_DT;
   }
 
-  requestAnimationFrame((t) => { last = t; requestAnimationFrame(frame); });
+  render(ctx, game);
+
+  if (game.devMode && game.ph) {
+    ui.updateDevInfo(
+      `state: ${fsm.state}\n` +
+      `bodies: ${bodyCount(game.ph)}\n` +
+      `settleTicks: ${game.ph.settleTicks}\n` +
+      `replay: ${game.replay && game.replay.active ? 'on' : 'off'}`
+    );
+  }
+
+  requestAnimationFrame(frame);
 }
 
-boot();
+requestAnimationFrame(frame);

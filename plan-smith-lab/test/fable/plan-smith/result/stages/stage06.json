@@ -1,19 +1,23 @@
 {
   "id": 6,
-  "name": "공중 정원",
-  "birds": 3,
-  "platforms": [
-    { "x": 880, "y": 450, "w": 240, "h": 18 }
-  ],
+  "name": "쌍둥이 탑",
+  "birds": 4,
+  "slingshot": { "x": 200, "y": 540 },
   "blocks": [
-    { "shape": "box", "material": "glass", "x": 790, "y": 406, "w": 14, "h": 70 },
-    { "shape": "box", "material": "glass", "x": 930, "y": 406, "w": 14, "h": 70 },
-    { "shape": "box", "material": "glass", "x": 860, "y": 364, "w": 160, "h": 14 },
-    { "shape": "box", "material": "stone", "x": 1050, "y": 595, "w": 24, "h": 90 }
+    { "type": "wood", "x": 820, "y": 630, "w": 20, "h": 100 },
+    { "type": "wood", "x": 900, "y": 630, "w": 20, "h": 100 },
+    { "type": "wood", "x": 860, "y": 570, "w": 140, "h": 20 },
+    { "type": "wood", "x": 1020, "y": 630, "w": 20, "h": 100 },
+    { "type": "wood", "x": 1100, "y": 630, "w": 20, "h": 100 },
+    { "type": "wood", "x": 1060, "y": 570, "w": 140, "h": 20 }
   ],
   "pigs": [
-    { "x": 860, "y": 424, "r": 17 },
-    { "x": 1120, "y": 622, "r": 17 }
+    { "x": 860, "y": 544, "r": 16 },
+    { "x": 1060, "y": 544, "r": 16 }
   ],
-  "solution": [{ "angle": 22, "power": 0.95 }, { "angle": 55, "power": 0.75 }]
+  "solution": [
+    { "angle": -0.2, "power": 0.88 },
+    { "angle": -0.2, "power": 1.0 },
+    { "angle": -0.25, "power": 0.95 }
+  ]
 }

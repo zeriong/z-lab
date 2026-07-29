@@ -1,15 +1,17 @@
 {
   "id": 1,
-  "name": "첫 표적",
+  "name": "첫 만남",
   "birds": 3,
-  "platforms": [],
+  "slingshot": { "x": 200, "y": 540 },
   "blocks": [
-    { "shape": "box", "material": "wood", "x": 860, "y": 580, "w": 20, "h": 120 },
-    { "shape": "box", "material": "wood", "x": 940, "y": 580, "w": 20, "h": 120 },
-    { "shape": "box", "material": "wood", "x": 900, "y": 510, "w": 180, "h": 20 }
+    { "type": "wood", "x": 920, "y": 660, "w": 40, "h": 40 },
+    { "type": "wood", "x": 1040, "y": 660, "w": 40, "h": 40 }
   ],
   "pigs": [
-    { "x": 900, "y": 622, "r": 17 }
+    { "x": 980, "y": 664, "r": 16 }
   ],
-  "solution": [{ "angle": 4, "power": 0.9 }]
+  "solution": [
+    { "angle": -0.12, "power": 0.92 },
+    { "angle": -0.15, "power": 0.9 }
+  ]
 }

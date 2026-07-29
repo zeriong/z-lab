@@ -1,0 +1,178 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1c2230;
+  font-family: "Trebuchet MS", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#game {
+  position: relative;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.55);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.hidden { display: none !important; }
+
+/* ---------- HUD ---------- */
+#hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#hud-left {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  display: flex;
+  gap: 18px;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+#btn-pause {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 0.15s, transform 0.1s;
+}
+#btn-pause:hover { background: rgba(0, 0, 0, 0.65); }
+#btn-pause:active { transform: scale(0.94); }
+
+/* ---------- 오버레이 공통 ---------- */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.overlay.dim { background: rgba(0, 0, 0, 0.55); }
+
+.panel {
+  min-width: 320px;
+  padding: 32px 40px;
+  background: #fffaf0;
+  border: 4px solid #5a3b1e;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.panel h2 {
+  color: #5a3b1e;
+  font-size: 30px;
+  margin-bottom: 6px;
+}
+
+.panel p {
+  color: #7a5a34;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  white-space: pre-line;
+  text-align: center;
+}
+
+.panel button, #stage-grid button {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  font-weight: 800;
+  transition: transform 0.1s, filter 0.15s;
+}
+.panel button:hover, #stage-grid button:not(.locked):hover { filter: brightness(1.1); }
+.panel button:active { transform: scale(0.96); }
+
+.panel button {
+  width: 220px;
+  padding: 12px 0;
+  font-size: 18px;
+  color: #fff;
+  background: #e2574c;
+  box-shadow: 0 4px 0 #a83a31;
+}
+.panel button + button { margin-top: 2px; }
+#btn-resume { background: #4caf50; box-shadow: 0 4px 0 #35803a; }
+#btn-next { background: #4caf50; box-shadow: 0 4px 0 #35803a; }
+
+/* ---------- 메인 메뉴 ---------- */
+.menu-bg {
+  background: linear-gradient(180deg, #7ec8f0 0%, #b9e5fb 55%, #7fbf5a 55.2%, #5f9c42 100%);
+}
+
+#main-menu h1 {
+  font-size: 64px;
+  color: #d43a2f;
+  text-shadow: 3px 3px 0 #fff, 6px 6px 0 rgba(0, 0, 0, 0.15);
+  margin-bottom: 4px;
+}
+
+#main-menu .subtitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #3f5c2a;
+  margin-bottom: 20px;
+}
+
+#stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 84px);
+  gap: 14px;
+}
+
+#stage-grid button {
+  width: 84px;
+  height: 84px;
+  font-size: 30px;
+  color: #fff;
+  background: #f0a030;
+  box-shadow: 0 5px 0 #b87717;
+  position: relative;
+}
+
+#stage-grid button.locked {
+  background: #9aa0a6;
+  box-shadow: 0 5px 0 #6d7278;
+  cursor: not-allowed;
+  color: #d8dadd;
+  font-size: 22px;
+}

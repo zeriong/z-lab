@@ -1,14 +1,19 @@
 {
   "id": 2,
-  "name": "들판의 이인조",
+  "name": "높은 자리",
   "birds": 3,
-  "platforms": [],
+  "slingshot": { "x": 200, "y": 540 },
   "blocks": [
-    { "shape": "box", "material": "wood", "x": 950, "y": 585, "w": 22, "h": 110 }
+    { "type": "wood", "x": 920, "y": 630, "w": 20, "h": 100 },
+    { "type": "wood", "x": 1020, "y": 630, "w": 20, "h": 100 },
+    { "type": "wood", "x": 970, "y": 570, "w": 140, "h": 20 }
   ],
   "pigs": [
-    { "x": 680, "y": 622, "r": 17 },
-    { "x": 1005, "y": 622, "r": 17 }
+    { "x": 970, "y": 544, "r": 16 }
   ],
-  "solution": [{ "angle": 7, "power": 0.95 }, { "angle": 4, "power": 0.55 }]
+  "solution": [
+    { "angle": -0.2, "power": 0.95 },
+    { "angle": -0.14, "power": 0.9 },
+    { "angle": -0.25, "power": 0.9 }
+  ]
 }

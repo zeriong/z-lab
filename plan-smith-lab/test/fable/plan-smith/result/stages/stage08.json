@@ -1,16 +1,27 @@
 {
   "id": 8,
-  "name": "무너지는 지붕",
-  "birds": 4,
-  "platforms": [],
+  "name": "바벨탑",
+  "birds": 5,
+  "slingshot": { "x": 200, "y": 540 },
   "blocks": [
-    { "shape": "box", "material": "glass", "x": 860, "y": 582, "w": 20, "h": 116 },
-    { "shape": "box", "material": "stone", "x": 1040, "y": 582, "w": 20, "h": 116 },
-    { "shape": "box", "material": "stone", "x": 950, "y": 514, "w": 240, "h": 20 }
+    { "type": "wood", "x": 950, "y": 630, "w": 20, "h": 100 },
+    { "type": "wood", "x": 1030, "y": 630, "w": 20, "h": 100 },
+    { "type": "wood", "x": 990, "y": 570, "w": 140, "h": 20 },
+    { "type": "wood", "x": 960, "y": 510, "w": 20, "h": 100 },
+    { "type": "wood", "x": 1020, "y": 510, "w": 20, "h": 100 },
+    { "type": "wood", "x": 990, "y": 450, "w": 120, "h": 20 },
+    { "type": "glass", "x": 970, "y": 390, "w": 20, "h": 100 },
+    { "type": "glass", "x": 1010, "y": 390, "w": 20, "h": 100 },
+    { "type": "glass", "x": 990, "y": 330, "w": 100, "h": 20 }
   ],
   "pigs": [
-    { "x": 900, "y": 622, "r": 17 },
-    { "x": 990, "y": 622, "r": 17 }
+    { "x": 990, "y": 304, "r": 16 },
+    { "x": 990, "y": 664, "r": 16 }
   ],
-  "solution": [{ "angle": 10, "power": 0.9 }, { "angle": 4, "power": 0.7 }]
+  "solution": [
+    { "angle": -0.5, "power": 1.0 },
+    { "angle": -0.12, "power": 0.95 },
+    { "angle": -0.15, "power": 0.9 },
+    { "angle": -0.2, "power": 0.9 }
+  ]
 }

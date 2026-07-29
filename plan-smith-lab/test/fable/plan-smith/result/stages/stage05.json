@@ -1,17 +1,21 @@
 {
   "id": 5,
-  "name": "돌벽 너머",
-  "birds": 3,
-  "platforms": [],
+  "name": "돌담 너머",
+  "birds": 4,
+  "slingshot": { "x": 200, "y": 540 },
   "blocks": [
-    { "shape": "box", "material": "stone", "x": 690, "y": 555, "w": 26, "h": 170 },
-    { "shape": "box", "material": "wood", "x": 990, "y": 600, "w": 16, "h": 80 },
-    { "shape": "box", "material": "wood", "x": 1070, "y": 600, "w": 16, "h": 80 },
-    { "shape": "box", "material": "wood", "x": 1030, "y": 552, "w": 120, "h": 16 }
+    { "type": "stone", "x": 860, "y": 660, "w": 40, "h": 40 },
+    { "type": "stone", "x": 860, "y": 620, "w": 40, "h": 40 },
+    { "type": "stone", "x": 860, "y": 580, "w": 40, "h": 40 },
+    { "type": "wood", "x": 1000, "y": 660, "w": 40, "h": 40 }
   ],
   "pigs": [
-    { "x": 860, "y": 622, "r": 17 },
-    { "x": 1030, "y": 622, "r": 17 }
+    { "x": 960, "y": 664, "r": 16 },
+    { "x": 1050, "y": 664, "r": 16 }
   ],
-  "solution": [{ "angle": 7, "power": 0.95 }, { "angle": 4, "power": 0.9 }]
+  "solution": [
+    { "angle": -1.12, "power": 0.66 },
+    { "angle": -1.1, "power": 0.68 },
+    { "angle": -1.08, "power": 0.7 }
+  ]
 }

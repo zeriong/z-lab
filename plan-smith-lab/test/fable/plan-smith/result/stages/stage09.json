@@ -1,16 +1,23 @@
 {
   "id": 9,
-  "name": "유리 창문",
-  "birds": 3,
-  "platforms": [],
+  "name": "돌 요새",
+  "birds": 5,
+  "slingshot": { "x": 200, "y": 540 },
   "blocks": [
-    { "shape": "box", "material": "stone", "x": 840, "y": 612, "w": 26, "h": 56 },
-    { "shape": "box", "material": "glass", "x": 840, "y": 561, "w": 26, "h": 46 },
-    { "shape": "box", "material": "stone", "x": 840, "y": 500, "w": 26, "h": 76 }
+    { "type": "stone", "x": 830, "y": 660, "w": 40, "h": 40 },
+    { "type": "stone", "x": 830, "y": 620, "w": 40, "h": 40 },
+    { "type": "stone", "x": 900, "y": 630, "w": 20, "h": 100 },
+    { "type": "stone", "x": 1010, "y": 630, "w": 20, "h": 100 },
+    { "type": "stone", "x": 955, "y": 570, "w": 160, "h": 20 }
   ],
   "pigs": [
-    { "x": 930, "y": 622, "r": 17 },
-    { "x": 840, "y": 445, "r": 17 }
+    { "x": 930, "y": 664, "r": 16 },
+    { "x": 980, "y": 664, "r": 16 }
   ],
-  "solution": [{ "angle": 28, "power": 0.6 }]
+  "solution": [
+    { "angle": -0.1, "power": 1.0 },
+    { "angle": -0.12, "power": 1.0 },
+    { "angle": -0.14, "power": 1.0 },
+    { "angle": -0.16, "power": 0.95 }
+  ]
 }

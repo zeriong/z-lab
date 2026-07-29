@@ -1,23 +1,23 @@
 {
   "id": 7,
-  "name": "삼형제 탑",
+  "name": "혼합 진지",
   "birds": 4,
-  "platforms": [],
+  "slingshot": { "x": 200, "y": 540 },
   "blocks": [
-    { "shape": "box", "material": "wood", "x": 725, "y": 592, "w": 16, "h": 96 },
-    { "shape": "box", "material": "wood", "x": 795, "y": 592, "w": 16, "h": 96 },
-    { "shape": "box", "material": "wood", "x": 760, "y": 536, "w": 100, "h": 16 },
-    { "shape": "box", "material": "wood", "x": 915, "y": 592, "w": 16, "h": 96 },
-    { "shape": "box", "material": "wood", "x": 985, "y": 592, "w": 16, "h": 96 },
-    { "shape": "box", "material": "wood", "x": 950, "y": 536, "w": 100, "h": 16 },
-    { "shape": "box", "material": "wood", "x": 1105, "y": 592, "w": 16, "h": 96 },
-    { "shape": "box", "material": "wood", "x": 1175, "y": 592, "w": 16, "h": 96 },
-    { "shape": "box", "material": "wood", "x": 1140, "y": 536, "w": 100, "h": 16 }
+    { "type": "stone", "x": 860, "y": 660, "w": 40, "h": 40 },
+    { "type": "stone", "x": 860, "y": 620, "w": 40, "h": 40 },
+    { "type": "glass", "x": 960, "y": 630, "w": 20, "h": 100 },
+    { "type": "glass", "x": 1060, "y": 630, "w": 20, "h": 100 },
+    { "type": "glass", "x": 1010, "y": 570, "w": 140, "h": 20 }
   ],
   "pigs": [
-    { "x": 760, "y": 511, "r": 17 },
-    { "x": 950, "y": 511, "r": 17 },
-    { "x": 1140, "y": 511, "r": 17 }
+    { "x": 860, "y": 586, "r": 14 },
+    { "x": 1010, "y": 664, "r": 16 },
+    { "x": 1160, "y": 664, "r": 16 }
   ],
-  "solution": [{ "angle": 19, "power": 0.7 }, { "angle": 10, "power": 0.95 }]
+  "solution": [
+    { "angle": -0.13, "power": 0.87 },
+    { "angle": -0.14, "power": 0.98 },
+    { "angle": -1.08, "power": 0.71 }
+  ]
 }

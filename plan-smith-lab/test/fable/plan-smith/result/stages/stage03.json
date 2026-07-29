@@ -1,16 +1,18 @@
 {
   "id": 3,
-  "name": "유리 온실",
+  "name": "유리 우리",
   "birds": 3,
-  "platforms": [],
+  "slingshot": { "x": 200, "y": 540 },
   "blocks": [
-    { "shape": "box", "material": "glass", "x": 880, "y": 597, "w": 16, "h": 86 },
-    { "shape": "box", "material": "glass", "x": 960, "y": 597, "w": 16, "h": 86 },
-    { "shape": "box", "material": "glass", "x": 920, "y": 546, "w": 120, "h": 16 }
+    { "type": "glass", "x": 900, "y": 630, "w": 20, "h": 100 },
+    { "type": "glass", "x": 1000, "y": 630, "w": 20, "h": 100 },
+    { "type": "glass", "x": 950, "y": 570, "w": 140, "h": 20 }
   ],
   "pigs": [
-    { "x": 920, "y": 622, "r": 17 },
-    { "x": 920, "y": 521, "r": 17 }
+    { "x": 950, "y": 664, "r": 16 }
   ],
-  "solution": [{ "angle": 7, "power": 0.85 }]
+  "solution": [
+    { "angle": -0.13, "power": 0.95 },
+    { "angle": -0.16, "power": 0.9 }
+  ]
 }
