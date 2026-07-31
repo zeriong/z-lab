@@ -1,0 +1,70 @@
+# opus-5 코퍼스 — 생성 조건
+
+## 모델
+
+| 항목 | 값 | 검증 |
+|---|---|---|
+| 목표 resolved model id | **`claude-opus-5`** | 워크플로에는 별칭 `opus`를 넘기므로, 생성 후 `agent-*.jsonl`을 grep해 resolved id를 이 표에 확정 기입한다 |
+| 실측 결과 | _(생성 후 기입)_ | |
+
+별칭을 버전으로 취급하지 않는다 — `opus`는 2026-07-25에 `claude-opus-4-8`로, 07-29에 `claude-opus-5`로
+해석됐다. 이 코퍼스의 라벨은 로그 검증 후에만 확정된다.
+
+## 플러그인 버전 (이 코퍼스의 기준)
+
+| 항목 | 값 |
+|---|---|
+| plan-smith 버전 | **v1.1.2** |
+| 커밋 | `a964a4e` — "feat(packet): stamp the version and model that ran" |
+| `frames.md` | 364줄 / 프레임 26개 (`spec-coverage` 포함, **Gate 0 라우팅 포함**) |
+| `styles.md` | opus-style / fable-style / relay |
+| 읽는 경로 | `Z-Work/plan-smith/plugins/plan-smith/skills/plan-smith/references/` (설치 캐시와 내용 동일) |
+
+## 입력 명세와 프레임 매핑
+
+| 배치 | 주제 출처 | 프레임 출처 |
+|---|---|---|
+| **01~26** | [`pre-plugin/plan-playground.md`](../../pre-plugin/plan-playground.md)의 26주제 — `opus-4.8`과 **동일 주제·동일 프레임 배정** | v1.1.2 `frames.md`의 해당 프레임 항목 (25/26 직접 매핑) |
+| **27~76** | `opus-4.8` 27~76과 **동일 주제·동일 프레임 배정** | v1.1.2 `frames.md` |
+| **00** | 메타리뷰 — 전 플랜 완료 후 자가 분석 | — |
+
+### 프레임 매핑 (playground → frames.md v1.1.2)
+
+25개는 1:1 대응한다(Backward-chaining→`backward`, 삭제 우선→`delete-first`, 시간압박 우선순위→`triage`,
+YAGNI 변증법→`dialectic`, 타임라인 역산→`critical-path` 등).
+
+**예외 1건 — 15번 `Analogical`:** v1.1.2 `frames.md`에는 **analogical 프레임이 없다.**
+frames.md를 playground에서 증류할 때 탈락했고, 그 자리에 신규 `spec-coverage`가 들어왔다.
+→ 15번은 **playground의 Analogical 서술을 그대로 프레임 스펙으로 사용**하고, 그 사실을 플랜 헤더와 로그에 명기한다.
+주제 대칭을 지키기 위한 선택이며, 프레임을 갈아끼우면 `opus-4.8` 15번과 비교가 불가능해진다.
+
+> **부수 발견:** 이 실험은 "라이브러리가 원 playground의 프레임 하나를 잃었다"는 사실을 드러냈다.
+> analogical 복원 여부는 별도 판단 사항이다(현재 미복원).
+
+## ⚠️ 교란 — `opus-4.8`과의 비교 시 필수 고지
+
+이 코퍼스와 `opus-4.8/`은 **모델만 다른 대조가 아니다.** 둘 다 바뀐다:
+
+| 축 | opus-4.8 | opus-5 |
+|---|---|---|
+| 모델 | `claude-opus-4-8` | `claude-opus-5` (검증 예정) |
+| 입력 명세 | 01~26 = 플러그인 이전 playground · 27~76 = 1.0.0 직전 미커밋 소스 | **전부 v1.1.2** (`a964a4e`) |
+
+따라서 두 코퍼스의 차이를 **모델 우열로 읽으면 오독**이다. 최소한 다음을 분리해야 한다:
+① 모델 변경(4.8→5) ② 프레임 라이브러리 변경(Gate 0·spec-coverage·off-anchor 조항 수정·문서 예산 도입).
+특히 ②는 `frames.md`가 명시적으로 "좁히지 말고 빠짐없이"를 지시하도록 바뀐 것이라,
+커버리지·분량 지표는 ② 쪽으로 기울 것이 예상된다.
+
+모델만 고립시키려면 당시 명세를 git에서 복원해 opus-5로 재생성해야 하며, 이는 수행하지 않았다(비용).
+
+## 실행 방식 (opus-4.8 27~76과 동일 — 변수 통제)
+
+- 집필: 도구 제한 에이전트(`Read/Glob/Grep/Write` — Bash·MCP 없음) → 빌드·실행·검증·git 구조적 불가.
+- 스타일: **opus-style** (styles.md) — `opus-4.8` 배치와 동일.
+- 항목별 별도 감사 에이전트 → 결함 시 조건부 수정.
+- 상태 인지형: 플랜+로그가 이미 있는 항목은 건너뜀(세션 한도로 여러 번 끊길 것을 전제).
+
+## 결과
+
+<!-- 생성 후 기입: 항목 수, clean/fixed 집계, 총 토큰·시간, resolved model id 검증 결과 -->
+_(생성 대기)_
