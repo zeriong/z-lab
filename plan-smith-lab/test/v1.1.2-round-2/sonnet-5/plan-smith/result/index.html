@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>앵그리버드 웹 - 10 스테이지</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <canvas id="game-canvas"></canvas>
+
+    <div id="hud">
+      <span id="hud-birds">남은 새: 0</span>
+      <span id="hud-score">점수: 0</span>
+    </div>
+
+    <button id="pause-btn" title="일시정지">II</button>
+
+    <!-- MAIN -->
+    <div id="overlay-main" class="overlay">
+      <h1>앵그리버드 웹</h1>
+      <p id="main-continue-info" class="info-text"></p>
+      <button id="main-start-btn" class="btn btn-primary">시작하기</button>
+    </div>
+
+    <!-- STAGE_SELECT -->
+    <div id="overlay-stage-select" class="overlay">
+      <h2>스테이지 선택</h2>
+      <div id="stage-list" class="stage-grid"></div>
+      <button id="stage-select-back-btn" class="btn">메인으로</button>
+    </div>
+
+    <!-- PAUSED -->
+    <div id="overlay-pause" class="overlay">
+      <h2>일시정지</h2>
+      <button id="pause-restart-btn" class="btn btn-primary">다시하기</button>
+      <button id="pause-main-btn" class="btn">메인으로</button>
+    </div>
+
+    <!-- CLEARED -->
+    <div id="overlay-cleared" class="overlay">
+      <h2>클리어!</h2>
+      <div id="cleared-stars" class="stars"></div>
+      <p id="cleared-score" class="info-text"></p>
+      <button id="cleared-next-btn" class="btn btn-primary">다음 스테이지</button>
+      <button id="cleared-stage-select-btn" class="btn">스테이지 선택</button>
+    </div>
+
+    <!-- FAILED -->
+    <div id="overlay-failed" class="overlay">
+      <h2>실패</h2>
+      <p class="info-text">돼지가 아직 남아있습니다.</p>
+      <button id="failed-restart-btn" class="btn btn-primary">다시하기</button>
+      <button id="failed-main-btn" class="btn">메인으로</button>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

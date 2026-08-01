@@ -1,0 +1,235 @@
+[
+  {
+    "id": "stage-01",
+    "order": 1,
+    "backgroundTheme": "meadow",
+    "birdsGranted": 3,
+    "maxScore": 9000,
+    "starCuts": { "two": 5400, "three": 7650 },
+    "unlockCondition": "always",
+    "blocks": [
+      { "material": "wood", "x": 620, "y": 515, "w": 20, "h": 70 },
+      { "material": "wood", "x": 700, "y": 515, "w": 20, "h": 70 }
+    ],
+    "pigs": [{ "x": 660, "y": 520 }]
+  },
+  {
+    "id": "stage-02",
+    "order": 2,
+    "backgroundTheme": "meadow",
+    "birdsGranted": 4,
+    "maxScore": 16000,
+    "starCuts": { "two": 9600, "three": 13600 },
+    "unlockCondition": "stage-01 cleared",
+    "blocks": [
+      { "material": "wood", "x": 600, "y": 520, "w": 60, "h": 60 },
+      { "material": "stone", "x": 600, "y": 460, "w": 60, "h": 60 },
+      { "material": "wood", "x": 750, "y": 520, "w": 60, "h": 60 },
+      { "material": "wood", "x": 750, "y": 460, "w": 60, "h": 60 }
+    ],
+    "pigs": [
+      { "x": 600, "y": 420 },
+      { "x": 750, "y": 420 }
+    ]
+  },
+  {
+    "id": "stage-03",
+    "order": 3,
+    "backgroundTheme": "cliffside",
+    "birdsGranted": 3,
+    "maxScore": 14000,
+    "starCuts": { "two": 8400, "three": 11900 },
+    "unlockCondition": "stage-02 cleared",
+    "blocks": [
+      { "material": "glass", "x": 580, "y": 515, "w": 30, "h": 70 },
+      { "material": "glass", "x": 680, "y": 515, "w": 30, "h": 70 },
+      { "material": "stone", "x": 630, "y": 470, "w": 140, "h": 30 },
+      { "material": "wood", "x": 800, "y": 520, "w": 50, "h": 60 },
+      { "material": "wood", "x": 800, "y": 460, "w": 50, "h": 60 }
+    ],
+    "pigs": [
+      { "x": 630, "y": 440 },
+      { "x": 800, "y": 420 }
+    ]
+  },
+  {
+    "id": "stage-04",
+    "order": 4,
+    "backgroundTheme": "hills",
+    "birdsGranted": 4,
+    "maxScore": 21000,
+    "starCuts": { "two": 12600, "three": 17850 },
+    "unlockCondition": "stage-03 cleared",
+    "blocks": [
+      { "material": "stone", "x": 650, "y": 520, "w": 180, "h": 60 },
+      { "material": "stone", "x": 830, "y": 520, "w": 100, "h": 60 },
+      { "material": "glass", "x": 650, "y": 460, "w": 20, "h": 60 },
+      { "material": "wood", "x": 690, "y": 430, "w": 140, "h": 20 },
+      { "material": "wood", "x": 780, "y": 460, "w": 20, "h": 60 },
+      { "material": "wood", "x": 620, "y": 460, "w": 20, "h": 60 }
+    ],
+    "pigs": [
+      { "x": 690, "y": 410 },
+      { "x": 830, "y": 480 },
+      { "x": 760, "y": 480 }
+    ]
+  },
+  {
+    "id": "stage-05",
+    "order": 5,
+    "backgroundTheme": "canyon",
+    "birdsGranted": 3,
+    "maxScore": 19000,
+    "starCuts": { "two": 11400, "three": 16150 },
+    "unlockCondition": "stage-04 cleared",
+    "blocks": [
+      { "material": "stone", "x": 600, "y": 520, "w": 60, "h": 60 },
+      { "material": "stone", "x": 850, "y": 520, "w": 60, "h": 60 },
+      { "material": "stone", "x": 725, "y": 520, "w": 80, "h": 40 },
+      { "material": "glass", "x": 650, "y": 470, "w": 15, "h": 40 },
+      { "material": "glass", "x": 800, "y": 470, "w": 15, "h": 40 },
+      { "material": "wood", "x": 725, "y": 490, "w": 200, "h": 20 },
+      { "material": "wood", "x": 560, "y": 530, "w": 60, "h": 40 }
+    ],
+    "pigs": [
+      { "x": 650, "y": 455 },
+      { "x": 725, "y": 495 },
+      { "x": 800, "y": 455 }
+    ]
+  },
+  {
+    "id": "stage-06",
+    "order": 6,
+    "backgroundTheme": "twilight-towers",
+    "birdsGranted": 4,
+    "maxScore": 26000,
+    "starCuts": { "two": 15600, "three": 22100 },
+    "unlockCondition": "stage-05 cleared",
+    "blocks": [
+      { "material": "wood", "x": 560, "y": 520, "w": 60, "h": 60 },
+      { "material": "wood", "x": 560, "y": 460, "w": 60, "h": 60 },
+      { "material": "glass", "x": 560, "y": 410, "w": 40, "h": 40 },
+      { "material": "stone", "x": 760, "y": 520, "w": 70, "h": 70 },
+      { "material": "wood", "x": 760, "y": 450, "w": 60, "h": 80 },
+      { "material": "glass", "x": 760, "y": 400, "w": 40, "h": 40 },
+      { "material": "stone", "x": 860, "y": 530, "w": 50, "h": 40 },
+      { "material": "wood", "x": 950, "y": 520, "w": 50, "h": 60 }
+    ],
+    "pigs": [
+      { "x": 560, "y": 385 },
+      { "x": 760, "y": 375 },
+      { "x": 860, "y": 505 },
+      { "x": 950, "y": 485 }
+    ]
+  },
+  {
+    "id": "stage-07",
+    "order": 7,
+    "backgroundTheme": "desert",
+    "birdsGranted": 3,
+    "maxScore": 24000,
+    "starCuts": { "two": 14400, "three": 20400 },
+    "unlockCondition": "stage-06 cleared",
+    "blocks": [
+      { "material": "stone", "x": 900, "y": 540, "w": 80, "h": 40 },
+      { "material": "stone", "x": 980, "y": 540, "w": 80, "h": 40 },
+      { "material": "stone", "x": 1060, "y": 540, "w": 80, "h": 40 },
+      { "material": "stone", "x": 1140, "y": 540, "w": 80, "h": 40 },
+      { "material": "wood", "x": 940, "y": 505, "w": 40, "h": 20 },
+      { "material": "wood", "x": 1020, "y": 505, "w": 40, "h": 20 },
+      { "material": "wood", "x": 1100, "y": 505, "w": 40, "h": 20 },
+      { "material": "glass", "x": 1180, "y": 520, "w": 30, "h": 60 }
+    ],
+    "pigs": [
+      { "x": 940, "y": 490 },
+      { "x": 1020, "y": 490 },
+      { "x": 1100, "y": 490 },
+      { "x": 1180, "y": 485 }
+    ]
+  },
+  {
+    "id": "stage-08",
+    "order": 8,
+    "backgroundTheme": "cave",
+    "birdsGranted": 4,
+    "maxScore": 31000,
+    "starCuts": { "two": 18600, "three": 26350 },
+    "unlockCondition": "stage-07 cleared",
+    "blocks": [
+      { "material": "stone", "x": 650, "y": 500, "w": 30, "h": 100 },
+      { "material": "stone", "x": 850, "y": 500, "w": 30, "h": 100 },
+      { "material": "stone", "x": 750, "y": 440, "w": 230, "h": 30 },
+      { "material": "glass", "x": 700, "y": 500, "w": 20, "h": 80 },
+      { "material": "glass", "x": 800, "y": 500, "w": 20, "h": 80 },
+      { "material": "glass", "x": 750, "y": 500, "w": 20, "h": 80 },
+      { "material": "wood", "x": 680, "y": 460, "w": 20, "h": 60 },
+      { "material": "wood", "x": 820, "y": 460, "w": 20, "h": 60 },
+      { "material": "wood", "x": 750, "y": 400, "w": 60, "h": 20 }
+    ],
+    "pigs": [
+      { "x": 700, "y": 470 },
+      { "x": 750, "y": 470 },
+      { "x": 800, "y": 470 },
+      { "x": 725, "y": 510 },
+      { "x": 775, "y": 510 }
+    ]
+  },
+  {
+    "id": "stage-09",
+    "order": 9,
+    "backgroundTheme": "fortress-dusk",
+    "birdsGranted": 3,
+    "maxScore": 29000,
+    "starCuts": { "two": 17400, "three": 24650 },
+    "unlockCondition": "stage-08 cleared",
+    "blocks": [
+      { "material": "stone", "x": 900, "y": 540, "w": 280, "h": 40 },
+      { "material": "stone", "x": 950, "y": 500, "w": 180, "h": 40 },
+      { "material": "stone", "x": 1000, "y": 460, "w": 120, "h": 40 },
+      { "material": "stone", "x": 850, "y": 500, "w": 60, "h": 80 },
+      { "material": "stone", "x": 1050, "y": 500, "w": 60, "h": 80 },
+      { "material": "glass", "x": 1000, "y": 420, "w": 30, "h": 40 },
+      { "material": "glass", "x": 950, "y": 420, "w": 30, "h": 40 },
+      { "material": "wood", "x": 1000, "y": 540, "w": 40, "h": 60 },
+      { "material": "wood", "x": 1050, "y": 460, "w": 30, "h": 60 }
+    ],
+    "pigs": [
+      { "x": 900, "y": 480 },
+      { "x": 1000, "y": 480 },
+      { "x": 1050, "y": 480 },
+      { "x": 1000, "y": 400 },
+      { "x": 950, "y": 400 }
+    ]
+  },
+  {
+    "id": "stage-10",
+    "order": 10,
+    "backgroundTheme": "finale-storm",
+    "birdsGranted": 3,
+    "maxScore": 34000,
+    "starCuts": { "two": 20400, "three": 28900 },
+    "unlockCondition": "stage-09 cleared",
+    "blocks": [
+      { "material": "wood", "x": 600, "y": 520, "w": 60, "h": 60 },
+      { "material": "stone", "x": 600, "y": 460, "w": 70, "h": 70 },
+      { "material": "glass", "x": 600, "y": 405, "w": 40, "h": 40 },
+      { "material": "stone", "x": 700, "y": 520, "w": 60, "h": 60 },
+      { "material": "stone", "x": 900, "y": 520, "w": 60, "h": 60 },
+      { "material": "wood", "x": 800, "y": 490, "w": 220, "h": 20 },
+      { "material": "stone", "x": 1000, "y": 500, "w": 30, "h": 100 },
+      { "material": "glass", "x": 1050, "y": 500, "w": 20, "h": 80 },
+      { "material": "stone", "x": 1100, "y": 500, "w": 30, "h": 100 },
+      { "material": "wood", "x": 1050, "y": 440, "w": 150, "h": 20 },
+      { "material": "glass", "x": 1150, "y": 460, "w": 30, "h": 40 },
+      { "material": "wood", "x": 1150, "y": 420, "w": 50, "h": 20 }
+    ],
+    "pigs": [
+      { "x": 600, "y": 380 },
+      { "x": 800, "y": 470 },
+      { "x": 1025, "y": 480 },
+      { "x": 1075, "y": 480 },
+      { "x": 1150, "y": 400 },
+      { "x": 650, "y": 545 }
+    ]
+  }
+]

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Angry Birds Web</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div id="game-root">
+      <canvas id="game-canvas" width="1280" height="720"></canvas>
+
+      <!-- 인게임 HUD: 남은 새 / 남은 돼지 / 점수 + 우측 일시정지 버튼 (R3-a) -->
+      <div id="hud" class="screen hidden">
+        <div id="hud-info">
+          <span id="hud-birds">새 0</span>
+          <span id="hud-pigs">돼지 0</span>
+          <span id="hud-score">점수 0</span>
+        </div>
+        <button id="pause-btn" aria-label="일시정지">&#10074;&#10074;</button>
+      </div>
+
+      <!-- 메인 화면: 스테이지 선택 그리드 (R1-d) -->
+      <div id="main-screen" class="screen overlay">
+        <div class="panel main-panel">
+          <h1>Angry Birds Web</h1>
+          <p class="subtitle">새총을 당겨 돼지를 모두 제거하세요</p>
+          <div id="stage-grid"></div>
+        </div>
+      </div>
+
+      <!-- 일시정지 오버레이: 다시하기 / 메인으로 (R3-b) -->
+      <div id="pause-overlay" class="screen overlay hidden">
+        <div class="panel">
+          <h2>일시정지</h2>
+          <button id="pause-restart" class="btn">다시하기</button>
+          <button id="pause-main" class="btn">메인으로</button>
+        </div>
+      </div>
+
+      <!-- 클리어/실패 오버레이 (R2-e·f) -->
+      <div id="result-overlay" class="screen overlay hidden">
+        <div class="panel">
+          <h2 id="result-title">클리어!</h2>
+          <div id="result-stars"></div>
+          <div id="result-score"></div>
+          <button id="result-next" class="btn">다음 스테이지</button>
+          <button id="result-restart" class="btn">다시하기</button>
+          <button id="result-main" class="btn">메인으로</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

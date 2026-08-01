@@ -1,0 +1,21 @@
+{
+  "id": 3,
+  "name": "나무 오두막",
+  "camera": { "x": 860, "y": 320, "width": 1700 },
+  "ground": { "y": 620 },
+  "birds": ["basic", "basic", "basic"],
+  "blocks": [
+    { "material": "wood", "shape": "box", "x": 1020, "y": 560, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1140, "y": 560, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1260, "y": 560, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1080, "y": 488, "w": 120, "h": 24, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1200, "y": 488, "w": 120, "h": 24, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1080, "y": 448, "w": 56, "h": 56, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1200, "y": 448, "w": 56, "h": 56, "angle": 0 }
+  ],
+  "pigs": [
+    { "size": "small", "x": 1080, "y": 598 },
+    { "size": "small", "x": 1200, "y": 598 }
+  ],
+  "stars": [18000, 24000, 30000]
+}

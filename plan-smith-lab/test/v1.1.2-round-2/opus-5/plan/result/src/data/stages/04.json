@@ -1,0 +1,23 @@
+{
+  "id": 4,
+  "name": "이층 탑",
+  "camera": { "x": 870, "y": 300, "width": 1750 },
+  "ground": { "y": 620 },
+  "birds": ["basic", "basic", "basic"],
+  "blocks": [
+    { "material": "wood", "shape": "box", "x": 1100, "y": 560, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1200, "y": 560, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1150, "y": 488, "w": 120, "h": 24, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1100, "y": 416, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1200, "y": 416, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1150, "y": 344, "w": 120, "h": 24, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1150, "y": 304, "w": 56, "h": 56, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1000, "y": 592, "w": 56, "h": 56, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1300, "y": 592, "w": 56, "h": 56, "angle": 0 }
+  ],
+  "pigs": [
+    { "size": "small", "x": 1150, "y": 598 },
+    { "size": "small", "x": 1150, "y": 454 }
+  ],
+  "stars": [19000, 25000, 31000]
+}

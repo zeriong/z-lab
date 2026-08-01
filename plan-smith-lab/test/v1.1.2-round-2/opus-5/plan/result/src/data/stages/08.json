@@ -1,0 +1,34 @@
+{
+  "id": 8,
+  "name": "삼중 진지",
+  "camera": { "x": 900, "y": 290, "width": 1850 },
+  "ground": { "y": 620 },
+  "birds": ["basic", "basic", "basic"],
+  "blocks": [
+    { "material": "wood", "shape": "box", "x": 940, "y": 560, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1020, "y": 560, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 980, "y": 488, "w": 120, "h": 24, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 980, "y": 448, "w": 56, "h": 56, "angle": 0 },
+    { "material": "ice", "shape": "box", "x": 1130, "y": 560, "w": 24, "h": 120, "angle": 0 },
+    { "material": "ice", "shape": "box", "x": 1230, "y": 560, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1180, "y": 488, "w": 120, "h": 24, "angle": 0 },
+    { "material": "ice", "shape": "box", "x": 1130, "y": 416, "w": 24, "h": 120, "angle": 0 },
+    { "material": "ice", "shape": "box", "x": 1230, "y": 416, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1180, "y": 344, "w": 120, "h": 24, "angle": 0 },
+    { "material": "stone", "shape": "box", "x": 1180, "y": 304, "w": 56, "h": 56, "angle": 0 },
+    { "material": "stone", "shape": "box", "x": 1370, "y": 592, "w": 56, "h": 56, "angle": 0 },
+    { "material": "stone", "shape": "box", "x": 1430, "y": 592, "w": 56, "h": 56, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1400, "y": 552, "w": 120, "h": 24, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1360, "y": 480, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1440, "y": 480, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1400, "y": 408, "w": 120, "h": 24, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1080, "y": 592, "w": 56, "h": 56, "angle": 0 }
+  ],
+  "pigs": [
+    { "size": "small", "x": 980, "y": 598 },
+    { "size": "small", "x": 1180, "y": 598 },
+    { "size": "small", "x": 1180, "y": 454 },
+    { "size": "small", "x": 1400, "y": 518 }
+  ],
+  "stars": [27000, 35000, 43000]
+}

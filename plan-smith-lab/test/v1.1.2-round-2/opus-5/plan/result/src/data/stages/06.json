@@ -1,0 +1,29 @@
+{
+  "id": 6,
+  "name": "얼음 창고",
+  "camera": { "x": 880, "y": 300, "width": 1800 },
+  "ground": { "y": 620 },
+  "birds": ["basic", "basic", "basic"],
+  "blocks": [
+    { "material": "ice", "shape": "box", "x": 1000, "y": 560, "w": 24, "h": 120, "angle": 0 },
+    { "material": "ice", "shape": "box", "x": 1120, "y": 560, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1060, "y": 488, "w": 160, "h": 24, "angle": 0 },
+    { "material": "ice", "shape": "box", "x": 1060, "y": 448, "w": 56, "h": 56, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1240, "y": 560, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1360, "y": 560, "w": 24, "h": 120, "angle": 0 },
+    { "material": "ice", "shape": "box", "x": 1300, "y": 488, "w": 160, "h": 24, "angle": 0 },
+    { "material": "ice", "shape": "box", "x": 1240, "y": 416, "w": 24, "h": 120, "angle": 0 },
+    { "material": "ice", "shape": "box", "x": 1360, "y": 416, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1300, "y": 344, "w": 160, "h": 24, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1300, "y": 304, "w": 56, "h": 56, "angle": 0 },
+    { "material": "ice", "shape": "box", "x": 900, "y": 592, "w": 56, "h": 56, "angle": 0 },
+    { "material": "ice", "shape": "box", "x": 1170, "y": 592, "w": 56, "h": 56, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1450, "y": 592, "w": 56, "h": 56, "angle": 0 }
+  ],
+  "pigs": [
+    { "size": "small", "x": 1060, "y": 598 },
+    { "size": "small", "x": 1300, "y": 598 },
+    { "size": "small", "x": 1300, "y": 454 }
+  ],
+  "stars": [23000, 30000, 37000]
+}

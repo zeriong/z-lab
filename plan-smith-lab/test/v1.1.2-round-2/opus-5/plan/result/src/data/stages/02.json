@@ -1,0 +1,14 @@
+{
+  "id": 2,
+  "name": "받침대 위의 손님",
+  "camera": { "x": 850, "y": 320, "width": 1650 },
+  "ground": { "y": 620 },
+  "birds": ["basic", "basic"],
+  "blocks": [
+    { "material": "wood", "shape": "box", "x": 1080, "y": 560, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1240, "y": 560, "w": 24, "h": 120, "angle": 0 },
+    { "material": "wood", "shape": "box", "x": 1160, "y": 488, "w": 200, "h": 24, "angle": 0 }
+  ],
+  "pigs": [{ "size": "small", "x": 1160, "y": 454 }],
+  "stars": [9000, 12000, 15000]
+}

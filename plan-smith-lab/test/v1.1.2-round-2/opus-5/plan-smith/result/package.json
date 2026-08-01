@@ -1,0 +1,21 @@
+{
+  "name": "angry-birds-10-stages",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "웹 브라우저 앵그리버드 — 10 스테이지 (Vite + TypeScript + Matter.js + Canvas 2D)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "matter-js": "0.20.0"
+  },
+  "devDependencies": {
+    "@types/matter-js": "0.19.6",
+    "typescript": "5.5.4",
+    "vite": "5.4.2"
+  }
+}

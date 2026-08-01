@@ -1,0 +1,21 @@
+{
+  "name": "slingshot-siege",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "물리 기반 슬링샷 게임 (10 스테이지) — Vanilla TS + Vite + Matter.js + Canvas 2D",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "matter-js": "^0.20.0"
+  },
+  "devDependencies": {
+    "@types/matter-js": "^0.19.6",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.8"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": 1,
+  "name": "첫 발사",
+  "camera": { "x": 820, "y": 330, "width": 1600 },
+  "ground": { "y": 620 },
+  "birds": ["basic", "basic"],
+  "blocks": [],
+  "pigs": [{ "size": "small", "x": 1120, "y": 598 }],
+  "stars": [8000, 11000, 14000]
+}
