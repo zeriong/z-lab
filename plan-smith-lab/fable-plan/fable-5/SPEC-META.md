@@ -10,7 +10,7 @@
 
 | 배치 | 입력 명세 | 플러그인 버전 |
 |---|---|---|
-| **00, 01~26** | [`pre-plugin/plan-playground.md`](../../pre-plugin/plan-playground.md) | **플러그인 이전** |
+| **00, 01~26** | [`analyze/pre-plugin/plan-playground.md`](../../analyze/pre-plugin/plan-playground.md) | **플러그인 이전** |
 | **27~76** | 플러그인 `frames.md` / `styles.md` 소스 상태 + 주제·프레임 목록 | **미커밋 소스** (1.0.0 직전) |
 
 `opus-4.8`과 동일한 구조적 불확정성을 가진다 — 당시 워킹 트리가 커밋되지 않아 정확한 frames.md 내용을
@@ -19,7 +19,7 @@
 ## ⚠️ 순차 오염 (이 코퍼스 고유)
 
 이 코퍼스는 **`opus-4.8` 산출물을 컨텍스트에 두고 후행 작성**됐다(01~26). 각 로그의 "오염 노트" 섹션에
-그 사실과 갈라짐/수렴의 원인 분류가 기록돼 있으며, [`pre-plugin/diff-review.md`](../../pre-plugin/diff-review.md)의
+그 사실과 갈라짐/수렴의 원인 분류가 기록돼 있으며, [`pre-plugin/diff-review.md`](../../analyze/pre-plugin/diff-review.md)의
 T1~T6 회계가 이를 다룬다. 27~76은 대응물 없는 독립 작성이라 오염 노트가 없다.
 
 **따라서 fable-5 vs opus-4.8을 모델 우열로 읽으면 오독이다.** diff-review.md의 판정을 함께 읽을 것.

@@ -9,9 +9,9 @@
 
 | 코퍼스 | 경로 | 모델 |
 |---|---|---|
-| opus-5 | [`../opus-plan/opus-5/`](../opus-plan/opus-5/) (플랜 76 + 로그 76) | `claude-opus-5` |
+| opus-5 | [`../opus-plan/opus-5/`](../../opus-plan/opus-5/) (플랜 76 + 로그 76) | `claude-opus-5` |
 
-생성 조건·지표·교란은 [`../opus-plan/opus-5/SPEC-META.md`](../opus-plan/opus-5/SPEC-META.md)에 있다.
+생성 조건·지표·교란은 [`../opus-plan/opus-5/SPEC-META.md`](../../opus-plan/opus-5/SPEC-META.md)에 있다.
 
 ## 참조하는 플러그인 상태 (고정)
 
@@ -38,7 +38,7 @@
 
 > `spec-coverage`는 이 76주제 명세에 배정되지 않았다 — 이 명세의 프레임 배분은 opus-4.8 코퍼스와
 > 주제·프레임을 맞추기 위해 결정됐고, `spec-coverage`는 그 이후에 추가된 프레임이다.
-> `spec-coverage`의 검증은 [`../test/`](../test/) 앵그리버드 A/B가 담당한다.
+> `spec-coverage`의 검증은 [`../test/`](../../test/) 앵그리버드 A/B가 담당한다.
 
 ## 집필 규칙 (모든 항목 공통)
 
