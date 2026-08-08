@@ -1,0 +1,20 @@
+{
+  "name": "angry-birds-game",
+  "version": "1.0.0",
+  "description": "A physics-based Angry Birds-like game for web browsers",
+  "type": "module",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "matter-js": "^0.20.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "vite": "^5.0.0"
+  }
+}

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>앵그리버드 웹</title>
+  </head>
+  <body>
+    <!-- 논리 해상도 1280x720 고정. letterbox 스케일은 main.ts가 transform으로 적용. §1.5 -->
+    <div id="viewport">
+      <div id="stage-root">
+        <canvas id="game" width="1280" height="720"></canvas>
+        <div id="ui-layer"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

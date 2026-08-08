@@ -1,0 +1,24 @@
+{
+  "name": "angry-birds-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "웹 브라우저 앵그리버드 — 10 스테이지 슬링샷 물리 게임",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check:coverage": "vitest run tests/coverage.test.ts"
+  },
+  "dependencies": {
+    "matter-js": "0.20.0"
+  },
+  "devDependencies": {
+    "@types/matter-js": "^0.19.7",
+    "typescript": "5.6.3",
+    "vite": "5.4.10",
+    "vitest": "2.1.8"
+  }
+}

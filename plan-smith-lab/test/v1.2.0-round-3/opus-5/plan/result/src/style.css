@@ -1,0 +1,382 @@
+/* §1.3 UI는 DOM, 게임은 Canvas. §1.5 논리 1280x720 + letterbox */
+
+:root {
+  --panel-bg: #1d2330;
+  --panel-fg: #f2f5fa;
+  --accent: #ffb648;
+  --accent-2: #7dc242;
+  --btn-bg: #2c3purple;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #0b0e14;
+  color: #f2f5fa;
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+#viewport {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+#stage-root {
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  transform-origin: center center;
+  background: #7ec0ee;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+}
+
+#game {
+  position: absolute;
+  inset: 0;
+  width: 1280px;
+  height: 720px;
+  display: block;
+  touch-action: none; /* §5.1 모바일 스크롤/줌 차단 */
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#ui-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none; /* 자식 중 인터랙티브 요소만 auto로 되살린다 */
+}
+
+#ui-layer > * {
+  pointer-events: auto;
+}
+
+/* ---------------- 공통 버튼 ---------------- */
+
+button {
+  font: inherit;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  background: #33415c;
+  color: #f2f5fa;
+  transition: background 120ms ease, transform 120ms ease;
+}
+
+button:hover {
+  background: #415075;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #23180a;
+  font-weight: 700;
+}
+
+.btn-primary:hover {
+  background: #ffc76e;
+}
+
+/* ---------------- HUD (§9.1) ---------------- */
+
+.hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hud > * {
+  pointer-events: auto;
+}
+
+.hud-left {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.hud-badge {
+  background: rgba(12, 16, 24, 0.55);
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.hud-birds {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  background: rgba(12, 16, 24, 0.55);
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+.bird-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.35);
+}
+
+.bird-dot.used {
+  opacity: 0.25;
+}
+
+.bird-dot.red {
+  background: #e2402f;
+}
+
+.bird-dot.yellow {
+  background: #f5d020;
+}
+
+.bird-dot.black {
+  background: #2b2b30;
+}
+
+.hud-right {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 10px;
+}
+
+/* 우측 상단 일시정지 버튼 — 요구사항 3 */
+.icon-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(12, 16, 24, 0.62);
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.icon-btn:hover {
+  background: rgba(30, 40, 58, 0.85);
+}
+
+.hud-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  background: rgba(12, 16, 24, 0.55);
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+/* ---------------- 오버레이 (§9.2) ---------------- */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.overlay.show {
+  opacity: 1;
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+.panel {
+  width: 320px;
+  background: var(--panel-bg);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+}
+
+.panel h2 {
+  margin: 0 0 4px;
+  font-size: 26px;
+  text-align: center;
+}
+
+.panel button {
+  height: 52px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.panel .score-row {
+  text-align: center;
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 4px 0 8px;
+}
+
+.star {
+  font-size: 40px;
+  color: #4a5266;
+  transform: scale(0.6);
+  opacity: 0;
+  transition: transform 220ms ease, opacity 220ms ease, color 220ms ease;
+}
+
+.star.on {
+  color: var(--accent);
+}
+
+.star.pop {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* ---------------- 화면 (메인/스테이지 선택) ---------------- */
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: linear-gradient(180deg, #6fb7e8 0%, #a9d8f0 55%, #cfe9c6 100%);
+  color: #17202e;
+}
+
+.screen[hidden] {
+  display: none;
+}
+
+.screen h1 {
+  margin: 0;
+  font-size: 64px;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 0 rgba(255, 255, 255, 0.5);
+}
+
+.screen p.sub {
+  margin: 0 0 8px;
+  font-size: 18px;
+  opacity: 0.75;
+}
+
+.screen .menu-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 280px;
+}
+
+.screen .menu-btns button {
+  height: 56px;
+  font-size: 20px;
+}
+
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 128px);
+  gap: 16px;
+}
+
+.stage-card {
+  height: 128px;
+  border-radius: 18px;
+  background: #ffffff;
+  color: #17202e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.15);
+}
+
+.stage-card:hover {
+  background: #fff6e5;
+}
+
+.stage-card .no {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.stage-card .nm {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.stage-card .st {
+  font-size: 16px;
+  color: #d79a12;
+  letter-spacing: 2px;
+}
+
+.stage-card.locked {
+  background: #c8cfd8;
+  color: #8a94a3;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.topbar {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+}
+
+.topbar button {
+  height: 44px;
+  padding: 0 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "web-angry-birds",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "lint": "eslint . --ext .ts"
+  },
+  "dependencies": {
+    "matter-js": "0.20.0"
+  },
+  "devDependencies": {
+    "@types/matter-js": "0.19.8",
+    "typescript": "5.5.4",
+    "vite": "5.4.8",
+    "vitest": "2.1.1"
+  }
+}
