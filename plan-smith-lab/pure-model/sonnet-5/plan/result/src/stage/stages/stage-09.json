@@ -1,0 +1,26 @@
+{
+  "id": 9,
+  "name": "동굴 요새 1",
+  "birdCount": 2,
+  "birdOrder": ["normal", "normal"],
+  "slingshotAnchor": { "x": 140, "y": 410 },
+  "groundY": 500,
+  "targetScore": { "oneStar": 1900, "twoStar": 2700, "threeStar": 3400 },
+  "blocks": [
+    { "type": "box", "material": "stone", "x": 410, "y": 460, "w": 20, "h": 80, "angle": 0 },
+    { "type": "box", "material": "stone", "x": 530, "y": 460, "w": 20, "h": 80, "angle": 0 },
+    { "type": "box", "material": "stone", "x": 470, "y": 410, "w": 140, "h": 20, "angle": 0 },
+    { "type": "box", "material": "wood", "x": 620, "y": 460, "w": 20, "h": 80, "angle": 0 },
+    { "type": "box", "material": "wood", "x": 740, "y": 460, "w": 20, "h": 80, "angle": 0 },
+    { "type": "box", "material": "ice", "x": 680, "y": 410, "w": 140, "h": 20, "angle": 0 },
+    { "type": "box", "material": "wood", "x": 780, "y": 470, "w": 40, "h": 60, "angle": 0 },
+    { "type": "circle", "material": "stone", "x": 900, "y": 470, "radius": 30 }
+  ],
+  "pigs": [
+    { "x": 470, "y": 482, "radius": 18 },
+    { "x": 470, "y": 382, "radius": 18 },
+    { "x": 680, "y": 482, "radius": 18 },
+    { "x": 900, "y": 422, "radius": 18 }
+  ],
+  "background": "cave"
+}

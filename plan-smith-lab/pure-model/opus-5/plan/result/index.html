@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0b0d12" />
+    <title>Slingshot Birds</title>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <!--
+      #stage is the letterboxed area. The canvas and the DOM UI layer are both
+      positioned to exactly the same rect by Renderer.resize() so that logical
+      1280x720 coordinates line up between them.
+    -->
+    <div id="stage">
+      <canvas id="game" width="1280" height="720"></canvas>
+      <div id="ui" aria-live="polite"></div>
+    </div>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

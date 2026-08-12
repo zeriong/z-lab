@@ -1,0 +1,27 @@
+{
+  "id": 3,
+  "name": "돌벽 너머",
+  "theme": "meadow",
+  "gravity": 1,
+  "camera": {
+    "previewRect": { "x": 900, "y": 540, "w": 460, "h": 320 },
+    "minZoom": 0.65,
+    "maxZoom": 1.05
+  },
+  "ground": [{ "points": [[0, 820], [2400, 820], [2400, 1100], [0, 1100]] }],
+  "slingshot": { "x": 240, "y": 700 },
+  "birds": ["red", "red", "red", "red"],
+  "bodies": [
+    { "material": "stone", "shape": "box", "x": 960, "y": 778, "w": 40, "h": 80 },
+    { "material": "stone", "shape": "box", "x": 960, "y": 696, "w": 40, "h": 80 },
+    { "material": "stone", "shape": "box", "x": 960, "y": 614, "w": 40, "h": 80 },
+    { "material": "wood", "shape": "box", "x": 1080, "y": 788, "w": 28, "h": 60 },
+    { "material": "wood", "shape": "box", "x": 1280, "y": 788, "w": 28, "h": 60 },
+    { "material": "wood", "shape": "box", "x": 1180, "y": 744, "w": 240, "h": 24 }
+  ],
+  "pigs": [
+    { "x": 1120, "y": 794, "size": "small" },
+    { "x": 1240, "y": 794, "size": "small" }
+  ],
+  "targetScore": 27000
+}

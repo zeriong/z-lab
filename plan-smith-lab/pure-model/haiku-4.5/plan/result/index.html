@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angry Birds Web Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #87ceeb;
+        }
+
+        #gameContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #hud {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: #f0f0f0;
+            border-bottom: 2px solid #ccc;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        #hudLeft {
+            flex: 1;
+        }
+
+        #hudRight {
+            flex: 1;
+            text-align: right;
+        }
+
+        #pauseBtn {
+            padding: 8px 16px;
+            font-size: 16px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        #pauseBtn:hover {
+            background: #ff5252;
+        }
+
+        #gameCanvas {
+            display: block;
+            background: linear-gradient(180deg, #87ceeb 0%, #e0f6ff 100%);
+            cursor: crosshair;
+        }
+
+        #footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: #f0f0f0;
+            border-top: 2px solid #ccc;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        #footerLeft {
+            flex: 1;
+        }
+
+        #footerRight {
+            flex: 1;
+            text-align: right;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modalContent {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            min-width: 300px;
+        }
+
+        .modalContent h2 {
+            margin-bottom: 15px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .modalContent p {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .modalContent .buttonGroup {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+            justify-content: center;
+        }
+
+        .modalContent button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .btnPrimary {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btnPrimary:hover {
+            background: #45a049;
+        }
+
+        .btnSecondary {
+            background: #2196F3;
+            color: white;
+        }
+
+        .btnSecondary:hover {
+            background: #0b7dda;
+        }
+
+        .btnDanger {
+            background: #f44336;
+            color: white;
+        }
+
+        .btnDanger:hover {
+            background: #da190b;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <div id="hud">
+            <div id="hudLeft">Score: <span id="score">0</span></div>
+            <div id="hudRight">
+                <button id="pauseBtn">⏸ Pause</button>
+            </div>
+        </div>
+        <canvas id="gameCanvas" width="1000" height="600"></canvas>
+        <div id="footer">
+            <div id="footerLeft">Stage: <span id="stage">1</span>/10</div>
+            <div id="footerRight">Moves: <span id="moves">3</span>/<span id="maxMoves">3</span></div>
+        </div>
+    </div>
+
+    <!-- Menu Modal -->
+    <div id="menuModal" class="modal active">
+        <div class="modalContent">
+            <h2>Angry Birds</h2>
+            <p>A Physics-Based Slingshot Game</p>
+            <div class="buttonGroup">
+                <button class="btnPrimary" id="playBtn">Play</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pause Modal -->
+    <div id="pauseModal" class="modal">
+        <div class="modalContent">
+            <h2>Game Paused</h2>
+            <div class="buttonGroup">
+                <button class="btnPrimary" id="resumeBtn">Resume</button>
+                <button class="btnSecondary" id="menuFromPauseBtn">Main Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level Complete Modal -->
+    <div id="levelCompleteModal" class="modal">
+        <div class="modalContent">
+            <h2 id="levelCompleteTitle">Stage 1 Complete!</h2>
+            <p>Score: <span id="levelScore">0</span></p>
+            <div class="buttonGroup">
+                <button class="btnPrimary" id="nextBtn">Next Stage</button>
+                <button class="btnSecondary" id="menuFromLevelBtn">Main Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="gameOverModal" class="modal">
+        <div class="modalContent">
+            <h2 id="gameOverTitle">Game Over</h2>
+            <p>Final Score: <span id="gameOverScore">0</span></p>
+            <div class="buttonGroup">
+                <button class="btnPrimary" id="retryBtn">Retry</button>
+                <button class="btnSecondary" id="menuFromGameOverBtn">Main Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "matter-js": "https://cdn.jsdelivr.net/npm/matter-js@0.19.0/+esm"
+        }
+    }
+    </script>
+
+    <script type="module" src="js/game.js"></script>
+</body>
+</html>

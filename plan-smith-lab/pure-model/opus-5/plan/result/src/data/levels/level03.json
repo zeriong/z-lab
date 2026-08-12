@@ -1,0 +1,21 @@
+{
+  "id": 3,
+  "name": "Wooden Fort",
+  "world": { "width": 2400, "height": 720, "gravity": 1.0 },
+  "camera": { "minX": 0, "maxX": 2400, "minZoom": 0.6, "maxZoom": 1.2 },
+  "slingshot": { "x": 220, "y": 520, "maxPull": 140, "power": 0.16 },
+  "birds": ["basic", "basic", "basic"],
+  "ground": [{ "x": 0, "y": 640, "w": 2400, "h": 80 }],
+  "blocks": [
+    { "type": "wood", "shape": "rect", "x": 1300, "y": 640, "w": 24, "h": 120 },
+    { "type": "wood", "shape": "rect", "x": 1420, "y": 640, "w": 24, "h": 120 },
+    { "type": "wood", "shape": "rect", "x": 1540, "y": 640, "w": 24, "h": 120 },
+    { "type": "wood", "shape": "rect", "x": 1420, "y": 520, "w": 300, "h": 24 },
+    { "type": "wood", "shape": "rect", "x": 1360, "y": 496, "w": 24, "h": 96 },
+    { "type": "wood", "shape": "rect", "x": 1480, "y": 496, "w": 24, "h": 96 },
+    { "type": "stone", "shape": "rect", "x": 1420, "y": 400, "w": 220, "h": 24 }
+  ],
+  "pigs": [{ "size": "small", "x": 1360, "y": 640 }],
+  "starThresholds": [15000, 21000, 27000],
+  "trajectoryHints": 12
+}

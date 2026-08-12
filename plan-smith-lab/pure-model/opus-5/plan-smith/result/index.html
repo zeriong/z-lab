@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>슬링샷 — 10 스테이지</title>
+    <!-- CSS는 main.ts가 import한다. 여기와 두 군데서 물면 빌드 산출물에 두 번 들어간다. -->
+  </head>
+  <body>
+    <!--
+      #stage-root 안의 순서가 곧 z-order다.
+      canvas  : 물리/렌더 표면. 포인터 이벤트의 1차 수신자.
+      #ui-root: HUD + 오버레이(DOM). 컨테이너는 pointer-events:none 이고
+                버튼 요소만 auto 다 (§12 "DOM 오버레이가 드래그를 가로챔" 완화).
+    -->
+    <div id="stage-root">
+      <canvas id="game-canvas"></canvas>
+      <div id="ui-root"></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

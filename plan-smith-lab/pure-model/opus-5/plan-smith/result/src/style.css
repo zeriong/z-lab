@@ -1,0 +1,361 @@
+/* ---------------------------------------------------------------------------
+   레이아웃 규칙 하나만 기억하면 된다:
+   .overlay-root / .hud 는 pointer-events:none, 실제 인터랙티브 요소만 auto.
+   이 규칙이 깨지면 새총 드래그(R5)가 통째로 죽는다.
+--------------------------------------------------------------------------- */
+
+:root {
+  --ink: #f4f1e8;
+  --ink-dim: #b9b2a2;
+  --panel: rgba(18, 20, 28, 0.86);
+  --panel-solid: #171a22;
+  --accent: #ffb43a;
+  --accent-2: #7ad4a0;
+  --danger: #ff6b5e;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  font-family: 'Trebuchet MS', 'Noto Sans KR', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #0d1017;
+  color: var(--ink);
+  -webkit-tap-highlight-color: transparent;
+}
+
+#stage-root {
+  position: fixed;
+  inset: 0;
+}
+
+#game-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none; /* 포인터 드래그가 스크롤로 가로채이지 않게 */
+}
+
+#ui-root {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ------------------------------- HUD ----------------------------------- */
+
+.hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 140ms ease;
+}
+
+.hud.is-visible {
+  opacity: 1;
+}
+
+.hud-left {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hud-birds {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.bird-pip {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #e0483c;
+  border: 2px solid rgba(0, 0, 0, 0.35);
+  box-shadow: inset -3px -3px 0 rgba(0, 0, 0, 0.18);
+}
+
+.bird-pip[data-kind='bomb'] {
+  background: #33373f;
+}
+
+.bird-pip[data-kind='speed'] {
+  background: #f5d24a;
+}
+
+.bird-pip.is-spent {
+  background: #4a4a4a;
+  opacity: 0.45;
+}
+
+.hud-stage-name {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--ink-dim);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.hud-score {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.hud-right {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+}
+
+/* R22: 최소 44x44, 우측 상단, 드래그 영역(좌측 새총)과 겹치지 않는다. */
+.pause-button {
+  pointer-events: auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+}
+
+.pause-button:hover {
+  border-color: var(--accent);
+}
+
+.pause-button:active {
+  transform: translateY(1px);
+}
+
+/* ----------------------------- 오버레이 --------------------------------- */
+
+.overlay-root {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay-screen {
+  display: none;
+  pointer-events: none;
+  width: min(720px, 92vw);
+  max-height: 92vh;
+  overflow: auto;
+  padding: 26px 28px;
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+  text-align: center;
+}
+
+.overlay-screen.is-active {
+  display: block;
+}
+
+/* 배경을 덮는 스크림. 일시정지/클리어/실패에서만 켠다. */
+.overlay-root.is-dimmed::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 8, 12, 0.45);
+}
+
+.overlay-title {
+  margin: 0 0 6px;
+  font-size: 34px;
+  letter-spacing: 0.02em;
+}
+
+.overlay-sub {
+  margin: 0 0 18px;
+  color: var(--ink-dim);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  pointer-events: auto;
+  min-width: 128px;
+  min-height: 46px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  background: #232833;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 90ms ease, border-color 120ms ease;
+}
+
+.btn:hover {
+  border-color: var(--accent);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #2a1c00;
+  border-color: transparent;
+}
+
+.btn-ghost {
+  background: transparent;
+}
+
+.btn-icon {
+  min-width: 46px;
+  width: 46px;
+  padding: 0;
+}
+
+/* 스테이지 선택 그리드: 10칸이 한 화면에 (S-SEL 바닥선) */
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin: 18px 0 20px;
+}
+
+.stage-cell {
+  pointer-events: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.14);
+  background: #222733;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.stage-cell:hover:not(.is-locked) {
+  border-color: var(--accent);
+}
+
+.stage-cell.is-locked {
+  pointer-events: none;
+  opacity: 0.4;
+  cursor: default;
+}
+
+.stage-cell .num {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.stage-cell .stars {
+  font-size: 13px;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+.stage-cell .best {
+  font-size: 10px;
+  color: var(--ink-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.total-stars {
+  font-size: 16px;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 클리어 별 연출: 순차 등장 */
+.star-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 8px 0 16px;
+  font-size: 44px;
+  line-height: 1;
+}
+
+.star {
+  color: rgba(255, 255, 255, 0.14);
+  transform: scale(0.7);
+  transition: transform 220ms cubic-bezier(0.2, 1.6, 0.4, 1), color 220ms ease;
+}
+
+.star.is-earned {
+  color: var(--accent);
+  transform: scale(1);
+}
+
+.score-line {
+  font-size: 15px;
+  color: var(--ink-dim);
+  display: flex;
+  justify-content: space-between;
+  max-width: 320px;
+  margin: 4px auto;
+  font-variant-numeric: tabular-nums;
+}
+
+.score-total {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 10px 0 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.banner {
+  margin: 0 0 14px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(255, 107, 94, 0.16);
+  border: 1px solid rgba(255, 107, 94, 0.4);
+  color: #ffd9d5;
+  font-size: 13px;
+}
+
+.hint {
+  color: var(--ink-dim);
+  font-size: 12px;
+  margin-top: 14px;
+  line-height: 1.7;
+}

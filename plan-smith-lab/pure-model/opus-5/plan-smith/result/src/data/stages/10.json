@@ -1,0 +1,32 @@
+{
+  "id": 10,
+  "name": "왕의 방",
+  "theme": "dusk",
+  "gravity": 1,
+  "camera": {
+    "previewRect": { "x": 1120, "y": 480, "w": 540, "h": 420 },
+    "minZoom": 0.55,
+    "maxZoom": 0.95
+  },
+  "ground": [{ "points": [[0, 820], [2400, 820], [2400, 1100], [0, 1100]] }],
+  "slingshot": { "x": 240, "y": 700 },
+  "birds": ["red", "bomb", "speed", "bomb", "red"],
+  "bodies": [
+    { "material": "stone", "shape": "box", "x": 1200, "y": 778, "w": 40, "h": 80 },
+    { "material": "tnt", "shape": "box", "x": 1280, "y": 778, "w": 44, "h": 80 },
+    { "material": "wood", "shape": "box", "x": 1380, "y": 778, "w": 32, "h": 80 },
+    { "material": "tnt", "shape": "box", "x": 1480, "y": 778, "w": 44, "h": 80 },
+    { "material": "stone", "shape": "box", "x": 1560, "y": 778, "w": 40, "h": 80 },
+    { "material": "stone", "shape": "box", "x": 1380, "y": 724, "w": 400, "h": 24 },
+    { "material": "glass", "shape": "box", "x": 1280, "y": 658, "w": 36, "h": 100 },
+    { "material": "glass", "shape": "box", "x": 1480, "y": 658, "w": 36, "h": 100 },
+    { "material": "wood", "shape": "box", "x": 1380, "y": 594, "w": 300, "h": 24 }
+  ],
+  "pigs": [
+    { "x": 1380, "y": 659, "size": "boss" },
+    { "x": 1330, "y": 794, "size": "small" },
+    { "x": 1430, "y": 794, "size": "small" },
+    { "x": 1380, "y": 546, "size": "small" }
+  ],
+  "targetScore": 42000
+}

@@ -1,0 +1,35 @@
+{
+  "id": 9,
+  "name": "요새",
+  "theme": "dusk",
+  "gravity": 1,
+  "camera": {
+    "previewRect": { "x": 1020, "y": 520, "w": 580, "h": 380 },
+    "minZoom": 0.55,
+    "maxZoom": 0.95
+  },
+  "ground": [{ "points": [[0, 820], [2400, 820], [2400, 1100], [0, 1100]] }],
+  "slingshot": { "x": 240, "y": 700 },
+  "birds": ["red", "bomb", "red", "speed", "bomb"],
+  "bodies": [
+    { "material": "stone", "shape": "box", "x": 1100, "y": 778, "w": 40, "h": 80 },
+    { "material": "stone", "shape": "box", "x": 1100, "y": 696, "w": 40, "h": 80 },
+    { "material": "glass", "shape": "box", "x": 1100, "y": 614, "w": 40, "h": 80 },
+    { "material": "wood", "shape": "box", "x": 1240, "y": 778, "w": 32, "h": 80 },
+    { "material": "wood", "shape": "box", "x": 1380, "y": 778, "w": 32, "h": 80 },
+    { "material": "wood", "shape": "box", "x": 1310, "y": 724, "w": 180, "h": 24 },
+    { "material": "glass", "shape": "box", "x": 1260, "y": 668, "w": 30, "h": 80 },
+    { "material": "glass", "shape": "box", "x": 1360, "y": 668, "w": 30, "h": 80 },
+    { "material": "stone", "shape": "box", "x": 1310, "y": 614, "w": 180, "h": 24 },
+    { "material": "stone", "shape": "box", "x": 1500, "y": 778, "w": 40, "h": 80 },
+    { "material": "stone", "shape": "box", "x": 1500, "y": 696, "w": 40, "h": 80 }
+  ],
+  "pigs": [
+    { "x": 1180, "y": 794, "size": "small" },
+    { "x": 1310, "y": 794, "size": "small" },
+    { "x": 1440, "y": 794, "size": "small" },
+    { "x": 1310, "y": 686, "size": "small" },
+    { "x": 1310, "y": 576, "size": "small" }
+  ],
+  "targetScore": 40000
+}

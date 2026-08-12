@@ -1,0 +1,18 @@
+{
+  "id": 1,
+  "name": "First Shot",
+  "world": { "width": 2400, "height": 720, "gravity": 1.0 },
+  "camera": { "minX": 0, "maxX": 2400, "minZoom": 0.6, "maxZoom": 1.2 },
+  "slingshot": { "x": 220, "y": 520, "maxPull": 140, "power": 0.16 },
+  "birds": ["basic", "basic", "basic"],
+  "ground": [{ "x": 0, "y": 640, "w": 2400, "h": 80 }],
+  "blocks": [
+    { "type": "glass", "shape": "rect", "x": 1340, "y": 640, "w": 24, "h": 120 },
+    { "type": "glass", "shape": "rect", "x": 1460, "y": 640, "w": 24, "h": 120 },
+    { "type": "glass", "shape": "rect", "x": 1400, "y": 520, "w": 180, "h": 24 },
+    { "type": "glass", "shape": "rect", "x": 1400, "y": 496, "w": 40, "h": 40 }
+  ],
+  "pigs": [{ "size": "small", "x": 1400, "y": 640 }],
+  "starThresholds": [12000, 18000, 24000],
+  "trajectoryHints": 12
+}

@@ -1,0 +1,25 @@
+{
+  "id": 8,
+  "name": "빙하 지대 3",
+  "birdCount": 2,
+  "birdOrder": ["normal", "normal"],
+  "slingshotAnchor": { "x": 140, "y": 410 },
+  "groundY": 500,
+  "targetScore": { "oneStar": 1800, "twoStar": 2600, "threeStar": 3300 },
+  "blocks": [
+    { "type": "box", "material": "stone", "x": 460, "y": 460, "w": 20, "h": 80, "angle": 0 },
+    { "type": "box", "material": "stone", "x": 580, "y": 460, "w": 20, "h": 80, "angle": 0 },
+    { "type": "box", "material": "ice", "x": 520, "y": 410, "w": 140, "h": 20, "angle": 0 },
+    { "type": "box", "material": "ice", "x": 700, "y": 460, "w": 20, "h": 80, "angle": 0 },
+    { "type": "box", "material": "ice", "x": 820, "y": 460, "w": 20, "h": 80, "angle": 0 },
+    { "type": "box", "material": "wood", "x": 760, "y": 410, "w": 140, "h": 20, "angle": 0 },
+    { "type": "circle", "material": "ice", "x": 950, "y": 470, "radius": 30 }
+  ],
+  "pigs": [
+    { "x": 520, "y": 482, "radius": 18 },
+    { "x": 520, "y": 382, "radius": 18 },
+    { "x": 760, "y": 482, "radius": 18 },
+    { "x": 950, "y": 422, "radius": 18 }
+  ],
+  "background": "ice"
+}

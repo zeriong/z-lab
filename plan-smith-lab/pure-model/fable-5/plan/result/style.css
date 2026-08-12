@@ -1,0 +1,219 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a2e;
+  font-family: "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  user-select: none;
+}
+
+/* 논리 해상도 1280x720, CSS 스케일로 창 크기 대응 (§1.2) */
+#stage-root {
+  position: relative;
+  width: min(100vw, calc(100vh * 16 / 9));
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+}
+
+#game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ---------- HUD ---------- */
+
+#hud {
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 14px 18px;
+}
+
+#hud-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.chip {
+  background: rgba(20, 20, 30, 0.55);
+  color: #fff;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+#hud-birds .bird-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-left: 5px;
+  border-radius: 50%;
+  background: #e63946;
+  border: 2px solid #a4161a;
+  vertical-align: -2px;
+}
+
+.icon-btn {
+  pointer-events: auto;
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(20, 20, 30, 0.6);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  background: rgba(20, 20, 30, 0.85);
+}
+
+/* ---------- 공통 버튼/패널 ---------- */
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 28px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  background: #e9ecef;
+  color: #212529;
+  transition: transform 0.06s ease, filter 0.1s ease;
+}
+
+.btn:hover {
+  filter: brightness(0.95);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn.primary {
+  background: #e63946;
+  color: #fff;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel {
+  background: #fff;
+  border-radius: 18px;
+  padding: 34px 44px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.panel h2 {
+  font-size: 30px;
+  margin-bottom: 8px;
+  color: #212529;
+}
+
+#result-score {
+  font-size: 20px;
+  font-weight: 700;
+  color: #495057;
+  margin-bottom: 8px;
+}
+
+/* ---------- MAIN ---------- */
+
+#main-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  background: linear-gradient(180deg, #4ea8de 0%, #90dbf4 55%, #7cb342 55.2%, #558b2f 100%);
+}
+
+#main-screen h1 {
+  font-size: 64px;
+  color: #fff;
+  text-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.04em;
+  text-align: center;
+  line-height: 1;
+}
+
+#main-screen h1 span {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  margin-top: 10px;
+  color: #ffe8e8;
+}
+
+.grid-label {
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+#stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 60px);
+  gap: 12px;
+}
+
+#stage-grid button {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 14px;
+  background: #fff;
+  color: #212529;
+  font-size: 22px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+  transition: transform 0.06s ease;
+}
+
+#stage-grid button:hover {
+  transform: translateY(-2px);
+}
+
+#stage-grid button:active {
+  transform: translateY(1px);
+}

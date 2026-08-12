@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Angry Birds — Web</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>
+</head>
+<body>
+  <div id="stage-root">
+    <canvas id="game-canvas" width="1280" height="720"></canvas>
+
+    <!-- PLAYING HUD -->
+    <div id="hud" class="layer hidden">
+      <div id="hud-left">
+        <div id="hud-stage" class="chip"></div>
+        <div id="hud-score" class="chip"></div>
+        <div id="hud-birds" class="chip"></div>
+      </div>
+      <button id="btn-pause" class="icon-btn" title="일시정지" aria-label="일시정지">II</button>
+    </div>
+
+    <!-- MAIN -->
+    <div id="main-screen" class="layer">
+      <h1>ANGRY BIRDS<span>web edition</span></h1>
+      <button id="btn-start" class="btn primary">게임 시작</button>
+      <p class="grid-label">스테이지 선택</p>
+      <div id="stage-grid"></div>
+    </div>
+
+    <!-- PAUSED -->
+    <div id="pause-overlay" class="layer overlay hidden">
+      <div class="panel">
+        <h2>일시정지</h2>
+        <button id="btn-resume" class="btn primary">계속하기</button>
+        <button id="btn-pause-restart" class="btn">다시하기</button>
+        <button id="btn-pause-main" class="btn">메인으로</button>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div id="result-overlay" class="layer overlay hidden">
+      <div class="panel">
+        <h2 id="result-title"></h2>
+        <p id="result-score"></p>
+        <button id="btn-next" class="btn primary">다음 스테이지</button>
+        <button id="btn-result-restart" class="btn">다시하기</button>
+        <button id="btn-result-main" class="btn">메인으로</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

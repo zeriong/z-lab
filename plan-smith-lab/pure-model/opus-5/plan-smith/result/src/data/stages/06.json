@@ -1,0 +1,32 @@
+{
+  "id": 6,
+  "name": "유리 3층",
+  "theme": "quarry",
+  "gravity": 1,
+  "camera": {
+    "previewRect": { "x": 1060, "y": 420, "w": 380, "h": 460 },
+    "minZoom": 0.6,
+    "maxZoom": 1.0
+  },
+  "ground": [{ "points": [[0, 820], [2400, 820], [2400, 1100], [0, 1100]] }],
+  "slingshot": { "x": 240, "y": 700 },
+  "birds": ["red", "red", "red", "bomb"],
+  "bodies": [
+    { "material": "stone", "shape": "box", "x": 1160, "y": 778, "w": 36, "h": 80 },
+    { "material": "stone", "shape": "box", "x": 1320, "y": 778, "w": 36, "h": 80 },
+    { "material": "stone", "shape": "box", "x": 1240, "y": 724, "w": 220, "h": 24 },
+    { "material": "glass", "shape": "box", "x": 1180, "y": 668, "w": 36, "h": 80 },
+    { "material": "glass", "shape": "box", "x": 1300, "y": 668, "w": 36, "h": 80 },
+    { "material": "wood", "shape": "box", "x": 1240, "y": 614, "w": 200, "h": 24 },
+    { "material": "wood", "shape": "box", "x": 1190, "y": 558, "w": 32, "h": 80 },
+    { "material": "wood", "shape": "box", "x": 1290, "y": 558, "w": 32, "h": 80 },
+    { "material": "wood", "shape": "box", "x": 1240, "y": 504, "w": 160, "h": 24 }
+  ],
+  "pigs": [
+    { "x": 1240, "y": 686, "size": "small" },
+    { "x": 1240, "y": 576, "size": "small" },
+    { "x": 1240, "y": 466, "size": "small" },
+    { "x": 1080, "y": 794, "size": "small" }
+  ],
+  "targetScore": 34000
+}

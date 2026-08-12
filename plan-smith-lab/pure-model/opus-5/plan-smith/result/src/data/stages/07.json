@@ -1,0 +1,29 @@
+{
+  "id": 7,
+  "name": "비탈",
+  "theme": "dusk",
+  "gravity": 1,
+  "camera": {
+    "previewRect": { "x": 1150, "y": 520, "w": 680, "h": 400 },
+    "minZoom": 0.5,
+    "maxZoom": 0.95
+  },
+  "ground": [
+    { "points": [[0, 820], [1000, 820], [1000, 1100], [0, 1100]] },
+    { "points": [[1000, 820], [1500, 700], [1500, 1100], [1000, 1100]] },
+    { "points": [[1500, 700], [2400, 700], [2400, 1100], [1500, 1100]] }
+  ],
+  "slingshot": { "x": 240, "y": 700 },
+  "birds": ["red", "speed", "red"],
+  "bodies": [
+    { "material": "stone", "shape": "box", "x": 1560, "y": 658, "w": 40, "h": 80 },
+    { "material": "stone", "shape": "box", "x": 1680, "y": 658, "w": 40, "h": 80 },
+    { "material": "wood", "shape": "box", "x": 1620, "y": 604, "w": 160, "h": 24 }
+  ],
+  "pigs": [
+    { "x": 1620, "y": 676, "size": "small" },
+    { "x": 1250, "y": 734, "size": "small" },
+    { "x": 900, "y": 794, "size": "small" }
+  ],
+  "targetScore": 26000
+}

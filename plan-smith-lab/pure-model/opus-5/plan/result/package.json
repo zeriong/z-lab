@@ -1,0 +1,21 @@
+{
+  "name": "slingshot-birds",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Physics-based slingshot game for the browser (10 stages). Canvas 2D + Matter.js.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "matter-js": "^0.20.0"
+  },
+  "devDependencies": {
+    "@types/matter-js": "^0.19.7",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.8"
+  }
+}

@@ -1,0 +1,257 @@
+/* 레이아웃 — 1280×720 논리 좌표를 비율 유지 레터박스로 스케일 (M24) */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #10141c;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+}
+
+/* 스테이지 컨테이너 — main.ts가 transform: translate(-50%,-50%) scale(s)를 건다 */
+#stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1280px;
+  height: 720px;
+}
+
+#stage canvas {
+  display: block;
+  width: 1280px;
+  height: 720px;
+}
+
+/* ── 오버레이 공통 ── */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay.solid {
+  background: linear-gradient(#5db2e4, #bfe8fb);
+}
+
+.overlay.dim {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 36px 48px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  min-width: 320px;
+}
+
+.panel.wide {
+  min-width: 760px;
+}
+
+.title {
+  margin: 0;
+  font-size: 52px;
+  color: #c0392b;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #555;
+}
+
+.heading {
+  margin: 0 0 6px;
+  font-size: 34px;
+  color: #333;
+}
+
+.score-line {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+.btn {
+  font-size: 20px;
+  font-weight: 700;
+  padding: 12px 36px;
+  min-width: 220px;
+  border: none;
+  border-radius: 10px;
+  background: #e2574a;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #a83a30;
+}
+
+.btn:hover {
+  background: #ef6c5f;
+}
+
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #a83a30;
+}
+
+/* ── 스테이지 선택 (M3) ── */
+
+.select-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 120px);
+  gap: 16px;
+}
+
+.cell {
+  width: 120px;
+  height: 110px;
+  border: none;
+  border-radius: 12px;
+  background: #f7d774;
+  box-shadow: 0 4px 0 #c9a83e;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.cell:hover:not(:disabled) {
+  background: #fbe48f;
+}
+
+.cell.locked {
+  background: #b9bec7;
+  box-shadow: 0 4px 0 #8d939d;
+  cursor: default;
+}
+
+.cell .num {
+  font-size: 34px;
+  font-weight: 800;
+  color: #6b4a12;
+}
+
+.cell .num.dim {
+  color: #7c828c;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.stars.big {
+  font-size: 46px;
+  gap: 8px;
+}
+
+.star.on {
+  color: #f5a623;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.star.off {
+  color: #c9c9c9;
+}
+
+/* 잠금 아이콘 — CSS 도형 (텍스트 없이 판독, §3) */
+.lock {
+  position: relative;
+  width: 24px;
+  height: 18px;
+  margin-top: 12px;
+  border-radius: 3px;
+  background: #6e747e;
+}
+
+.lock::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: -12px;
+  width: 12px;
+  height: 12px;
+  border: 3px solid #6e747e;
+  border-bottom: none;
+  border-radius: 9px 9px 0 0;
+}
+
+/* ── 일시정지 버튼 (M16) — 우측 상단 ── */
+
+.pause-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.pause-btn:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.pause-btn .bar {
+  width: 8px;
+  height: 24px;
+  border-radius: 2px;
+  background: #fff;
+}
+
+/* ── 가로 권장 안내 (M24/D2) ── */
+
+.portrait-note {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.portrait-note.show {
+  display: block;
+}

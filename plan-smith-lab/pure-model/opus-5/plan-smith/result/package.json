@@ -1,0 +1,29 @@
+{
+  "name": "slingshot-physics-game",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "10-stage physics slingshot game (TypeScript + Vite + Matter.js + custom Canvas 2D renderer)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "validate:stages": "tsx scripts/validate-stages.ts",
+    "profile:physics": "tsx scripts/profile-physics.ts",
+    "test:state": "vitest run tests/state.test.ts",
+    "test:replay": "vitest run tests/replay.test.ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "matter-js": "0.20.0"
+  },
+  "devDependencies": {
+    "@types/matter-js": "0.19.6",
+    "@types/node": "20.12.7",
+    "tsx": "4.7.0",
+    "typescript": "5.4.5",
+    "vite": "5.2.0",
+    "vitest": "1.6.0"
+  }
+}

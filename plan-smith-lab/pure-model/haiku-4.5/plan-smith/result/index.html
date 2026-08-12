@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angry Birds - Browser Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        #game-container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            background: #87CEEB;
+            border: 3px solid #34495e;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        #canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        #menu-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        #menu-overlay h1 {
+            color: white;
+            font-size: 48px;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        #stage-select {
+            display: grid;
+            grid-template-columns: repeat(5, 80px);
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .stage-button {
+            width: 80px;
+            height: 80px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            border: 2px solid #fff;
+            background: #3498db;
+            color: white;
+            transition: all 0.2s;
+        }
+
+        .stage-button:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .stage-button.locked {
+            background: #7f8c8d;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .stage-button .stars {
+            font-size: 12px;
+            display: block;
+        }
+
+        #pause-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 50;
+        }
+
+        #pause-overlay.active {
+            display: flex;
+        }
+
+        #pause-overlay h2 {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .pause-button-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .pause-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 5px;
+        }
+
+        .pause-button:hover {
+            background: #c0392b;
+            transform: scale(1.05);
+        }
+
+        #hud {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-weight: bold;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        #pause-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 10;
+            transition: all 0.2s;
+        }
+
+        #pause-button:hover {
+            background: #c0392b;
+        }
+
+        #clear-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 50;
+        }
+
+        #clear-overlay.active {
+            display: flex;
+        }
+
+        #clear-overlay h2 {
+            color: #f1c40f;
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        #star-display {
+            color: #f1c40f;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .clear-button-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .clear-button {
+            padding: 12px 25px;
+            font-size: 16px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .clear-button:hover {
+            background: #229954;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="canvas" width="800" height="600"></canvas>
+
+        <div id="hud">
+            <div>Stage: <span id="stage-number">1</span></div>
+            <div>Projectiles: <span id="projectile-count">0</span> | Best: <span id="best-score">-</span></div>
+        </div>
+
+        <button id="pause-button">PAUSE</button>
+
+        <div id="menu-overlay" class="active">
+            <h1>Angry Birds</h1>
+            <div id="stage-select"></div>
+        </div>
+
+        <div id="pause-overlay">
+            <h2>PAUSED</h2>
+            <div class="pause-button-group">
+                <button class="pause-button" id="resume-button">Resume</button>
+                <button class="pause-button" id="menu-button">Main Menu</button>
+            </div>
+        </div>
+
+        <div id="clear-overlay">
+            <h2>STAGE CLEAR!</h2>
+            <div id="star-display">⭐</div>
+            <div class="clear-button-group">
+                <button class="clear-button" id="next-button">Next Stage</button>
+                <button class="clear-button" id="replay-button">Replay</button>
+                <button class="clear-button" id="menu-button-clear">Main Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+
+    <script>
+        // ============ GAME STATE ============
+        const GameState = {
+            MENU: 'MENU',
+            LOADING: 'LOADING',
+            PLAYING: 'PLAYING',
+            PAUSED: 'PAUSED',
+            CLEAR: 'CLEAR'
+        };
+
+        let gameState = GameState.MENU;
+        let currentStageId = 1;
+        let engine = null;
+        let world = null;
+        let renderer = null;
+        let bodies = [];
+        let projectiles = [];
+        let structures = [];
+        let targets = [];
+        let currentStageData = null;
+        let slingshotX = 100;
+        let slingshotY = 400;
+        let slingshotRadius = 15;
+        let projectileCount = 0;
+        let isAiming = false;
+        let aimStartX = 0;
+        let aimStartY = 0;
+        let aimEndX = 0;
+        let aimEndY = 0;
+        let currentProjectile = null;
+        let playerProgress = { highestStageUnlocked: 1, stageScores: {} };
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+        let clearStartTime = null;
+
+        // ============ PERSISTENCE ============
+        function loadProgress() {
+            const stored = localStorage.getItem('playerProgress');
+            if (stored) {
+                playerProgress = JSON.parse(stored);
+            }
+            return playerProgress;
+        }
+
+        function saveProgress() {
+            localStorage.setItem('playerProgress', JSON.stringify(playerProgress));
+        }
+
+        function updateHighestStage(stageId, stars) {
+            if (stageId >= playerProgress.highestStageUnlocked) {
+                playerProgress.highestStageUnlocked = stageId + 1;
+            }
+            if (!playerProgress.stageScores[stageId]) {
+                playerProgress.stageScores[stageId] = stars;
+            } else {
+                playerProgress.stageScores[stageId] = Math.max(playerProgress.stageScores[stageId], stars);
+            }
+            saveProgress();
+        }
+
+        // ============ PHYSICS ENGINE ============
+        const Engine = Matter.Engine;
+        const World = Matter.World;
+        const Body = Matter.Body;
+        const Events = Matter.Events;
+        const Constraint = Matter.Constraint;
+        const Collision = Matter.Collision;
+
+        function initEngine() {
+            engine = Engine.create();
+            world = engine.world;
+            world.gravity.y = 1;
+
+            // Ground
+            const groundBody = Matter.Bodies.rectangle(400, 590, 800, 20, { isStatic: true });
+            World.add(world, groundBody);
+
+            return engine;
+        }
+
+        function addBody(x, y, width, height, options = {}) {
+            const defaults = { restitution: 0.8, friction: 0.5, frictionAir: 0.02 };
+            const body = Matter.Bodies.rectangle(x, y, width, height, { ...defaults, ...options });
+            World.add(world, body);
+            bodies.push(body);
+            return body;
+        }
+
+        function addCircle(x, y, radius, options = {}) {
+            const defaults = { restitution: 0.8, friction: 0.5, frictionAir: 0.02 };
+            const body = Matter.Bodies.circle(x, y, radius, { ...defaults, ...options });
+            World.add(world, body);
+            bodies.push(body);
+            return body;
+        }
+
+        function removeBody(body) {
+            World.remove(world, body);
+            bodies = bodies.filter(b => b !== body);
+        }
+
+        // ============ STAGE LOADING ============
+        const STAGE_DATA = {
+            1: { "stageId": 1, "name": "Forest Clearing", "objectives": { "targetCount": 1, "clearStarThreshold": [30, 50, 70] }, "structures": [{ "x": 450, "y": 520, "type": "wood-block", "width": 30, "height": 60, "rotation": 0 }, { "x": 520, "y": 520, "type": "stone-block", "width": 60, "height": 30, "rotation": 0 }], "targets": [{ "x": 500, "y": 450, "type": "pig", "radius": 15, "health": 1 }], "slingshot": { "x": 100, "y": 400 }, "difficulty": 1 },
+            2: { "stageId": 2, "name": "Stone Tower", "objectives": { "targetCount": 2, "clearStarThreshold": [40, 60, 80] }, "structures": [{ "x": 450, "y": 530, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 450, "y": 480, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 500, "y": 530, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }], "targets": [{ "x": 450, "y": 420, "type": "pig", "radius": 15, "health": 1 }, { "x": 500, "y": 420, "type": "pig", "radius": 15, "health": 1 }], "slingshot": { "x": 100, "y": 400 }, "difficulty": 2 },
+            3: { "stageId": 3, "name": "Wood Fortress", "objectives": { "targetCount": 2, "clearStarThreshold": [50, 70, 90] }, "structures": [{ "x": 420, "y": 530, "type": "wood-block", "width": 30, "height": 60, "rotation": 0 }, { "x": 480, "y": 530, "type": "wood-block", "width": 30, "height": 60, "rotation": 0 }, { "x": 450, "y": 460, "type": "wood-block", "width": 60, "height": 30, "rotation": 0 }], "targets": [{ "x": 420, "y": 400, "type": "pig", "radius": 15, "health": 1 }, { "x": 480, "y": 400, "type": "pig", "radius": 15, "health": 1 }], "slingshot": { "x": 100, "y": 400 }, "difficulty": 3 },
+            4: { "stageId": 4, "name": "Mixed Blocks", "objectives": { "targetCount": 3, "clearStarThreshold": [60, 80, 100] }, "structures": [{ "x": 400, "y": 540, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 460, "y": 540, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 520, "y": 540, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 430, "y": 480, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 490, "y": 480, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }], "targets": [{ "x": 400, "y": 420, "type": "pig", "radius": 15, "health": 1 }, { "x": 460, "y": 420, "type": "pig", "radius": 15, "health": 1 }, { "x": 520, "y": 420, "type": "pig", "radius": 15, "health": 1 }], "slingshot": { "x": 100, "y": 400 }, "difficulty": 4 },
+            5: { "stageId": 5, "name": "Tower Challenge", "objectives": { "targetCount": 2, "clearStarThreshold": [70, 90, 110] }, "structures": [{ "x": 450, "y": 540, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 450, "y": 480, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 450, "y": 420, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 400, "y": 540, "type": "wood-block", "width": 30, "height": 60, "rotation": 0 }, { "x": 500, "y": 540, "type": "wood-block", "width": 30, "height": 60, "rotation": 0 }], "targets": [{ "x": 450, "y": 350, "type": "pig", "radius": 15, "health": 1 }, { "x": 520, "y": 350, "type": "pig", "radius": 15, "health": 1 }], "slingshot": { "x": 100, "y": 400 }, "difficulty": 5 },
+            6: { "stageId": 6, "name": "Pyramid", "objectives": { "targetCount": 3, "clearStarThreshold": [80, 100, 120] }, "structures": [{ "x": 380, "y": 540, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 430, "y": 540, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 480, "y": 540, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 530, "y": 540, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 405, "y": 480, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 455, "y": 480, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 505, "y": 480, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 430, "y": 420, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }], "targets": [{ "x": 380, "y": 360, "type": "pig", "radius": 15, "health": 1 }, { "x": 430, "y": 360, "type": "pig", "radius": 15, "health": 1 }, { "x": 480, "y": 360, "type": "pig", "radius": 15, "health": 1 }], "slingshot": { "x": 100, "y": 400 }, "difficulty": 6 },
+            7: { "stageId": 7, "name": "The Bridge", "objectives": { "targetCount": 2, "clearStarThreshold": [90, 110, 130] }, "structures": [{ "x": 400, "y": 450, "type": "wood-block", "width": 200, "height": 20, "rotation": 0 }, { "x": 420, "y": 380, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 480, "y": 380, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }], "targets": [{ "x": 420, "y": 320, "type": "pig", "radius": 15, "health": 1 }, { "x": 480, "y": 320, "type": "pig", "radius": 15, "health": 1 }], "slingshot": { "x": 100, "y": 400 }, "difficulty": 7 },
+            8: { "stageId": 8, "name": "Complex Structure", "objectives": { "targetCount": 4, "clearStarThreshold": [100, 130, 160] }, "structures": [{ "x": 380, "y": 540, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 430, "y": 540, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 480, "y": 540, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 530, "y": 540, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 380, "y": 480, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 430, "y": 480, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 480, "y": 480, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 530, "y": 480, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 405, "y": 420, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 455, "y": 420, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }], "targets": [{ "x": 380, "y": 350, "type": "pig", "radius": 15, "health": 1 }, { "x": 430, "y": 350, "type": "pig", "radius": 15, "health": 1 }, { "x": 480, "y": 350, "type": "pig", "radius": 15, "health": 1 }, { "x": 530, "y": 350, "type": "pig", "radius": 15, "health": 1 }], "slingshot": { "x": 100, "y": 400 }, "difficulty": 8 },
+            9: { "stageId": 9, "name": "The Fortress", "objectives": { "targetCount": 3, "clearStarThreshold": [120, 150, 180] }, "structures": [{ "x": 350, "y": 540, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 400, "y": 540, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 450, "y": 540, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 500, "y": 540, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 550, "y": 540, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 375, "y": 480, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 425, "y": 480, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 475, "y": 480, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 525, "y": 480, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 400, "y": 420, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 450, "y": 420, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 500, "y": 420, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }], "targets": [{ "x": 400, "y": 350, "type": "pig", "radius": 15, "health": 1 }, { "x": 450, "y": 350, "type": "pig", "radius": 15, "health": 1 }, { "x": 500, "y": 350, "type": "pig", "radius": 15, "health": 1 }], "slingshot": { "x": 100, "y": 400 }, "difficulty": 9 },
+            10: { "stageId": 10, "name": "Final Challenge", "objectives": { "targetCount": 4, "clearStarThreshold": [140, 180, 220] }, "structures": [{ "x": 330, "y": 540, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 380, "y": 540, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 430, "y": 540, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 480, "y": 540, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 530, "y": 540, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 580, "y": 540, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 355, "y": 480, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 405, "y": 480, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 455, "y": 480, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 505, "y": 480, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 555, "y": 480, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 380, "y": 420, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 430, "y": 420, "type": "wood-block", "width": 40, "height": 40, "rotation": 0 }, { "x": 480, "y": 420, "type": "stone-block", "width": 40, "height": 40, "rotation": 0 }], "targets": [{ "x": 380, "y": 350, "type": "pig", "radius": 15, "health": 1 }, { "x": 430, "y": 350, "type": "pig", "radius": 15, "health": 1 }, { "x": 480, "y": 350, "type": "pig", "radius": 15, "health": 1 }, { "x": 530, "y": 350, "type": "pig", "radius": 15, "health": 1 }], "slingshot": { "x": 100, "y": 400 }, "difficulty": 10 }
+        };
+
+        async function loadStage(stageId) {
+            gameState = GameState.LOADING;
+            try {
+                currentStageData = STAGE_DATA[stageId];
+                if (!currentStageData) throw new Error(`Stage ${stageId} not found`);
+                gameState = GameState.PLAYING;
+                setupStage();
+            } catch (error) {
+                console.error('Stage load error:', error);
+                gameState = GameState.MENU;
+            }
+        }
+
+        function setupStage() {
+            // Reset
+            bodies = [];
+            projectiles = [];
+            structures = [];
+            targets = [];
+            projectileCount = 0;
+            isAiming = false;
+            clearStartTime = null;
+
+            // Clear world
+            if (world) {
+                World.clear(world, false);
+                Engine.clear(engine);
+            }
+
+            // Reinit physics
+            initEngine();
+
+            // Add ground again
+            const groundBody = Matter.Bodies.rectangle(400, 590, 800, 20, { isStatic: true });
+            World.add(world, groundBody);
+
+            const stage = currentStageData;
+
+            // Add structures
+            stage.structures.forEach(s => {
+                const body = addBody(s.x, s.y, s.width, s.height, {
+                    label: s.type,
+                    health: 1
+                });
+                structures.push({ body, type: s.type, health: 1, x: s.x, y: s.y, width: s.width, height: s.height });
+            });
+
+            // Add targets
+            stage.targets.forEach((t, idx) => {
+                const body = addCircle(t.x, t.y, t.radius, {
+                    label: 'target',
+                    health: 1
+                });
+                targets.push({ body, type: t.type, health: 1, index: idx });
+            });
+
+            // Slingshot
+            slingshotX = stage.slingshot.x;
+            slingshotY = stage.slingshot.y;
+
+            // Create initial projectile
+            spawnProjectile();
+
+            // Setup collision
+            setupCollisions();
+
+            // Update HUD
+            document.getElementById('stage-number').textContent = stage.stageId;
+            const bestScore = playerProgress.stageScores[stage.stageId];
+            document.getElementById('best-score').textContent = bestScore ? `${bestScore}⭐` : '-';
+            document.getElementById('projectile-count').textContent = projectileCount;
+
+            // Hide menu, show pause button
+            document.getElementById('menu-overlay').classList.remove('active');
+            document.getElementById('pause-button').style.display = 'block';
+        }
+
+        function spawnProjectile() {
+            if (currentProjectile) {
+                removeBody(currentProjectile);
+            }
+            currentProjectile = addCircle(slingshotX, slingshotY, 10, {
+                label: 'projectile',
+                frictionAir: 0.02
+            });
+            projectiles.push(currentProjectile);
+        }
+
+        function setupCollisions() {
+            Events.on(engine, 'beforeUpdate', () => {
+                // Check collisions manually
+                bodies.forEach((bodyA, idx) => {
+                    bodies.slice(idx + 1).forEach(bodyB => {
+                        const collision = Collision.collide(bodyA, bodyB);
+                        if (collision) {
+                            handleCollision(bodyA, bodyB, collision);
+                        }
+                    });
+                });
+            });
+        }
+
+        function handleCollision(bodyA, bodyB, collision) {
+            if (bodyA.label === 'projectile' || bodyB.label === 'projectile') {
+                const projectile = bodyA.label === 'projectile' ? bodyA : bodyB;
+                const other = bodyA.label === 'projectile' ? bodyB : bodyA;
+
+                // Check target collision
+                targets.forEach((target, idx) => {
+                    if (target.body === other && target.health > 0) {
+                        target.health = 0;
+                        createParticles(other.position.x, other.position.y, 'gold');
+                        removeBody(other);
+                        targets[idx].destroyed = true;
+                    }
+                });
+
+                // Check structure collision
+                structures.forEach(struct => {
+                    if (struct.body === other) {
+                        struct.health -= 1;
+                        if (struct.health <= 0) {
+                            createParticles(other.position.x, other.position.y, struct.type === 'wood-block' ? 'brown' : 'gray');
+                            removeBody(other);
+                            struct.destroyed = true;
+                        }
+                    }
+                });
+            }
+        }
+
+        let particles = [];
+
+        function createParticles(x, y, color) {
+            for (let i = 0; i < 4; i++) {
+                particles.push({
+                    x: x + (Math.random() - 0.5) * 20,
+                    y: y + (Math.random() - 0.5) * 20,
+                    vx: (Math.random() - 0.5) * 4,
+                    vy: (Math.random() - 0.5) * 4,
+                    life: 300,
+                    color: color
+                });
+            }
+        }
+
+        // ============ RENDERING ============
+        function render() {
+            // Clear
+            ctx.fillStyle = '#87CEEB';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Render structures & targets
+            bodies.forEach(body => {
+                if (body.isStatic) return;
+
+                ctx.save();
+                ctx.translate(body.position.x, body.position.y);
+                ctx.rotate(body.angle);
+
+                if (body.label === 'projectile') {
+                    ctx.fillStyle = '#e74c3c';
+                    ctx.beginPath();
+                    ctx.arc(0, 0, 10, 0, Math.PI * 2);
+                    ctx.fill();
+                } else if (body.label === 'target') {
+                    ctx.fillStyle = '#f39c12';
+                    ctx.beginPath();
+                    ctx.arc(0, 0, 15, 0, Math.PI * 2);
+                    ctx.fill();
+                } else if (body.label === 'wood-block') {
+                    ctx.fillStyle = '#8B4513';
+                    ctx.fillRect(-20, -15, 40, 30);
+                } else if (body.label === 'stone-block') {
+                    ctx.fillStyle = '#A9A9A9';
+                    ctx.fillRect(-20, -15, 40, 30);
+                }
+
+                ctx.restore();
+            });
+
+            // Render slingshot
+            ctx.fillStyle = '#34495e';
+            ctx.beginPath();
+            ctx.arc(slingshotX, slingshotY, slingshotRadius, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Render aim vector
+            if (isAiming) {
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+                ctx.lineWidth = 2;
+                ctx.setLineDash([5, 5]);
+                ctx.beginPath();
+                ctx.moveTo(slingshotX, slingshotY);
+                ctx.lineTo(aimEndX, aimEndY);
+                ctx.stroke();
+                ctx.setLineDash([]);
+
+                // Arc preview
+                const dx = aimEndX - slingshotX;
+                const dy = aimEndY - slingshotY;
+                const impulseScale = 0.01;
+                const speed = Math.sqrt(dx * dx + dy * dy) * impulseScale;
+
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.lineWidth = 1;
+                ctx.setLineDash([3, 3]);
+                ctx.beginPath();
+
+                let arcX = slingshotX;
+                let arcY = slingshotY;
+                let vx = dx * impulseScale;
+                let vy = dy * impulseScale;
+
+                for (let i = 0; i < 30; i++) {
+                    vy += 0.1;
+                    arcX += vx;
+                    arcY += vy;
+                    if (i === 0) ctx.moveTo(arcX, arcY);
+                    else ctx.lineTo(arcX, arcY);
+                }
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+
+            // Render particles
+            particles = particles.filter(p => p.life > 0);
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += 0.15;
+                p.life -= 1;
+
+                ctx.fillStyle = `rgba(${p.color === 'brown' ? '139, 69, 19' : p.color === 'gray' ? '169, 169, 169' : '243, 156, 18'}, ${p.life / 300})`;
+                ctx.fillRect(p.x - 3, p.y - 3, 6, 6);
+            });
+
+            // Check stage clear
+            const aliveTargets = targets.filter(t => !t.destroyed).length;
+            if (aliveTargets === 0 && currentProjectile && gameState === GameState.PLAYING) {
+                gameState = GameState.CLEAR;
+                clearStartTime = Date.now();
+            }
+
+            // Render clear overlay
+            if (gameState === GameState.CLEAR) {
+                if (Date.now() - clearStartTime > 1500) {
+                    const stars = projectileCount <= currentStageData.objectives.clearStarThreshold[2] ? 3
+                                : projectileCount <= currentStageData.objectives.clearStarThreshold[1] ? 2 : 1;
+                    updateHighestStage(currentStageId, stars);
+
+                    document.getElementById('star-display').textContent = '⭐'.repeat(stars);
+                    document.getElementById('clear-overlay').classList.add('active');
+                    document.getElementById('pause-button').style.display = 'none';
+                }
+            }
+        }
+
+        // ============ INPUT ============
+        canvas.addEventListener('mousedown', (e) => {
+            if (gameState !== GameState.PLAYING) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const dist = Math.sqrt((x - slingshotX) ** 2 + (y - slingshotY) ** 2);
+            if (dist < 50) {
+                isAiming = true;
+                aimStartX = x;
+                aimStartY = y;
+                aimEndX = x;
+                aimEndY = y;
+            }
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isAiming) return;
+
+            const rect = canvas.getBoundingClientRect();
+            aimEndX = e.clientX - rect.left;
+            aimEndY = e.clientY - rect.top;
+        });
+
+        canvas.addEventListener('mouseup', (e) => {
+            if (!isAiming) return;
+
+            isAiming = false;
+
+            const dx = aimEndX - slingshotX;
+            const dy = aimEndY - slingshotY;
+            const impulse = 0.01;
+
+            Body.applyForce(currentProjectile, currentProjectile.position, { x: dx * impulse, y: dy * impulse });
+
+            projectileCount += 1;
+            document.getElementById('projectile-count').textContent = projectileCount;
+
+            setTimeout(() => {
+                if (gameState === GameState.PLAYING && targets.filter(t => !t.destroyed).length > 0) {
+                    spawnProjectile();
+                }
+            }, 500);
+        });
+
+        // ============ UI EVENTS ============
+        document.getElementById('pause-button').addEventListener('click', () => {
+            if (gameState === GameState.PLAYING) {
+                gameState = GameState.PAUSED;
+                document.getElementById('pause-overlay').classList.add('active');
+            }
+        });
+
+        document.getElementById('resume-button').addEventListener('click', () => {
+            if (gameState === GameState.PAUSED) {
+                gameState = GameState.PLAYING;
+                document.getElementById('pause-overlay').classList.remove('active');
+            }
+        });
+
+        document.getElementById('menu-button').addEventListener('click', () => {
+            gameState = GameState.MENU;
+            document.getElementById('pause-overlay').classList.remove('active');
+            showStageSelect();
+        });
+
+        document.getElementById('next-button').addEventListener('click', () => {
+            if (currentStageId < 10) {
+                currentStageId += 1;
+                document.getElementById('clear-overlay').classList.remove('active');
+                loadStage(currentStageId);
+            }
+        });
+
+        document.getElementById('replay-button').addEventListener('click', () => {
+            document.getElementById('clear-overlay').classList.remove('active');
+            loadStage(currentStageId);
+        });
+
+        document.getElementById('menu-button-clear').addEventListener('click', () => {
+            gameState = GameState.MENU;
+            document.getElementById('clear-overlay').classList.remove('active');
+            showStageSelect();
+        });
+
+        function showStageSelect() {
+            loadProgress();
+            const container = document.getElementById('stage-select');
+            container.innerHTML = '';
+
+            for (let i = 1; i <= 10; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'stage-button';
+                const isLocked = i > playerProgress.highestStageUnlocked;
+                if (isLocked) btn.classList.add('locked');
+
+                const score = playerProgress.stageScores[i];
+                const stars = score ? '⭐'.repeat(score) : '';
+
+                btn.innerHTML = `${i}<span class="stars">${stars}</span>`;
+                btn.disabled = isLocked;
+
+                if (!isLocked) {
+                    btn.addEventListener('click', () => {
+                        currentStageId = i;
+                        loadStage(i);
+                    });
+                }
+
+                container.appendChild(btn);
+            }
+
+            document.getElementById('menu-overlay').classList.add('active');
+            document.getElementById('pause-button').style.display = 'none';
+        }
+
+        // ============ MAIN LOOP ============
+        function gameLoop() {
+            if (gameState === GameState.PLAYING) {
+                Engine.update(engine);
+            }
+
+            render();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // ============ INIT ============
+        loadProgress();
+        showStageSelect();
+        gameLoop();
+    </script>
+</body>
+</html>

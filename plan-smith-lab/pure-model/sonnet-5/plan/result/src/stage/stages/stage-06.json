@@ -1,0 +1,20 @@
+{
+  "id": 6,
+  "name": "빙하 지대 1",
+  "birdCount": 3,
+  "birdOrder": ["normal", "normal", "normal"],
+  "slingshotAnchor": { "x": 140, "y": 410 },
+  "groundY": 500,
+  "targetScore": { "oneStar": 1100, "twoStar": 1900, "threeStar": 2800 },
+  "blocks": [
+    { "type": "box", "material": "ice", "x": 590, "y": 460, "w": 20, "h": 80, "angle": 0 },
+    { "type": "box", "material": "ice", "x": 710, "y": 460, "w": 20, "h": 80, "angle": 0 },
+    { "type": "box", "material": "wood", "x": 650, "y": 410, "w": 140, "h": 20, "angle": 0 },
+    { "type": "circle", "material": "ice", "x": 850, "y": 470, "radius": 30 }
+  ],
+  "pigs": [
+    { "x": 650, "y": 482, "radius": 18 },
+    { "x": 850, "y": 422, "radius": 18 }
+  ],
+  "background": "ice"
+}

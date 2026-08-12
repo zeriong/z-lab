@@ -1,0 +1,30 @@
+{
+  "id": 4,
+  "name": "두 채의 집",
+  "theme": "quarry",
+  "gravity": 1,
+  "camera": {
+    "previewRect": { "x": 880, "y": 620, "w": 640, "h": 300 },
+    "minZoom": 0.6,
+    "maxZoom": 1.0
+  },
+  "ground": [{ "points": [[0, 820], [2400, 820], [2400, 1100], [0, 1100]] }],
+  "slingshot": { "x": 240, "y": 700 },
+  "birds": ["red", "red", "red", "red"],
+  "bodies": [
+    { "material": "wood", "shape": "box", "x": 940, "y": 778, "w": 30, "h": 80 },
+    { "material": "wood", "shape": "box", "x": 1060, "y": 778, "w": 30, "h": 80 },
+    { "material": "glass", "shape": "box", "x": 1000, "y": 778, "w": 40, "h": 80 },
+    { "material": "wood", "shape": "box", "x": 1000, "y": 724, "w": 180, "h": 24 },
+    { "material": "wood", "shape": "box", "x": 1340, "y": 778, "w": 30, "h": 80 },
+    { "material": "wood", "shape": "box", "x": 1460, "y": 778, "w": 30, "h": 80 },
+    { "material": "glass", "shape": "box", "x": 1400, "y": 778, "w": 40, "h": 80 },
+    { "material": "wood", "shape": "box", "x": 1400, "y": 724, "w": 180, "h": 24 }
+  ],
+  "pigs": [
+    { "x": 1000, "y": 684, "size": "small" },
+    { "x": 1400, "y": 684, "size": "small" },
+    { "x": 1200, "y": 794, "size": "small" }
+  ],
+  "targetScore": 32000
+}

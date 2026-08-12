@@ -1,0 +1,25 @@
+{
+  "id": 8,
+  "name": "Deep Shelter",
+  "world": { "width": 2400, "height": 720, "gravity": 1.0 },
+  "camera": { "minX": 0, "maxX": 2400, "minZoom": 0.55, "maxZoom": 1.2 },
+  "slingshot": { "x": 220, "y": 520, "maxPull": 140, "power": 0.16 },
+  "birds": ["basic", "basic", "speed", "basic", "bomb"],
+  "ground": [{ "x": 0, "y": 640, "w": 2400, "h": 80 }],
+  "blocks": [
+    { "type": "stone", "shape": "rect", "x": 1200, "y": 640, "w": 32, "h": 240 },
+    { "type": "stone", "shape": "rect", "x": 1400, "y": 640, "w": 32, "h": 140 },
+    { "type": "stone", "shape": "rect", "x": 1700, "y": 640, "w": 32, "h": 140 },
+    { "type": "stone", "shape": "rect", "x": 1550, "y": 500, "w": 340, "h": 32 },
+    { "type": "wood", "shape": "rect", "x": 1450, "y": 468, "w": 24, "h": 100 },
+    { "type": "wood", "shape": "rect", "x": 1650, "y": 468, "w": 24, "h": 100 },
+    { "type": "wood", "shape": "rect", "x": 1550, "y": 368, "w": 240, "h": 24 }
+  ],
+  "pigs": [
+    { "size": "small", "x": 1450, "y": 640 },
+    { "size": "small", "x": 1550, "y": 640 },
+    { "size": "small", "x": 1650, "y": 640 }
+  ],
+  "starThresholds": [28000, 38000, 48000],
+  "trajectoryHints": 5
+}

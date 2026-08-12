@@ -1,0 +1,29 @@
+{
+  "id": 6,
+  "name": "Two Towers",
+  "world": { "width": 2400, "height": 720, "gravity": 1.0 },
+  "camera": { "minX": 0, "maxX": 2400, "minZoom": 0.55, "maxZoom": 1.2 },
+  "slingshot": { "x": 220, "y": 520, "maxPull": 140, "power": 0.16 },
+  "birds": ["basic", "basic", "basic", "basic"],
+  "ground": [{ "x": 0, "y": 640, "w": 2400, "h": 80 }],
+  "blocks": [
+    { "type": "wood", "shape": "rect", "x": 1100, "y": 640, "w": 24, "h": 120 },
+    { "type": "wood", "shape": "rect", "x": 1200, "y": 640, "w": 24, "h": 120 },
+    { "type": "wood", "shape": "rect", "x": 1150, "y": 520, "w": 140, "h": 24 },
+    { "type": "glass", "shape": "rect", "x": 1150, "y": 496, "w": 40, "h": 40 },
+
+    { "type": "stone", "shape": "rect", "x": 1700, "y": 640, "w": 24, "h": 140 },
+    { "type": "stone", "shape": "rect", "x": 1800, "y": 640, "w": 24, "h": 140 },
+    { "type": "stone", "shape": "rect", "x": 1750, "y": 500, "w": 140, "h": 24 },
+    { "type": "wood", "shape": "rect", "x": 1720, "y": 476, "w": 24, "h": 80 },
+    { "type": "wood", "shape": "rect", "x": 1780, "y": 476, "w": 24, "h": 80 },
+    { "type": "wood", "shape": "rect", "x": 1750, "y": 396, "w": 120, "h": 24 }
+  ],
+  "pigs": [
+    { "size": "small", "x": 1150, "y": 640 },
+    { "size": "small", "x": 1750, "y": 640 },
+    { "size": "small", "x": 1750, "y": 372 }
+  ],
+  "starThresholds": [26000, 34000, 43000],
+  "trajectoryHints": 8
+}

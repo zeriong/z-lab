@@ -1,0 +1,26 @@
+{
+  "id": 4,
+  "name": "Tower",
+  "world": { "width": 2400, "height": 720, "gravity": 1.0 },
+  "camera": { "minX": 0, "maxX": 2400, "minZoom": 0.6, "maxZoom": 1.2 },
+  "slingshot": { "x": 220, "y": 520, "maxPull": 140, "power": 0.16 },
+  "birds": ["basic", "basic", "basic", "basic"],
+  "ground": [{ "x": 0, "y": 640, "w": 2400, "h": 80 }],
+  "blocks": [
+    { "type": "wood", "shape": "rect", "x": 1440, "y": 640, "w": 24, "h": 120 },
+    { "type": "wood", "shape": "rect", "x": 1560, "y": 640, "w": 24, "h": 120 },
+    { "type": "wood", "shape": "rect", "x": 1500, "y": 520, "w": 160, "h": 24 },
+    { "type": "wood", "shape": "rect", "x": 1450, "y": 496, "w": 24, "h": 120 },
+    { "type": "wood", "shape": "rect", "x": 1550, "y": 496, "w": 24, "h": 120 },
+    { "type": "wood", "shape": "rect", "x": 1500, "y": 376, "w": 140, "h": 24 },
+    { "type": "wood", "shape": "rect", "x": 1470, "y": 352, "w": 24, "h": 120 },
+    { "type": "wood", "shape": "rect", "x": 1530, "y": 352, "w": 24, "h": 120 },
+    { "type": "stone", "shape": "rect", "x": 1500, "y": 232, "w": 120, "h": 24 }
+  ],
+  "pigs": [
+    { "size": "small", "x": 1500, "y": 640 },
+    { "size": "small", "x": 1500, "y": 208 }
+  ],
+  "starThresholds": [22000, 30000, 38000],
+  "trajectoryHints": 8
+}

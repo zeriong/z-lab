@@ -1,0 +1,21 @@
+{
+  "id": 2,
+  "name": "무너지는 상판",
+  "theme": "meadow",
+  "gravity": 1,
+  "camera": {
+    "previewRect": { "x": 920, "y": 600, "w": 340, "h": 260 },
+    "minZoom": 0.7,
+    "maxZoom": 1.1
+  },
+  "ground": [{ "points": [[0, 820], [2400, 820], [2400, 1100], [0, 1100]] }],
+  "slingshot": { "x": 240, "y": 700 },
+  "birds": ["red", "red", "red"],
+  "bodies": [
+    { "material": "wood", "shape": "box", "x": 1000, "y": 758, "w": 32, "h": 120 },
+    { "material": "wood", "shape": "box", "x": 1160, "y": 758, "w": 32, "h": 120 },
+    { "material": "wood", "shape": "box", "x": 1080, "y": 684, "w": 220, "h": 24 }
+  ],
+  "pigs": [{ "x": 1080, "y": 646, "size": "small" }],
+  "targetScore": 22000
+}
