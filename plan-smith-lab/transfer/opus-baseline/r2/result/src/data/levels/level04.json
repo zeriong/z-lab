@@ -1,0 +1,23 @@
+{
+  "id": 4,
+  "name": "Tower",
+  "world": { "width": 2400, "height": 720, "gravity": 1.0 },
+  "camera": { "minX": 0, "maxX": 2400, "minZoom": 0.6, "maxZoom": 1.2 },
+  "slingshot": { "x": 220, "y": 520, "maxPull": 120, "power": 0.055 },
+  "birds": ["basic", "basic", "basic", "basic"],
+  "ground": [{ "x": 0, "y": 640, "w": 2400, "h": 80 }],
+  "blocks": [
+    { "type": "wood", "shape": "rect", "x": 900, "y": 600, "w": 30, "h": 80 },
+    { "type": "wood", "shape": "rect", "x": 1020, "y": 600, "w": 30, "h": 80 },
+    { "type": "wood", "shape": "rect", "x": 960, "y": 520, "w": 120, "h": 30 },
+    { "type": "wood", "shape": "rect", "x": 900, "y": 420, "w": 30, "h": 80 },
+    { "type": "wood", "shape": "rect", "x": 1020, "y": 420, "w": 30, "h": 80 },
+    { "type": "wood", "shape": "rect", "x": 960, "y": 340, "w": 120, "h": 30 }
+  ],
+  "pigs": [
+    { "size": "small", "x": 900, "y": 300 },
+    { "size": "small", "x": 1020, "y": 300 }
+  ],
+  "starThresholds": [15000, 22000, 30000],
+  "trajectoryHints": 8
+}

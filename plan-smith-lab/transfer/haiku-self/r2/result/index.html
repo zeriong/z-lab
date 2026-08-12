@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Angry Birds</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    #container {
+      width: 100%;
+      max-width: 1000px;
+      background: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    #header h1 {
+      font-size: 20px;
+    }
+
+    #score {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    #pauseButton {
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid white;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    #pauseButton:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    #pauseButton:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    #gameContainer {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
+    }
+
+    #canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
+      cursor: default;
+      touch-action: none;
+    }
+
+    #footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background: #f9f9f9;
+      border-top: 1px solid #ddd;
+      font-size: 14px;
+      color: #666;
+    }
+
+    #stageInfo {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* Overlay Styles */
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #overlay.active {
+      display: flex;
+    }
+
+    .overlay-dialog {
+      background: white;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      min-width: 320px;
+    }
+
+    .overlay-dialog h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .overlay-dialog p {
+      margin-bottom: 24px;
+      font-size: 16px;
+      color: #666;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .overlay-dialog button {
+      padding: 12px 24px;
+      margin: 8px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      transition: background 0.2s;
+      min-width: 120px;
+    }
+
+    .overlay-dialog button:hover {
+      background: #764ba2;
+    }
+
+    .overlay-dialog button.secondary {
+      background: #999;
+    }
+
+    .overlay-dialog button.secondary:hover {
+      background: #777;
+    }
+
+    /* Menu Screen */
+    #menuScreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      z-index: 200;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #menuScreen.hidden {
+      display: none;
+    }
+
+    .menu-content {
+      text-align: center;
+      color: white;
+    }
+
+    .menu-content h1 {
+      font-size: 56px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .menu-content p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    #playButton {
+      padding: 16px 40px;
+      background: #FFD700;
+      color: #333;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    #playButton:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1>🎮 Angry Birds</h1>
+      <div id="score">Score: 0</div>
+      <button id="pauseButton">⏸ Pause</button>
+    </div>
+
+    <div id="gameContainer">
+      <canvas id="canvas" width="1000" height="600"></canvas>
+    </div>
+
+    <div id="footer">
+      <div id="stageInfo">
+        <span id="stageLabel">Stage 1/10</span>
+        <span id="movesLabel">Moves: 3/3</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu Screen -->
+  <div id="menuScreen">
+    <div class="menu-content">
+      <h1>🎮 Angry Birds</h1>
+      <p>Physics Puzzle Game</p>
+      <button id="playButton">Play Game</button>
+    </div>
+  </div>
+
+  <!-- Overlay for pause/complete/gameover -->
+  <div id="overlay">
+    <div class="overlay-dialog">
+      <h2 id="overlayTitle">Game Paused</h2>
+      <p id="overlayMessage"></p>
+      <div class="button-group">
+        <button id="overlayBtn1">Resume</button>
+        <button id="overlayBtn2" class="secondary">Main Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/2.0.20/matter.min.js"></script>
+  <script src="js/gameState.js"></script>
+  <script src="js/stages.js"></script>
+  <script src="js/physics.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

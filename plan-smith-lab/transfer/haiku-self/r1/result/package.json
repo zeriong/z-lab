@@ -1,0 +1,12 @@
+{
+  "name": "angry-birds-web",
+  "version": "1.0.0",
+  "description": "Web-based Angry Birds physics game using Matter.js and Canvas 2D",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000"
+  },
+  "dependencies": {
+    "matter-js": "^0.19.0"
+  }
+}

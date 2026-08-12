@@ -1,0 +1,33 @@
+{
+  "id": 9,
+  "name": "Fortress",
+  "theme": "dusk",
+  "gravity": 1.0,
+  "camera": {
+    "previewRect": { "x": 400, "y": 300, "w": 800, "h": 600 },
+    "minZoom": 0.5,
+    "maxZoom": 2
+  },
+  "ground": [
+    { "points": [[0, 550], [800, 550], [800, 600], [0, 600]] }
+  ],
+  "slingshot": { "x": 100, "y": 450 },
+  "birds": ["red", "red", "bomb", "bomb", "speed"],
+  "bodies": [
+    { "material": "stone", "shape": "box", "x": 480, "y": 500, "w": 40, "h": 40 },
+    { "material": "stone", "shape": "box", "x": 540, "y": 500, "w": 40, "h": 40 },
+    { "material": "glass", "shape": "box", "x": 510, "y": 450, "w": 40, "h": 20 },
+    { "material": "wood", "shape": "box", "x": 480, "y": 400, "w": 40, "h": 40 },
+    { "material": "wood", "shape": "box", "x": 540, "y": 400, "w": 40, "h": 40 },
+    { "material": "stone", "shape": "box", "x": 510, "y": 340, "w": 40, "h": 40 },
+    { "material": "glass", "shape": "box", "x": 450, "y": 480, "w": 20, "h": 40 }
+  ],
+  "pigs": [
+    { "x": 480, "y": 340, "size": "small" },
+    { "x": 540, "y": 340, "size": "small" },
+    { "x": 510, "y": 380, "size": "small" },
+    { "x": 600, "y": 450, "size": "small" },
+    { "x": 420, "y": 450, "size": "small" }
+  ],
+  "targetScore": 40000
+}

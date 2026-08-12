@@ -1,0 +1,45 @@
+{
+  "id": 1,
+  "name": "Getting Started",
+  "theme": "meadow",
+  "gravity": 1.0,
+  "camera": {
+    "previewRect": { "x": 0, "y": 0, "w": 800, "h": 600 },
+    "minZoom": 0.8,
+    "maxZoom": 1.5
+  },
+  "ground": [
+    {
+      "points": [
+        [0, 500],
+        [800, 500],
+        [800, 600],
+        [0, 600]
+      ]
+    }
+  ],
+  "slingshot": { "x": 80, "y": 420 },
+  "birds": ["red", "red", "red"],
+  "bodies": [
+    {
+      "material": "wood",
+      "shape": "box",
+      "x": 400,
+      "y": 450,
+      "w": 40,
+      "h": 80
+    },
+    {
+      "material": "wood",
+      "shape": "box",
+      "x": 500,
+      "y": 450,
+      "w": 40,
+      "h": 80
+    }
+  ],
+  "pigs": [
+    { "x": 600, "y": 420, "size": "small" }
+  ],
+  "targetScore": 20000
+}

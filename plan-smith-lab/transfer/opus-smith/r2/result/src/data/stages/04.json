@@ -1,0 +1,30 @@
+{
+  "id": 4,
+  "name": "Quarry Duo",
+  "theme": "quarry",
+  "gravity": 1.0,
+  "camera": {
+    "previewRect": { "x": 0, "y": 0, "width": 800, "height": 600 },
+    "minZoom": 0.8,
+    "maxZoom": 1.5
+  },
+  "ground": [
+    {
+      "points": [[0, 550], [150, 560], [300, 565], [500, 563], [800, 560]]
+    }
+  ],
+  "slingshot": { "x": 50, "y": 500 },
+  "birds": ["red", "red", "red", "red"],
+  "bodies": [
+    { "material": "wood", "shape": "box", "x": 200, "y": 500, "w": 40, "h": 60 },
+    { "material": "glass", "shape": "box", "x": 200, "y": 420, "w": 40, "h": 40 },
+    { "material": "wood", "shape": "box", "x": 350, "y": 500, "w": 40, "h": 60 },
+    { "material": "glass", "shape": "box", "x": 350, "y": 420, "w": 40, "h": 40 }
+  ],
+  "pigs": [
+    { "x": 200, "y": 380, "size": "small" },
+    { "x": 350, "y": 380, "size": "small" },
+    { "x": 275, "y": 460, "size": "small" }
+  ],
+  "targetScore": 32000
+}

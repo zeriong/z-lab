@@ -1,0 +1,62 @@
+{
+  "id": 3,
+  "name": "Material Strength",
+  "theme": "meadow",
+  "gravity": 1.0,
+  "camera": {
+    "previewRect": { "x": 0, "y": 0, "w": 800, "h": 600 },
+    "minZoom": 0.8,
+    "maxZoom": 1.5
+  },
+  "ground": [
+    {
+      "points": [
+        [0, 500],
+        [800, 500],
+        [800, 600],
+        [0, 600]
+      ]
+    }
+  ],
+  "slingshot": { "x": 80, "y": 420 },
+  "birds": ["red", "red", "red", "red"],
+  "bodies": [
+    {
+      "material": "stone",
+      "shape": "box",
+      "x": 300,
+      "y": 420,
+      "w": 50,
+      "h": 100
+    },
+    {
+      "material": "stone",
+      "shape": "box",
+      "x": 350,
+      "y": 420,
+      "w": 50,
+      "h": 100
+    },
+    {
+      "material": "stone",
+      "shape": "box",
+      "x": 400,
+      "y": 420,
+      "w": 50,
+      "h": 100
+    },
+    {
+      "material": "wood",
+      "shape": "box",
+      "x": 550,
+      "y": 430,
+      "w": 40,
+      "h": 140
+    }
+  ],
+  "pigs": [
+    { "x": 550, "y": 250, "size": "small" },
+    { "x": 650, "y": 350, "size": "small" }
+  ],
+  "targetScore": 27000
+}

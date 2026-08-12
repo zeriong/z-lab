@@ -1,0 +1,29 @@
+{
+  "id": 5,
+  "name": "TNT Surprise",
+  "theme": "quarry",
+  "gravity": 1.0,
+  "camera": {
+    "previewRect": { "x": 0, "y": 0, "width": 800, "height": 600 },
+    "minZoom": 0.8,
+    "maxZoom": 1.5
+  },
+  "ground": [
+    {
+      "points": [[0, 550], [100, 560], [200, 565], [400, 570], [600, 565], [800, 560]]
+    }
+  ],
+  "slingshot": { "x": 50, "y": 500 },
+  "birds": ["red", "red", "speed", "bomb"],
+  "bodies": [
+    { "material": "wood", "shape": "box", "x": 250, "y": 520, "w": 40, "h": 40 },
+    { "material": "tnt", "shape": "box", "x": 300, "y": 480, "w": 40, "h": 40 },
+    { "material": "wood", "shape": "box", "x": 350, "y": 520, "w": 40, "h": 40 }
+  ],
+  "pigs": [
+    { "x": 250, "y": 450, "size": "small" },
+    { "x": 300, "y": 450, "size": "small" },
+    { "x": 350, "y": 450, "size": "small" }
+  ],
+  "targetScore": 33000
+}

@@ -1,0 +1,28 @@
+{
+  "id": 3,
+  "name": "Stone Wall",
+  "theme": "meadow",
+  "gravity": 1.0,
+  "camera": {
+    "previewRect": { "x": 400, "y": 300, "w": 800, "h": 600 },
+    "minZoom": 0.5,
+    "maxZoom": 2
+  },
+  "ground": [
+    { "points": [[0, 550], [800, 550], [800, 600], [0, 600]] }
+  ],
+  "slingshot": { "x": 100, "y": 450 },
+  "birds": ["red", "red", "red", "red"],
+  "bodies": [
+    { "material": "stone", "shape": "box", "x": 480, "y": 500, "w": 40, "h": 40 },
+    { "material": "stone", "shape": "box", "x": 480, "y": 460, "w": 40, "h": 40 },
+    { "material": "stone", "shape": "box", "x": 480, "y": 420, "w": 40, "h": 40 },
+    { "material": "wood", "shape": "box", "x": 580, "y": 500, "w": 40, "h": 40 },
+    { "material": "wood", "shape": "box", "x": 580, "y": 460, "w": 40, "h": 40 }
+  ],
+  "pigs": [
+    { "x": 580, "y": 380, "size": "small" },
+    { "x": 650, "y": 450, "size": "small" }
+  ],
+  "targetScore": 27000
+}

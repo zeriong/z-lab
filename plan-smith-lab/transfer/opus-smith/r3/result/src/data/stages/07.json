@@ -1,0 +1,56 @@
+{
+  "id": 7,
+  "name": "Sloped Terrain",
+  "theme": "dusk",
+  "gravity": 1.0,
+  "camera": {
+    "previewRect": { "x": 0, "y": 0, "w": 800, "h": 600 },
+    "minZoom": 0.8,
+    "maxZoom": 1.5
+  },
+  "ground": [
+    {
+      "points": [
+        [0, 500],
+        [400, 350],
+        [800, 500],
+        [800, 600],
+        [0, 600]
+      ]
+    }
+  ],
+  "slingshot": { "x": 80, "y": 420 },
+  "birds": ["red", "red", "speed"],
+  "bodies": [
+    {
+      "material": "wood",
+      "shape": "box",
+      "x": 250,
+      "y": 380,
+      "w": 50,
+      "h": 80
+    },
+    {
+      "material": "stone",
+      "shape": "box",
+      "x": 550,
+      "y": 380,
+      "w": 50,
+      "h": 80
+    },
+    {
+      "material": "wood",
+      "shape": "box",
+      "x": 400,
+      "y": 280,
+      "w": 40,
+      "h": 40
+    }
+  ],
+  "pigs": [
+    { "x": 250, "y": 270, "size": "small" },
+    { "x": 550, "y": 270, "size": "small" },
+    { "x": 400, "y": 200, "size": "small" }
+  ],
+  "targetScore": 26000
+}

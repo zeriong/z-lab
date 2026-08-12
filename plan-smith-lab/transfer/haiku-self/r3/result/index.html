@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angry Birds - Web Game</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #87CEEB;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    #gameContainer {
+      width: 100%;
+      max-width: 1024px;
+      background: #E8F4F8;
+      border: 2px solid #333;
+      display: flex;
+      flex-direction: column;
+    }
+    #gameHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      background: #D3D3D3;
+      border-bottom: 2px solid #333;
+      font-weight: bold;
+    }
+    #gameScore {
+      font-size: 18px;
+      color: #333;
+    }
+    #pauseButton {
+      padding: 8px 12px;
+      background: #FF6B6B;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    #pauseButton:hover {
+      background: #EE5A6F;
+    }
+    #gameCanvas {
+      display: block;
+      background: linear-gradient(to bottom, #87CEEB 0%, #E8F4F8 100%);
+      cursor: crosshair;
+    }
+    #gameFooter {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      background: #D3D3D3;
+      border-top: 2px solid #333;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    #stageInfo {
+      color: #333;
+    }
+    #movesInfo {
+      color: #333;
+    }
+
+    /* Modal styles */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modalContent {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      min-width: 300px;
+    }
+    .modalContent h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .modalContent p {
+      margin-bottom: 20px;
+      color: #666;
+      font-size: 16px;
+    }
+    .modalButtons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .modalBtn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    .modalBtn.primary {
+      background: #4CAF50;
+      color: white;
+    }
+    .modalBtn.primary:hover {
+      background: #45A049;
+    }
+    .modalBtn.secondary {
+      background: #2196F3;
+      color: white;
+    }
+    .modalBtn.secondary:hover {
+      background: #0B7DDA;
+    }
+    .modalBtn.danger {
+      background: #FF6B6B;
+      color: white;
+    }
+    .modalBtn.danger:hover {
+      background: #EE5A6F;
+    }
+  </style>
+</head>
+<body>
+  <div id="gameContainer">
+    <div id="gameHeader">
+      <div id="gameScore">Score: 0</div>
+      <button id="pauseButton">⏸ Pause</button>
+    </div>
+    <canvas id="gameCanvas"></canvas>
+    <div id="gameFooter">
+      <div id="stageInfo">Stage 1/10</div>
+      <div id="movesInfo">Moves: 3/3</div>
+    </div>
+  </div>
+
+  <!-- Menu Modal -->
+  <div id="menuModal" class="modal active">
+    <div class="modalContent">
+      <h2>Angry Birds</h2>
+      <p>Physics Slinger Game</p>
+      <div class="modalButtons">
+        <button class="modalBtn primary" onclick="window.gameInstance.startGame()">Play</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pause Modal -->
+  <div id="pauseModal" class="modal">
+    <div class="modalContent">
+      <h2>Game Paused</h2>
+      <div class="modalButtons">
+        <button class="modalBtn primary" onclick="window.gameInstance.resumeGame()">Resume</button>
+        <button class="modalBtn secondary" onclick="window.gameInstance.restartLevel()">Restart Level</button>
+        <button class="modalBtn danger" onclick="window.gameInstance.goToMenu()">Main Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Level Complete Modal -->
+  <div id="levelCompleteModal" class="modal">
+    <div class="modalContent">
+      <h2 id="levelCompleteTitle">Stage 1 Clear!</h2>
+      <p id="levelCompleteScore">Score: 0</p>
+      <div class="modalButtons">
+        <button class="modalBtn primary" onclick="window.gameInstance.nextLevel()">Next Stage</button>
+        <button class="modalBtn secondary" onclick="window.gameInstance.goToMenu()">Main Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Over Modal -->
+  <div id="gameOverModal" class="modal">
+    <div class="modalContent">
+      <h2>Game Over</h2>
+      <p id="gameOverMessage">You failed this stage.</p>
+      <div class="modalButtons">
+        <button class="modalBtn primary" onclick="window.gameInstance.restartLevel()">Retry</button>
+        <button class="modalBtn secondary" onclick="window.gameInstance.goToMenu()">Main Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/matter-js@2.0.20/build/matter.min.js"></script>
+  <script src="js/gameState.js"></script>
+  <script src="js/physics.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/stages.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

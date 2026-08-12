@@ -1,0 +1,26 @@
+{
+  "id": 1,
+  "name": "Welcome to Angry Birds",
+  "theme": "meadow",
+  "gravity": 1.0,
+  "camera": {
+    "previewRect": { "x": 0, "y": 0, "width": 800, "height": 600 },
+    "minZoom": 0.8,
+    "maxZoom": 1.5
+  },
+  "ground": [
+    {
+      "points": [[0, 550], [100, 560], [150, 565], [300, 570], [400, 568], [500, 565], [600, 562], [800, 560]]
+    }
+  ],
+  "slingshot": { "x": 50, "y": 500 },
+  "birds": ["red", "red", "red"],
+  "bodies": [
+    { "material": "wood", "shape": "box", "x": 250, "y": 520, "w": 40, "h": 40 },
+    { "material": "wood", "shape": "box", "x": 320, "y": 520, "w": 40, "h": 40 }
+  ],
+  "pigs": [
+    { "x": 370, "y": 510, "size": "small" }
+  ],
+  "targetScore": 20000
+}

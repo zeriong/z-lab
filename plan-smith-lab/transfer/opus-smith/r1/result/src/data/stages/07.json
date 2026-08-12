@@ -1,0 +1,28 @@
+{
+  "id": 7,
+  "name": "Inclined Terrain",
+  "theme": "dusk",
+  "gravity": 1.0,
+  "camera": {
+    "previewRect": { "x": 400, "y": 300, "w": 800, "h": 600 },
+    "minZoom": 0.5,
+    "maxZoom": 2
+  },
+  "ground": [
+    { "points": [[0, 550], [800, 550], [800, 600], [0, 600]] },
+    { "points": [[400, 520], [600, 420], [650, 440], [450, 540]] }
+  ],
+  "slingshot": { "x": 100, "y": 450 },
+  "birds": ["red", "red", "speed"],
+  "bodies": [
+    { "material": "wood", "shape": "box", "x": 480, "y": 460, "w": 40, "h": 40 },
+    { "material": "stone", "shape": "box", "x": 580, "y": 360, "w": 40, "h": 40 },
+    { "material": "wood", "shape": "box", "x": 580, "y": 420, "w": 40, "h": 40 }
+  ],
+  "pigs": [
+    { "x": 480, "y": 400, "size": "small" },
+    { "x": 550, "y": 320, "size": "small" },
+    { "x": 620, "y": 360, "size": "small" }
+  ],
+  "targetScore": 26000
+}

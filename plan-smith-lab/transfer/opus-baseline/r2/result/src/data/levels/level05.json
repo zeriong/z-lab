@@ -1,0 +1,20 @@
+{
+  "id": 5,
+  "name": "Speed Bird",
+  "world": { "width": 2400, "height": 720, "gravity": 1.0 },
+  "camera": { "minX": 0, "maxX": 2400, "minZoom": 0.6, "maxZoom": 1.2 },
+  "slingshot": { "x": 220, "y": 520, "maxPull": 120, "power": 0.055 },
+  "birds": ["basic", "basic", "speed", "speed"],
+  "ground": [{ "x": 0, "y": 640, "w": 2400, "h": 80 }],
+  "blocks": [
+    { "type": "stone", "shape": "rect", "x": 1100, "y": 600, "w": 40, "h": 80 },
+    { "type": "stone", "shape": "rect", "x": 1200, "y": 600, "w": 40, "h": 80 },
+    { "type": "stone", "shape": "rect", "x": 1300, "y": 600, "w": 40, "h": 80 }
+  ],
+  "pigs": [
+    { "size": "small", "x": 1350, "y": 550 },
+    { "size": "small", "x": 1450, "y": 550 }
+  ],
+  "starThresholds": [18000, 26000, 35000],
+  "trajectoryHints": 8
+}

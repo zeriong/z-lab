@@ -1,0 +1,34 @@
+{
+  "id": 10,
+  "name": "Boss Battle",
+  "theme": "dusk",
+  "gravity": 1.0,
+  "camera": {
+    "previewRect": { "x": 0, "y": 0, "width": 800, "height": 600 },
+    "minZoom": 0.8,
+    "maxZoom": 1.5
+  },
+  "ground": [
+    {
+      "points": [[0, 550], [100, 560], [200, 565], [500, 570], [800, 560]]
+    }
+  ],
+  "slingshot": { "x": 50, "y": 500 },
+  "birds": ["red", "red", "bomb", "bomb", "speed"],
+  "bodies": [
+    { "material": "stone", "shape": "box", "x": 250, "y": 520, "w": 60, "h": 20 },
+    { "material": "wood", "shape": "box", "x": 250, "y": 460, "w": 60, "h": 20 },
+    { "material": "glass", "shape": "box", "x": 250, "y": 400, "w": 60, "h": 20 },
+    { "material": "stone", "shape": "box", "x": 350, "y": 520, "w": 40, "h": 60 },
+    { "material": "wood", "shape": "box", "x": 400, "y": 480, "w": 40, "h": 60 },
+    { "material": "tnt", "shape": "box", "x": 350, "y": 420, "w": 40, "h": 40 },
+    { "material": "tnt", "shape": "box", "x": 400, "y": 400, "w": 40, "h": 40 }
+  ],
+  "pigs": [
+    { "x": 250, "y": 380, "size": "boss" },
+    { "x": 200, "y": 480, "size": "small" },
+    { "x": 300, "y": 480, "size": "small" },
+    { "x": 350, "y": 480, "size": "small" }
+  ],
+  "targetScore": 42000
+}

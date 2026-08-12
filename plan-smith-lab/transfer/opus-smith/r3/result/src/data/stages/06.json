@@ -1,0 +1,96 @@
+{
+  "id": 6,
+  "name": "Glass Weakness",
+  "theme": "quarry",
+  "gravity": 1.0,
+  "camera": {
+    "previewRect": { "x": 0, "y": 0, "w": 800, "h": 600 },
+    "minZoom": 0.8,
+    "maxZoom": 1.5
+  },
+  "ground": [
+    {
+      "points": [
+        [0, 500],
+        [800, 500],
+        [800, 600],
+        [0, 600]
+      ]
+    }
+  ],
+  "slingshot": { "x": 80, "y": 420 },
+  "birds": ["red", "red", "red", "bomb"],
+  "bodies": [
+    {
+      "material": "stone",
+      "shape": "box",
+      "x": 350,
+      "y": 440,
+      "w": 60,
+      "h": 80
+    },
+    {
+      "material": "glass",
+      "shape": "box",
+      "x": 420,
+      "y": 380,
+      "w": 60,
+      "h": 60
+    },
+    {
+      "material": "stone",
+      "shape": "box",
+      "x": 490,
+      "y": 440,
+      "w": 60,
+      "h": 80
+    },
+    {
+      "material": "stone",
+      "shape": "box",
+      "x": 350,
+      "y": 280,
+      "w": 60,
+      "h": 60
+    },
+    {
+      "material": "glass",
+      "shape": "box",
+      "x": 420,
+      "y": 280,
+      "w": 60,
+      "h": 60
+    },
+    {
+      "material": "stone",
+      "shape": "box",
+      "x": 490,
+      "y": 280,
+      "w": 60,
+      "h": 60
+    },
+    {
+      "material": "stone",
+      "shape": "box",
+      "x": 350,
+      "y": 160,
+      "w": 60,
+      "h": 60
+    },
+    {
+      "material": "glass",
+      "shape": "box",
+      "x": 420,
+      "y": 160,
+      "w": 60,
+      "h": 60
+    }
+  ],
+  "pigs": [
+    { "x": 350, "y": 380, "size": "small" },
+    { "x": 420, "y": 160, "size": "small" },
+    { "x": 550, "y": 300, "size": "small" },
+    { "x": 300, "y": 200, "size": "small" }
+  ],
+  "targetScore": 34000
+}

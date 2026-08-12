@@ -1,0 +1,12 @@
+{
+  "name": "angry-birds-game",
+  "version": "1.0.0",
+  "description": "Web-based Angry Birds physics game with 10 stages",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 8080"
+  },
+  "dependencies": {
+    "matter-js": "^2.0.20"
+  }
+}

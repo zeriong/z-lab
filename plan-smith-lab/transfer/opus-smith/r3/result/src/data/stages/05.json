@@ -1,0 +1,71 @@
+{
+  "id": 5,
+  "name": "Explosive Power",
+  "theme": "quarry",
+  "gravity": 1.0,
+  "camera": {
+    "previewRect": { "x": 0, "y": 0, "w": 800, "h": 600 },
+    "minZoom": 0.8,
+    "maxZoom": 1.5
+  },
+  "ground": [
+    {
+      "points": [
+        [0, 500],
+        [800, 500],
+        [800, 600],
+        [0, 600]
+      ]
+    }
+  ],
+  "slingshot": { "x": 80, "y": 420 },
+  "birds": ["red", "red", "red", "bomb"],
+  "bodies": [
+    {
+      "material": "wood",
+      "shape": "box",
+      "x": 350,
+      "y": 430,
+      "w": 50,
+      "h": 100
+    },
+    {
+      "material": "wood",
+      "shape": "box",
+      "x": 350,
+      "y": 310,
+      "w": 50,
+      "h": 50
+    },
+    {
+      "material": "tnt",
+      "shape": "box",
+      "x": 420,
+      "y": 380,
+      "w": 50,
+      "h": 50
+    },
+    {
+      "material": "wood",
+      "shape": "box",
+      "x": 490,
+      "y": 430,
+      "w": 50,
+      "h": 100
+    },
+    {
+      "material": "wood",
+      "shape": "box",
+      "x": 490,
+      "y": 310,
+      "w": 50,
+      "h": 50
+    }
+  ],
+  "pigs": [
+    { "x": 350, "y": 190, "size": "small" },
+    { "x": 420, "y": 280, "size": "small" },
+    { "x": 560, "y": 280, "size": "small" }
+  ],
+  "targetScore": 33000
+}

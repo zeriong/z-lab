@@ -1,0 +1,53 @@
+{
+  "id": 2,
+  "name": "Structure Collapse",
+  "theme": "meadow",
+  "gravity": 1.0,
+  "camera": {
+    "previewRect": { "x": 0, "y": 0, "w": 800, "h": 600 },
+    "minZoom": 0.8,
+    "maxZoom": 1.5
+  },
+  "ground": [
+    {
+      "points": [
+        [0, 500],
+        [800, 500],
+        [800, 600],
+        [0, 600]
+      ]
+    }
+  ],
+  "slingshot": { "x": 80, "y": 420 },
+  "birds": ["red", "red", "red"],
+  "bodies": [
+    {
+      "material": "wood",
+      "shape": "box",
+      "x": 350,
+      "y": 430,
+      "w": 30,
+      "h": 120
+    },
+    {
+      "material": "wood",
+      "shape": "box",
+      "x": 500,
+      "y": 430,
+      "w": 30,
+      "h": 120
+    },
+    {
+      "material": "wood",
+      "shape": "box",
+      "x": 425,
+      "y": 300,
+      "w": 150,
+      "h": 30
+    }
+  ],
+  "pigs": [
+    { "x": 425, "y": 250, "size": "small" }
+  ],
+  "targetScore": 22000
+}

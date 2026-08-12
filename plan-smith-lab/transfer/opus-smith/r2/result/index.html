@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angry Birds</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .overlay-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+    }
+    .overlay-container.active {
+      pointer-events: auto;
+    }
+    .overlay-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.7);
+    }
+    .menu-screen, .stage-select, .pause-screen, .clear-screen, .fail-screen {
+      background: #222;
+      padding: 40px;
+      border-radius: 10px;
+      text-align: center;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    .menu-screen h1, .stage-select h1 {
+      font-size: 48px;
+      margin-bottom: 30px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      margin: 8px;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .stage-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .stage-tile {
+      aspect-ratio: 1;
+      border: 2px solid #666;
+      padding: 10px;
+      cursor: pointer;
+      background: #333;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-weight: bold;
+    }
+    .stage-tile.locked {
+      background: #222;
+      color: #999;
+      cursor: not-allowed;
+    }
+    .stage-tile.unlocked {
+      background: #2a5a2a;
+    }
+    .stage-tile .stars {
+      font-size: 12px;
+      margin-top: 5px;
+    }
+    .progress-bar {
+      margin: 20px 0;
+      font-size: 18px;
+    }
+    .hud {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      font-family: Arial, sans-serif;
+      pointer-events: none;
+    }
+    .birds-remaining {
+      display: flex;
+      gap: 5px;
+    }
+    .bird-icon {
+      width: 30px;
+      height: 30px;
+      background: red;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+    .bird-icon.used {
+      background: #666;
+      opacity: 0.5;
+    }
+    .score {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .pause-btn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      pointer-events: auto;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas"></canvas>
+  <div class="overlay-container" id="overlayContainer">
+    <div class="overlay-content" id="overlayContent"></div>
+  </div>
+  <div class="hud" id="hud">
+    <div class="birds-remaining" id="birdsRemaining"></div>
+    <div class="score" id="scoreDisplay">Score: 0</div>
+    <button class="pause-btn" id="pauseBtn">⏸</button>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
