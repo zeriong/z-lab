@@ -1,0 +1,199 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Apple SD Gothic Neo", sans-serif;
+  background: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  aspect-ratio: 16 / 9;
+}
+
+#game-canvas {
+  width: 100%;
+  max-width: 1280px;
+  aspect-ratio: 16 / 9;
+  display: block;
+  touch-action: none;
+}
+
+.screen {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 100;
+}
+
+.screen.active {
+  display: flex;
+}
+
+#screen-main,
+#screen-stages {
+  background: #1a1a2e;
+  color: white;
+}
+
+#screen-pause,
+#screen-clear,
+#screen-fail {
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+}
+
+.screen h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.screen h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  background: #f39c12;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #e67e22;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+#stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
+}
+
+.stage-btn {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 20px;
+  background: #16a085;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.stage-btn:hover {
+  background: #138d75;
+}
+
+.stage-btn.locked {
+  background: #7f8c8d;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.stage-btn.locked:hover {
+  background: #7f8c8d;
+}
+
+.stage-stars {
+  font-size: 12px;
+}
+
+#hud {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 50;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-weight: bold;
+}
+
+#hud-left {
+  display: flex;
+  gap: 30px;
+  font-size: 20px;
+}
+
+#hud-stage,
+#hud-score {
+  display: flex;
+  align-items: center;
+}
+
+#hud-birds {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  height: 40px;
+}
+
+.bird-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+#btn-pause {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 10px 16px;
+  font-size: 14px;
+  background: #e74c3c;
+}
+
+#btn-pause:hover {
+  background: #c0392b;
+}
+
+#clear-stars {
+  font-size: 48px;
+  letter-spacing: 8px;
+}
+
+#clear-score {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+#fail-msg {
+  font-size: 20px;
+  margin: 20px 0;
+}

@@ -1,0 +1,195 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Apple SD Gothic Neo", sans-serif;
+  background: #f0f0f0;
+  overflow: hidden;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: #f0f0f0;
+}
+
+#game-canvas {
+  width: 100%;
+  max-width: 1280px;
+  aspect-ratio: 16 / 9;
+  display: block;
+  touch-action: none;
+}
+
+#hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  color: white;
+  font-size: 16px;
+  display: none;
+}
+
+#hud.active {
+  display: flex;
+}
+
+#hud-left {
+  display: flex;
+  gap: 30px;
+}
+
+#hud-stage, #hud-score {
+  font-weight: bold;
+}
+
+#hud-birds {
+  display: flex;
+  gap: 5px;
+  flex: 1;
+  justify-content: center;
+}
+
+.bird-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+#btn-pause {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 8px 16px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#btn-pause:hover {
+  background: #c0392b;
+}
+
+.screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 100;
+}
+
+.screen.active {
+  display: flex;
+}
+
+#screen-main, #screen-stages {
+  background: #2c3e50;
+  color: white;
+}
+
+#screen-pause, #screen-clear, #screen-fail {
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+}
+
+h1, h2 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 18px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #2980b9;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+#stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 100px);
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.stage-button {
+  width: 100px;
+  height: 100px;
+  background: #34495e;
+  border: 2px solid #95a5a6;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.stage-button:hover:not(:disabled) {
+  background: #455a64;
+  border-color: #3498db;
+}
+
+.stage-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.stage-button .stars {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+#clear-stars {
+  font-size: 32px;
+  margin: 20px 0;
+}
+
+#clear-score {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+#screen-main button, #screen-stages button, #screen-pause button,
+#screen-clear button, #screen-fail button {
+  margin: 10px;
+}
