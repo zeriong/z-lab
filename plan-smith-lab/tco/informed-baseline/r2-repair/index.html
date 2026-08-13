@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>앵그리버드</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <canvas id="game-canvas" width="1280" height="720"></canvas>
+
+    <div id="hud" class="hud">
+      <div id="hud-left">
+        <div id="hud-stage">스테이지 1</div>
+        <div id="hud-score">점수 0</div>
+      </div>
+      <div id="hud-birds"></div>
+      <button id="btn-pause">일시정지</button>
+    </div>
+
+    <div id="screen-main" class="screen active">
+      <h1>앵그리버드</h1>
+      <button id="btn-start">게임 시작</button>
+      <button id="btn-stages">스테이지 선택</button>
+    </div>
+
+    <div id="screen-stages" class="screen">
+      <h2>스테이지 선택</h2>
+      <div id="stage-grid"></div>
+      <button id="btn-stages-back">뒤로</button>
+    </div>
+
+    <div id="screen-pause" class="screen">
+      <h2>일시정지</h2>
+      <button id="btn-resume">계속하기</button>
+      <button id="btn-retry">다시하기</button>
+      <button id="btn-menu">메인으로</button>
+    </div>
+
+    <div id="screen-clear" class="screen">
+      <h2>스테이지 클리어</h2>
+      <div id="clear-stars"></div>
+      <div id="clear-score"></div>
+      <button id="btn-next">다음 스테이지</button>
+      <button id="btn-clear-retry">다시하기</button>
+      <button id="btn-clear-menu">메인으로</button>
+    </div>
+
+    <div id="screen-fail" class="screen">
+      <h2>실패</h2>
+      <div id="fail-msg">새를 모두 사용했습니다</div>
+      <button id="btn-fail-retry">다시하기</button>
+      <button id="btn-fail-menu">메인으로</button>
+    </div>
+  </div>
+
+  <script src="src/util.js"></script>
+  <script src="src/const.js"></script>
+  <script src="src/materials.js"></script>
+  <script src="src/physics.js"></script>
+  <script src="src/stages.js"></script>
+  <script src="src/audio.js"></script>
+  <script src="src/render.js"></script>
+  <script src="src/input.js"></script>
+  <script src="src/game.js"></script>
+  <script src="src/ui.js"></script>
+  <script src="src/main.js"></script>
+</body>
+</html>
