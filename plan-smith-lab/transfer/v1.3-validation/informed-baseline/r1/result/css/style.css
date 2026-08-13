@@ -1,0 +1,215 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #1b1f24;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, 'Malgun Gothic', sans-serif;
+}
+
+#app {
+  position: absolute;
+  width: 1280px;
+  height: 720px;
+  transform-origin: top left;
+}
+
+#game-canvas {
+  display: block;
+  width: 1280px;
+  height: 720px;
+  touch-action: none;
+}
+
+#hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#hud-stage {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+#hud-score {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+#hud-birds {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+}
+
+.bird-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#pause-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 56px;
+  height: 56px;
+  z-index: 5;
+  background: #f5b83d;
+  border: none;
+  border-radius: 12px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#pause-btn:hover {
+  background: #ffce7e;
+}
+
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+#overlay[data-no-panel] {
+  pointer-events: none;
+}
+
+section {
+  background: rgba(20, 24, 30, 0.88);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  color: white;
+  max-width: 600px;
+  animation: slideUp 0.3s ease-out;
+}
+
+section[hidden] {
+  display: none;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  font-size: 48px;
+  margin: 0 0 30px 0;
+}
+
+h2 {
+  font-size: 32px;
+  margin: 0 0 20px 0;
+}
+
+p {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #ccc;
+}
+
+button {
+  background: #f5b83d;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 10px 8px;
+}
+
+button:hover {
+  background: #ffce7e;
+}
+
+button:active {
+  background: #e6a82b;
+}
+
+button:disabled {
+  background: #999;
+  cursor: not-allowed;
+  color: #666;
+}
+
+#stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.stage-btn {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  position: relative;
+  padding: 12px;
+}
+
+.stage-stars {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+#clear-stars {
+  font-size: 48px;
+  margin: 20px 0;
+  letter-spacing: 8px;
+}
+
+#clear-score {
+  font-size: 32px;
+  margin: 20px 0;
+  color: #f5b83d;
+}
+
+#error-message {
+  font-size: 16px;
+  color: #ffaaaa;
+  margin: 20px 0;
+}

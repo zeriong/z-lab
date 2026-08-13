@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Angry Birds</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <canvas id="game-canvas"></canvas>
+
+    <div id="hud">
+      <div id="hud-stage">STAGE 1</div>
+      <div id="hud-score">0</div>
+      <div id="hud-birds"></div>
+    </div>
+
+    <button id="pause-btn" aria-label="일시정지">❚❚</button>
+
+    <div id="overlay">
+      <section id="panel-main" hidden>
+        <h1>Angry Birds</h1>
+        <button id="btn-start">게임 시작</button>
+        <button id="btn-select">스테이지 선택</button>
+      </section>
+
+      <section id="panel-select" hidden>
+        <h2>스테이지 선택</h2>
+        <div id="stage-grid"></div>
+        <button id="btn-select-back">뒤로</button>
+      </section>
+
+      <section id="panel-pause" hidden>
+        <h2>일시정지</h2>
+        <button id="btn-resume">계속하기</button>
+        <button id="btn-restart">다시하기</button>
+        <button id="btn-main">메인으로</button>
+      </section>
+
+      <section id="panel-clear" hidden>
+        <h2>클리어!</h2>
+        <div id="clear-stars"></div>
+        <div id="clear-score"></div>
+        <button id="btn-next">다음 스테이지</button>
+        <button id="btn-clear-retry">다시하기</button>
+        <button id="btn-clear-main">메인으로</button>
+      </section>
+
+      <section id="panel-fail" hidden>
+        <h2>실패</h2>
+        <button id="btn-fail-retry">다시하기</button>
+        <button id="btn-fail-main">메인으로</button>
+      </section>
+
+      <section id="panel-error" hidden>
+        <h2>오류</h2>
+        <p id="error-message"></p>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/levels.js"></script>
+  <script src="js/physics.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

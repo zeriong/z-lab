@@ -1,0 +1,199 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#canvas-container {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#game-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: crosshair;
+}
+
+#load-banner {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 1000;
+}
+
+#hud {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 10;
+  pointer-events: none;
+}
+
+#hud-score {
+  margin-bottom: 12px;
+}
+
+#hud-birds {
+  display: flex;
+  gap: 8px;
+}
+
+.hud-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  font-size: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 11;
+  transition: background 0.2s;
+}
+
+.hud-button:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+#btn-mute {
+  right: 68px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.overlay.on {
+  display: flex;
+}
+
+.overlay-content {
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.overlay-content h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.overlay-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.overlay-content button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: bold;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.overlay-content button:hover {
+  background: #45a049;
+}
+
+.overlay-content button:active {
+  background: #3d8b40;
+}
+
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.stage-slot {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: bold;
+  font-size: 18px;
+  border: 2px solid transparent;
+}
+
+.stage-slot:hover:not(.locked) {
+  background: #c0c0c0;
+  transform: scale(1.05);
+}
+
+.stage-slot.locked {
+  background: #9e9e9e;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.stage-slot .number {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.stage-slot .stars {
+  font-size: 16px;
+  color: #ffc107;
+  min-height: 20px;
+}
+
+#ov-select .overlay-content {
+  min-width: 600px;
+}

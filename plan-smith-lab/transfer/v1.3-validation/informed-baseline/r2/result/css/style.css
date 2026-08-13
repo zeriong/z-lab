@@ -1,0 +1,216 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #1b1f24;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, 'Malgun Gothic', sans-serif;
+}
+
+#app {
+  position: absolute;
+  width: 1280px;
+  height: 720px;
+  transform-origin: top left;
+}
+
+#game-canvas {
+  display: block;
+  width: 1280px;
+  height: 720px;
+  touch-action: none;
+  background: linear-gradient(to bottom, #7ec8f0, #cfeaf7);
+}
+
+#hud {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  pointer-events: none;
+  z-index: 4;
+}
+
+#hud-stage {
+  flex: 1;
+}
+
+#hud-score {
+  flex: 1;
+  text-align: center;
+}
+
+#hud-birds {
+  flex: 1;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+#hud-birds span {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+#pause-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: #f5b83d;
+  color: #1b1f24;
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  z-index: 5;
+}
+
+#pause-btn:hover {
+  background: #ffc94d;
+}
+
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1280px;
+  height: 720px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+
+#overlay[data-empty="true"] {
+  pointer-events: none;
+  background: none;
+}
+
+section {
+  background: rgba(20, 24, 30, 0.88);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  color: white;
+  max-width: 600px;
+  max-height: 90%;
+  overflow-y: auto;
+}
+
+section[hidden] {
+  display: none;
+}
+
+section h1 {
+  font-size: 48px;
+  margin: 0 0 30px 0;
+  color: #f5b83d;
+}
+
+section h2 {
+  font-size: 32px;
+  margin: 0 0 20px 0;
+  color: #f5b83d;
+}
+
+section p {
+  font-size: 16px;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+button {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 12px auto;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  background: #f5b83d;
+  color: #1b1f24;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover:not(:disabled) {
+  background: #ffc94d;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stage-btn {
+  aspect-ratio: 1;
+  padding: 0;
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stage-btn[disabled] {
+  background: #666;
+  color: #ccc;
+}
+
+.stage-stars {
+  position: absolute;
+  top: 4px;
+  font-size: 12px;
+  color: #ffd700;
+}
+
+.stage-lock {
+  position: absolute;
+  top: 4px;
+  font-size: 14px;
+}
+
+#clear-stars {
+  font-size: 36px;
+  color: #ffd700;
+  margin: 15px 0;
+  letter-spacing: 8px;
+}
+
+#clear-score {
+  font-size: 28px;
+  color: #f5b83d;
+  margin: 20px 0;
+  font-weight: bold;
+}

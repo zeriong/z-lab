@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angry Birds 물리 슬링샷</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game-canvas" width="1280" height="720"></canvas>
+
+    <!-- 일시정지·음소거 버튼 (HUD) -->
+    <button id="btn-pause" class="hud-button pause-btn">⏸</button>
+    <button id="btn-mute" class="hud-button mute-btn">🔊</button>
+
+    <!-- 메인 메뉴 오버레이 -->
+    <div id="ov-menu" class="overlay on">
+      <div class="overlay-content">
+        <h1>앵그리버드</h1>
+        <p class="guide-text">새를 당겼다 놓아 발사</p>
+        <button id="btn-start" class="overlay-button">게임시작</button>
+        <button id="btn-open-select" class="overlay-button">스테이지 선택</button>
+      </div>
+    </div>
+
+    <!-- 스테이지 선택 오버레이 -->
+    <div id="ov-select" class="overlay">
+      <div class="overlay-content">
+        <h2>스테이지 선택</h2>
+        <div id="stage-grid" class="stage-grid"></div>
+        <button id="btn-select-back" class="overlay-button">메인으로</button>
+      </div>
+    </div>
+
+    <!-- 일시정지 오버레이 -->
+    <div id="ov-pause" class="overlay">
+      <div class="overlay-content">
+        <h2>일시정지</h2>
+        <button id="btn-resume" class="overlay-button">계속하기</button>
+        <button id="btn-retry" class="overlay-button">다시하기</button>
+        <button id="btn-home" class="overlay-button">메인으로</button>
+      </div>
+    </div>
+
+    <!-- 클리어 오버레이 -->
+    <div id="ov-clear" class="overlay">
+      <div class="overlay-content">
+        <h2>클리어!</h2>
+        <p id="clear-score">점수: 0</p>
+        <p id="clear-stars">★★★</p>
+        <button id="btn-next" class="overlay-button">다음 스테이지</button>
+        <button id="btn-clear-home" class="overlay-button">메인으로</button>
+      </div>
+    </div>
+
+    <!-- 실패 오버레이 -->
+    <div id="ov-fail" class="overlay">
+      <div class="overlay-content">
+        <h2>실패</h2>
+        <p id="fail-msg">새를 모두 사용했습니다</p>
+        <button id="btn-fail-retry" class="overlay-button">다시하기</button>
+        <button id="btn-fail-home" class="overlay-button">메인으로</button>
+      </div>
+    </div>
+
+    <!-- 로드 실패 배너 -->
+    <div id="load-banner" class="load-banner">
+      물리 엔진 로드 실패 — 인터넷 연결을 확인하세요
+    </div>
+
+    <!-- HUD 요소 -->
+    <div id="hud-score" class="hud-text score-text">점수: 0</div>
+    <div id="hud-birds" class="hud-birds birds-text"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>
+  <script src="stages.js"></script>
+  <script src="physics.js"></script>
+  <script src="ui.js"></script>
+  <script src="game.js"></script>
+  <script>
+    Game.boot();
+  </script>
+</body>
+</html>
