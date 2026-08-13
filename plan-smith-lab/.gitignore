@@ -1,0 +1,8 @@
+# 오케스트레이터의 사후 빌드가 만드는 것 — 모델 산출물이 아니므로 표본에 넣지 않는다.
+# 계열별 .gitignore를 만들다 transfer/에서 세 번째로 같은 실수가 났다: 여기 한 곳에서 전부 막는다.
+# (result/ 안에 에이전트가 스스로 쓴 .gitignore는 표본이므로 건드리지 않는다.)
+node_modules/
+dist/
+package-lock.json
+.vite/
+.DS_Store
