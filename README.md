@@ -1,25 +1,24 @@
 # z-lab
 
-출시 예정인 플러그인의 실험, 그리고 그 밖의 작은 실험들을 **검증하는 공간**이다.
+*Read this in other languages: [한국어](./README.ko.md)*
 
-여기서 만드는 것은 제품이 아니라 **실험 결과**다. 모든 작업의 산출물은
-"동작하는 무엇"이 아니라 **측정된 발견 + 그 증거**이며, 검증을 통과한 발견만이
-실제 플러그인(예: [plan-smith](https://github.com/zeriong/plan-smith))의 릴리스로 나간다.
+A space for validating experiments on plugins headed for release — plus whatever smaller experiments come up along the way.
 
-## 운영 규칙
+Nothing here is a product. Every piece of work in this repository exists to produce one thing: a **measured finding with its evidence attached**. Only findings that survive validation graduate into actual plugin releases (for example, [plan-smith](https://github.com/zeriong/plan-smith)).
 
-실험 설계·오염 방지·기록 규약은 [CLAUDE.md](./CLAUDE.md)에 법령으로 정리되어 있다.
-전부 이 저장소에서 실제로 실패한 사례에서 나온 조항들이다. 핵심만 추리면:
+## How the lab operates
 
-- **표본은 손대지 않는다** — 실험 산출물에 검증·리뷰·자가수정을 하면 무엇을 측정했는지 알 수 없다.
-- **금지는 프롬프트가 아니라 구조로** — 도구를 제거해 능력 자체를 차단한다.
-- **실험은 기록이 완성되었을 때 끝난다** — 입력 명세 + arm별 산출물 + `METRICS.md` + 발견 문서 4종.
-- **측정하지 않은 것을 주장하지 않는다** — 측정 대상과 측정 안 한 것을 분리해 적는다.
+Experiment design, contamination control, and record-keeping are codified as law in [CLAUDE.md](./CLAUDE.md) — every article was written after an actual failure in this repository. The essentials:
 
-## 실험 계열
+- **Never touch the specimen.** Verifying, reviewing, or self-correcting an experiment's output destroys the ability to say what was measured.
+- **Enforce bans structurally, not with prompts.** Remove the tool; don't ask the agent to abstain.
+- **An experiment ends when its record is complete** — input spec, per-arm artifacts, `METRICS.md`, and a findings document. All four, or it isn't done.
+- **Claim nothing unmeasured.** Every report separates what was measured from what was not.
 
-| 디렉토리 | 내용 |
+## Experiment series
+
+| Directory | Contents |
 |---|---|
-| `plan-smith-lab/` | plan-smith 플러그인 검증 계열. 모델별 플랜 코퍼스(`fable-plan/`, `opus-plan/`), 순수 모델 1-shot 측정(`pure-model/`), 플랜→약한 구현자 전이 실험(`transfer/`), 완성까지의 총비용 비교(`tco/`), 통제 A/B(`test/`), 그리고 표본과 분리된 분석·개선 근거(`analyze/`). 이 계열의 발견이 plan-smith v1.1~v1.4 릴리스의 근거가 되었다. |
+| `plan-smith-lab/` | The validation series for the plan-smith plugin: per-model plan corpora (`fable-plan/`, `opus-plan/`), pure-model 1-shot measurement (`pure-model/`), plan-to-weak-implementer transfer experiments (`transfer/`), total cost to a working artifact (`tco/`), controlled A/B rounds (`test/`), and analysis kept strictly apart from specimens (`analyze/`). The findings from this series became the evidence base for plan-smith releases v1.1 through v1.4. |
 
-새 실험 계열은 `<주제>-lab/` 디렉토리로 추가한다. 디렉토리 규약은 CLAUDE.md 제9조 참고.
+New experiment series get their own `<topic>-lab/` directory. Directory conventions live in CLAUDE.md, Article 9.
