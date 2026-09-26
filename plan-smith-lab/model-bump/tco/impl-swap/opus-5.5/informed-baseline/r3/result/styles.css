@@ -1,0 +1,233 @@
+/* styles.css — 화면 전환 · HUD · 버튼 (§8, §13.2) */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #10161f;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, "Apple SD Gothic Neo", sans-serif;
+  color: #ffffff;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 캔버스 letterbox: 가로폭과 화면 높이 중 작은 쪽에 맞춘다 */
+#app {
+  position: relative;
+  width: 100%;
+  max-width: min(1280px, calc(100vh * 16 / 9));
+  overflow: hidden;
+}
+
+#game-canvas {
+  width: 100%;
+  max-width: 1280px;
+  aspect-ratio: 16 / 9;
+  display: block;
+  touch-action: none;
+  background: #87ceeb;
+}
+
+/* ---------------- HUD (PLAYING / PAUSED 에서만 .active) ---------------- */
+
+#hud {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#hud.active {
+  display: block;
+}
+
+#hud-left {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 22px;
+  font-weight: 800;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.45);
+}
+
+#hud-birds {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+}
+
+.hud-bird {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #000000;
+}
+
+/* 일시정지 버튼: 인게임 우측 상단 고정 (수용 기준 A4) */
+#btn-pause {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  min-width: 0;
+  padding: 8px 18px;
+  font-size: 16px;
+  pointer-events: auto;
+}
+
+/* ---------------- 화면 전환 ---------------- */
+
+.screen {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* 메인 / 스테이지 선택: 불투명 배경으로 캔버스를 완전히 가린다 */
+#screen-main,
+#screen-stages {
+  background: linear-gradient(180deg, #3a86c4 0%, #1d4f7a 100%);
+}
+
+/* 일시정지 / 클리어 / 실패: 캔버스 위 반투명 오버레이 */
+#screen-pause,
+#screen-clear,
+#screen-fail {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.screen h1 {
+  margin: 0 0 18px;
+  font-size: 72px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-shadow: 0 5px 0 #b3261e, 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.screen h2 {
+  margin: 0 0 10px;
+  font-size: 44px;
+  font-weight: 900;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.45);
+}
+
+#clear-stars {
+  font-size: 56px;
+  line-height: 1;
+  color: #f2c327;
+  letter-spacing: 6px;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.4);
+}
+
+#clear-score,
+#fail-msg {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* ---------------- 버튼 ---------------- */
+
+button {
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 800;
+  min-width: 220px;
+  padding: 12px 28px;
+  border: 3px solid #3b2a14;
+  border-radius: 12px;
+  background: #f2c327;
+  color: #3b2a14;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #3b2a14;
+}
+
+button:hover {
+  filter: brightness(1.08);
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #3b2a14;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  filter: grayscale(0.6);
+}
+
+/* ---------------- 스테이지 그리드 ---------------- */
+
+#stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 110px);
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.stage-btn {
+  min-width: 0;
+  width: 110px;
+  height: 96px;
+  padding: 8px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.stage-btn .stage-num {
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.stage-btn .stage-stars {
+  font-size: 16px;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.stage-btn.locked {
+  background: #9aa3ab;
+}
