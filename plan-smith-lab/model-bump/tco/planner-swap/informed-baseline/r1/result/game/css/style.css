@@ -1,0 +1,160 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #1B1B2F;
+  overflow: hidden;
+  font-family: sans-serif;
+  user-select: none;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#game-root {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  height: min(56.25vw, 100vh);
+  overflow: hidden;
+}
+
+#game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: pointer;
+}
+
+#pause-btn {
+  position: absolute;
+  top: 2.5%;
+  right: 1.5%;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid white;
+  background: rgba(0, 0, 0, 0.45);
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 5;
+}
+
+#pause-btn:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(10, 20, 40, 0.6);
+  color: white;
+  z-index: 10;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.title {
+  font-size: 64px;
+  margin: 0;
+  text-shadow: 0 4px 0 #8B0000;
+}
+
+.subtitle {
+  font-size: 20px;
+  margin: 0 0 12px 0;
+}
+
+.btn {
+  min-width: 220px;
+  padding: 12px 28px;
+  font-size: 22px;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  background: #E63946;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #8B1E28;
+}
+
+.btn:hover {
+  background: #ef4e57;
+}
+
+.btn.secondary {
+  background: #457B9D;
+  box-shadow: 0 4px 0 #23405A;
+}
+
+.btn.secondary:hover {
+  background: #5088ad;
+}
+
+#stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 110px);
+  gap: 14px;
+}
+
+.stage-btn {
+  width: 110px;
+  height: 100px;
+  border-radius: 14px;
+  border: none;
+  background: #F4A261;
+  color: #3B1F0E;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.stage-btn > span:first-child {
+  font-size: 32px;
+}
+
+.stage-btn > span:last-child {
+  font-size: 18px;
+}
+
+.stage-btn:hover:not(:disabled) {
+  background: #ffb380;
+}
+
+.stage-btn:disabled,
+.stage-btn.locked {
+  background: #777;
+  color: #ddd;
+  cursor: not-allowed;
+}
+
+.stars {
+  font-size: 48px;
+  color: #FFD166;
+  letter-spacing: 6px;
+}
+
+h2 {
+  font-size: 44px;
+  margin: 0 0 20px 0;
+}
+
+p {
+  font-size: 18px;
+  margin: 4px 0;
+}
