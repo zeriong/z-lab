@@ -1,0 +1,37 @@
+{
+  "id": 10,
+  "name": "최종 요새",
+  "birds": ["red", "yellow", "bomb", "red", "yellow", "bomb"],
+  "slingshot": { "x": 260 },
+  "terrain": [
+    { "points": [[1300, 980], [1400, 860], [1700, 860], [1800, 980]] }
+  ],
+  "blocks": [
+    { "material": "wood", "shape": "rect", "x": 1010, "y": 930, "w": 20, "h": 100 },
+    { "material": "wood", "shape": "rect", "x": 1190, "y": 930, "w": 20, "h": 100 },
+    { "material": "glass", "shape": "rect", "x": 1100, "y": 870, "w": 200, "h": 20 },
+    { "material": "stone", "shape": "rect", "x": 1480, "y": 810, "w": 20, "h": 100 },
+    { "material": "stone", "shape": "rect", "x": 1640, "y": 810, "w": 20, "h": 100 },
+    { "material": "wood", "shape": "rect", "x": 1560, "y": 750, "w": 200, "h": 20 }
+  ],
+  "pigs": [
+    { "size": "L", "x": 1080, "y": 942 },
+    { "size": "S", "x": 1100, "y": 840 },
+    { "size": "M", "x": 1240, "y": 952 },
+    { "size": "M", "x": 1590, "y": 832 },
+    { "size": "L", "x": 1560, "y": 702 },
+    { "size": "S", "x": 1420, "y": 840 }
+  ],
+  "tnt": [
+    { "x": 1140, "y": 960 },
+    { "x": 1525, "y": 840 }
+  ],
+  "stars": [22000, 30000],
+  "solution": [
+    { "pull": [-128.03, 22.57] },
+    { "pull": [-83.56, 99.59] },
+    { "pull": [-85.49, 85.49], "abilityAt": 1.49 },
+    { "pull": [-128.03, 22.57] },
+    { "pull": [-83.56, 99.59] }
+  ]
+}

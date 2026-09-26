@@ -1,0 +1,26 @@
+{
+  "id": 3,
+  "name": "유리 온실",
+  "birds": ["red", "red", "red"],
+  "slingshot": { "x": 260 },
+  "terrain": [],
+  "blocks": [
+    { "material": "wood", "shape": "rect", "x": 1360, "y": 930, "w": 20, "h": 100 },
+    { "material": "wood", "shape": "rect", "x": 1540, "y": 930, "w": 20, "h": 100 },
+    { "material": "glass", "shape": "rect", "x": 1450, "y": 870, "w": 200, "h": 20 },
+    { "material": "wood", "shape": "rect", "x": 1600, "y": 930, "w": 20, "h": 100 },
+    { "material": "wood", "shape": "rect", "x": 1780, "y": 930, "w": 20, "h": 100 },
+    { "material": "glass", "shape": "rect", "x": 1690, "y": 870, "w": 200, "h": 20 }
+  ],
+  "pigs": [
+    { "size": "S", "x": 1500, "y": 960 },
+    { "size": "S", "x": 1616, "y": 840 },
+    { "size": "M", "x": 1733, "y": 952 }
+  ],
+  "tnt": [],
+  "stars": [17000, 23000],
+  "solution": [
+    { "pull": [-82.09, 82.09] },
+    { "pull": [-89.63, 89.63] }
+  ]
+}

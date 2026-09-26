@@ -1,0 +1,25 @@
+{
+  "id": 2,
+  "name": "나무 탑",
+  "birds": ["red", "red", "red"],
+  "slingshot": { "x": 260 },
+  "terrain": [],
+  "blocks": [
+    { "material": "wood", "shape": "rect", "x": 1330, "y": 930, "w": 20, "h": 100 },
+    { "material": "wood", "shape": "rect", "x": 1470, "y": 930, "w": 20, "h": 100 },
+    { "material": "wood", "shape": "rect", "x": 1400, "y": 870, "w": 200, "h": 20 },
+    { "material": "wood", "shape": "rect", "x": 1340, "y": 810, "w": 20, "h": 100 },
+    { "material": "wood", "shape": "rect", "x": 1460, "y": 810, "w": 20, "h": 100 },
+    { "material": "wood", "shape": "rect", "x": 1400, "y": 750, "w": 200, "h": 20 }
+  ],
+  "pigs": [
+    { "size": "S", "x": 1400, "y": 960 },
+    { "size": "S", "x": 1400, "y": 840 }
+  ],
+  "tnt": [],
+  "stars": [14000, 19000],
+  "solution": [
+    { "pull": [-122.16, 44.46] },
+    { "pull": [-115.31, 60.03] }
+  ]
+}

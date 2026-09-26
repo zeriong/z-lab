@@ -1,0 +1,35 @@
+{
+  "id": 9,
+  "name": "성채",
+  "birds": ["red", "yellow", "red", "yellow", "bomb"],
+  "slingshot": { "x": 260 },
+  "terrain": [],
+  "blocks": [
+    { "material": "wood", "shape": "rect", "x": 1160, "y": 930, "w": 20, "h": 100 },
+    { "material": "wood", "shape": "rect", "x": 1340, "y": 930, "w": 20, "h": 100 },
+    { "material": "stone", "shape": "rect", "x": 1250, "y": 870, "w": 200, "h": 20 },
+    { "material": "wood", "shape": "rect", "x": 1170, "y": 810, "w": 20, "h": 100 },
+    { "material": "wood", "shape": "rect", "x": 1330, "y": 810, "w": 20, "h": 100 },
+    { "material": "wood", "shape": "rect", "x": 1250, "y": 750, "w": 200, "h": 20 },
+    { "material": "wood", "shape": "rect", "x": 1180, "y": 690, "w": 20, "h": 100 },
+    { "material": "wood", "shape": "rect", "x": 1320, "y": 690, "w": 20, "h": 100 },
+    { "material": "glass", "shape": "rect", "x": 1250, "y": 630, "w": 200, "h": 20 },
+    { "material": "stone", "shape": "rect", "x": 1050, "y": 960, "w": 40, "h": 40 }
+  ],
+  "pigs": [
+    { "size": "L", "x": 1250, "y": 942 },
+    { "size": "M", "x": 1250, "y": 832 },
+    { "size": "S", "x": 1250, "y": 720 },
+    { "size": "M", "x": 1250, "y": 592 },
+    { "size": "S", "x": 1000, "y": 960 }
+  ],
+  "tnt": [],
+  "stars": [17000, 23000],
+  "solution": [
+    { "pull": [-91.92, 91.92] },
+    { "pull": [-109.03, 70.8] },
+    { "pull": [-118.76, 52.88] },
+    { "pull": [-125.57, 33.65] },
+    { "pull": [-62.97, 62.97] }
+  ]
+}

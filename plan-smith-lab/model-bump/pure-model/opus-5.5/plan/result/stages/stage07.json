@@ -1,0 +1,24 @@
+{
+  "id": 7,
+  "name": "폭파",
+  "birds": ["red", "bomb", "yellow", "bomb"],
+  "slingshot": { "x": 260 },
+  "terrain": [],
+  "blocks": [
+    { "material": "stone", "shape": "rect", "x": 1360, "y": 960, "w": 40, "h": 40 },
+    { "material": "stone", "shape": "rect", "x": 1400, "y": 880, "w": 20, "h": 200 },
+    { "material": "stone", "shape": "rect", "x": 1700, "y": 880, "w": 20, "h": 200 },
+    { "material": "stone", "shape": "rect", "x": 1740, "y": 960, "w": 40, "h": 40 }
+  ],
+  "pigs": [
+    { "size": "M", "x": 1480, "y": 952 },
+    { "size": "L", "x": 1555, "y": 942 },
+    { "size": "M", "x": 1650, "y": 952 }
+  ],
+  "tnt": [],
+  "stars": [24000, 33000],
+  "solution": [
+    { "pull": [-73.09, 104.38] },
+    { "pull": [-64.59, 111.87], "abilityAt": 2.1 }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": 5,
+  "name": "돌 벙커",
+  "birds": ["red", "yellow", "red", "yellow"],
+  "slingshot": { "x": 260 },
+  "terrain": [],
+  "blocks": [
+    { "material": "stone", "shape": "rect", "x": 1300, "y": 880, "w": 20, "h": 200 },
+    { "material": "stone", "shape": "rect", "x": 1410, "y": 930, "w": 20, "h": 100 },
+    { "material": "stone", "shape": "rect", "x": 1690, "y": 930, "w": 20, "h": 100 },
+    { "material": "glass", "shape": "rect", "x": 1550, "y": 870, "w": 300, "h": 20 }
+  ],
+  "pigs": [
+    { "size": "S", "x": 1470, "y": 840 },
+    { "size": "M", "x": 1560, "y": 952 },
+    { "size": "S", "x": 1640, "y": 960 }
+  ],
+  "tnt": [],
+  "stars": [24000, 33000],
+  "solution": [
+    { "pull": [-84.94, 84.94] },
+    { "pull": [-86.78, 86.78] }
+  ]
+}

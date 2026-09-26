@@ -1,0 +1,15 @@
+{
+  "id": 0,
+  "name": "테스트 스테이지",
+  "birds": ["red", "red", "red"],
+  "slingshot": { "x": 260 },
+  "terrain": [],
+  "blocks": [
+    { "material": "wood", "shape": "rect", "x": 1100, "y": 960, "w": 40, "h": 40 },
+    { "material": "wood", "shape": "rect", "x": 1400, "y": 930, "w": 20, "h": 100 }
+  ],
+  "pigs": [{ "size": "S", "x": 900, "y": 960 }],
+  "tnt": [],
+  "stars": [15000, 25000],
+  "solution": [{ "pull": [-129.51, 11.33] }]
+}

@@ -1,0 +1,14 @@
+{
+  "id": 1,
+  "name": "첫 발사",
+  "birds": ["red", "red", "red"],
+  "slingshot": { "x": 260 },
+  "terrain": [],
+  "blocks": [
+    { "material": "wood", "shape": "rect", "x": 1160, "y": 930, "w": 20, "h": 100 }
+  ],
+  "pigs": [{ "size": "S", "x": 1220, "y": 960 }],
+  "tnt": [],
+  "stars": [18000, 24000],
+  "solution": [{ "pull": [-125.57, 33.65] }]
+}

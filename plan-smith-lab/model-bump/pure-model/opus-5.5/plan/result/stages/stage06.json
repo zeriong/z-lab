@@ -1,0 +1,27 @@
+{
+  "id": 6,
+  "name": "언덕 위 요새",
+  "birds": ["red", "yellow", "red", "yellow"],
+  "slingshot": { "x": 260 },
+  "terrain": [
+    { "points": [[1100, 980], [1250, 800], [1570, 800], [1720, 980]] }
+  ],
+  "blocks": [
+    { "material": "stone", "shape": "rect", "x": 1280, "y": 780, "w": 40, "h": 40 },
+    { "material": "wood", "shape": "rect", "x": 1330, "y": 750, "w": 20, "h": 100 },
+    { "material": "wood", "shape": "rect", "x": 1490, "y": 750, "w": 20, "h": 100 },
+    { "material": "wood", "shape": "rect", "x": 1410, "y": 690, "w": 200, "h": 20 },
+    { "material": "stone", "shape": "rect", "x": 1540, "y": 780, "w": 40, "h": 40 }
+  ],
+  "pigs": [
+    { "size": "M", "x": 1410, "y": 772 },
+    { "size": "M", "x": 1375, "y": 652 },
+    { "size": "S", "x": 1455, "y": 660 }
+  ],
+  "tnt": [],
+  "stars": [24000, 33000],
+  "solution": [
+    { "pull": [-91.92, 91.92] },
+    { "pull": [-107.78, 72.69] }
+  ]
+}

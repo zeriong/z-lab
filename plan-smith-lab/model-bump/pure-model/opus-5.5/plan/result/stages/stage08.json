@@ -1,0 +1,31 @@
+{
+  "id": 8,
+  "name": "연쇄 반응",
+  "birds": ["red", "yellow", "red", "bomb"],
+  "slingshot": { "x": 260 },
+  "terrain": [],
+  "blocks": [
+    { "material": "wood", "shape": "rect", "x": 1370, "y": 930, "w": 20, "h": 100 },
+    { "material": "wood", "shape": "rect", "x": 1520, "y": 930, "w": 20, "h": 100 },
+    { "material": "glass", "shape": "rect", "x": 1445, "y": 870, "w": 200, "h": 20 },
+    { "material": "stone", "shape": "rect", "x": 1580, "y": 930, "w": 20, "h": 100 },
+    { "material": "stone", "shape": "rect", "x": 1730, "y": 930, "w": 20, "h": 100 },
+    { "material": "wood", "shape": "rect", "x": 1655, "y": 870, "w": 200, "h": 20 }
+  ],
+  "pigs": [
+    { "size": "S", "x": 1410, "y": 960 },
+    { "size": "S", "x": 1445, "y": 840 },
+    { "size": "M", "x": 1680, "y": 952 },
+    { "size": "S", "x": 1590, "y": 840 }
+  ],
+  "tnt": [
+    { "x": 1470, "y": 960 },
+    { "x": 1620, "y": 960 }
+  ],
+  "stars": [22000, 30000],
+  "solution": [
+    { "pull": [-121.37, 46.59] },
+    { "pull": [-88.8, 88.8] },
+    { "pull": [-121.37, 46.59] }
+  ]
+}

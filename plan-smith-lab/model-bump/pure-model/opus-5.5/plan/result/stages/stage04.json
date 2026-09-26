@@ -1,0 +1,22 @@
+{
+  "id": 4,
+  "name": "속도전",
+  "birds": ["red", "yellow", "yellow"],
+  "slingshot": { "x": 260 },
+  "terrain": [],
+  "blocks": [
+    { "material": "wood", "shape": "rect", "x": 1250, "y": 880, "w": 20, "h": 200 },
+    { "material": "wood", "shape": "rect", "x": 1270, "y": 880, "w": 20, "h": 200 },
+    { "material": "wood", "shape": "rect", "x": 1290, "y": 880, "w": 20, "h": 200 }
+  ],
+  "pigs": [
+    { "size": "M", "x": 1360, "y": 952 },
+    { "size": "M", "x": 1460, "y": 952 }
+  ],
+  "tnt": [],
+  "stars": [14000, 19000],
+  "solution": [
+    { "pull": [-122.16, 44.46] },
+    { "pull": [-125.57, 33.65], "abilityAt": 0.5 }
+  ]
+}
