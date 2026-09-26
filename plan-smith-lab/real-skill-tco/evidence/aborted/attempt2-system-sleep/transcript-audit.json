@@ -1,0 +1,132 @@
+[
+ {
+  "session": "116e3769-8b87-470f-98a6-866251a9305e",
+  "subagents": 0,
+  "tokens": 26967,
+  "output": 175,
+  "by_model": {
+   "claude-opus-5-5": {
+    "tokens": 26967,
+    "output": 175
+   }
+  },
+  "tools": {
+   "Read": 1,
+   "Glob": 1
+  },
+  "agents": [],
+  "injections": {
+   "claude_md": 0,
+   "hook_context": 0,
+   "advisor": 0
+  },
+  "duration_s": 3730,
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/real-skill-tco/inputs/game-prompt.md"
+  ]
+ },
+ {
+  "session": "b3879d9a-e371-4af0-8eb6-cabc1be8a640",
+  "subagents": 1,
+  "tokens": 447935,
+  "output": 32190,
+  "by_model": {
+   "claude-opus-5-5": {
+    "tokens": 447935,
+    "output": 32190
+   }
+  },
+  "tools": {
+   "Read": 8,
+   "Glob": 5,
+   "Grep": 1,
+   "Write": 1,
+   "Agent": 1
+  },
+  "agents": [
+   {
+    "type": "plan-smith:plan-writer",
+    "model": null
+   }
+  ],
+  "injections": {
+   "claude_md": 0,
+   "hook_context": 0,
+   "advisor": 0
+  },
+  "duration_s": 279,
+  "paths": [
+   "/Users/jeonjelyong/.claude/plugins/cache/plan-smith-marketplace/plan-smith/1.4.2/.claude-plugin/plugin.json",
+   "/Users/jeonjelyong/.claude/plugins/cache/plan-smith-marketplace/plan-smith/1.4.2/agents/plan-writer.md",
+   "/Users/jeonjelyong/.claude/plugins/cache/plan-smith-marketplace/plan-smith/1.4.2/skills/plan-smith/references/frames.md",
+   "/Users/jeonjelyong/.claude/plugins/cache/plan-smith-marketplace/plan-smith/1.4.2/skills/plan-smith/references/packet-template.md",
+   "/Users/jeonjelyong/.claude/plugins/cache/plan-smith-marketplace/plan-smith/1.4.2/skills/plan-smith/references/styles.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/real-skill-tco/inputs/game-prompt.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/real-skill-tco/opus-5.5/plan-smith/r1/plans/angry-birds-web-game/packet.md"
+  ]
+ },
+ {
+  "session": "c41985e1-51e0-4506-a7a2-fa1980709c3e",
+  "subagents": 0,
+  "tokens": 126535,
+  "output": 64335,
+  "by_model": {
+   "claude-fable-5-1": {
+    "tokens": 126535,
+    "output": 64335
+   }
+  },
+  "tools": {
+   "Read": 1,
+   "Glob": 1
+  },
+  "agents": [],
+  "injections": {
+   "claude_md": 0,
+   "hook_context": 0,
+   "advisor": 0
+  },
+  "duration_s": 3730,
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/real-skill-tco/inputs/game-prompt.md"
+  ]
+ },
+ {
+  "session": "15cda652-c788-4e98-b81d-42b3950e4149",
+  "subagents": 1,
+  "tokens": 280076,
+  "output": 35836,
+  "by_model": {
+   "claude-fable-5-1": {
+    "tokens": 280076,
+    "output": 35836
+   }
+  },
+  "tools": {
+   "Read": 7,
+   "Glob": 3,
+   "Write": 1,
+   "Agent": 1
+  },
+  "agents": [
+   {
+    "type": "plan-smith:plan-writer",
+    "model": null
+   }
+  ],
+  "injections": {
+   "claude_md": 0,
+   "hook_context": 0,
+   "advisor": 0
+  },
+  "duration_s": 2523,
+  "paths": [
+   "/Users/jeonjelyong/.claude/plugins/cache/plan-smith-marketplace/plan-smith/1.4.2/.claude-plugin/plugin.json",
+   "/Users/jeonjelyong/.claude/plugins/cache/plan-smith-marketplace/plan-smith/1.4.2/skills/plan-smith/references/frames.md",
+   "/Users/jeonjelyong/.claude/plugins/cache/plan-smith-marketplace/plan-smith/1.4.2/skills/plan-smith/references/packet-template.md",
+   "/Users/jeonjelyong/.claude/plugins/cache/plan-smith-marketplace/plan-smith/1.4.2/skills/plan-smith/references/styles.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/real-skill-tco/fable-5.1/plan-smith/r1/plans/angry-birds-web-game/packet.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/real-skill-tco/inputs/game-prompt.md"
+  ]
+ }
+]

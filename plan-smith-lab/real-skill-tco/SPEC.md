@@ -116,3 +116,18 @@ plan-smith 계획은 8.5~28.5분 동안 41만~68만 토큰을 쓰고도 writer �
 2. **한도 감지 즉시 정지**(`evidence/STOP`) — 1차 때는 한도 이후에도 다음 단계를 띄워 빈 오류 JSON이 생겼다.
 3. 재실행 전 끊긴 단계의 기록·부분 산출물을 자동으로 `evidence/aborted/<시각>-<체인>-<단계>/`로 이동(`stashed.log`), 재개분은 `*.resumed`로 표시.
 시간 지표는 단계별 CLI `duration_ms` 합이라 배치 전환의 영향을 받지 않는다. 동시성(12 → 4)의 API 지연 차이는 통제하지 않았다.
+
+## ⚠️ 2차 시도 중단 — 호스트 시스템 잠자기 (측정 오염)
+
+r1 배치 4체인이 약 63분 진행된 시점에 중단했다(오케스트레이터 개입 — 제10조에 따라 기록).
+원인: 실행 호스트(macOS, AC 전원)가 **유휴 잠자기·유지보수 잠자기**에 들어가 스트림이 끊겼다 —
+트랜스크립트 원문 `Connection lost while your computer was asleep` / `StreamSuspended: Stream watchdog detected system suspend`.
+base 두 세션에서 각 3회, 그 여파로 CLI가 `Your response above was cut off mid-stream. Resume directly…` 이어쓰기 지시를 1회씩 주입했다.
+Claude Code는 자기 턴이 활성일 때만 잠자기를 막으며, 백그라운드 `claude -p`는 막지 못한다(오케스트레이터가 대기하는 동안 잠듦).
+
+**왜 버리나:** 시간 지표(2순위)에 잠든 시간이 들어가고, 토큰 지표(1순위)에 재시도·이어쓰기가 섞이며, 이어쓰기 지시는 모델의 행동 자체를 바꾼다.
+소모(트랜스크립트 기준 하한 — 끊긴 스트림분 미포함): **881,513 토큰**. 기록과 부분 산출물(패킷 2)은 `evidence/aborted/attempt2-system-sleep/`.
+
+**3차 시도부터:** `runner.sh`가 `caffeinate -ims -w <러너 PID>`로 잠자기를 막는다. 단계마다 그 세션(서브에이전트 포함) 트랜스크립트에서
+`StreamSuspended|cut off mid-stream`을 찾아 있으면 `evidence/<체인>_<단계>.suspended`로 표시한다 — **표시된 단계는 측정 오염으로 간주해 재실행 대상**이다
+(덮개 닫힘 등 caffeinate로 막을 수 없는 잠자기에 대비한 사후 검출). 프롬프트 함수는 여전히 diff 0줄.

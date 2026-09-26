@@ -10,6 +10,8 @@ GAME=$R/inputs/game-prompt.md
 EV=$R/evidence
 COMMON=(--effort xhigh --output-format json --strict-mcp-config --setting-sources user --permission-mode bypassPermissions)
 mkdir -p "$EV"
+# 2차 시도가 시스템 잠자기(StreamSuspended)로 오염됐다 — 러너가 살아 있는 동안 잠자기를 막는다(AC 전원에서 -s 유효).
+caffeinate -ims -w $$ &
 
 notice() {
   printf '이 계획서의 구현자는 %s다. 구현자는 이 계획서 하나만 읽고, 파일을 읽고 쓰는 도구만으로\n작업한다(설치·빌드·실행·테스트 불가).' "$1"
@@ -43,6 +45,13 @@ stash() { # $1 id, $2 stage, $3 cell — 끊긴 단계의 기록과 부분 산�
   echo "$1 $2 -> $dest" >> "$EV/stashed.log"
 }
 
+suspended() { # $1 stage json — 그 세션(서브에이전트 포함) 트랜스크립트에 잠자기/이어쓰기 흔적이 있으면 참
+  local sid f; sid=$(python3 -c "import json; print(json.load(open('$1')).get('session_id',''))" 2>/dev/null)
+  [ -z "$sid" ] && return 1
+  f=$(ls "$HOME"/.claude/projects/*/"$sid".jsonl 2>/dev/null | head -1); [ -z "$f" ] && return 1
+  cat "$f" "${f%.jsonl}"/subagents/*.jsonl 2>/dev/null | grep -qE 'StreamSuspended|cut off mid-stream'
+}
+
 limit_hit() { grep -qiE 'spend limit|usage limit|rate limit' "$1" 2>/dev/null; }
 
 ok_json() { [ -s "$1" ] && python3 -c "import json,sys; d=json.load(open('$1')); sys.exit(0 if not d.get('is_error') else 1)" 2>/dev/null; }
@@ -67,6 +76,7 @@ chain() { # $1 model dir, $2 model id, $3 arm, $4 rep
     fi
     date +%s > "$EV/${id}_plan.end"
     limit_hit "$EV/${id}_plan.json" && { touch "$EV/STOP"; echo "$id plan: LIMIT" >> "$EV/errors.log"; return; }
+    suspended "$EV/${id}_plan.json" && { touch "$EV/${id}_plan.suspended"; echo "$id plan: SUSPENDED (측정 오염 — 재실행 대상)" >> "$EV/errors.log"; }
   fi
   local plan; plan=$(plan_file "$cell" "$3")
   [ -z "$plan" ] && { echo "$id: NO PLAN FILE" >> "$EV/errors.log"; return; }
@@ -78,6 +88,7 @@ chain() { # $1 model dir, $2 model id, $3 arm, $4 rep
       --tools "Read,Write" "${COMMON[@]}" > "$EV/${id}_impl.json" 2> "$EV/${id}_impl.err")
     date +%s > "$EV/${id}_impl.end"
     limit_hit "$EV/${id}_impl.json" && { touch "$EV/STOP"; echo "$id impl: LIMIT" >> "$EV/errors.log"; return; }
+    suspended "$EV/${id}_impl.json" && { touch "$EV/${id}_impl.suspended"; echo "$id impl: SUSPENDED (측정 오염 — 재실행 대상)" >> "$EV/errors.log"; }
   fi
   echo "$id: done" >> "$EV/progress.log"
 }
