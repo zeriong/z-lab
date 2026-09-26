@@ -1,0 +1,321 @@
+/* 레이아웃: 16:9 컨테이너 + 레터박스 (§8.2). UI 는 캔버스 위 DOM (§3.2). */
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Apple SD Gothic Neo',
+    'Noto Sans KR',
+    'Malgun Gothic',
+    sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+/* 폭 = min(100vw, 100vh × 16/9), 나머지는 검은 레터박스 */
+.game {
+  position: relative;
+  width: min(100vw, calc(100vh * 16 / 9));
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #6fb7ff;
+}
+
+.world {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ui-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.ui-layer > * {
+  pointer-events: auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ---------- 공통 ---------- */
+
+.btn {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px 24px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 12px;
+  border: 3px solid #5a3a12;
+  background: #f7c948;
+  color: #3a2210;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #5a3a12;
+  transition: transform 0.05s;
+}
+.btn:hover {
+  filter: brightness(1.05);
+}
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #5a3a12;
+}
+.btn.primary {
+  background: #e4572e;
+  color: #fff;
+}
+.btn.ghost {
+  background: #fff8e6;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: linear-gradient(#5fa9ff, #bfe3ff 60%, #7fc46a 61%, #5faa3c);
+}
+
+.title {
+  font-size: clamp(32px, 6vw, 64px);
+  font-weight: 900;
+  color: #fff;
+  text-shadow:
+    0 4px 0 #7a2c10,
+    0 8px 16px rgba(0, 0, 0, 0.35);
+  margin: 0 0 8px;
+  letter-spacing: 2px;
+}
+
+.hint {
+  position: absolute;
+  bottom: 18px;
+  color: #fff;
+  opacity: 0.9;
+  font-size: 14px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.panel {
+  background: #fff8e6;
+  border: 4px solid #5a3a12;
+  border-radius: 20px;
+  padding: 26px 34px;
+  min-width: 280px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+.panel h2 {
+  margin: 0 0 6px;
+  font-size: 30px;
+  color: #3a2210;
+}
+.panel .row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.panel .score {
+  font-size: 22px;
+  font-weight: 700;
+  color: #3a2210;
+}
+.panel .sub {
+  font-size: 14px;
+  color: #6b5236;
+}
+
+.stars {
+  font-size: 44px;
+  letter-spacing: 8px;
+  line-height: 1;
+}
+.stars .on {
+  color: #f7c948;
+  text-shadow: 0 2px 0 #7a5a10;
+}
+.stars .off {
+  color: #d8cdb8;
+}
+
+/* ---------- 스테이지 선택 ---------- */
+
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+.stage-btn {
+  width: clamp(64px, 9vw, 100px);
+  height: clamp(64px, 9vw, 100px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0;
+  font-size: 24px;
+}
+.stage-btn small {
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #a5731a;
+}
+
+/* ---------- HUD ---------- */
+
+.hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.hud > * {
+  pointer-events: auto;
+}
+.hud-topleft {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 20px;
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.5),
+    0 0 8px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+.hud-topleft .score {
+  font-size: 26px;
+}
+.hud-pop {
+  position: absolute;
+  top: 70px;
+  left: 14px;
+  color: #ffe66d;
+  font-weight: 900;
+  font-size: 22px;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+}
+.hud-pop.show {
+  animation: pop 0.9s ease-out forwards;
+}
+@keyframes pop {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+}
+
+/* 일시정지 버튼: 게임 컨테이너 기준 우측 상단 12px (§8.1) */
+.pause-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1;
+  border-radius: 12px;
+}
+
+.hud-birds {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  display: flex;
+  gap: 6px;
+  pointer-events: none;
+}
+.bird-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.55);
+  box-sizing: border-box;
+}
+.bird-dot.red {
+  background: #d83a2a;
+}
+.bird-dot.yellow {
+  background: #f2c230;
+}
+.bird-dot.black {
+  background: #2b2b2b;
+}
+
+/* ---------- 디버그 ---------- */
+
+.debug-panel {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #0f0;
+  font: 12px/1.4 monospace;
+  padding: 8px 10px;
+  border-radius: 8px;
+  max-height: 60%;
+  overflow: auto;
+  width: 240px;
+}
+.debug-panel label {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  align-items: center;
+}
+.debug-panel input[type='range'] {
+  width: 110px;
+}
+.debug-panel button {
+  font: inherit;
+  margin: 2px 2px 2px 0;
+}
