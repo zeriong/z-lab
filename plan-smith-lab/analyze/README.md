@@ -9,6 +9,7 @@
 |---|---|
 | 코퍼스 표본 (플랜·로그) | [`../opus-plan/`](../opus-plan/) · [`../fable-plan/`](../fable-plan/) |
 | A/B 실험 (게임 플랜·구현) | [`../test/`](../test/) |
+| 새 세대 재측정 (pure-model · tco) | [`../model-bump/`](../model-bump/) |
 | 생성 조건·지표 | 각 코퍼스의 `SPEC-META.md` |
 | **분석·개선안** | **여기** |
 
@@ -17,6 +18,7 @@
 | 파일 | 무엇 | 쓰는 곳 |
 |---|---|---|
 | **[`improvement-backlog.md`](improvement-backlog.md)** | 관측 → 조항 진단 → 개선 제안. **근거 강도와 SemVer 영향을 항목마다 표기** | 다음 버전에 무엇을 넣을지 결정할 때 |
+| [`v1.4.2/model-bump-review.md`](v1.4.2/model-bump-review.md) | v1.4.2 × Opus 5.5 · Fable 5.1 **조항별 판독** + 릴리스 권고 — 사다리 포화(B14)로 품질은 측정 불가, 비용 차이만 판독 | 새 세대에서 조항을 바꿀지·문서만 고칠지 정할 때 |
 | [`v1.1.2/plan-playground.md`](v1.1.2/plan-playground.md) | v1.1.2 입력 명세 (76주제 × 26프레임) — 실행 후 불변 | opus-5 코퍼스를 재현·검증할 때 |
 | [`v1.1.2/diff-review.md`](v1.1.2/diff-review.md) | opus-5(v1.1.2) vs opus-4.8(pre-plugin) 01~26 **버전 간 델타** — 렌즈 3 + 종합자 grep 재검증 | 조항이 실제로 발화했는지 확인할 때 |
 | [`pre-plugin/plan-playground.md`](pre-plugin/plan-playground.md) | 플러그인 이전 26주제 자기완결 지시서 — `frames.md`의 조상 | 프레임의 출처를 추적할 때 |
