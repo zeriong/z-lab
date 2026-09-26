@@ -94,12 +94,14 @@ chain() { # $1 model dir, $2 model id, $3 arm, $4 rep
 }
 
 rm -f -- "$EV/STOP"
+pids=()
 for r in 1 2 3; do
   for m in "opus-5.5 claude-opus-5-5" "fable-5.1 claude-fable-5-1"; do
     set -- $m
-    for arm in base-plan plan-smith; do chain "$1" "$2" "$arm" "$r" & done
+    for arm in base-plan plan-smith; do chain "$1" "$2" "$arm" "$r" & pids+=($!); done
   done
-  wait
+  wait "${pids[@]}"   # 체인 PID만 기다린다 — 인자 없는 wait는 caffeinate까지 기다려 교착된다(3차 시도에서 실제로 발생)
+  pids=()
   echo "BATCH r$r RETURNED $(date)" >> "$EV/progress.log"
   [ -e "$EV/STOP" ] && { echo "STOPPED ON LIMIT after batch r$r $(date)" >> "$EV/progress.log"; break; }
 done
