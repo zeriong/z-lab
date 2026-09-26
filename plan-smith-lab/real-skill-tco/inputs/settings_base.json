@@ -1,0 +1,6 @@
+{"disableAllHooks": true,
+ "claudeMdExcludes": ["/Users/jeonjelyong/.claude/CLAUDE.md", "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/CLAUDE.md"],
+ "enabledPlugins": {"frontend-design@claude-plugins-official": false, "chrome-devtools-mcp@claude-plugins-official": false,
+  "zeriong-commit@zeriong-claude-plugins": false, "plan-smith@plan-smith-marketplace": false,
+  "ux-ui-builder@ux-ui-builder-marketplace": false, "figma@claude-plugins-official": false,
+  "humanize-korean@im-not-ai": false, "ponytail@ponytail": false}}
