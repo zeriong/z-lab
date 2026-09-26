@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#0e1a2b" />
+    <title>Slingshot Birds</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- #stage는 16:9 레터박스 사각형에 정확히 맞춰지고, 캔버스와 모든 DOM 오버레이가 그 안에 절대 배치된다 -->
+      <div id="stage">
+        <canvas id="game-canvas" width="1920" height="1080"></canvas>
+      </div>
+      <!-- 세로 모드 안내(D4): CSS media query + JS matchMedia 둘 다로 표시 -->
+      <div id="rotate-overlay" hidden>
+        <div class="rotate-card">
+          <div class="rotate-icon" aria-hidden="true">⟳</div>
+          <p>가로로 돌려주세요</p>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
