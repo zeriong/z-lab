@@ -1,0 +1,201 @@
+/* styles.css — 화면 전환·HUD·버튼 */
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #1c2430;
+  font-family: system-ui, -apple-system, "Apple SD Gothic Neo", sans-serif;
+  color: #ffffff;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000000;
+}
+
+#game-canvas {
+  width: 100%;
+  max-width: 1280px;
+  aspect-ratio: 16 / 9;
+  display: block;
+  touch-action: none;
+}
+
+/* ---------- HUD (DOM) ---------- */
+
+#hud {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#hud.active { display: block; }
+
+#hud-left {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  gap: 18px;
+  font-size: 20px;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+#hud-birds {
+  position: absolute;
+  top: 52px;
+  left: 16px;
+  display: flex;
+  gap: 6px;
+}
+
+.hud-bird {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+#btn-pause {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  pointer-events: auto;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.45);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+#btn-pause:hover { background: rgba(0, 0, 0, 0.65); }
+
+/* ---------- 화면 (오버레이) ---------- */
+
+.screen {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.screen.active { display: flex; }
+
+.screen h1 {
+  font-size: 56px;
+  margin: 0 0 24px;
+  letter-spacing: 2px;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.35);
+}
+
+.screen h2 {
+  font-size: 36px;
+  margin: 0 0 12px;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+.screen button {
+  min-width: 220px;
+  padding: 12px 24px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: inherit;
+  color: #2b1a0a;
+  background: #f2c327;
+  border: 3px solid #8a5a2b;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #8a5a2b;
+}
+
+.screen button:hover { background: #ffd54a; }
+.screen button:active { transform: translateY(2px); box-shadow: 0 2px 0 #8a5a2b; }
+.screen button.hidden { display: none; }
+
+/* 메인/스테이지 선택: 불투명 배경 */
+#screen-main,
+#screen-stages {
+  background: linear-gradient(#87ceeb, #4f8f3a);
+}
+
+/* 일시정지/클리어/실패: 반투명 배경 */
+#screen-pause,
+#screen-clear,
+#screen-fail {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* ---------- 스테이지 그리드 ---------- */
+
+#stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 96px);
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+#stage-grid button {
+  min-width: 0;
+  width: 96px;
+  height: 96px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 22px;
+}
+
+#stage-grid button .stars {
+  font-size: 14px;
+  color: #8a5a2b;
+}
+
+#stage-grid button:disabled {
+  background: #9aa3ab;
+  border-color: #6b7178;
+  box-shadow: 0 4px 0 #6b7178;
+  color: #3a3f44;
+  cursor: not-allowed;
+}
+
+/* ---------- 결과 ---------- */
+
+#clear-stars {
+  font-size: 44px;
+  letter-spacing: 6px;
+  color: #f2c327;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+#clear-score,
+#fail-msg {
+  font-size: 22px;
+  margin-bottom: 8px;
+}

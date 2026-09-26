@@ -1,0 +1,203 @@
+/* styles.css — 화면 전환·HUD·버튼 스타일 (§8, §13.2) */
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #0f1720;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, "Apple SD Gothic Neo", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* 캔버스: 내부 해상도는 HTML 속성(1280×720)으로 고정, 표시 크기는 letterbox 스케일 */
+#game-canvas {
+  width: 100%;
+  max-width: 1280px;
+  aspect-ratio: 16 / 9;
+  display: block;
+  touch-action: none;
+  background: #87ceeb;
+}
+
+/* ------------------------------------------------------------ 버튼 공통 */
+
+button {
+  font: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 24px;
+  border: 0;
+  border-radius: 10px;
+  background: #f2c327;
+  color: #222222;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #b8900f;
+  min-width: 160px;
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #b8900f;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+  transform: none;
+}
+
+/* ------------------------------------------------------------ HUD (DOM) */
+
+#hud {
+  display: none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#hud.active {
+  display: block;
+}
+
+#hud-left {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 20px;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+#hud-birds {
+  position: absolute;
+  top: 24px;
+  right: 150px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bird-icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #000000;
+}
+
+/* 일시정지 버튼: 우측 상단 고정 (수용 기준 A4) */
+#btn-pause {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  pointer-events: auto;
+  min-width: 0;
+  font-size: 15px;
+  padding: 8px 14px;
+}
+
+/* ------------------------------------------------------------ 화면(screen) */
+
+.screen {
+  display: none;
+  position: absolute;
+  inset: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* 메인/스테이지 선택: 불투명 배경으로 캔버스를 완전히 가린다 */
+#screen-main,
+#screen-stages {
+  background: #1b2a3a;
+}
+
+/* 일시정지/클리어/실패: 반투명 오버레이 */
+#screen-pause,
+#screen-clear,
+#screen-fail {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.screen h1 {
+  font-size: 56px;
+  margin: 0 0 12px;
+  color: #f2c327;
+  text-shadow: 0 3px 0 #8a5a2b;
+}
+
+.screen h2 {
+  font-size: 36px;
+  margin: 0 0 8px;
+}
+
+/* 스테이지 그리드 */
+#stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 96px);
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.stage-btn {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 0;
+}
+
+.stage-btn .num {
+  font-size: 22px;
+}
+
+.stage-btn .stars {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* 클리어 화면 */
+#clear-stars {
+  font-size: 44px;
+  color: #f2c327;
+  letter-spacing: 6px;
+}
+
+#clear-score {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+/* 실패 화면 */
+#fail-msg {
+  font-size: 20px;
+  margin: 0 0 8px;
+}
