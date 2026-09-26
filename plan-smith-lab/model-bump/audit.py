@@ -62,7 +62,7 @@ def audit(tdir):
             'tokens': tok, 'output': out, 'tools': tools,
             'duration_s': round((max(stamps) - min(stamps)).total_seconds()) if stamps else None,
             'injections': {k: len(p.findall(raw)) for k, p in INJECTIONS.items()},
-            'violations': sorted(p for p in paths if not any(p.startswith(a) for a in named)),
+            'violations': sorted(p for p in paths if not any(p.startswith(a.rstrip('/')) for a in named)),
             'paths': sorted(paths),
             'named': named,
         })
