@@ -1,0 +1,241 @@
+:root {
+  --ui-left: 0px;
+  --ui-top: 0px;
+  --ui-width: 100vw;
+  --ui-height: 100vh;
+  --ui-scale: 1;
+  --panel-bg: rgba(20, 24, 38, 0.92);
+  --accent: #ffb400;
+  --btn-bg: #ffcc33;
+  --btn-fg: #3a2400;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  font-family: system-ui, -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#app { position: fixed; inset: 0; }
+
+#game {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none; /* hop 1: 터치 드래그가 스크롤로 새지 않게 */
+}
+
+/* 레터박스 안쪽 게임 영역. 입력은 버튼·패널만 받는다 (hop 1) */
+#ui {
+  position: absolute;
+  left: var(--ui-left);
+  top: var(--ui-top);
+  width: var(--ui-width);
+  height: var(--ui-height);
+  pointer-events: none;
+  overflow: hidden;
+  color: #fff;
+}
+
+#ui button, #ui .panel { pointer-events: auto; }
+
+/* R31: 화면 전환 시 순간 검정 → 200ms 동안 걷힘 */
+#fade {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease-out;
+}
+#fade.on { opacity: 1; transition: none; }
+
+/* 화면은 씬마다 새로 만들어지므로 들어 있는 것은 항상 현재 화면이다 */
+.screen { position: absolute; inset: 0; display: block; }
+
+.btn {
+  font: inherit;
+  font-size: clamp(16px, 2.2vmin, 26px);
+  font-weight: 700;
+  color: var(--btn-fg);
+  background: var(--btn-bg);
+  border: 3px solid #7a4a00;
+  border-radius: 14px;
+  padding: 0.55em 1.6em;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #7a4a00;
+  min-width: 10em;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #7a4a00; }
+.btn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.btn.secondary { background: #e8e8f0; color: #222; border-color: #555; box-shadow: 0 4px 0 #555; }
+.btn:disabled { cursor: not-allowed; filter: grayscale(1) brightness(0.7); }
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* 일시정지·결과·선택: 게임 영역 전체를 어둡게 덮고 캔버스 입력을 막는다 */
+.backdrop.dim { background: rgba(0, 0, 0, 0.55); pointer-events: auto; }
+
+.panel {
+  background: var(--panel-bg);
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 28px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  min-width: min(420px, 80%);
+  max-width: 92%;
+}
+.panel h2 { margin: 0 0 6px; font-size: clamp(24px, 4vmin, 44px); }
+
+/* 메인 메뉴 */
+.title {
+  font-size: clamp(40px, 9vmin, 110px);
+  font-weight: 900;
+  color: var(--accent);
+  text-shadow: 0 6px 0 #7a4a00, 0 10px 24px rgba(0, 0, 0, 0.5);
+  margin: 0 0 24px;
+  letter-spacing: 0.04em;
+}
+.main-col { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+
+/* 스테이지 선택 5x2 */
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  margin: 10px 0 16px;
+}
+.stage-btn {
+  font: inherit;
+  width: clamp(64px, 11vmin, 120px);
+  height: clamp(64px, 11vmin, 120px);
+  border-radius: 16px;
+  border: 3px solid #7a4a00;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-size: clamp(20px, 3.4vmin, 36px);
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  box-shadow: 0 4px 0 #7a4a00;
+}
+.stage-btn:disabled { background: #555; color: #bbb; border-color: #333; box-shadow: 0 4px 0 #333; cursor: not-allowed; }
+.stage-btn .stars { font-size: 0.5em; letter-spacing: 1px; }
+.stage-btn .star.on { color: #ff8a00; }
+.stage-btn .star.off { color: rgba(0, 0, 0, 0.25); }
+.stage-btn .lock { font-size: 0.8em; line-height: 1; }
+.stage-btn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+/* HUD */
+.hud-left {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: clamp(16px, 2.6vmin, 30px);
+  font-weight: 800;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.6);
+}
+.hud-birds { display: flex; gap: 6px; align-items: center; min-height: 1em; }
+.bird-icon {
+  width: 0.9em;
+  height: 0.9em;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  display: inline-block;
+}
+.bird-icon.red { background: #e53935; }
+.bird-icon.blue { background: #42a5f5; width: 0.72em; height: 0.72em; }
+.bird-icon.yellow { background: #fdd835; border-radius: 2px; transform: rotate(45deg) scale(0.8); }
+.bird-icon.black { background: #222; border-color: #999; }
+.hud-center {
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: clamp(20px, 3.4vmin, 40px);
+  font-weight: 900;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.6);
+}
+.hud-pigs { font-size: 0.55em; opacity: 0.9; }
+
+/* 우측 상단 일시정지 버튼: 56x56 CSS px, 게임 영역 가장자리에서 16px 안쪽 (R14).
+   일시정지 중에도 어두운 배경 위에 떠서 다시 누르면 재개된다 (§4.3 RESUME). */
+.btn-pause {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  border: 3px solid #7a4a00;
+  background: var(--btn-bg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0;
+  box-shadow: 0 4px 0 #7a4a00;
+  z-index: 5;
+}
+.btn-pause .bar { width: 8px; height: 24px; background: #3a2400; border-radius: 2px; display: block; }
+.btn-pause:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.screen-pause { z-index: 4; }
+
+/* 결과 */
+.result-stars { display: flex; gap: 10px; font-size: clamp(40px, 7vmin, 72px); }
+.result-stars .star { color: rgba(255, 255, 255, 0.2); transform: scale(0.6); display: inline-block; }
+.result-stars .star.on { animation: star-pop 260ms ease-out forwards; }
+.result-stars .star.on:nth-child(1) { animation-delay: 0ms; }
+.result-stars .star.on:nth-child(2) { animation-delay: 300ms; }
+.result-stars .star.on:nth-child(3) { animation-delay: 600ms; }
+@keyframes star-pop {
+  0% { color: rgba(255, 255, 255, 0.2); transform: scale(0.6); }
+  60% { color: #ffcc00; transform: scale(1.25); }
+  100% { color: #ffcc00; transform: scale(1); }
+}
+.result-score, .result-best { opacity: 0; animation: fade-in 250ms ease-out forwards; }
+.result-score { font-size: clamp(22px, 3.6vmin, 38px); font-weight: 800; animation-delay: 900ms; }
+.result-best { font-size: clamp(16px, 2.4vmin, 26px); animation-delay: 1100ms; }
+.result-best .new { color: var(--accent); font-weight: 900; margin-left: 8px; }
+.result-done { color: var(--accent); font-weight: 800; font-size: clamp(18px, 2.8vmin, 30px); }
+.result-fail-title { color: #ff6b6b; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.btn-row .btn { min-width: 7em; }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+.mute-toggle { min-width: 8em; }
+.hidden { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .result-stars .star.on, .result-score, .result-best { animation-duration: 1ms; animation-delay: 0ms; }
+  #fade { transition: none; }
+}
