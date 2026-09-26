@@ -1,0 +1,871 @@
+[
+ {
+  "label": "impl:impl-swap/fable-5.1/plan-smith-1.4/r2",
+  "agent": "a02e83ffb6c87ef74",
+  "models": [
+   "claude-fable-5-1"
+  ],
+  "tokens": 480383,
+  "output": 121430,
+  "tools": {
+   "Read": 1,
+   "Write": 6,
+   "StructuredOutput": 1
+  },
+  "duration_s": 1336,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r2/result/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r2/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r2/result/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r2/result/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r2/result/stages.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/plan-smith-1.4.md"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/plan-smith-1.4.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r2/result/"
+  ]
+ },
+ {
+  "label": "impl:planner-swap/plan-smith-1.4.2/r4",
+  "agent": "a140842a7fd53e03d",
+  "models": [
+   "claude-haiku-4-5-20251001"
+  ],
+  "tokens": 621246,
+  "output": 26872,
+  "tools": {
+   "Read": 2,
+   "Write": 9,
+   "StructuredOutput": 1
+  },
+  "duration_s": 243,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r4/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r4/result/js/audio.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r4/result/js/config.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r4/result/js/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r4/result/js/input.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r4/result/js/levels.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r4/result/js/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r4/result/js/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r4/result/style.css"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r4/result/"
+  ]
+ },
+ {
+  "label": "impl:impl-swap/fable-5.1/informed-baseline/r3",
+  "agent": "a301fb589813c765b",
+  "models": [
+   "claude-fable-5-1"
+  ],
+  "tokens": 499143,
+  "output": 38058,
+  "tools": {
+   "Read": 1,
+   "Write": 13,
+   "StructuredOutput": 1
+  },
+  "duration_s": 1081,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r3/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r3/result/src/audio.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r3/result/src/const.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r3/result/src/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r3/result/src/input.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r3/result/src/main.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r3/result/src/materials.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r3/result/src/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r3/result/src/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r3/result/src/stages.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r3/result/src/ui.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r3/result/src/util.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r3/result/styles.css",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/informed-baseline.md"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/informed-baseline.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r3/result/"
+  ]
+ },
+ {
+  "label": "impl:planner-swap/informed-baseline/r3",
+  "agent": "a400cf82a96be3d33",
+  "models": [
+   "claude-haiku-4-5-20251001"
+  ],
+  "tokens": 2288990,
+  "output": 35282,
+  "tools": {
+   "Read": 21,
+   "Write": 13,
+   "StructuredOutput": 1
+  },
+  "duration_s": 331,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r3/result/game",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r3/result/game/css/style.css",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r3/result/game/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r3/result/game/js/config.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r3/result/game/js/effects.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r3/result/game/js/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r3/result/game/js/input.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r3/result/game/js/levels.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r3/result/game/js/main.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r3/result/game/js/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r3/result/game/js/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r3/result/game/js/slingshot.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r3/result/game/js/storage.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r3/result/game/js/ui.js"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r3/result/"
+  ]
+ },
+ {
+  "label": "impl:impl-swap/opus-5.5/plan-smith-1.4/r1",
+  "agent": "a4dd8a6c2e91830cd",
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tokens": 1121072,
+  "output": 132964,
+  "tools": {
+   "Read": 2,
+   "Write": 6,
+   "StructuredOutput": 1
+  },
+  "duration_s": 1100,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r1/result/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r1/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r1/result/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r1/result/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r1/result/stages.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/plan-smith-1.4.md"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/plan-smith-1.4.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r1/result/"
+  ]
+ },
+ {
+  "label": "impl:planner-swap/informed-baseline/r4",
+  "agent": "a53c52ab74cfd42b5",
+  "models": [
+   "claude-haiku-4-5-20251001"
+  ],
+  "tokens": 1472011,
+  "output": 34034,
+  "tools": {
+   "Read": 10,
+   "Write": 14,
+   "StructuredOutput": 1
+  },
+  "duration_s": 345,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r4/result/css/style.css",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r4/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r4/result/js/config.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r4/result/js/effects.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r4/result/js/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r4/result/js/input.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r4/result/js/levels.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r4/result/js/main.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r4/result/js/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r4/result/js/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r4/result/js/slingshot.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r4/result/js/storage.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r4/result/js/ui.js"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r4/result/"
+  ]
+ },
+ {
+  "label": "impl:impl-swap/opus-5.5/informed-baseline/r3",
+  "agent": "a574512de0af3274d",
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tokens": 1215374,
+  "output": 141403,
+  "tools": {
+   "Read": 1,
+   "Write": 13,
+   "StructuredOutput": 1
+  },
+  "duration_s": 1186,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r3/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r3/result/src/audio.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r3/result/src/const.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r3/result/src/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r3/result/src/input.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r3/result/src/main.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r3/result/src/materials.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r3/result/src/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r3/result/src/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r3/result/src/stages.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r3/result/src/ui.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r3/result/src/util.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r3/result/styles.css",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/informed-baseline.md"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/informed-baseline.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r3/result/"
+  ]
+ },
+ {
+  "label": "plan:planner-swap/informed-baseline",
+  "agent": "a59a2c850b36743d2",
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tokens": 191066,
+  "output": 89085,
+  "tools": {
+   "Read": 1,
+   "Write": 1,
+   "StructuredOutput": 1
+  },
+  "duration_s": 839,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/game-prompt.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/plan.md"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/game-prompt.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/plan.md"
+  ]
+ },
+ {
+  "label": "impl:planner-swap/informed-baseline/r1",
+  "agent": "a879def743bb68ce7",
+  "models": [
+   "claude-haiku-4-5-20251001"
+  ],
+  "tokens": 1884672,
+  "output": 32724,
+  "tools": {
+   "Read": 17,
+   "Write": 13,
+   "StructuredOutput": 1
+  },
+  "duration_s": 304,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r1/result/game",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r1/result/game/css/style.css",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r1/result/game/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r1/result/game/js/config.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r1/result/game/js/effects.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r1/result/game/js/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r1/result/game/js/input.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r1/result/game/js/levels.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r1/result/game/js/main.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r1/result/game/js/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r1/result/game/js/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r1/result/game/js/slingshot.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r1/result/game/js/storage.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r1/result/game/js/ui.js"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r1/result/"
+  ]
+ },
+ {
+  "label": "impl:impl-swap/opus-5.5/plan-smith-1.4/r2",
+  "agent": "ab1ae439b81f96f4b",
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tokens": 972502,
+  "output": 131649,
+  "tools": {
+   "Read": 1,
+   "Write": 6,
+   "StructuredOutput": 1
+  },
+  "duration_s": 1099,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r2/result/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r2/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r2/result/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r2/result/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r2/result/stages.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/plan-smith-1.4.md"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/plan-smith-1.4.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r2/result/"
+  ]
+ },
+ {
+  "label": "impl:impl-swap/fable-5.1/informed-baseline/r2",
+  "agent": "ab200d571643c1c8b",
+  "models": [
+   "claude-fable-5-1"
+  ],
+  "tokens": 526557,
+  "output": 105813,
+  "tools": {
+   "Read": 1,
+   "Write": 13,
+   "StructuredOutput": 1
+  },
+  "duration_s": 1164,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r2/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r2/result/src/audio.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r2/result/src/const.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r2/result/src/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r2/result/src/input.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r2/result/src/main.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r2/result/src/materials.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r2/result/src/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r2/result/src/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r2/result/src/stages.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r2/result/src/ui.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r2/result/src/util.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r2/result/styles.css",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/informed-baseline.md"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/informed-baseline.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r2/result/"
+  ]
+ },
+ {
+  "label": "impl:impl-swap/fable-5.1/plan-smith-1.4/r3",
+  "agent": "ab60d7904a370dfcc",
+  "models": [
+   "claude-fable-5-1"
+  ],
+  "tokens": 587535,
+  "output": 128401,
+  "tools": {
+   "Read": 1,
+   "Write": 5,
+   "StructuredOutput": 1
+  },
+  "duration_s": 1457,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r3/result/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r3/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r3/result/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r3/result/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r3/result/stages.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/plan-smith-1.4.md"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/plan-smith-1.4.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r3/result/"
+  ]
+ },
+ {
+  "label": "impl:planner-swap/plan-smith-1.4.2/r1",
+  "agent": "ac95e986ba0c0ae56",
+  "models": [
+   "claude-haiku-4-5-20251001"
+  ],
+  "tokens": 613248,
+  "output": 25832,
+  "tools": {
+   "Read": 2,
+   "Write": 9,
+   "StructuredOutput": 1
+  },
+  "duration_s": 235,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r1/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r1/result/js/audio.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r1/result/js/config.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r1/result/js/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r1/result/js/input.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r1/result/js/levels.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r1/result/js/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r1/result/js/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r1/result/style.css"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r1/result/"
+  ]
+ },
+ {
+  "label": "impl:planner-swap/informed-baseline/r2",
+  "agent": "acd9890e18772e6df",
+  "models": [
+   "claude-haiku-4-5-20251001"
+  ],
+  "tokens": 2469553,
+  "output": 42470,
+  "tools": {
+   "Read": 21,
+   "Write": 15,
+   "StructuredOutput": 1
+  },
+  "duration_s": 391,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r2/result",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r2/result/css/style.css",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r2/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r2/result/js/config.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r2/result/js/effects.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r2/result/js/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r2/result/js/input.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r2/result/js/levels.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r2/result/js/main.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r2/result/js/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r2/result/js/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r2/result/js/slingshot.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r2/result/js/storage.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r2/result/js/ui.js"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/informed-baseline/r2/result/"
+  ]
+ },
+ {
+  "label": "impl:impl-swap/fable-5.1/plan-smith-1.4/r1",
+  "agent": "ad4ea49b82cd31067",
+  "models": [
+   "claude-fable-5-1"
+  ],
+  "tokens": 470161,
+  "output": 121197,
+  "tools": {
+   "Read": 1,
+   "Write": 6,
+   "StructuredOutput": 1
+  },
+  "duration_s": 1341,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r1/result/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r1/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r1/result/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r1/result/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r1/result/stages.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/plan-smith-1.4.md"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/plan-smith-1.4.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/plan-smith-1.4/r1/result/"
+  ]
+ },
+ {
+  "label": "plan:planner-swap/plan-smith-1.4.2",
+  "agent": "ad78eb5338c6f0dfc",
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tokens": 906674,
+  "output": 163709,
+  "tools": {
+   "Read": 7,
+   "Write": 2,
+   "StructuredOutput": 1
+  },
+  "duration_s": 1371,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/game-prompt.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/skill-v1.4.2/SKILL.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/skill-v1.4.2/references/frames.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/skill-v1.4.2/references/packet-template.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/skill-v1.4.2/references/styles.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/plan.md"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/game-prompt.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/skill-v1.4.2/SKILL.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/skill-v1.4.2/references/frames.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/skill-v1.4.2/references/styles.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/skill-v1.4.2/references/packet-template.md"
+  ]
+ },
+ {
+  "label": "impl:planner-swap/plan-smith-1.4.2/r2",
+  "agent": "ae2d4cd5a85efa99f",
+  "models": [
+   "claude-haiku-4-5-20251001"
+  ],
+  "tokens": 848078,
+  "output": 28323,
+  "tools": {
+   "Read": 4,
+   "Write": 10,
+   "StructuredOutput": 1
+  },
+  "duration_s": 294,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r2/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r2/result/js/audio.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r2/result/js/config.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r2/result/js/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r2/result/js/input.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r2/result/js/levels.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r2/result/js/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r2/result/js/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r2/result/style.css"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r2/result/"
+  ]
+ },
+ {
+  "label": "impl:impl-swap/fable-5.1/informed-baseline/r1",
+  "agent": "ae53745677ac2b276",
+  "models": [
+   "claude-fable-5-1"
+  ],
+  "tokens": 662610,
+  "output": 122003,
+  "tools": {
+   "Read": 1,
+   "Write": 14,
+   "StructuredOutput": 1
+  },
+  "duration_s": 1317,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r1/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r1/result/src/audio.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r1/result/src/const.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r1/result/src/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r1/result/src/input.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r1/result/src/main.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r1/result/src/materials.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r1/result/src/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r1/result/src/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r1/result/src/stages.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r1/result/src/ui.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r1/result/src/util.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r1/result/styles.css",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/informed-baseline.md"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/informed-baseline.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/fable-5.1/informed-baseline/r1/result/"
+  ]
+ },
+ {
+  "label": "impl:impl-swap/opus-5.5/informed-baseline/r1",
+  "agent": "aec2d367bf66e57d0",
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tokens": 1242445,
+  "output": 150612,
+  "tools": {
+   "Read": 1,
+   "Write": 13,
+   "StructuredOutput": 1
+  },
+  "duration_s": 1268,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r1/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r1/result/src/audio.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r1/result/src/const.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r1/result/src/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r1/result/src/input.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r1/result/src/main.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r1/result/src/materials.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r1/result/src/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r1/result/src/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r1/result/src/stages.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r1/result/src/ui.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r1/result/src/util.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r1/result/styles.css",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/informed-baseline.md"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/informed-baseline.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r1/result/"
+  ]
+ },
+ {
+  "label": "impl:planner-swap/plan-smith-1.4.2/r3",
+  "agent": "af106d365752eaed8",
+  "models": [
+   "claude-haiku-4-5-20251001"
+  ],
+  "tokens": 621441,
+  "output": 27126,
+  "tools": {
+   "Read": 2,
+   "Write": 9,
+   "StructuredOutput": 1
+  },
+  "duration_s": 247,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r3/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r3/result/js/audio.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r3/result/js/config.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r3/result/js/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r3/result/js/input.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r3/result/js/levels.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r3/result/js/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r3/result/js/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r3/result/style.css"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/plan.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/planner-swap/plan-smith-1.4.2/r3/result/"
+  ]
+ },
+ {
+  "label": "impl:impl-swap/opus-5.5/informed-baseline/r2",
+  "agent": "afeddd2e143b682d2",
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tokens": 1634223,
+  "output": 139259,
+  "tools": {
+   "Read": 3,
+   "Write": 14,
+   "StructuredOutput": 1
+  },
+  "duration_s": 1171,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r2/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r2/result/src/audio.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r2/result/src/const.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r2/result/src/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r2/result/src/input.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r2/result/src/main.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r2/result/src/materials.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r2/result/src/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r2/result/src/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r2/result/src/stages.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r2/result/src/ui.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r2/result/src/util.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r2/result/styles.css",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/informed-baseline.md"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/informed-baseline.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/informed-baseline/r2/result/"
+  ]
+ },
+ {
+  "label": "impl:impl-swap/opus-5.5/plan-smith-1.4/r3",
+  "agent": "aff74364ac5d9ecdc",
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tokens": 750259,
+  "output": 110608,
+  "tools": {
+   "Read": 1,
+   "Write": 5,
+   "StructuredOutput": 1
+  },
+  "duration_s": 939,
+  "injections": {
+   "advisor": 0,
+   "ponytail": 0,
+   "claude_md": 0,
+   "user_relay": 0,
+   "computed_frame": 1
+  },
+  "violations": [],
+  "paths": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r3/result/game.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r3/result/index.html",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r3/result/physics.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r3/result/render.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r3/result/stages.js",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/plan-smith-1.4.md"
+  ],
+  "named": [
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/inputs/fixed-plans/plan-smith-1.4.md",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/model-bump/tco/impl-swap/opus-5.5/plan-smith-1.4/r3/result/"
+  ]
+ }
+]
