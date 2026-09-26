@@ -19,6 +19,6 @@
 
 | 디렉토리 | 내용 |
 |---|---|
-| `plan-smith-lab/` | plan-smith 플러그인 검증 계열이에요. 모델별 플랜 코퍼스(`fable-plan/`, `opus-plan/`), 순수 모델 1-shot 측정(`pure-model/`), 플랜→약한 구현자 전이 실험(`transfer/`), 작동하는 산출물까지의 총비용 비교(`tco/`), 통제 A/B 라운드(`test/`), 그리고 표본과 엄격히 분리된 분석(`analyze/`)으로 구성됩니다. 이 계열의 발견들이 plan-smith v1.1~v1.4 릴리스의 근거가 되었어요. |
+| `plan-smith-lab/` | plan-smith 플러그인 검증 계열이에요. 모델별 플랜 코퍼스(`fable-plan/`, `opus-plan/`), 순수 모델 1-shot 측정(`pure-model/`), 플랜→약한 구현자 전이 실험(`transfer/`), 작동하는 산출물까지의 총비용 비교(`tco/`), 새 모델 세대(Opus 5.5 · Fable 5.1)에서의 재측정(`model-bump/`), 통제 A/B 라운드(`test/`), 그리고 표본과 엄격히 분리된 분석(`analyze/`)으로 구성됩니다. 이 계열의 발견들이 plan-smith v1.1~v1.4 릴리스의 근거가 되었어요. |
 
 새 실험 계열은 `<주제>-lab/` 디렉토리로 추가합니다. 디렉토리 규약은 CLAUDE.md 제9조를 참고해 주세요.

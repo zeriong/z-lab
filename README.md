@@ -19,6 +19,6 @@ Experiment design, contamination control, and record-keeping are codified as law
 
 | Directory | Contents |
 |---|---|
-| `plan-smith-lab/` | The validation series for the plan-smith plugin: per-model plan corpora (`fable-plan/`, `opus-plan/`), pure-model 1-shot measurement (`pure-model/`), plan-to-weak-implementer transfer experiments (`transfer/`), total cost to a working artifact (`tco/`), controlled A/B rounds (`test/`), and analysis kept strictly apart from specimens (`analyze/`). The findings from this series became the evidence base for plan-smith releases v1.1 through v1.4. |
+| `plan-smith-lab/` | The validation series for the plan-smith plugin: per-model plan corpora (`fable-plan/`, `opus-plan/`), pure-model 1-shot measurement (`pure-model/`), plan-to-weak-implementer transfer experiments (`transfer/`), total cost to a working artifact (`tco/`), re-measurement on the new model generation — Opus 5.5 and Fable 5.1 (`model-bump/`), controlled A/B rounds (`test/`), and analysis kept strictly apart from specimens (`analyze/`). The findings from this series became the evidence base for plan-smith releases v1.1 through v1.4. |
 
 New experiment series get their own `<topic>-lab/` directory. Directory conventions live in CLAUDE.md, Article 9.

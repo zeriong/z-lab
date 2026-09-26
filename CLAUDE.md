@@ -154,3 +154,17 @@ arm A와 B가 갈리거나 같을 때, 원인을 분류하지 않은 비교는 �
   `agent-*.meta.json`에는 정적 정보(agentType/model)만 있다.
 - 워크플로 스크립트에서 `Date.now()`/`Math.random()` 사용 불가.
 - 정지된 워크플로 재개: `Workflow({scriptPath, resumeFromRunId})` — 변경 없는 agent 호출은 캐시 재생.
+- **`bare-model`에도 주입물이 들어간다 — 도구 제한만으로는 순수하지 않다** (하네스 2.1.282, 2026-09-26 카나리 4회로 확인).
+  ① 플러그인 `SubagentStart` 훅(예: ponytail의 "최소 코드" 지시문 전문) ② 전역·프로젝트 CLAUDE.md
+  ③ Workflow의 **사용자 메시지 relay** — 워크플로를 기동한 사람의 메시지를 "[Workflow harness — user request] … 이 요청이 우선한다"로
+  모든 서브에이전트 첫 턴에 넣는다(사람이 보낸 턴에서 기동될 때만. "확인해줘" 같은 말이 실험 에이전트에게 지시로 간다).
+  처방: ① 해당 플러그인 비활성화 ② `.claude/settings.local.json`의 `claudeMdExcludes` ③ 같은 파일 `env.CLAUDE_CODE_WORKFLOW_PROMPT_PROVENANCE=0`.
+  ②③은 **세션 재시작 후에** 적용된다. "computed task" 프레임은 끌 수 없다. 판정은 `plan-smith-lab/model-bump/audit.py`로 트랜스크립트에서 센다.
+- **세션 트랜스크립트는 약 30일 뒤 자동 삭제된다.** 08-12 pure-model의 트랜스크립트가 09-26에 이미 없어 원 기록의 "지침 유입 0건"을
+  재확인할 수 없었다. 판정 근거(감사 결과·journal)는 실행 직후 실험 디렉토리 `evidence/`에 복사해 커밋하고, **셀별 토큰을 METRICS에 남긴다** —
+  안 남기면 세대 간 비교가 영구히 불가능해진다.
+- **워크플로 스크립트에만 있던 프롬프트는 실제로 사라졌다**(제9조의 비용). v1.3/1.4-validation 계획 프롬프트 원문이 소실돼 model-bump 2b는 재구성본을 썼다.
+- **사전 등록 처방은 출하된 조항과 대조한 뒤 쓴다.** model-bump tco SPEC이 v1.4.2에 이미 있는 구현자 라우팅을 "v1.5 후보"로 처방했다(FINDINGS 정오표).
+- 모델 지정은 별칭뿐(`opus`/`fable`/`sonnet`/`haiku`) — **세대가 바뀌면 이전 세대 셀은 다시 돌릴 수 없다.** 2026-09-26 기준 `opus`→`claude-opus-5-5`,
+  `fable`→`claude-fable-5-1`. 트랜스크립트의 resolved id로 매번 확인한다.
+- zsh에서 셸 함수에 `local path=…`를 쓰면 `PATH`가 지워진다(`path`는 `PATH`와 묶인 배열). 커밋 헬퍼가 이것으로 한 번 죽었다.
