@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>앵그리 버드</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game">
+    <canvas id="canvas" width="1280" height="720"></canvas>
+
+    <div id="hud" class="hidden">
+      <div id="hud-info">
+        <span id="hud-stage"></span>
+        <span id="hud-score"></span>
+        <span id="hud-pigs"></span>
+        <span id="hud-birds"></span>
+      </div>
+      <div id="hud-tip"></div>
+      <button id="btn-pause" aria-label="일시정지"><span class="bar"></span><span class="bar"></span></button>
+    </div>
+
+    <div id="menu" class="overlay">
+      <div class="panel">
+        <h1>앵그리 버드</h1>
+        <p class="sub">새총으로 새를 날려 돼지를 모두 물리치세요</p>
+        <button id="btn-start" class="btn">게임 시작</button>
+        <button id="btn-select" class="btn">스테이지 선택</button>
+        <button id="btn-sound" class="btn btn-sub">사운드: 켜짐</button>
+        <p class="help">새를 뒤로 끌었다 놓으면 발사 · 날아가는 중 클릭: 특수 능력 · Esc: 일시정지</p>
+      </div>
+    </div>
+
+    <div id="select" class="overlay hidden">
+      <div class="panel">
+        <h2>스테이지 선택</h2>
+        <div id="stage-grid"></div>
+        <button id="btn-select-back" class="btn btn-sub">메인으로</button>
+      </div>
+    </div>
+
+    <div id="pause-overlay" class="overlay hidden">
+      <div class="panel">
+        <h2>일시정지</h2>
+        <button id="btn-resume" class="btn">계속하기</button>
+        <button id="btn-restart" class="btn">다시하기</button>
+        <button id="btn-pause-menu" class="btn">메인으로</button>
+      </div>
+    </div>
+
+    <div id="clear" class="overlay hidden">
+      <div class="panel">
+        <h2 id="clear-title"></h2>
+        <div id="clear-stars" class="stars"></div>
+        <p id="clear-score"></p>
+        <p id="clear-bonus"></p>
+        <p id="clear-best"></p>
+        <button id="btn-next" class="btn">다음 스테이지</button>
+        <button id="btn-clear-retry" class="btn">다시하기</button>
+        <button id="btn-clear-menu" class="btn">메인으로</button>
+      </div>
+    </div>
+
+    <div id="fail" class="overlay hidden">
+      <div class="panel">
+        <h2>실패!</h2>
+        <p id="fail-text"></p>
+        <button id="btn-fail-retry" class="btn">다시하기</button>
+        <button id="btn-fail-menu" class="btn">메인으로</button>
+      </div>
+    </div>
+
+    <div id="error" class="overlay hidden"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/matter-js@0.19.0/build/matter.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/levels.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/physics.js"></script>
+  <script src="js/input.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

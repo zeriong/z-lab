@@ -1,0 +1,27 @@
+.hidden { display: none !important; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #1b1b1b; }
+#game { position: absolute; left: 50%; top: 50%; width: 1280px; height: 720px;
+        transform: translate(-50%, -50%); transform-origin: 50% 50%; }
+#canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+#hud { position: absolute; inset: 0; pointer-events: none; z-index: 10; }
+#btn-pause { position: absolute; top: 16px; right: 16px; width: 56px; height: 56px;
+             pointer-events: auto; cursor: pointer; }
+.overlay { position: absolute; inset: 0; z-index: 20; display: flex;
+           align-items: center; justify-content: center; }
+#error { z-index: 30; }
+
+#menu { background-color: rgba(0, 0, 0, 0.25); }
+.overlay { background-color: rgba(0, 0, 0, 0.45); font-family: system-ui, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; }
+.panel { background-color: #fff8e7; color: #3b2a1a; border-radius: 16px; padding: 32px 48px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.btn { font-size: 24px; padding: 12px 32px; min-width: 240px; border-radius: 12px; border: none; background-color: #e8553e; color: white; cursor: pointer; }
+.btn:hover { filter: brightness(1.1); }
+.btn-sub { background-color: #8a6d4b; }
+#hud-info { position: absolute; top: 16px; left: 20px; color: white; font-size: 22px; font-weight: bold; text-shadow: 0 2px 3px rgba(0,0,0,0.6); display: flex; flex-direction: column; gap: 24px; }
+#hud-tip { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); color: white; font-size: 18px; background-color: rgba(0, 0, 0, 0.6); padding: 8px 16px; border-radius: 8px; }
+#btn-pause { background-color: rgba(0,0,0,0.45); border: none; border-radius: 12px; }
+#btn-pause .bar { display: inline-block; width: 6px; height: 22px; background: white; margin: 0 3px; border-radius: 2px; }
+#stage-grid { display: grid; grid-template-columns: repeat(5, 120px); gap: 16px; margin: 20px auto; }
+.stage-btn { height: 100px; font-size: 28px; cursor: pointer; background-color: #e8553e; color: white; border: none; border-radius: 12px; padding: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.stage-btn.locked { background-color: #9a9a9a; cursor: not-allowed; }
+.stars { font-size: 48px; color: #f2b705; }
+#error { background-color: #1b1b1b; color: white; font-size: 24px; padding: 40px; text-align: center; }
