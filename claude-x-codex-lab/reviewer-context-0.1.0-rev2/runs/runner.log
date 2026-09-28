@@ -1,0 +1,7 @@
+run  allowed-only/r1
+run  tools-set/r1
+run  allowed-only/r2
+run  tools-set/r2
+run  allowed-only/r3
+run  tools-set/r3
+done
