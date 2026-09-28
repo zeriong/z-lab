@@ -1,0 +1,17 @@
+./.claude-plugin/plugin.json
+./scripts/hello.sh
+./skills/hello/references/steps.md
+./skills/hello/SKILL.md
+---
+name: hello
+description: Probe skill that follows its reference file. Use only when invoked as /probe:hello.
+---
+
+Read `references/steps.md` in this skill's directory with the Read tool, then run the command it gives with the Bash tool, exactly as written, and report the output verbatim.
+# Steps
+
+Run this command with the Bash tool, exactly as written:
+
+```bash
+bash "${CLAUDE_PLUGIN_ROOT}/scripts/hello.sh"
+```
