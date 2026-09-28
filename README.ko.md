@@ -19,8 +19,8 @@
 
 | 디렉토리 | 내용 |
 |---|---|
-| `plan-smith-lab/` | plan-smith 플러그인 검증 계열이에요. 모델별 플랜 코퍼스(`fable-plan/`, `opus-plan/`), 순수 모델 1-shot 측정(`pure-model/`), 플랜→약한 구현자 전이 실험(`transfer/`), 작동하는 산출물까지의 총비용 비교(`tco/`), 통제 A/B 라운드(`test/`), 그리고 표본과 엄격히 분리된 분석(`analyze/`)으로 구성됩니다. 이 계열의 발견들이 plan-smith v1.1~v1.4 릴리스의 근거가 되었어요. |
+| `plan-smith-lab/` | plan-smith 플러그인 검증 계열이에요. 모델별 플랜 코퍼스(`fable-plan/`, `opus-plan/`), 순수 모델 1-shot 측정(`pure-model/`), 플랜→약한 구현자 전이 실험(`transfer/`), 작동하는 산출물까지의 총비용 비교(`tco/`), 실제 집필자로 코퍼스 플랜을 나눠 본 1.6 분할 실험(`split-1.6.0/`), 통제 A/B 라운드(`test/`), 그리고 표본과 엄격히 분리된 분석(`analyze/`)으로 구성됩니다. 이 계열의 발견들이 plan-smith v1.1~v1.4와 v1.6 릴리스의 근거가 되었어요. |
 | `claude-x-codex-lab/` | claude-x-codex 플러그인(Claude × Codex 동료 오케스트레이션) 검증 계열이에요. `env-probes-0.1.0/` 은 0.1.0 스킬들이 기대는 CLI 동작 — 벤더별로 읽는 지침 파일, 스키마로 강제한 리뷰 출력, read-only 리뷰어, transport 명령 형태의 끝까지 실행, mode 메모의 비용 — 을 격리된 픽스처에서 모델 프로브당 3회씩 다시 실행하고, 결정적 스크립트 테스트를 함께 남깁니다. 후속 라운드(`recheck-*`, `reviewer-*`)가 발견에 따라 고친 형태를 다시 쟀고, `effort-flags-0.1.0/` 이 리뷰어·워커의 effort 설정을 문서에 적기 전에 확인했으며, `analyze/` 가 변경과 사용자 결정마다 근거를 잇고 모델 사용량 합계를 남깁니다. |
-| `plugin-platform-lab/` | 최소 플러그인과 격리된 설정으로 잰 Claude Code 플러그인 시스템 동작이에요. 스킬 호출명이 어디서 오는지, 마켓플레이스·플러그인 이름을 바꾸면 기존 설치가 어떻게 되는지, 설치 명령의 종료코드, 훅 자동 로드(후속 실험 `hook-injection-2.1.283/`), `disable-model-invocation` 을 기록합니다. |
+| `plugin-platform-lab/` | 최소 플러그인과 격리된 설정으로 잰 Claude Code 플러그인 시스템 동작이에요. 스킬 호출명이 어디서 오는지, 마켓플레이스·플러그인 이름을 바꾸면 기존 설치가 어떻게 되는지, 설치 명령의 종료코드, 훅 자동 로드(후속 실험 `hook-injection-2.1.283/`), `disable-model-invocation`, 그리고 `${CLAUDE_PLUGIN_ROOT}` 가 어디서 치환되는지 — 스킬의 SKILL.md 텍스트에서는 되고, 나중에 읽는 reference 파일과 셸에서는 안 된다(`skill-plugin-root-2.1.283/`, `reference-plugin-root-2.1.283/`), 그래도 reference가 스크립트에 닿는 두 방식(`reference-pointer-2.1.283/`) — 를 기록합니다. |
 
 새 실험 계열은 `<주제>-lab/` 디렉토리로 추가합니다. 디렉토리 규약은 CLAUDE.md 제9조를 참고해 주세요.
