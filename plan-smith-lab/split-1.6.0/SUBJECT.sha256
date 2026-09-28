@@ -1,0 +1,15 @@
+6b0deb3214a93e88c25615fe25ecd6f5455c2f6452967c6899afc2c790a6d315  ./plugins/plan-smith/.claude-plugin/plugin.json
+6694bc0c2be4867d095da1f68acde99226180853209631a98a41b68a6c75112e  ./plugins/plan-smith/agents/plan-writer.md
+38c42151d219349a55278f83a1ca986dd4a705fb02b449fd18d9cfdb1d1cc007  ./plugins/plan-smith/CHANGELOG.md
+1b6091d4dcf5931104c354c6284244ffae39e1588e093db65f710c0ebb92c5be  ./plugins/plan-smith/CLAUDE.md
+083029a5c823845da56482296f0f1da4601a8ec54cfcb56da7a73875ba754ef9  ./plugins/plan-smith/README.ja.md
+e1e0f8935751e9a6e1bf5fd59f5d3d5a681251d6940c224620142753e815a9c6  ./plugins/plan-smith/README.ko.md
+5c8f09c9aa18680495803adc38316fb9ff8af806227911f6ed3df77b66e7ff3f  ./plugins/plan-smith/README.md
+d718c58bff9bd10275b5d516866b4e8e3036cea1061ef5803eb28d094493a2b1  ./plugins/plan-smith/README.zh-CN.md
+3ecd2eba0f1783f9668c46de96a13974608ac61946f0ea99d694ee8c69e5df86  ./plugins/plan-smith/README.zh-TW.md
+126e76262b88c45bd5bf8a13259ccaa0442c2479285d5b9ba4a4dbb7e7311fef  ./plugins/plan-smith/scripts/split-check.py
+a3df58434a23a187fe9cf84d0737bbeb8201a27cff08ff8fd87c5482fc1cd760  ./plugins/plan-smith/skills/forge/references/frames.md
+ab63133efab547b9b0460cbb8321fc9de642c8b259a84f07cfd3acc50f31a858  ./plugins/plan-smith/skills/forge/references/packet-template.md
+bd56c2774b5b86b9941bad6338fb52180aa7dd726266bf236d81b9e4e8353ea0  ./plugins/plan-smith/skills/forge/references/split.md
+386f4ccce6a2ceae59e975ec8578459f515a74aaff191df4fcd1fa4d1d9d55ec  ./plugins/plan-smith/skills/forge/references/styles.md
+e3925c2840e3ebc86dc3eeceb0b81dc24fd5486939f69a2868feb965f23fd78b  ./plugins/plan-smith/skills/forge/SKILL.md

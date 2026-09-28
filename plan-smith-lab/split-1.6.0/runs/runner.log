@@ -1,0 +1,7 @@
+skip p20k/r1
+run  p20k/r2
+run  p32k/r1
+run  p32k/r2
+run  p37k/r1
+run  p37k/r2
+done
