@@ -1,0 +1,1 @@
+CODEX_HOME=<empty temp, no auth> codex exec --strict-config --skip-git-repo-check --ephemeral -m gpt-6-sol -c model_reasoning_effort="xhigh" "Reply ok."

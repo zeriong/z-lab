@@ -1,0 +1,33 @@
+Reading additional input from stdin...
+OpenAI Codex v0.157.1
+--------
+workdir: /private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/tmp.ozjaZV19Hl
+model: gpt-6-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: bogus
+reasoning summaries: none
+session id: 01a0e6a9-6c75-76a3-896a-9908330ff11f
+--------
+user
+Reply ok.
+2026-09-28T06:17:38.586914Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: HTTP error: 401 Unauthorized, url: wss://api.openai.com/v1/responses
+2026-09-28T06:17:38.794560Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: HTTP error: 401 Unauthorized, url: wss://api.openai.com/v1/responses
+2026-09-28T06:17:39.187805Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: HTTP error: 401 Unauthorized, url: wss://api.openai.com/v1/responses
+ERROR: Reconnecting... 2/5
+2026-09-28T06:17:39.883995Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: HTTP error: 401 Unauthorized, url: wss://api.openai.com/v1/responses
+ERROR: Reconnecting... 3/5
+2026-09-28T06:17:40.982717Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: HTTP error: 401 Unauthorized, url: wss://api.openai.com/v1/responses
+ERROR: Reconnecting... 4/5
+2026-09-28T06:17:42.806948Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: HTTP error: 401 Unauthorized, url: wss://api.openai.com/v1/responses
+ERROR: Reconnecting... 5/5
+2026-09-28T06:17:46.188903Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: HTTP error: 401 Unauthorized, url: wss://api.openai.com/v1/responses
+warning: Falling back from WebSockets to HTTPS transport. unexpected status 401 Unauthorized: Missing bearer or basic authentication in header, url: wss://api.openai.com/v1/responses, cf-ray: a420a0803e9abd51-ICN
+ERROR: Reconnecting... 1/5
+ERROR: Reconnecting... 2/5
+ERROR: Reconnecting... 3/5
+ERROR: Reconnecting... 4/5
+ERROR: Reconnecting... 5/5
+ERROR: unexpected status 401 Unauthorized: Missing bearer or basic authentication in header, url: https://api.openai.com/v1/responses, cf-ray: a420a0b1fc5c723a-ICN, request id: req_e98e8104476c4744a070929545140a1c
+ERROR: unexpected status 401 Unauthorized: Missing bearer or basic authentication in header, url: https://api.openai.com/v1/responses, cf-ray: a420a0b1fc5c723a-ICN, request id: req_e98e8104476c4744a070929545140a1c
