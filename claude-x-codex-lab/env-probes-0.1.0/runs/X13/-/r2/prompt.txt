@@ -1,0 +1,1 @@
+Edit calc.py to add a function mul(a, b) that returns a * b. Then run the shell command `ls` with the Bash tool and report its output.

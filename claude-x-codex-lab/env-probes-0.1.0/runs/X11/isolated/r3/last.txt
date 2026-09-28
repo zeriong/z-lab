@@ -1,0 +1,1 @@
+{"findings":[],"resolved":["Could not create x.txt: the workspace is read-only, and the write was denied."],"verdict":"pass"}

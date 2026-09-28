@@ -1,0 +1,6 @@
+236:ORCA orchestration worker-start --task <task_id> --worktree current --agent claude --model opus --effort high --json
+237:ORCA orchestration worker-start --task <task_id> --worktree current --agent muse --model muse-spark-1.3 --json
+452:ORCA orchestration gate-create --task <task_id> --question "<decision>" --options <json_array> --json
+481:ORCA orchestration worker-start --task <task_id> --worktree new-child --name <name> --agent codex --setup run --json
+484:ORCA orchestration worker-start --task <task_id> --worktree new-top-level --name <name> --agent codex --setup run --json
+515:ORCA orchestration worker-start --task <task_id> --on <environment> --worktree new-top-level --repo <exact_remote_repo_selector> --name <name> --agent codex --setup run --json

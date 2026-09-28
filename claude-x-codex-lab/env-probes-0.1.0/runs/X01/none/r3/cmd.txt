@@ -1,0 +1,1 @@
+codex exec -m gpt-6-luna -s read-only --ignore-user-config --ephemeral --json -o last.txt \<prompt.txt\> 

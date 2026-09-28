@@ -1,0 +1,1 @@
+cwd=<repo> -C wt -o rel/out.txt

@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"01a0e666-dfd9-7613-8315-aeb7974d7d54"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"GRAPE-2"}}
+{"type":"turn.completed","usage":{"input_tokens":14198,"cached_input_tokens":11008,"cache_write_input_tokens":0,"output_tokens":8,"reasoning_output_tokens":0}}

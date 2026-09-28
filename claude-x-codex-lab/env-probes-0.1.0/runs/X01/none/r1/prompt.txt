@@ -1,0 +1,1 @@
+According to the project instruction files you were given, what codewords are defined? Reply with the codewords only, comma-separated, or NONE if you were given no project instructions. Do not read any files or run commands.

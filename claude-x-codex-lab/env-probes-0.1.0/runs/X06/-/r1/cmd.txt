@@ -1,0 +1,1 @@
+claude -p \<prompt.txt\> --setting-sources project --tools '' --model haiku --max-turns 1 

@@ -1,0 +1,96 @@
+run  X01/fallback/r1
+run  X01/fallback/r2
+run  X01/fallback/r3
+run  X01/none/r1
+run  X01/none/r2
+run  X01/none/r3
+run  X02/fallback/r1
+run  X02/fallback/r2
+run  X02/fallback/r3
+run  X03/fallback/r1
+run  X03/fallback/r2
+run  X03/fallback/r3
+run  X04/fallback/r1
+run  X04/fallback/r2
+run  X04/fallback/r3
+skip X05/-/r1
+run  X05/-/r2
+run  X05/-/r3
+run  X06/-/r1
+run  X06/-/r2
+run  X06/-/r3
+run  X07/nested-agents/r1
+run  X07/nested-agents/r2
+run  X07/nested-agents/r3
+run  X07/nested-claude/r1
+run  X07/nested-claude/r2
+run  X07/nested-claude/r3
+run  X08/-/r1
+run  X08/-/r2
+run  X08/-/r3
+skip X09/-/r1
+run  X09/-/r2
+run  X09/-/r3
+run  X10/isolated/r1
+run  X10/isolated/r2
+run  X10/isolated/r3
+run  X10/user/r1
+run  X10/user/r2
+run  X10/user/r3
+run  X11/isolated/r1
+run  X11/isolated/r2
+run  X11/isolated/r3
+run  X11/user/r1
+run  X11/user/r2
+run  X11/user/r3
+run  X12/-/r1
+run  X13/-/r1
+run  X13/-/r2
+run  X13/-/r3
+run  X14/relative/r1
+run  X14/absolute/r1
+run  X15/pipe-open/r1
+run  X15/devnull/r1
+skip X16/prompt-last/r1
+skip X16/prompt-first/r1
+skip X17/legacy/r1
+skip X17/file/r1
+run  X18/on/r1
+On branch main
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+run  X18/on/r2
+On branch main
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+run  X18/on/r3
+On branch main
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+run  X18/off/r1
+On branch main
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+run  X18/off/r2
+On branch main
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+run  X18/off/r3
+On branch main
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+skip S01/-/r1
+skip O01/-/r1
+done
