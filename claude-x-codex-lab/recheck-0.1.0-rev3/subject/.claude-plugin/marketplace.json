@@ -1,0 +1,88 @@
+{
+  "name": "bin",
+  "owner": {
+    "name": "zeriong"
+  },
+  "metadata": {
+    "description": "Claude Code plugins built because I needed them — plan-smith, harness, ux-ui, claude-x-codex",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "plan-smith",
+      "source": "./plugins/plan-smith",
+      "description": "Forge plans through a two-stage pipeline: the main agent distills session intent into a context packet, a clean-context plan-writer drafts with a proven reasoning-frame library and Opus/Fable-derived writing styles, and the result is relayed verbatim. Includes a relay mode (disciplined draft + auditing revision) validated by a 26-plan experiment.",
+      "version": "1.5.0",
+      "author": {
+        "name": "zeriong"
+      },
+      "keywords": [
+        "planning",
+        "reasoning-frames",
+        "pipeline",
+        "context-engineering",
+        "plan-review"
+      ],
+      "category": "productivity"
+    },
+    {
+      "name": "harness",
+      "source": "./plugins/harness",
+      "description": "Meta-skill that analyzes a project's actual layering / separation-of-concerns and emits project-rules + review-gate.sh + UserPromptSubmit hook + harness-engineering skill from scratch.",
+      "version": "1.1.0",
+      "author": {
+        "name": "zeriong"
+      },
+      "keywords": [
+        "harness",
+        "scaffolding",
+        "convention",
+        "review-gate",
+        "project-rules",
+        "fact-check"
+      ],
+      "category": "development"
+    },
+    {
+      "name": "ux-ui",
+      "source": "./plugins/ux-ui",
+      "description": "Web + mobile: measure the real render (chrome-devtools for web; a mobile MCP or CLI snapshot harness for RN/Flutter/iOS/Android) → art-director critique of the measured snapshots → iterate to elegant → hard-block commits until APPROVED. (adds a PreToolUse commit-gate hook and 4 MCP servers)",
+      "version": "1.2.0",
+      "author": {
+        "name": "zeriong"
+      },
+      "keywords": [
+        "ux",
+        "ui",
+        "frontend",
+        "mobile",
+        "react-native",
+        "flutter",
+        "ios",
+        "android",
+        "e2e",
+        "chrome-devtools",
+        "design-review",
+        "commit-gate"
+      ],
+      "category": "development"
+    },
+    {
+      "name": "claude-x-codex",
+      "source": "./plugins/claude-x-codex",
+      "description": "Claude × Codex peer orchestration: the two plan, build, and review each other's work as peers, with evidence-based triage, a rebuttal round, and shared project context across both vendors. Unofficial community plugin. (adds a UserPromptSubmit hook; silent when mode is off)",
+      "version": "0.1.0",
+      "author": {
+        "name": "zeriong"
+      },
+      "keywords": [
+        "orchestration",
+        "multi-agent",
+        "codex",
+        "code-review",
+        "orca"
+      ],
+      "category": "development"
+    }
+  ]
+}
