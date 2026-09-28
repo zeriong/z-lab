@@ -1,0 +1,1 @@
+plugin dir: /var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/tmp.GXBhlpl9LE/probe

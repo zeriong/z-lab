@@ -1,0 +1,14 @@
+./.claude-plugin/plugin.json
+./scripts/hello.sh
+./skills/hello/SKILL.md
+---
+name: hello
+description: Probe skill that runs the plugin's hello script. Use only when invoked as /probe:hello.
+---
+
+Run these two commands with the Bash tool, exactly as written, one at a time, then report both outputs verbatim:
+
+```bash
+bash "${CLAUDE_PLUGIN_ROOT}/scripts/hello.sh"
+echo "CPR=[$CLAUDE_PLUGIN_ROOT]"
+```
