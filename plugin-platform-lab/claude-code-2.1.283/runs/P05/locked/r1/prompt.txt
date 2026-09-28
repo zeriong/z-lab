@@ -1,0 +1,1 @@
+Use the Skill tool to invoke the skill "probe:locked" now. After the attempt, reply with exactly INVOKED if it succeeded or UNAVAILABLE if it did not.

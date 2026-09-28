@@ -1,0 +1,13 @@
+run  P01/-/r1
+run  P02/-/r1
+run  P03/-/r1
+run  P04/declared/r1
+run  P04/undeclared/r1
+run  P04/none/r1
+run  P05/open/r1
+run  P05/open/r2
+run  P05/open/r3
+run  P05/locked/r1
+run  P05/locked/r2
+run  P05/locked/r3
+done

@@ -1,0 +1,8 @@
+./.claude-plugin/plugin.json
+./skills/dirname/SKILL.md
+---
+name: fmname
+description: Probe skill for invocation-name source; never use.
+---
+
+probe
