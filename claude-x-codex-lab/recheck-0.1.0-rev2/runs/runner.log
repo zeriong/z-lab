@@ -1,0 +1,9 @@
+run  R10/isolated/r1
+run  R10/isolated/r2
+run  R10/isolated/r3
+run  R10/user/r1
+run  R10/user/r2
+run  R10/user/r3
+run  R12/-/r1
+run  S01/-/r1
+done

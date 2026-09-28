@@ -1,0 +1,62 @@
+## 4-1 mode + hook
+  ok   status default
+  ok   status default hint
+  ok   global on → get
+  ok   project overrides note
+  ok   clear → global off
+  ok   env override
+  ok   invalid value ignored
+  ok   exclude entry
+  ok   hook on → note
+  ok   hook on exit
+  ok   hook skips toggle cmd
+  ok   toggle exit
+  ok   hook silent with CXC_MODE=off
+  ok   hook off → silent
+  ok   hook off exit
+  ok   hook outside repo exit
+## 4-2 context bridge
+  ok   audit read-only
+  ok   root GAP
+  ok   src/ui GAP
+  ok   hook row
+  ok   gap local md
+  ok   gap local json
+  ok   candidate kg-out
+  ok   no profiles
+  ok   legacy warning
+  ok   file profile
+  ok   fallback inside a table is not top-level
+  ok   table fallback not reported
+  ok   fallback shown
+  ok   fallback marks root ok
+  ok   fallback marks nested ok
+  ok   copy local md
+  ok   copy local json
+  ok   link kg-out
+  ok   skip missing
+  ok   kg-out is a symlink
+  ok   idempotent (4 skips)
+  ok   from inside worktree
+  ok   inside-worktree copy landed
+  ok   from main-tree subdir
+  ok   agents-only ok
+  ok   pointer ok
+  ok   independent CHECK
+## 4-3 installer
+  ok   list header
+  ok   list count
+  ok   only → 2 installs
+  ok   only harness
+  ok   unknown plugin exit
+  ok   unknown plugin msg
+  ok   first plugin excluded
+  ok   others installed
+  ok   All toggled off
+  ok   quit exit
+  ok   quit msg
+  ok   no tty → all
+  ok   piped uses remote catalog
+  ok   piped ignores cwd catalog (fails on bad URL)
+
+passed=57 failed=0
