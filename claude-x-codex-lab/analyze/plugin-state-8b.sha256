@@ -1,0 +1,26 @@
+# because-i-needed feat/claude-x-codex working tree (uncommitted), base 042237d, 2026-09-28T07:22Z
+447bee38a145f61328d5d13171ca803c86294f60aacbc24ab01e2ee3ae311bfe  .claude-plugin/marketplace.json
+fc636c0d257d1f2a719c99e9fa0aa1f4e6289d2a2bdd8f0f587bb094b412b04c  install.sh
+04f69d640df40c5ac3609db98435783a46813a051198fdea64f16a1618c9a994  plugins/claude-x-codex/.claude-plugin/plugin.json
+dc41b2a68cc60b0f4733565202c20e56b755f5d7081a514d1758a41266665d14  plugins/claude-x-codex/.gitattributes
+63e01b881f51ebe2899059674522eb20b2a0bfda27e2738f2d0dd1bf325c3a65  plugins/claude-x-codex/CLAUDE.md
+6f1734348f48c84174b926ab160d1a890a1e3108b6b9f7201e177d3466104d86  plugins/claude-x-codex/hooks/hooks.json
+9a765dfa626cd68a7e6c56843435d9722c25068a6344b79745ba0018b6e77461  plugins/claude-x-codex/hooks/mode-context.sh
+2c6e35a57304adf3aeeb8de18f6be8739ed3425a599a661569924cc8f59a296f  plugins/claude-x-codex/README.ja.md
+2db59dd50ee453aa4aa2c7f69dd762041e1b51315d9183e067615d58ff6667e2  plugins/claude-x-codex/README.ko.md
+28dc77132dbf6c50b1f4959af566046aba433e11a8e234fe5df414bc993659ae  plugins/claude-x-codex/README.md
+b311f5d7f1f3f4164443468dc9fb7dea9f33f788f3da630eb8cf5d5706c9ae2b  plugins/claude-x-codex/README.zh-CN.md
+48aff00d9344e5337f9a95b0e65838df71e837dff1b29b136ce6a3c8664d1e3b  plugins/claude-x-codex/README.zh-TW.md
+dd58e0e7b9c73ac2957f42187cb18d7a9b7439fba2ab3921abdd1071e6e982ef  plugins/claude-x-codex/scripts/context-audit.sh
+8f9d1fa26903fd01eced08c912b0073c770e30ab44dae0820ae4c15ac6cc4fcd  plugins/claude-x-codex/scripts/mode.sh
+bd1f0591e10bced79770084a4c37c77900d7bbff03199bb9c477904f1b79ec01  plugins/claude-x-codex/scripts/worktree-setup.sh
+9e47802f254deb432d2e5a86fabfe9f2978953140081e9f8061704156dd740ae  plugins/claude-x-codex/skills/audit/SKILL.md
+482b1ee53cb5a89893bfbcf572be466c3146acecc4b63b98c5c2ece8554755ed  plugins/claude-x-codex/skills/mode/SKILL.md
+3410debe31ec65aeac08967668f55447b1c30d9937f7eb22e0aadb6cef5e077c  plugins/claude-x-codex/skills/run/references/context-bridge.md
+90d952b93bfd0640e307fd821f2c55f32e45436affdccf3b24cdd80a1ecd40f9  plugins/claude-x-codex/skills/run/references/host-claude-code.md
+b8de121c07bd852b7757006751fb3986495facf39456d5c7ceafed6c110a05e5  plugins/claude-x-codex/skills/run/references/host-codex.md
+d9e2881b11fd58c4e669f2f511ca364704deb8620fe269ce8ad33ce624bfe97e  plugins/claude-x-codex/skills/run/references/review.schema.json
+97005bda5786f08849de4dd902e011e2b726e953c42816ffd0bf42c196ac74fe  plugins/claude-x-codex/skills/run/references/templates.md
+0190ebe9d6d5f8995bd69d256b053402430565ece78c29284540cecd881f7c89  plugins/claude-x-codex/skills/run/references/transport-orca.md
+87886f76897df29c35e238e026e5de478da39de97b33de989d01504a41cc83ab  plugins/claude-x-codex/skills/run/references/transport-standalone.md
+6efbe3687752039f71bed781d8b4d30e0d1cc4bb3cecf31f005eedcb0d90e1d6  plugins/claude-x-codex/skills/run/SKILL.md
