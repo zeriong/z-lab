@@ -1,0 +1,281 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1b2a38;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+  color: #3a2a1a;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+#game-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+/* In-game pause button: top right corner. */
+#btn-pause {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 5;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 3px solid #5a3a1a;
+  border-radius: 14px;
+  background: rgba(255, 248, 231, 0.92);
+  box-shadow: 0 3px 0 #5a3a1a;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+#btn-pause .bar {
+  display: block;
+  width: 8px;
+  height: 24px;
+  border-radius: 2px;
+  background: #5a3a1a;
+}
+
+#btn-pause:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #5a3a1a;
+}
+
+/* Overlays */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(10, 20, 30, 0.6);
+}
+
+.overlay-light {
+  background: rgba(10, 20, 30, 0.25);
+}
+
+#overlay-error {
+  z-index: 20;
+}
+
+.panel {
+  width: min(420px, 100%);
+  max height: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  padding: 24px 28px;
+  border: 4px solid #5a3a1a;
+  border-radius: 18px;
+  background: #fff8e7;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+.panel-wide {
+  width: min(640px, 100%);
+}
+
+.panel h2 {
+  margin: 0 0 16px;
+  font-size: 28px;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 44px;
+  letter-spacing: 2px;
+  color: #d62828;
+  text-shadow: 2px 2px 0 #5a3a1a;
+}
+
+.subtitle {
+  margin: 0 0 12px;
+  font-size: 15px;
+}
+
+.btn-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.btn {
+  min-height: 48px;
+  padding: 10px 20px;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  color: #3a2a1a;
+  border: 3px solid #5a3a1a;
+  border-radius: 12px;
+  background: #ffd166;
+  box-shadow: 0 3px 0 #5a3a1a;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #5a3a1a;
+}
+
+.btn-primary {
+  color: #fff;
+  background: #ef476f;
+}
+
+.btn-secondary {
+  background: #e9dcc2;
+}
+
+.btn:focus-visible,
+.stage-btn:focus-visible,
+#btn-pause:focus-visible {
+  outline: 3px solid #1f7ae0;
+  outline-offset: 2px;
+}
+
+/* Stage select grid: 5 x 2 */
+.stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.stage-btn {
+  min-height: 76px;
+  padding: 6px 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-family: inherit;
+  color: #3a2a1a;
+  border: 3px solid #5a3a1a;
+  border-radius: 12px;
+  background: #ffd166;
+  box-shadow: 0 3px 0 #5a3a1a;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.stage-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #5a3a1a;
+}
+
+.stage-btn:disabled {
+  color: #8a8070;
+  background: #cfc6b4;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.stage-num {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.stage-stars {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #d99a00;
+}
+
+.stage-best {
+  font-size: 11px;
+}
+
+.stage-lock {
+  font-size: 18px;
+}
+
+/* Result overlay */
+.stars {
+  margin: 4px 0 8px;
+  font-size: 44px;
+  letter-spacing: 6px;
+}
+
+.star {
+  color: #cfc6b4;
+}
+
+.star.on {
+  color: #ffc107;
+  text-shadow: 0 2px 0 #a86f00;
+}
+
+.result-line {
+  margin: 6px 0;
+  font-size: 18px;
+}
+
+.allclear {
+  margin: 10px 0 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: #d62828;
+}
+
+/* Error overlay */
+#error-message {
+  margin: 0;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border: 1px solid #e0d4bc;
+  border-radius: 8px;
+  background: #fff;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.error-hint {
+  margin: 12px 0 0;
+  font-size: 14px;
+}
+
+.hidden {
+  display: none !important;
+}
