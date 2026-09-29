@@ -14,6 +14,7 @@ SCRUB="$HERE/../scrub.py"
 COMMON=(--effort xhigh --output-format json --strict-mcp-config --setting-sources project
         --settings "$HERE/inputs/settings.json" --permission-mode bypassPermissions)
 mkdir -p "$EV" "$FXROOT"
+export DISABLE_AUTOUPDATER=1   # the CLI updated itself between canary and run once (2.1.283 -> 2.1.284); r1 then failed to start
 caffeinate -ims -w $$ &          # background claude -p does not keep the host awake (real-skill-tco attempt 2)
 
 notice() {
