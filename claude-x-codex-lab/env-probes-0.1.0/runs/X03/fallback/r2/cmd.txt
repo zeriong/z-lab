@@ -1,0 +1,1 @@
+codex exec -m gpt-6-luna -C /var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/tmp.6X1wtWqsMn/repo/sub -s read-only --ignore-user-config --ephemeral --json -c project_doc_fallback_filenames=\[\"CLAUDE.md\"\] -o last.txt \<prompt.txt\> 

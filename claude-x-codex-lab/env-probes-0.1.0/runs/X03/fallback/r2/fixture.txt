@@ -1,0 +1,3 @@
+./CLAUDE.md
+./sub/app.txt
+./sub/CLAUDE.md

@@ -1,0 +1,1 @@
+claude -p \<prompt\> --model haiku --setting-sources project --tools Read Grep Glob Bash --allowedTools Bash\(git\ diff:\*\) Bash\(git\ log:\*\) --json-schema \<schema\> 

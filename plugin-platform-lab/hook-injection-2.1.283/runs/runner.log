@@ -1,0 +1,10 @@
+run  declared/r1
+run  declared/r2
+run  declared/r3
+run  undeclared/r1
+run  undeclared/r2
+run  undeclared/r3
+run  none/r1
+run  none/r2
+run  none/r3
+done

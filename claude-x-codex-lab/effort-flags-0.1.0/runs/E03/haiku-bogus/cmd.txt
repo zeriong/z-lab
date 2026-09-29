@@ -1,0 +1,1 @@
+claude -p <prompt> --model haiku --effort bogus --setting-sources project --tools "" --max-turns 1 --output-format stream-json --verbose

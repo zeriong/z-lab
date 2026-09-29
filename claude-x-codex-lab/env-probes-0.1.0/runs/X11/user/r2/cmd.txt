@@ -1,0 +1,1 @@
+codex exec -m gpt-6-luna -s read-only -c project_doc_fallback_filenames=\[\"CLAUDE.md\"\] --output-schema /Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/env-probes-0.1.0/subject/plugins/claude-x-codex/skills/run/references/review.schema.json --ephemeral --json -o last.txt \<prompt.txt\> 

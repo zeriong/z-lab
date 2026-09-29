@@ -1,0 +1,1 @@
+Use the Read tool to read pkg/data.txt. Then, without reading any other file, list every codeword defined in project instructions that are now in your context. Reply with the codewords only, comma-separated.

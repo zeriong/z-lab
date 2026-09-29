@@ -1,0 +1,1 @@
+First, create a file named x.txt containing the word hi (use any tool or shell command that works). Then review m.py for correctness bugs and return the review JSON.

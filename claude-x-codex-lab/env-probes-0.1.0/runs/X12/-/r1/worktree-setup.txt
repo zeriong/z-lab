@@ -1,0 +1,1 @@
+no manifest at /var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/tmp.IybmTp4N2o/repo/.claude-x-codex/context-manifest — nothing to materialize

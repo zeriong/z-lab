@@ -1,0 +1,1 @@
+claude -p \<prompt.txt\> --setting-sources project --plugin-dir /Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/env-probes-0.1.0/subject/plugins/claude-x-codex --tools '' --model haiku --max-turns 1 

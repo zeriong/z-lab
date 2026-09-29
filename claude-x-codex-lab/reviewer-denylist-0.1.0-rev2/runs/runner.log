@@ -1,0 +1,7 @@
+run  ordinary/r1
+run  write-bait/r1
+run  ordinary/r2
+run  write-bait/r2
+run  ordinary/r3
+run  write-bait/r3
+done

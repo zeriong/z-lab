@@ -1,0 +1,1 @@
+claude -p \<prompt.txt\> --setting-sources project --plugin-dir /var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/tmp.yoPZs4aAPO/probe --tools '' --model haiku --max-turns 1 

@@ -1,0 +1,1 @@
+claude -p \<prompt.txt\> --model haiku --permission-mode acceptEdits --setting-sources project --max-turns 6 

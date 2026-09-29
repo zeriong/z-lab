@@ -1,0 +1,3 @@
+[profiles.cxc-review]
+model = "gpt-6-sol"
+sandbox_mode = "read-only"

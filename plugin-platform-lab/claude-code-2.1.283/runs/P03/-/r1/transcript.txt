@@ -1,0 +1,21 @@
+$ claude plugin marketplace add /var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/tmp.E6Qi1nzQan/mkt
+Adding marketplace…✔ Successfully added marketplace: bin-probe (declared in user settings)
+exit=0
+
+$ claude plugin marketplace add /var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/tmp.E6Qi1nzQan/mkt
+Adding marketplace…✔ Marketplace 'bin-probe' already on disk — declared in user settings
+exit=0
+
+$ claude plugin install probe@bin-probe --scope user
+Installing plugin "probe@bin-probe"...✔ Successfully installed plugin: probe@bin-probe (scope: user)
+exit=0
+
+$ claude plugin install probe@bin-probe
+Installing plugin "probe@bin-probe"...✔ Plugin "probe@bin-probe" is already installed (scope: user) — it loads in place from /var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/tmp.E6Qi1nzQan/mkt/plugins/probe, so edits there take effect at the next session start or /reload-plugins
+exit=0
+
+$ claude plugin install nope@bin-probe
+Installing plugin "nope@bin-probe"...✘ Failed to install plugin "nope@bin-probe": Plugin "nope" not found in marketplace "bin-probe". Your local copy may be out of date — try `claude plugin marketplace update bin-probe`.
+
+exit=1
+

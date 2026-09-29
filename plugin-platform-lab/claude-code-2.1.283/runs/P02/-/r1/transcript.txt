@@ -1,0 +1,96 @@
+# phase 1 — install from old-mkt
+$ claude plugin marketplace add /var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/tmp.abU1XKGuzt/mkt
+Adding marketplace…✔ Successfully added marketplace: old-mkt (declared in user settings)
+exit=0
+
+$ claude plugin install probe@old-mkt
+Installing plugin "probe@old-mkt"...✔ Successfully installed plugin: probe@old-mkt (scope: user)
+exit=0
+
+# phase 2 — rename marketplace old-mkt→new-mkt and plugin probe→probe2 (folder too), bump 2.0.0, then update
+$ claude plugin marketplace update old-mkt
+Updating marketplace: old-mkt...Validating local marketplace
+✔ Successfully updated marketplace: old-mkt
+exit=0
+
+$ claude plugin marketplace list
+Configured marketplaces:
+
+  ❯ old-mkt
+    Source: Directory (/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/tmp.abU1XKGuzt/mkt)
+
+exit=0
+
+$ claude plugin list
+Installed plugins:
+
+  ❯ probe@old-mkt
+    Version: 1.0.0
+    Scope: user
+    Status: ✘ failed to load
+    Error: Plugin probe not found in marketplace old-mkt
+
+exit=0
+
+$ claude plugin update probe@old-mkt
+Checking for updates for plugin "probe@old-mkt"…
+✘ Failed to update plugin "probe@old-mkt": Plugin "probe" not found
+exit=1
+
+$ claude plugin install probe2@new-mkt
+Installing plugin "probe2@new-mkt"...✘ Failed to install plugin "probe2@new-mkt": Plugin "probe2" not found in marketplace "new-mkt". Your local copy may be out of date — try `claude plugin marketplace update new-mkt`.
+
+exit=1
+
+$ claude plugin install probe2@old-mkt
+Installing plugin "probe2@old-mkt"...✔ Successfully installed plugin: probe2@old-mkt (scope: user)
+exit=0
+
+$ claude plugin list
+Installed plugins:
+
+  ❯ probe2@old-mkt
+    Version: 2.0.0
+    Scope: user
+    Status: ✔ enabled
+
+  ❯ probe@old-mkt
+    Version: 1.0.0
+    Scope: user
+    Status: ✘ failed to load
+    Error: Plugin probe not found in marketplace old-mkt
+
+exit=0
+
+# phase 3 — remove the old registration, add again, install under the new name
+$ claude plugin marketplace remove old-mkt
+✔ Successfully removed marketplace: old-mkt
+Also uninstalled 2 plugins from this marketplace:
+  probe@old-mkt
+  probe2@old-mkt
+The removal also deletes their saved options, secrets and data where it can.
+To use a plugin again, add the marketplace back and reinstall the plugin.
+exit=0
+
+$ claude plugin list
+No plugins installed. Use `claude plugin install` to install a plugin.
+exit=0
+
+$ claude plugin marketplace add /var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/tmp.abU1XKGuzt/mkt
+Adding marketplace…✔ Successfully added marketplace: new-mkt (declared in user settings)
+exit=0
+
+$ claude plugin install probe2@new-mkt
+Installing plugin "probe2@new-mkt"...✔ Successfully installed plugin: probe2@new-mkt (scope: user)
+exit=0
+
+$ claude plugin list
+Installed plugins:
+
+  ❯ probe2@new-mkt
+    Version: 2.0.0
+    Scope: user
+    Status: ✔ enabled
+
+exit=0
+

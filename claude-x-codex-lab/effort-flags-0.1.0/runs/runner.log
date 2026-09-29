@@ -1,0 +1,8 @@
+run  E01
+run  E02/xhigh
+run  E02/high
+run  E02/bogus
+run  E03/opus-xhigh
+run  E03/sonnet-high
+run  E03/haiku-bogus
+done

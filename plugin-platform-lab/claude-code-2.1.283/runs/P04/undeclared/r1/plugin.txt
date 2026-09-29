@@ -1,0 +1,3 @@
+./.claude-plugin/plugin.json
+./hooks/hooks.json
+./skills/noop/SKILL.md
