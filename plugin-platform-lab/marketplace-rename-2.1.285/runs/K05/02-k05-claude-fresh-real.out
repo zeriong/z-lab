@@ -1,0 +1,15 @@
+$ bash /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-claude-fresh/install.sh --host claude --only probe-a
+--- stdout
+
+Adding marketplace 'because-i-needed' (http://127.0.0.1:58136/cgi-bin/git/k05-claude-fresh.git)
+Adding marketplace…Refreshing marketplace cache (timeout: 120s)…
+Cloning repository (timeout: 120s): http://127.0.0.1:58136/cgi-bin/git/k05-claude-fresh.git
+Clone complete, validating marketplace…
+Cleaning up old marketplace cache…
+✔ Successfully added marketplace: because-i-needed (declared in user settings)
+Installing probe-a@because-i-needed
+Installing plugin "probe-a@because-i-needed"...✔ Successfully installed plugin: probe-a@because-i-needed (scope: user)
+
+Done. Start a new Claude Code session (or run /reload-plugins) to load: probe-a
+
+--- stderr

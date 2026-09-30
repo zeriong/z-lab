@@ -1,0 +1,208 @@
+[
+ {
+  "step": "01-add",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "add",
+   "http://127.0.0.1:58136/cgi-bin/git/k07.git"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+  "exit": 0,
+  "elapsed_ms": 670
+ },
+ {
+  "step": "02-install-a-project",
+  "argv": [
+   "claude",
+   "plugin",
+   "install",
+   "probe-a@bin",
+   "--scope",
+   "project"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+  "exit": 0,
+  "elapsed_ms": 621
+ },
+ {
+  "step": "03-install-b-local",
+  "argv": [
+   "claude",
+   "plugin",
+   "install",
+   "probe-b@bin",
+   "--scope",
+   "local"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+  "exit": 0,
+  "elapsed_ms": 510
+ },
+ {
+  "step": "04-1-installed-marketplaces",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+  "exit": 0,
+  "elapsed_ms": 97
+ },
+ {
+  "step": "05-1-installed-plugins",
+  "argv": [
+   "claude",
+   "plugin",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+  "exit": 0,
+  "elapsed_ms": 103
+ },
+ {
+  "step": "06-update-old",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "update",
+   "bin"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+  "exit": 0,
+  "elapsed_ms": 718
+ },
+ {
+  "step": "07-2-after-update-marketplaces",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+  "exit": 0,
+  "elapsed_ms": 106
+ },
+ {
+  "step": "08-2-after-update-plugins",
+  "argv": [
+   "claude",
+   "plugin",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+  "exit": 0,
+  "elapsed_ms": 103
+ },
+ {
+  "step": "09-remove-old",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "remove",
+   "bin"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+  "exit": 0,
+  "elapsed_ms": 145
+ },
+ {
+  "step": "10-3-after-remove-marketplaces",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+  "exit": 0,
+  "elapsed_ms": 88
+ },
+ {
+  "step": "11-3-after-remove-plugins",
+  "argv": [
+   "claude",
+   "plugin",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+  "exit": 0,
+  "elapsed_ms": 99
+ },
+ {
+  "step": "12-readd",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "add",
+   "http://127.0.0.1:58136/cgi-bin/git/k07.git"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+  "exit": 0,
+  "elapsed_ms": 603
+ },
+ {
+  "step": "13-install-a-new-default",
+  "argv": [
+   "claude",
+   "plugin",
+   "install",
+   "probe-a@because-i-needed"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+  "exit": 0,
+  "elapsed_ms": 505
+ },
+ {
+  "step": "14-install-b-new-local",
+  "argv": [
+   "claude",
+   "plugin",
+   "install",
+   "probe-b@because-i-needed",
+   "--scope",
+   "local"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+  "exit": 0,
+  "elapsed_ms": 592
+ },
+ {
+  "step": "15-4-migrated-marketplaces",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+  "exit": 0,
+  "elapsed_ms": 117
+ },
+ {
+  "step": "16-4-migrated-plugins",
+  "argv": [
+   "claude",
+   "plugin",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+  "exit": 0,
+  "elapsed_ms": 114
+ }
+]

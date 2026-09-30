@@ -1,0 +1,170 @@
+[
+ {
+  "step": "01-add",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "add",
+   "http://127.0.0.1:59377/cgi-bin/git/n01.git"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n01-project",
+  "exit": 0,
+  "elapsed_ms": 1565
+ },
+ {
+  "step": "02-install-a-old",
+  "argv": [
+   "claude",
+   "plugin",
+   "install",
+   "probe-a@bin"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n01-project",
+  "exit": 0,
+  "elapsed_ms": 466
+ },
+ {
+  "step": "03-1-installed-n01-project-session",
+  "argv": [
+   "claude",
+   "-p",
+   "hi",
+   "--output-format",
+   "stream-json",
+   "--verbose",
+   "--include-hook-events"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n01-project",
+  "exit": 1,
+  "elapsed_ms": 779
+ },
+ {
+  "step": "04-update-marketplace-old",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "update",
+   "bin"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n01-project",
+  "exit": 0,
+  "elapsed_ms": 634
+ },
+ {
+  "step": "05-update-a-old",
+  "argv": [
+   "claude",
+   "plugin",
+   "update",
+   "probe-a@bin"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n01-project",
+  "exit": 0,
+  "elapsed_ms": 502
+ },
+ {
+  "step": "06-2-updated-n01-project-session",
+  "argv": [
+   "claude",
+   "-p",
+   "hi",
+   "--output-format",
+   "stream-json",
+   "--verbose",
+   "--include-hook-events"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n01-project",
+  "exit": 1,
+  "elapsed_ms": 792
+ },
+ {
+  "step": "07-update-a-new",
+  "argv": [
+   "claude",
+   "plugin",
+   "update",
+   "probe-a@because-i-needed"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n01-project",
+  "exit": 1,
+  "elapsed_ms": 486
+ },
+ {
+  "step": "08-disable-a-new",
+  "argv": [
+   "claude",
+   "plugin",
+   "disable",
+   "probe-a@because-i-needed"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n01-project",
+  "exit": 1,
+  "elapsed_ms": 451
+ },
+ {
+  "step": "09-enable-a-new",
+  "argv": [
+   "claude",
+   "plugin",
+   "enable",
+   "probe-a@because-i-needed"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n01-project",
+  "exit": 0,
+  "elapsed_ms": 590
+ },
+ {
+  "step": "10-uninstall-a-new",
+  "argv": [
+   "claude",
+   "plugin",
+   "uninstall",
+   "probe-a@because-i-needed"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n01-project",
+  "exit": 1,
+  "elapsed_ms": 479
+ },
+ {
+  "step": "11-3-after-new-id-commands-n01-project-marketplaces",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n01-project",
+  "exit": 0,
+  "elapsed_ms": 112
+ },
+ {
+  "step": "12-3-after-new-id-commands-n01-project-plugins",
+  "argv": [
+   "claude",
+   "plugin",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n01-project",
+  "exit": 0,
+  "elapsed_ms": 103
+ },
+ {
+  "step": "13-3-after-new-id-commands-n01-project-session",
+  "argv": [
+   "claude",
+   "-p",
+   "hi",
+   "--output-format",
+   "stream-json",
+   "--verbose",
+   "--include-hook-events"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n01-project",
+  "exit": 1,
+  "elapsed_ms": 756
+ }
+]

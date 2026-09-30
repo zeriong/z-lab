@@ -1,0 +1,5 @@
+$ codex plugin marketplace upgrade
+--- stdout
+No configured Git marketplaces to upgrade.
+
+--- stderr

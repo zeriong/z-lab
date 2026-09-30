@@ -1,0 +1,5 @@
+$ claude --version
+--- stdout
+2.1.285 (Claude Code)
+
+--- stderr

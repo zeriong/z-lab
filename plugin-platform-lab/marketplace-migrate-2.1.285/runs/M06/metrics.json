@@ -1,0 +1,147 @@
+[
+ {
+  "step": "01-add",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "add",
+   "http://127.0.0.1:58454/cgi-bin/git/m06.git"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m06-project",
+  "exit": 0,
+  "elapsed_ms": 638
+ },
+ {
+  "step": "02-install-a-project",
+  "argv": [
+   "claude",
+   "plugin",
+   "install",
+   "probe-a@bin",
+   "--scope",
+   "project"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m06-project",
+  "exit": 0,
+  "elapsed_ms": 508
+ },
+ {
+  "step": "03-install-b-local",
+  "argv": [
+   "claude",
+   "plugin",
+   "install",
+   "probe-b@bin",
+   "--scope",
+   "local"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m06-project",
+  "exit": 0,
+  "elapsed_ms": 525
+ },
+ {
+  "step": "04-1-installed-marketplaces",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m06-project",
+  "exit": 0,
+  "elapsed_ms": 119
+ },
+ {
+  "step": "05-1-installed-plugins",
+  "argv": [
+   "claude",
+   "plugin",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m06-project",
+  "exit": 0,
+  "elapsed_ms": 106
+ },
+ {
+  "step": "06-remove-old",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "remove",
+   "bin"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m06-project",
+  "exit": 0,
+  "elapsed_ms": 151
+ },
+ {
+  "step": "07-readd",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "add",
+   "http://127.0.0.1:58454/cgi-bin/git/m06.git"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m06-project",
+  "exit": 0,
+  "elapsed_ms": 601
+ },
+ {
+  "step": "08-install-a-new-project",
+  "argv": [
+   "claude",
+   "plugin",
+   "install",
+   "probe-a@because-i-needed",
+   "--scope",
+   "project"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m06-project",
+  "exit": 0,
+  "elapsed_ms": 542
+ },
+ {
+  "step": "09-install-b-new-local",
+  "argv": [
+   "claude",
+   "plugin",
+   "install",
+   "probe-b@because-i-needed",
+   "--scope",
+   "local"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m06-project",
+  "exit": 0,
+  "elapsed_ms": 530
+ },
+ {
+  "step": "10-2-migrated-marketplaces",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m06-project",
+  "exit": 0,
+  "elapsed_ms": 122
+ },
+ {
+  "step": "11-2-migrated-plugins",
+  "argv": [
+   "claude",
+   "plugin",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m06-project",
+  "exit": 0,
+  "elapsed_ms": 102
+ }
+]

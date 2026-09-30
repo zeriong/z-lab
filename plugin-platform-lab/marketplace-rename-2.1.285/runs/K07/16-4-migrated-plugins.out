@@ -1,0 +1,36 @@
+$ claude plugin list --json
+--- stdout
+[
+  {
+    "id": "probe-a@because-i-needed",
+    "version": "1.0.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/cache/because-i-needed/probe-a/1.0.0",
+    "installedAt": "2026-09-30T09:52:09.095Z",
+    "lastUpdated": "2026-09-30T09:52:09.095Z",
+    "mcpServers": {
+      "probe-mcp": {
+        "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "args": [
+          "-c",
+          "pass"
+        ]
+      }
+    },
+    "projectEnabled": false
+  },
+  {
+    "id": "probe-b@because-i-needed",
+    "version": "1.0.0",
+    "scope": "local",
+    "enabled": true,
+    "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/cache/because-i-needed/probe-b/1.0.0",
+    "installedAt": "2026-09-30T09:52:09.580Z",
+    "lastUpdated": "2026-09-30T09:52:09.580Z",
+    "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+    "projectEnabled": false
+  }
+]
+
+--- stderr

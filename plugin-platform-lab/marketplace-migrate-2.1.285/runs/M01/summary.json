@@ -1,0 +1,133 @@
+{
+ "snapshots": {
+  "1-installed": {
+   "marketplaces": [
+    {
+     "name": "bin",
+     "source": "git",
+     "url": "http://127.0.0.1:58454/cgi-bin/git/m01.git",
+     "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m01-cfg/plugins/marketplaces/bin"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "probe-a@bin",
+     "version": "1.0.0",
+     "scope": "user",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m01-cfg/plugins/cache/bin/probe-a/1.0.0",
+     "installedAt": "2026-09-30T09:59:42.143Z",
+     "lastUpdated": "2026-09-30T09:59:42.143Z",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": false
+    }
+   ],
+   "config_files": {
+    "settings.json": "{\n  \"extraKnownMarketplaces\": {\n    \"bin\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:58454/cgi-bin/git/m01.git\"\n      }\n    }\n  },\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true\n  }\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"probe-a@bin\": [\n      {\n        \"scope\": \"user\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m01-cfg/plugins/cache/bin/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T09:59:42.143Z\",\n        \"lastUpdated\": \"2026-09-30T09:59:42.143Z\",\n        \"gitCommitSha\": \"2d038c51da32cec53b6e8af35aa9a6026ab08dbb\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"bin\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"http://127.0.0.1:58454/cgi-bin/git/m01.git\"\n    },\n    \"installLocation\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m01-cfg/plugins/marketplaces/bin\",\n    \"lastUpdated\": \"2026-09-30T09:59:41.612Z\"\n  }\n}"
+   },
+   "project_files": {},
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0"
+   ]
+  },
+  "2-after-marketplace-update": {
+   "marketplaces": [
+    {
+     "name": "bin",
+     "source": "git",
+     "url": "http://127.0.0.1:58454/cgi-bin/git/m01.git",
+     "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m01-cfg/plugins/marketplaces/bin"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "probe-a@bin",
+     "version": "1.0.0",
+     "scope": "user",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m01-cfg/plugins/cache/bin/probe-a/1.0.0",
+     "installedAt": "2026-09-30T09:59:42.143Z",
+     "lastUpdated": "2026-09-30T09:59:42.143Z",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": false
+    }
+   ],
+   "config_files": {
+    "settings.json": "{\n  \"extraKnownMarketplaces\": {\n    \"bin\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:58454/cgi-bin/git/m01.git\"\n      }\n    }\n  },\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true\n  }\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"probe-a@bin\": [\n      {\n        \"scope\": \"user\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m01-cfg/plugins/cache/bin/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T09:59:42.143Z\",\n        \"lastUpdated\": \"2026-09-30T09:59:42.143Z\",\n        \"gitCommitSha\": \"2d038c51da32cec53b6e8af35aa9a6026ab08dbb\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"bin\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"http://127.0.0.1:58454/cgi-bin/git/m01.git\"\n    },\n    \"installLocation\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m01-cfg/plugins/marketplaces/bin\",\n    \"lastUpdated\": \"2026-09-30T09:59:43.322Z\"\n  }\n}"
+   },
+   "project_files": {},
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0",
+    "bin/probe-a/1.0.1"
+   ]
+  },
+  "3-after-plugin-update": {
+   "marketplaces": [
+    {
+     "name": "bin",
+     "source": "git",
+     "url": "http://127.0.0.1:58454/cgi-bin/git/m01.git",
+     "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m01-cfg/plugins/marketplaces/bin"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "probe-a@bin",
+     "version": "1.0.1",
+     "scope": "user",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m01-cfg/plugins/cache/bin/probe-a/1.0.1",
+     "installedAt": "2026-09-30T09:59:42.143Z",
+     "lastUpdated": "2026-09-30T09:59:43.958Z",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": false
+    }
+   ],
+   "config_files": {
+    "settings.json": "{\n  \"extraKnownMarketplaces\": {\n    \"bin\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:58454/cgi-bin/git/m01.git\"\n      }\n    }\n  },\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true\n  }\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"probe-a@bin\": [\n      {\n        \"scope\": \"user\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m01-cfg/plugins/cache/bin/probe-a/1.0.1\",\n        \"version\": \"1.0.1\",\n        \"installedAt\": \"2026-09-30T09:59:42.143Z\",\n        \"lastUpdated\": \"2026-09-30T09:59:43.958Z\",\n        \"gitCommitSha\": \"50e3523d2c20a48c1bb8a24245a2001326191c4f\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"bin\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"http://127.0.0.1:58454/cgi-bin/git/m01.git\"\n    },\n    \"installLocation\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m01-cfg/plugins/marketplaces/bin\",\n    \"lastUpdated\": \"2026-09-30T09:59:43.322Z\"\n  }\n}"
+   },
+   "project_files": {},
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0",
+    "bin/probe-a/1.0.1"
+   ]
+  }
+ },
+ "base": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris"
+}

@@ -1,0 +1,6 @@
+$ codex plugin add harness@bin
+--- stdout
+Added plugin `harness` from marketplace `bin`.
+Installed plugin root: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/codex-url/plugins/cache/bin/harness/1.3.0
+
+--- stderr

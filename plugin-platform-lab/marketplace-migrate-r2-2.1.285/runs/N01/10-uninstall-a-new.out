@@ -1,0 +1,5 @@
+$ claude plugin uninstall probe-a@because-i-needed
+--- stdout
+
+--- stderr
+✘ Failed to uninstall plugin "probe-a@because-i-needed": Plugin "probe-a@because-i-needed" is not installed in user scope. Use --scope to specify the correct scope.

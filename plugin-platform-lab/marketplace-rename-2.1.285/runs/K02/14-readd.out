@@ -1,0 +1,5 @@
+$ claude plugin marketplace add /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k02
+--- stdout
+Adding marketplace…✔ Successfully added marketplace: because-i-needed (declared in user settings)
+
+--- stderr

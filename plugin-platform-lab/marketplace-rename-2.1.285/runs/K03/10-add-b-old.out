@@ -1,0 +1,6 @@
+$ codex plugin add probe-b@bin
+--- stdout
+Added plugin `probe-b` from marketplace `bin`.
+Installed plugin root: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k03-codex/plugins/cache/bin/probe-b/1.0.0
+
+--- stderr

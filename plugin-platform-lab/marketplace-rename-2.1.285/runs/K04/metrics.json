@@ -1,0 +1,241 @@
+[
+ {
+  "step": "01-add",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "add",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 14
+ },
+ {
+  "step": "02-add-a-old",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "probe-a@bin"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 14
+ },
+ {
+  "step": "03-1-installed-marketplaces",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 12
+ },
+ {
+  "step": "04-1-installed-plugins",
+  "argv": [
+   "codex",
+   "plugin",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 12
+ },
+ {
+  "step": "05-1-installed-prompt-input",
+  "argv": [
+   "codex",
+   "debug",
+   "prompt-input",
+   "hi"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 117
+ },
+ {
+  "step": "06-upgrade",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "upgrade"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 13
+ },
+ {
+  "step": "07-2-after-upgrade-marketplaces",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 13
+ },
+ {
+  "step": "08-2-after-upgrade-plugins",
+  "argv": [
+   "codex",
+   "plugin",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 13
+ },
+ {
+  "step": "09-2-after-upgrade-prompt-input",
+  "argv": [
+   "codex",
+   "debug",
+   "prompt-input",
+   "hi"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 103
+ },
+ {
+  "step": "10-add-b-old",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "probe-b@bin"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 1,
+  "elapsed_ms": 13
+ },
+ {
+  "step": "11-add-b-new",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "probe-b@because-i-needed"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 15
+ },
+ {
+  "step": "12-3-after-adds-marketplaces",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 14
+ },
+ {
+  "step": "13-3-after-adds-plugins",
+  "argv": [
+   "codex",
+   "plugin",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 13
+ },
+ {
+  "step": "14-3-after-adds-prompt-input",
+  "argv": [
+   "codex",
+   "debug",
+   "prompt-input",
+   "hi"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 106
+ },
+ {
+  "step": "15-remove-old",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "remove",
+   "bin"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 14
+ },
+ {
+  "step": "16-readd",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "add",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 14
+ },
+ {
+  "step": "17-add-a-new",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "probe-a@because-i-needed"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 15
+ },
+ {
+  "step": "18-4-migrated-marketplaces",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 13
+ },
+ {
+  "step": "19-4-migrated-plugins",
+  "argv": [
+   "codex",
+   "plugin",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 13
+ },
+ {
+  "step": "20-4-migrated-prompt-input",
+  "argv": [
+   "codex",
+   "debug",
+   "prompt-input",
+   "hi"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k04-cwd",
+  "exit": 0,
+  "elapsed_ms": 105
+ }
+]

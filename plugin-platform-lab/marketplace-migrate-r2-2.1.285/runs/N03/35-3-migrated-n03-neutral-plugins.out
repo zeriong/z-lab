@@ -1,0 +1,49 @@
+$ claude plugin list --json
+--- stdout
+[
+  {
+    "id": "probe-a@because-i-needed",
+    "version": "1.0.0",
+    "scope": "project",
+    "enabled": false,
+    "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-a/1.0.0",
+    "installedAt": "2026-09-30T11:23:13.044Z",
+    "lastUpdated": "2026-09-30T11:23:13.044Z",
+    "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1",
+    "projectEnabled": false
+  },
+  {
+    "id": "probe-a@because-i-needed",
+    "version": "1.0.0",
+    "scope": "project",
+    "enabled": false,
+    "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-a/1.0.0",
+    "installedAt": "2026-09-30T11:23:14.319Z",
+    "lastUpdated": "2026-09-30T11:23:14.319Z",
+    "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p2",
+    "projectEnabled": false
+  },
+  {
+    "id": "probe-b@because-i-needed",
+    "version": "1.0.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0",
+    "installedAt": "2026-09-30T11:23:12.585Z",
+    "lastUpdated": "2026-09-30T11:23:12.585Z",
+    "projectEnabled": false
+  },
+  {
+    "id": "probe-b@because-i-needed",
+    "version": "1.0.0",
+    "scope": "local",
+    "enabled": true,
+    "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0",
+    "installedAt": "2026-09-30T11:23:13.710Z",
+    "lastUpdated": "2026-09-30T11:23:13.710Z",
+    "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1",
+    "projectEnabled": false
+  }
+]
+
+--- stderr

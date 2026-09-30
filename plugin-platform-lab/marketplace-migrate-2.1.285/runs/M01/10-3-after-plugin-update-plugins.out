@@ -1,0 +1,25 @@
+$ claude plugin list --json
+--- stdout
+[
+  {
+    "id": "probe-a@bin",
+    "version": "1.0.1",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m01-cfg/plugins/cache/bin/probe-a/1.0.1",
+    "installedAt": "2026-09-30T09:59:42.143Z",
+    "lastUpdated": "2026-09-30T09:59:43.958Z",
+    "mcpServers": {
+      "probe-mcp": {
+        "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "args": [
+          "-c",
+          "pass"
+        ]
+      }
+    },
+    "projectEnabled": false
+  }
+]
+
+--- stderr

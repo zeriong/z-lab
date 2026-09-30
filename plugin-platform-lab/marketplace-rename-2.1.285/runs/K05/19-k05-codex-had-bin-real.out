@@ -1,0 +1,12 @@
+$ bash /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-had-bin/install.sh --host codex --only probe-a
+--- stdout
+
+Adding marketplace 'because-i-needed' (http://127.0.0.1:58136/cgi-bin/git/k05-codex-had-bin.git)
+Marketplace `bin` is already added from http://127.0.0.1:58136/cgi-bin/git/k05-codex-had-bin.git.
+Installed marketplace root: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-codex-had-bin-home/.tmp/marketplaces/bin
+Installing probe-a@because-i-needed
+
+1 plugin(s) failed to install. Re-run with --only <name> after fixing the error above.
+
+--- stderr
+Error: plugin `probe-a` was not found in marketplace `because-i-needed`

@@ -1,0 +1,5 @@
+$ codex plugin remove probe-b@bin
+--- stdout
+Removed plugin `probe-b` from marketplace `bin`.
+
+--- stderr

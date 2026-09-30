@@ -1,0 +1,288 @@
+[
+ {
+  "step": "01-k05-claude-fresh-dry-run",
+  "argv": [
+   "bash",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-claude-fresh/install.sh",
+   "--host",
+   "claude",
+   "--only",
+   "probe-a",
+   "--dry-run"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-claude-fresh",
+  "exit": 0,
+  "elapsed_ms": 30
+ },
+ {
+  "step": "02-k05-claude-fresh-real",
+  "argv": [
+   "bash",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-claude-fresh/install.sh",
+   "--host",
+   "claude",
+   "--only",
+   "probe-a"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-claude-fresh",
+  "exit": 0,
+  "elapsed_ms": 1212
+ },
+ {
+  "step": "03-k05-claude-fresh-after-marketplaces",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-claude-fresh",
+  "exit": 0,
+  "elapsed_ms": 116
+ },
+ {
+  "step": "04-k05-claude-fresh-after-plugins",
+  "argv": [
+   "claude",
+   "plugin",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-claude-fresh",
+  "exit": 0,
+  "elapsed_ms": 99
+ },
+ {
+  "step": "05-k05-claude-had-bin-pre-add",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "add",
+   "http://127.0.0.1:58136/cgi-bin/git/k05-claude-had-bin.git"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-claude-had-bin",
+  "exit": 0,
+  "elapsed_ms": 674
+ },
+ {
+  "step": "06-k05-claude-had-bin-pre-install",
+  "argv": [
+   "claude",
+   "plugin",
+   "install",
+   "probe-a@bin"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-claude-had-bin",
+  "exit": 0,
+  "elapsed_ms": 528
+ },
+ {
+  "step": "07-k05-claude-had-bin-dry-run",
+  "argv": [
+   "bash",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-claude-had-bin/install.sh",
+   "--host",
+   "claude",
+   "--only",
+   "probe-a",
+   "--dry-run"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-claude-had-bin",
+  "exit": 0,
+  "elapsed_ms": 30
+ },
+ {
+  "step": "08-k05-claude-had-bin-real",
+  "argv": [
+   "bash",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-claude-had-bin/install.sh",
+   "--host",
+   "claude",
+   "--only",
+   "probe-a"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-claude-had-bin",
+  "exit": 1,
+  "elapsed_ms": 946
+ },
+ {
+  "step": "09-k05-claude-had-bin-after-marketplaces",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-claude-had-bin",
+  "exit": 0,
+  "elapsed_ms": 120
+ },
+ {
+  "step": "10-k05-claude-had-bin-after-plugins",
+  "argv": [
+   "claude",
+   "plugin",
+   "list",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-claude-had-bin",
+  "exit": 0,
+  "elapsed_ms": 102
+ },
+ {
+  "step": "11-k05-codex-fresh-dry-run",
+  "argv": [
+   "bash",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-fresh/install.sh",
+   "--host",
+   "codex",
+   "--only",
+   "probe-a",
+   "--dry-run"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-fresh",
+  "exit": 0,
+  "elapsed_ms": 30
+ },
+ {
+  "step": "12-k05-codex-fresh-real",
+  "argv": [
+   "bash",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-fresh/install.sh",
+   "--host",
+   "codex",
+   "--only",
+   "probe-a"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-fresh",
+  "exit": 0,
+  "elapsed_ms": 138
+ },
+ {
+  "step": "13-k05-codex-fresh-after-marketplaces",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-fresh",
+  "exit": 0,
+  "elapsed_ms": 12
+ },
+ {
+  "step": "14-k05-codex-fresh-after-plugins",
+  "argv": [
+   "codex",
+   "plugin",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-fresh",
+  "exit": 0,
+  "elapsed_ms": 11
+ },
+ {
+  "step": "15-k05-codex-fresh-after-prompt-input",
+  "argv": [
+   "codex",
+   "debug",
+   "prompt-input",
+   "hi"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-fresh",
+  "exit": 0,
+  "elapsed_ms": 119
+ },
+ {
+  "step": "16-k05-codex-had-bin-pre-add",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "add",
+   "http://127.0.0.1:58136/cgi-bin/git/k05-codex-had-bin.git"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-had-bin",
+  "exit": 0,
+  "elapsed_ms": 96
+ },
+ {
+  "step": "17-k05-codex-had-bin-pre-install",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "probe-a@bin"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-had-bin",
+  "exit": 0,
+  "elapsed_ms": 13
+ },
+ {
+  "step": "18-k05-codex-had-bin-dry-run",
+  "argv": [
+   "bash",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-had-bin/install.sh",
+   "--host",
+   "codex",
+   "--only",
+   "probe-a",
+   "--dry-run"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-had-bin",
+  "exit": 0,
+  "elapsed_ms": 30
+ },
+ {
+  "step": "19-k05-codex-had-bin-real",
+  "argv": [
+   "bash",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-had-bin/install.sh",
+   "--host",
+   "codex",
+   "--only",
+   "probe-a"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-had-bin",
+  "exit": 1,
+  "elapsed_ms": 51
+ },
+ {
+  "step": "20-k05-codex-had-bin-after-marketplaces",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-had-bin",
+  "exit": 0,
+  "elapsed_ms": 11
+ },
+ {
+  "step": "21-k05-codex-had-bin-after-plugins",
+  "argv": [
+   "codex",
+   "plugin",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-had-bin",
+  "exit": 0,
+  "elapsed_ms": 11
+ },
+ {
+  "step": "22-k05-codex-had-bin-after-prompt-input",
+  "argv": [
+   "codex",
+   "debug",
+   "prompt-input",
+   "hi"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-had-bin",
+  "exit": 0,
+  "elapsed_ms": 113
+ }
+]

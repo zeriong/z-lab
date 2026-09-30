@@ -1,0 +1,252 @@
+{
+ "snapshots": {
+  "1-installed@n04-project": {
+   "marketplaces": [
+    {
+     "name": "bin",
+     "source": "git",
+     "url": "http://127.0.0.1:59377/cgi-bin/git/n04.git",
+     "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n04-cfg/plugins/marketplaces/bin"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "probe-a@bin",
+     "version": "1.0.0",
+     "scope": "project",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n04-cfg/plugins/cache/bin/probe-a/1.0.0",
+     "installedAt": "2026-09-30T11:23:21.576Z",
+     "lastUpdated": "2026-09-30T11:23:21.576Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n04-project",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": true
+    }
+   ],
+   "config_files": {
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"probe-a@bin\": [\n      {\n        \"scope\": \"project\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n04-cfg/plugins/cache/bin/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:21.576Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:21.576Z\",\n        \"gitCommitSha\": \"307c14720adc9a96e27291455384dbd09b0ecf13\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n04-project\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"bin\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"http://127.0.0.1:59377/cgi-bin/git/n04.git\"\n    },\n    \"installLocation\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n04-cfg/plugins/marketplaces/bin\",\n    \"lastUpdated\": \"2026-09-30T11:23:20.948Z\"\n  }\n}"
+   },
+   "project_files": {
+    "n04-project": {
+     ".claude/settings.json": "{\n  \"extraKnownMarketplaces\": {\n    \"bin\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:59377/cgi-bin/git/n04.git\"\n      }\n    }\n  },\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true\n  }\n}\n"
+    }
+   },
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0"
+   ]
+  },
+  "3-after-remove@n04-project": {
+   "marketplaces": [],
+   "plugins": [],
+   "config_files": {
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {}\n}",
+    "plugins/known_marketplaces.json": "{}"
+   },
+   "project_files": {
+    "n04-project": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {},\n  \"extraKnownMarketplaces\": {}\n}\n"
+    }
+   },
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0"
+   ]
+  },
+  "4-migrated@n04-project": {
+   "marketplaces": [
+    {
+     "name": "because-i-needed",
+     "source": "git",
+     "url": "http://127.0.0.1:59377/cgi-bin/git/n04.git",
+     "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n04-cfg/plugins/marketplaces/because-i-needed"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "probe-a@because-i-needed",
+     "version": "1.0.0",
+     "scope": "project",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n04-cfg/plugins/cache/because-i-needed/probe-a/1.0.0",
+     "installedAt": "2026-09-30T11:23:26.246Z",
+     "lastUpdated": "2026-09-30T11:23:26.246Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n04-project",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": true
+    }
+   ],
+   "config_files": {
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"probe-a@because-i-needed\": [\n      {\n        \"scope\": \"project\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n04-cfg/plugins/cache/because-i-needed/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:26.246Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:26.246Z\",\n        \"gitCommitSha\": \"3d0d9178a719dba192ac5fe08d6d7abcdbe81237\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n04-project\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"because-i-needed\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"http://127.0.0.1:59377/cgi-bin/git/n04.git\"\n    },\n    \"installLocation\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n04-cfg/plugins/marketplaces/because-i-needed\",\n    \"lastUpdated\": \"2026-09-30T11:23:25.766Z\"\n  }\n}"
+   },
+   "project_files": {
+    "n04-project": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@because-i-needed\": true\n  },\n  \"extraKnownMarketplaces\": {\n    \"because-i-needed\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:59377/cgi-bin/git/n04.git\"\n      }\n    }\n  }\n}\n"
+    }
+   },
+   "cache_tree": [
+    "because-i-needed",
+    "because-i-needed/probe-a",
+    "because-i-needed/probe-a/1.0.0",
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0"
+   ]
+  }
+ },
+ "sessions": {
+  "1-installed@n04-project": {
+   "exit": 1,
+   "plugins": [
+    {
+     "name": "probe-a",
+     "path": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n04-cfg/plugins/cache/bin/probe-a/1.0.0",
+     "source": "probe-a@bin",
+     "version": "1.0.0"
+    }
+   ],
+   "skills": [
+    "probe-a:hello"
+   ],
+   "slash_commands": [
+    "probe-a:hello"
+   ],
+   "mcp_servers": [
+    {
+     "name": "plugin:probe-a:probe-mcp",
+     "status": "failed",
+     "source": "plugin"
+    }
+   ],
+   "hooks": [
+    {
+     "hook_event": "UserPromptSubmit",
+     "output": "probe-a-hook\n",
+     "exit_code": 0,
+     "outcome": "success"
+    }
+   ],
+   "version": "2.1.285",
+   "tokens": {
+    "input": 0,
+    "output": 0
+   },
+   "result": "Not logged in \u00b7 Please run /login",
+   "unparsed_lines": 0
+  },
+  "2-after-update@n04-project": {
+   "exit": 1,
+   "plugins": [
+    {
+     "name": "probe-a",
+     "path": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n04-cfg/plugins/cache/bin/probe-a/1.0.0",
+     "source": "probe-a@bin",
+     "version": "1.0.0"
+    }
+   ],
+   "skills": [
+    "probe-a:hello"
+   ],
+   "slash_commands": [
+    "probe-a:hello"
+   ],
+   "mcp_servers": [
+    {
+     "name": "plugin:probe-a:probe-mcp",
+     "status": "failed",
+     "source": "plugin"
+    }
+   ],
+   "hooks": [
+    {
+     "hook_event": "UserPromptSubmit",
+     "output": "probe-a-hook\n",
+     "exit_code": 0,
+     "outcome": "success"
+    }
+   ],
+   "version": "2.1.285",
+   "tokens": {
+    "input": 0,
+    "output": 0
+   },
+   "result": "Not logged in \u00b7 Please run /login",
+   "unparsed_lines": 0
+  },
+  "3-after-remove@n04-project": {
+   "exit": 1,
+   "plugins": [],
+   "skills": [],
+   "slash_commands": [],
+   "mcp_servers": [],
+   "hooks": [],
+   "version": "2.1.285",
+   "tokens": {
+    "input": 0,
+    "output": 0
+   },
+   "result": "Not logged in \u00b7 Please run /login",
+   "unparsed_lines": 0
+  },
+  "4-migrated@n04-project": {
+   "exit": 1,
+   "plugins": [
+    {
+     "name": "probe-a",
+     "path": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n04-cfg/plugins/cache/because-i-needed/probe-a/1.0.0",
+     "source": "probe-a@because-i-needed",
+     "version": "1.0.0"
+    }
+   ],
+   "skills": [
+    "probe-a:hello"
+   ],
+   "slash_commands": [
+    "probe-a:hello"
+   ],
+   "mcp_servers": [
+    {
+     "name": "plugin:probe-a:probe-mcp",
+     "status": "failed",
+     "source": "plugin"
+    }
+   ],
+   "hooks": [
+    {
+     "hook_event": "UserPromptSubmit",
+     "output": "probe-a-hook\n",
+     "exit_code": 0,
+     "outcome": "success"
+    }
+   ],
+   "version": "2.1.285",
+   "tokens": {
+    "input": 0,
+    "output": 0
+   },
+   "result": "Not logged in \u00b7 Please run /login",
+   "unparsed_lines": 0
+  }
+ },
+ "base": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk"
+}

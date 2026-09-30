@@ -1,0 +1,88 @@
+{
+ "snapshots": {
+  "1-installed": {
+   "marketplace_list": "MARKETPLACE  ROOT\nbin          /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04\n",
+   "plugin_list_probe_lines": [
+    "probe-a@bin  installed, enabled  1.0.0    /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04/plugins/probe-a",
+    "probe-b@bin  not installed                /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04/plugins/probe-b"
+   ],
+   "config_toml": "[marketplaces.bin]\nsource_type = \"local\"\nsource = \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04\"\n\n[plugins.\"probe-a@bin\"]\nenabled = true\n\n[plugins.\"probe-a@bin\".mcp_servers.probe-mcp]\nenabled = false\n",
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0"
+   ],
+   "prompt_input": {
+    "exit": 0,
+    "hello_skill": true,
+    "bye_skill": false,
+    "hook_marker": false
+   }
+  },
+  "2-after-upgrade": {
+   "marketplace_list": "MARKETPLACE       ROOT\nbecause-i-needed  /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04\n",
+   "plugin_list_probe_lines": [
+    "probe-a@because-i-needed  not installed           /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04/plugins/probe-a",
+    "probe-b@because-i-needed  not installed           /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04/plugins/probe-b"
+   ],
+   "config_toml": "[marketplaces.bin]\nsource_type = \"local\"\nsource = \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04\"\n\n[plugins.\"probe-a@bin\"]\nenabled = true\n\n[plugins.\"probe-a@bin\".mcp_servers.probe-mcp]\nenabled = false\n",
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0"
+   ],
+   "prompt_input": {
+    "exit": 0,
+    "hello_skill": true,
+    "bye_skill": false,
+    "hook_marker": false
+   }
+  },
+  "3-after-adds": {
+   "marketplace_list": "MARKETPLACE       ROOT\nbecause-i-needed  /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04\n",
+   "plugin_list_probe_lines": [
+    "probe-a@because-i-needed  not installed                /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04/plugins/probe-a",
+    "probe-b@because-i-needed  installed, enabled  1.0.0    /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04/plugins/probe-b"
+   ],
+   "config_toml": "[marketplaces.bin]\nsource_type = \"local\"\nsource = \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04\"\n\n[plugins.\"probe-a@bin\"]\nenabled = true\n\n[plugins.\"probe-a@bin\".mcp_servers.probe-mcp]\nenabled = false\n\n[plugins.\"probe-b@because-i-needed\"]\nenabled = true\n",
+   "cache_tree": [
+    "because-i-needed",
+    "because-i-needed/probe-b",
+    "because-i-needed/probe-b/1.0.0",
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0"
+   ],
+   "prompt_input": {
+    "exit": 0,
+    "hello_skill": true,
+    "bye_skill": true,
+    "hook_marker": false
+   }
+  },
+  "4-migrated": {
+   "marketplace_list": "MARKETPLACE       ROOT\nbecause-i-needed  /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04\n",
+   "plugin_list_probe_lines": [
+    "probe-a@because-i-needed  installed, enabled  1.0.0    /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04/plugins/probe-a",
+    "probe-b@because-i-needed  installed, enabled  1.0.0    /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04/plugins/probe-b"
+   ],
+   "config_toml": "\n[plugins.\"probe-a@bin\"]\nenabled = true\n\n[plugins.\"probe-a@bin\".mcp_servers.probe-mcp]\nenabled = false\n\n[plugins.\"probe-b@because-i-needed\"]\nenabled = true\n\n[plugins.\"probe-a@because-i-needed\"]\nenabled = true\n\n[marketplaces.because-i-needed]\nsource_type = \"local\"\nsource = \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04\"\n",
+   "cache_tree": [
+    "because-i-needed",
+    "because-i-needed/probe-a",
+    "because-i-needed/probe-a/1.0.0",
+    "because-i-needed/probe-b",
+    "because-i-needed/probe-b/1.0.0",
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0"
+   ],
+   "prompt_input": {
+    "exit": 0,
+    "hello_skill": true,
+    "bye_skill": true,
+    "hook_marker": false
+   }
+  }
+ }
+}

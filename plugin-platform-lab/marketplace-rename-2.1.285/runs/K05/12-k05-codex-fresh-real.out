@@ -1,0 +1,14 @@
+$ bash /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-fresh/install.sh --host codex --only probe-a
+--- stdout
+
+Adding marketplace 'because-i-needed' (http://127.0.0.1:58136/cgi-bin/git/k05-codex-fresh.git)
+Added marketplace `because-i-needed` from http://127.0.0.1:58136/cgi-bin/git/k05-codex-fresh.git.
+Installed marketplace root: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-codex-fresh-home/.tmp/marketplaces/because-i-needed
+Installing probe-a@because-i-needed
+Added plugin `probe-a` from marketplace `because-i-needed`.
+Installed plugin root: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-codex-fresh-home/plugins/cache/because-i-needed/probe-a/1.0.0
+
+Done. Start a new Codex session to load: probe-a
+Use $plugin:skill (for example $harness:build). Review plugin hooks with /hooks before use.
+
+--- stderr

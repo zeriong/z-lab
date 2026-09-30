@@ -1,0 +1,5 @@
+$ codex plugin add probe-b@because-i-needed
+--- stdout
+
+--- stderr
+Error: plugin `probe-b` was not found in marketplace `because-i-needed`

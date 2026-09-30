@@ -1,0 +1,6 @@
+$ claude plugin marketplace update bin
+--- stdout
+Updating marketplace: bin...Validating local marketplace
+✔ Successfully updated marketplace: bin
+
+--- stderr

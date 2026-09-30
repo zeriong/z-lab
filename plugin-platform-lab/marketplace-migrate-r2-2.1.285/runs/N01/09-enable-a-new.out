@@ -1,0 +1,5 @@
+$ claude plugin enable probe-a@because-i-needed
+--- stdout
+✔ Successfully enabled plugin: probe-a (scope: user)
+
+--- stderr

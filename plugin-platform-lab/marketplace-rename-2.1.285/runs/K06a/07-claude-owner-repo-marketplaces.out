@@ -1,0 +1,12 @@
+$ claude plugin marketplace list --json
+--- stdout
+[
+  {
+    "name": "bin",
+    "source": "github",
+    "repo": "zeriong/because-i-needed",
+    "installLocation": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/claude-owner-repo/plugins/marketplaces/bin"
+  }
+]
+
+--- stderr

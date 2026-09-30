@@ -1,0 +1,25 @@
+$ claude plugin list --json
+--- stdout
+[
+  {
+    "id": "probe-a@because-i-needed",
+    "version": "1.0.0",
+    "scope": "user",
+    "enabled": true,
+    "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-claude-fresh-home/plugins/cache/because-i-needed/probe-a/1.0.0",
+    "installedAt": "2026-09-30T09:52:00.685Z",
+    "lastUpdated": "2026-09-30T09:52:00.685Z",
+    "mcpServers": {
+      "probe-mcp": {
+        "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "args": [
+          "-c",
+          "pass"
+        ]
+      }
+    },
+    "projectEnabled": false
+  }
+]
+
+--- stderr

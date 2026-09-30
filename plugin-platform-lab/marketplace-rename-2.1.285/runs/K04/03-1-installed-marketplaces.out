@@ -1,0 +1,6 @@
+$ codex plugin marketplace list
+--- stdout
+MARKETPLACE  ROOT
+bin          /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k04
+
+--- stderr

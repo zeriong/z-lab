@@ -1,0 +1,12 @@
+$ claude plugin marketplace list --json
+--- stdout
+[
+  {
+    "name": "because-i-needed",
+    "source": "git",
+    "url": "http://127.0.0.1:59377/cgi-bin/git/n04.git",
+    "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n04-cfg/plugins/marketplaces/because-i-needed"
+  }
+]
+
+--- stderr

@@ -1,0 +1,12 @@
+$ claude plugin marketplace list --json
+--- stdout
+[
+  {
+    "name": "bin",
+    "source": "git",
+    "url": "http://127.0.0.1:58454/cgi-bin/git/m01.git",
+    "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m01-cfg/plugins/marketplaces/bin"
+  }
+]
+
+--- stderr

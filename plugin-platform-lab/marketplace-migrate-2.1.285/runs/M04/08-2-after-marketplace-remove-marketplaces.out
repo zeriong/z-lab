@@ -1,0 +1,5 @@
+$ codex plugin marketplace list
+--- stdout
+No plugin marketplaces in scope.
+
+--- stderr

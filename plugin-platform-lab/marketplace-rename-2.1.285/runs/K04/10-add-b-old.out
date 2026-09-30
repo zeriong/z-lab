@@ -1,0 +1,5 @@
+$ codex plugin add probe-b@bin
+--- stdout
+
+--- stderr
+Error: plugin `probe-b` was not found in marketplace `bin`

@@ -1,0 +1,6 @@
+$ claude plugin install probe-b@because-i-needed
+--- stdout
+Installing plugin "probe-b@because-i-needed"...
+
+--- stderr
+✘ Failed to install plugin "probe-b@because-i-needed": Plugin "probe-b" not found in marketplace "because-i-needed". Your local copy may be out of date — try `claude plugin marketplace update because-i-needed`.

@@ -1,0 +1,10 @@
+$ codex plugin list
+--- stdout
+Marketplace `because-i-needed`
+/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k03-codex/.tmp/marketplaces/because-i-needed/.claude-plugin/marketplace.json
+
+PLUGIN                    STATUS              VERSION  SOURCE
+probe-a@because-i-needed  installed, enabled  1.0.0    /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k03-codex/.tmp/marketplaces/because-i-needed/plugins/probe-a
+probe-b@because-i-needed  not installed                /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k03-codex/.tmp/marketplaces/because-i-needed/plugins/probe-b
+
+--- stderr

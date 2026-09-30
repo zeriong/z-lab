@@ -1,0 +1,142 @@
+{
+ "snapshots": {
+  "k05-claude-fresh-after": {
+   "marketplaces": [
+    {
+     "name": "because-i-needed",
+     "source": "git",
+     "url": "http://127.0.0.1:58136/cgi-bin/git/k05-claude-fresh.git",
+     "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-claude-fresh-home/plugins/marketplaces/because-i-needed"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "probe-a@because-i-needed",
+     "version": "1.0.0",
+     "scope": "user",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-claude-fresh-home/plugins/cache/because-i-needed/probe-a/1.0.0",
+     "installedAt": "2026-09-30T09:52:00.685Z",
+     "lastUpdated": "2026-09-30T09:52:00.685Z",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": false
+    }
+   ],
+   "config_files": {
+    "settings.json": "{\n  \"extraKnownMarketplaces\": {\n    \"because-i-needed\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:58136/cgi-bin/git/k05-claude-fresh.git\"\n      }\n    }\n  },\n  \"enabledPlugins\": {\n    \"probe-a@because-i-needed\": true\n  }\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"probe-a@because-i-needed\": [\n      {\n        \"scope\": \"user\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-claude-fresh-home/plugins/cache/because-i-needed/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T09:52:00.685Z\",\n        \"lastUpdated\": \"2026-09-30T09:52:00.685Z\",\n        \"gitCommitSha\": \"bde326dea10d6c36fbd8a6ecba522ac80da163c0\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"because-i-needed\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"http://127.0.0.1:58136/cgi-bin/git/k05-claude-fresh.git\"\n    },\n    \"installLocation\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-claude-fresh-home/plugins/marketplaces/because-i-needed\",\n    \"lastUpdated\": \"2026-09-30T09:52:00.183Z\"\n  }\n}"
+   },
+   "project_files": {},
+   "cache_tree": [
+    "because-i-needed",
+    "because-i-needed/probe-a",
+    "because-i-needed/probe-a/1.0.0"
+   ]
+  },
+  "k05-claude-had-bin-after": {
+   "marketplaces": [
+    {
+     "name": "bin",
+     "source": "git",
+     "url": "http://127.0.0.1:58136/cgi-bin/git/k05-claude-had-bin.git",
+     "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-claude-had-bin-home/plugins/marketplaces/bin"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "probe-a@bin",
+     "version": "1.0.0",
+     "scope": "user",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-claude-had-bin-home/plugins/cache/bin/probe-a/1.0.0",
+     "installedAt": "2026-09-30T09:52:02.227Z",
+     "lastUpdated": "2026-09-30T09:52:02.227Z",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": false
+    }
+   ],
+   "config_files": {
+    "settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true\n  },\n  \"extraKnownMarketplaces\": {\n    \"bin\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:58136/cgi-bin/git/k05-claude-had-bin.git\"\n      }\n    }\n  }\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"probe-a@bin\": [\n      {\n        \"scope\": \"user\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-claude-had-bin-home/plugins/cache/bin/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T09:52:02.227Z\",\n        \"lastUpdated\": \"2026-09-30T09:52:02.227Z\",\n        \"gitCommitSha\": \"a80d3eca8cf6f5c25595f78a0d163eda8e02796b\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"bin\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"http://127.0.0.1:58136/cgi-bin/git/k05-claude-had-bin.git\"\n    },\n    \"installLocation\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-claude-had-bin-home/plugins/marketplaces/bin\",\n    \"lastUpdated\": \"2026-09-30T09:52:01.711Z\"\n  }\n}"
+   },
+   "project_files": {},
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0"
+   ]
+  },
+  "k05-codex-fresh-after": {
+   "marketplace_list": "MARKETPLACE       ROOT\nbecause-i-needed  /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-codex-fresh-home/.tmp/marketplaces/because-i-needed\n",
+   "plugin_list_probe_lines": [
+    "probe-a@because-i-needed  installed, enabled  1.0.0    /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-codex-fresh-home/.tmp/marketplaces/because-i-needed/plugins/probe-a",
+    "probe-b@because-i-needed  not installed                /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-codex-fresh-home/.tmp/marketplaces/because-i-needed/plugins/probe-b"
+   ],
+   "config_toml": "[marketplaces.because-i-needed]\nsource_type = \"git\"\nsource = \"http://127.0.0.1:58136/cgi-bin/git/k05-codex-fresh.git\"\n\n[plugins.\"probe-a@because-i-needed\"]\nenabled = true\n",
+   "cache_tree": [
+    "because-i-needed",
+    "because-i-needed/probe-a",
+    "because-i-needed/probe-a/1.0.0"
+   ],
+   "prompt_input": {
+    "exit": 0,
+    "hello_skill": true,
+    "bye_skill": false,
+    "hook_marker": false
+   }
+  },
+  "k05-codex-had-bin-after": {
+   "marketplace_list": "MARKETPLACE  ROOT\nbin          /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-codex-had-bin-home/.tmp/marketplaces/bin\n",
+   "plugin_list_probe_lines": [
+    "probe-a@bin  installed, enabled  1.0.0    /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-codex-had-bin-home/.tmp/marketplaces/bin/plugins/probe-a",
+    "probe-b@bin  not installed                /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k05-codex-had-bin-home/.tmp/marketplaces/bin/plugins/probe-b"
+   ],
+   "config_toml": "[marketplaces.bin]\nsource_type = \"git\"\nsource = \"http://127.0.0.1:58136/cgi-bin/git/k05-codex-had-bin.git\"\n\n[plugins.\"probe-a@bin\"]\nenabled = true\n",
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0"
+   ],
+   "prompt_input": {
+    "exit": 0,
+    "hello_skill": true,
+    "bye_skill": false,
+    "hook_marker": false
+   }
+  }
+ },
+ "k05-claude-fresh": {
+  "dry_run_exit": 0,
+  "real_exit": 0
+ },
+ "k05-claude-had-bin": {
+  "dry_run_exit": 0,
+  "real_exit": 1
+ },
+ "k05-codex-fresh": {
+  "dry_run_exit": 0,
+  "real_exit": 0
+ },
+ "k05-codex-had-bin": {
+  "dry_run_exit": 0,
+  "real_exit": 1
+ }
+}

@@ -1,0 +1,6 @@
+$ codex plugin add probe-a@because-i-needed
+--- stdout
+Added plugin `probe-a` from marketplace `because-i-needed`.
+Installed plugin root: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-codex/plugins/cache/because-i-needed/probe-a/1.0.0
+
+--- stderr

@@ -1,0 +1,6 @@
+$ claude plugin update probe-a@bin
+--- stdout
+Checking for updates for plugin "probe-a@bin"…
+✔ Plugin "probe-a" updated from 1.0.0 to 1.0.1 for scope user. Restart to apply changes.
+
+--- stderr

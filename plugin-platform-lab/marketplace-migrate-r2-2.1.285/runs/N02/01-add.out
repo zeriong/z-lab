@@ -1,0 +1,9 @@
+$ claude plugin marketplace add http://127.0.0.1:59377/cgi-bin/git/n02.git
+--- stdout
+Adding marketplace…Refreshing marketplace cache (timeout: 120s)…
+Cloning repository (timeout: 120s): http://127.0.0.1:59377/cgi-bin/git/n02.git
+Clone complete, validating marketplace…
+Cleaning up old marketplace cache…
+✔ Successfully added marketplace: bin (declared in user settings)
+
+--- stderr

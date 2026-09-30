@@ -1,0 +1,5 @@
+$ claude plugin install probe-b@bin
+--- stdout
+Installing plugin "probe-b@bin"...✔ Successfully installed plugin: probe-b@bin (scope: user)
+
+--- stderr

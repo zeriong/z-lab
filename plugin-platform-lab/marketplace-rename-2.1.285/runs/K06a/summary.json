@@ -1,0 +1,91 @@
+{
+ "snapshots": {
+  "claude-url": {
+   "marketplaces": [
+    {
+     "name": "bin",
+     "source": "git",
+     "url": "https://github.com/zeriong/because-i-needed.git",
+     "installLocation": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/claude-url/plugins/marketplaces/bin"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "harness@bin",
+     "version": "1.3.0",
+     "scope": "user",
+     "enabled": true,
+     "installPath": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/claude-url/plugins/cache/bin/harness/1.3.0",
+     "installedAt": "2026-09-30T09:52:12.722Z",
+     "lastUpdated": "2026-09-30T09:52:12.722Z",
+     "projectEnabled": false
+    }
+   ],
+   "config_files": {
+    "settings.json": "{\n  \"extraKnownMarketplaces\": {\n    \"bin\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"https://github.com/zeriong/because-i-needed.git\"\n      }\n    }\n  },\n  \"enabledPlugins\": {\n    \"harness@bin\": true\n  }\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"harness@bin\": [\n      {\n        \"scope\": \"user\",\n        \"installPath\": \"/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/claude-url/plugins/cache/bin/harness/1.3.0\",\n        \"version\": \"1.3.0\",\n        \"installedAt\": \"2026-09-30T09:52:12.722Z\",\n        \"lastUpdated\": \"2026-09-30T09:52:12.722Z\",\n        \"gitCommitSha\": \"a616c853d1e953b005c158c79d5bc4718ffe8609\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"bin\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"https://github.com/zeriong/because-i-needed.git\"\n    },\n    \"installLocation\": \"/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/claude-url/plugins/marketplaces/bin\",\n    \"lastUpdated\": \"2026-09-30T09:52:12.161Z\"\n  }\n}"
+   },
+   "project_files": {},
+   "cache_tree": [
+    "bin",
+    "bin/harness",
+    "bin/harness/1.3.0"
+   ]
+  },
+  "claude-owner-repo": {
+   "marketplaces": [
+    {
+     "name": "bin",
+     "source": "github",
+     "repo": "zeriong/because-i-needed",
+     "installLocation": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/claude-owner-repo/plugins/marketplaces/bin"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "harness@bin",
+     "version": "1.3.0",
+     "scope": "user",
+     "enabled": true,
+     "installPath": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/claude-owner-repo/plugins/cache/bin/harness/1.3.0",
+     "installedAt": "2026-09-30T09:52:15.818Z",
+     "lastUpdated": "2026-09-30T09:52:15.818Z",
+     "projectEnabled": false
+    }
+   ],
+   "config_files": {
+    "settings.json": "{\n  \"extraKnownMarketplaces\": {\n    \"bin\": {\n      \"source\": {\n        \"source\": \"github\",\n        \"repo\": \"zeriong/because-i-needed\"\n      }\n    }\n  },\n  \"enabledPlugins\": {\n    \"harness@bin\": true\n  }\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"harness@bin\": [\n      {\n        \"scope\": \"user\",\n        \"installPath\": \"/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/claude-owner-repo/plugins/cache/bin/harness/1.3.0\",\n        \"version\": \"1.3.0\",\n        \"installedAt\": \"2026-09-30T09:52:15.818Z\",\n        \"lastUpdated\": \"2026-09-30T09:52:15.818Z\",\n        \"gitCommitSha\": \"a616c853d1e953b005c158c79d5bc4718ffe8609\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"bin\": {\n    \"source\": {\n      \"source\": \"github\",\n      \"repo\": \"zeriong/because-i-needed\"\n    },\n    \"installLocation\": \"/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/claude-owner-repo/plugins/marketplaces/bin\",\n    \"lastUpdated\": \"2026-09-30T09:52:15.261Z\"\n  }\n}"
+   },
+   "project_files": {},
+   "cache_tree": [
+    "bin",
+    "bin/harness",
+    "bin/harness/1.3.0"
+   ]
+  },
+  "codex-url": {
+   "marketplace_list": "MARKETPLACE  ROOT\nbin          /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/codex-url/.tmp/marketplaces/bin\n",
+   "plugin_list_probe_lines": [],
+   "config_toml": "[marketplaces.bin]\nsource_type = \"git\"\nsource = \"https://github.com/zeriong/because-i-needed.git\"\n\n[plugins.\"harness@bin\"]\nenabled = true\n",
+   "cache_tree": [
+    "bin",
+    "bin/harness",
+    "bin/harness/1.3.0"
+   ],
+   "prompt_input": {
+    "exit": 0,
+    "hello_skill": false,
+    "bye_skill": false,
+    "hook_marker": false
+   }
+  }
+ },
+ "homes_kept_for_K06b": {
+  "claude-url": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/claude-url",
+  "claude-owner-repo": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/claude-owner-repo",
+  "codex-url": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/codex-url"
+ }
+}

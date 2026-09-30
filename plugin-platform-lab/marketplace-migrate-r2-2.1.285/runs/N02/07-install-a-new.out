@@ -1,0 +1,5 @@
+$ claude plugin install probe-a@because-i-needed
+--- stdout
+Installing plugin "probe-a@because-i-needed"...✔ Successfully installed plugin: probe-a@because-i-needed (scope: user)
+
+--- stderr

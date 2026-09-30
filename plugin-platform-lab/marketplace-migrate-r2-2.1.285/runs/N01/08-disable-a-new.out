@@ -1,0 +1,5 @@
+$ claude plugin disable probe-a@because-i-needed
+--- stdout
+
+--- stderr
+✘ Failed to disable plugin "probe-a@because-i-needed": Plugin "probe-a@because-i-needed" is already disabled

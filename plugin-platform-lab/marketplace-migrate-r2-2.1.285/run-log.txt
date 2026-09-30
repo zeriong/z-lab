@@ -1,0 +1,11 @@
+N01: running
+N01: done
+N02: running
+N02: done
+N03: running
+N03: done
+N04: running
+N04: done
+N05: running
+N05: done
+V00: run first, separately (python3 run.py V00), before the line above

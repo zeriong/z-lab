@@ -1,0 +1,12 @@
+$ claude plugin marketplace list --json
+--- stdout
+[
+  {
+    "name": "bin",
+    "source": "directory",
+    "path": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k02",
+    "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k02"
+  }
+]
+
+--- stderr

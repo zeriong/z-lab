@@ -1,0 +1,206 @@
+[
+ {
+  "step": "01-add",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "add",
+   "http://127.0.0.1:58454/cgi-bin/git/m03.git"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 102
+ },
+ {
+  "step": "02-add-a-old",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "probe-a@bin"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 14
+ },
+ {
+  "step": "03-add-b-old",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "probe-b@bin"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 14
+ },
+ {
+  "step": "04-1-installed-marketplaces",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 13
+ },
+ {
+  "step": "05-1-installed-plugins",
+  "argv": [
+   "codex",
+   "plugin",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 12
+ },
+ {
+  "step": "06-1-installed-prompt-input",
+  "argv": [
+   "codex",
+   "debug",
+   "prompt-input",
+   "hi"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 117
+ },
+ {
+  "step": "07-remove-a-old",
+  "argv": [
+   "codex",
+   "plugin",
+   "remove",
+   "probe-a@bin"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 14
+ },
+ {
+  "step": "08-remove-b-old",
+  "argv": [
+   "codex",
+   "plugin",
+   "remove",
+   "probe-b@bin"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 14
+ },
+ {
+  "step": "09-2-after-plugin-remove-marketplaces",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 14
+ },
+ {
+  "step": "10-2-after-plugin-remove-plugins",
+  "argv": [
+   "codex",
+   "plugin",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 14
+ },
+ {
+  "step": "11-2-after-plugin-remove-prompt-input",
+  "argv": [
+   "codex",
+   "debug",
+   "prompt-input",
+   "hi"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 103
+ },
+ {
+  "step": "12-remove-marketplace-old",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "remove",
+   "bin"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 18
+ },
+ {
+  "step": "13-readd",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "add",
+   "http://127.0.0.1:58454/cgi-bin/git/m03.git"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 110
+ },
+ {
+  "step": "14-add-a-new",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "probe-a@because-i-needed"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 14
+ },
+ {
+  "step": "15-3-migrated-marketplaces",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 13
+ },
+ {
+  "step": "16-3-migrated-plugins",
+  "argv": [
+   "codex",
+   "plugin",
+   "list"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 12
+ },
+ {
+  "step": "17-3-migrated-prompt-input",
+  "argv": [
+   "codex",
+   "debug",
+   "prompt-input",
+   "hi"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-cwd",
+  "exit": 0,
+  "elapsed_ms": 102
+ }
+]

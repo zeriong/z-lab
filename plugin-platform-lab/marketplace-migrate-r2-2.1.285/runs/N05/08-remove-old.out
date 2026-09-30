@@ -1,0 +1,9 @@
+$ claude plugin marketplace remove bin
+--- stdout
+✔ Successfully removed marketplace: bin
+Also uninstalled 1 plugin from this marketplace:
+  probe-a@bin
+The removal also deletes their saved options, secrets and data where it can.
+To use a plugin again, add the marketplace back and reinstall the plugin.
+
+--- stderr

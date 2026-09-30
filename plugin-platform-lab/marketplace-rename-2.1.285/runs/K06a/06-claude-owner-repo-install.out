@@ -1,0 +1,5 @@
+$ claude plugin install harness@bin
+--- stdout
+Installing plugin "harness@bin"...✔ Successfully installed plugin: harness@bin (scope: user)
+
+--- stderr

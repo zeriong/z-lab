@@ -1,0 +1,5 @@
+$ codex plugin list
+--- stdout
+No marketplace plugins found.
+
+--- stderr

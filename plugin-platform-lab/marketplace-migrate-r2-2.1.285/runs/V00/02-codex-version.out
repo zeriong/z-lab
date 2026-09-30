@@ -1,0 +1,5 @@
+$ codex --version
+--- stdout
+codex-cli 0.159.2
+
+--- stderr

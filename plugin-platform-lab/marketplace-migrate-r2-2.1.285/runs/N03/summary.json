@@ -1,0 +1,910 @@
+{
+ "snapshots": {
+  "1-installed@n03-p1": {
+   "marketplaces": [
+    {
+     "name": "bin",
+     "source": "git",
+     "url": "http://127.0.0.1:59377/cgi-bin/git/n03.git",
+     "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/marketplaces/bin"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "probe-a@bin",
+     "version": "1.0.0",
+     "scope": "project",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-a/1.0.0",
+     "installedAt": "2026-09-30T11:23:03.874Z",
+     "lastUpdated": "2026-09-30T11:23:03.874Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": true
+    },
+    {
+     "id": "probe-a@bin",
+     "version": "1.0.0",
+     "scope": "project",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-a/1.0.0",
+     "installedAt": "2026-09-30T11:23:04.982Z",
+     "lastUpdated": "2026-09-30T11:23:04.982Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p2",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": true
+    },
+    {
+     "id": "probe-b@bin",
+     "version": "1.0.0",
+     "scope": "local",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-b/1.0.0",
+     "installedAt": "2026-09-30T11:23:04.358Z",
+     "lastUpdated": "2026-09-30T11:23:04.358Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1",
+     "projectEnabled": false
+    },
+    {
+     "id": "probe-b@bin",
+     "version": "1.0.0",
+     "scope": "user",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-b/1.0.0",
+     "installedAt": "2026-09-30T11:23:05.527Z",
+     "lastUpdated": "2026-09-30T11:23:05.527Z",
+     "projectEnabled": false
+    }
+   ],
+   "config_files": {
+    "settings.json": "{\n  \"extraKnownMarketplaces\": {\n    \"bin\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:59377/cgi-bin/git/n03.git\"\n      }\n    }\n  },\n  \"enabledPlugins\": {\n    \"probe-b@bin\": true\n  }\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"probe-a@bin\": [\n      {\n        \"scope\": \"project\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:03.874Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:03.874Z\",\n        \"gitCommitSha\": \"48ae07956c94ec91fcc77d4516b4b0e497e6f245\"\n      },\n      {\n        \"scope\": \"project\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p2\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:04.982Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:04.982Z\",\n        \"gitCommitSha\": \"48ae07956c94ec91fcc77d4516b4b0e497e6f245\"\n      }\n    ],\n    \"probe-b@bin\": [\n      {\n        \"scope\": \"local\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-b/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:04.358Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:04.358Z\",\n        \"gitCommitSha\": \"48ae07956c94ec91fcc77d4516b4b0e497e6f245\"\n      },\n      {\n        \"scope\": \"user\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-b/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:05.527Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:05.527Z\",\n        \"gitCommitSha\": \"48ae07956c94ec91fcc77d4516b4b0e497e6f245\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"bin\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"http://127.0.0.1:59377/cgi-bin/git/n03.git\"\n    },\n    \"installLocation\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/marketplaces/bin\",\n    \"lastUpdated\": \"2026-09-30T11:23:03.426Z\"\n  }\n}"
+   },
+   "project_files": {
+    "n03-p1": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true\n  }\n}\n",
+     ".claude/settings.local.json": "{\n  \"enabledPlugins\": {\n    \"probe-b@bin\": true\n  }\n}\n"
+    },
+    "n03-p2": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true\n  }\n}\n"
+    }
+   },
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0",
+    "bin/probe-b",
+    "bin/probe-b/1.0.0"
+   ]
+  },
+  "1-installed@n03-p2": {
+   "marketplaces": [
+    {
+     "name": "bin",
+     "source": "git",
+     "url": "http://127.0.0.1:59377/cgi-bin/git/n03.git",
+     "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/marketplaces/bin"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "probe-a@bin",
+     "version": "1.0.0",
+     "scope": "project",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-a/1.0.0",
+     "installedAt": "2026-09-30T11:23:03.874Z",
+     "lastUpdated": "2026-09-30T11:23:03.874Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": true
+    },
+    {
+     "id": "probe-a@bin",
+     "version": "1.0.0",
+     "scope": "project",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-a/1.0.0",
+     "installedAt": "2026-09-30T11:23:04.982Z",
+     "lastUpdated": "2026-09-30T11:23:04.982Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p2",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": true
+    },
+    {
+     "id": "probe-b@bin",
+     "version": "1.0.0",
+     "scope": "local",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-b/1.0.0",
+     "installedAt": "2026-09-30T11:23:04.358Z",
+     "lastUpdated": "2026-09-30T11:23:04.358Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1",
+     "projectEnabled": false
+    },
+    {
+     "id": "probe-b@bin",
+     "version": "1.0.0",
+     "scope": "user",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-b/1.0.0",
+     "installedAt": "2026-09-30T11:23:05.527Z",
+     "lastUpdated": "2026-09-30T11:23:05.527Z",
+     "projectEnabled": false
+    }
+   ],
+   "config_files": {
+    "settings.json": "{\n  \"extraKnownMarketplaces\": {\n    \"bin\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:59377/cgi-bin/git/n03.git\"\n      }\n    }\n  },\n  \"enabledPlugins\": {\n    \"probe-b@bin\": true\n  }\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"probe-a@bin\": [\n      {\n        \"scope\": \"project\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:03.874Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:03.874Z\",\n        \"gitCommitSha\": \"48ae07956c94ec91fcc77d4516b4b0e497e6f245\"\n      },\n      {\n        \"scope\": \"project\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p2\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:04.982Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:04.982Z\",\n        \"gitCommitSha\": \"48ae07956c94ec91fcc77d4516b4b0e497e6f245\"\n      }\n    ],\n    \"probe-b@bin\": [\n      {\n        \"scope\": \"local\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-b/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:04.358Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:04.358Z\",\n        \"gitCommitSha\": \"48ae07956c94ec91fcc77d4516b4b0e497e6f245\"\n      },\n      {\n        \"scope\": \"user\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-b/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:05.527Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:05.527Z\",\n        \"gitCommitSha\": \"48ae07956c94ec91fcc77d4516b4b0e497e6f245\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"bin\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"http://127.0.0.1:59377/cgi-bin/git/n03.git\"\n    },\n    \"installLocation\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/marketplaces/bin\",\n    \"lastUpdated\": \"2026-09-30T11:23:03.426Z\"\n  }\n}"
+   },
+   "project_files": {
+    "n03-p1": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true\n  }\n}\n",
+     ".claude/settings.local.json": "{\n  \"enabledPlugins\": {\n    \"probe-b@bin\": true\n  }\n}\n"
+    },
+    "n03-p2": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true\n  }\n}\n"
+    }
+   },
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0",
+    "bin/probe-b",
+    "bin/probe-b/1.0.0"
+   ]
+  },
+  "1-installed@n03-neutral": {
+   "marketplaces": [
+    {
+     "name": "bin",
+     "source": "git",
+     "url": "http://127.0.0.1:59377/cgi-bin/git/n03.git",
+     "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/marketplaces/bin"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "probe-a@bin",
+     "version": "1.0.0",
+     "scope": "project",
+     "enabled": false,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-a/1.0.0",
+     "installedAt": "2026-09-30T11:23:03.874Z",
+     "lastUpdated": "2026-09-30T11:23:03.874Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1",
+     "projectEnabled": false
+    },
+    {
+     "id": "probe-a@bin",
+     "version": "1.0.0",
+     "scope": "project",
+     "enabled": false,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-a/1.0.0",
+     "installedAt": "2026-09-30T11:23:04.982Z",
+     "lastUpdated": "2026-09-30T11:23:04.982Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p2",
+     "projectEnabled": false
+    },
+    {
+     "id": "probe-b@bin",
+     "version": "1.0.0",
+     "scope": "local",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-b/1.0.0",
+     "installedAt": "2026-09-30T11:23:04.358Z",
+     "lastUpdated": "2026-09-30T11:23:04.358Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1",
+     "projectEnabled": false
+    },
+    {
+     "id": "probe-b@bin",
+     "version": "1.0.0",
+     "scope": "user",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-b/1.0.0",
+     "installedAt": "2026-09-30T11:23:05.527Z",
+     "lastUpdated": "2026-09-30T11:23:05.527Z",
+     "projectEnabled": false
+    }
+   ],
+   "config_files": {
+    "settings.json": "{\n  \"extraKnownMarketplaces\": {\n    \"bin\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:59377/cgi-bin/git/n03.git\"\n      }\n    }\n  },\n  \"enabledPlugins\": {\n    \"probe-b@bin\": true\n  }\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"probe-a@bin\": [\n      {\n        \"scope\": \"project\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:03.874Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:03.874Z\",\n        \"gitCommitSha\": \"48ae07956c94ec91fcc77d4516b4b0e497e6f245\"\n      },\n      {\n        \"scope\": \"project\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p2\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:04.982Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:04.982Z\",\n        \"gitCommitSha\": \"48ae07956c94ec91fcc77d4516b4b0e497e6f245\"\n      }\n    ],\n    \"probe-b@bin\": [\n      {\n        \"scope\": \"local\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-b/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:04.358Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:04.358Z\",\n        \"gitCommitSha\": \"48ae07956c94ec91fcc77d4516b4b0e497e6f245\"\n      },\n      {\n        \"scope\": \"user\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-b/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:05.527Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:05.527Z\",\n        \"gitCommitSha\": \"48ae07956c94ec91fcc77d4516b4b0e497e6f245\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"bin\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"http://127.0.0.1:59377/cgi-bin/git/n03.git\"\n    },\n    \"installLocation\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/marketplaces/bin\",\n    \"lastUpdated\": \"2026-09-30T11:23:03.426Z\"\n  }\n}"
+   },
+   "project_files": {
+    "n03-p1": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true\n  }\n}\n",
+     ".claude/settings.local.json": "{\n  \"enabledPlugins\": {\n    \"probe-b@bin\": true\n  }\n}\n"
+    },
+    "n03-p2": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true\n  }\n}\n"
+    }
+   },
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0",
+    "bin/probe-b",
+    "bin/probe-b/1.0.0"
+   ]
+  },
+  "2-after-remove@n03-p1": {
+   "marketplaces": [],
+   "plugins": [],
+   "config_files": {
+    "settings.json": "{\n  \"enabledPlugins\": {},\n  \"extraKnownMarketplaces\": {}\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {}\n}",
+    "plugins/known_marketplaces.json": "{}"
+   },
+   "project_files": {
+    "n03-p1": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {}\n}\n",
+     ".claude/settings.local.json": "{\n  \"enabledPlugins\": {}\n}\n"
+    },
+    "n03-p2": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true\n  }\n}\n"
+    }
+   },
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0",
+    "bin/probe-b",
+    "bin/probe-b/1.0.0"
+   ]
+  },
+  "2-after-remove@n03-p2": {
+   "marketplaces": [],
+   "plugins": [],
+   "config_files": {
+    "settings.json": "{\n  \"enabledPlugins\": {},\n  \"extraKnownMarketplaces\": {}\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {}\n}",
+    "plugins/known_marketplaces.json": "{}"
+   },
+   "project_files": {
+    "n03-p1": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {}\n}\n",
+     ".claude/settings.local.json": "{\n  \"enabledPlugins\": {}\n}\n"
+    },
+    "n03-p2": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true\n  }\n}\n"
+    }
+   },
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0",
+    "bin/probe-b",
+    "bin/probe-b/1.0.0"
+   ]
+  },
+  "2-after-remove@n03-neutral": {
+   "marketplaces": [],
+   "plugins": [],
+   "config_files": {
+    "settings.json": "{\n  \"enabledPlugins\": {},\n  \"extraKnownMarketplaces\": {}\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {}\n}",
+    "plugins/known_marketplaces.json": "{}"
+   },
+   "project_files": {
+    "n03-p1": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {}\n}\n",
+     ".claude/settings.local.json": "{\n  \"enabledPlugins\": {}\n}\n"
+    },
+    "n03-p2": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true\n  }\n}\n"
+    }
+   },
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0",
+    "bin/probe-b",
+    "bin/probe-b/1.0.0"
+   ]
+  },
+  "3-migrated@n03-p1": {
+   "marketplaces": [
+    {
+     "name": "because-i-needed",
+     "source": "git",
+     "url": "http://127.0.0.1:59377/cgi-bin/git/n03.git",
+     "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/marketplaces/because-i-needed"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "probe-a@because-i-needed",
+     "version": "1.0.0",
+     "scope": "project",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-a/1.0.0",
+     "installedAt": "2026-09-30T11:23:13.044Z",
+     "lastUpdated": "2026-09-30T11:23:13.044Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": true
+    },
+    {
+     "id": "probe-a@because-i-needed",
+     "version": "1.0.0",
+     "scope": "project",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-a/1.0.0",
+     "installedAt": "2026-09-30T11:23:14.319Z",
+     "lastUpdated": "2026-09-30T11:23:14.319Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p2",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": true
+    },
+    {
+     "id": "probe-b@because-i-needed",
+     "version": "1.0.0",
+     "scope": "user",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0",
+     "installedAt": "2026-09-30T11:23:12.585Z",
+     "lastUpdated": "2026-09-30T11:23:12.585Z",
+     "projectEnabled": false
+    },
+    {
+     "id": "probe-b@because-i-needed",
+     "version": "1.0.0",
+     "scope": "local",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0",
+     "installedAt": "2026-09-30T11:23:13.710Z",
+     "lastUpdated": "2026-09-30T11:23:13.710Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1",
+     "projectEnabled": false
+    }
+   ],
+   "config_files": {
+    "settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-b@because-i-needed\": true\n  },\n  \"extraKnownMarketplaces\": {\n    \"because-i-needed\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:59377/cgi-bin/git/n03.git\"\n      }\n    }\n  }\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"probe-b@because-i-needed\": [\n      {\n        \"scope\": \"user\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:12.585Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:12.585Z\",\n        \"gitCommitSha\": \"75d15b8a487a7d2f1b001c8ce5a4c1e8d5f47440\"\n      },\n      {\n        \"scope\": \"local\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:13.710Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:13.710Z\",\n        \"gitCommitSha\": \"75d15b8a487a7d2f1b001c8ce5a4c1e8d5f47440\"\n      }\n    ],\n    \"probe-a@because-i-needed\": [\n      {\n        \"scope\": \"project\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:13.044Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:13.044Z\",\n        \"gitCommitSha\": \"75d15b8a487a7d2f1b001c8ce5a4c1e8d5f47440\"\n      },\n      {\n        \"scope\": \"project\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:14.319Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:14.319Z\",\n        \"gitCommitSha\": \"75d15b8a487a7d2f1b001c8ce5a4c1e8d5f47440\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p2\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"because-i-needed\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"http://127.0.0.1:59377/cgi-bin/git/n03.git\"\n    },\n    \"installLocation\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/marketplaces/because-i-needed\",\n    \"lastUpdated\": \"2026-09-30T11:23:12.125Z\"\n  }\n}"
+   },
+   "project_files": {
+    "n03-p1": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@because-i-needed\": true\n  }\n}\n",
+     ".claude/settings.local.json": "{\n  \"enabledPlugins\": {\n    \"probe-b@because-i-needed\": true\n  }\n}\n"
+    },
+    "n03-p2": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true,\n    \"probe-a@because-i-needed\": true\n  }\n}\n"
+    }
+   },
+   "cache_tree": [
+    "because-i-needed",
+    "because-i-needed/probe-a",
+    "because-i-needed/probe-a/1.0.0",
+    "because-i-needed/probe-b",
+    "because-i-needed/probe-b/1.0.0",
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0",
+    "bin/probe-b",
+    "bin/probe-b/1.0.0"
+   ]
+  },
+  "3-migrated@n03-p2": {
+   "marketplaces": [
+    {
+     "name": "because-i-needed",
+     "source": "git",
+     "url": "http://127.0.0.1:59377/cgi-bin/git/n03.git",
+     "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/marketplaces/because-i-needed"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "probe-a@because-i-needed",
+     "version": "1.0.0",
+     "scope": "project",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-a/1.0.0",
+     "installedAt": "2026-09-30T11:23:13.044Z",
+     "lastUpdated": "2026-09-30T11:23:13.044Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": true
+    },
+    {
+     "id": "probe-a@because-i-needed",
+     "version": "1.0.0",
+     "scope": "project",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-a/1.0.0",
+     "installedAt": "2026-09-30T11:23:14.319Z",
+     "lastUpdated": "2026-09-30T11:23:14.319Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p2",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": true
+    },
+    {
+     "id": "probe-b@because-i-needed",
+     "version": "1.0.0",
+     "scope": "user",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0",
+     "installedAt": "2026-09-30T11:23:12.585Z",
+     "lastUpdated": "2026-09-30T11:23:12.585Z",
+     "projectEnabled": false
+    },
+    {
+     "id": "probe-b@because-i-needed",
+     "version": "1.0.0",
+     "scope": "local",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0",
+     "installedAt": "2026-09-30T11:23:13.710Z",
+     "lastUpdated": "2026-09-30T11:23:13.710Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1",
+     "projectEnabled": false
+    }
+   ],
+   "config_files": {
+    "settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-b@because-i-needed\": true\n  },\n  \"extraKnownMarketplaces\": {\n    \"because-i-needed\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:59377/cgi-bin/git/n03.git\"\n      }\n    }\n  }\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"probe-b@because-i-needed\": [\n      {\n        \"scope\": \"user\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:12.585Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:12.585Z\",\n        \"gitCommitSha\": \"75d15b8a487a7d2f1b001c8ce5a4c1e8d5f47440\"\n      },\n      {\n        \"scope\": \"local\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:13.710Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:13.710Z\",\n        \"gitCommitSha\": \"75d15b8a487a7d2f1b001c8ce5a4c1e8d5f47440\"\n      }\n    ],\n    \"probe-a@because-i-needed\": [\n      {\n        \"scope\": \"project\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:13.044Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:13.044Z\",\n        \"gitCommitSha\": \"75d15b8a487a7d2f1b001c8ce5a4c1e8d5f47440\"\n      },\n      {\n        \"scope\": \"project\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:14.319Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:14.319Z\",\n        \"gitCommitSha\": \"75d15b8a487a7d2f1b001c8ce5a4c1e8d5f47440\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p2\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"because-i-needed\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"http://127.0.0.1:59377/cgi-bin/git/n03.git\"\n    },\n    \"installLocation\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/marketplaces/because-i-needed\",\n    \"lastUpdated\": \"2026-09-30T11:23:12.125Z\"\n  }\n}"
+   },
+   "project_files": {
+    "n03-p1": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@because-i-needed\": true\n  }\n}\n",
+     ".claude/settings.local.json": "{\n  \"enabledPlugins\": {\n    \"probe-b@because-i-needed\": true\n  }\n}\n"
+    },
+    "n03-p2": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true,\n    \"probe-a@because-i-needed\": true\n  }\n}\n"
+    }
+   },
+   "cache_tree": [
+    "because-i-needed",
+    "because-i-needed/probe-a",
+    "because-i-needed/probe-a/1.0.0",
+    "because-i-needed/probe-b",
+    "because-i-needed/probe-b/1.0.0",
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0",
+    "bin/probe-b",
+    "bin/probe-b/1.0.0"
+   ]
+  },
+  "3-migrated@n03-neutral": {
+   "marketplaces": [
+    {
+     "name": "because-i-needed",
+     "source": "git",
+     "url": "http://127.0.0.1:59377/cgi-bin/git/n03.git",
+     "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/marketplaces/because-i-needed"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "probe-a@because-i-needed",
+     "version": "1.0.0",
+     "scope": "project",
+     "enabled": false,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-a/1.0.0",
+     "installedAt": "2026-09-30T11:23:13.044Z",
+     "lastUpdated": "2026-09-30T11:23:13.044Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1",
+     "projectEnabled": false
+    },
+    {
+     "id": "probe-a@because-i-needed",
+     "version": "1.0.0",
+     "scope": "project",
+     "enabled": false,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-a/1.0.0",
+     "installedAt": "2026-09-30T11:23:14.319Z",
+     "lastUpdated": "2026-09-30T11:23:14.319Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p2",
+     "projectEnabled": false
+    },
+    {
+     "id": "probe-b@because-i-needed",
+     "version": "1.0.0",
+     "scope": "user",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0",
+     "installedAt": "2026-09-30T11:23:12.585Z",
+     "lastUpdated": "2026-09-30T11:23:12.585Z",
+     "projectEnabled": false
+    },
+    {
+     "id": "probe-b@because-i-needed",
+     "version": "1.0.0",
+     "scope": "local",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0",
+     "installedAt": "2026-09-30T11:23:13.710Z",
+     "lastUpdated": "2026-09-30T11:23:13.710Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1",
+     "projectEnabled": false
+    }
+   ],
+   "config_files": {
+    "settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-b@because-i-needed\": true\n  },\n  \"extraKnownMarketplaces\": {\n    \"because-i-needed\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:59377/cgi-bin/git/n03.git\"\n      }\n    }\n  }\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"probe-b@because-i-needed\": [\n      {\n        \"scope\": \"user\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:12.585Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:12.585Z\",\n        \"gitCommitSha\": \"75d15b8a487a7d2f1b001c8ce5a4c1e8d5f47440\"\n      },\n      {\n        \"scope\": \"local\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:13.710Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:13.710Z\",\n        \"gitCommitSha\": \"75d15b8a487a7d2f1b001c8ce5a4c1e8d5f47440\"\n      }\n    ],\n    \"probe-a@because-i-needed\": [\n      {\n        \"scope\": \"project\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p1\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:13.044Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:13.044Z\",\n        \"gitCommitSha\": \"75d15b8a487a7d2f1b001c8ce5a4c1e8d5f47440\"\n      },\n      {\n        \"scope\": \"project\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T11:23:14.319Z\",\n        \"lastUpdated\": \"2026-09-30T11:23:14.319Z\",\n        \"gitCommitSha\": \"75d15b8a487a7d2f1b001c8ce5a4c1e8d5f47440\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-p2\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"because-i-needed\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"http://127.0.0.1:59377/cgi-bin/git/n03.git\"\n    },\n    \"installLocation\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/marketplaces/because-i-needed\",\n    \"lastUpdated\": \"2026-09-30T11:23:12.125Z\"\n  }\n}"
+   },
+   "project_files": {
+    "n03-p1": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@because-i-needed\": true\n  }\n}\n",
+     ".claude/settings.local.json": "{\n  \"enabledPlugins\": {\n    \"probe-b@because-i-needed\": true\n  }\n}\n"
+    },
+    "n03-p2": {
+     ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true,\n    \"probe-a@because-i-needed\": true\n  }\n}\n"
+    }
+   },
+   "cache_tree": [
+    "because-i-needed",
+    "because-i-needed/probe-a",
+    "because-i-needed/probe-a/1.0.0",
+    "because-i-needed/probe-b",
+    "because-i-needed/probe-b/1.0.0",
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0",
+    "bin/probe-b",
+    "bin/probe-b/1.0.0"
+   ]
+  }
+ },
+ "sessions": {
+  "1-installed@n03-p1": {
+   "exit": 1,
+   "plugins": [
+    {
+     "name": "probe-b",
+     "path": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-b/1.0.0",
+     "source": "probe-b@bin",
+     "version": "1.0.0"
+    },
+    {
+     "name": "probe-a",
+     "path": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-a/1.0.0",
+     "source": "probe-a@bin",
+     "version": "1.0.0"
+    }
+   ],
+   "skills": [
+    "probe-b:bye",
+    "probe-a:hello"
+   ],
+   "slash_commands": [
+    "probe-b:bye",
+    "probe-a:hello"
+   ],
+   "mcp_servers": [
+    {
+     "name": "plugin:probe-a:probe-mcp",
+     "status": "failed",
+     "source": "plugin"
+    }
+   ],
+   "hooks": [
+    {
+     "hook_event": "UserPromptSubmit",
+     "output": "probe-a-hook\n",
+     "exit_code": 0,
+     "outcome": "success"
+    }
+   ],
+   "version": "2.1.285",
+   "tokens": {
+    "input": 0,
+    "output": 0
+   },
+   "result": "Not logged in \u00b7 Please run /login",
+   "unparsed_lines": 0
+  },
+  "1-installed@n03-p2": {
+   "exit": 1,
+   "plugins": [
+    {
+     "name": "probe-b",
+     "path": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-b/1.0.0",
+     "source": "probe-b@bin",
+     "version": "1.0.0"
+    },
+    {
+     "name": "probe-a",
+     "path": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-a/1.0.0",
+     "source": "probe-a@bin",
+     "version": "1.0.0"
+    }
+   ],
+   "skills": [
+    "probe-b:bye",
+    "probe-a:hello"
+   ],
+   "slash_commands": [
+    "probe-b:bye",
+    "probe-a:hello"
+   ],
+   "mcp_servers": [
+    {
+     "name": "plugin:probe-a:probe-mcp",
+     "status": "failed",
+     "source": "plugin"
+    }
+   ],
+   "hooks": [
+    {
+     "hook_event": "UserPromptSubmit",
+     "output": "probe-a-hook\n",
+     "exit_code": 0,
+     "outcome": "success"
+    }
+   ],
+   "version": "2.1.285",
+   "tokens": {
+    "input": 0,
+    "output": 0
+   },
+   "result": "Not logged in \u00b7 Please run /login",
+   "unparsed_lines": 0
+  },
+  "1-installed@n03-neutral": {
+   "exit": 1,
+   "plugins": [
+    {
+     "name": "probe-b",
+     "path": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/bin/probe-b/1.0.0",
+     "source": "probe-b@bin",
+     "version": "1.0.0"
+    }
+   ],
+   "skills": [
+    "probe-b:bye"
+   ],
+   "slash_commands": [
+    "probe-b:bye"
+   ],
+   "mcp_servers": [],
+   "hooks": [],
+   "version": "2.1.285",
+   "tokens": {
+    "input": 0,
+    "output": 0
+   },
+   "result": "Not logged in \u00b7 Please run /login",
+   "unparsed_lines": 0
+  },
+  "2-after-remove@n03-p1": {
+   "exit": 1,
+   "plugins": [],
+   "skills": [],
+   "slash_commands": [],
+   "mcp_servers": [],
+   "hooks": [],
+   "version": "2.1.285",
+   "tokens": {
+    "input": 0,
+    "output": 0
+   },
+   "result": "Not logged in \u00b7 Please run /login",
+   "unparsed_lines": 0
+  },
+  "2-after-remove@n03-p2": {
+   "exit": 1,
+   "plugins": [],
+   "skills": [],
+   "slash_commands": [],
+   "mcp_servers": [],
+   "hooks": [],
+   "version": "2.1.285",
+   "tokens": {
+    "input": 0,
+    "output": 0
+   },
+   "result": "Not logged in \u00b7 Please run /login",
+   "unparsed_lines": 0
+  },
+  "2-after-remove@n03-neutral": {
+   "exit": 1,
+   "plugins": [],
+   "skills": [],
+   "slash_commands": [],
+   "mcp_servers": [],
+   "hooks": [],
+   "version": "2.1.285",
+   "tokens": {
+    "input": 0,
+    "output": 0
+   },
+   "result": "Not logged in \u00b7 Please run /login",
+   "unparsed_lines": 0
+  },
+  "3-migrated@n03-p1": {
+   "exit": 1,
+   "plugins": [
+    {
+     "name": "probe-b",
+     "path": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0",
+     "source": "probe-b@because-i-needed",
+     "version": "1.0.0"
+    },
+    {
+     "name": "probe-a",
+     "path": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-a/1.0.0",
+     "source": "probe-a@because-i-needed",
+     "version": "1.0.0"
+    }
+   ],
+   "skills": [
+    "probe-b:bye",
+    "probe-a:hello"
+   ],
+   "slash_commands": [
+    "probe-b:bye",
+    "probe-a:hello"
+   ],
+   "mcp_servers": [
+    {
+     "name": "plugin:probe-a:probe-mcp",
+     "status": "failed",
+     "source": "plugin"
+    }
+   ],
+   "hooks": [
+    {
+     "hook_event": "UserPromptSubmit",
+     "output": "probe-a-hook\n",
+     "exit_code": 0,
+     "outcome": "success"
+    }
+   ],
+   "version": "2.1.285",
+   "tokens": {
+    "input": 0,
+    "output": 0
+   },
+   "result": "Not logged in \u00b7 Please run /login",
+   "unparsed_lines": 0
+  },
+  "3-migrated@n03-p2": {
+   "exit": 1,
+   "plugins": [
+    {
+     "name": "probe-b",
+     "path": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0",
+     "source": "probe-b@because-i-needed",
+     "version": "1.0.0"
+    },
+    {
+     "name": "probe-a",
+     "path": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-a/1.0.0",
+     "source": "probe-a@because-i-needed",
+     "version": "1.0.0"
+    }
+   ],
+   "skills": [
+    "probe-b:bye",
+    "probe-a:hello"
+   ],
+   "slash_commands": [
+    "probe-b:bye",
+    "probe-a:hello"
+   ],
+   "mcp_servers": [
+    {
+     "name": "plugin:probe-a:probe-mcp",
+     "status": "failed",
+     "source": "plugin"
+    }
+   ],
+   "hooks": [
+    {
+     "hook_event": "UserPromptSubmit",
+     "output": "probe-a-hook\n",
+     "exit_code": 0,
+     "outcome": "success"
+    }
+   ],
+   "version": "2.1.285",
+   "tokens": {
+    "input": 0,
+    "output": 0
+   },
+   "result": "Not logged in \u00b7 Please run /login",
+   "unparsed_lines": 0
+  },
+  "3-migrated@n03-neutral": {
+   "exit": 1,
+   "plugins": [
+    {
+     "name": "probe-b",
+     "path": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk/n03-cfg/plugins/cache/because-i-needed/probe-b/1.0.0",
+     "source": "probe-b@because-i-needed",
+     "version": "1.0.0"
+    }
+   ],
+   "skills": [
+    "probe-b:bye"
+   ],
+   "slash_commands": [
+    "probe-b:bye"
+   ],
+   "mcp_servers": [],
+   "hooks": [],
+   "version": "2.1.285",
+   "tokens": {
+    "input": 0,
+    "output": 0
+   },
+   "result": "Not logged in \u00b7 Please run /login",
+   "unparsed_lines": 0
+  }
+ },
+ "base": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-r2-8532ltnk"
+}

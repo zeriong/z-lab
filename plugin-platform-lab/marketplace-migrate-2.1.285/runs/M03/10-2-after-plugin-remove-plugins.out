@@ -1,0 +1,10 @@
+$ codex plugin list
+--- stdout
+Marketplace `bin`
+/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-codex/.tmp/marketplaces/bin/.claude-plugin/marketplace.json
+
+PLUGIN       STATUS         VERSION  SOURCE
+probe-a@bin  not installed           /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-codex/.tmp/marketplaces/bin/plugins/probe-a
+probe-b@bin  not installed           /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m03-codex/.tmp/marketplaces/bin/plugins/probe-b
+
+--- stderr

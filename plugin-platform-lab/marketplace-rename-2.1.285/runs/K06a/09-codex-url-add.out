@@ -1,0 +1,6 @@
+$ codex plugin marketplace add https://github.com/zeriong/because-i-needed.git
+--- stdout
+Added marketplace `bin` from https://github.com/zeriong/because-i-needed.git.
+Installed marketplace root: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/codex-url/.tmp/marketplaces/bin
+
+--- stderr

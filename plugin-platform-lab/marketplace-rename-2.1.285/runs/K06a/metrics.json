@@ -1,0 +1,162 @@
+[
+ {
+  "step": "01-claude-url-add",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "add",
+   "https://github.com/zeriong/because-i-needed.git"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/cwd",
+  "exit": 0,
+  "elapsed_ms": 2296
+ },
+ {
+  "step": "02-claude-url-install",
+  "argv": [
+   "claude",
+   "plugin",
+   "install",
+   "harness@bin"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/cwd",
+  "exit": 0,
+  "elapsed_ms": 548
+ },
+ {
+  "step": "03-claude-url-marketplaces",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "list",
+   "--json"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/cwd",
+  "exit": 0,
+  "elapsed_ms": 126
+ },
+ {
+  "step": "04-claude-url-plugins",
+  "argv": [
+   "claude",
+   "plugin",
+   "list",
+   "--json"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/cwd",
+  "exit": 0,
+  "elapsed_ms": 99
+ },
+ {
+  "step": "05-claude-owner-repo-add",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "add",
+   "zeriong/because-i-needed"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/cwd",
+  "exit": 0,
+  "elapsed_ms": 2327
+ },
+ {
+  "step": "06-claude-owner-repo-install",
+  "argv": [
+   "claude",
+   "plugin",
+   "install",
+   "harness@bin"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/cwd",
+  "exit": 0,
+  "elapsed_ms": 563
+ },
+ {
+  "step": "07-claude-owner-repo-marketplaces",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "list",
+   "--json"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/cwd",
+  "exit": 0,
+  "elapsed_ms": 100
+ },
+ {
+  "step": "08-claude-owner-repo-plugins",
+  "argv": [
+   "claude",
+   "plugin",
+   "list",
+   "--json"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/cwd",
+  "exit": 0,
+  "elapsed_ms": 99
+ },
+ {
+  "step": "09-codex-url-add",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "add",
+   "https://github.com/zeriong/because-i-needed.git"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/cwd",
+  "exit": 0,
+  "elapsed_ms": 997
+ },
+ {
+  "step": "10-codex-url-install",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "harness@bin"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/cwd",
+  "exit": 0,
+  "elapsed_ms": 25
+ },
+ {
+  "step": "11-codex-url-marketplaces",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "list"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/cwd",
+  "exit": 0,
+  "elapsed_ms": 14
+ },
+ {
+  "step": "12-codex-url-plugins",
+  "argv": [
+   "codex",
+   "plugin",
+   "list"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/cwd",
+  "exit": 0,
+  "elapsed_ms": 11
+ },
+ {
+  "step": "13-codex-url-prompt-input",
+  "argv": [
+   "codex",
+   "debug",
+   "prompt-input",
+   "hi"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/z-lab-marketplace-rename-k06/cwd",
+  "exit": 0,
+  "elapsed_ms": 115
+ }
+]

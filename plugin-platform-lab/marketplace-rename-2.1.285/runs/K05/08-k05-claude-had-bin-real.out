@@ -1,0 +1,12 @@
+$ bash /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-claude-had-bin/install.sh --host claude --only probe-a
+--- stdout
+
+Adding marketplace 'because-i-needed' (http://127.0.0.1:58136/cgi-bin/git/k05-claude-had-bin.git)
+Adding marketplace…✔ Marketplace 'bin' already on disk — declared in user settings
+Installing probe-a@because-i-needed
+Installing plugin "probe-a@because-i-needed"...
+
+1 plugin(s) failed to install. Re-run with --only <name> after fixing the error above.
+
+--- stderr
+✘ Failed to install plugin "probe-a@because-i-needed": Plugin "probe-a" not found in marketplace "because-i-needed". Your local copy may be out of date — try `claude plugin marketplace update because-i-needed`.

@@ -1,0 +1,12 @@
+$ bash /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/src/k05-codex-had-bin/install.sh --host codex --only probe-a --dry-run
+--- stdout
+
+Adding marketplace 'because-i-needed' (http://127.0.0.1:58136/cgi-bin/git/k05-codex-had-bin.git)
++ codex plugin marketplace add http://127.0.0.1:58136/cgi-bin/git/k05-codex-had-bin.git
+Installing probe-a@because-i-needed
++ codex plugin add probe-a@because-i-needed
+
+Done. Start a new Codex session to load: probe-a
+Use $plugin:skill (for example $harness:build). Review plugin hooks with /hooks before use.
+
+--- stderr

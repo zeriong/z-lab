@@ -1,0 +1,57 @@
+{
+ "snapshots": {
+  "1-installed": {
+   "marketplace_list": "MARKETPLACE  ROOT\nbin          /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m02-codex/.tmp/marketplaces/bin\n",
+   "plugin_list_probe_lines": [
+    "probe-a@bin  installed, enabled  1.0.0    /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m02-codex/.tmp/marketplaces/bin/plugins/probe-a",
+    "probe-b@bin  not installed                /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m02-codex/.tmp/marketplaces/bin/plugins/probe-b"
+   ],
+   "config_toml": "[marketplaces.bin]\nsource_type = \"git\"\nsource = \"http://127.0.0.1:58454/cgi-bin/git/m02.git\"\n\n[plugins.\"probe-a@bin\"]\nenabled = true\n",
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0"
+   ],
+   "prompt_input": {
+    "exit": 0,
+    "hello_skill": true,
+    "bye_skill": false,
+    "hook_marker": false
+   },
+   "probe_skills": [
+    {
+     "skill": "probe-a:hello",
+     "root": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m02-codex/plugins/cache/bin",
+     "file": "probe-a/1.0.0/skills/hello/SKILL.md"
+    }
+   ]
+  },
+  "2-after-upgrade": {
+   "marketplace_list": "MARKETPLACE  ROOT\nbin          /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m02-codex/.tmp/marketplaces/bin\n",
+   "plugin_list_probe_lines": [
+    "probe-a@bin  installed, enabled  1.0.0    /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m02-codex/.tmp/marketplaces/bin/plugins/probe-a",
+    "probe-b@bin  not installed                /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m02-codex/.tmp/marketplaces/bin/plugins/probe-b"
+   ],
+   "config_toml": "[marketplaces.bin]\nsource_type = \"git\"\nsource = \"http://127.0.0.1:58454/cgi-bin/git/m02.git\"\n\n[plugins.\"probe-a@bin\"]\nenabled = true\n",
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0"
+   ],
+   "prompt_input": {
+    "exit": 0,
+    "hello_skill": true,
+    "bye_skill": false,
+    "hook_marker": false
+   },
+   "probe_skills": [
+    {
+     "skill": "probe-a:hello",
+     "root": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris/m02-codex/plugins/cache/bin",
+     "file": "probe-a/1.0.0/skills/hello/SKILL.md"
+    }
+   ]
+  }
+ },
+ "base": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-migrate-7mw2xris"
+}

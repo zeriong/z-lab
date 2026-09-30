@@ -1,0 +1,205 @@
+{
+ "snapshots": {
+  "1-installed": {
+   "marketplaces": [
+    {
+     "name": "bin",
+     "source": "git",
+     "url": "http://127.0.0.1:58136/cgi-bin/git/k07.git",
+     "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/marketplaces/bin"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "probe-a@bin",
+     "version": "1.0.0",
+     "scope": "project",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/cache/bin/probe-a/1.0.0",
+     "installedAt": "2026-09-30T09:52:05.833Z",
+     "lastUpdated": "2026-09-30T09:52:05.833Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": true
+    },
+    {
+     "id": "probe-b@bin",
+     "version": "1.0.0",
+     "scope": "local",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/cache/bin/probe-b/1.0.0",
+     "installedAt": "2026-09-30T09:52:06.463Z",
+     "lastUpdated": "2026-09-30T09:52:06.463Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+     "projectEnabled": false
+    }
+   ],
+   "config_files": {
+    "settings.json": "{\n  \"extraKnownMarketplaces\": {\n    \"bin\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:58136/cgi-bin/git/k07.git\"\n      }\n    }\n  }\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"probe-a@bin\": [\n      {\n        \"scope\": \"project\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/cache/bin/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T09:52:05.833Z\",\n        \"lastUpdated\": \"2026-09-30T09:52:05.833Z\",\n        \"gitCommitSha\": \"8af2b80a3f50596dfa94966ec4f6517b135ff269\"\n      }\n    ],\n    \"probe-b@bin\": [\n      {\n        \"scope\": \"local\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/cache/bin/probe-b/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T09:52:06.463Z\",\n        \"lastUpdated\": \"2026-09-30T09:52:06.463Z\",\n        \"gitCommitSha\": \"8af2b80a3f50596dfa94966ec4f6517b135ff269\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"bin\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"http://127.0.0.1:58136/cgi-bin/git/k07.git\"\n    },\n    \"installLocation\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/marketplaces/bin\",\n    \"lastUpdated\": \"2026-09-30T09:52:05.302Z\"\n  }\n}"
+   },
+   "project_files": {
+    ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true\n  },\n  \"extraKnownMarketplaces\": {\n    \"bin\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:58136/cgi-bin/git/k07.git\"\n      }\n    }\n  }\n}\n",
+    ".claude/settings.local.json": "{\n  \"enabledPlugins\": {\n    \"probe-b@bin\": true\n  }\n}\n"
+   },
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0",
+    "bin/probe-b",
+    "bin/probe-b/1.0.0"
+   ]
+  },
+  "2-after-update": {
+   "marketplaces": [
+    {
+     "name": "bin",
+     "source": "git",
+     "url": "http://127.0.0.1:58136/cgi-bin/git/k07.git",
+     "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/marketplaces/bin"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "probe-a@bin",
+     "version": "1.0.0",
+     "scope": "project",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/cache/bin/probe-a/1.0.0",
+     "installedAt": "2026-09-30T09:52:05.833Z",
+     "lastUpdated": "2026-09-30T09:52:05.833Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": true
+    },
+    {
+     "id": "probe-b@bin",
+     "version": "1.0.0",
+     "scope": "local",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/cache/bin/probe-b/1.0.0",
+     "installedAt": "2026-09-30T09:52:06.463Z",
+     "lastUpdated": "2026-09-30T09:52:06.463Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+     "projectEnabled": false
+    }
+   ],
+   "config_files": {
+    "settings.json": "{\n  \"extraKnownMarketplaces\": {\n    \"bin\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:58136/cgi-bin/git/k07.git\"\n      }\n    }\n  }\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"probe-a@bin\": [\n      {\n        \"scope\": \"project\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/cache/bin/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T09:52:05.833Z\",\n        \"lastUpdated\": \"2026-09-30T09:52:05.833Z\",\n        \"gitCommitSha\": \"8af2b80a3f50596dfa94966ec4f6517b135ff269\"\n      }\n    ],\n    \"probe-b@bin\": [\n      {\n        \"scope\": \"local\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/cache/bin/probe-b/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T09:52:06.463Z\",\n        \"lastUpdated\": \"2026-09-30T09:52:06.463Z\",\n        \"gitCommitSha\": \"8af2b80a3f50596dfa94966ec4f6517b135ff269\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"bin\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"http://127.0.0.1:58136/cgi-bin/git/k07.git\"\n    },\n    \"installLocation\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/marketplaces/bin\",\n    \"lastUpdated\": \"2026-09-30T09:52:07.391Z\"\n  }\n}"
+   },
+   "project_files": {
+    ".claude/settings.json": "{\n  \"enabledPlugins\": {\n    \"probe-a@bin\": true\n  },\n  \"extraKnownMarketplaces\": {\n    \"bin\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:58136/cgi-bin/git/k07.git\"\n      }\n    }\n  }\n}\n",
+    ".claude/settings.local.json": "{\n  \"enabledPlugins\": {\n    \"probe-b@bin\": true\n  }\n}\n"
+   },
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0",
+    "bin/probe-b",
+    "bin/probe-b/1.0.0"
+   ]
+  },
+  "3-after-remove": {
+   "marketplaces": [],
+   "plugins": [],
+   "config_files": {
+    "settings.json": "{\n  \"extraKnownMarketplaces\": {}\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {}\n}",
+    "plugins/known_marketplaces.json": "{}"
+   },
+   "project_files": {
+    ".claude/settings.json": "{\n  \"enabledPlugins\": {},\n  \"extraKnownMarketplaces\": {}\n}\n",
+    ".claude/settings.local.json": "{\n  \"enabledPlugins\": {}\n}\n"
+   },
+   "cache_tree": [
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0",
+    "bin/probe-b",
+    "bin/probe-b/1.0.0"
+   ]
+  },
+  "4-migrated": {
+   "marketplaces": [
+    {
+     "name": "because-i-needed",
+     "source": "git",
+     "url": "http://127.0.0.1:58136/cgi-bin/git/k07.git",
+     "installLocation": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/marketplaces/because-i-needed"
+    }
+   ],
+   "plugins": [
+    {
+     "id": "probe-a@because-i-needed",
+     "version": "1.0.0",
+     "scope": "user",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/cache/because-i-needed/probe-a/1.0.0",
+     "installedAt": "2026-09-30T09:52:09.095Z",
+     "lastUpdated": "2026-09-30T09:52:09.095Z",
+     "mcpServers": {
+      "probe-mcp": {
+       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+       "args": [
+        "-c",
+        "pass"
+       ]
+      }
+     },
+     "projectEnabled": false
+    },
+    {
+     "id": "probe-b@because-i-needed",
+     "version": "1.0.0",
+     "scope": "local",
+     "enabled": true,
+     "installPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/cache/because-i-needed/probe-b/1.0.0",
+     "installedAt": "2026-09-30T09:52:09.580Z",
+     "lastUpdated": "2026-09-30T09:52:09.580Z",
+     "projectPath": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project",
+     "projectEnabled": false
+    }
+   ],
+   "config_files": {
+    "settings.json": "{\n  \"extraKnownMarketplaces\": {\n    \"because-i-needed\": {\n      \"source\": {\n        \"source\": \"git\",\n        \"url\": \"http://127.0.0.1:58136/cgi-bin/git/k07.git\"\n      }\n    }\n  },\n  \"enabledPlugins\": {\n    \"probe-a@because-i-needed\": true\n  }\n}\n",
+    "plugins/installed_plugins.json": "{\n  \"version\": 2,\n  \"plugins\": {\n    \"probe-a@because-i-needed\": [\n      {\n        \"scope\": \"user\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/cache/because-i-needed/probe-a/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T09:52:09.095Z\",\n        \"lastUpdated\": \"2026-09-30T09:52:09.095Z\",\n        \"gitCommitSha\": \"3233c80f41a7cda76679036280764eaf96ec932a\"\n      }\n    ],\n    \"probe-b@because-i-needed\": [\n      {\n        \"scope\": \"local\",\n        \"installPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/cache/because-i-needed/probe-b/1.0.0\",\n        \"version\": \"1.0.0\",\n        \"installedAt\": \"2026-09-30T09:52:09.580Z\",\n        \"lastUpdated\": \"2026-09-30T09:52:09.580Z\",\n        \"gitCommitSha\": \"3233c80f41a7cda76679036280764eaf96ec932a\",\n        \"projectPath\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-project\"\n      }\n    ]\n  }\n}",
+    "plugins/known_marketplaces.json": "{\n  \"because-i-needed\": {\n    \"source\": {\n      \"source\": \"git\",\n      \"url\": \"http://127.0.0.1:58136/cgi-bin/git/k07.git\"\n    },\n    \"installLocation\": \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mkt-rename-eoojwz1k/k07-cfg/plugins/marketplaces/because-i-needed\",\n    \"lastUpdated\": \"2026-09-30T09:52:08.627Z\"\n  }\n}"
+   },
+   "project_files": {
+    ".claude/settings.json": "{\n  \"enabledPlugins\": {},\n  \"extraKnownMarketplaces\": {}\n}\n",
+    ".claude/settings.local.json": "{\n  \"enabledPlugins\": {\n    \"probe-b@because-i-needed\": true\n  }\n}\n"
+   },
+   "cache_tree": [
+    "because-i-needed",
+    "because-i-needed/probe-a",
+    "because-i-needed/probe-a/1.0.0",
+    "because-i-needed/probe-b",
+    "because-i-needed/probe-b/1.0.0",
+    "bin",
+    "bin/probe-a",
+    "bin/probe-a/1.0.0",
+    "bin/probe-b",
+    "bin/probe-b/1.0.0"
+   ]
+  }
+ }
+}

@@ -1,0 +1,6 @@
+$ claude plugin update probe-a@because-i-needed
+--- stdout
+Checking for updates for plugin "probe-a@because-i-needed"…
+
+--- stderr
+✘ Failed to update plugin "probe-a@because-i-needed": Plugin "probe-a" not found

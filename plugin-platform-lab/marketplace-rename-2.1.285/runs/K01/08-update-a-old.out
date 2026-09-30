@@ -1,0 +1,6 @@
+$ claude plugin update probe-a@bin
+--- stdout
+Checking for updates for plugin "probe-a@bin"…
+✔ probe-a is already at the latest version (1.0.0).
+
+--- stderr

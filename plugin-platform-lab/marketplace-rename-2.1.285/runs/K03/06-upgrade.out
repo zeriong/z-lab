@@ -1,0 +1,6 @@
+$ codex plugin marketplace upgrade
+--- stdout
+
+--- stderr
+Failed to upgrade marketplace `bin`: upgraded marketplace name `because-i-needed` does not match configured marketplace `bin`
+Error: 1 upgrade failure(s) occurred.
