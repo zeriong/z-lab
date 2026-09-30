@@ -1,0 +1,17 @@
+{
+ "exit": 0,
+ "main_model": "gpt-6-sol",
+ "ids_seen_in_events": {
+  "gpt-6.1-sol": 5
+ },
+ "resolver_calls": 5,
+ "final_message": "아트 디렉터 디스패치를 시도했지만, 읽기 전용 Codex 프로세스가 시작되지 않아 판정은 받지 못했습니다.\n\n- **모델 선택 명령:** `python3 /Users/jeonjelyong/WorkSpace/Z-Work/z-lab/ux-ui-lab/latest-model-1.4.0/subject/ux-ui/scripts/latest-model.py codex sol --effort medium`\n- **출력:** `gpt-6.1-sol`\n- **실제 실행 ID:** 없음. 디렉터 실행 명령이 `failed to initialize in-process app-server client: Operation not permitted (os error 1)`로 종료되어, 실행 헤더의 `model:`을 읽을 수 없었습니다.\n- **디렉터 판정:** 없음.\n\n새 캡처, 소스 수정, 승인, 커밋은 하지 않았습니다.",
+ "elapsed_ms": 82198,
+ "usage": {
+  "input_tokens": 200878,
+  "cached_input_tokens": 176256,
+  "cache_write_input_tokens": 0,
+  "output_tokens": 2883,
+  "reasoning_output_tokens": 1088
+ }
+}

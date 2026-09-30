@@ -1,0 +1,20 @@
+R01: running
+Traceback (most recent call last):
+  File "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/ux-ui-lab/latest-model-1.4.0/run.py", line 386, in <module>
+    main()
+  File "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/ux-ui-lab/latest-model-1.4.0/run.py", line 381, in main
+    case.finish(CASES[name](case, product))
+  File "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/ux-ui-lab/latest-model-1.4.0/run.py", line 293, in r01
+    root = ui_fixture("r01")
+  File "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/ux-ui-lab/latest-model-1.4.0/run.py", line 281, in ui_fixture
+    subprocess.run([CHROME, "--headless", "--disable-gpu", "--no-first-run", "--no-default-browser-check",
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 507, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 1134, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 1980, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 1178, in _check_timeout
+    raise TimeoutExpired(
+subprocess.TimeoutExpired: Command '['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '--headless', '--disable-gpu', '--no-first-run', '--no-default-browser-check', '--user-data-dir=/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/ui-r01-vwp8udz5/chrome-profile', '--screenshot=/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/ui-r01-vwp8udz5/.ux-ui/measure/probe/default__desktop.png', '--window-size=1440,900', 'file:///private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/ui-r01-vwp8udz5/screen.html']' timed out after 60 seconds
+ux-ui-lab/latest-model-1.4.0 exit=1

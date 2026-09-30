@@ -1,0 +1,1 @@
+No structure snapshot captured.
