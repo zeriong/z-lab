@@ -1,0 +1,35 @@
+[
+  {
+    "source": "before-probes/metrics.json",
+    "elapsed_ms": 783,
+    "passed": 2,
+    "cases": 6,
+    "tokens": null,
+    "source_sha256": "1177555e1de62593d8453d6842b147c79e1101dfcc3175bbaec180f30232b9f1"
+  },
+  {
+    "source": "after-final/metrics.json",
+    "elapsed_ms": 1142,
+    "passed": 6,
+    "cases": 6,
+    "tokens": null,
+    "source_sha256": "d2c7d08cff6ffba7e28bba35109df20534c7f361d7814d1c7526f5292c81561c"
+  },
+  {
+    "source": "native-install/metrics.json",
+    "elapsed_ms": 255,
+    "tokens": null,
+    "passed": 2,
+    "cases": 2
+  },
+  {
+    "source": "runs/final-resolver-isolation/metrics.json",
+    "exit": 0,
+    "elapsed_ms": 8012,
+    "tokens": null,
+    "deterministic_commands": 15,
+    "readme_links": 415,
+    "yaml_skills": 7,
+    "plugin_reads": 4
+  }
+]

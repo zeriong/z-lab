@@ -1,0 +1,6 @@
+{
+  "exit": 0,
+  "row": "| . | untracked | untracked | missing | ok (pointer) |",
+  "elapsed_ms": 99,
+  "expected": "CHECK because a filename mention is not an instruction pointer"
+}

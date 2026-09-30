@@ -1,0 +1,23 @@
+{
+  "skills": [
+    {
+      "name": "mode",
+      "description": "Turn claude-x-codex orchestration mode on or off, or show its current status. Use only when the user asks to enable, disable, reset, or check the mode — e.g. \"/claude-x-codex:mode on\", \"claude-x-codex mode status\", \"오케스트레이션 모드 켜줘/꺼줘\".",
+      "interface": {
+        "displayName": "Orchestration mode",
+        "shortDescription": "Change or inspect Claude and Codex orchestration mode",
+        "iconSmall": null,
+        "iconLarge": null,
+        "iconSmallUrl": null,
+        "iconLargeUrl": null,
+        "brandColor": null,
+        "defaultPrompt": "Use claude-x-codex:mode to inspect the current orchestration mode."
+      },
+      "path": "<temp>/.agents/skills/cxc-mode/SKILL.md",
+      "scope": "repo",
+      "enabled": true,
+      "pluginId": null
+    }
+  ],
+  "errors": []
+}

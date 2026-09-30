@@ -1,0 +1,566 @@
+[
+  {
+    "file": ".claude-plugin/marketplace.json",
+    "change": "modified",
+    "sha256": "8712caa5dc1375b5576f3470eb111c4231c42acc22051220ec58e114fa408574",
+    "coverage": "JSON parsed; plugin manifests/catalog loaded by actual host validators/runtime; review schema preserved."
+  },
+  {
+    "file": ".gitattributes",
+    "change": "unchanged",
+    "sha256": "29bd391738dbcedf112d149d342db1f2b8d3beefab4762182c18b02511ef0875",
+    "coverage": "Repository/packaging instructions and preservation diff reviewed."
+  },
+  {
+    "file": ".gitignore",
+    "change": "modified",
+    "sha256": "32b2dd7912ea54e02bcb2d85d94ee2a1fe0e74675f20bbbabeb7823055acb249",
+    "coverage": "Repository/packaging instructions and preservation diff reviewed."
+  },
+  {
+    "file": "AGENTS.md",
+    "change": "new",
+    "sha256": "3c8bd92b47d15dd091e6f2c5f33a0c7395144e6ca46725ed1b82fce4f5bae846",
+    "coverage": "Repository/packaging instructions and preservation diff reviewed."
+  },
+  {
+    "file": "CLAUDE.md",
+    "change": "modified",
+    "sha256": "b066b7998dbf3cdf560b78d8a24eeabf2fbb74ceab606f2fbf3a63b00f487a4e",
+    "coverage": "Repository/packaging instructions and preservation diff reviewed."
+  },
+  {
+    "file": "LICENSE",
+    "change": "unchanged",
+    "sha256": "bc386606affefadbe2dd919ad508605f9d69219c27dfd8404b178100e9d91bea",
+    "coverage": "Repository/packaging instructions and preservation diff reviewed."
+  },
+  {
+    "file": "README.ja.md",
+    "change": "modified",
+    "sha256": "93ba4b91cfab7fab9c08b292730d475d3d19e75d02a0e37f452816f1c65ceb78",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "README.ko.md",
+    "change": "modified",
+    "sha256": "0815921349423706b30608f882bf46485cebd62f4993d7de655617578a8ec7ad",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "README.md",
+    "change": "modified",
+    "sha256": "7ece3991155f7c392f1d1f6137a91c80e58cfb910b9543ec23dd310aa66106d1",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "README.zh-CN.md",
+    "change": "modified",
+    "sha256": "cbba5244ab2555cad9f7d571f3141b5a53fc88f04034c120504ec1cb0b2e9452",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "README.zh-TW.md",
+    "change": "modified",
+    "sha256": "01ce25dd20613a4a8e4367d7fef972b2ad1291829afa2f61e4d53de1eddd825f",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "install.sh",
+    "change": "modified",
+    "sha256": "5cb8fe5bf0ae355a30df6de9917d70de6447514366ca229db88da840acdea78c",
+    "coverage": "Shell source reviewed and bash syntax checked; source fixtures exercised except real-device mobile capture."
+  },
+  {
+    "file": "plugins/claude-x-codex/.claude-plugin/plugin.json",
+    "change": "modified",
+    "sha256": "b9dbc43047010e60594ead5bbe71ddc672c5441c5557714d04f49646ac8111f0",
+    "coverage": "JSON parsed; plugin manifests/catalog loaded by actual host validators/runtime; review schema preserved."
+  },
+  {
+    "file": "plugins/claude-x-codex/.codex-plugin/plugin.json",
+    "change": "new",
+    "sha256": "f1a742f4c684353c9fa96ab599a970ef3a781808e62046e2117d4f0fd0fb8973",
+    "coverage": "JSON parsed; plugin manifests/catalog loaded by actual host validators/runtime; review schema preserved."
+  },
+  {
+    "file": "plugins/claude-x-codex/.gitattributes",
+    "change": "unchanged",
+    "sha256": "dc41b2a68cc60b0f4733565202c20e56b755f5d7081a514d1758a41266665d14",
+    "coverage": "Repository/packaging instructions and preservation diff reviewed."
+  },
+  {
+    "file": "plugins/claude-x-codex/CHANGELOG.md",
+    "change": "new",
+    "sha256": "00db50a137003b9ee98a357a4de074976ed70f171cff157fcbdb4af25b39d693",
+    "coverage": "Current release entry reviewed; historical entries preserved rather than re-measured."
+  },
+  {
+    "file": "plugins/claude-x-codex/CLAUDE.md",
+    "change": "modified",
+    "sha256": "6d957bd4a53cf0ef85c26a813d91ca48243106b04694405f75e7a8297d1ba110",
+    "coverage": "Repository/packaging instructions and preservation diff reviewed."
+  },
+  {
+    "file": "plugins/claude-x-codex/README.ja.md",
+    "change": "modified",
+    "sha256": "cc9ca757108174ada2df40a72b6c28c0765fd397e9d639019e6883ca08f231ba",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/claude-x-codex/README.ko.md",
+    "change": "modified",
+    "sha256": "d81c731f9c438d3cb0106e1a8830e9ecf2b3067528895818e589d38d63d3a040",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/claude-x-codex/README.md",
+    "change": "modified",
+    "sha256": "281167d13ce5af2b1f21f5198a6620273ffcef315fdd68e0843d90bbf4da53f0",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/claude-x-codex/README.zh-CN.md",
+    "change": "modified",
+    "sha256": "74ce330e7c228cd2d1faafca053cbe0d90ca8ab0b481024c3e0fcb4b11703624",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/claude-x-codex/README.zh-TW.md",
+    "change": "modified",
+    "sha256": "9f0df621d910d259ccc296a02a3a52ec8a666c75120ab189f3cd3ecca33b3a9e",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/claude-x-codex/hooks/hooks.json",
+    "change": "unchanged",
+    "sha256": "6f1734348f48c84174b926ab160d1a890a1e3108b6b9f7201e177d3466104d86",
+    "coverage": "JSON parsed; plugin manifests/catalog loaded by actual host validators/runtime; review schema preserved."
+  },
+  {
+    "file": "plugins/claude-x-codex/hooks/mode-context.sh",
+    "change": "modified",
+    "sha256": "89a57475b7983129ac2df7ee68271197aec3b96beb7e1a2731197811675b9ffb",
+    "coverage": "Shell source reviewed and bash syntax checked; source fixtures exercised except real-device mobile capture."
+  },
+  {
+    "file": "plugins/claude-x-codex/scripts/context-audit.sh",
+    "change": "modified",
+    "sha256": "bd4df03112e4068cbf18c139a68c0020b03ce700bdb8f22d7ac9295cc12ff692",
+    "coverage": "Shell source reviewed and bash syntax checked; source fixtures exercised except real-device mobile capture."
+  },
+  {
+    "file": "plugins/claude-x-codex/scripts/mode.sh",
+    "change": "modified",
+    "sha256": "8642f81bab5e2c6405a009c37906e85a0265848ec5f3a36b337003c481ed0407",
+    "coverage": "Shell source reviewed and bash syntax checked; source fixtures exercised except real-device mobile capture."
+  },
+  {
+    "file": "plugins/claude-x-codex/scripts/worktree-setup.sh",
+    "change": "unchanged",
+    "sha256": "bd1f0591e10bced79770084a4c37c77900d7bbff03199bb9c477904f1b79ec01",
+    "coverage": "Shell source reviewed and bash syntax checked; source fixtures exercised except real-device mobile capture."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/audit/SKILL.md",
+    "change": "modified",
+    "sha256": "24b5e0c797f69a57f411a02f3c7fc83bd2b7a91d45cb795ca2daa4e483143f75",
+    "coverage": "Workflow, invocation policy, installed paths, tool/agent dispatch and host mapping reviewed; actual host discovery verified."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/mode/SKILL.md",
+    "change": "modified",
+    "sha256": "49afd61dcf1aaa660d39dedf06547ff52f7fce4e8ce87983b9fc66c377a04f12",
+    "coverage": "Workflow, invocation policy, installed paths, tool/agent dispatch and host mapping reviewed; actual host discovery verified."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/mode/agents/openai.yaml",
+    "change": "new",
+    "sha256": "a5ce4832e678ece32d6c51975abac4b85baee575ec802e2ec59c29f9ed4324c5",
+    "coverage": "Agent role or invocation policy reviewed; shared role bodies preserved, Codex dispatch documented/tested in scoped probes."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/SKILL.md",
+    "change": "modified",
+    "sha256": "96dab9822900da6812c1b737be9c7b316bd3a530afe70da2de611bda12a770d6",
+    "coverage": "Workflow, invocation policy, installed paths, tool/agent dispatch and host mapping reviewed; actual host discovery verified."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/context-bridge.md",
+    "change": "modified",
+    "sha256": "38eaa70e82ce77768f2aa7fff8204733f52fb48f506b2822d70ec94249a7afa5",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/host-claude-code.md",
+    "change": "unchanged",
+    "sha256": "90d952b93bfd0640e307fd821f2c55f32e45436affdccf3b24cdd80a1ecd40f9",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/host-codex.md",
+    "change": "modified",
+    "sha256": "bc3b92d602a062a59c5e2d73dc90a93e26e8ab915383877e8dc77949f17e8d5d",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/review.schema.json",
+    "change": "unchanged",
+    "sha256": "d9e2881b11fd58c4e669f2f511ca364704deb8620fe269ce8ad33ce624bfe97e",
+    "coverage": "JSON parsed; plugin manifests/catalog loaded by actual host validators/runtime; review schema preserved."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/templates.md",
+    "change": "unchanged",
+    "sha256": "97005bda5786f08849de4dd902e011e2b726e953c42816ffd0bf42c196ac74fe",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/transport-orca.md",
+    "change": "unchanged",
+    "sha256": "0190ebe9d6d5f8995bd69d256b053402430565ece78c29284540cecd881f7c89",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/transport-standalone.md",
+    "change": "unchanged",
+    "sha256": "87886f76897df29c35e238e026e5de478da39de97b33de989d01504a41cc83ab",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/harness/.claude-plugin/plugin.json",
+    "change": "modified",
+    "sha256": "994aec8a883941e65fa1ac9aec982b17165cbc840dc6d26d946631c3c841dfaf",
+    "coverage": "JSON parsed; plugin manifests/catalog loaded by actual host validators/runtime; review schema preserved."
+  },
+  {
+    "file": "plugins/harness/.codex-plugin/plugin.json",
+    "change": "new",
+    "sha256": "1a2156ba566ae3871b9f00f1448086961efbab607647f3e3cb86aabd39368d7a",
+    "coverage": "JSON parsed; plugin manifests/catalog loaded by actual host validators/runtime; review schema preserved."
+  },
+  {
+    "file": "plugins/harness/CHANGELOG.md",
+    "change": "new",
+    "sha256": "30f7eaf0a1db0f73301e9246c7e0ce1dfc9a94c66452f1b016bfca3133a6417f",
+    "coverage": "Current release entry reviewed; historical entries preserved rather than re-measured."
+  },
+  {
+    "file": "plugins/harness/CLAUDE.md",
+    "change": "modified",
+    "sha256": "fa06db8b6885604d1bf97a363b6e45c4899f19123d669a330792756cb296555d",
+    "coverage": "Repository/packaging instructions and preservation diff reviewed."
+  },
+  {
+    "file": "plugins/harness/README.ja.md",
+    "change": "modified",
+    "sha256": "1ffbdfef3820ea6f98bbfbe125474a8581502e4fe6bd82a7d697246dc986125a",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/harness/README.ko.md",
+    "change": "modified",
+    "sha256": "2c7fae982aec099fdccc1850f0fd30c7473213bd98f9739a8ff271331f7f3b62",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/harness/README.md",
+    "change": "modified",
+    "sha256": "be1ae705983cd1ded350adeabcfb3a7fb7bc46e339753a20094984a6fbfcf685",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/harness/README.zh-CN.md",
+    "change": "modified",
+    "sha256": "523fc6ab384c018dc036649ead1cd68051da9f199ae4cf32c739abb01ad8b0f9",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/harness/README.zh-TW.md",
+    "change": "modified",
+    "sha256": "bcdfcede8dfa26d48922309408e0a202fc5e2e7fbebdb8e9dcef20c474bdfc40",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/harness/skills/build/SKILL.md",
+    "change": "modified",
+    "sha256": "399bedc4630a447bcb8baa041879c986dd5611c761861fd9d07628dfcf287e04",
+    "coverage": "Workflow, invocation policy, installed paths, tool/agent dispatch and host mapping reviewed; actual host discovery verified."
+  },
+  {
+    "file": "plugins/harness/skills/build/assets/inject-context.sh",
+    "change": "new",
+    "sha256": "7def41763ac8c71fc00d5e22497ad9bace8ffe2b079626a68c6c08b579cf3553",
+    "coverage": "Shell source reviewed and bash syntax checked; source fixtures exercised except real-device mobile capture."
+  },
+  {
+    "file": "plugins/harness/skills/build/references/host-codex.md",
+    "change": "new",
+    "sha256": "97e1ee74adadfc0a675c82b7a6734b81646ccb8c6108b98982103d327232d187",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/harness/skills/build/references/workflow.md",
+    "change": "new",
+    "sha256": "37b98d6a441408c35f08c2243b81b073dbacb87bdedb10950b81bf9607b53d5a",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/harness/skills/build/scripts/install-hooks.py",
+    "change": "new",
+    "sha256": "1ebaf69e182688216bdcf03124f2af2d121146e0ec410660dedbe3d53c78f10b",
+    "coverage": "Python parsed; source reviewed; applicable deterministic fixture suite executed."
+  },
+  {
+    "file": "plugins/plan-smith/.claude-plugin/plugin.json",
+    "change": "modified",
+    "sha256": "90d2ea85c7d21a88ee82205291f7bd419153389d814635a693224b7d0409076d",
+    "coverage": "JSON parsed; plugin manifests/catalog loaded by actual host validators/runtime; review schema preserved."
+  },
+  {
+    "file": "plugins/plan-smith/.codex-plugin/plugin.json",
+    "change": "new",
+    "sha256": "a1b6c8e8ee98ab9ddba7925f0f6de780b7e90541e5da508ad0a73a0ea75a1cfb",
+    "coverage": "JSON parsed; plugin manifests/catalog loaded by actual host validators/runtime; review schema preserved."
+  },
+  {
+    "file": "plugins/plan-smith/CHANGELOG.md",
+    "change": "modified",
+    "sha256": "778f5a2d840647ca94e4827fd591228cfce0f1a917b22794ac55aa9891476a60",
+    "coverage": "Current release entry reviewed; historical entries preserved rather than re-measured."
+  },
+  {
+    "file": "plugins/plan-smith/CLAUDE.md",
+    "change": "modified",
+    "sha256": "7d33d191114880e4f9bf367013676e22acdb473f3b3180a0abfbf6bd6d19a026",
+    "coverage": "Repository/packaging instructions and preservation diff reviewed."
+  },
+  {
+    "file": "plugins/plan-smith/README.ja.md",
+    "change": "modified",
+    "sha256": "d50706ce1e9adda408ff6bf01e409a2fa703bad38b8502947b8275af6521b42e",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/plan-smith/README.ko.md",
+    "change": "modified",
+    "sha256": "626006dadef937900060a270cad8abfd970b159e76c979d8620095a130fda598",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/plan-smith/README.md",
+    "change": "modified",
+    "sha256": "65a2a6b60306ab06f6a61b06e2963b5bb84db92b5c0fe0bec43f04f813dac2f4",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/plan-smith/README.zh-CN.md",
+    "change": "modified",
+    "sha256": "5ef6c5a38d1cb8f9544822bba4de2f93f0a9eedfdef6db280523442f8c42008b",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/plan-smith/README.zh-TW.md",
+    "change": "modified",
+    "sha256": "e09a22a7e08fa3580d72e8c6a645a8d333e535566cf5a1b455362694aea1a597",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/plan-smith/agents/plan-writer.md",
+    "change": "unchanged",
+    "sha256": "6694bc0c2be4867d095da1f68acde99226180853209631a98a41b68a6c75112e",
+    "coverage": "Agent role or invocation policy reviewed; shared role bodies preserved, Codex dispatch documented/tested in scoped probes."
+  },
+  {
+    "file": "plugins/plan-smith/scripts/split-check.py",
+    "change": "unchanged",
+    "sha256": "126e76262b88c45bd5bf8a13259ccaa0442c2479285d5b9ba4a4dbb7e7311fef",
+    "coverage": "Python parsed; source reviewed; applicable deterministic fixture suite executed."
+  },
+  {
+    "file": "plugins/plan-smith/skills/forge/SKILL.md",
+    "change": "modified",
+    "sha256": "f89a966e3ef8fa28b91bd2dc81fc060c5dfc51743f46b105f103e190bb887637",
+    "coverage": "Workflow, invocation policy, installed paths, tool/agent dispatch and host mapping reviewed; actual host discovery verified."
+  },
+  {
+    "file": "plugins/plan-smith/skills/forge/references/frames.md",
+    "change": "unchanged",
+    "sha256": "a3df58434a23a187fe9cf84d0737bbeb8201a27cff08ff8fd87c5482fc1cd760",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/plan-smith/skills/forge/references/host-codex.md",
+    "change": "new",
+    "sha256": "d5ea6dba76daec124eb379720fac67c6c87aa7a63ee613d84f921be15310a96d",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/plan-smith/skills/forge/references/packet-template.md",
+    "change": "modified",
+    "sha256": "5bfc8da927fcbb51f3b4566aa715c01f59b9f348f936a721a02f8a851ea497fc",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/plan-smith/skills/forge/references/split.md",
+    "change": "unchanged",
+    "sha256": "0de9b0be6f01721a948fb60c0d424b5148c3fcd515e6217db65490349a54c331",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/plan-smith/skills/forge/references/styles.md",
+    "change": "unchanged",
+    "sha256": "386f4ccce6a2ceae59e975ec8578459f515a74aaff191df4fcd1fa4d1d9d55ec",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/ux-ui/.claude-plugin/plugin.json",
+    "change": "modified",
+    "sha256": "8d8f865f84c1d7df5a243b083d60cba8629277eb88d8ae02a51f954dacade323",
+    "coverage": "JSON parsed; plugin manifests/catalog loaded by actual host validators/runtime; review schema preserved."
+  },
+  {
+    "file": "plugins/ux-ui/.codex-plugin/plugin.json",
+    "change": "new",
+    "sha256": "0a359d7da14837c677075362a502fc779ce7c87d271458ad7894872e6777fc80",
+    "coverage": "JSON parsed; plugin manifests/catalog loaded by actual host validators/runtime; review schema preserved."
+  },
+  {
+    "file": "plugins/ux-ui/CHANGELOG.md",
+    "change": "new",
+    "sha256": "f7cfe40cd097699b11b0db716d777533adb1127ac9c18fcbf2bfc0a2a79ae331",
+    "coverage": "Current release entry reviewed; historical entries preserved rather than re-measured."
+  },
+  {
+    "file": "plugins/ux-ui/CLAUDE.md",
+    "change": "modified",
+    "sha256": "4904525b65677aff796eb3e807eb3d2b1fc8ca7b5d51d9ca4e4af6a3b3d8e30e",
+    "coverage": "Repository/packaging instructions and preservation diff reviewed."
+  },
+  {
+    "file": "plugins/ux-ui/README.ja.md",
+    "change": "modified",
+    "sha256": "d59adfa8d7f324fc4aa2ef4dca5f2bd1c78834bcaf19ccc23486257bcdc26fa8",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/ux-ui/README.ko.md",
+    "change": "modified",
+    "sha256": "f5d1bd6104916867fb5629d6faa5c99f260ea64548efc268dad9d53c76c2262e",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/ux-ui/README.md",
+    "change": "modified",
+    "sha256": "3ad4815abd32390f92f8fe32d8905ff6a8305e456d5080889f957fe70e55b904",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/ux-ui/README.zh-CN.md",
+    "change": "modified",
+    "sha256": "0194af6ad33db017e16a8ee40129cf9176ce7a8ffa8f8f0aa58de274e37ea6b2",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/ux-ui/README.zh-TW.md",
+    "change": "modified",
+    "sha256": "315be1ab649ba31f31b9511914e1279924a676003803e1875c6132ce6d7205e0",
+    "coverage": "All links and version strings checked; Codex setup/settings sections reviewed across five languages. Historical empirical claims not re-measured."
+  },
+  {
+    "file": "plugins/ux-ui/agents/ux-ui-art-director.md",
+    "change": "unchanged",
+    "sha256": "8eccedfb071fd19e40ab0dcffa979683c984639197f7f63fcc207e987354cf45",
+    "coverage": "Agent role or invocation policy reviewed; shared role bodies preserved, Codex dispatch documented/tested in scoped probes."
+  },
+  {
+    "file": "plugins/ux-ui/agents/ux-ui-mobile-art-director.md",
+    "change": "unchanged",
+    "sha256": "6cf12edda581df4f0b5f3bafb53283654e679c533b119e727f514780b54418d0",
+    "coverage": "Agent role or invocation policy reviewed; shared role bodies preserved, Codex dispatch documented/tested in scoped probes."
+  },
+  {
+    "file": "plugins/ux-ui/hooks/hooks.json",
+    "change": "unchanged",
+    "sha256": "f35b0b250e82f044a98f8f88830c011d050ea625f031ed5ee544ba3d3d4192b6",
+    "coverage": "JSON parsed; plugin manifests/catalog loaded by actual host validators/runtime; review schema preserved."
+  },
+  {
+    "file": "plugins/ux-ui/scripts/mobile-snapshot.sh",
+    "change": "unchanged",
+    "sha256": "c4957189beeec04c4dea535233574327d5583915754636d767fb39b36082100d",
+    "coverage": "Shell source reviewed and bash syntax checked; source fixtures exercised except real-device mobile capture."
+  },
+  {
+    "file": "plugins/ux-ui/scripts/ui-commit-gate.sh",
+    "change": "modified",
+    "sha256": "1177555e1de62593d8453d6842b147c79e1101dfcc3175bbaec180f30232b9f1",
+    "coverage": "Shell source reviewed and bash syntax checked; source fixtures exercised except real-device mobile capture."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build-mobile/SKILL.md",
+    "change": "modified",
+    "sha256": "465b0548de2376ff045782eb521155269d82145dadcc3300da739d3cba5d399f",
+    "coverage": "Workflow, invocation policy, installed paths, tool/agent dispatch and host mapping reviewed; actual host discovery verified."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build-mobile/references/backend-detection.md",
+    "change": "modified",
+    "sha256": "baf9aadcb11f274aeb166b904217413c4f905820b23a1720efc8732884fada83",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build-mobile/references/mobile-design-principles.md",
+    "change": "unchanged",
+    "sha256": "ab839102160ca09b90bd198b3ebbf7b41ede3e1d1d07faa677629035f45abbd2",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build-mobile/references/mobile-measurement-protocol.md",
+    "change": "unchanged",
+    "sha256": "b78679dcb21642df485b82caf33358202ecf319e99630659ae02009a9e6f5aec",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build-mobile/references/mobile-review-rubric.md",
+    "change": "unchanged",
+    "sha256": "d6240343ad3eb74ffab30484fecc892e01aecb1bd1b024a8fde96bb2d61fad96",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build/SKILL.md",
+    "change": "modified",
+    "sha256": "628918a262530124455a4fc82494d1ed75e7338827a85ffb357f868e6a28f602",
+    "coverage": "Workflow, invocation policy, installed paths, tool/agent dispatch and host mapping reviewed; actual host discovery verified."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build/references/design-principles.md",
+    "change": "modified",
+    "sha256": "3ad813b7a95bab2ad86d364a634c965fedaa2e2f358c64f1aa6becb283b5b7e5",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build/references/host-codex.md",
+    "change": "new",
+    "sha256": "1e211968c5b48460b48495d9a998af30a325e4f802b30e1b81122d686b41ac29",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build/references/measurement-protocol.md",
+    "change": "modified",
+    "sha256": "31f82a1072368e7d9ef3397d604a9d0320852bf11111f041fd2beee1015739b0",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build/references/review-rubric.md",
+    "change": "unchanged",
+    "sha256": "7ff4677d163c8e35374b8d97013378f7daf8b01d5268618f717c88c644fd868f",
+    "coverage": "Host dependencies, shared workflow contracts and referenced resources reviewed; unchanged libraries compared byte-for-byte."
+  },
+  {
+    "file": "tests/test_compatibility.py",
+    "change": "new",
+    "sha256": "d7c3cf4cf0e4710b2601ded245019643357b3f35c72e11675abff63016d06ac5",
+    "coverage": "Python parsed; source reviewed; applicable deterministic fixture suite executed."
+  }
+]

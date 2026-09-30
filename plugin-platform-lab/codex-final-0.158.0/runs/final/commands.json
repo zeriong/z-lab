@@ -1,0 +1,107 @@
+[
+  {
+    "check": "claude validate .",
+    "exit": 0,
+    "elapsed_ms": 639,
+    "stdout": "Validating marketplace manifest: <repo>/.claude-plugin/marketplace.json\n\n✔ Validation passed\n",
+    "stderr": ""
+  },
+  {
+    "check": "claude validate plugins/plan-smith",
+    "exit": 0,
+    "elapsed_ms": 651,
+    "stdout": "Validating plugin manifest: <repo>/plugins/plan-smith/.claude-plugin/plugin.json\n\nValidating plugin: <repo>/plugins/plan-smith/CLAUDE.md\n\n⚠ Found 1 warning:\n\n  ❯ root: CLAUDE.md at the plugin root is not loaded as project context. To ship context with your plugin, use a skill (skills/<name>/SKILL.md) instead.\n\n✔ Validation passed with warnings\n",
+    "stderr": ""
+  },
+  {
+    "check": "claude validate plugins/harness",
+    "exit": 0,
+    "elapsed_ms": 646,
+    "stdout": "Validating plugin manifest: <repo>/plugins/harness/.claude-plugin/plugin.json\n\nValidating plugin: <repo>/plugins/harness/CLAUDE.md\n\n⚠ Found 1 warning:\n\n  ❯ root: CLAUDE.md at the plugin root is not loaded as project context. To ship context with your plugin, use a skill (skills/<name>/SKILL.md) instead.\n\n✔ Validation passed with warnings\n",
+    "stderr": ""
+  },
+  {
+    "check": "claude validate plugins/ux-ui",
+    "exit": 0,
+    "elapsed_ms": 641,
+    "stdout": "Validating plugin manifest: <repo>/plugins/ux-ui/.claude-plugin/plugin.json\n\nValidating plugin: <repo>/plugins/ux-ui/CLAUDE.md\n\n⚠ Found 1 warning:\n\n  ❯ root: CLAUDE.md at the plugin root is not loaded as project context. To ship context with your plugin, use a skill (skills/<name>/SKILL.md) instead.\n\n✔ Validation passed with warnings\n",
+    "stderr": ""
+  },
+  {
+    "check": "claude validate plugins/claude-x-codex",
+    "exit": 0,
+    "elapsed_ms": 659,
+    "stdout": "Validating plugin manifest: <repo>/plugins/claude-x-codex/.claude-plugin/plugin.json\n\nValidating plugin: <repo>/plugins/claude-x-codex/CLAUDE.md\n\n⚠ Found 1 warning:\n\n  ❯ root: CLAUDE.md at the plugin root is not loaded as project context. To ship context with your plugin, use a skill (skills/<name>/SKILL.md) instead.\n\n✔ Validation passed with warnings\n",
+    "stderr": ""
+  },
+  {
+    "check": "compatibility tests",
+    "exit": 0,
+    "elapsed_ms": 2047,
+    "stdout": "",
+    "stderr": "test_harness_injection_for_both_layouts_and_bypass (test_compatibility.CompatibilityTests) ... ok\ntest_installer_dry_run_list_and_invalid_host (test_compatibility.CompatibilityTests) ... ok\ntest_installer_routes_each_host_and_preserves_claude_scope (test_compatibility.CompatibilityTests) ... ok\ntest_manifests_share_skills_and_mcp_definitions (test_compatibility.CompatibilityTests) ... ok\ntest_mode_prompt_hook_and_context_audit (test_compatibility.CompatibilityTests) ... ok\ntest_ui_gate_both_payloads_and_stale_approval (test_compatibility.CompatibilityTests) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 1.981s\n\nOK\n"
+  },
+  {
+    "check": "plan split self-test",
+    "exit": 0,
+    "elapsed_ms": 36,
+    "stdout": "self-test ok (11 cases)\n",
+    "stderr": ""
+  },
+  {
+    "check": "bash syntax install.sh",
+    "exit": 0,
+    "elapsed_ms": 3,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "check": "bash syntax plugins/claude-x-codex/hooks/mode-context.sh",
+    "exit": 0,
+    "elapsed_ms": 2,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "check": "bash syntax plugins/claude-x-codex/scripts/mode.sh",
+    "exit": 0,
+    "elapsed_ms": 2,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "check": "bash syntax plugins/claude-x-codex/scripts/worktree-setup.sh",
+    "exit": 0,
+    "elapsed_ms": 2,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "check": "bash syntax plugins/claude-x-codex/scripts/context-audit.sh",
+    "exit": 0,
+    "elapsed_ms": 2,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "check": "bash syntax plugins/harness/skills/build/assets/inject-context.sh",
+    "exit": 0,
+    "elapsed_ms": 2,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "check": "bash syntax plugins/ux-ui/scripts/mobile-snapshot.sh",
+    "exit": 0,
+    "elapsed_ms": 2,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "check": "bash syntax plugins/ux-ui/scripts/ui-commit-gate.sh",
+    "exit": 0,
+    "elapsed_ms": 2,
+    "stdout": "",
+    "stderr": ""
+  }
+]

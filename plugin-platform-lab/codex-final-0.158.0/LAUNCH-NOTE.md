@@ -1,0 +1,3 @@
+The first wrapper launch ended before initialization because `codex app-server` does not accept `--ignore-user-config` (unlike `codex exec`). No specimen was produced. The corrected read-only metadata probe uses the normal app-server, filters discovery to the temporary fixture, and does not install plugins or change configuration.
+
+The metadata-only first fixture was not a Git project and returned no project mode skill; the four plugin reads succeeded. Its outputs are retained in runs/uninitialized-fixture-probe. The final fixture is initialized as an empty repository, with canonicalized paths, before project-skill discovery. No commit is created.

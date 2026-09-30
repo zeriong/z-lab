@@ -1,0 +1,2111 @@
+{
+  "frontmatter": [
+    "plugins/claude-x-codex/skills/mode/SKILL.md",
+    "plugins/claude-x-codex/skills/audit/SKILL.md",
+    "plugins/claude-x-codex/skills/run/SKILL.md",
+    "plugins/harness/skills/build/SKILL.md",
+    "plugins/ux-ui/skills/build-mobile/SKILL.md",
+    "plugins/ux-ui/skills/build/SKILL.md",
+    "plugins/plan-smith/skills/forge/SKILL.md"
+  ],
+  "links": [
+    {
+      "file": "README.md",
+      "target": "plugins/plan-smith",
+      "error": null
+    },
+    {
+      "file": "README.md",
+      "target": "plugins/plan-smith",
+      "error": null
+    },
+    {
+      "file": "README.md",
+      "target": "plugins/harness",
+      "error": null
+    },
+    {
+      "file": "README.md",
+      "target": "plugins/harness",
+      "error": null
+    },
+    {
+      "file": "README.md",
+      "target": "plugins/ux-ui",
+      "error": null
+    },
+    {
+      "file": "README.md",
+      "target": "plugins/ux-ui",
+      "error": null
+    },
+    {
+      "file": "README.md",
+      "target": "plugins/claude-x-codex",
+      "error": null
+    },
+    {
+      "file": "README.md",
+      "target": "plugins/claude-x-codex",
+      "error": null
+    },
+    {
+      "file": "README.md",
+      "target": "LICENSE",
+      "error": null
+    },
+    {
+      "file": "README.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "README.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "README.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "README.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "README.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "README.ja.md",
+      "target": "plugins/plan-smith",
+      "error": null
+    },
+    {
+      "file": "README.ja.md",
+      "target": "plugins/plan-smith/README.ja.md",
+      "error": null
+    },
+    {
+      "file": "README.ja.md",
+      "target": "plugins/harness",
+      "error": null
+    },
+    {
+      "file": "README.ja.md",
+      "target": "plugins/harness/README.ja.md",
+      "error": null
+    },
+    {
+      "file": "README.ja.md",
+      "target": "plugins/ux-ui",
+      "error": null
+    },
+    {
+      "file": "README.ja.md",
+      "target": "plugins/ux-ui/README.ja.md",
+      "error": null
+    },
+    {
+      "file": "README.ja.md",
+      "target": "plugins/claude-x-codex",
+      "error": null
+    },
+    {
+      "file": "README.ja.md",
+      "target": "plugins/claude-x-codex/README.ja.md",
+      "error": null
+    },
+    {
+      "file": "README.ja.md",
+      "target": "LICENSE",
+      "error": null
+    },
+    {
+      "file": "README.ja.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "README.ja.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "README.ja.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "README.ja.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "README.ja.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-TW.md",
+      "target": "plugins/plan-smith",
+      "error": null
+    },
+    {
+      "file": "README.zh-TW.md",
+      "target": "plugins/plan-smith/README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-TW.md",
+      "target": "plugins/harness",
+      "error": null
+    },
+    {
+      "file": "README.zh-TW.md",
+      "target": "plugins/harness/README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-TW.md",
+      "target": "plugins/ux-ui",
+      "error": null
+    },
+    {
+      "file": "README.zh-TW.md",
+      "target": "plugins/ux-ui/README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-TW.md",
+      "target": "plugins/claude-x-codex",
+      "error": null
+    },
+    {
+      "file": "README.zh-TW.md",
+      "target": "plugins/claude-x-codex/README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-TW.md",
+      "target": "LICENSE",
+      "error": null
+    },
+    {
+      "file": "README.zh-TW.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-TW.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-TW.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-TW.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-TW.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-CN.md",
+      "target": "plugins/plan-smith",
+      "error": null
+    },
+    {
+      "file": "README.zh-CN.md",
+      "target": "plugins/plan-smith/README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-CN.md",
+      "target": "plugins/harness",
+      "error": null
+    },
+    {
+      "file": "README.zh-CN.md",
+      "target": "plugins/harness/README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-CN.md",
+      "target": "plugins/ux-ui",
+      "error": null
+    },
+    {
+      "file": "README.zh-CN.md",
+      "target": "plugins/ux-ui/README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-CN.md",
+      "target": "plugins/claude-x-codex",
+      "error": null
+    },
+    {
+      "file": "README.zh-CN.md",
+      "target": "plugins/claude-x-codex/README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-CN.md",
+      "target": "LICENSE",
+      "error": null
+    },
+    {
+      "file": "README.zh-CN.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-CN.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-CN.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-CN.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "README.zh-CN.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "README.ko.md",
+      "target": "plugins/plan-smith",
+      "error": null
+    },
+    {
+      "file": "README.ko.md",
+      "target": "plugins/plan-smith/README.ko.md",
+      "error": null
+    },
+    {
+      "file": "README.ko.md",
+      "target": "plugins/harness",
+      "error": null
+    },
+    {
+      "file": "README.ko.md",
+      "target": "plugins/harness/README.ko.md",
+      "error": null
+    },
+    {
+      "file": "README.ko.md",
+      "target": "plugins/ux-ui",
+      "error": null
+    },
+    {
+      "file": "README.ko.md",
+      "target": "plugins/ux-ui/README.ko.md",
+      "error": null
+    },
+    {
+      "file": "README.ko.md",
+      "target": "plugins/claude-x-codex",
+      "error": null
+    },
+    {
+      "file": "README.ko.md",
+      "target": "plugins/claude-x-codex/README.ko.md",
+      "error": null
+    },
+    {
+      "file": "README.ko.md",
+      "target": "LICENSE",
+      "error": null
+    },
+    {
+      "file": "README.ko.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "README.ko.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "README.ko.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "README.ko.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "README.ko.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.md",
+      "target": "../plan-smith",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.md",
+      "target": "#installation",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.md",
+      "target": "#commands",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.md",
+      "target": "#how-it-works",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.md",
+      "target": "#configuration",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.md",
+      "target": "#platforms",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.md",
+      "target": "../../README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ja.md",
+      "target": "../plan-smith",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ja.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ja.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ja.md",
+      "target": "#インストール",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ja.md",
+      "target": "#コマンド",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ja.md",
+      "target": "#仕組み",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ja.md",
+      "target": "#設定",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ja.md",
+      "target": "#プラットフォーム",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ja.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ja.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ja.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ja.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ja.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ja.md",
+      "target": "../../README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-TW.md",
+      "target": "../plan-smith",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-TW.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-TW.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-TW.md",
+      "target": "#安裝",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-TW.md",
+      "target": "#命令",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-TW.md",
+      "target": "#運作方式",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-TW.md",
+      "target": "#設定",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-TW.md",
+      "target": "#平台",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-TW.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-TW.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-TW.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-TW.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-TW.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-TW.md",
+      "target": "../../README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-CN.md",
+      "target": "../plan-smith",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-CN.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-CN.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-CN.md",
+      "target": "#安装",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-CN.md",
+      "target": "#命令",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-CN.md",
+      "target": "#工作原理",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-CN.md",
+      "target": "#配置",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-CN.md",
+      "target": "#平台",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-CN.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-CN.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-CN.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-CN.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-CN.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.zh-CN.md",
+      "target": "../../README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ko.md",
+      "target": "../plan-smith",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ko.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ko.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ko.md",
+      "target": "#설치",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ko.md",
+      "target": "#명령",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ko.md",
+      "target": "#동작-방식",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ko.md",
+      "target": "#설정",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ko.md",
+      "target": "#플랫폼",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ko.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ko.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ko.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ko.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ko.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/claude-x-codex/README.ko.md",
+      "target": "../../README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.md",
+      "target": "skills/build/SKILL.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.md",
+      "target": "#installation",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.md",
+      "target": "#what-it-does",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.md",
+      "target": "#the-8-phase-workflow",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.md",
+      "target": "#the-fact-check-loop",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.md",
+      "target": "#faq",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.md",
+      "target": "../../README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ja.md",
+      "target": "skills/build/SKILL.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ja.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ja.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ja.md",
+      "target": "#インストール",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ja.md",
+      "target": "#できること",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ja.md",
+      "target": "#8-phase-ワークフロー",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ja.md",
+      "target": "#fact-check-ループ",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ja.md",
+      "target": "#faq",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ja.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ja.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ja.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ja.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ja.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ja.md",
+      "target": "../../README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-TW.md",
+      "target": "skills/build/SKILL.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-TW.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-TW.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-TW.md",
+      "target": "#安裝",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-TW.md",
+      "target": "#它能做什麼",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-TW.md",
+      "target": "#8-phase-工作流程",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-TW.md",
+      "target": "#fact-check-迴圈",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-TW.md",
+      "target": "#faq",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-TW.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-TW.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-TW.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-TW.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-TW.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-TW.md",
+      "target": "../../README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-CN.md",
+      "target": "skills/build/SKILL.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-CN.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-CN.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-CN.md",
+      "target": "#安装",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-CN.md",
+      "target": "#它能做什么",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-CN.md",
+      "target": "#8-phase-工作流",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-CN.md",
+      "target": "#fact-check-loop",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-CN.md",
+      "target": "#faq",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-CN.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-CN.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-CN.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-CN.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-CN.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.zh-CN.md",
+      "target": "../../README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ko.md",
+      "target": "skills/build/SKILL.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ko.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ko.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ko.md",
+      "target": "#설치",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ko.md",
+      "target": "#무엇을-하는가",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ko.md",
+      "target": "#8-phase-워크플로우",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ko.md",
+      "target": "#fact-check-루프",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ko.md",
+      "target": "#faq",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ko.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ko.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ko.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ko.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ko.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/harness/README.ko.md",
+      "target": "../../README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.md",
+      "target": "skills/build-mobile/references/backend-detection.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.md",
+      "target": "#installation",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.md",
+      "target": "#what-it-does",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.md",
+      "target": "#the-loop",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.md",
+      "target": "#mobile-measurement-backends",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.md",
+      "target": "#the-commit-gate",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.md",
+      "target": "#faq",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.md",
+      "target": "../../README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ja.md",
+      "target": "skills/build-mobile/references/backend-detection.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ja.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ja.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ja.md",
+      "target": "#インストール",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ja.md",
+      "target": "#できること",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ja.md",
+      "target": "#ループ",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ja.md",
+      "target": "#モバイル計測バックエンド",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ja.md",
+      "target": "#コミットゲート",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ja.md",
+      "target": "#faq",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ja.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ja.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ja.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ja.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ja.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ja.md",
+      "target": "../../README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-TW.md",
+      "target": "skills/build-mobile/references/backend-detection.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-TW.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-TW.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-TW.md",
+      "target": "#安裝",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-TW.md",
+      "target": "#它能做什麼",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-TW.md",
+      "target": "#迴圈",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-TW.md",
+      "target": "#行動裝置量測後端",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-TW.md",
+      "target": "#提交閘門",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-TW.md",
+      "target": "#faq",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-TW.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-TW.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-TW.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-TW.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-TW.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-TW.md",
+      "target": "../../README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-CN.md",
+      "target": "skills/build-mobile/references/backend-detection.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-CN.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-CN.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-CN.md",
+      "target": "#安装",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-CN.md",
+      "target": "#它能做什么",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-CN.md",
+      "target": "#循环",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-CN.md",
+      "target": "#移动端测量后端",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-CN.md",
+      "target": "#提交门禁",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-CN.md",
+      "target": "#faq",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-CN.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-CN.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-CN.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-CN.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-CN.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.zh-CN.md",
+      "target": "../../README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ko.md",
+      "target": "skills/build-mobile/references/backend-detection.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ko.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ko.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ko.md",
+      "target": "#설치",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ko.md",
+      "target": "#무엇을-하는가",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ko.md",
+      "target": "#루프",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ko.md",
+      "target": "#모바일-측정-백엔드",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ko.md",
+      "target": "#커밋-게이트",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ko.md",
+      "target": "#faq",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ko.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ko.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ko.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ko.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ko.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/ux-ui/README.ko.md",
+      "target": "../../README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "skills/forge/references/frames.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "skills/forge/SKILL.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "skills/forge/references/frames.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "skills/forge/references/styles.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "skills/forge/references/packet-template.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "skills/forge/references/split.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "scripts/split-check.py",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "agents/plan-writer.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "skills/forge/references/frames.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "skills/forge/references/styles.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "CHANGELOG.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "#measured-results",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "#installation",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "#what-it-does",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "#the-pipeline",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "#frames--styles",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "#measured-results",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "#faq",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.md",
+      "target": "../../README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "skills/forge/references/frames.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "skills/forge/SKILL.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "skills/forge/references/frames.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "skills/forge/references/styles.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "skills/forge/references/packet-template.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "skills/forge/references/split.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "scripts/split-check.py",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "agents/plan-writer.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "skills/forge/references/frames.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "skills/forge/references/styles.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "CHANGELOG.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "#実測結果",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "#インストール",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "#できること",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "#パイプライン",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "#フレームとスタイル",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "#実測結果",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "#faq",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ja.md",
+      "target": "../../README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "skills/forge/references/frames.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "skills/forge/SKILL.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "skills/forge/references/frames.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "skills/forge/references/styles.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "skills/forge/references/packet-template.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "skills/forge/references/split.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "scripts/split-check.py",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "agents/plan-writer.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "skills/forge/references/frames.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "skills/forge/references/styles.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "CHANGELOG.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "#實測結果",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "#安裝",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "#它能做什麼",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "#管線",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "#框架與風格",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "#實測結果",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "#faq",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-TW.md",
+      "target": "../../README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "skills/forge/references/frames.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "skills/forge/SKILL.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "skills/forge/references/frames.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "skills/forge/references/styles.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "skills/forge/references/packet-template.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "skills/forge/references/split.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "scripts/split-check.py",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "agents/plan-writer.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "skills/forge/references/frames.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "skills/forge/references/styles.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "CHANGELOG.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "#实测结果",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "#安装",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "#它能做什么",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "#流水线",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "#框架与风格",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "#实测结果",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "#faq",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.zh-CN.md",
+      "target": "../../README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "skills/forge/references/frames.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "skills/forge/SKILL.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "skills/forge/references/frames.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "skills/forge/references/styles.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "skills/forge/references/packet-template.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "skills/forge/references/split.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "scripts/split-check.py",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "agents/plan-writer.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "skills/forge/references/frames.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "skills/forge/references/styles.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "CHANGELOG.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "#실측-결과",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "../../LICENSE",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": ".claude-plugin/plugin.json",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "#설치",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "#무엇을-하는가",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "#파이프라인",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "#프레임과-스타일",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "#실측-결과",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "#faq",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "README.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "README.ko.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "README.ja.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "README.zh-CN.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "README.zh-TW.md",
+      "error": null
+    },
+    {
+      "file": "plugins/plan-smith/README.ko.md",
+      "target": "../../README.ko.md",
+      "error": null
+    }
+  ],
+  "link_failures": [],
+  "versions": [
+    {
+      "plugin": "plan-smith",
+      "version": "1.7.0",
+      "locations": 13
+    },
+    {
+      "plugin": "harness",
+      "version": "1.2.0",
+      "locations": 13
+    },
+    {
+      "plugin": "ux-ui",
+      "version": "1.3.0",
+      "locations": 13
+    },
+    {
+      "plugin": "claude-x-codex",
+      "version": "0.2.0",
+      "locations": 13
+    }
+  ]
+}

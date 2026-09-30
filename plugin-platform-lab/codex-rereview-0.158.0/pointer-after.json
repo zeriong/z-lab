@@ -1,0 +1,5 @@
+{
+  "exit": 0,
+  "row": "| . | untracked | untracked | missing | CHECK: pointer text found; verify its direction and resolved instructions |",
+  "elapsed_ms": 84
+}

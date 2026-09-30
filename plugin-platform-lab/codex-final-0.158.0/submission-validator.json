@@ -1,0 +1,26 @@
+[
+  {
+    "plugin": "claude-x-codex",
+    "exit": 1,
+    "stdout": "Plugin validation failed:\n- skill `mode` frontmatter field `disable-model-invocation` must be false\n",
+    "stderr": ""
+  },
+  {
+    "plugin": "harness",
+    "exit": 0,
+    "stdout": "Plugin validation passed: <repo>/plugins/harness\n",
+    "stderr": ""
+  },
+  {
+    "plugin": "ux-ui",
+    "exit": 0,
+    "stdout": "Plugin validation passed: <repo>/plugins/ux-ui\n",
+    "stderr": ""
+  },
+  {
+    "plugin": "plan-smith",
+    "exit": 0,
+    "stdout": "Plugin validation passed: <repo>/plugins/plan-smith\n",
+    "stderr": ""
+  }
+]

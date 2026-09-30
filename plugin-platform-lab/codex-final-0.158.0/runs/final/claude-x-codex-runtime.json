@@ -1,0 +1,112 @@
+{
+  "id": 5,
+  "result": {
+    "plugin": {
+      "marketplaceName": "bin",
+      "marketplacePath": "<temp>/.claude-plugin/marketplace.json",
+      "summary": {
+        "id": "claude-x-codex@bin",
+        "remotePluginId": null,
+        "version": null,
+        "localVersion": "0.2.0",
+        "name": "claude-x-codex",
+        "shareContext": null,
+        "source": {
+          "type": "local",
+          "path": "<temp>/plugins/claude-x-codex"
+        },
+        "installed": false,
+        "installedAt": null,
+        "enabled": false,
+        "installPolicy": "AVAILABLE",
+        "installPolicySource": null,
+        "mustShowInstallationInterstitial": null,
+        "authPolicy": "ON_INSTALL",
+        "availability": "AVAILABLE",
+        "disabledReason": null,
+        "eligiblePlanTypes": null,
+        "interface": {
+          "displayName": "claude-x-codex",
+          "shortDescription": "Coordinate Claude and Codex peer reviews",
+          "longDescription": "Claude × Codex peer orchestration: the two plan, build, and review each other's work as peers, with shared project context and a one-line on/off switch. Unofficial community plugin.",
+          "developerName": "zeriong",
+          "category": "development",
+          "capabilities": [
+            "Read",
+            "Write"
+          ],
+          "websiteUrl": null,
+          "privacyPolicyUrl": null,
+          "termsOfServiceUrl": null,
+          "defaultPrompt": [
+            "Use claude-x-codex for this project."
+          ],
+          "brandColor": null,
+          "composerIcon": null,
+          "composerIconUrl": null,
+          "logo": null,
+          "logoDark": null,
+          "logoUrl": null,
+          "logoUrlDark": null,
+          "screenshots": [],
+          "screenshotUrls": []
+        },
+        "keywords": [
+          "orchestration",
+          "multi-agent",
+          "codex",
+          "code-review",
+          "orca"
+        ]
+      },
+      "shareUrl": null,
+      "description": "Claude × Codex peer orchestration: the two plan, build, and review each other's work as peers, with shared project context and a one-line on/off switch. Unofficial community plugin.",
+      "skills": [
+        {
+          "name": "claude-x-codex:audit",
+          "description": "Read-only check of whether Claude and Codex would start from the same project context in this repo — instruction files (CLAUDE.md / AGENTS.md), hooks that bind only one vendor, uncommitted context missing from worktrees, and tools configured for one side only. Use when the user asks to audit or check claude-x-codex readiness, cross-vendor context, or \"why does Codex not follow our rules\", or runs /claude-x-codex:audit. Changes nothing; proposes fixes.",
+          "shortDescription": null,
+          "interface": null,
+          "path": "<temp>/plugins/claude-x-codex/skills/audit/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "claude-x-codex:mode",
+          "description": "Turn claude-x-codex orchestration mode on or off, or show its current status. Use only when the user asks to enable, disable, reset, or check the mode — e.g. \"/claude-x-codex:mode on\", \"claude-x-codex mode status\", \"오케스트레이션 모드 켜줘/꺼줘\".",
+          "shortDescription": null,
+          "interface": {
+            "displayName": "Orchestration mode",
+            "shortDescription": "Change or inspect Claude and Codex orchestration mode",
+            "iconSmall": null,
+            "iconLarge": null,
+            "iconSmallUrl": null,
+            "iconLargeUrl": null,
+            "brandColor": null,
+            "defaultPrompt": "Use claude-x-codex:mode to inspect the current orchestration mode."
+          },
+          "path": "<temp>/plugins/claude-x-codex/skills/mode/SKILL.md",
+          "enabled": true
+        },
+        {
+          "name": "claude-x-codex:run",
+          "description": "Cross-vendor multi-agent orchestration for coding work. The main agent plans and owns every gate decision, work is routed to fast Claude (Sonnet) or bulk Codex (Luna) workers by task type, and Claude and Codex review each other as peers — including the main agent's own plan and triage decisions, with a rebuttal round when findings are rejected. Runs from either Claude Code or Codex as the main agent, and uses Orca's orchestration runtime when available (two-way worker communication, gates) or falls back to one-way subagent/CLI calls. Use this skill when the user explicitly asks for it — names it, runs /claude-x-codex:run, or asks to orchestrate, parallelize, fan out, or run agents on a task (\"오케스트레이션으로 진행해줘\") — or when an [claude-x-codex: ON] context note is present and the request is implementation work. When the mode is off and the user hasn't asked for it, do not use this skill.",
+          "shortDescription": null,
+          "interface": null,
+          "path": "<temp>/plugins/claude-x-codex/skills/run/SKILL.md",
+          "enabled": true
+        }
+      ],
+      "onboardingSkill": null,
+      "hooks": [
+        {
+          "key": "claude-x-codex@bin:hooks/hooks.json:user_prompt_submit:0:0",
+          "eventName": "userPromptSubmit"
+        }
+      ],
+      "apps": [],
+      "appTemplates": [],
+      "mcpServers": [],
+      "scheduledTasks": null
+    }
+  }
+}

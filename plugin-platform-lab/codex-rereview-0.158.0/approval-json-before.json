@@ -1,0 +1,6 @@
+{
+  "exit": 0,
+  "valid_json": false,
+  "artifact": "{\"verdict\":\"APPROVED\",\"feature\":\"feature \"quoted\"\",\"diffHash\":\"7bf1797aa0db38a5b696d958049e3a9eadaa5fdfa2d3582f54dbc295f1bbff78\",\"measureDir\":\"measure \\ path\",\"approvedAtEpoch\":1790730019}\n",
+  "elapsed_ms": 46
+}

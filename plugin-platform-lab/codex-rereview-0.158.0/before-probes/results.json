@@ -1,0 +1,62 @@
+[
+  {
+    "case": "glob-shadow",
+    "passed": false,
+    "hash_before": "",
+    "hash_after": "",
+    "approve_exit": 1,
+    "hook_exit": 0,
+    "stderr": "",
+    "command": "git commit -m probe"
+  },
+  {
+    "case": "unicode",
+    "passed": false,
+    "hash_before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "hash_after": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "approve_exit": 0,
+    "hook_exit": 0,
+    "stderr": "",
+    "command": "git commit -m probe"
+  },
+  {
+    "case": "spaces",
+    "passed": true,
+    "hash_before": "8cb1590ac8273bd6b12cba49bc71906f6b04d919b54f7acd71685afa575a8635",
+    "hash_after": "5e991571400ecdf6beea2c548b14c228532cf04bb9d270898af490c46d5d5929",
+    "approve_exit": 0,
+    "hook_exit": 2,
+    "stderr": "⛔ ux-ui gate: this commit changes UI, but no ux-ui-art-director APPROVAL\nmatches the exact staged diff.\n\nRun the UI build/review loop before committing:\n  → invoke ux-ui:build (web) or ux-ui:build-mobile (mobile).\nUse /plugin:skill in Claude Code or $plugin:skill in Codex.\nThe skill will measure the real render, have the art director critique\nthe measured snapshots, apply fixes until APPROVED, then record the approval.\nThe approval is bound to the diff hash, so re-edit → re-review is required.\n\n(If this file genuinely is not UI, override the extension set with UX_UI_GLOBS.)\n",
+    "command": "git commit -m probe"
+  },
+  {
+    "case": "newline",
+    "passed": false,
+    "hash_before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "hash_after": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "approve_exit": 0,
+    "hook_exit": 0,
+    "stderr": "",
+    "command": "git commit -m probe"
+  },
+  {
+    "case": "brackets",
+    "passed": true,
+    "hash_before": "60923bf4807ae39e985997ddaef716140b818c0ed78edfec164ee1de6f7be1be",
+    "hash_after": "52a27d097bc17ba56c4cba3db3aca4ed25ab1d8cebb94da42e478220f876bb49",
+    "approve_exit": 0,
+    "hook_exit": 2,
+    "stderr": "⛔ ux-ui gate: this commit changes UI, but no ux-ui-art-director APPROVAL\nmatches the exact staged diff.\n\nRun the UI build/review loop before committing:\n  → invoke ux-ui:build (web) or ux-ui:build-mobile (mobile).\nUse /plugin:skill in Claude Code or $plugin:skill in Codex.\nThe skill will measure the real render, have the art director critique\nthe measured snapshots, apply fixes until APPROVED, then record the approval.\nThe approval is bound to the diff hash, so re-edit → re-review is required.\n\n(If this file genuinely is not UI, override the extension set with UX_UI_GLOBS.)\n",
+    "command": "git commit -m probe"
+  },
+  {
+    "case": "other-repo",
+    "passed": false,
+    "hash_before": "a6f038fd7dc91e8eeba0cf919e7598da119344e88562c56c825679c335874f11",
+    "hash_after": "c34ccc852ef1a800be61ff2f6c13f4c7151d411a19b69afd17609b0ced656aec",
+    "approve_exit": 0,
+    "hook_exit": 0,
+    "stderr": "",
+    "command": "git -C <fixture>/5 commit -m probe"
+  }
+]

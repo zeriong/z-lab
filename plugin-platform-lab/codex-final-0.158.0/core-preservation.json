@@ -1,0 +1,12 @@
+{
+  "plugins/plan-smith/agents": true,
+  "plugins/plan-smith/skills/forge/references/frames": true,
+  "plugins/plan-smith/skills/forge/references/styles": true,
+  "plugins/plan-smith/scripts/split-check.py": true,
+  "plugins/ux-ui/agents": true,
+  "plugins/ux-ui/skills/build/references/review-rubric.md": true,
+  "plugins/ux-ui/skills/build-mobile/references/mobile-review-rubric.md": true,
+  "plugins/ux-ui/scripts/mobile-snapshot.sh": true,
+  "plugins/claude-x-codex/scripts/worktree-setup.sh": true,
+  "plugins/claude-x-codex/scripts/mode.sh": true
+}

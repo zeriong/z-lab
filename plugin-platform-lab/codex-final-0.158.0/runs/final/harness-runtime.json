@@ -1,0 +1,83 @@
+{
+  "id": 3,
+  "result": {
+    "plugin": {
+      "marketplaceName": "bin",
+      "marketplacePath": "<temp>/.claude-plugin/marketplace.json",
+      "summary": {
+        "id": "harness@bin",
+        "remotePluginId": null,
+        "version": null,
+        "localVersion": "1.2.0",
+        "name": "harness",
+        "shareContext": null,
+        "source": {
+          "type": "local",
+          "path": "<temp>/plugins/harness"
+        },
+        "installed": false,
+        "installedAt": null,
+        "enabled": false,
+        "installPolicy": "AVAILABLE",
+        "installPolicySource": null,
+        "mustShowInstallationInterstitial": null,
+        "authPolicy": "ON_INSTALL",
+        "availability": "AVAILABLE",
+        "disabledReason": null,
+        "eligiblePlanTypes": null,
+        "interface": {
+          "displayName": "harness",
+          "shortDescription": "Build project rules and review gates",
+          "longDescription": "Build a project-tailored Claude Code or Codex harness from-scratch by directly analyzing the target project's layer/concern separation. Generates project-rules + review-gate.sh + UserPromptSubmit hook in one workflow.",
+          "developerName": "zeriong",
+          "category": "development",
+          "capabilities": [
+            "Read",
+            "Write"
+          ],
+          "websiteUrl": null,
+          "privacyPolicyUrl": null,
+          "termsOfServiceUrl": null,
+          "defaultPrompt": [
+            "Use harness for this project."
+          ],
+          "brandColor": null,
+          "composerIcon": null,
+          "composerIconUrl": null,
+          "logo": null,
+          "logoDark": null,
+          "logoUrl": null,
+          "logoUrlDark": null,
+          "screenshots": [],
+          "screenshotUrls": []
+        },
+        "keywords": [
+          "harness",
+          "scaffolding",
+          "convention",
+          "review-gate",
+          "project-rules",
+          "fact-check"
+        ]
+      },
+      "shareUrl": null,
+      "description": "Build a project-tailored Claude Code or Codex harness from-scratch by directly analyzing the target project's layer/concern separation. Generates project-rules + review-gate.sh + UserPromptSubmit hook in one workflow.",
+      "skills": [
+        {
+          "name": "harness:build",
+          "description": "Directly investigates the target project's layering / separation-of-concerns on a fact-based basis, then uses those results to build the project-rules, review-gate.sh, UserPromptSubmit hook, and harness-engineering skill from-scratch. Does NOT copy-paste an already-written harness template. Trigger keywords (Korean / English) — \"harness 만들어\", \"build harness\", \"harness 셋업\", \"프로젝트 룰 추출\", \"review gate 깔아줘\", \"harness:build\". Runs as an 8-phase workflow; failure at any phase forces a return to Phase 1 (absolute law). Every claim in Phase 1 must include a `file:line` citation (any claim that does not pass the fact-check loop is discarded immediately).",
+          "shortDescription": null,
+          "interface": null,
+          "path": "<temp>/plugins/harness/skills/build/SKILL.md",
+          "enabled": true
+        }
+      ],
+      "onboardingSkill": null,
+      "hooks": [],
+      "apps": [],
+      "appTemplates": [],
+      "mcpServers": [],
+      "scheduledTasks": null
+    }
+  }
+}

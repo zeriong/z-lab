@@ -1,0 +1,87 @@
+[
+  {
+    "file": "plugins/plan-smith/agents/plan-writer.md",
+    "identical_to_HEAD": true,
+    "sha256": "6694bc0c2be4867d095da1f68acde99226180853209631a98a41b68a6c75112e"
+  },
+  {
+    "file": "plugins/plan-smith/skills/forge/references/frames.md",
+    "identical_to_HEAD": true,
+    "sha256": "a3df58434a23a187fe9cf84d0737bbeb8201a27cff08ff8fd87c5482fc1cd760"
+  },
+  {
+    "file": "plugins/plan-smith/skills/forge/references/styles.md",
+    "identical_to_HEAD": true,
+    "sha256": "386f4ccce6a2ceae59e975ec8578459f515a74aaff191df4fcd1fa4d1d9d55ec"
+  },
+  {
+    "file": "plugins/plan-smith/skills/forge/references/split.md",
+    "identical_to_HEAD": true,
+    "sha256": "0de9b0be6f01721a948fb60c0d424b5148c3fcd515e6217db65490349a54c331"
+  },
+  {
+    "file": "plugins/plan-smith/scripts/split-check.py",
+    "identical_to_HEAD": true,
+    "sha256": "126e76262b88c45bd5bf8a13259ccaa0442c2479285d5b9ba4a4dbb7e7311fef"
+  },
+  {
+    "file": "plugins/ux-ui/agents/ux-ui-art-director.md",
+    "identical_to_HEAD": true,
+    "sha256": "8eccedfb071fd19e40ab0dcffa979683c984639197f7f63fcc207e987354cf45"
+  },
+  {
+    "file": "plugins/ux-ui/agents/ux-ui-mobile-art-director.md",
+    "identical_to_HEAD": true,
+    "sha256": "6cf12edda581df4f0b5f3bafb53283654e679c533b119e727f514780b54418d0"
+  },
+  {
+    "file": "plugins/ux-ui/skills/build/references/review-rubric.md",
+    "identical_to_HEAD": true,
+    "sha256": "7ff4677d163c8e35374b8d97013378f7daf8b01d5268618f717c88c644fd868f"
+  },
+  {
+    "file": "plugins/ux-ui/skills/build-mobile/references/mobile-review-rubric.md",
+    "identical_to_HEAD": true,
+    "sha256": "d6240343ad3eb74ffab30484fecc892e01aecb1bd1b024a8fde96bb2d61fad96"
+  },
+  {
+    "file": "plugins/ux-ui/skills/build-mobile/references/mobile-design-principles.md",
+    "identical_to_HEAD": true,
+    "sha256": "ab839102160ca09b90bd198b3ebbf7b41ede3e1d1d07faa677629035f45abbd2"
+  },
+  {
+    "file": "plugins/ux-ui/skills/build-mobile/references/mobile-measurement-protocol.md",
+    "identical_to_HEAD": true,
+    "sha256": "b78679dcb21642df485b82caf33358202ecf319e99630659ae02009a9e6f5aec"
+  },
+  {
+    "file": "plugins/ux-ui/scripts/mobile-snapshot.sh",
+    "identical_to_HEAD": true,
+    "sha256": "c4957189beeec04c4dea535233574327d5583915754636d767fb39b36082100d"
+  },
+  {
+    "file": "plugins/claude-x-codex/scripts/worktree-setup.sh",
+    "identical_to_HEAD": true,
+    "sha256": "bd1f0591e10bced79770084a4c37c77900d7bbff03199bb9c477904f1b79ec01"
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/transport-standalone.md",
+    "identical_to_HEAD": true,
+    "sha256": "87886f76897df29c35e238e026e5de478da39de97b33de989d01504a41cc83ab"
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/transport-orca.md",
+    "identical_to_HEAD": true,
+    "sha256": "0190ebe9d6d5f8995bd69d256b053402430565ece78c29284540cecd881f7c89"
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/templates.md",
+    "identical_to_HEAD": true,
+    "sha256": "97005bda5786f08849de4dd902e011e2b726e953c42816ffd0bf42c196ac74fe"
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/review.schema.json",
+    "identical_to_HEAD": true,
+    "sha256": "d9e2881b11fd58c4e669f2f511ca364704deb8620fe269ce8ad33ce624bfe97e"
+  }
+]

@@ -1,0 +1,572 @@
+[
+  {
+    "file": ".claude-plugin/marketplace.json",
+    "sha256": "8712caa5dc1375b5576f3470eb111c4231c42acc22051220ec58e114fa408574",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": ".gitattributes",
+    "sha256": "29bd391738dbcedf112d149d342db1f2b8d3beefab4762182c18b02511ef0875",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": ".gitignore",
+    "sha256": "32b2dd7912ea54e02bcb2d85d94ee2a1fe0e74675f20bbbabeb7823055acb249",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "AGENTS.md",
+    "sha256": "3c8bd92b47d15dd091e6f2c5f33a0c7395144e6ca46725ed1b82fce4f5bae846",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "CLAUDE.md",
+    "sha256": "b066b7998dbf3cdf560b78d8a24eeabf2fbb74ceab606f2fbf3a63b00f487a4e",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "LICENSE",
+    "sha256": "bc386606affefadbe2dd919ad508605f9d69219c27dfd8404b178100e9d91bea",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "README.ja.md",
+    "sha256": "93ba4b91cfab7fab9c08b292730d475d3d19e75d02a0e37f452816f1c65ceb78",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "README.ko.md",
+    "sha256": "0815921349423706b30608f882bf46485cebd62f4993d7de655617578a8ec7ad",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "README.md",
+    "sha256": "7ece3991155f7c392f1d1f6137a91c80e58cfb910b9543ec23dd310aa66106d1",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "README.zh-CN.md",
+    "sha256": "cbba5244ab2555cad9f7d571f3141b5a53fc88f04034c120504ec1cb0b2e9452",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "README.zh-TW.md",
+    "sha256": "01ce25dd20613a4a8e4367d7fef972b2ad1291829afa2f61e4d53de1eddd825f",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "install.sh",
+    "sha256": "5cb8fe5bf0ae355a30df6de9917d70de6447514366ca229db88da840acdea78c",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/claude-x-codex/.claude-plugin/plugin.json",
+    "sha256": "b9dbc43047010e60594ead5bbe71ddc672c5441c5557714d04f49646ac8111f0",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/claude-x-codex/.codex-plugin/plugin.json",
+    "sha256": "f1a742f4c684353c9fa96ab599a970ef3a781808e62046e2117d4f0fd0fb8973",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/claude-x-codex/.gitattributes",
+    "sha256": "dc41b2a68cc60b0f4733565202c20e56b755f5d7081a514d1758a41266665d14",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/claude-x-codex/CHANGELOG.md",
+    "sha256": "c9689cfc4ceb83b64578280ee7cf549e710832a5d7cfe76ac35b603fbce8245f",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/claude-x-codex/CLAUDE.md",
+    "sha256": "80ad349d687d2b010dadd0d7489b09423261a71b0ca58430663e98b5035e04de",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/claude-x-codex/README.ja.md",
+    "sha256": "f25ce829148c249cf778c455f62b15068967992830404fa5c07a7597fc66f24c",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/claude-x-codex/README.ko.md",
+    "sha256": "64995fa70e2cbd4ef866d3e57e2e846a47e423e12b79765d94f9cdf4fab0439f",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/claude-x-codex/README.md",
+    "sha256": "93b840cd3ae57e6eab8285e056ce72e956ad10e9e396f3a0e25e5aa185a6b27f",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/claude-x-codex/README.zh-CN.md",
+    "sha256": "b8ecdd09523da7b231608fb59c93a604ef08147dda5ae6ed0e5b717a91ad6ebb",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/claude-x-codex/README.zh-TW.md",
+    "sha256": "cc4438746c2b20efeac2d9776704b0f99cbcc1b44c648a120a492f7e07a16c27",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/claude-x-codex/hooks/hooks.json",
+    "sha256": "6f1734348f48c84174b926ab160d1a890a1e3108b6b9f7201e177d3466104d86",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/claude-x-codex/hooks/mode-context.sh",
+    "sha256": "89a57475b7983129ac2df7ee68271197aec3b96beb7e1a2731197811675b9ffb",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/claude-x-codex/scripts/context-audit.sh",
+    "sha256": "6ff25970ec874da04594ff8aaefe5a4a20fb583ca513cc0ac6dee462c096e77c",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/claude-x-codex/scripts/mode.sh",
+    "sha256": "8642f81bab5e2c6405a009c37906e85a0265848ec5f3a36b337003c481ed0407",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/claude-x-codex/scripts/worktree-setup.sh",
+    "sha256": "bd1f0591e10bced79770084a4c37c77900d7bbff03199bb9c477904f1b79ec01",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/audit/SKILL.md",
+    "sha256": "24b5e0c797f69a57f411a02f3c7fc83bd2b7a91d45cb795ca2daa4e483143f75",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/mode/SKILL.md",
+    "sha256": "49afd61dcf1aaa660d39dedf06547ff52f7fce4e8ce87983b9fc66c377a04f12",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/mode/agents/openai.yaml",
+    "sha256": "a5ce4832e678ece32d6c51975abac4b85baee575ec802e2ec59c29f9ed4324c5",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/SKILL.md",
+    "sha256": "96dab9822900da6812c1b737be9c7b316bd3a530afe70da2de611bda12a770d6",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/context-bridge.md",
+    "sha256": "38eaa70e82ce77768f2aa7fff8204733f52fb48f506b2822d70ec94249a7afa5",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/host-claude-code.md",
+    "sha256": "f6b19af3d914f9fb0f92b1b7e7364c228cf7bb661db4d91f5f387c4f672c558d",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/host-codex.md",
+    "sha256": "803c2111a97498bcbb241015a3133e00466a98f0969ff3f8b8f05aede6c08428",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/review.schema.json",
+    "sha256": "d9e2881b11fd58c4e669f2f511ca364704deb8620fe269ce8ad33ce624bfe97e",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/templates.md",
+    "sha256": "97005bda5786f08849de4dd902e011e2b726e953c42816ffd0bf42c196ac74fe",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/transport-orca.md",
+    "sha256": "0190ebe9d6d5f8995bd69d256b053402430565ece78c29284540cecd881f7c89",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/claude-x-codex/skills/run/references/transport-standalone.md",
+    "sha256": "87886f76897df29c35e238e026e5de478da39de97b33de989d01504a41cc83ab",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/harness/.claude-plugin/plugin.json",
+    "sha256": "994aec8a883941e65fa1ac9aec982b17165cbc840dc6d26d946631c3c841dfaf",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/harness/.codex-plugin/plugin.json",
+    "sha256": "1a2156ba566ae3871b9f00f1448086961efbab607647f3e3cb86aabd39368d7a",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/harness/CHANGELOG.md",
+    "sha256": "68f6419aec1f8a7cb50276b0c1d3a44994d546354c5bd56eefffde964aa27dc3",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/harness/CLAUDE.md",
+    "sha256": "18b826f247eb85591dfdc8fb23c6bdcfdaf6599f3e6519c6782a6cfc318a9330",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/harness/README.ja.md",
+    "sha256": "93c31e69be522123269897e5b00989b830d78f445f30a313248c8d5fe00660e1",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/harness/README.ko.md",
+    "sha256": "1c0026c0be48b21270cfb933dd495d5d4829a7a046f6d90fe62c84375ad5a1cf",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/harness/README.md",
+    "sha256": "6e91064ead303bbafe91e7aae9c3b9610d30f7303b4edb435e3c163a578c9ddd",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/harness/README.zh-CN.md",
+    "sha256": "263304e9f3305dc6fad550b2903e1029074bec21f2a8d9e8b32e5f0272ef4c88",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/harness/README.zh-TW.md",
+    "sha256": "3284ad13cbaccf4b4955c601bb4d9762ae1403fcee59d39d07c25eabf0b8420e",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/harness/skills/build/SKILL.md",
+    "sha256": "399bedc4630a447bcb8baa041879c986dd5611c761861fd9d07628dfcf287e04",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/harness/skills/build/assets/inject-context.sh",
+    "sha256": "7def41763ac8c71fc00d5e22497ad9bace8ffe2b079626a68c6c08b579cf3553",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/harness/skills/build/references/host-codex.md",
+    "sha256": "73e9b8615de629032ba62a52bc10f9b1d19cc667baa70df41998af10372488fb",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/harness/skills/build/references/workflow.md",
+    "sha256": "16b3f3fee72c010da248728af7739dcc55920621777899054d87a7a7bd1883d1",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/harness/skills/build/scripts/install-hooks.py",
+    "sha256": "1ebaf69e182688216bdcf03124f2af2d121146e0ec410660dedbe3d53c78f10b",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/.claude-plugin/plugin.json",
+    "sha256": "90d2ea85c7d21a88ee82205291f7bd419153389d814635a693224b7d0409076d",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/.codex-plugin/plugin.json",
+    "sha256": "a1b6c8e8ee98ab9ddba7925f0f6de780b7e90541e5da508ad0a73a0ea75a1cfb",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/CHANGELOG.md",
+    "sha256": "778f5a2d840647ca94e4827fd591228cfce0f1a917b22794ac55aa9891476a60",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/CLAUDE.md",
+    "sha256": "7d33d191114880e4f9bf367013676e22acdb473f3b3180a0abfbf6bd6d19a026",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/README.ja.md",
+    "sha256": "d50706ce1e9adda408ff6bf01e409a2fa703bad38b8502947b8275af6521b42e",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/README.ko.md",
+    "sha256": "626006dadef937900060a270cad8abfd970b159e76c979d8620095a130fda598",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/README.md",
+    "sha256": "65a2a6b60306ab06f6a61b06e2963b5bb84db92b5c0fe0bec43f04f813dac2f4",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/README.zh-CN.md",
+    "sha256": "5ef6c5a38d1cb8f9544822bba4de2f93f0a9eedfdef6db280523442f8c42008b",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/README.zh-TW.md",
+    "sha256": "e09a22a7e08fa3580d72e8c6a645a8d333e535566cf5a1b455362694aea1a597",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/agents/plan-writer.md",
+    "sha256": "6694bc0c2be4867d095da1f68acde99226180853209631a98a41b68a6c75112e",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/scripts/split-check.py",
+    "sha256": "126e76262b88c45bd5bf8a13259ccaa0442c2479285d5b9ba4a4dbb7e7311fef",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/skills/forge/SKILL.md",
+    "sha256": "f89a966e3ef8fa28b91bd2dc81fc060c5dfc51743f46b105f103e190bb887637",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/skills/forge/references/frames.md",
+    "sha256": "a3df58434a23a187fe9cf84d0737bbeb8201a27cff08ff8fd87c5482fc1cd760",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/skills/forge/references/host-codex.md",
+    "sha256": "d5ea6dba76daec124eb379720fac67c6c87aa7a63ee613d84f921be15310a96d",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/skills/forge/references/packet-template.md",
+    "sha256": "5bfc8da927fcbb51f3b4566aa715c01f59b9f348f936a721a02f8a851ea497fc",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/skills/forge/references/split.md",
+    "sha256": "0de9b0be6f01721a948fb60c0d424b5148c3fcd515e6217db65490349a54c331",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/plan-smith/skills/forge/references/styles.md",
+    "sha256": "386f4ccce6a2ceae59e975ec8578459f515a74aaff191df4fcd1fa4d1d9d55ec",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/ux-ui/.claude-plugin/plugin.json",
+    "sha256": "8d8f865f84c1d7df5a243b083d60cba8629277eb88d8ae02a51f954dacade323",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/ux-ui/.codex-plugin/plugin.json",
+    "sha256": "0a359d7da14837c677075362a502fc779ce7c87d271458ad7894872e6777fc80",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/ux-ui/CHANGELOG.md",
+    "sha256": "a712e8e285292fb7240c11e70a14b66c2214422e37656e088cb4671d53048db8",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/ux-ui/CLAUDE.md",
+    "sha256": "2cd60c6b4ee97656643ee5b11aba8a3f2a65cb020371d9bbb47fa0cd2cef9213",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/ux-ui/README.ja.md",
+    "sha256": "da16c0753a977030e5ce83b2dc9fea4f5637e42641dc7049591091d77df400e3",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/ux-ui/README.ko.md",
+    "sha256": "4d3fcec28046273e87676983605bbc4b00a9919ff2613df79dc20122b63522e2",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/ux-ui/README.md",
+    "sha256": "b19e9cb0a11155e3951b36949880892d5be0e2d4b133d7e2a33bbdc6f7a0d838",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/ux-ui/README.zh-CN.md",
+    "sha256": "63b4e6959ff3f0fe8d8a462e246a491efeae0e08d605f013ec8c02c3c6f015cd",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/ux-ui/README.zh-TW.md",
+    "sha256": "d1c0895eb93f52777a419929f216a9760791bd6ac5dd1d3efbe5ec64346781d6",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/ux-ui/agents/ux-ui-art-director.md",
+    "sha256": "8eccedfb071fd19e40ab0dcffa979683c984639197f7f63fcc207e987354cf45",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/ux-ui/agents/ux-ui-mobile-art-director.md",
+    "sha256": "6cf12edda581df4f0b5f3bafb53283654e679c533b119e727f514780b54418d0",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/ux-ui/hooks/hooks.json",
+    "sha256": "f35b0b250e82f044a98f8f88830c011d050ea625f031ed5ee544ba3d3d4192b6",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/ux-ui/scripts/commit-roots.py",
+    "sha256": "ce35bb4d9942bde94da7f919fac14b5a3c60b22365b2a6640e56eacbd2057ed0",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/ux-ui/scripts/mobile-snapshot.sh",
+    "sha256": "c4957189beeec04c4dea535233574327d5583915754636d767fb39b36082100d",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/ux-ui/scripts/ui-commit-gate.sh",
+    "sha256": "d2c7d08cff6ffba7e28bba35109df20534c7f361d7814d1c7526f5292c81561c",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build-mobile/SKILL.md",
+    "sha256": "de7f07b90ba1e0620110e227d412fda9137b1897cf2abd80e3beb79c451c6759",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build-mobile/references/backend-detection.md",
+    "sha256": "baf9aadcb11f274aeb166b904217413c4f905820b23a1720efc8732884fada83",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build-mobile/references/mobile-design-principles.md",
+    "sha256": "ab839102160ca09b90bd198b3ebbf7b41ede3e1d1d07faa677629035f45abbd2",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build-mobile/references/mobile-measurement-protocol.md",
+    "sha256": "b78679dcb21642df485b82caf33358202ecf319e99630659ae02009a9e6f5aec",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build-mobile/references/mobile-review-rubric.md",
+    "sha256": "d6240343ad3eb74ffab30484fecc892e01aecb1bd1b024a8fde96bb2d61fad96",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build/SKILL.md",
+    "sha256": "3af2eb0bbb2bd9651b79e297974f0b7a29f13fee44f7bfbed8a36b3650287f85",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build/references/design-principles.md",
+    "sha256": "3ad813b7a95bab2ad86d364a634c965fedaa2e2f358c64f1aa6becb283b5b7e5",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build/references/host-codex.md",
+    "sha256": "1e211968c5b48460b48495d9a998af30a325e4f802b30e1b81122d686b41ac29",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build/references/measurement-protocol.md",
+    "sha256": "31f82a1072368e7d9ef3397d604a9d0320852bf11111f041fd2beee1015739b0",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "plugins/ux-ui/skills/build/references/review-rubric.md",
+    "sha256": "7ff4677d163c8e35374b8d97013378f7daf8b01d5268618f717c88c644fd868f",
+    "changed_since_previous_review": false,
+    "inspection": "Byte-identical to previous file inspection; host dependencies and existing evidence reconsidered."
+  },
+  {
+    "file": "tests/test_compatibility.py",
+    "sha256": "ece04f711047bf3da7ec821f45c4b48a626f714c7efecb17eb48c5c042412ceb",
+    "changed_since_previous_review": true,
+    "inspection": "Current diff/source and affected contracts re-reviewed; runtime, regression or documentation checks as described in FINDINGS.md."
+  }
+]
