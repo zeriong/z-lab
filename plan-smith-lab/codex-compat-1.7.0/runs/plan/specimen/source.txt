@@ -1,0 +1,1 @@
+A local single-user note app; records have title and body. No synchronization or concurrent writers.

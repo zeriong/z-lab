@@ -1,0 +1,18 @@
+{
+  "exit": 0,
+  "elapsed_ms": 442025,
+  "usage": [
+    {
+      "input_tokens": 674227,
+      "cached_input_tokens": 641280,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 7714,
+      "reasoning_output_tokens": 200
+    }
+  ],
+  "attempt": "one-shot",
+  "model_overrides": {
+    "PLAN_SMITH_CODEX_MODEL": "gpt-6-astra",
+    "PLAN_SMITH_CODEX_EFFORT": "xhigh"
+  }
+}

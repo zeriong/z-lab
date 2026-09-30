@@ -1,0 +1,14 @@
+{
+  "exit": 0,
+  "elapsed_ms": 300898,
+  "usage": [
+    {
+      "input_tokens": 685700,
+      "cached_input_tokens": 650496,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 7084,
+      "reasoning_output_tokens": 297
+    }
+  ],
+  "attempt": "one-shot"
+}

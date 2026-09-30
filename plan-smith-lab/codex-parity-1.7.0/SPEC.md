@@ -1,0 +1,12 @@
+# Codex setting parity — plan-smith
+
+Frozen before implementation and execution, 2026-09-29.
+
+## Cases
+S03: All planning modes use the same host question, run-stamp and independent dispatch contract. Configurable Codex model/effort and CXC_MODE=off prevent nested orchestration. Use the real adapter in a narrow decision-writing smoke test; preserve frame/style/split content.
+
+## Method
+Keep prior specimens. Run deterministic scripts in disposable fixtures, and only narrow real-agent smoke tests needed for changed dispatch. Record exact input, source hashes, stdout/stderr, exit, monotonic elapsed milliseconds and CLI-reported usage. Completed units are skipped; changed run conditions use new directories. No commits or persistent user settings changes. Tests may initialize temporary Git metadata and stage fixture files, but must create no commits. Reviewers remain read-only; no fabricated measurements or approvals.
+
+## Limits
+This measures configuration/workflow parity, not model-quality equivalence or every OS/device. Version numbers retain the already-uncommitted compatibility release bump relative to HEAD. No additional release was published between these corrections.

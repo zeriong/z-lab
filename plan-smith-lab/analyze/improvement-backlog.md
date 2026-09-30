@@ -402,3 +402,24 @@ Gate 0의 효과를 단정하지 않는다.** 현재 서술은 "1.1.0이 왜 나
 
 **가장 값싼 다음 한 걸음:** 라운드2(이미 준비됨) → B7·B2·B8 판정.
 그다음이 "모델 고립" 1셀 추가 → diff-review의 관측 전체가 판정 가능해진다.
+
+
+## Codex compatibility 1.7.0
+
+- Evidence: [version analysis](v1.7.0/codex-compatibility.md).
+- Observation: discovery alone did not translate host tool APIs, paths or hook delivery.
+- Action: share core definitions, add host adapters and verify runtime behavior.
+- Decision: preserve existing Claude semantics; do not replace panel models based on this smoke test.
+- Remaining measurement: complete browser/mobile and broader project coverage; no claim yet.
+
+## Codex setting parity 1.7.0
+
+- Evidence and decisions: [version analysis](v1.7.0/codex-setting-parity.md).
+- State: local implementation and the scoped verification are complete; no publication.
+- Further measurements: broader end-to-end browser/device coverage and alternate-model dispatch; no quality equivalence claim.
+
+## Codex re-review 1.7.0
+
+- Evidence: [version findings](v1.7.0/codex-rereview.md) (S04).
+- Correction: apply the tested fixes while retaining shared host contracts.
+- Remaining scope: platform/device matrices and model quality are not established by these scoped probes.

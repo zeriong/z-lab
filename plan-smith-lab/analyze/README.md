@@ -41,3 +41,9 @@
 4. **여기서 나온 제안을 곧바로 릴리스하지 않는다.** 프레임·조항을 바꾸면 **이후 생성되는 모든
    코퍼스가 다른 명세**가 되어 과거 표본과 비교 불가가 된다. 변경은 버전으로 격리하고
    `plan-smith/CHANGELOG.md`에 근거를 함께 남긴다.
+
+- [Codex compatibility 1.7.0](v1.7.0/codex-compatibility.md)
+
+- [Codex setting parity 1.7.0](v1.7.0/codex-setting-parity.md)
+
+- [Codex re-review 1.7.0](v1.7.0/codex-rereview.md)
