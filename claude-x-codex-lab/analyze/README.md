@@ -37,3 +37,5 @@ Claude Code 플러그인 시스템 자체의 사실(훅 자동 로드, 이름 �
 - [Codex setting parity 0.2.0](v0.2.0/codex-setting-parity.md)
 
 - [Codex re-review 0.2.0](v0.2.0/codex-rereview.md)
+
+- [Newest model per family 0.3.0](v0.3.0/latest-model.md)

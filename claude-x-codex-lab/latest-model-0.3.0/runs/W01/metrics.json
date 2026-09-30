@@ -1,0 +1,57 @@
+[
+ {
+  "label": "01-worktree",
+  "argv": [
+   "bash",
+   "-c",
+   "git worktree add .claude-x-codex/wt/w1 -b cxc/probe/w1\n\"/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/latest-model-0.3.0/subject/claude-x-codex/scripts/worktree-setup.sh\" .claude-x-codex/wt/w1   # materialize uncommitted context\n"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/cxc-w01-o3v9i9zq",
+  "exit": 0,
+  "elapsed_ms": 419
+ },
+ {
+  "label": "02-codex-worker",
+  "argv": [
+   "bash",
+   "-c",
+   "F=\"$PWD/.claude-x-codex/probe\"   # absolute, so the paths don't depend on where you cd\nM=$(python3 \"/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/latest-model-0.3.0/subject/claude-x-codex/scripts/latest-model.py\" codex \"${CXC_WORKER_MODEL:-luna}\" --effort \"${CXC_WORKER_EFFORT:-high}\") || exit\nCXC_MODE=off codex exec -m \"$M\" -c model_reasoning_effort=\"${CXC_WORKER_EFFORT:-high}\" \\\n  -C .claude-x-codex/wt/w1 -s workspace-write \\\n  -c 'project_doc_fallback_filenames=[\"CLAUDE.md\"]' \\\n  -o \"$F/returns/w1.md\" \\\n  \"$(cat \"$F/tasks/w1.md\")\" < /dev/null > \"$F/returns/w1.log\" 2>&1\n"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/cxc-w01-o3v9i9zq",
+  "exit": 0,
+  "elapsed_ms": 12898
+ },
+ {
+  "label": "03-codex-reviewer",
+  "argv": [
+   "bash",
+   "-c",
+   "F=\"$PWD/.claude-x-codex/probe\"; P=\"/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/latest-model-0.3.0/subject/claude-x-codex/skills/run/references\"\nM=$(python3 \"/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/latest-model-0.3.0/subject/claude-x-codex/scripts/latest-model.py\" codex \"${CXC_REVIEW_MODEL:-sol}\" --effort \"${CXC_REVIEW_EFFORT:-xhigh}\") || exit\nCXC_MODE=off codex exec -m \"$M\" -c model_reasoning_effort=\"${CXC_REVIEW_EFFORT:-xhigh}\" \\\n  -s read-only -c 'project_doc_fallback_filenames=[\"CLAUDE.md\"]' \\\n  --output-schema \"$P/review.schema.json\" \\\n  -o \"$F/reviews/p1-r1.json\" \\\n  \"$(cat \"$F/reviews/p1-prompt.md\")\" < /dev/null > \"$F/reviews/p1-r1.log\" 2>&1\n"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/cxc-w01-o3v9i9zq",
+  "exit": 0,
+  "elapsed_ms": 15188
+ },
+ {
+  "label": "04-claude-worker",
+  "argv": [
+   "bash",
+   "-c",
+   "cd .claude-x-codex/wt/w1 || exit; R=../../probe/returns\nM=$(python3 \"/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/latest-model-0.3.0/subject/claude-x-codex/scripts/latest-model.py\" claude \"${CXC_CLAUDE_WORKER:-sonnet}\" --effort \"${CXC_WORKER_EFFORT:-high}\" --project \"$PWD\") || exit\nCXC_MODE=off claude -p \"$(cat ../../probe/tasks/w2.md)\" \\\n  --model \"$M\" --effort \"${CXC_WORKER_EFFORT:-high}\" --permission-mode acceptEdits \\\n  --output-format json > \"$R/w2.raw.json\" < /dev/null\njq -r '.result' \"$R/w2.raw.json\" > \"$R/w2.md\"\njq -r '.modelUsage | keys[]' \"$R/w2.raw.json\"   # the id that ran\n"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/cxc-w01-o3v9i9zq",
+  "exit": 0,
+  "elapsed_ms": 11110
+ },
+ {
+  "label": "05-claude-reviewer",
+  "argv": [
+   "bash",
+   "-c",
+   "F=.claude-x-codex/probe/reviews\nM=$(python3 \"/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/latest-model-0.3.0/subject/claude-x-codex/scripts/latest-model.py\" claude \"${CXC_CLAUDE_REVIEWER:-opus}\" --effort \"${CXC_REVIEW_EFFORT:-xhigh}\" --project \"$PWD\") || exit\nCXC_MODE=off claude -p \"$(cat \"$F/p1-prompt.md\")\" \\\n  --model \"$M\" --effort \"${CXC_REVIEW_EFFORT:-xhigh}\" \\\n  --allowedTools \"Read\" \"Grep\" \"Glob\" \"Bash(git diff:*)\" \"Bash(git log:*)\" \\\n  --disallowedTools \"Skill\" \"ReportFindings\" \"Write\" \"Edit\" \"NotebookEdit\" \\\n  --json-schema \"$(cat \"/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/latest-model-0.3.0/subject/claude-x-codex/skills/run/references/review.schema.json\")\" \\\n  --output-format json < /dev/null > \"$F/p1-r2.raw.json\"\njq '.structured_output' \"$F/p1-r2.raw.json\" > \"$F/p1-r2.json\"\njq -r '.modelUsage | keys[]' \"$F/p1-r2.raw.json\"   # the id that ran\n"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/cxc-w01-o3v9i9zq",
+  "exit": 0,
+  "elapsed_ms": 9430
+ }
+]

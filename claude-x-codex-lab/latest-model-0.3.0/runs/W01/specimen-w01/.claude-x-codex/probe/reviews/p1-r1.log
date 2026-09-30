@@ -1,0 +1,45 @@
+Reading additional input from stdin...
+OpenAI Codex v0.159.2
+--------
+workdir: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/cxc-w01-o3v9i9zq
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: low
+reasoning summaries: none
+session id: 01a0f06d-4a20-7960-a5e7-c09970855d3a
+--------
+user
+You are reviewing a one-line diff. Run `git diff --cached` and review it. Report findings only.
+Output only JSON matching the provided schema.
+hook: SessionStart
+hook: SessionStart Completed
+hook: UserPromptSubmit
+hook: UserPromptSubmit Completed
+hook: PreToolUse
+hook: PreToolUse Completed
+exec
+/bin/zsh -lc 'git diff --cached' in /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/cxc-w01-o3v9i9zq
+ succeeded in 693ms:
+git: warning: confstr() failed with code 5: couldn't get path of DARWIN_USER_TEMP_DIR; using /tmp instead
+git: error: couldn't create cache file '/tmp/xcrun_db-CO9mM40M' (errno=Operation not permitted)
+git: warning: confstr() failed with code 5: couldn't get path of DARWIN_USER_TEMP_DIR; using /tmp instead
+git: error: couldn't create cache file '/tmp/xcrun_db-uPYHqSkl' (errno=Operation not permitted)
+diff --git a/note.txt b/note.txt
+new file mode 100644
+index 0000000..e3c0674
+--- /dev/null
++++ b/note.txt
+@@ -0,0 +1 @@
++one line
+
+hook: PostToolUse
+hook: PostToolUse Completed
+codex
+{"findings":[],"resolved":[],"verdict":"pass"}
+hook: Stop
+hook: Stop Completed
+tokens used
+15,598
+{"findings":[],"resolved":[],"verdict":"pass"}

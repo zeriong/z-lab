@@ -57,3 +57,10 @@
 - Evidence: [version findings](v0.2.0/codex-rereview.md) (C07, C08).
 - Correction: apply the tested fixes while retaining shared host contracts.
 - Remaining scope: platform/device matrices and model quality are not established by these scoped probes.
+
+## Newest model per family 0.3.0
+
+- Evidence: [version analysis](v0.3.0/latest-model.md) (W01–W04).
+- Observation: pinned Codex slugs kept older models after `gpt-6.1-sol` shipped.
+- Action: family settings resolved before every dispatch; stop on failure; ids from the run.
+- Remaining measurement: full orchestration run; sandbox escalation; Orca workers.

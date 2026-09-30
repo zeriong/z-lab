@@ -1,0 +1,12 @@
+{
+ "codex-worker-empty-home": {
+  "exit": 2,
+  "stderr": "latest-model: no models_cache.json in /var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/w02-empty-home-9qxjkpsb: catalog not refreshed (is codex logged in and online?)",
+  "child_started": false
+ },
+ "claude-worker-alias-redirected": {
+  "exit": 2,
+  "stderr": "latest-model: ANTHROPIC_DEFAULT_SONNET_MODEL is set in the process environment",
+  "child_started": false
+ }
+}

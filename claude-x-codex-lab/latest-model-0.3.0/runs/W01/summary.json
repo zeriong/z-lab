@@ -1,0 +1,30 @@
+{
+ "codex-worker": {
+  "exit": 0,
+  "stderr": "latest-model: using gpt-6-luna (newest luna) instead of gpt-5.6-luna",
+  "stdout": "",
+  "run_header_model": "gpt-6-luna",
+  "elapsed_ms": 12898
+ },
+ "codex-reviewer": {
+  "exit": 0,
+  "stderr": "latest-model: using gpt-6.1-sol (newest sol) instead of gpt-6-sol",
+  "stdout": "",
+  "run_header_model": "gpt-6.1-sol",
+  "elapsed_ms": 15188
+ },
+ "claude-worker": {
+  "exit": 0,
+  "stderr": "latest-model: using sonnet (newest sonnet) instead of claude-sonnet-5-5",
+  "stdout": "claude-sonnet-5-5",
+  "run_header_model": null,
+  "elapsed_ms": 11110
+ },
+ "claude-reviewer": {
+  "exit": 0,
+  "stderr": "",
+  "stdout": "claude-opus-5-5",
+  "run_header_model": null,
+  "elapsed_ms": 9430
+ }
+}
