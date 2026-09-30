@@ -1,0 +1,205 @@
+/* 계획서 §8.2. 논리 해상도 1280×720 고정, #app을 JS가 transform으로 레터박스 스케일. */
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #1b2a38;
+  overflow: hidden;
+  font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+}
+
+#app {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1280px;
+  height: 720px;
+  transform-origin: 0 0;
+  overflow: hidden;
+}
+
+#game {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1280px;
+  height: 720px;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  display: block;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* HUD: 드래그는 캔버스로 통과시키되 버튼·텍스트만 이벤트를 받는다 */
+#hud {
+  pointer-events: none;
+}
+#hud button,
+#hud-left {
+  pointer-events: auto;
+}
+
+#hud-left {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 1px 2px #000;
+  font-size: 20px;
+  line-height: 1.5;
+}
+#hud-left span {
+  display: block;
+}
+
+/* 요구사항: 인게임 우측 일시정지 버튼 */
+#btn-pause {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  font-size: 26px;
+  border: 3px solid #fff;
+  background: rgba(0, 0, 0, .45);
+  color: #fff;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  font-weight: 700;
+}
+#btn-pause:hover {
+  background: rgba(0, 0, 0, .65);
+}
+
+.screen,
+.overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+}
+.overlay {
+  background: rgba(0, 0, 0, .55);
+  pointer-events: auto;
+}
+.screen {
+  background: linear-gradient(#7ec8f7, #dff3ff);
+}
+
+.panel {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 320px;
+  align-items: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .35);
+}
+.panel button {
+  min-width: 240px;
+}
+
+/* 버튼 공통 */
+button {
+  font-family: inherit;
+  font-size: 22px;
+  padding: 12px 28px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 2px solid #7a4a1e;
+  background: #ffb340;
+  color: #3b2418;
+  font-weight: 700;
+}
+button:hover {
+  filter: brightness(1.08);
+}
+button:active {
+  transform: translateY(1px);
+}
+
+h1 {
+  margin: 0;
+  font-size: 64px;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 0 4px 0 #b52a1f, 0 8px 16px rgba(0, 0, 0, .35);
+}
+h2 {
+  margin: 0 0 8px;
+  font-size: 36px;
+  color: #3b2418;
+}
+#screen-menu p {
+  margin: 0 0 12px;
+  font-size: 22px;
+  color: #2b4a66;
+}
+#screen-select h2 {
+  color: #2b4a66;
+}
+
+/* 스테이지 선택 타일 */
+#stage-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 96px);
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.stage-tile {
+  width: 96px;
+  height: 96px;
+  font-size: 28px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.stage-tile .tile-stars {
+  font-size: 16px;
+  color: #b86b00;
+  letter-spacing: 1px;
+}
+.stage-tile.locked {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+/* 결과 패널 */
+#result-stars {
+  font-size: 44px;
+  line-height: 1;
+  min-height: 48px;
+  color: #f5b400;
+  letter-spacing: 4px;
+  text-shadow: 0 2px 0 #b57b00;
+}
+#result-score {
+  margin: 0;
+  font-size: 24px;
+  color: #3b2418;
+}
+
+#error-overlay .panel {
+  max-width: 520px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.6;
+}
