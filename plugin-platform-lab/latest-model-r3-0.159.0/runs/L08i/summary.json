@@ -1,0 +1,19 @@
+{
+ "1-inside-sandbox": {
+  "exit": 2,
+  "stdout": "",
+  "stderr": "latest-model: Codex model cache age 600.0s exceeds limit 315s in /var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l08i-bmjkw03r/home/models_cache.json: catalog not refreshed (is codex logged in and online?)",
+  "fetched_at_before": "2026-09-30T03:20:26.879449Z",
+  "fetched_at_after": "2026-09-30T03:20:26.879449Z",
+  "elapsed_ms": 3012
+ },
+ "2-outside-same-home": {
+  "exit": 0,
+  "stdout": "gpt-6.1-sol",
+  "stderr": "",
+  "fetched_at_before": "2026-09-30T03:20:26.879449Z",
+  "fetched_at_after": "2026-09-30T03:30:30.264494Z",
+  "elapsed_ms": 388
+ },
+ "real_auth_unchanged": true
+}

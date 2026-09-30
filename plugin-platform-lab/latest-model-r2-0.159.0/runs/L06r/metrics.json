@@ -1,0 +1,38 @@
+[
+ {
+  "label": "01-a-env",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-r2-0.159.0/subject/latest-model.py",
+   "claude",
+   "sonnet"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l06r-dmass51z/plain",
+  "exit": 2,
+  "elapsed_ms": 23
+ },
+ {
+  "label": "02-b-settings",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-r2-0.159.0/subject/latest-model.py",
+   "claude",
+   "sonnet"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l06r-dmass51z/project",
+  "exit": 2,
+  "elapsed_ms": 22
+ },
+ {
+  "label": "03-c-invalid",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-r2-0.159.0/subject/latest-model.py",
+   "claude",
+   "sonnet"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l06r-dmass51z/project",
+  "exit": 2,
+  "elapsed_ms": 22
+ }
+]

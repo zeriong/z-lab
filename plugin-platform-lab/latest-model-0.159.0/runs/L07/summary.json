@@ -1,0 +1,22 @@
+{
+ "no-codex-on-path": {
+  "args": [
+   "codex",
+   "sol"
+  ],
+  "exit": 2,
+  "stdout": "",
+  "stderr": "latest-model: cannot run codex --version: [Errno 2] No such file or directory: 'codex'",
+  "elapsed_ms": 26
+ },
+ "empty-codex-home": {
+  "args": [
+   "codex",
+   "sol"
+  ],
+  "exit": 2,
+  "stdout": "",
+  "stderr": "latest-model: cannot read Codex model cache /var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l07-empty-av_q4yy0/models_cache.json: [Errno 2] No such file or directory: '/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l07-empty-av_q4yy0/models_cache.json'",
+  "elapsed_ms": 45
+ }
+}

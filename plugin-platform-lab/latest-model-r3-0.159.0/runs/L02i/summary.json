@@ -1,0 +1,829 @@
+{
+ "calls": [
+  {
+   "i": 0,
+   "start": 1790739030.2891772,
+   "end": 1790739030.312983,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 74.395,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 1,
+   "start": 1790739040.293943,
+   "end": 1790739040.323023,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 84.4,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 2,
+   "start": 1790739050.2940538,
+   "end": 1790739050.311073,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 94.4,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 3,
+   "start": 1790739060.292358,
+   "end": 1790739060.33878,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 104.398,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 4,
+   "start": 1790739070.296111,
+   "end": 1790739070.343028,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 114.402,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 5,
+   "start": 1790739080.294101,
+   "end": 1790739080.314642,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 124.4,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 6,
+   "start": 1790739090.290761,
+   "end": 1790739090.3151171,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 134.397,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 7,
+   "start": 1790739100.294261,
+   "end": 1790739100.330176,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 144.4,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 8,
+   "start": 1790739110.294587,
+   "end": 1790739110.312501,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:29:15.894117Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 154.4,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 9,
+   "start": 1790739120.298434,
+   "end": 1790739120.3426719,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:31:56.677992Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:31:56.677992Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 3.62,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 10,
+   "start": 1790739130.297289,
+   "end": 1790739130.3409011,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:31:56.677992Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:31:56.677992Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 13.619,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 11,
+   "start": 1790739140.298462,
+   "end": 1790739140.3435562,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:31:56.677992Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:31:56.677992Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 23.62,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 12,
+   "start": 1790739150.2949162,
+   "end": 1790739150.312567,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:31:56.677992Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:31:56.677992Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 33.617,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 13,
+   "start": 1790739160.298421,
+   "end": 1790739160.34128,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 9.064,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 14,
+   "start": 1790739170.2994518,
+   "end": 1790739170.346482,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 19.065,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 15,
+   "start": 1790739180.296125,
+   "end": 1790739180.313611,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 29.062,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 16,
+   "start": 1790739190.2963781,
+   "end": 1790739190.31438,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 39.062,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 17,
+   "start": 1790739200.299458,
+   "end": 1790739200.3468952,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 49.065,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 18,
+   "start": 1790739210.2963939,
+   "end": 1790739210.314528,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 59.062,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 19,
+   "start": 1790739220.299257,
+   "end": 1790739220.340134,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 69.065,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 20,
+   "start": 1790739230.296557,
+   "end": 1790739230.31462,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 79.062,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 21,
+   "start": 1790739240.2971299,
+   "end": 1790739240.329846,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 89.063,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 22,
+   "start": 1790739250.296696,
+   "end": 1790739250.314689,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:32:31.234151Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 99.063,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 23,
+   "start": 1790739260.2968361,
+   "end": 1790739260.31433,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 3.886,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 24,
+   "start": 1790739270.298647,
+   "end": 1790739270.346606,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 13.888,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 25,
+   "start": 1790739280.297651,
+   "end": 1790739280.321692,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 23.887,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 26,
+   "start": 1790739290.300162,
+   "end": 1790739290.344657,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 33.89,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 27,
+   "start": 1790739300.301491,
+   "end": 1790739300.3455691,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 43.891,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 28,
+   "start": 1790739310.297597,
+   "end": 1790739310.317672,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 53.887,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 29,
+   "start": 1790739320.300006,
+   "end": 1790739320.342488,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 63.89,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 30,
+   "start": 1790739330.2962508,
+   "end": 1790739330.3141062,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 73.886,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 31,
+   "start": 1790739340.2972858,
+   "end": 1790739340.3404732,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 83.887,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 32,
+   "start": 1790739350.3007,
+   "end": 1790739350.3450801,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 93.89,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 33,
+   "start": 1790739360.301323,
+   "end": 1790739360.351178,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 103.891,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 34,
+   "start": 1790739370.301688,
+   "end": 1790739370.33875,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 113.891,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 35,
+   "start": 1790739380.302699,
+   "end": 1790739380.345962,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 123.892,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 36,
+   "start": 1790739390.30185,
+   "end": 1790739390.346837,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 133.891,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 37,
+   "start": 1790739400.301145,
+   "end": 1790739400.3399732,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 143.891,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 38,
+   "start": 1790739410.301447,
+   "end": 1790739410.347778,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 153.891,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 39,
+   "start": 1790739420.2973928,
+   "end": 1790739420.315069,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:34:16.410377Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 163.887,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 40,
+   "start": 1790739430.303547,
+   "end": 1790739430.349308,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:37:08.454132Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:37:08.454132Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 1.849,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 41,
+   "start": 1790739440.3014941,
+   "end": 1790739440.339874,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:37:08.454132Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:37:08.454132Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 11.847,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 42,
+   "start": 1790739450.301684,
+   "end": 1790739450.34336,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:37:08.454132Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:37:08.454132Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 21.848,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 43,
+   "start": 1790739460.298248,
+   "end": 1790739460.318725,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:37:08.454132Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:37:08.454132Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 31.844,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 44,
+   "start": 1790739470.30227,
+   "end": 1790739470.34736,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:37:08.454132Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:37:08.454132Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 41.848,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 45,
+   "start": 1790739480.302216,
+   "end": 1790739480.3257432,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:37:08.454132Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:37:08.454132Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 51.848,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 46,
+   "start": 1790739490.302049,
+   "end": 1790739490.345079,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:37:08.454132Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:37:08.454132Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 61.848,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 47,
+   "start": 1790739500.300277,
+   "end": 1790739500.3239932,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:37:08.454132Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:37:08.454132Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 71.846,
+   "refreshed": false,
+   "served": true
+  }
+ ],
+ "largest_age_served_s": 163.887,
+ "smallest_age_refreshed_s": null,
+ "refreshes_by_our_calls": 0,
+ "external_writes_before_call": [
+  9,
+  13,
+  23,
+  40
+ ]
+}

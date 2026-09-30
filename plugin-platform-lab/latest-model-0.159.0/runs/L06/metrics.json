@@ -1,0 +1,60 @@
+[
+ {
+  "label": "01-a-env-claude",
+  "argv": [
+   "claude",
+   "-p",
+   "Reply with the single word OK.",
+   "--model",
+   "sonnet",
+   "--effort",
+   "low",
+   "--output-format",
+   "json"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l06-q0ayli5r/plain",
+  "exit": 0,
+  "elapsed_ms": 8040
+ },
+ {
+  "label": "02-a-env-resolver",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "claude",
+   "sonnet"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l06-q0ayli5r/plain",
+  "exit": 2,
+  "elapsed_ms": 44
+ },
+ {
+  "label": "03-b-settings-claude",
+  "argv": [
+   "claude",
+   "-p",
+   "Reply with the single word OK.",
+   "--model",
+   "sonnet",
+   "--effort",
+   "low",
+   "--output-format",
+   "json"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l06-q0ayli5r/project",
+  "exit": 0,
+  "elapsed_ms": 6947
+ },
+ {
+  "label": "04-b-settings-resolver",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "claude",
+   "sonnet"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l06-q0ayli5r/project",
+  "exit": 2,
+  "elapsed_ms": 41
+ }
+]

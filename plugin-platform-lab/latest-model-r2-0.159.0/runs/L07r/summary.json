@@ -1,0 +1,22 @@
+{
+ "no-codex-on-path": {
+  "args": [
+   "codex",
+   "sol"
+  ],
+  "exit": 2,
+  "stdout": "",
+  "stderr": "latest-model: cannot run codex --version (FileNotFoundError)",
+  "elapsed_ms": 24
+ },
+ "empty-codex-home": {
+  "args": [
+   "codex",
+   "sol"
+  ],
+  "exit": 2,
+  "stdout": "",
+  "stderr": "latest-model: no models_cache.json in /var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l07r-empty-aq2zz9zt: catalog not refreshed (is codex logged in and online?)",
+  "elapsed_ms": 47
+ }
+}

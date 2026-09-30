@@ -1,0 +1,204 @@
+{
+ "live": [
+  {
+   "exit": 0,
+   "elapsed_ms": 16,
+   "slugs": [
+    "gpt-6.1-sol",
+    "gpt-6-astra",
+    "gpt-6-sol",
+    "gpt-6-luna",
+    "gpt-reserve",
+    "gpt-5.6-sol",
+    "gpt-5.6-terra",
+    "gpt-5.6-luna",
+    "gpt-5.5",
+    "codex-auto-review"
+   ],
+   "newest": {
+    "astra": "gpt-6-astra",
+    "luna": "gpt-6-luna",
+    "sol": "gpt-6.1-sol",
+    "terra": "gpt-5.6-terra"
+   },
+   "cache_before": {
+    "fetched_at": "2026-09-30T02:46:15.387266Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\"",
+    "client_version": "0.159.0"
+   },
+   "cache_after": {
+    "fetched_at": "2026-09-30T02:46:15.387266Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\"",
+    "client_version": "0.159.0"
+   },
+   "cache_slugs_equal_output": true
+  },
+  {
+   "exit": 0,
+   "elapsed_ms": 15,
+   "slugs": [
+    "gpt-6.1-sol",
+    "gpt-6-astra",
+    "gpt-6-sol",
+    "gpt-6-luna",
+    "gpt-reserve",
+    "gpt-5.6-sol",
+    "gpt-5.6-terra",
+    "gpt-5.6-luna",
+    "gpt-5.5",
+    "codex-auto-review"
+   ],
+   "newest": {
+    "astra": "gpt-6-astra",
+    "luna": "gpt-6-luna",
+    "sol": "gpt-6.1-sol",
+    "terra": "gpt-5.6-terra"
+   },
+   "cache_before": {
+    "fetched_at": "2026-09-30T02:46:15.387266Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\"",
+    "client_version": "0.159.0"
+   },
+   "cache_after": {
+    "fetched_at": "2026-09-30T02:46:15.387266Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\"",
+    "client_version": "0.159.0"
+   },
+   "cache_slugs_equal_output": true
+  },
+  {
+   "exit": 0,
+   "elapsed_ms": 14,
+   "slugs": [
+    "gpt-6.1-sol",
+    "gpt-6-astra",
+    "gpt-6-sol",
+    "gpt-6-luna",
+    "gpt-reserve",
+    "gpt-5.6-sol",
+    "gpt-5.6-terra",
+    "gpt-5.6-luna",
+    "gpt-5.5",
+    "codex-auto-review"
+   ],
+   "newest": {
+    "astra": "gpt-6-astra",
+    "luna": "gpt-6-luna",
+    "sol": "gpt-6.1-sol",
+    "terra": "gpt-5.6-terra"
+   },
+   "cache_before": {
+    "fetched_at": "2026-09-30T02:46:15.387266Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\"",
+    "client_version": "0.159.0"
+   },
+   "cache_after": {
+    "fetched_at": "2026-09-30T02:46:15.387266Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\"",
+    "client_version": "0.159.0"
+   },
+   "cache_slugs_equal_output": true
+  }
+ ],
+ "bundled": [
+  {
+   "exit": 0,
+   "elapsed_ms": 10,
+   "slugs": [
+    "gpt-6-astra",
+    "gpt-6-sol",
+    "gpt-6-luna",
+    "gpt-5.6-sol",
+    "gpt-5.6-terra",
+    "gpt-5.6-luna",
+    "gpt-daybreak-blue-latest",
+    "gpt-daybreak-red-latest",
+    "gpt-5.5",
+    "codex-auto-review"
+   ],
+   "newest": {
+    "astra": "gpt-6-astra",
+    "luna": "gpt-6-luna",
+    "sol": "gpt-6-sol",
+    "terra": "gpt-5.6-terra"
+   },
+   "cache_before": {
+    "fetched_at": "2026-09-30T02:46:15.387266Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\"",
+    "client_version": "0.159.0"
+   },
+   "cache_after": {
+    "fetched_at": "2026-09-30T02:46:15.387266Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\"",
+    "client_version": "0.159.0"
+   },
+   "cache_slugs_equal_output": false
+  },
+  {
+   "exit": 0,
+   "elapsed_ms": 9,
+   "slugs": [
+    "gpt-6-astra",
+    "gpt-6-sol",
+    "gpt-6-luna",
+    "gpt-5.6-sol",
+    "gpt-5.6-terra",
+    "gpt-5.6-luna",
+    "gpt-daybreak-blue-latest",
+    "gpt-daybreak-red-latest",
+    "gpt-5.5",
+    "codex-auto-review"
+   ],
+   "newest": {
+    "astra": "gpt-6-astra",
+    "luna": "gpt-6-luna",
+    "sol": "gpt-6-sol",
+    "terra": "gpt-5.6-terra"
+   },
+   "cache_before": {
+    "fetched_at": "2026-09-30T02:46:15.387266Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\"",
+    "client_version": "0.159.0"
+   },
+   "cache_after": {
+    "fetched_at": "2026-09-30T02:46:15.387266Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\"",
+    "client_version": "0.159.0"
+   },
+   "cache_slugs_equal_output": false
+  },
+  {
+   "exit": 0,
+   "elapsed_ms": 10,
+   "slugs": [
+    "gpt-6-astra",
+    "gpt-6-sol",
+    "gpt-6-luna",
+    "gpt-5.6-sol",
+    "gpt-5.6-terra",
+    "gpt-5.6-luna",
+    "gpt-daybreak-blue-latest",
+    "gpt-daybreak-red-latest",
+    "gpt-5.5",
+    "codex-auto-review"
+   ],
+   "newest": {
+    "astra": "gpt-6-astra",
+    "luna": "gpt-6-luna",
+    "sol": "gpt-6-sol",
+    "terra": "gpt-5.6-terra"
+   },
+   "cache_before": {
+    "fetched_at": "2026-09-30T02:46:15.387266Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\"",
+    "client_version": "0.159.0"
+   },
+   "cache_after": {
+    "fetched_at": "2026-09-30T02:46:15.387266Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\"",
+    "client_version": "0.159.0"
+   },
+   "cache_slugs_equal_output": false
+  }
+ ]
+}

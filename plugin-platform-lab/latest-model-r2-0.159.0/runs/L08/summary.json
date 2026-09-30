@@ -1,0 +1,38 @@
+{
+ "a-fresh-sandboxed": {
+  "args": [
+   "codex",
+   "sol"
+  ],
+  "exit": 0,
+  "stdout": "gpt-6.1-sol",
+  "stderr": "",
+  "elapsed_ms": 68,
+  "cache_fetched_at_before": "2026-09-30T03:09:59.409661Z",
+  "cache_fetched_at_after": "2026-09-30T03:09:59.409661Z"
+ },
+ "b-stale-sandboxed": {
+  "args": [
+   "codex",
+   "sol"
+  ],
+  "exit": 2,
+  "stdout": "",
+  "stderr": "latest-model: Codex model cache age 600.0s exceeds limit 315s in /var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l08-4z22u_33/b-stale-sandboxed/models_cache.json: catalog not refreshed (is codex logged in and online?)",
+  "elapsed_ms": 3005,
+  "cache_fetched_at_before": "2026-09-30T03:01:25.776377Z",
+  "cache_fetched_at_after": "2026-09-30T03:01:25.776377Z"
+ },
+ "c-stale-unsandboxed": {
+  "args": [
+   "codex",
+   "sol"
+  ],
+  "exit": 0,
+  "stdout": "gpt-6.1-sol",
+  "stderr": "",
+  "elapsed_ms": 657,
+  "cache_fetched_at_before": "2026-09-30T03:01:28.788995Z",
+  "cache_fetched_at_after": "2026-09-30T03:11:29.431972Z"
+ }
+}

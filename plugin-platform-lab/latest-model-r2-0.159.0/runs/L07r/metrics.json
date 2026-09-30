@@ -1,0 +1,26 @@
+[
+ {
+  "label": "01-no-codex",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-r2-0.159.0/subject/latest-model.py",
+   "codex",
+   "sol"
+  ],
+  "cwd": null,
+  "exit": 2,
+  "elapsed_ms": 24
+ },
+ {
+  "label": "02-empty-home",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-r2-0.159.0/subject/latest-model.py",
+   "codex",
+   "sol"
+  ],
+  "cwd": null,
+  "exit": 2,
+  "elapsed_ms": 47
+ }
+]

@@ -1,0 +1,34 @@
+{
+ "a-env": {
+  "claude_exit": 0,
+  "model_usage": [
+   "claude-haiku-4-5-20251001"
+  ],
+  "resolver": {
+   "args": [
+    "claude",
+    "sonnet"
+   ],
+   "exit": 2,
+   "stdout": "",
+   "stderr": "latest-model: ANTHROPIC_DEFAULT_SONNET_MODEL is set in the process environment",
+   "elapsed_ms": 44
+  }
+ },
+ "b-project-settings": {
+  "claude_exit": 0,
+  "model_usage": [
+   "claude-haiku-4-5-20251001"
+  ],
+  "resolver": {
+   "args": [
+    "claude",
+    "sonnet"
+   ],
+   "exit": 2,
+   "stdout": "",
+   "stderr": "latest-model: ANTHROPIC_DEFAULT_SONNET_MODEL is set in /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l06-q0ayli5r/project/.claude/settings.json",
+   "elapsed_ms": 41
+  }
+ }
+}

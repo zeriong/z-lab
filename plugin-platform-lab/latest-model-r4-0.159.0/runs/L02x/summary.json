@@ -1,0 +1,724 @@
+{
+ "warm_exit": 0,
+ "calls": [
+  {
+   "i": 0,
+   "start": 1790739589.545409,
+   "end": 1790739589.56087,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 24.409,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 1,
+   "start": 1790739599.550905,
+   "end": 1790739599.570478,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 34.414,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 2,
+   "start": 1790739609.549311,
+   "end": 1790739609.566742,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 44.413,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 3,
+   "start": 1790739619.549215,
+   "end": 1790739619.596267,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 54.413,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 4,
+   "start": 1790739629.552414,
+   "end": 1790739629.592053,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 64.416,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 5,
+   "start": 1790739639.551081,
+   "end": 1790739639.5995572,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 74.415,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 6,
+   "start": 1790739649.5512378,
+   "end": 1790739649.596815,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 84.415,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 7,
+   "start": 1790739659.552634,
+   "end": 1790739659.578363,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 94.416,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 8,
+   "start": 1790739669.551578,
+   "end": 1790739669.595969,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 104.415,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 9,
+   "start": 1790739679.5500212,
+   "end": 1790739679.5856261,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 114.414,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 10,
+   "start": 1790739689.555061,
+   "end": 1790739689.6048949,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 124.419,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 11,
+   "start": 1790739699.551859,
+   "end": 1790739699.592114,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 134.415,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 12,
+   "start": 1790739709.553028,
+   "end": 1790739709.594468,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 144.417,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 13,
+   "start": 1790739719.551952,
+   "end": 1790739719.573729,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 154.415,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 14,
+   "start": 1790739729.550976,
+   "end": 1790739729.586588,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 164.415,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 15,
+   "start": 1790739739.5544782,
+   "end": 1790739739.598489,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 174.418,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 16,
+   "start": 1790739749.552897,
+   "end": 1790739749.592035,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 184.416,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 17,
+   "start": 1790739759.5525131,
+   "end": 1790739759.57495,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 194.416,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 18,
+   "start": 1790739769.551003,
+   "end": 1790739769.597256,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 204.415,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 19,
+   "start": 1790739779.5544,
+   "end": 1790739779.583987,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 214.418,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 20,
+   "start": 1790739789.556833,
+   "end": 1790739789.601521,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 224.42,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 21,
+   "start": 1790739799.556301,
+   "end": 1790739799.6071832,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 234.42,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 22,
+   "start": 1790739809.5514162,
+   "end": 1790739809.58096,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 244.415,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 23,
+   "start": 1790739819.553997,
+   "end": 1790739819.600814,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 254.418,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 24,
+   "start": 1790739829.554163,
+   "end": 1790739829.602823,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 264.418,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 25,
+   "start": 1790739839.5549152,
+   "end": 1790739839.587242,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 274.418,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 26,
+   "start": 1790739849.558004,
+   "end": 1790739849.607321,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 284.422,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 27,
+   "start": 1790739859.557468,
+   "end": 1790739859.60121,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "start_age_s": 294.421,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 28,
+   "start": 1790739869.552978,
+   "end": 1790739869.948677,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:39:25.136459Z",
+    "etag": "W/\"b290c63b28ed1d9ea743942886121a1c\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 304.417,
+   "refreshed": true,
+   "served": false
+  },
+  {
+   "i": 29,
+   "start": 1790739879.558209,
+   "end": 1790739879.6056142,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 9.623,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 30,
+   "start": 1790739889.551289,
+   "end": 1790739889.5690281,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 19.616,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 31,
+   "start": 1790739899.554034,
+   "end": 1790739899.596659,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 29.618,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 32,
+   "start": 1790739909.558162,
+   "end": 1790739909.601253,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 39.623,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 33,
+   "start": 1790739919.554365,
+   "end": 1790739919.59585,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 49.619,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 34,
+   "start": 1790739929.557058,
+   "end": 1790739929.599892,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 59.621,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 35,
+   "start": 1790739939.5584261,
+   "end": 1790739939.605084,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 69.623,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 36,
+   "start": 1790739949.5569239,
+   "end": 1790739949.5936818,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 79.621,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 37,
+   "start": 1790739959.556304,
+   "end": 1790739959.5980859,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 89.621,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 38,
+   "start": 1790739969.55713,
+   "end": 1790739969.575477,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 99.622,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 39,
+   "start": 1790739979.558133,
+   "end": 1790739979.598345,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 109.623,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 40,
+   "start": 1790739989.554461,
+   "end": 1790739989.596776,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 119.619,
+   "refreshed": false,
+   "served": true
+  },
+  {
+   "i": 41,
+   "start": 1790739999.553938,
+   "end": 1790739999.5738251,
+   "exit": 0,
+   "before": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "after": {
+    "fetched_at": "2026-09-30T03:44:29.935596Z",
+    "etag": "W/\"9750bf716c17a71542ebce870454f688\""
+   },
+   "start_age_s": 129.618,
+   "refreshed": false,
+   "served": true
+  }
+ ],
+ "largest_age_served_s": 294.421,
+ "smallest_age_refreshed_s": 304.417,
+ "refreshes_by_our_calls": 1,
+ "external_writes_before_call": [],
+ "real_auth_unchanged": true
+}

@@ -1,0 +1,41 @@
+{
+ "a-empty": {
+  "live_exit": 0,
+  "live_equals_bundled": true,
+  "live_equals_copied_cache": null,
+  "live_has_gpt-6.1-sol": false,
+  "cache_before": {
+   "exists": false,
+   "sha256": null,
+   "fetched_at": null
+  },
+  "cache_after": {
+   "exists": false,
+   "sha256": null,
+   "fetched_at": null
+  },
+  "files_after": [
+   "tmp"
+  ]
+ },
+ "b-stale-cache": {
+  "live_exit": 0,
+  "live_equals_bundled": true,
+  "live_equals_copied_cache": false,
+  "live_has_gpt-6.1-sol": false,
+  "cache_before": {
+   "exists": true,
+   "sha256": "95887d032d462861c8b9e19a69fa61fe0315dbcee81b42c330061dae1de23704",
+   "fetched_at": "2026-09-28T02:46:15.387266Z"
+  },
+  "cache_after": {
+   "exists": true,
+   "sha256": "95887d032d462861c8b9e19a69fa61fe0315dbcee81b42c330061dae1de23704",
+   "fetched_at": "2026-09-28T02:46:15.387266Z"
+  },
+  "files_after": [
+   "models_cache.json",
+   "tmp"
+  ]
+ }
+}

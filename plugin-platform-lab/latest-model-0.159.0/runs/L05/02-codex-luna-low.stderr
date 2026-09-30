@@ -1,0 +1,24 @@
+Reading additional input from stdin...
+OpenAI Codex v0.159.0
+--------
+workdir: /Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed
+model: gpt-6-luna
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: low
+reasoning summaries: none
+session id: 01a0f035-05cf-7e50-a712-a60d95c6981d
+--------
+user
+Reply with the single word OK.
+hook: SessionStart
+hook: SessionStart Completed
+hook: UserPromptSubmit
+hook: UserPromptSubmit Completed
+codex
+OK
+hook: Stop
+hook: Stop Completed
+tokens used
+3,243

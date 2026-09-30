@@ -1,0 +1,52 @@
+[
+ {
+  "requested": "gpt-6.1-sol",
+  "effort": "low",
+  "exit": 0,
+  "header_model": "gpt-6.1-sol",
+  "tokens_used": 2655,
+  "elapsed_ms": 6319
+ },
+ {
+  "requested": "gpt-6-luna",
+  "effort": "low",
+  "exit": 0,
+  "header_model": "gpt-6-luna",
+  "tokens_used": 3243,
+  "elapsed_ms": 8816
+ },
+ {
+  "requested": "gpt-6-astra",
+  "effort": "low",
+  "exit": 0,
+  "header_model": "gpt-6-astra",
+  "tokens_used": 2591,
+  "elapsed_ms": 5998
+ },
+ {
+  "requested": "gpt-6.1-sol",
+  "effort": "xhigh",
+  "exit": 0,
+  "header_model": "gpt-6.1-sol",
+  "tokens_used": 2681,
+  "elapsed_ms": 8667
+ },
+ {
+  "requested": "opus",
+  "exit": 0,
+  "model_usage": [
+   "claude-opus-5-5"
+  ],
+  "result": "OK",
+  "elapsed_ms": 6299
+ },
+ {
+  "requested": "sonnet",
+  "exit": 0,
+  "model_usage": [
+   "claude-sonnet-5-5"
+  ],
+  "result": "OK",
+  "elapsed_ms": 5136
+ }
+]

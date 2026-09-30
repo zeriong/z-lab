@@ -21,3 +21,10 @@
 - Evidence: [P06/P07](v0.158.0/codex-rereview.md).
 - Observation: happy-path regression success missed filename handling and reusable configuration defects.
 - Correction: add adversarial source fixtures and keep direct runtime/installation evidence separate from document consistency checks.
+
+## Newest model per family (Codex 0.159.0)
+
+- Evidence: [version analysis](v0.159.0/latest-model.md) (L01–L09, L02x).
+- Observation: a pinned slug kept `gpt-6-sol` while `gpt-6.1-sol` was listed; exit status cannot prove a catalog refresh.
+- Action: shared resolver with cache verification, alias-override refusal and stop-on-failure.
+- Remaining measurement: Linux/WSL, other Claude override channels, access-restricted models.

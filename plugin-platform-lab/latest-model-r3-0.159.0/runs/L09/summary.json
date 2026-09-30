@@ -1,0 +1,12 @@
+{
+ "inside-sandbox": {
+  "exit": 1,
+  "stdout": "URLError <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+  "elapsed_ms": 62
+ },
+ "outside": {
+  "exit": 1,
+  "stdout": "HTTPError HTTP Error 403: Forbidden",
+  "elapsed_ms": 74
+ }
+}

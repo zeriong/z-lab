@@ -1,0 +1,160 @@
+[
+ {
+  "args": [
+   "codex",
+   "sol"
+  ],
+  "exit": 0,
+  "stdout": "gpt-6.1-sol",
+  "stderr": "",
+  "elapsed_ms": 49
+ },
+ {
+  "args": [
+   "codex",
+   "luna"
+  ],
+  "exit": 0,
+  "stdout": "gpt-6-luna",
+  "stderr": "",
+  "elapsed_ms": 47
+ },
+ {
+  "args": [
+   "codex",
+   "astra"
+  ],
+  "exit": 0,
+  "stdout": "gpt-6-astra",
+  "stderr": "",
+  "elapsed_ms": 48
+ },
+ {
+  "args": [
+   "codex",
+   "terra"
+  ],
+  "exit": 0,
+  "stdout": "gpt-5.6-terra",
+  "stderr": "",
+  "elapsed_ms": 50
+ },
+ {
+  "args": [
+   "codex",
+   "gpt-6-sol"
+  ],
+  "exit": 0,
+  "stdout": "gpt-6.1-sol",
+  "stderr": "latest-model: raised gpt-6-sol to gpt-6.1-sol (newest sol)",
+  "elapsed_ms": 49
+ },
+ {
+  "args": [
+   "codex",
+   "gpt-5.6-luna"
+  ],
+  "exit": 0,
+  "stdout": "gpt-6-luna",
+  "stderr": "latest-model: raised gpt-5.6-luna to gpt-6-luna (newest luna)",
+  "elapsed_ms": 50
+ },
+ {
+  "args": [
+   "codex",
+   "gpt-5.5"
+  ],
+  "exit": 2,
+  "stdout": "",
+  "stderr": "latest-model: invalid Codex family or model id: gpt-5.5",
+  "elapsed_ms": 23
+ },
+ {
+  "args": [
+   "codex",
+   "o3"
+  ],
+  "exit": 2,
+  "stdout": "",
+  "stderr": "latest-model: invalid Codex family or model id: o3",
+  "elapsed_ms": 22
+ },
+ {
+  "args": [
+   "codex",
+   "sol",
+   "--effort",
+   "xhigh"
+  ],
+  "exit": 0,
+  "stdout": "gpt-6.1-sol",
+  "stderr": "",
+  "elapsed_ms": 52
+ },
+ {
+  "args": [
+   "codex",
+   "luna",
+   "--effort",
+   "ultra"
+  ],
+  "exit": 3,
+  "stdout": "",
+  "stderr": "latest-model: effort ultra is not supported by gpt-6-luna",
+  "elapsed_ms": 50
+ },
+ {
+  "args": [
+   "claude",
+   "opus"
+  ],
+  "exit": 0,
+  "stdout": "opus",
+  "stderr": "",
+  "elapsed_ms": 23
+ },
+ {
+  "args": [
+   "claude",
+   "sonnet"
+  ],
+  "exit": 0,
+  "stdout": "sonnet",
+  "stderr": "",
+  "elapsed_ms": 22
+ },
+ {
+  "args": [
+   "claude",
+   "claude-opus-5-5"
+  ],
+  "exit": 0,
+  "stdout": "opus",
+  "stderr": "latest-model: raised claude-opus-5-5 to opus (newest opus)",
+  "elapsed_ms": 22
+ },
+ {
+  "args": [
+   "claude",
+   "opus",
+   "--effort",
+   "xhigh"
+  ],
+  "exit": 0,
+  "stdout": "opus",
+  "stderr": "",
+  "elapsed_ms": 22
+ },
+ {
+  "args": [
+   "claude",
+   "opus",
+   "--effort",
+   "ultra"
+  ],
+  "exit": 3,
+  "stdout": "",
+  "stderr": "latest-model: effort ultra is not supported by Claude opus",
+  "elapsed_ms": 22
+ }
+]

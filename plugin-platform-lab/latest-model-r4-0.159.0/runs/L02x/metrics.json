@@ -1,0 +1,475 @@
+[
+ {
+  "label": "01-warm",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 16
+ },
+ {
+  "label": "02-call00",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 15
+ },
+ {
+  "label": "03-call01",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 19
+ },
+ {
+  "label": "04-call02",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 17
+ },
+ {
+  "label": "05-call03",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 46
+ },
+ {
+  "label": "06-call04",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 39
+ },
+ {
+  "label": "07-call05",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 47
+ },
+ {
+  "label": "08-call06",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 42
+ },
+ {
+  "label": "09-call07",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 25
+ },
+ {
+  "label": "10-call08",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 41
+ },
+ {
+  "label": "11-call09",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 32
+ },
+ {
+  "label": "12-call10",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 44
+ },
+ {
+  "label": "13-call11",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 39
+ },
+ {
+  "label": "14-call12",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 40
+ },
+ {
+  "label": "15-call13",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 21
+ },
+ {
+  "label": "16-call14",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 33
+ },
+ {
+  "label": "17-call15",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 43
+ },
+ {
+  "label": "18-call16",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 36
+ },
+ {
+  "label": "19-call17",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 22
+ },
+ {
+  "label": "20-call18",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 45
+ },
+ {
+  "label": "21-call19",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 28
+ },
+ {
+  "label": "22-call20",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 43
+ },
+ {
+  "label": "23-call21",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 47
+ },
+ {
+  "label": "24-call22",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 27
+ },
+ {
+  "label": "25-call23",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 46
+ },
+ {
+  "label": "26-call24",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 43
+ },
+ {
+  "label": "27-call25",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 28
+ },
+ {
+  "label": "28-call26",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 44
+ },
+ {
+  "label": "29-call27",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 42
+ },
+ {
+  "label": "30-call28",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 393
+ },
+ {
+  "label": "31-call29",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 44
+ },
+ {
+  "label": "32-call30",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 17
+ },
+ {
+  "label": "33-call31",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 41
+ },
+ {
+  "label": "34-call32",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 40
+ },
+ {
+  "label": "35-call33",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 38
+ },
+ {
+  "label": "36-call34",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 42
+ },
+ {
+  "label": "37-call35",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 45
+ },
+ {
+  "label": "38-call36",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 36
+ },
+ {
+  "label": "39-call37",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 38
+ },
+ {
+  "label": "40-call38",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 18
+ },
+ {
+  "label": "41-call39",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 39
+ },
+ {
+  "label": "42-call40",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 37
+ },
+ {
+  "label": "43-call41",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 19
+ }
+]

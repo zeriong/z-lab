@@ -1,0 +1,48 @@
+[
+ {
+  "label": "01-a-empty-live",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 15
+ },
+ {
+  "label": "02-a-empty-bundled",
+  "argv": [
+   "codex",
+   "debug",
+   "models",
+   "--bundled"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 10
+ },
+ {
+  "label": "03-b-stale-cache-live",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 15
+ },
+ {
+  "label": "04-b-stale-cache-bundled",
+  "argv": [
+   "codex",
+   "debug",
+   "models",
+   "--bundled"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 11
+ }
+]

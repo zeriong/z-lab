@@ -1,0 +1,42 @@
+[
+ {
+  "label": "01-a-fresh-sandboxed",
+  "argv": [
+   "codex",
+   "sandbox",
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-r2-0.159.0/subject/latest-model.py",
+   "codex",
+   "sol"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 68
+ },
+ {
+  "label": "02-b-stale-sandboxed",
+  "argv": [
+   "codex",
+   "sandbox",
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-r2-0.159.0/subject/latest-model.py",
+   "codex",
+   "sol"
+  ],
+  "cwd": null,
+  "exit": 2,
+  "elapsed_ms": 3005
+ },
+ {
+  "label": "03-c-stale-unsandboxed",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-r2-0.159.0/subject/latest-model.py",
+   "codex",
+   "sol"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 657
+ }
+]

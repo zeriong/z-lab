@@ -1,0 +1,26 @@
+[
+ {
+  "label": "01-inside-sandbox",
+  "argv": [
+   "codex",
+   "sandbox",
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "-c",
+   "import urllib.request\ntry:\n    urllib.request.urlopen('https://chatgpt.com', timeout=5); print('reached')\nexcept Exception as exc:\n    print(type(exc).__name__, exc); raise SystemExit(1)\n"
+  ],
+  "cwd": null,
+  "exit": 1,
+  "elapsed_ms": 62
+ },
+ {
+  "label": "02-outside",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "-c",
+   "import urllib.request\ntry:\n    urllib.request.urlopen('https://chatgpt.com', timeout=5); print('reached')\nexcept Exception as exc:\n    print(type(exc).__name__, exc); raise SystemExit(1)\n"
+  ],
+  "cwd": null,
+  "exit": 1,
+  "elapsed_ms": 74
+ }
+]

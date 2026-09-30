@@ -1,0 +1,71 @@
+[
+ {
+  "label": "01-live1",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 16
+ },
+ {
+  "label": "02-live2",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 15
+ },
+ {
+  "label": "03-live3",
+  "argv": [
+   "codex",
+   "debug",
+   "models"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 14
+ },
+ {
+  "label": "04-bundled1",
+  "argv": [
+   "codex",
+   "debug",
+   "models",
+   "--bundled"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 10
+ },
+ {
+  "label": "05-bundled2",
+  "argv": [
+   "codex",
+   "debug",
+   "models",
+   "--bundled"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 9
+ },
+ {
+  "label": "06-bundled3",
+  "argv": [
+   "codex",
+   "debug",
+   "models",
+   "--bundled"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 10
+ }
+]

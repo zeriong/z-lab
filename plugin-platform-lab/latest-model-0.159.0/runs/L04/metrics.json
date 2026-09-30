@@ -1,0 +1,190 @@
+[
+ {
+  "label": "01-r01",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "codex",
+   "sol"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l04-project-11uz7zu1",
+  "exit": 0,
+  "elapsed_ms": 49
+ },
+ {
+  "label": "02-r02",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "codex",
+   "luna"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l04-project-11uz7zu1",
+  "exit": 0,
+  "elapsed_ms": 47
+ },
+ {
+  "label": "03-r03",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "codex",
+   "astra"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l04-project-11uz7zu1",
+  "exit": 0,
+  "elapsed_ms": 48
+ },
+ {
+  "label": "04-r04",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "codex",
+   "terra"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l04-project-11uz7zu1",
+  "exit": 0,
+  "elapsed_ms": 50
+ },
+ {
+  "label": "05-r05",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "codex",
+   "gpt-6-sol"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l04-project-11uz7zu1",
+  "exit": 0,
+  "elapsed_ms": 49
+ },
+ {
+  "label": "06-r06",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "codex",
+   "gpt-5.6-luna"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l04-project-11uz7zu1",
+  "exit": 0,
+  "elapsed_ms": 50
+ },
+ {
+  "label": "07-r07",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "codex",
+   "gpt-5.5"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l04-project-11uz7zu1",
+  "exit": 2,
+  "elapsed_ms": 23
+ },
+ {
+  "label": "08-r08",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "codex",
+   "o3"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l04-project-11uz7zu1",
+  "exit": 2,
+  "elapsed_ms": 22
+ },
+ {
+  "label": "09-r09",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "codex",
+   "sol",
+   "--effort",
+   "xhigh"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l04-project-11uz7zu1",
+  "exit": 0,
+  "elapsed_ms": 52
+ },
+ {
+  "label": "10-r10",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "codex",
+   "luna",
+   "--effort",
+   "ultra"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l04-project-11uz7zu1",
+  "exit": 3,
+  "elapsed_ms": 50
+ },
+ {
+  "label": "11-r11",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "claude",
+   "opus"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l04-project-11uz7zu1",
+  "exit": 0,
+  "elapsed_ms": 23
+ },
+ {
+  "label": "12-r12",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "claude",
+   "sonnet"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l04-project-11uz7zu1",
+  "exit": 0,
+  "elapsed_ms": 22
+ },
+ {
+  "label": "13-r13",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "claude",
+   "claude-opus-5-5"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l04-project-11uz7zu1",
+  "exit": 0,
+  "elapsed_ms": 22
+ },
+ {
+  "label": "14-r14",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "claude",
+   "opus",
+   "--effort",
+   "xhigh"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l04-project-11uz7zu1",
+  "exit": 0,
+  "elapsed_ms": 22
+ },
+ {
+  "label": "15-r15",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plugin-platform-lab/latest-model-0.159.0/subject/latest-model.py",
+   "claude",
+   "opus",
+   "--effort",
+   "ultra"
+  ],
+  "cwd": "/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l04-project-11uz7zu1",
+  "exit": 3,
+  "elapsed_ms": 22
+ }
+]

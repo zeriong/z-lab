@@ -1,0 +1,32 @@
+{
+ "a-env": {
+  "args": [
+   "claude",
+   "sonnet"
+  ],
+  "exit": 2,
+  "stdout": "",
+  "stderr": "latest-model: ANTHROPIC_DEFAULT_SONNET_MODEL is set in the process environment",
+  "elapsed_ms": 23
+ },
+ "b-project-settings": {
+  "args": [
+   "claude",
+   "sonnet"
+  ],
+  "exit": 2,
+  "stdout": "",
+  "stderr": "latest-model: ANTHROPIC_DEFAULT_SONNET_MODEL is set in /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l06r-dmass51z/project/.claude/settings.json",
+  "elapsed_ms": 22
+ },
+ "c-invalid-settings": {
+  "args": [
+   "claude",
+   "sonnet"
+  ],
+  "exit": 2,
+  "stdout": "",
+  "stderr": "latest-model: cannot read Claude settings file /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/l06r-dmass51z/project/.claude/settings.json: Expecting property name enclosed in double quotes (line 1, column 17)",
+  "elapsed_ms": 22
+ }
+}
