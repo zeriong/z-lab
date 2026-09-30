@@ -1,0 +1,1 @@
+{"session_id":"<run-id>","turn_id":"<run-id>","transcript_path":null,"cwd":"<temp-root>/bin-hook-diagnostic-8cvxlmyu","hook_event_name":"UserPromptSubmit","model":"gpt-6-astra","permission_mode":"bypassPermissions","prompt":"List any claude-x-codex mode note injected before this message. Do not use tools. If none, say ABSENT."}

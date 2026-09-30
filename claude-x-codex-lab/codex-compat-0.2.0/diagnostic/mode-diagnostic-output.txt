@@ -1,0 +1,4 @@
+[claude-x-codex: ON] For implementation work in this prompt, use the
+`claude-x-codex:run` skill (start at its "Mode gate"). Questions, explanations and
+trivial edits may be handled directly — say so in one line. The user can turn this
+off with the `claude-x-codex:mode` skill (argument: off).

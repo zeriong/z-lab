@@ -31,3 +31,9 @@
 
 Claude Code 플러그인 시스템 자체의 사실(훅 자동 로드, 이름 변경, `disable-model-invocation`)은
 [`../../plugin-platform-lab/`](../../plugin-platform-lab/) 에 있다.
+
+- [Codex compatibility 0.2.0](v0.2.0/codex-compatibility.md)
+
+- [Codex setting parity 0.2.0](v0.2.0/codex-setting-parity.md)
+
+- [Codex re-review 0.2.0](v0.2.0/codex-rereview.md)

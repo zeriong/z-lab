@@ -1,0 +1,1 @@
+["codex", "exec", "--ignore-user-config", "--ephemeral", "--json", "--dangerously-bypass-hook-trust", "-s", "read-only", "-c", "features.hooks=true", "-c", "hooks.UserPromptSubmit=[{hooks=[{type=\"command\",command=\"bash \\\"<repo>/plugins/claude-x-codex/hooks/mode-context.sh\\\"\"}]}]", "-C", "<fixture>", "-"]

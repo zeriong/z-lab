@@ -36,3 +36,24 @@
 | 12 | 첫 호출의 cache_creation 이상치(env X09 r1, platform P05 r1) | 원인 미상. `--tools` 의 대형 주입(C01)과 같은 것인지 |
 | 13 | Orca 워커는 한 번도 띄우지 않았다 | 사용자 승인 후 read-only 리뷰어 불가(O01)와 worktree setup을 실제로 |
 | 14 | rev3는 Codex 단계를 다시 돌리지 않았다 | 사용자의 Codex 계정 확인 후 R12 전체를 최종 형태로 재실행 |
+
+
+## Codex compatibility 0.2.0
+
+- Evidence: [version analysis](v0.2.0/codex-compatibility.md).
+- Observation: discovery alone did not translate host tool APIs, paths or hook delivery.
+- Action: share core definitions, add host adapters and verify runtime behavior.
+- Decision: preserve existing Claude semantics; do not replace panel models based on this smoke test.
+- Remaining measurement: complete browser/mobile and broader project coverage; no claim yet.
+
+## Codex setting parity 0.2.0
+
+- Evidence and decisions: [version analysis](v0.2.0/codex-setting-parity.md).
+- State: local implementation and the scoped verification are complete; no publication.
+- Further measurements: broader end-to-end browser/device coverage and alternate-model dispatch; no quality equivalence claim.
+
+## Codex re-review 0.2.0
+
+- Evidence: [version findings](v0.2.0/codex-rereview.md) (C07, C08).
+- Correction: apply the tested fixes while retaining shared host contracts.
+- Remaining scope: platform/device matrices and model quality are not established by these scoped probes.

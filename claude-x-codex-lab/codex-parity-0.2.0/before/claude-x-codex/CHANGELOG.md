@@ -1,0 +1,15 @@
+# Changelog
+
+## [0.2.0] - 2026-09-29
+
+### Changed
+
+- Codex packaging and explicit mode invocation policy; emit structured prompt-hook context on both hosts, audit Codex hooks and uncommitted context, and resolve scripts from the installed skill path.
+
+### Why
+
+Codex invoked the plain-text hook without delivering its context; structured additionalContext reached both Codex and Claude.
+
+Evidence: z-lab `claude-x-codex-lab/codex-compat-0.2.0/` and `codex-mode-json-0.2.0/` (C01–C04). Compatibility checks cover the recorded fixtures, not
+comparative model quality or every browser/device environment.
+

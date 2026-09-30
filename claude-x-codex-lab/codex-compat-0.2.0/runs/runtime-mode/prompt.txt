@@ -1,0 +1,1 @@
+Without using tools, report whether the injected context contains [claude-x-codex: ON]. Reply only ON_PRESENT or ABSENT. This is a question, not an implementation task.

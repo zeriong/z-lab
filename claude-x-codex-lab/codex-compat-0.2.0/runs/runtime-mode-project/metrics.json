@@ -1,0 +1,14 @@
+{
+  "exit": 0,
+  "elapsed_ms": 5769,
+  "usage": [
+    {
+      "input_tokens": 14921,
+      "cached_input_tokens": 12288,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 45,
+      "reasoning_output_tokens": 37
+    }
+  ],
+  "real_commit_created": false
+}

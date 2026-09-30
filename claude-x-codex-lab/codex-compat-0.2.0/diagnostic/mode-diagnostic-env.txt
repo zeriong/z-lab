@@ -1,0 +1,1 @@
+cwd=<temp-root>/bin-hook-diagnostic-8cvxlmyu CXC_MODE=on CLAUDE_PLUGIN_ROOT=<repo>/plugins/claude-x-codex
