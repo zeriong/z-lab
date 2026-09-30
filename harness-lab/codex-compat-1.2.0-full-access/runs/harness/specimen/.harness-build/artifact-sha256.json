@@ -1,0 +1,9 @@
+{
+  ".codex/hooks/inject-context.sh": "5e9bbaba35aa55dcd2c9240f3e12e0d0781f34b197b1381662fee2c441675c3d",
+  ".codex/hooks.json": "ea740cd301741e58c2fca580335880bcdfb1c082be47574527122c13e0e05f62",
+  ".codex/scripts/review-gate.sh": "1b9c072bd42396a3a2581321282dee945ff9264a2163ef3453caa9126eb9c6d9",
+  ".agents/skills/harness-engineering/SKILL.md": "0ebb46705e373ef469d178b7e5a4b2fb6100d2dc6be764b8d41a1a907aaab785",
+  ".agents/skills/project-rules/SKILL.md": "007193f977e5eb13779ccb7b7347544c1eadc3cc53373fffdf8a4029d2bab483",
+  ".agents/skills/project-rules/references/no-literal-todo.md": "18aaa4deeb7dccf255d5d9361828622b863a6449a6782286a4561923dccf0ca8",
+  "docs/conventions/no-literal-todo.md": "e90294728d3dd3f12c597cc4cb52630242462c2f3de8dd6e781b40e85ddcf832"
+}

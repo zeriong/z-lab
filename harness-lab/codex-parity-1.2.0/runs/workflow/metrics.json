@@ -1,0 +1,18 @@
+{
+  "exit": 0,
+  "elapsed_ms": 125157,
+  "usage": [
+    {
+      "input_tokens": 112686,
+      "cached_input_tokens": 94720,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 3660,
+      "reasoning_output_tokens": 38
+    }
+  ],
+  "attempt": "one-shot",
+  "source_sha256": {
+    "workflow.md": "6289dd2e8560afaef1191984bc585f6c8ef8cfd99a86664e039b2f2ecf36f9dc",
+    "host-codex.md": "97e1ee74adadfc0a675c82b7a6734b81646ccb8c6108b98982103d327232d187"
+  }
+}

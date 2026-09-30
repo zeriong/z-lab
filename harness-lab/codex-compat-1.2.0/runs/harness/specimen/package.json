@@ -1,0 +1,1 @@
+{"name": "compat-fixture", "private": true, "type": "module", "scripts": {"lint": "node --check src/greet.js", "typecheck": "node --check src/greet.js"}}

@@ -1,0 +1,283 @@
+{
+  "test_fixture": "<temp-root>/harness-verification-lfyqgz9f",
+  "tests": [
+    {
+      "test": "gate shell syntax",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "test": "hook shell syntax",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "test": "clean refs-only",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "=== Rule: no-literal-todo (all src JavaScript) ===\nScanned 1 JavaScript file(s)\nResult: OK\n",
+      "stderr": ""
+    },
+    {
+      "test": "clean full npm checks",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "=== Rule: no-literal-todo (all src JavaScript) ===\nScanned 1 JavaScript file(s)\n=== npm run lint ===\n\n> lint\n> node --check src/greet.js\n\nlint: PASS (exit 0)\n=== npm run typecheck ===\n\n> typecheck\n> node --check src/greet.js\n\ntypecheck: PASS (exit 0)\nResult: OK\n",
+      "stderr": ""
+    },
+    {
+      "test": "rule selection",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "=== Rule: no-literal-todo (all src JavaScript) ===\nScanned 1 JavaScript file(s)\nResult: OK\n",
+      "stderr": ""
+    },
+    {
+      "test": "invalid mode",
+      "exit": 2,
+      "expected": 2,
+      "passed": true,
+      "stdout": "",
+      "stderr": "ERROR: invalid argument: --mode=bogus\n"
+    },
+    {
+      "test": "unknown rule",
+      "exit": 2,
+      "expected": 2,
+      "passed": true,
+      "stdout": "",
+      "stderr": "ERROR: invalid argument: --rule=bogus\n"
+    },
+    {
+      "test": "unknown argument",
+      "exit": 2,
+      "expected": 2,
+      "passed": true,
+      "stdout": "",
+      "stderr": "ERROR: invalid argument: --bogus\n"
+    },
+    {
+      "test": "subdirectory gate",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "=== Rule: no-literal-todo (all src JavaScript) ===\nScanned 1 JavaScript file(s)\nResult: OK\n",
+      "stderr": ""
+    },
+    {
+      "test": "normal hook from subdirectory",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"# Project Rules\\n\\n## §1 src JavaScript 파일의 리터럴 TODO 금지\\n- ID: no-literal-todo\\n- Severity: P2\\n- Gate: yes\\n- Source: user-recommended — 사용자 요청(request.txt:1).\\n- Evidence: src/greet.js:1은 현재 규칙을 준수한다.\\n- Reference: docs/conventions/no-literal-todo.md\\n- Detail: .agents/skills/project-rules/references/no-literal-todo.md\\n\\nsrc 아래 .js, .mjs, .cjs, .jsx 파일의 원문에서 대소문자가 정확히 일치하는 TODO 부분문자열을 금지한다.\\n주석과 문자열도 검사하며, 파일 추적 여부와 diff 유무에 관계없이 전체 범위를 검사한다.\\n다른 코드 규칙이나 advisory 규칙은 추가하지 않는다.\\n\\n# Harness Engineering\\n\\n0. **Intake:** 결과, 범위, 제약을 확인하고 이미 답한 내용을 재사용한다. npm, single package, lint=`npm run lint`, typecheck=`npm run typecheck`가 확정돼 있다. 우회 표시 요청이면 이 워크플로를 생략한다.\\n1. **Reconnaissance:** 영향 코드를 직접 읽고 사용처 및 같은 범위를 조사한다. 모든 사실에 file:line 근거를 기록한다. 현재 src/greet.js:1은 인사 문자열 생성, package.json:1은 검사 설정이다. 어떤 패치든 적용 후 이 단계로 복귀한다.\\n2. **Rules:** .agents/skills/project-rules/SKILL.md와 해당 references 및 docs/conventions/no-literal-todo.md를 읽는다. 유일한 gate 규칙은 사용자 요청에서 도출한 no-literal-todo(P2)이며 advisory는 없다. 근거 없는 규칙을 추가하지 않는다.\\n3. **Plan:** 확정한 결과를 만족하는 최소 변경과 성공 검사 방법을 정한다. 구현 전에 중요한 불확실성을 해소한다.\\n4. **Implement:** 근거가 있는 규칙에 따라 범위 안에서만 변경한다. 사용자 승인 없이 소스 보존 제약을 해제하지 않는다.\\n5. **Behavior checks:** 관련 기존 테스트를 실행하고 동작 변경 또는 회귀 위험에 필요한 검증을 추가한다. 현재 package.json:1에는 별도 테스트 명령이 없다. 실패와 근거를 기록하며 위반 샘플은 별도 폐기 픽스처에서만 만든다.\\n6. **Static checks:** npm run lint 및 npm run typecheck를 실행하고 실제 결과와 불가 항목을 기록한다. 현재 둘 다 node --check src/greet.js 구문 검사이며 의미적 타입 검사가 아니다(package.json:1).\\n7. **Documentation:** 영향을 받는 규칙 예시와 동작 문서를 갱신한다. 인용과 키워드 색인을 유지하며 실제 없는 위반을 꾸며내지 않는다.\\n8. **Review gate:** 아래 상태 기계를 실행한다.\\n9. **Final verification:** 최종 diff, 검사, 잔여 지적을 확인한다. 실행하지 못했거나 실패한 검사를 통과라 하지 않는다. 직접 훅 실행과 실제 런타임 자동 호출을 구분한다.\\n10. **Delivery:** 변경 내용, 검증 근거, 제한을 보고한다. 사용자 허가 없이는 커밋/게시하지 않는다. 현재 요청에서는 설치 패키지, stage, commit, push, 플러그인 소스/사용자 설정 변경을 하지 않는다.\\n\\n## Phase 8 상태 기계\\n1. `.codex/scripts/review-gate.sh --mode=full`을 실행한다. exit 0일 때 리뷰로 진행한다.\\n2. 메인 세션의 모델과 추론 강도를 상속하는 새 독립 읽기 전용 Codex 리뷰어 둘을 한 번씩 실행한다. 한 명은 규칙 도출/구조, 다른 한 명은 게이트/구현에 집중한다. 두 리뷰어 모두 동일한 전체 산출물 본문, git diff(미추적 파일 본문 포함), project-rules 본문, 탐지 위반을 받는다. 서로의 리뷰는 제공하지 않는다. 읽기/검사만 수행하며 패치를 적용하지 않는다.\\n3. 각 리뷰 결과는 엄격한 JSON `{\\\"findings\\\":[{\\\"severity\\\":\\\"P0|P1|P2|P3|P4\\\",\\\"file\\\":\\\"path\\\",\\\"line\\\":1,\\\"issue\\\":\\\"...\\\",\\\"suggested_fix\\\":\\\"...\\\"}]}`이다.\\n4. 메인은 두 결과와 게이트 출력을 종합하고 수정안을 SRP, 주석 명료성, KISS, DRY, YAGNI, 인지 용이성으로 평가한다. 어떤 수정이든 적용하면 Phase 1로 복귀하고 처음부터 재검증한다.\\n5. 최대 3회 리뷰/회귀 반복 후에도 통과하지 못하면 남은 문제, file:line 근거, 시도한 수정/결과, 구체적인 다음 조치를 보고하고 중단한다.\\n\\n## 생성 하네스 최종 리뷰 계약\\n빌드 시 직접 검증 이후에도 새 독립 Codex 리뷰어 둘이 전체 산출물 및 사실 근거를 검사한다.\\n각 결과 JSON에는 fact_check_misses[{rule,missing_citation}], gate_evasions[{rule,evasion}],\\nquality_scores{srp,comment_clarity,kiss,dry,yagni,cognitive_ease}(각 0–5),\\npatches_suggested[{file,change,why}] 및 점수의 evidence를 포함한다.\\n메인은 사실 근거 누락 0, 게이트 회피 0, 각 리뷰 품질 평균 3.5 이상을 확인한다.\\n지적 시 원인을 조사하고 수정을 여섯 축으로 평가하며 적용 후 Phase 1로 복귀한다. 최대 3회 제한을 유지한다.\\n실제 리뷰어 모델과 검사 결과를 보고한다. Codex 리뷰어를 Opus/Sonnet이라 부르지 않는다.\\n\\n## 훅 및 우회\\n.codex/hooks.json은 UserPromptSubmit을 .codex/hooks/inject-context.sh에 연결한다.\\n번들 주입 스크립트는 project-rules와 이 워크플로 본문을 주입한다.\\n`!` 접두사, `harness 빼고`, `without harness`, `skip harness`, `no harness` 요청은 BYPASS MODE 메모만 주입한다.\\n우회는 이 하네스 워크플로에만 적용되며 기존 AGENTS.md와 다른 훅/지시를 해제하지 않는다.\\n자동 주입은 프로젝트 및 정확한 훅 정의의 Codex 신뢰(`/hooks`)와 훅 활성화가 필요하다.\\n현재 런타임 신뢰는 대기 상태이며 전역 신뢰나 우회 설정을 변경하지 않는다. 직접 스크립트 검증은 자동 호출 증거가 아니다.\\n재설치 시 기존 .codex/hooks.json의 다른 키와 훅을 보존하여 병합하고 동일 명령을 중복 등록하지 않는다.\\n기존 AGENTS.md 및 Codex 설정은 보존한다.\"}}\n",
+      "stderr": ""
+    },
+    {
+      "test": "hook bypass !skip",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+      "stderr": ""
+    },
+    {
+      "test": "hook bypass   !hello",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+      "stderr": ""
+    },
+    {
+      "test": "hook bypass harness 빼고",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+      "stderr": ""
+    },
+    {
+      "test": "hook bypass without harness",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+      "stderr": ""
+    },
+    {
+      "test": "hook bypass skip harness",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+      "stderr": ""
+    },
+    {
+      "test": "hook bypass no harness",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+      "stderr": ""
+    },
+    {
+      "test": "invalid hook payload {",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "test": "invalid hook payload {\"prompt\":2}",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "test": "non-object JSON uses empty prompt per bundled source",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"# Project Rules\\n\\n## §1 src JavaScript 파일의 리터럴 TODO 금지\\n- ID: no-literal-todo\\n- Severity: P2\\n- Gate: yes\\n- Source: user-recommended — 사용자 요청(request.txt:1).\\n- Evidence: src/greet.js:1은 현재 규칙을 준수한다.\\n- Reference: docs/conventions/no-literal-todo.md\\n- Detail: .agents/skills/project-rules/references/no-literal-todo.md\\n\\nsrc 아래 .js, .mjs, .cjs, .jsx 파일의 원문에서 대소문자가 정확히 일치하는 TODO 부분문자열을 금지한다.\\n주석과 문자열도 검사하며, 파일 추적 여부와 diff 유무에 관계없이 전체 범위를 검사한다.\\n다른 코드 규칙이나 advisory 규칙은 추가하지 않는다.\\n\\n# Harness Engineering\\n\\n0. **Intake:** 결과, 범위, 제약을 확인하고 이미 답한 내용을 재사용한다. npm, single package, lint=`npm run lint`, typecheck=`npm run typecheck`가 확정돼 있다. 우회 표시 요청이면 이 워크플로를 생략한다.\\n1. **Reconnaissance:** 영향 코드를 직접 읽고 사용처 및 같은 범위를 조사한다. 모든 사실에 file:line 근거를 기록한다. 현재 src/greet.js:1은 인사 문자열 생성, package.json:1은 검사 설정이다. 어떤 패치든 적용 후 이 단계로 복귀한다.\\n2. **Rules:** .agents/skills/project-rules/SKILL.md와 해당 references 및 docs/conventions/no-literal-todo.md를 읽는다. 유일한 gate 규칙은 사용자 요청에서 도출한 no-literal-todo(P2)이며 advisory는 없다. 근거 없는 규칙을 추가하지 않는다.\\n3. **Plan:** 확정한 결과를 만족하는 최소 변경과 성공 검사 방법을 정한다. 구현 전에 중요한 불확실성을 해소한다.\\n4. **Implement:** 근거가 있는 규칙에 따라 범위 안에서만 변경한다. 사용자 승인 없이 소스 보존 제약을 해제하지 않는다.\\n5. **Behavior checks:** 관련 기존 테스트를 실행하고 동작 변경 또는 회귀 위험에 필요한 검증을 추가한다. 현재 package.json:1에는 별도 테스트 명령이 없다. 실패와 근거를 기록하며 위반 샘플은 별도 폐기 픽스처에서만 만든다.\\n6. **Static checks:** npm run lint 및 npm run typecheck를 실행하고 실제 결과와 불가 항목을 기록한다. 현재 둘 다 node --check src/greet.js 구문 검사이며 의미적 타입 검사가 아니다(package.json:1).\\n7. **Documentation:** 영향을 받는 규칙 예시와 동작 문서를 갱신한다. 인용과 키워드 색인을 유지하며 실제 없는 위반을 꾸며내지 않는다.\\n8. **Review gate:** 아래 상태 기계를 실행한다.\\n9. **Final verification:** 최종 diff, 검사, 잔여 지적을 확인한다. 실행하지 못했거나 실패한 검사를 통과라 하지 않는다. 직접 훅 실행과 실제 런타임 자동 호출을 구분한다.\\n10. **Delivery:** 변경 내용, 검증 근거, 제한을 보고한다. 사용자 허가 없이는 커밋/게시하지 않는다. 현재 요청에서는 설치 패키지, stage, commit, push, 플러그인 소스/사용자 설정 변경을 하지 않는다.\\n\\n## Phase 8 상태 기계\\n1. `.codex/scripts/review-gate.sh --mode=full`을 실행한다. exit 0일 때 리뷰로 진행한다.\\n2. 메인 세션의 모델과 추론 강도를 상속하는 새 독립 읽기 전용 Codex 리뷰어 둘을 한 번씩 실행한다. 한 명은 규칙 도출/구조, 다른 한 명은 게이트/구현에 집중한다. 두 리뷰어 모두 동일한 전체 산출물 본문, git diff(미추적 파일 본문 포함), project-rules 본문, 탐지 위반을 받는다. 서로의 리뷰는 제공하지 않는다. 읽기/검사만 수행하며 패치를 적용하지 않는다.\\n3. 각 리뷰 결과는 엄격한 JSON `{\\\"findings\\\":[{\\\"severity\\\":\\\"P0|P1|P2|P3|P4\\\",\\\"file\\\":\\\"path\\\",\\\"line\\\":1,\\\"issue\\\":\\\"...\\\",\\\"suggested_fix\\\":\\\"...\\\"}]}`이다.\\n4. 메인은 두 결과와 게이트 출력을 종합하고 수정안을 SRP, 주석 명료성, KISS, DRY, YAGNI, 인지 용이성으로 평가한다. 어떤 수정이든 적용하면 Phase 1로 복귀하고 처음부터 재검증한다.\\n5. 최대 3회 리뷰/회귀 반복 후에도 통과하지 못하면 남은 문제, file:line 근거, 시도한 수정/결과, 구체적인 다음 조치를 보고하고 중단한다.\\n\\n## 생성 하네스 최종 리뷰 계약\\n빌드 시 직접 검증 이후에도 새 독립 Codex 리뷰어 둘이 전체 산출물 및 사실 근거를 검사한다.\\n각 결과 JSON에는 fact_check_misses[{rule,missing_citation}], gate_evasions[{rule,evasion}],\\nquality_scores{srp,comment_clarity,kiss,dry,yagni,cognitive_ease}(각 0–5),\\npatches_suggested[{file,change,why}] 및 점수의 evidence를 포함한다.\\n메인은 사실 근거 누락 0, 게이트 회피 0, 각 리뷰 품질 평균 3.5 이상을 확인한다.\\n지적 시 원인을 조사하고 수정을 여섯 축으로 평가하며 적용 후 Phase 1로 복귀한다. 최대 3회 제한을 유지한다.\\n실제 리뷰어 모델과 검사 결과를 보고한다. Codex 리뷰어를 Opus/Sonnet이라 부르지 않는다.\\n\\n## 훅 및 우회\\n.codex/hooks.json은 UserPromptSubmit을 .codex/hooks/inject-context.sh에 연결한다.\\n번들 주입 스크립트는 project-rules와 이 워크플로 본문을 주입한다.\\n`!` 접두사, `harness 빼고`, `without harness`, `skip harness`, `no harness` 요청은 BYPASS MODE 메모만 주입한다.\\n우회는 이 하네스 워크플로에만 적용되며 기존 AGENTS.md와 다른 훅/지시를 해제하지 않는다.\\n자동 주입은 프로젝트 및 정확한 훅 정의의 Codex 신뢰(`/hooks`)와 훅 활성화가 필요하다.\\n현재 런타임 신뢰는 대기 상태이며 전역 신뢰나 우회 설정을 변경하지 않는다. 직접 스크립트 검증은 자동 호출 증거가 아니다.\\n재설치 시 기존 .codex/hooks.json의 다른 키와 훅을 보존하여 병합하고 동일 명령을 중복 등록하지 않는다.\\n기존 AGENTS.md 및 Codex 설정은 보존한다.\"}}\n",
+      "stderr": ""
+    },
+    {
+      "test": "violation 'untracked.js'",
+      "exit": 1,
+      "expected": 1,
+      "passed": true,
+      "stdout": "=== Rule: no-literal-todo (all src JavaScript) ===\nFAIL P2 no-literal-todo: src/untracked.js:1\nScanned 2 JavaScript file(s)\nResult: FAIL\n",
+      "stderr": ""
+    },
+    {
+      "test": "violation 'space name.mjs'",
+      "exit": 1,
+      "expected": 1,
+      "passed": true,
+      "stdout": "=== Rule: no-literal-todo (all src JavaScript) ===\nFAIL P2 no-literal-todo: src/space name.mjs:1\nScanned 2 JavaScript file(s)\nResult: FAIL\n",
+      "stderr": ""
+    },
+    {
+      "test": "violation 'newline\\nname.cjs'",
+      "exit": 1,
+      "expected": 1,
+      "passed": true,
+      "stdout": "=== Rule: no-literal-todo (all src JavaScript) ===\nFAIL P2 no-literal-todo: src/newline\nname.cjs:1\nScanned 2 JavaScript file(s)\nResult: FAIL\n",
+      "stderr": ""
+    },
+    {
+      "test": "violation 'view.jsx'",
+      "exit": 1,
+      "expected": 1,
+      "passed": true,
+      "stdout": "=== Rule: no-literal-todo (all src JavaScript) ===\nFAIL P2 no-literal-todo: src/view.jsx:1\nScanned 2 JavaScript file(s)\nResult: FAIL\n",
+      "stderr": ""
+    },
+    {
+      "test": "violation 'binary.js'",
+      "exit": 1,
+      "expected": 1,
+      "passed": true,
+      "stdout": "=== Rule: no-literal-todo (all src JavaScript) ===\nFAIL P2 no-literal-todo: src/binary.js:1\nScanned 2 JavaScript file(s)\nResult: FAIL\n",
+      "stderr": ""
+    },
+    {
+      "test": "symlink directory violation",
+      "exit": 1,
+      "expected": 1,
+      "passed": true,
+      "stdout": "=== Rule: no-literal-todo (all src JavaScript) ===\nFAIL P2 no-literal-todo: src/linked-dir/linked.js:1\nScanned 2 JavaScript file(s)\nResult: FAIL\n",
+      "stderr": ""
+    },
+    {
+      "test": "symlink file violation",
+      "exit": 1,
+      "expected": 1,
+      "passed": true,
+      "stdout": "=== Rule: no-literal-todo (all src JavaScript) ===\nFAIL P2 no-literal-todo: src/linked.js:1\nScanned 2 JavaScript file(s)\nResult: FAIL\n",
+      "stderr": ""
+    },
+    {
+      "test": "symlink cycle terminates",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "=== Rule: no-literal-todo (all src JavaScript) ===\nScanned 1 JavaScript file(s)\nResult: OK\n",
+      "stderr": ""
+    },
+    {
+      "test": "unreadable broken source",
+      "exit": 2,
+      "expected": 2,
+      "passed": true,
+      "stdout": "=== Rule: no-literal-todo (all src JavaScript) ===\n",
+      "stderr": "ERROR: [Errno 2] No such file or directory: '<temp-root>/harness-verification-lfyqgz9f/src/broken.js'\n"
+    },
+    {
+      "test": "case sensitive and scoped",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "=== Rule: no-literal-todo (all src JavaScript) ===\nScanned 2 JavaScript file(s)\nResult: OK\n",
+      "stderr": ""
+    },
+    {
+      "test": "failed npm check",
+      "exit": 1,
+      "expected": 1,
+      "passed": true,
+      "stdout": "=== Rule: no-literal-todo (all src JavaScript) ===\nScanned 1 JavaScript file(s)\n=== npm run lint ===\n\n> lint\n> node -e \"process.exit(1)\"\n\nlint: FAIL (exit 1)\n=== npm run typecheck ===\n\n> typecheck\n> node --check src/greet.js\n\ntypecheck: PASS (exit 0)\nResult: FAIL\n",
+      "stderr": ""
+    },
+    {
+      "test": "missing src",
+      "exit": 2,
+      "expected": 2,
+      "passed": true,
+      "stdout": "",
+      "stderr": "ERROR: missing source directory: <temp-root>/harness-verification-lfyqgz9f/src\n"
+    },
+    {
+      "test": "final clean full",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "=== Rule: no-literal-todo (all src JavaScript) ===\nScanned 1 JavaScript file(s)\n=== npm run lint ===\n\n> lint\n> node --check src/greet.js\n\nlint: PASS (exit 0)\n=== npm run typecheck ===\n\n> typecheck\n> node --check src/greet.js\n\ntypecheck: PASS (exit 0)\nResult: OK\n",
+      "stderr": ""
+    },
+    {
+      "test": "initialize only disposable hook test repo",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "test": "declared hook command direct invocation",
+      "exit": 0,
+      "expected": 0,
+      "passed": true,
+      "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"# Project Rules\\n\\n## §1 src JavaScript 파일의 리터럴 TODO 금지\\n- ID: no-literal-todo\\n- Severity: P2\\n- Gate: yes\\n- Source: user-recommended — 사용자 요청(request.txt:1).\\n- Evidence: src/greet.js:1은 현재 규칙을 준수한다.\\n- Reference: docs/conventions/no-literal-todo.md\\n- Detail: .agents/skills/project-rules/references/no-literal-todo.md\\n\\nsrc 아래 .js, .mjs, .cjs, .jsx 파일의 원문에서 대소문자가 정확히 일치하는 TODO 부분문자열을 금지한다.\\n주석과 문자열도 검사하며, 파일 추적 여부와 diff 유무에 관계없이 전체 범위를 검사한다.\\n다른 코드 규칙이나 advisory 규칙은 추가하지 않는다.\\n\\n# Harness Engineering\\n\\n0. **Intake:** 결과, 범위, 제약을 확인하고 이미 답한 내용을 재사용한다. npm, single package, lint=`npm run lint`, typecheck=`npm run typecheck`가 확정돼 있다. 우회 표시 요청이면 이 워크플로를 생략한다.\\n1. **Reconnaissance:** 영향 코드를 직접 읽고 사용처 및 같은 범위를 조사한다. 모든 사실에 file:line 근거를 기록한다. 현재 src/greet.js:1은 인사 문자열 생성, package.json:1은 검사 설정이다. 어떤 패치든 적용 후 이 단계로 복귀한다.\\n2. **Rules:** .agents/skills/project-rules/SKILL.md와 해당 references 및 docs/conventions/no-literal-todo.md를 읽는다. 유일한 gate 규칙은 사용자 요청에서 도출한 no-literal-todo(P2)이며 advisory는 없다. 근거 없는 규칙을 추가하지 않는다.\\n3. **Plan:** 확정한 결과를 만족하는 최소 변경과 성공 검사 방법을 정한다. 구현 전에 중요한 불확실성을 해소한다.\\n4. **Implement:** 근거가 있는 규칙에 따라 범위 안에서만 변경한다. 사용자 승인 없이 소스 보존 제약을 해제하지 않는다.\\n5. **Behavior checks:** 관련 기존 테스트를 실행하고 동작 변경 또는 회귀 위험에 필요한 검증을 추가한다. 현재 package.json:1에는 별도 테스트 명령이 없다. 실패와 근거를 기록하며 위반 샘플은 별도 폐기 픽스처에서만 만든다.\\n6. **Static checks:** npm run lint 및 npm run typecheck를 실행하고 실제 결과와 불가 항목을 기록한다. 현재 둘 다 node --check src/greet.js 구문 검사이며 의미적 타입 검사가 아니다(package.json:1).\\n7. **Documentation:** 영향을 받는 규칙 예시와 동작 문서를 갱신한다. 인용과 키워드 색인을 유지하며 실제 없는 위반을 꾸며내지 않는다.\\n8. **Review gate:** 아래 상태 기계를 실행한다.\\n9. **Final verification:** 최종 diff, 검사, 잔여 지적을 확인한다. 실행하지 못했거나 실패한 검사를 통과라 하지 않는다. 직접 훅 실행과 실제 런타임 자동 호출을 구분한다.\\n10. **Delivery:** 변경 내용, 검증 근거, 제한을 보고한다. 사용자 허가 없이는 커밋/게시하지 않는다. 현재 요청에서는 설치 패키지, stage, commit, push, 플러그인 소스/사용자 설정 변경을 하지 않는다.\\n\\n## Phase 8 상태 기계\\n1. `.codex/scripts/review-gate.sh --mode=full`을 실행한다. exit 0일 때 리뷰로 진행한다.\\n2. 메인 세션의 모델과 추론 강도를 상속하는 새 독립 읽기 전용 Codex 리뷰어 둘을 한 번씩 실행한다. 한 명은 규칙 도출/구조, 다른 한 명은 게이트/구현에 집중한다. 두 리뷰어 모두 동일한 전체 산출물 본문, git diff(미추적 파일 본문 포함), project-rules 본문, 탐지 위반을 받는다. 서로의 리뷰는 제공하지 않는다. 읽기/검사만 수행하며 패치를 적용하지 않는다.\\n3. 각 리뷰 결과는 엄격한 JSON `{\\\"findings\\\":[{\\\"severity\\\":\\\"P0|P1|P2|P3|P4\\\",\\\"file\\\":\\\"path\\\",\\\"line\\\":1,\\\"issue\\\":\\\"...\\\",\\\"suggested_fix\\\":\\\"...\\\"}]}`이다.\\n4. 메인은 두 결과와 게이트 출력을 종합하고 수정안을 SRP, 주석 명료성, KISS, DRY, YAGNI, 인지 용이성으로 평가한다. 어떤 수정이든 적용하면 Phase 1로 복귀하고 처음부터 재검증한다.\\n5. 최대 3회 리뷰/회귀 반복 후에도 통과하지 못하면 남은 문제, file:line 근거, 시도한 수정/결과, 구체적인 다음 조치를 보고하고 중단한다.\\n\\n## 생성 하네스 최종 리뷰 계약\\n빌드 시 직접 검증 이후에도 새 독립 Codex 리뷰어 둘이 전체 산출물 및 사실 근거를 검사한다.\\n각 결과 JSON에는 fact_check_misses[{rule,missing_citation}], gate_evasions[{rule,evasion}],\\nquality_scores{srp,comment_clarity,kiss,dry,yagni,cognitive_ease}(각 0–5),\\npatches_suggested[{file,change,why}] 및 점수의 evidence를 포함한다.\\n메인은 사실 근거 누락 0, 게이트 회피 0, 각 리뷰 품질 평균 3.5 이상을 확인한다.\\n지적 시 원인을 조사하고 수정을 여섯 축으로 평가하며 적용 후 Phase 1로 복귀한다. 최대 3회 제한을 유지한다.\\n실제 리뷰어 모델과 검사 결과를 보고한다. Codex 리뷰어를 Opus/Sonnet이라 부르지 않는다.\\n\\n## 훅 및 우회\\n.codex/hooks.json은 UserPromptSubmit을 .codex/hooks/inject-context.sh에 연결한다.\\n번들 주입 스크립트는 project-rules와 이 워크플로 본문을 주입한다.\\n`!` 접두사, `harness 빼고`, `without harness`, `skip harness`, `no harness` 요청은 BYPASS MODE 메모만 주입한다.\\n우회는 이 하네스 워크플로에만 적용되며 기존 AGENTS.md와 다른 훅/지시를 해제하지 않는다.\\n자동 주입은 프로젝트 및 정확한 훅 정의의 Codex 신뢰(`/hooks`)와 훅 활성화가 필요하다.\\n현재 런타임 신뢰는 대기 상태이며 전역 신뢰나 우회 설정을 변경하지 않는다. 직접 스크립트 검증은 자동 호출 증거가 아니다.\\n재설치 시 기존 .codex/hooks.json의 다른 키와 훅을 보존하여 병합하고 동일 명령을 중복 등록하지 않는다.\\n기존 AGENTS.md 및 Codex 설정은 보존한다.\"}}\n",
+      "stderr": ""
+    }
+  ],
+  "all_passed": true,
+  "preserved_originals": true,
+  "injection_source_identical": true,
+  "root_installation": "blocked: .codex/.agents creation denied",
+  "runtime_hook_trust": "pending; direct invocation only",
+  "initial_probe_correction": "Initial test incorrectly expected [] payload to produce no output. Bundled source maps non-object JSON to empty prompt and injects both bodies. Corrected the test expectation after rereading source; no generated artifact patch."
+}

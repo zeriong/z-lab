@@ -1,0 +1,22 @@
+{
+  "findings": [],
+  "fact_check_misses": [],
+  "gate_evasions": [],
+  "quality_scores": {
+    "srp": 5,
+    "comment_clarity": 4,
+    "kiss": 5,
+    "dry": 4,
+    "yagni": 5,
+    "cognitive_ease": 4
+  },
+  "quality_evidence": {
+    "srp": "게이트는 규칙 검사와 확정된 npm 검사 실행을 담당하고, 훅은 문맥 주입을 담당한다. .codex/hooks.json:8과 주입 스크립트:25의 Codex 경로가 번들 매핑과 일치하며 훅 등록은 한 번이다.",
+    "comment_clarity": ".codex/scripts/review-gate.sh:18의 내부 종료 코드 설명이 실제 분기와 일치한다. harness-engineering/SKILL.md:17은 인용문 속 우회 문구도 주입을 생략한다는 한계를 설명한다. 이는 설계된 번들 기능이며 직접 게이트 검사를 무력화하지 않는다.",
+    "kiss": ".codex/scripts/review-gate.sh:31은 Git diff와 무관하게 전체 src를 순회하고, :42는 리터럴 바이트를 검사한다. 전체 게이트와 하위 디렉터리의 refs-only 실행은 직접 재검증하여 exit 0, 잘못된 인자 세 종류는 exit 2를 확인했다. 위반 탐지 exit 1은 제공된 validation.json과 구현을 대조했으며 표본 생성이나 재현은 하지 않았다. 검사 불능을 통과시키는 경로는 확인되지 않았다.",
+    "dry": "설치된 훅은 번들 원본과 바이트 단위로 동일하고, 생성된 워크플로에는 번들 계약이 그대로 포함되어 있다. validation.json의 정상 주입 본문도 현재 두 스킬 본문과 일치한다. 확장자와 종료 코드 설명이 여러 문서에 반복되어 변경 시 함께 관리해야 한다.",
+    "yagni": "유일한 규칙 no-literal-todo는 request.txt:1에서 도출되며 project-rules/SKILL.md:12는 src/greet.js:1을 준수 사례로 구분한다. 추가 구조 규칙이나 가상 저장소 사례가 없다. 현재 소스와 AGENTS.md는 제공된 원문과 일치하며 이번 검토에서는 파일 변경 및 표본 생성을 하지 않았다.",
+    "cognitive_ease": "워크플로의 0~10 단계, 두 독립 Codex 검토자, 동일 입력, 품질 기준, 패치 후 재검증 및 세 번의 반복 제한이 명시되어 있다. 다만 번들 본문과 프로젝트 설명이 겹쳐 문서가 길다. 이번 직접 훅 실행은 읽기 전용 환경의 heredoc 임시 파일 생성 차단으로 exit 1이었으므로 성공으로 판정하지 않았다. 제공된 직접 실행 성공 기록과 런타임 신뢰 pending 상태는 별개이며, 런타임 자동 주입 및 두 검토자의 실제 완료 여부는 이 단일 검토로 확인하지 않았다."
+  },
+  "patches_suggested": []
+}

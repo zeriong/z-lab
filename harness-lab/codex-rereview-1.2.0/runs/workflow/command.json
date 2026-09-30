@@ -1,0 +1,1 @@
+["codex", "exec", "--ignore-user-config", "--ephemeral", "--json", "-s", "workspace-write", "-c", "features.hooks=false", "-C", "<fixture>", "-"]

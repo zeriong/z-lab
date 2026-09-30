@@ -1,0 +1,46 @@
+{
+  "findings": [
+    {
+      "severity": "P2",
+      "file": ".codex/hooks/inject-context.sh",
+      "line": 22,
+      "issue": "미해결: 우회 문구를 프롬프트 전체에서 검색하므로, 명시적인 우회 요청 없이 문구를 인용해도 BYPASS MODE로 분기한다. 실제 워크플로 문서 62행을 포함한 기존 본문에서 정규식 일치를 확인했다. 따라서 이 검토 번들처럼 훅과 워크플로를 인용하는 요청도 규칙·워크플로 주입이 생략될 수 있다. 번들 원본에도 동일한 동작이 있다. 런타임 신뢰는 pending이므로 실제 자동 실행에서 발생했다고 주장하지 않는다.",
+      "suggested_fix": "번들 원본과 플러그인은 유지하고, fixture 전용 래퍼에서 요청 시작의 명시적인 우회 지시만 판정하도록 훅 연결을 보완한다. 본문에 인용된 우회 문구는 정상 주입으로 처리한다."
+    }
+  ],
+  "fact_check_misses": [],
+  "gate_evasions": [
+    {
+      "rule": "no-literal-todo",
+      "evasion": "훅의 부분 문자열 검색 때문에 우회 문구를 인용하는 일반 요청에서도 전체 검증 워크플로를 생략하라는 문맥이 주입될 수 있다. 이는 게이트 실행 절차의 우회 가능성이며, 직접 실행되는 review-gate.sh의 리터럴 탐지를 통과하는 우회는 아니다."
+    }
+  ],
+  "quality_scores": {
+    "srp": 5,
+    "comment_clarity": 4,
+    "kiss": 4,
+    "dry": 4,
+    "yagni": 5,
+    "cognitive_ease": 3
+  },
+  "quality_evidence": {
+    "srp": "src/greet.js:1은 인사 반환, inject-context.sh:25는 문맥 구성, review-gate.sh:18과 :55는 규칙 검사와 npm 검사 실행을 담당한다. 소스, 주입, 검증의 책임이 분리되어 있다.",
+    "comment_clarity": "review-gate.sh:2와 :3에 검사 범위와 종료 코드가 명시되어 있다. harness-engineering/SKILL.md:14는 직접 실행과 런타임 신뢰를 구분한다. 다만 inject-context.sh:22의 인용문 오탐 가능성은 설명되지 않았다.",
+    "kiss": "review-gate.sh:31의 전체 순회와 :42의 바이트 검색은 단일 규칙에 적합한 단순한 구현이다. 두 셸 파일의 구문 검사, node --check, 기존 소스에 대한 내장 Python 검사 직접 실행은 모두 exit 0이었다. 전체 npm 게이트와 격리 위반 검증은 validation.json의 기존 기록만 확인했다.",
+    "dry": "실제 탐지 구현은 review-gate.sh:42에 집중되어 있다. 다만 확장자 목록과 종료 코드 설명이 project-rules/SKILL.md:13, references/no-literal-todo.md:4, docs/conventions/no-literal-todo.md:8과 :23에 반복되어 변경 시 동기화가 필요하다.",
+    "yagni": "project-rules/SKILL.md:12는 request.txt:1을 규칙 근거로, src/greet.js:1을 준수 사례로 구분한다. 추가 규칙은 없으며 소스·AGENTS.md·package.json·request.txt의 해시가 보존 기록과 모두 일치한다.",
+    "cognitive_ease": "규칙 문서의 범위와 실제 코드 예시는 명확하다. 반면 훅은 인용된 문구만으로 동작이 달라지고, harness-engineering/SKILL.md:25와 :52의 Phase 6.2 참조는 상단 검토 계약으로 다시 해석해야 하므로 흐름을 이해하는 부담이 있다."
+  },
+  "patches_suggested": [
+    {
+      "file": ".codex/hooks/dispatch-context.sh",
+      "change": "fixture 전용 래퍼를 추가하여 요청 시작의 독립된 우회 지시를 판정하고, 그 결과에 따라 기존 번들 훅에 전달할 prompt를 정규화한다.",
+      "why": "번들 훅을 보존하면서 인용문 때문에 검증 워크플로가 생략되는 경로를 차단한다."
+    },
+    {
+      "file": ".codex/hooks.json",
+      "change": "8행의 실행 대상을 우회 지시를 판정하는 fixture 전용 래퍼로 연결한다.",
+      "why": "자동 주입 경로에도 수정된 판정을 적용한다. 연결 변경 후에도 런타임 신뢰·활성화 확인은 직접 실행 검증과 별도로 남겨야 한다."
+    }
+  ]
+}

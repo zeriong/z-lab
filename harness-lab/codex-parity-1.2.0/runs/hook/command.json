@@ -1,0 +1,1 @@
+["codex", "exec", "--ignore-user-config", "--ephemeral", "--json", "-s", "read-only", "-c", "features.hooks=false", "-c", "agents.enabled=true", "-C", "<fixture>", "-"]

@@ -1,0 +1,14 @@
+{
+  "fact_check_misses": [],
+  "gate_evasions": [],
+  "quality_scores": {"srp": 5, "comment_clarity": 4, "kiss": 5, "dry": 4, "yagni": 5, "cognitive_ease": 4},
+  "quality_evidence": {
+    "srp": "규칙 정의, 작업 흐름, 컨텍스트 주입, 실행 검증의 책임이 파일별로 분리되어 있다. docs/harness-build/generated/.agents/skills/project-rules/SKILL.md:12와 :13은 규칙 도출 근거인 request.txt:1과 실제 준수 사례인 src/greet.js:1을 정확히 구분한다.",
+    "comment_clarity": "docs/harness-build/generated/.codex/scripts/review-gate.sh:2부터 검사 목적, 전체 소스 범위, 종료 코드가 명시된다. 규칙 문서는 바이트 부분문자열 검사와 심볼릭 링크 처리까지 설명한다. 짧은 구현에 필요한 설명이 충분하다.",
+    "kiss": "docs/harness-build/generated/.codex/scripts/review-gate.sh:40의 전체 디렉터리 순회와 :54의 바이트 검사로 단일 규칙을 구현한다. Git 변경 목록이나 별도 패키지에 의존하지 않아 미추적 파일과 바이너리 바이트가 있는 파일도 같은 경로로 검사한다.",
+    "dry": "docs/harness-build/generated/.codex/scripts/review-gate.sh:63에서 두 npm 검사를 반복문으로 처리하며 훅은 기존 스킬 본문을 읽어 주입한다. 검사 범위 설명은 규칙 요약, 상세 참조, 규약 문서에 일부 반복되지만 내용은 일치한다.",
+    "yagni": "docs/harness-build/generated/.agents/skills/project-rules/SKILL.md:19에서 추가 규칙을 배제하고 실제 산출물도 사용자 요청의 한 규칙만 정의한다. package.json:1의 구문 검사를 의미적 타입 검사로 과장하지 않으며 불필요한 아키텍처 계층을 도출하지 않는다.",
+    "cognitive_ease": "규칙 출처와 준수 예시, 검사 명령 및 실패 코드를 연결해 따라가기 쉽다. docs/harness-build/generated/.agents/skills/harness-engineering/SKILL.md:20과 :27은 일반 작업 리뷰와 생성 하네스 최종 리뷰를 별도로 설명한다. 검증 기록의 34개 결과는 모두 기대 종료 코드와 일치한다. 루트 설치 차단과 런타임 훅 신뢰 대기가 명시되어 있으므로 이 평가는 준비 산출물에 대한 것이며 설치 또는 자동 활성화 완료를 뜻하지 않는다."
+  },
+  "patches_suggested": []
+}

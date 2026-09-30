@@ -1,0 +1,9 @@
+[
+  {
+    "id": "no-literal-todo",
+    "title": "src JavaScript 파일의 리터럴 TODO 금지",
+    "gate": true,
+    "severity": "P2",
+    "source": "user-recommended"
+  }
+]

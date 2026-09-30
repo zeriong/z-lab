@@ -1,0 +1,32 @@
+{
+  "status": "generation-and-direct-verification-complete",
+  "review_iteration": 3,
+  "reviewers": [
+    {
+      "review": "derivation",
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "sandbox": "read-only",
+      "session_id": "<run-id>",
+      "quality_average": 4.666666666666667,
+      "findings": 0,
+      "fact_check_misses": 0,
+      "gate_evasions": 0
+    },
+    {
+      "review": "implementation",
+      "model": "gpt-6-astra",
+      "effort": "xhigh",
+      "sandbox": "read-only",
+      "session_id": "<run-id>",
+      "quality_average": 4.5,
+      "findings": 0,
+      "fact_check_misses": 0,
+      "gate_evasions": 0
+    }
+  ],
+  "direct_validation_records": 23,
+  "original_hashes_match": true,
+  "reviewed_artifact_hashes_match": true,
+  "runtime_hook_trust": "pending"
+}

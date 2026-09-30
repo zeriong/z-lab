@@ -1,0 +1,606 @@
+초점: 게이트 및 구현
+독립 읽기 전용 Codex 검토. 파일 변경, 표본 생성 금지. 아래 전체 동일 번들을 검토하고 strict JSON을 반환: findings:[{severity,file,line,issue,suggested_fix}], fact_check_misses:[{rule,missing_citation}], gate_evasions:[{rule,evasion}], quality_scores:{srp,comment_clarity,kiss,dry,yagni,cognitive_ease} 각각 0-5, quality_evidence:{축:근거}, patches_suggested:[{file,change,why}]. 모든 설명은 한국어. 기존 검토 결과는 읽지 말고 독립적으로 검토하세요. git diff는 파일들이 untracked라 비어 있어 전체 파일 본문을 제공합니다. 원본 보존, 사용자 요청에서 도출한 단 하나의 규칙과 src/greet.js:1 인용, 실제 gate 탐지, Codex 경로, 번들 일치, 11단계 workflow, 직접 검증과 pending 런타임 신뢰 구분을 평가하세요. 사용자 요구 및 제공된 번들 계약을 기준으로 판단하고 추가 정책을 요구하지 마세요. bundled bypass는 설계된 기능이며 관련 동작 및 한계도 독립적으로 평가하세요.
+
+FILE: AGENTS.md
+Work only in this disposable fixture. Do not stage, commit, push, change user settings, install plugins, or edit the supplied plugin. Read sources and write only the requested fixture artifacts. Configuration files inside this fixture are authorized outputs.
+
+
+FILE: request.txt
+Use the real harness build skill at <plugin>/skills/build/SKILL.md to generate a Codex harness in this fixture. Intake is already confirmed: npm, single package, lint=npm run lint, typecheck=npm run typecheck, user rule=no literal TODO marker in src JavaScript files. Derive that one rule from my request and cite src/greet.js; do not invent extra rules. Use the bundled workflow and injection source. Preserve source and existing AGENTS.md. Do not install packages, stage, commit, or edit plugin sources. Complete the real two independent reviews and direct verification; runtime hook trust is pending and must be reported separately. Any deliberately violating test sample must stay in a separate disposable fixture. Finish with generated paths and actual validation evidence.
+
+FILE: package.json
+{"name": "compat-fixture", "private": true, "type": "module", "scripts": {"lint": "node --check src/greet.js", "typecheck": "node --check src/greet.js"}}
+
+FILE: src/greet.js
+export function greet(name) { return `Hello, ${name}`; }
+
+
+FILE: .codex/hooks/inject-context.sh
+#!/usr/bin/env bash
+# Copy to the target project's .claude/hooks/ or .codex/hooks/ directory.
+# Resolves generated skills from this file, independent of the invocation cwd.
+set -uo pipefail
+agent_dir="$(cd "$(dirname "$0")/.." && pwd)" || exit 1
+exec python3 - "$agent_dir" 3<&0 <<'PY'
+import json
+import os
+from pathlib import Path
+import re
+import sys
+
+agent_dir = Path(sys.argv[1])
+try:
+    payload = json.load(os.fdopen(3))
+except (ValueError, OSError):
+    sys.exit(0)
+prompt = payload.get("prompt", "") if isinstance(payload, dict) else ""
+if not isinstance(prompt, str):
+    sys.exit(0)
+
+if re.search(r"^\s*!|harness\s*빼고|\b(?:without|skip|no)\s+harness\b", prompt, re.I):
+    context = "BYPASS MODE: skip the harness workflow for this request only."
+else:
+    skills = agent_dir.parent / ".agents" / "skills" if agent_dir.name == ".codex" else agent_dir / "skills"
+    bodies = []
+    for name in ("project-rules", "harness-engineering"):
+        source = skills / name / "SKILL.md"
+        try:
+            body = source.read_text(encoding="utf-8")
+        except OSError:
+            bodies.append(f"HARNESS SETUP INCOMPLETE: missing {source}. Repair before claiming the harness is active.")
+            continue
+        body = re.sub(r"\A---\r?\n.*?\r?\n---(?:\r?\n|\Z)", "", body, count=1, flags=re.S)
+        bodies.append(body.strip())
+    context = "\n\n".join(bodies)
+print(json.dumps({"hookSpecificOutput": {"hookEventName": "UserPromptSubmit", "additionalContext": context}}, ensure_ascii=False))
+PY
+
+
+FILE: .codex/hooks.json
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/inject-context.sh\""
+          }
+        ]
+      }
+    ]
+  }
+}
+
+
+FILE: .codex/scripts/review-gate.sh
+#!/usr/bin/env bash
+# 전체 src JavaScript 파일의 단일 사용자 규칙과 확정된 npm 검사를 실행한다.
+# exit 0: 통과, 1: 규칙/검사 실패, 2: 인자/검사 환경 오류.
+set -euo pipefail
+MODE=full
+for arg in "$@"; do
+  case "$arg" in
+    --mode=full|--mode=refs-only) MODE="${arg#--mode=}" ;;
+    --rule=no-literal-todo) ;;
+    -h|--help) printf '%s\n' 'Usage: review-gate.sh [--mode=full|--mode=refs-only] [--rule=no-literal-todo]'; exit 0 ;;
+    *) printf 'Invalid argument: %s\n' "$arg" >&2; exit 2 ;;
+  esac
+done
+ROOT="$(cd "$(dirname "$0")/../.." && pwd)" || exit 2
+cd "$ROOT" || exit 2
+command -v python3 >/dev/null || exit 2
+status=0
+# 내부 코드 3만 규칙 위반으로 처리하고 검사 시작 실패는 exit 2로 구분한다.
+python3 -c 'from pathlib import Path
+import os
+import sys
+
+def fail(error):
+    raise error
+
+try:
+    root = Path("src")
+    if not root.is_dir():
+        raise OSError("src directory missing")
+    violations = []
+    for directory, dirs, files in os.walk(root, onerror=fail, followlinks=False):
+        dirs.sort()
+        for name in dirs:
+            if (Path(directory) / name).is_symlink():
+                raise OSError(f"cannot safely inspect symlink directory: {Path(directory) / name}")
+        for name in sorted(files):
+            path = Path(directory) / name
+            if path.suffix not in {".js", ".jsx", ".mjs", ".cjs"}:
+                continue
+            data = path.read_bytes()
+            for line, value in enumerate(data.split(b"\n"), 1):
+                if b"TODO" in value:
+                    violations.append(f"{path}:{line}: P2 no-literal-todo")
+    for violation in violations:
+        print(violation)
+    print("no-literal-todo: " + ("FAIL" if violations else "PASS"))
+    sys.exit(3 if violations else 0)
+except OSError as error:
+    print(f"Inspection error: {error}", file=sys.stderr)
+    sys.exit(2)' || status=$?
+case "$status" in
+  0) ;;
+  3) status=1 ;;
+  *) exit 2 ;;
+esac
+if [[ "$MODE" == full ]]; then
+  command -v npm >/dev/null || exit 2
+  for check in lint typecheck; do
+    if npm run "$check"; then
+      printf '%s: PASS\n' "$check"
+    else
+      printf '%s: FAIL\n' "$check"
+      status=1
+    fi
+  done
+fi
+printf 'Gate exit: %s\n' "$status"
+exit "$status"
+
+
+FILE: .agents/skills/harness-engineering/SKILL.md
+---
+name: harness-engineering
+description: compat-fixture의 근거 기반 변경 및 검증 절차.
+---
+
+# compat-fixture 하네스 엔지니어링
+
+## 프로젝트별 실행 정보
+- npm 단일 패키지. lint: `npm run lint`; typecheck: `npm run typecheck`. package.json:1에 따라 두 명령은 node --check 구문 검사다.
+- 유일한 규칙: `.agents/skills/project-rules/SKILL.md`의 no-literal-todo(P2), 근거 request.txt:1 및 src/greet.js:1.
+- 규칙 문서: docs/conventions/no-literal-todo.md.
+- 게이트: `.codex/scripts/review-gate.sh --mode=full`.
+- 훅: `.codex/hooks.json`, `.codex/hooks/inject-context.sh`.
+- 런타임 자동 주입은 Codex /hooks에서 프로젝트와 정확한 훅 정의의 신뢰 및 활성화를 확인해야 한다. 직접 실행 성공만으로 런타임 활성화를 주장하지 않는다.
+
+## 번들 우회 동작의 범위
+번들 훅은 `!` 접두사 또는 프롬프트 어디에든 나타나는 `harness 빼고`, `without harness`, `skip harness`, `no harness` 문구를 우회 요청으로 처리한다. 인용문 속 문구에도 적용되므로 그런 요청은 본문 주입을 생략할 수 있다. 이는 번들 동작이며 자동 강제 집행을 보장하지 않는다. 필요한 검증은 `.codex/scripts/review-gate.sh --mode=full`을 직접 실행한다. 프롬프트 우회 여부는 직접 게이트의 검사 결과에 영향을 주지 않는다.
+
+## Phase 8 독립 검토 실행 계약
+전체 게이트 exit 0 이후 현재 세션 모델과 추론 강도를 상속하는 새로운 읽기 전용 Codex 검토자 두 명을 독립 실행한다. 한 명은 규칙 도출/구조, 다른 한 명은 게이트/구현에 초점을 둔다. 동일한 전체 diff, 생성 파일 본문, 프로젝트 규칙, 탐지 결과를 전달한다. 검토자는 패치 제안만 하고 주 작업자가 통합한다.
+각 검토자는 다음 JSON을 반환한다:
+```json
+{"findings":[{"severity":"P2","file":"path","line":1,"issue":"description","suggested_fix":"description"}],"fact_check_misses":[],"gate_evasions":[],"quality_scores":{"srp":5,"comment_clarity":5,"kiss":5,"dry":5,"yagni":5,"cognitive_ease":5},"patches_suggested":[]}
+```
+점수에는 각 축의 근거를 별도 quality_evidence 객체로 덧붙인다. 두 검토의 fact_check_misses와 gate_evasions가 각각 0이고 품질 평균이 각각 3.5 이상이어야 한다. findings도 해결 여부를 명시한다. 사실 근거 누락은 Phase 1, 우회는 Phase 4, 낮은 품질은 Phase 6에서 수정한다. 패치 적용 후 항상 Phase 1부터 재검증한다. 패치를 SRP/주석 명확성/KISS/DRY/YAGNI/인지 용이성으로 평가한다. 최대 세 번의 검토/회귀 반복 이후 미해결 항목과 시도 내역을 정직하게 보고하고 중단한다.
+
+## 번들 워크플로의 11개 단계
+아래 번들 계약에서 review-gate.sh는 위 Codex 경로를 의미하며, SKILL.md Phase 6.2의 검토는 위 두 Codex 검토자 계약으로 구체화한다.
+
+# Generated harness-engineering contract
+
+This public contract is self-contained. It is based on the requirements in this
+plugin, and does not require a private setup guide or research document.
+
+Generate the project-specific `harness-engineering/SKILL.md` with these eleven phases.
+Use the selected host's real paths and reviewer dispatch; retain the project's
+existing commands and include only rules derived from the target repository.
+
+0. **Intake:** resolve the requested outcome, scope and constraints; reuse already
+   answered questions. A bypass-marked request skips this workflow.
+1. **Reconnaissance:** read affected code, check claims against files and usages, and
+   record `file:line` evidence. Recheck the affected scope after any patch.
+2. **Rules:** select the applicable project-rules and convention references. Separate
+   deterministic gate rules from advisory guidance; introduce no unsupported rules.
+3. **Plan:** choose the smallest change satisfying the confirmed outcome and name
+   the checks that establish success. Resolve material unknowns before implementation.
+4. **Implement:** make the scoped change following the evidenced project conventions.
+5. **Behavior checks:** run the relevant existing tests and add coverage where behavior
+   changes or a regression needs it. Record failures and their evidence.
+6. **Static checks:** run the lint/typecheck commands locked in intake; record the
+   actual results, including any unavailable checks.
+7. **Documentation:** update affected convention examples and user-facing behavior
+   documentation; keep citations and keyword indexes consistent with the code.
+8. **Review gate:** run `review-gate.sh --mode=full`, then obtain the two independent
+   one-shot reviews described in SKILL.md Phase 6.2. Main synthesizes the results;
+   reviewers propose changes only. Grade patches against the six quality axes. Every
+   applied patch returns to Phase 1. Stop after three review/regression iterations
+   with the remaining findings if the gate does not pass.
+9. **Final verification:** verify the actual final diff, tests and remaining findings.
+   Never call an unavailable or failed check a pass.
+10. **Delivery:** report changed behavior, evidence and limitations. Commit or publish
+    only when the user has authorized that action.
+
+The prompt hook injects the generated project-rules and this generated workflow body.
+For a bypass prompt (`!` prefix, `harness 빼고`, `without harness`, `skip harness`,
+`no harness`), inject a short `BYPASS MODE` note instead. Bypass applies to this harness
+workflow only and does not disable other project instructions or unrelated hooks.
+
+
+FILE: .agents/skills/project-rules/SKILL.md
+---
+name: project-rules
+description: compat-fixture의 사용자 요청에 근거한 단일 규칙.
+---
+
+# Project Rules
+
+## §1 src JavaScript 파일의 리터럴 TODO 금지
+- ID: no-literal-todo
+- Severity: P2
+- Gate: yes
+- 근거: 사용자 요청(request.txt:1); 현재 준수 코드: src/greet.js:1.
+- src/ 아래 .js, .jsx, .mjs, .cjs 파일에서 대소문자를 구분하는 ASCII 리터럴 `TODO`를 금지한다. 주석, 문자열, 식별자를 포함한다.
+- 전체 파일을 검사하며 추적되지 않은 파일도 포함한다.
+- 상세: references/no-literal-todo.md 및 docs/conventions/no-literal-todo.md.
+- 검사: `.codex/scripts/review-gate.sh --mode=full`.
+
+추가 규칙 및 advisory 규칙은 없다.
+
+
+FILE: .agents/skills/project-rules/references/no-literal-todo.md
+# no-literal-todo 상세
+사용자 요청(request.txt:1)에서 도출했다. src/greet.js:1은 현재 준수 사례다.
+정확한 범위, 실제 코드, 검색 키워드 및 검사 명령은 프로젝트 루트의 docs/conventions/no-literal-todo.md를 따른다.
+검사는 src의 .js/.jsx/.mjs/.cjs 전체에 적용되며 리터럴 TODO 탐지는 P2 및 exit 1이다. 검사 불능은 exit 2다.
+
+
+FILE: docs/conventions/no-literal-todo.md
+# src JavaScript 파일의 리터럴 TODO 금지
+
+## 검색 키워드
+TODO, src, JavaScript, greet, no-literal-todo, review-gate, P2
+
+## 도출 근거 및 범위
+사용자 요청(request.txt:1)이 규칙의 근거다. src/greet.js:1은 현재 적용 대상이자 준수 사례다.
+src/ 아래 .js, .jsx, .mjs, .cjs 파일 전체에 대소문자를 구분하는 연속된 ASCII 문자열 `TODO`가 없어야 한다. 주석, 문자열, 식별자도 포함한다. 추적 여부 및 Git diff에 관계없이 검사한다.
+
+## Worse case
+현재 저장소에는 실제 위반 사례가 없다(src/greet.js:1 전체 확인). 가상의 위반 코드를 저장소 사례로 제시하지 않는다. 의도적 위반 검증은 별도 임시 fixture에서 수행한다.
+
+## Better case — 실제 코드
+src/greet.js:1:
+```js
+export function greet(name) { return `Hello, ${name}`; }
+```
+리터럴 금지 표식이 없으므로 규칙을 준수한다. 소스 변경은 필요하지 않다.
+
+## Gate hook
+- `.codex/scripts/review-gate.sh --mode=refs-only --rule=no-literal-todo`
+- 실제 검사: Python으로 src를 재귀 순회하고 확장자가 .js/.jsx/.mjs/.cjs인 파일 바이트에 `b'TODO' in data`를 적용한다.
+- 탐지: P2, exit 1. 정상 exit 0, 잘못된 인자나 검사 불능 exit 2.
+- full 모드는 추가로 `npm run lint`, `npm run typecheck`를 실행한다.
+
+
+FILE: .harness-build/phase1-findings.md
+# 조사 및 확정 입력
+- harness:build intake locked: npm, 단일 패키지, lint=`npm run lint`, typecheck=`npm run typecheck`. 사용자 요청 및 package.json:1로 확인.
+- src/greet.js:1 전체 직접 읽기: greet 함수는 인사를 반환하는 한 가지 책임을 갖는다.
+- src 전체 파일 열거 및 import/require/greet/TODO 검색 완료: src/greet.js:1만 존재하며 import/require 및 TODO는 없다. 추가 레이어나 구조 규칙을 도출할 근거는 없다.
+- package.json:1은 실행 설정이며 두 검사 모두 node --check src/greet.js이다. 실제 타입 분석으로 해석하지 않는다.
+- request.txt:1 및 사용자 요청에서 유일한 규칙을 도출: src JavaScript 파일에 대소문자를 구분하는 리터럴 TODO 금지. src/greet.js:1은 현재 준수 사례이며 금지 규칙 자체의 근거는 사용자 요청이다.
+- 영향 범위: src/greet.js:1의 함수에 소스 내 호출/가져오기 없음; package.json:1의 두 검사가 이 파일을 참조한다. 소스 수정 불필요.
+
+
+FILE: .harness-build/rules.json
+[
+  {
+    "id": "no-literal-todo",
+    "title": "src JavaScript 파일의 리터럴 TODO 금지",
+    "gate": true,
+    "severity": "P2",
+    "source": "user-recommended"
+  }
+]
+
+
+FILE: .harness-build/validation.json
+[
+  {
+    "check": "bash syntax .codex/hooks/inject-context.sh",
+    "expected": 0,
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "check": "bash syntax .codex/scripts/review-gate.sh",
+    "expected": 0,
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "check": "full gate",
+    "expected": 0,
+    "exit": 0,
+    "stdout": "no-literal-todo: PASS\n\n> lint\n> node --check src/greet.js\n\nlint: PASS\n\n> typecheck\n> node --check src/greet.js\n\ntypecheck: PASS\nGate exit: 0\n",
+    "stderr": ""
+  },
+  {
+    "check": "refs only gate",
+    "expected": 0,
+    "exit": 0,
+    "stdout": "no-literal-todo: PASS\nGate exit: 0\n",
+    "stderr": ""
+  },
+  {
+    "check": "invalid --mode=invalid",
+    "expected": 2,
+    "exit": 2,
+    "stdout": "",
+    "stderr": "Invalid argument: --mode=invalid\n"
+  },
+  {
+    "check": "invalid --rule=unknown",
+    "expected": 2,
+    "exit": 2,
+    "stdout": "",
+    "stderr": "Invalid argument: --rule=unknown\n"
+  },
+  {
+    "check": "invalid --unknown",
+    "expected": 2,
+    "exit": 2,
+    "stdout": "",
+    "stderr": "Invalid argument: --unknown\n"
+  },
+  {
+    "check": "normal injection from src",
+    "expected": 0,
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"# Project Rules\\n\\n## §1 src JavaScript 파일의 리터럴 TODO 금지\\n- ID: no-literal-todo\\n- Severity: P2\\n- Gate: yes\\n- 근거: 사용자 요청(request.txt:1); 현재 준수 코드: src/greet.js:1.\\n- src/ 아래 .js, .jsx, .mjs, .cjs 파일에서 대소문자를 구분하는 ASCII 리터럴 `TODO`를 금지한다. 주석, 문자열, 식별자를 포함한다.\\n- 전체 파일을 검사하며 추적되지 않은 파일도 포함한다.\\n- 상세: references/no-literal-todo.md 및 docs/conventions/no-literal-todo.md.\\n- 검사: `.codex/scripts/review-gate.sh --mode=full`.\\n\\n추가 규칙 및 advisory 규칙은 없다.\\n\\n# compat-fixture 하네스 엔지니어링\\n\\n## 프로젝트별 실행 정보\\n- npm 단일 패키지. lint: `npm run lint`; typecheck: `npm run typecheck`. package.json:1에 따라 두 명령은 node --check 구문 검사다.\\n- 유일한 규칙: `.agents/skills/project-rules/SKILL.md`의 no-literal-todo(P2), 근거 request.txt:1 및 src/greet.js:1.\\n- 규칙 문서: docs/conventions/no-literal-todo.md.\\n- 게이트: `.codex/scripts/review-gate.sh --mode=full`.\\n- 훅: `.codex/hooks.json`, `.codex/hooks/inject-context.sh`.\\n- 런타임 자동 주입은 Codex /hooks에서 프로젝트와 정확한 훅 정의의 신뢰 및 활성화를 확인해야 한다. 직접 실행 성공만으로 런타임 활성화를 주장하지 않는다.\\n\\n## 번들 우회 동작의 범위\\n번들 훅은 `!` 접두사 또는 프롬프트 어디에든 나타나는 `harness 빼고`, `without harness`, `skip harness`, `no harness` 문구를 우회 요청으로 처리한다. 인용문 속 문구에도 적용되므로 그런 요청은 본문 주입을 생략할 수 있다. 이는 번들 동작이며 자동 강제 집행을 보장하지 않는다. 필요한 검증은 `.codex/scripts/review-gate.sh --mode=full`을 직접 실행한다. 프롬프트 우회 여부는 직접 게이트의 검사 결과에 영향을 주지 않는다.\\n\\n## Phase 8 독립 검토 실행 계약\\n전체 게이트 exit 0 이후 현재 세션 모델과 추론 강도를 상속하는 새로운 읽기 전용 Codex 검토자 두 명을 독립 실행한다. 한 명은 규칙 도출/구조, 다른 한 명은 게이트/구현에 초점을 둔다. 동일한 전체 diff, 생성 파일 본문, 프로젝트 규칙, 탐지 결과를 전달한다. 검토자는 패치 제안만 하고 주 작업자가 통합한다.\\n각 검토자는 다음 JSON을 반환한다:\\n```json\\n{\\\"findings\\\":[{\\\"severity\\\":\\\"P2\\\",\\\"file\\\":\\\"path\\\",\\\"line\\\":1,\\\"issue\\\":\\\"description\\\",\\\"suggested_fix\\\":\\\"description\\\"}],\\\"fact_check_misses\\\":[],\\\"gate_evasions\\\":[],\\\"quality_scores\\\":{\\\"srp\\\":5,\\\"comment_clarity\\\":5,\\\"kiss\\\":5,\\\"dry\\\":5,\\\"yagni\\\":5,\\\"cognitive_ease\\\":5},\\\"patches_suggested\\\":[]}\\n```\\n점수에는 각 축의 근거를 별도 quality_evidence 객체로 덧붙인다. 두 검토의 fact_check_misses와 gate_evasions가 각각 0이고 품질 평균이 각각 3.5 이상이어야 한다. findings도 해결 여부를 명시한다. 사실 근거 누락은 Phase 1, 우회는 Phase 4, 낮은 품질은 Phase 6에서 수정한다. 패치 적용 후 항상 Phase 1부터 재검증한다. 패치를 SRP/주석 명확성/KISS/DRY/YAGNI/인지 용이성으로 평가한다. 최대 세 번의 검토/회귀 반복 이후 미해결 항목과 시도 내역을 정직하게 보고하고 중단한다.\\n\\n## 번들 워크플로의 11개 단계\\n아래 번들 계약에서 review-gate.sh는 위 Codex 경로를 의미하며, SKILL.md Phase 6.2의 검토는 위 두 Codex 검토자 계약으로 구체화한다.\\n\\n# Generated harness-engineering contract\\n\\nThis public contract is self-contained. It is based on the requirements in this\\nplugin, and does not require a private setup guide or research document.\\n\\nGenerate the project-specific `harness-engineering/SKILL.md` with these eleven phases.\\nUse the selected host's real paths and reviewer dispatch; retain the project's\\nexisting commands and include only rules derived from the target repository.\\n\\n0. **Intake:** resolve the requested outcome, scope and constraints; reuse already\\n   answered questions. A bypass-marked request skips this workflow.\\n1. **Reconnaissance:** read affected code, check claims against files and usages, and\\n   record `file:line` evidence. Recheck the affected scope after any patch.\\n2. **Rules:** select the applicable project-rules and convention references. Separate\\n   deterministic gate rules from advisory guidance; introduce no unsupported rules.\\n3. **Plan:** choose the smallest change satisfying the confirmed outcome and name\\n   the checks that establish success. Resolve material unknowns before implementation.\\n4. **Implement:** make the scoped change following the evidenced project conventions.\\n5. **Behavior checks:** run the relevant existing tests and add coverage where behavior\\n   changes or a regression needs it. Record failures and their evidence.\\n6. **Static checks:** run the lint/typecheck commands locked in intake; record the\\n   actual results, including any unavailable checks.\\n7. **Documentation:** update affected convention examples and user-facing behavior\\n   documentation; keep citations and keyword indexes consistent with the code.\\n8. **Review gate:** run `review-gate.sh --mode=full`, then obtain the two independent\\n   one-shot reviews described in SKILL.md Phase 6.2. Main synthesizes the results;\\n   reviewers propose changes only. Grade patches against the six quality axes. Every\\n   applied patch returns to Phase 1. Stop after three review/regression iterations\\n   with the remaining findings if the gate does not pass.\\n9. **Final verification:** verify the actual final diff, tests and remaining findings.\\n   Never call an unavailable or failed check a pass.\\n10. **Delivery:** report changed behavior, evidence and limitations. Commit or publish\\n    only when the user has authorized that action.\\n\\nThe prompt hook injects the generated project-rules and this generated workflow body.\\nFor a bypass prompt (`!` prefix, `harness 빼고`, `without harness`, `skip harness`,\\n`no harness`), inject a short `BYPASS MODE` note instead. Bypass applies to this harness\\nworkflow only and does not disable other project instructions or unrelated hooks.\"}}\n",
+    "stderr": ""
+  },
+  {
+    "check": "bypass !skip",
+    "expected": 0,
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": ""
+  },
+  {
+    "check": "bypass harness 빼고",
+    "expected": 0,
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": ""
+  },
+  {
+    "check": "bypass without harness",
+    "expected": 0,
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": ""
+  },
+  {
+    "check": "bypass skip harness",
+    "expected": 0,
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": ""
+  },
+  {
+    "check": "bypass no harness",
+    "expected": 0,
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": ""
+  },
+  {
+    "check": "bypass 문서의 \"skip harness\" 문구 설명",
+    "expected": 0,
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": ""
+  },
+  {
+    "check": "separate fixture clean",
+    "expected": 0,
+    "exit": 0,
+    "stdout": "no-literal-todo: PASS\nGate exit: 0\n",
+    "stderr": ""
+  },
+  {
+    "check": "isolated violation js",
+    "expected": 1,
+    "exit": 1,
+    "stdout": "src/nested/untracked spaced name.js:1: P2 no-literal-todo\nno-literal-todo: FAIL\nGate exit: 1\n",
+    "stderr": ""
+  },
+  {
+    "check": "isolated violation jsx",
+    "expected": 1,
+    "exit": 1,
+    "stdout": "src/nested/untracked spaced name.jsx:1: P2 no-literal-todo\nno-literal-todo: FAIL\nGate exit: 1\n",
+    "stderr": ""
+  },
+  {
+    "check": "isolated violation mjs",
+    "expected": 1,
+    "exit": 1,
+    "stdout": "src/nested/untracked spaced name.mjs:1: P2 no-literal-todo\nno-literal-todo: FAIL\nGate exit: 1\n",
+    "stderr": ""
+  },
+  {
+    "check": "isolated violation cjs",
+    "expected": 1,
+    "exit": 1,
+    "stdout": "src/nested/untracked spaced name.cjs:1: P2 no-literal-todo\nno-literal-todo: FAIL\nGate exit: 1\n",
+    "stderr": ""
+  },
+  {
+    "check": "unreadable source fails closed",
+    "expected": 2,
+    "exit": 2,
+    "stdout": "",
+    "stderr": "Inspection error: [Errno 2] No such file or directory: 'src/nested/broken.js'\n"
+  },
+  {
+    "check": "symlink directory fails closed",
+    "expected": 2,
+    "exit": 2,
+    "stdout": "",
+    "stderr": "Inspection error: cannot safely inspect symlink directory: src/nested/linked\n"
+  },
+  {
+    "check": "interpreter start failure maps to exit 2",
+    "expected": 2,
+    "exit": 2,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "check": "source, AGENTS, package, request unchanged and bundled hook byte identical",
+    "result": "PASS"
+  }
+]
+
+AUTHORITATIVE BUNDLED SOURCE: <plugin>/skills/build/references/host-codex.md
+# Codex target and execution adapter
+
+Invoke `$harness:build`. Apply all derivation, quality, review and regression rules in
+SKILL.md. Before Phase 0, set the output target to Codex unless the user explicitly
+requested a Claude Code harness. Use this mapping consistently in generation, review
+prompts, generated skill bodies, test commands and the final file list:
+
+| Claude path in SKILL.md | Codex target |
+|---|---|
+| `.claude/settings.json` | `.codex/hooks.json` (hook declarations only) |
+| `.claude/hooks/inject-context.sh` | `.codex/hooks/inject-context.sh` |
+| `.claude/scripts/review-gate.sh` | `.codex/scripts/review-gate.sh` |
+| `.claude/skills/project-rules/` | `.agents/skills/project-rules/` |
+| `.claude/skills/harness-engineering/` | `.agents/skills/harness-engineering/` |
+| `docs/conventions/` | `docs/conventions/` |
+
+Preserve existing Claude artifacts. Update only the selected host's wiring; if both
+hosts are requested, derive rules once and generate both layouts with identical rule
+content. Merge the new hook into existing JSON, retaining other keys and hooks and
+avoiding a duplicate invocation on reruns. Do not overwrite existing AGENTS.md or
+Codex configuration. These skills and the hook do not require a new AGENTS.md.
+
+Codex may protect `.codex/` and `.agents/` against writes in workspace-write mode.
+If the tool requests approval, use the host's normal approval flow for those concrete
+files. If approvals are unavailable, prepare the files in a writable staging directory
+with their intended relative paths and report installation as pending. Do not change
+sandbox settings or call a staged draft an installed harness.
+
+## Tools and reviewers
+
+- Use the available user-input tool, or ask in conversation and wait. Reuse answers
+  already supplied. Track the locked intake with the host's plan tool or a local note.
+- Read/Glob/Grep/Write mean the host's corresponding file/search tools.
+- For each place the shared procedure calls for Opus + Sonnet, Codex uses **two fresh
+  independent read-only Codex reviewers**, inheriting the main session's model and
+  effort. Give one the rule-derivation/architecture focus and the other the gate and
+  implementation focus, plus the same complete input bundle. Keep both JSON contracts,
+  the 3.5 threshold, main synthesis and three-iteration cap. State the actual reviewer
+  models in the report; do not call Codex reviewers Opus or Sonnet.
+- If the host cannot create independent read-only subagents, use two separate
+  `codex exec --ephemeral -s read-only` calls with self-contained prompt files on stdin,
+  the main session's resolved model/effort explicitly passed, and the fixture/project
+  as `-C`. Wait for both calls. Do not weaken isolation or silently skip a review.
+
+## Hook wiring
+
+Merge this event into `.codex/hooks.json` (no Claude settings schema):
+
+```json
+{
+  "hooks": {
+    "UserPromptSubmit": [{
+      "hooks": [{
+        "type": "command",
+        "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/inject-context.sh\""
+      }]
+    }]
+  }
+}
+```
+
+Copy the bundled `assets/inject-context.sh` from this skill to the mapped hook path.
+It resolves the project and skill directories from its own installed location, so it
+also works from a subdirectory and from another worktree.
+
+Before declaring automatic injection active, the project and exact hook definition
+must be trusted by Codex (`/hooks`) and hooks must be enabled. Do not change global
+trust or bypass settings. If trust remains pending, complete file generation and
+direct script verification, then report that activation step as pending. Do not report
+a direct script check as proof that the runtime invoked the hook.
+
+AUTHORITATIVE BUNDLED SOURCE: <plugin>/skills/build/references/workflow.md
+# Generated harness-engineering contract
+
+This public contract is self-contained. It is based on the requirements in this
+plugin, and does not require a private setup guide or research document.
+
+Generate the project-specific `harness-engineering/SKILL.md` with these eleven phases.
+Use the selected host's real paths and reviewer dispatch; retain the project's
+existing commands and include only rules derived from the target repository.
+
+0. **Intake:** resolve the requested outcome, scope and constraints; reuse already
+   answered questions. A bypass-marked request skips this workflow.
+1. **Reconnaissance:** read affected code, check claims against files and usages, and
+   record `file:line` evidence. Recheck the affected scope after any patch.
+2. **Rules:** select the applicable project-rules and convention references. Separate
+   deterministic gate rules from advisory guidance; introduce no unsupported rules.
+3. **Plan:** choose the smallest change satisfying the confirmed outcome and name
+   the checks that establish success. Resolve material unknowns before implementation.
+4. **Implement:** make the scoped change following the evidenced project conventions.
+5. **Behavior checks:** run the relevant existing tests and add coverage where behavior
+   changes or a regression needs it. Record failures and their evidence.
+6. **Static checks:** run the lint/typecheck commands locked in intake; record the
+   actual results, including any unavailable checks.
+7. **Documentation:** update affected convention examples and user-facing behavior
+   documentation; keep citations and keyword indexes consistent with the code.
+8. **Review gate:** run `review-gate.sh --mode=full`, then obtain the two independent
+   one-shot reviews described in SKILL.md Phase 6.2. Main synthesizes the results;
+   reviewers propose changes only. Grade patches against the six quality axes. Every
+   applied patch returns to Phase 1. Stop after three review/regression iterations
+   with the remaining findings if the gate does not pass.
+9. **Final verification:** verify the actual final diff, tests and remaining findings.
+   Never call an unavailable or failed check a pass.
+10. **Delivery:** report changed behavior, evidence and limitations. Commit or publish
+    only when the user has authorized that action.
+
+The prompt hook injects the generated project-rules and this generated workflow body.
+For a bypass prompt (`!` prefix, `harness 빼고`, `without harness`, `skip harness`,
+`no harness`), inject a short `BYPASS MODE` note instead. Bypass applies to this harness
+workflow only and does not disable other project instructions or unrelated hooks.
+
+AUTHORITATIVE BUNDLED SOURCE: <plugin>/skills/build/assets/inject-context.sh
+#!/usr/bin/env bash
+# Copy to the target project's .claude/hooks/ or .codex/hooks/ directory.
+# Resolves generated skills from this file, independent of the invocation cwd.
+set -uo pipefail
+agent_dir="$(cd "$(dirname "$0")/.." && pwd)" || exit 1
+exec python3 - "$agent_dir" 3<&0 <<'PY'
+import json
+import os
+from pathlib import Path
+import re
+import sys
+
+agent_dir = Path(sys.argv[1])
+try:
+    payload = json.load(os.fdopen(3))
+except (ValueError, OSError):
+    sys.exit(0)
+prompt = payload.get("prompt", "") if isinstance(payload, dict) else ""
+if not isinstance(prompt, str):
+    sys.exit(0)
+
+if re.search(r"^\s*!|harness\s*빼고|\b(?:without|skip|no)\s+harness\b", prompt, re.I):
+    context = "BYPASS MODE: skip the harness workflow for this request only."
+else:
+    skills = agent_dir.parent / ".agents" / "skills" if agent_dir.name == ".codex" else agent_dir / "skills"
+    bodies = []
+    for name in ("project-rules", "harness-engineering"):
+        source = skills / name / "SKILL.md"
+        try:
+            body = source.read_text(encoding="utf-8")
+        except OSError:
+            bodies.append(f"HARNESS SETUP INCOMPLETE: missing {source}. Repair before claiming the harness is active.")
+            continue
+        body = re.sub(r"\A---\r?\n.*?\r?\n---(?:\r?\n|\Z)", "", body, count=1, flags=re.S)
+        bodies.append(body.strip())
+    context = "\n\n".join(bodies)
+print(json.dumps({"hookSpecificOutput": {"hookEventName": "UserPromptSubmit", "additionalContext": context}}, ensure_ascii=False))
+PY

@@ -1,0 +1,142 @@
+[
+  {
+    "host": "claude",
+    "kind": "normal",
+    "prompt": "implement",
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"RULE_SENTINEL\\n\\nWORKFLOW_SENTINEL\"}}\n",
+    "stderr": "",
+    "passed": true,
+    "elapsed_ms": 24
+  },
+  {
+    "host": "claude",
+    "kind": "bypass",
+    "prompt": "!skip",
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": "",
+    "passed": false,
+    "elapsed_ms": 25
+  },
+  {
+    "host": "claude",
+    "kind": "bypass",
+    "prompt": "harness 빼고 해줘",
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": "",
+    "passed": false,
+    "elapsed_ms": 24
+  },
+  {
+    "host": "claude",
+    "kind": "bypass",
+    "prompt": "without harness",
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": "",
+    "passed": false,
+    "elapsed_ms": 23
+  },
+  {
+    "host": "claude",
+    "kind": "bypass",
+    "prompt": "SKIP HARNESS",
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": "",
+    "passed": false,
+    "elapsed_ms": 24
+  },
+  {
+    "host": "claude",
+    "kind": "bypass",
+    "prompt": "no harness",
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": "",
+    "passed": false,
+    "elapsed_ms": 25
+  },
+  {
+    "host": "claude",
+    "kind": "missing",
+    "prompt": "!skip",
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": "",
+    "passed": false,
+    "elapsed_ms": 24
+  },
+  {
+    "host": "codex",
+    "kind": "normal",
+    "prompt": "implement",
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"RULE_SENTINEL\\n\\nWORKFLOW_SENTINEL\"}}\n",
+    "stderr": "",
+    "passed": true,
+    "elapsed_ms": 23
+  },
+  {
+    "host": "codex",
+    "kind": "bypass",
+    "prompt": "!skip",
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": "",
+    "passed": false,
+    "elapsed_ms": 24
+  },
+  {
+    "host": "codex",
+    "kind": "bypass",
+    "prompt": "harness 빼고 해줘",
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": "",
+    "passed": false,
+    "elapsed_ms": 24
+  },
+  {
+    "host": "codex",
+    "kind": "bypass",
+    "prompt": "without harness",
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": "",
+    "passed": false,
+    "elapsed_ms": 23
+  },
+  {
+    "host": "codex",
+    "kind": "bypass",
+    "prompt": "SKIP HARNESS",
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": "",
+    "passed": false,
+    "elapsed_ms": 23
+  },
+  {
+    "host": "codex",
+    "kind": "bypass",
+    "prompt": "no harness",
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": "",
+    "passed": false,
+    "elapsed_ms": 24
+  },
+  {
+    "host": "codex",
+    "kind": "missing",
+    "prompt": "!skip",
+    "exit": 0,
+    "stdout": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"BYPASS MODE: skip the harness workflow for this request only.\"}}\n",
+    "stderr": "",
+    "passed": false,
+    "elapsed_ms": 24
+  }
+]

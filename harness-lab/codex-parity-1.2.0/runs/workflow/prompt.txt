@@ -1,0 +1,157 @@
+Render only the generated harness-engineering skill from the two actual bundled references below for a Codex project. This is a narrow document-generation probe, not a request to build an entire harness or run its implementation workflow. Write draft/harness-engineering/SKILL.md; do not create protected directories. Target installed paths are .agents/skills/project-rules/SKILL.md, .agents/skills/harness-engineering/SKILL.md and .codex/scripts/review-gate.sh. No project-specific rules need to be invented. The main session model is gpt-6-astra and reasoning effort xhigh; default the role settings to these, retain all four explicit HARNESS_CODEX_* overrides. This fixture only has the CLI route for future reviewers: embed the concrete fresh read-only command for each role and the JSON shape. Include the eleven workflow phases, gate exits, scoring threshold, regression cap, and bypass. The generated skill must be self-contained with no references to this builder or its Phase 6.2. Do not dispatch reviewers now, change user configuration, create approvals, or commit. Report the written path only.
+
+
+## workflow.md
+# Generated harness-engineering contract
+
+This public contract is self-contained. It is based on the requirements in this
+plugin, and does not require a private setup guide or research document.
+
+Generate the project-specific `harness-engineering/SKILL.md` with these eleven phases.
+Use the selected host's real paths and reviewer dispatch; retain the project's
+existing commands and include only rules derived from the target repository.
+
+0. **Intake:** resolve the requested outcome, scope and constraints; reuse already
+   answered questions. A bypass-marked request skips this workflow.
+1. **Reconnaissance:** read affected code, check claims against files and usages, and
+   record `file:line` evidence. Recheck the affected scope after any patch.
+2. **Rules:** select the applicable project-rules and convention references. Separate
+   deterministic gate rules from advisory guidance; introduce no unsupported rules.
+3. **Plan:** choose the smallest change satisfying the confirmed outcome and name
+   the checks that establish success. Resolve material unknowns before implementation.
+4. **Implement:** make the scoped change following the evidenced project conventions.
+5. **Behavior checks:** run the relevant existing tests and add coverage where behavior
+   changes or a regression needs it. Record failures and their evidence.
+6. **Static checks:** run the lint/typecheck commands locked in intake; record the
+   actual results, including any unavailable checks.
+7. **Documentation:** update affected convention examples and user-facing behavior
+   documentation; keep citations and keyword indexes consistent with the code.
+8. **Review gate:** run `review-gate.sh --mode=full`, then obtain the two independent
+   one-shot reviews specified in the generated review section below. Main synthesizes the results;
+   reviewers propose changes only. Grade patches against the six quality axes. Every
+   applied patch returns to Phase 1. Stop after three review/regression iterations
+   with the remaining findings if the gate does not pass.
+9. **Final verification:** verify the actual final diff, tests and remaining findings.
+   Never call an unavailable or failed check a pass.
+10. **Delivery:** report changed behavior, evidence and limitations. Commit or publish
+    only when the user has authorized that action.
+
+The prompt hook injects the generated project-rules and this generated workflow body.
+For a bypass prompt (`!` prefix, `harness 빼고`, `without harness`, `skip harness`,
+`no harness`), inject a short `BYPASS MODE` note instead. Bypass applies to this harness
+workflow only and does not disable other project instructions or unrelated hooks.
+
+## Review section to include in the generated skill
+
+Resolve this section for the selected host; do not leave references to the build
+plugin or its SKILL.md. Name the actual project-local gate and rule paths.
+
+- Run the project's gate in full mode first: exit 0 passes, exit 1 is a violation,
+  exit 2 is a configuration/execution error. A missing command is not a pass.
+- Invoke two fresh, independent read-only reviewers with no prior review history.
+  Claude uses its Opus and Sonnet panel. Codex uses architecture and gate reviewers;
+  embed the `HARNESS_CODEX_ARCH_MODEL`, `HARNESS_CODEX_ARCH_EFFORT`,
+  `HARNESS_CODEX_GATE_MODEL` and `HARNESS_CODEX_GATE_EFFORT`
+  resolution rules from the adapter, defaulting to the main session's actual values.
+  Embed the available native dispatch route or the separate `CXC_MODE=off codex exec
+  --ephemeral -s read-only` recipe with explicit model, effort, cwd and prompt-file stdin.
+- Give both the same complete diff, rule bodies, convention evidence, generated file
+  contents and direct verification results. Add the individual role focus. Each must
+  return JSON with `findings`, `fact_check_misses`, `gate_evasions`, `quality_scores`
+  (srp, comment_clarity, kiss, dry, yagni, cognitive_ease; each 0–5 with evidence), and
+  `patches_suggested`. Reviewers report only; main owns edits.
+- Main verifies findings, requires no fact-check misses or gate evasions and an average
+  of at least 3.5 from **each** reviewer, and records its synthesis. Any applied patch
+  returns to Phase 1. Three review/regression iterations is the hard limit; report
+  unresolved findings instead of inventing approval.
+
+## host-codex.md
+# Codex target and execution adapter
+
+Invoke `$harness:build`. Apply all derivation, quality, review and regression rules in
+SKILL.md. Before Phase 0, set the output target to Codex unless the user explicitly
+requested `host=claude` or `host=both`. The execution host selects reviewers;
+the target selects file paths. Claude generating Codex output still uses its Claude panel. Use this mapping consistently in generation, review
+prompts, generated skill bodies, test commands and the final file list:
+
+| Claude path in SKILL.md | Codex target |
+|---|---|
+| `.claude/settings.json` | `.codex/hooks.json` (hook declarations only) |
+| `.claude/hooks/inject-context.sh` | `.codex/hooks/inject-context.sh` |
+| `.claude/scripts/review-gate.sh` | `.codex/scripts/review-gate.sh` |
+| `.claude/skills/project-rules/` | `.agents/skills/project-rules/` |
+| `.claude/skills/harness-engineering/` | `.agents/skills/harness-engineering/` |
+| `docs/conventions/` | `docs/conventions/` |
+
+Preserve existing Claude artifacts. Update only the selected host's wiring; if both
+hosts are requested, derive rules once and generate both layouts with identical rule
+content. Merge the new hook into existing JSON, retaining other keys and hooks and
+avoiding a duplicate invocation on reruns. Do not overwrite existing AGENTS.md or
+Codex configuration. These skills and the hook do not require a new AGENTS.md.
+
+Codex may protect `.codex/` and `.agents/` against writes in workspace-write mode.
+If the tool requests approval, use the host's normal approval flow for those concrete
+files. If approvals are unavailable, prepare the files in a writable staging directory
+with their intended relative paths and report installation as pending. Do not change
+sandbox settings or call a staged draft an installed harness.
+
+## Tools and reviewers
+
+- Use the available user-input tool, or ask in conversation and wait. Reuse answers
+  already supplied. Track the locked intake with the host's plan tool or a local note.
+- Read/Glob/Grep/Write mean the host's corresponding file/search tools.
+- For each place the shared procedure calls for Opus + Sonnet, Codex uses **two fresh
+  independent read-only Codex reviewers**, using the resolved settings below. Give one the rule-derivation/architecture focus and the other the gate and
+  implementation focus, plus the same complete input bundle. Keep both JSON contracts,
+  the 3.5 threshold, main synthesis and three-iteration cap. State the actual reviewer
+  models in the report; do not call Codex reviewers Opus or Sonnet.
+- If the host cannot create independent read-only subagents, use two separate
+  `CXC_MODE=off codex exec --ephemeral -s read-only` calls with self-contained prompt files on stdin,
+  the selected reviewer model/effort explicitly passed, and the fixture/project
+  as `-C`. Wait for both calls. Do not weaken isolation or silently skip a review.
+
+## Reviewer settings
+
+| Role | Model variable | Effort variable | Default |
+|---|---|---|---|
+| Architecture / derivation | `HARNESS_CODEX_ARCH_MODEL` | `HARNESS_CODEX_ARCH_EFFORT` | main model / effort |
+| Gate / implementation | `HARNESS_CODEX_GATE_MODEL` | `HARNESS_CODEX_GATE_EFFORT` | main model / effort |
+
+Resolve and record both pairs before dispatch; check effort support for any overridden
+model. Explicit settings may also be passed through a native fresh read-only subagent
+API. Never claim different model families when both inherit the same model. Include
+relevant project instructions and mark each prompt `You are reviewing a generated
+harness`; it is a delegated review, not a new orchestration task. Set `CXC_MODE=off`
+for each CLI child so installing CXC alongside harness does not start a nested run.
+
+Copy the concrete reviewer recipe, JSON shape, model/effort resolution and actual gate
+path into the generated harness-engineering skill. References to this build skill's
+Phase 6.2 are insufficient after installation.
+
+## Hook wiring
+
+Merge this event into `.codex/hooks.json` (no Claude settings schema):
+
+```json
+{
+  "hooks": {
+    "UserPromptSubmit": [{
+      "hooks": [{
+        "type": "command",
+        "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/inject-context.sh\""
+      }]
+    }]
+  }
+}
+```
+
+Use the SKILL.md `install-hooks.py` commands to copy the bundled hook and merge
+this declaration. For both targets, validate both configurations before writing either.
+It resolves the project and skill directories from its own installed location, so it
+also works from a subdirectory and from another worktree.
+
+Before declaring automatic injection active, the project and exact hook definition
+must be trusted by Codex (`/hooks`) and hooks must be enabled. Do not change global
+trust or bypass settings. If trust remains pending, complete file generation and
+direct script verification, then report that activation step as pending. Do not report
+a direct script check as proof that the runtime invoked the hook.

@@ -1,0 +1,32 @@
+{
+  "status": "prepared_and_verified_installation_blocked",
+  "independent_reviews": {
+    "completed": 2,
+    "agents": [
+      "/root/rule_review_fresh",
+      "/root/gate_review_fresh"
+    ],
+    "dispatch": "fresh agents with fork_turns=none; read-only instructions; identical complete review-input.md",
+    "model": "inherited main session; tool does not expose runtime model identifier",
+    "resolved_account_configuration": {
+      "model": "gpt-6-astra",
+      "reasoning_effort": "xhigh"
+    },
+    "quality_averages": [
+      4.5,
+      4.333333333333333
+    ],
+    "fact_check_misses": 0,
+    "gate_evasions": 0,
+    "patches_suggested": 0
+  },
+  "synthesis": "No artifact patches required. Both independent reviews meet 3.5 threshold. Reviewed and verified prepared artifacts, not an installed harness.",
+  "root_installation": "Blocked by filesystem policy: mkdir .codex and .agents returned Operation not permitted. No approval or workaround used.",
+  "runtime_hook_trust": "Pending separately; no runtime auto-invocation claim.",
+  "earlier_review_attempts": [
+    "Full-history spawn failed: no rollout found for main thread",
+    "Two codex exec ephemeral read-only calls failed initializing in-process app-server client (Operation not permitted); logs preserved",
+    "Two no-history independent review agents completed successfully"
+  ],
+  "regression_iterations": 1
+}

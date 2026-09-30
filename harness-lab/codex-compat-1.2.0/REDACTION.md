@@ -1,0 +1,1 @@
+Public copies replace absolute host/user/temp paths and opaque run identifiers with placeholders. No generated logic or verdict was corrected. Original CLI logs and fixture files were retained in the disposable local run directory during analysis. Source hashes and generated artifact hashes describe bytes before path redaction; they are not hashes of the public redacted text.

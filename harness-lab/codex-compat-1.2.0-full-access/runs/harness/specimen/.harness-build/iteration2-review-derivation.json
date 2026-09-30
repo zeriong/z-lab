@@ -1,0 +1,36 @@
+{
+  "findings": [
+    {
+      "severity": "P3",
+      "file": ".codex/scripts/review-gate.sh",
+      "line": 18,
+      "issue": "읽기 전용 환경에서 Bash의 here-document 임시 파일 생성이 거부되면 검사기가 실행되지 않았는데도 exit 1을 반환한다. 실제 재실행에서 이 오류 뒤 lint/typecheck는 통과하고 최종 결과는 exit 1이었다. 이는 3행에 명시한 검사 환경 오류 exit 2 계약과 다르다. 통과로 처리되는 우회는 아니다.",
+      "suggested_fix": "검사기의 규칙 위반 exit 1과 검사기 실행 실패를 구분하여 실행 실패는 exit 2로 반환한다. 게이트의 Python 코드를 python3 -c로 전달하면 해당 임시 파일 의존성도 제거할 수 있다."
+    }
+  ],
+  "fact_check_misses": [],
+  "gate_evasions": [],
+  "quality_scores": {
+    "srp": 5,
+    "comment_clarity": 4,
+    "kiss": 5,
+    "dry": 4,
+    "yagni": 5,
+    "cognitive_ease": 4
+  },
+  "quality_evidence": {
+    "srp": ".agents/skills/project-rules/SKILL.md:12는 규칙의 출처인 request.txt:1과 준수 사례인 src/greet.js:1을 정확히 구분한다. 규칙 문서, 결정적 검사, 문맥 주입, 작업 절차의 책임도 분리되어 있다.",
+    "comment_clarity": "package.json:1의 두 명령이 실제 타입 분석이 아닌 구문 검사라는 설명이 정확하다. harness-engineering/SKILL.md:14는 직접 실행과 런타임 신뢰·활성화를 구분한다. 다만 게이트의 환경 오류 종료 코드 설명은 이번 실행 결과와 불일치한다.",
+    "kiss": "게이트는 Git diff에 의존하지 않고 src의 지정된 네 확장자를 재귀 검사한다. 연속된 ASCII TODO를 바이트 단위로 검사하므로 주석·문자열·식별자와 미추적 파일에도 같은 규칙이 적용된다. 기존 src에 대한 Python 검사본문 단독 실행은 exit 0이었다.",
+    "dry": "설치된 훅은 권위 있는 번들 원본과 바이트 단위로 일치하며 실행 권한도 0755로 일치한다. 생성 워크플로에는 번들 본문이 그대로 포함되어 있다. 규칙 범위가 여러 문서에 반복되지만 상세 참조 문서가 공통 conventions 문서를 안내한다.",
+    "yagni": "rules.json에는 사용자 요청에서 도출한 no-literal-todo 하나만 있다. 추가 구조 규칙이나 advisory 규칙을 만들지 않았고, 존재하지 않는 위반 사례도 창작하지 않았다. src/greet.js와 AGENTS.md는 제공된 원본 본문과 일치한다. 이번 검토에서도 파일 변경이나 위반 표본 생성은 하지 않았다.",
+    "cognitive_ease": "Codex 경로 매핑과 0~10의 11단계가 일치한다. 두 독립 검토자의 모델·추론 강도 상속, 동일 입력, 품질 기준, 재검증과 세 번의 반복 제한이 명시되어 있다. 번들 bypass는 인용문 안에서도 주입을 생략하는 설계된 기능이며 직접 게이트에는 영향을 주지 않는다. 제공된 검증 기록 21건은 예상 종료 코드와 일치하고 정상 주입 기록도 현재 스킬 본문과 일치한다. 이번 독립 실행에서는 두 Bash 구문 검사와 lint/typecheck가 통과했지만, 전체 게이트와 훅 실행은 임시 파일 제한으로 실패했다. 따라서 제공된 성공 기록과 이번 재실행 결과를 구분하며, 런타임 훅 신뢰·활성화는 계속 pending으로 평가한다."
+  },
+  "patches_suggested": [
+    {
+      "file": ".codex/scripts/review-gate.sh",
+      "change": "Python 검사기 실행 실패를 규칙 위반과 구분해 exit 2로 반환하고, here-document 대신 python3 -c로 검사 코드를 전달한다.",
+      "why": "문서화된 종료 코드 계약을 지키고 읽기 전용 환경에서 확인된 임시 파일 생성 실패를 해소하기 위해서다."
+    }
+  ]
+}
