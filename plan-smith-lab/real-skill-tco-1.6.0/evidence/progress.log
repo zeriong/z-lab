@@ -1,3 +1,8 @@
 BATCH r1 RETURNED 2026-09-29T04:06:36Z
 opus-5.5_base-plan_r1: done
 fable-5.1_base-plan_r1: done
+opus-5.5_base-plan_r1: done
+fable-5.1_base-plan_r1: done
+BATCH r1 RETURNED 2026-09-30T08:09:44Z
+STOPPED after batch r1 2026-09-30T08:09:44Z
+STOP set after r1 plan-smith reached implementation 2026-09-30T08:09:57Z (user: conclude at r1)

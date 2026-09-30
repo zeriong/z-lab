@@ -2,3 +2,5 @@ fable-5.1_base-plan_r1: NO PLAN FILE
 opus-5.5_base-plan_r1: NO PLAN FILE
 fable-5.1_plan-smith_r1: NO PLAN FILE
 opus-5.5_plan-smith_r1: NO PLAN FILE
+fable-5.1_plan-smith_r1 impl: LIMIT
+opus-5.5_plan-smith_r1 plan: LIMIT

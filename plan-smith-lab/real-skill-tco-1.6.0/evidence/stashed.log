@@ -2,3 +2,7 @@ opus-5.5_base-plan_r1 plan -> evidence/aborted/20260929-131951-opus-5.5_base-pla
 opus-5.5_plan-smith_r1 plan -> evidence/aborted/20260929-131951-opus-5.5_plan-smith_r1-plan
 fable-5.1_base-plan_r1 plan -> evidence/aborted/20260929-131951-fable-5.1_base-plan_r1-plan
 fable-5.1_plan-smith_r1 plan -> evidence/aborted/20260929-131951-fable-5.1_plan-smith_r1-plan
+opus-5.5_plan-smith_r1 plan -> evidence/aborted/20260930-154549-opus-5.5_plan-smith_r1-plan
+fable-5.1_plan-smith_r1 plan -> evidence/aborted/20260930-154549-fable-5.1_plan-smith_r1-plan
+opus-5.5_plan-smith_r1 plan -> evidence/aborted/20260930-174247-opus-5.5_plan-smith_r1-plan (spend limit; orchestrator moved, conclude at r1)
+fable-5.1_plan-smith_r1 impl -> evidence/aborted/20260930-174247-fable-5.1_plan-smith_r1-impl (spend limit, 0 tokens; orchestrator moved, conclude at r1)

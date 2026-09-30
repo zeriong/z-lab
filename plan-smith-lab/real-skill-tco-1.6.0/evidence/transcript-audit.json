@@ -1,0 +1,290 @@
+[
+ {
+  "session": "8013c2df-7080-4793-8a8f-f8a0f7b077ec",
+  "subagents": 0,
+  "tokens": 783436,
+  "output": 89200,
+  "by_model": {
+   "claude-fable-5-1": {
+    "tokens": 783436,
+    "output": 89200
+   }
+  },
+  "tools": {
+   "Bash": 11
+  },
+  "agents": [],
+  "injections": {
+   "claude_md": 0,
+   "hook_context": 0,
+   "advisor": 0
+  },
+  "duration_s": 1209,
+  "paths": []
+ },
+ {
+  "session": "5f99ca5a-78df-430c-83ea-a5e869adb2b5",
+  "subagents": 4,
+  "tokens": 2995113,
+  "output": 340370,
+  "by_model": {
+   "claude-fable-5-1": {
+    "tokens": 2995113,
+    "output": 340370
+   }
+  },
+  "tools": {
+   "Bash": 14,
+   "Read": 15,
+   "Agent": 4,
+   "Write": 14,
+   "Grep": 5,
+   "Glob": 1
+  },
+  "agents": [
+   {
+    "type": "plan-smith:plan-writer",
+    "model": null
+   },
+   {
+    "type": "plan-smith:plan-writer",
+    "model": null
+   },
+   {
+    "type": "plan-smith:plan-writer",
+    "model": null
+   },
+   {
+    "type": "plan-smith:plan-writer",
+    "model": null
+   }
+  ],
+  "injections": {
+   "claude_md": 0,
+   "hook_context": 0,
+   "advisor": 0
+  },
+  "duration_s": 5007,
+  "paths": [
+   "<LAB>/plan-smith-lab/real-skill-tco-1.6.0/subject/plugins/plan-smith/skills/forge/references/frames.md",
+   "<LAB>/plan-smith-lab/real-skill-tco-1.6.0/subject/plugins/plan-smith/skills/forge/references/packet-template.md",
+   "<LAB>/plan-smith-lab/real-skill-tco-1.6.0/subject/plugins/plan-smith/skills/forge/references/styles.md",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>"
+  ]
+ },
+ {
+  "session": "0f7440db-a9b8-41b8-bac4-38d32cfbf3b6",
+  "subagents": 0,
+  "tokens": 573155,
+  "output": 101572,
+  "by_model": {
+   "claude-opus-5-5": {
+    "tokens": 573155,
+    "output": 101572
+   }
+  },
+  "tools": {
+   "Read": 1,
+   "Bash": 3,
+   "Write": 1,
+   "Grep": 1
+  },
+  "agents": [],
+  "injections": {
+   "claude_md": 0,
+   "hook_context": 0,
+   "advisor": 0
+  },
+  "duration_s": 1078,
+  "paths": [
+   "<FIXTURE>",
+   "<FIXTURE>"
+  ]
+ },
+ {
+  "session": "93c35f78-2b11-46d9-a936-3395b3fb06cb",
+  "subagents": 6,
+  "tokens": 5820136,
+  "output": 540300,
+  "by_model": {
+   "claude-opus-5-5": {
+    "tokens": 5820136,
+    "output": 540300
+   },
+   "<synthetic>": {
+    "tokens": 0,
+    "output": 0
+   }
+  },
+  "tools": {
+   "Bash": 17,
+   "Read": 17,
+   "Write": 15,
+   "Agent": 6,
+   "Grep": 18,
+   "Glob": 1
+  },
+  "agents": [
+   {
+    "type": "plan-smith:plan-writer",
+    "model": null
+   },
+   {
+    "type": "plan-smith:plan-writer",
+    "model": null
+   },
+   {
+    "type": "plan-smith:plan-writer",
+    "model": null
+   },
+   {
+    "type": "plan-smith:plan-writer",
+    "model": null
+   },
+   {
+    "type": "plan-smith:plan-writer",
+    "model": null
+   },
+   {
+    "type": "plan-smith:plan-writer",
+    "model": null
+   }
+  ],
+  "injections": {
+   "claude_md": 0,
+   "hook_context": 0,
+   "advisor": 0
+  },
+  "duration_s": 5034,
+  "paths": [
+   "<HOME>/.claude/projects/-private-var-folders-jx-81xz9-xj7x31h6mwxd7qrlj40000gn-T-real-skill-tco-1-6-0-opus-5-5-plan-smith-r1/93c35f78-2b11-46d9-a936-3395b3fb06cb/tool-results/b0l0riyni.txt",
+   "<LAB>/plan-smith-lab/real-skill-tco-1.6.0/subject/plugins/plan-smith/agents/plan-writer.md",
+   "<LAB>/plan-smith-lab/real-skill-tco-1.6.0/subject/plugins/plan-smith/skills/forge/references/styles.md",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>"
+  ]
+ },
+ {
+  "session": "bd98e249-1743-4b53-b53c-a083df10b19e",
+  "subagents": 0,
+  "tokens": 1074619,
+  "output": 109775,
+  "by_model": {
+   "claude-fable-5-1": {
+    "tokens": 1074619,
+    "output": 109775
+   }
+  },
+  "tools": {
+   "Read": 2,
+   "Write": 13
+  },
+  "agents": [],
+  "injections": {
+   "claude_md": 0,
+   "hook_context": 0,
+   "advisor": 0
+  },
+  "duration_s": 1121,
+  "paths": [
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>"
+  ]
+ },
+ {
+  "session": "da121c3e-bc42-4e8d-aaa2-89ecafe9dc1a",
+  "subagents": 0,
+  "tokens": 0,
+  "output": 0,
+  "by_model": {
+   "<synthetic>": {
+    "tokens": 0,
+    "output": 0
+   }
+  },
+  "tools": {},
+  "agents": [],
+  "injections": {
+   "claude_md": 0,
+   "hook_context": 0,
+   "advisor": 0
+  },
+  "duration_s": 1,
+  "paths": []
+ },
+ {
+  "session": "081d42f5-bd0d-41a8-a436-277def2e56a9",
+  "subagents": 0,
+  "tokens": 1841756,
+  "output": 130139,
+  "by_model": {
+   "claude-opus-5-5": {
+    "tokens": 1841756,
+    "output": 130139
+   }
+  },
+  "tools": {
+   "Read": 3,
+   "Write": 13
+  },
+  "agents": [],
+  "injections": {
+   "claude_md": 0,
+   "hook_context": 0,
+   "advisor": 0
+  },
+  "duration_s": 1139,
+  "paths": [
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>",
+   "<FIXTURE>"
+  ]
+ }
+]
