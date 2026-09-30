@@ -1,0 +1,14 @@
+N01: running
+N01: done
+N02: running
+Traceback (most recent call last):
+  File "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/latest-model-1.8.0/run.py", line 386, in <module>
+    main()
+  File "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/latest-model-1.8.0/run.py", line 381, in main
+    case.finish(CASES[name](case, product))
+  File "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/latest-model-1.8.0/run.py", line 265, in n02
+    out = claude_agent(case, "claude-main", prompt, root, "opus",
+  File "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/plan-smith-lab/latest-model-1.8.0/run.py", line 144, in claude_agent
+    for block in (e.get("message") or {}).get("content") or []:
+AttributeError: 'str' object has no attribute 'get'
+plan-smith-lab/latest-model-1.8.0 exit=1

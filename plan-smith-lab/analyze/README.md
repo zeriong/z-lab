@@ -47,3 +47,5 @@
 - [Codex setting parity 1.7.0](v1.7.0/codex-setting-parity.md)
 
 - [Codex re-review 1.7.0](v1.7.0/codex-rereview.md)
+
+- [Newest model per family 1.8.0](v1.8.0/latest-model.md)

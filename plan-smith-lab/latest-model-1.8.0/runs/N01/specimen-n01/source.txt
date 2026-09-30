@@ -1,0 +1,1 @@
+A local offline note app for one person; title and body records, no sync and no concurrency.

@@ -1,0 +1,33 @@
+[
+ {
+  "label": "01-codex-main",
+  "argv": [
+   "codex",
+   "exec",
+   "--ignore-user-config",
+   "--ephemeral",
+   "--json",
+   "-m",
+   "gpt-6-sol",
+   "-s",
+   "workspace-write",
+   "-c",
+   "features.hooks=false",
+   "-c",
+   "agents.enabled=true",
+   "-C",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/ps-n01-o4ic_8ln",
+   "-"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 396112,
+  "usage": {
+   "input_tokens": 1221446,
+   "cached_input_tokens": 1182464,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 8458,
+   "reasoning_output_tokens": 3255
+  }
+ }
+]
