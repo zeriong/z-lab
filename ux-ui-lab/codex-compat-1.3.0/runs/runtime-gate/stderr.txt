@@ -1,0 +1,11 @@
+2026-09-29T09:02:50.568883Z ERROR codex_core::tools::router: error=Command blocked by PreToolUse hook: ⛔ ux-ui gate: this commit changes UI, but no ux-ui-art-director APPROVAL
+matches the exact staged diff.
+
+Run the UI build/review loop before committing:
+  → invoke ux-ui:build (web) or ux-ui:build-mobile (mobile).
+Use /plugin:skill in Claude Code or $plugin:skill in Codex.
+The skill will measure the real render, have the art director critique
+the measured snapshots, apply fixes until APPROVED, then record the approval.
+The approval is bound to the diff hash, so re-edit → re-review is required.
+
+(If this file genuinely is not UI, override the extension set with UX_UI_GLOBS.). Command: git commit --dry-run

@@ -1,0 +1,8 @@
+{
+  "exit": "capture-timeout",
+  "elapsed_ms": null,
+  "elapsed_lower_bound_ms": 45000,
+  "usage": [],
+  "attempt": "one-shot",
+  "note": "Chrome produced PNG before process exit timed out; original elapsed timer was not recorded. No reviewer invoked in this unit."
+}

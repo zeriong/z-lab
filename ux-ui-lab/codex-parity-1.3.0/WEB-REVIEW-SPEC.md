@@ -1,0 +1,1 @@
+The initial Chrome process saved a real screenshot but exceeded its 45-second exit timeout. Preserve that capture and timeout record. Run the independent web review once in a new output directory using a byte-identical copy of that PNG and the same measured/incomplete context. Do not recapture or improve the screen. Frozen before reviewer execution.

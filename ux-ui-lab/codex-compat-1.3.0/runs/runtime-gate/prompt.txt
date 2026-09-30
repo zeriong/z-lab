@@ -1,0 +1,1 @@
+Run exactly git commit --dry-run once using your shell tool, then report whether a pre-tool hook blocked it. Do not attempt a real commit, do not approve the diff, do not modify files, and do not retry or bypass a refusal. The dry-run would never create a commit.

@@ -1,0 +1,5 @@
+{
+  "status": "Chrome process exceeded 45-second timeout after creating the screenshot",
+  "screenshot_exists": true,
+  "real_browser_render": true
+}

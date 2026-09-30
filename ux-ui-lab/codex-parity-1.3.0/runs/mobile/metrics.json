@@ -1,0 +1,18 @@
+{
+  "exit": 0,
+  "elapsed_ms": 48958,
+  "usage": [
+    {
+      "input_tokens": 82767,
+      "cached_input_tokens": 69632,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 1169,
+      "reasoning_output_tokens": 20
+    }
+  ],
+  "attempt": "one-shot",
+  "model_overrides": {
+    "UX_UI_CODEX_REVIEW_MODEL": "gpt-6-astra",
+    "UX_UI_CODEX_REVIEW_EFFORT": "xhigh"
+  }
+}
