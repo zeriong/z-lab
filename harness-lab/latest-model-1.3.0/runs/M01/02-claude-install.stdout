@@ -1,0 +1,1 @@
+{"host": "claude", "changed": [".claude/hooks/inject-context.sh", ".claude/scripts/latest-model.py", ".claude/settings.json"], "activation": "Verify generated skill bodies and host hook trust separately."}

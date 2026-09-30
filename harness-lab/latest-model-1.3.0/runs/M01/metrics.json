@@ -1,0 +1,176 @@
+[
+ {
+  "label": "01-claude-dry-run",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/harness-lab/latest-model-1.3.0/subject/harness/skills/build/scripts/install-hooks.py",
+   "--project",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/hn-m01-claude-cthljxi9",
+   "--host",
+   "claude",
+   "--dry-run"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 30
+ },
+ {
+  "label": "02-claude-install",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/harness-lab/latest-model-1.3.0/subject/harness/skills/build/scripts/install-hooks.py",
+   "--project",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/hn-m01-claude-cthljxi9",
+   "--host",
+   "claude"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 29
+ },
+ {
+  "label": "03-claude-check",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/harness-lab/latest-model-1.3.0/subject/harness/skills/build/scripts/install-hooks.py",
+   "--project",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/hn-m01-claude-cthljxi9",
+   "--host",
+   "claude",
+   "--check"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 28
+ },
+ {
+  "label": "04-claude-reinstall",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/harness-lab/latest-model-1.3.0/subject/harness/skills/build/scripts/install-hooks.py",
+   "--project",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/hn-m01-claude-cthljxi9",
+   "--host",
+   "claude"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 26
+ },
+ {
+  "label": "05-codex-dry-run",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/harness-lab/latest-model-1.3.0/subject/harness/skills/build/scripts/install-hooks.py",
+   "--project",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/hn-m01-codex-529utjl_",
+   "--host",
+   "codex",
+   "--dry-run"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 26
+ },
+ {
+  "label": "06-codex-install",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/harness-lab/latest-model-1.3.0/subject/harness/skills/build/scripts/install-hooks.py",
+   "--project",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/hn-m01-codex-529utjl_",
+   "--host",
+   "codex"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 26
+ },
+ {
+  "label": "07-codex-check",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/harness-lab/latest-model-1.3.0/subject/harness/skills/build/scripts/install-hooks.py",
+   "--project",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/hn-m01-codex-529utjl_",
+   "--host",
+   "codex",
+   "--check"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 25
+ },
+ {
+  "label": "08-codex-reinstall",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/harness-lab/latest-model-1.3.0/subject/harness/skills/build/scripts/install-hooks.py",
+   "--project",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/hn-m01-codex-529utjl_",
+   "--host",
+   "codex"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 25
+ },
+ {
+  "label": "09-both-dry-run",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/harness-lab/latest-model-1.3.0/subject/harness/skills/build/scripts/install-hooks.py",
+   "--project",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/hn-m01-both-1lzjhaff",
+   "--host",
+   "both",
+   "--dry-run"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 24
+ },
+ {
+  "label": "10-both-install",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/harness-lab/latest-model-1.3.0/subject/harness/skills/build/scripts/install-hooks.py",
+   "--project",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/hn-m01-both-1lzjhaff",
+   "--host",
+   "both"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 27
+ },
+ {
+  "label": "11-both-check",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/harness-lab/latest-model-1.3.0/subject/harness/skills/build/scripts/install-hooks.py",
+   "--project",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/hn-m01-both-1lzjhaff",
+   "--host",
+   "both",
+   "--check"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 26
+ },
+ {
+  "label": "12-both-reinstall",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/harness-lab/latest-model-1.3.0/subject/harness/skills/build/scripts/install-hooks.py",
+   "--project",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/hn-m01-both-1lzjhaff",
+   "--host",
+   "both"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 25
+ }
+]

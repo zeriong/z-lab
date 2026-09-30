@@ -21,3 +21,10 @@
 - Evidence: [version findings](v1.2.0/codex-rereview.md) (H08).
 - Correction: apply the tested fixes while retaining shared host contracts.
 - Remaining scope: platform/device matrices and model quality are not established by these scoped probes.
+
+## Newest model per family 1.3.0
+
+- Evidence: [version analysis](v1.3.0/latest-model.md) (M01, M02).
+- Observation: the Codex default was the main session's model as is, so an older session kept its role on an older model.
+- Action: resolve the newest of the family before each dispatch (plugin-platform-lab resolver).
+- Decisions: see the version analysis (user decisions of 2026-09-30).

@@ -1,0 +1,11 @@
+{
+ "recipe": "python3 \"$(git rev-parse --show-toplevel)/.codex/scripts/latest-model.py\" codex \"${HARNESS_CODEX_ARCH_MODEL:-gpt-6-sol}\" --effort \"low\"",
+ "exit": 0,
+ "stdout": "gpt-6.1-sol",
+ "stderr": "latest-model: using gpt-6.1-sol (newest sol) instead of gpt-6-sol",
+ "review": {
+  "exit": 0,
+  "run_header_model": "gpt-6.1-sol",
+  "tokens_used": 2636
+ }
+}

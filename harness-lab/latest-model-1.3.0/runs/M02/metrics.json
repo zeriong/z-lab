@@ -1,0 +1,32 @@
+[
+ {
+  "label": "01-recipe",
+  "argv": [
+   "bash",
+   "-c",
+   "python3 \"$(git rev-parse --show-toplevel)/.codex/scripts/latest-model.py\" codex \"${HARNESS_CODEX_ARCH_MODEL:-gpt-6-sol}\" --effort \"low\""
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/hn-m01-codex-529utjl_",
+  "exit": 0,
+  "elapsed_ms": 72
+ },
+ {
+  "label": "02-review",
+  "argv": [
+   "codex",
+   "exec",
+   "-m",
+   "gpt-6.1-sol",
+   "-c",
+   "model_reasoning_effort=\"low\"",
+   "-s",
+   "read-only",
+   "--ephemeral",
+   "Reply with the single word OK."
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/hn-m01-codex-529utjl_",
+  "exit": 0,
+  "elapsed_ms": 6261,
+  "total_tokens": 2636
+ }
+]

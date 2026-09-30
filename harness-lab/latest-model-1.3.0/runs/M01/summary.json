@@ -1,0 +1,132 @@
+{
+ "claude": {
+  "steps": {
+   "dry-run": {
+    "exit": 0,
+    "stdout": "{\"host\": \"claude\", \"changes\": [\".claude/hooks/inject-context.sh\", \".claude/scripts/latest-model.py\", \".claude/settings.json\"]}",
+    "stderr": ""
+   },
+   "install": {
+    "exit": 0,
+    "stdout": "{\"host\": \"claude\", \"changed\": [\".claude/hooks/inject-context.sh\", \".claude/scripts/latest-model.py\", \".claude/settings.json\"], \"activation\": \"Verify generated skill bodies and host hook trust separately.\"}",
+    "stderr": ""
+   },
+   "check": {
+    "exit": 0,
+    "stdout": "{\"host\": \"claude\", \"changes\": []}",
+    "stderr": ""
+   },
+   "reinstall": {
+    "exit": 0,
+    "stdout": "{\"host\": \"claude\", \"changed\": [], \"activation\": \"Verify generated skill bodies and host hook trust separately.\"}",
+    "stderr": ""
+   }
+  },
+  "copies": {
+   "claude": {
+    "exists": true,
+    "identical": true,
+    "executable": true
+   },
+   "codex": {
+    "exists": false,
+    "identical": false,
+    "executable": false
+   }
+  },
+  "files": [
+   ".claude/hooks/inject-context.sh",
+   ".claude/scripts/latest-model.py",
+   ".claude/settings.json",
+   "AGENTS.md"
+  ]
+ },
+ "codex": {
+  "steps": {
+   "dry-run": {
+    "exit": 0,
+    "stdout": "{\"host\": \"codex\", \"changes\": [\".codex/hooks/inject-context.sh\", \".codex/scripts/latest-model.py\", \".codex/hooks.json\"]}",
+    "stderr": ""
+   },
+   "install": {
+    "exit": 0,
+    "stdout": "{\"host\": \"codex\", \"changed\": [\".codex/hooks/inject-context.sh\", \".codex/scripts/latest-model.py\", \".codex/hooks.json\"], \"activation\": \"Verify generated skill bodies and host hook trust separately.\"}",
+    "stderr": ""
+   },
+   "check": {
+    "exit": 0,
+    "stdout": "{\"host\": \"codex\", \"changes\": []}",
+    "stderr": ""
+   },
+   "reinstall": {
+    "exit": 0,
+    "stdout": "{\"host\": \"codex\", \"changed\": [], \"activation\": \"Verify generated skill bodies and host hook trust separately.\"}",
+    "stderr": ""
+   }
+  },
+  "copies": {
+   "claude": {
+    "exists": false,
+    "identical": false,
+    "executable": false
+   },
+   "codex": {
+    "exists": true,
+    "identical": true,
+    "executable": true
+   }
+  },
+  "files": [
+   ".codex/hooks.json",
+   ".codex/hooks/inject-context.sh",
+   ".codex/scripts/latest-model.py",
+   "AGENTS.md"
+  ]
+ },
+ "_codex_fixture": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/hn-m01-codex-529utjl_",
+ "both": {
+  "steps": {
+   "dry-run": {
+    "exit": 0,
+    "stdout": "{\"host\": \"both\", \"changes\": [\".claude/hooks/inject-context.sh\", \".claude/scripts/latest-model.py\", \".claude/settings.json\", \".codex/hooks/inject-context.sh\", \".codex/scripts/latest-model.py\", \".codex/hooks.json\"]}",
+    "stderr": ""
+   },
+   "install": {
+    "exit": 0,
+    "stdout": "{\"host\": \"both\", \"changed\": [\".claude/hooks/inject-context.sh\", \".claude/scripts/latest-model.py\", \".claude/settings.json\", \".codex/hooks/inject-context.sh\", \".codex/scripts/latest-model.py\", \".codex/hooks.json\"], \"activation\": \"Verify generated skill bodies and host hook trust separately.\"}",
+    "stderr": ""
+   },
+   "check": {
+    "exit": 0,
+    "stdout": "{\"host\": \"both\", \"changes\": []}",
+    "stderr": ""
+   },
+   "reinstall": {
+    "exit": 0,
+    "stdout": "{\"host\": \"both\", \"changed\": [], \"activation\": \"Verify generated skill bodies and host hook trust separately.\"}",
+    "stderr": ""
+   }
+  },
+  "copies": {
+   "claude": {
+    "exists": true,
+    "identical": true,
+    "executable": true
+   },
+   "codex": {
+    "exists": true,
+    "identical": true,
+    "executable": true
+   }
+  },
+  "files": [
+   ".claude/hooks/inject-context.sh",
+   ".claude/scripts/latest-model.py",
+   ".claude/settings.json",
+   ".codex/hooks.json",
+   ".codex/hooks/inject-context.sh",
+   ".codex/scripts/latest-model.py",
+   "AGENTS.md"
+  ]
+ }
+}

@@ -1,0 +1,1 @@
+{"host": "codex", "changed": [".codex/hooks/inject-context.sh", ".codex/scripts/latest-model.py", ".codex/hooks.json"], "activation": "Verify generated skill bodies and host hook trust separately."}
