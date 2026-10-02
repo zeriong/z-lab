@@ -19,11 +19,14 @@ repository; the plan and triage log of the 0.1.0 work are in its `.claude-x-code
 
 | # | Observation | Change | State |
 |---|---|---|---|
-| 1 | run-0.1.0 F03: `status: waiting` with open items released the guard | Guard treats done/waiting with `- [ ]` items as active and says how to resolve; skill: a stop request is `paused` | made; measured in run-0.1.0-r2 |
-| 2 | run-0.1.0 F07: Codex's sandbox blocks `.git/info/exclude` | `.free-hands/.gitignore` with `*` | made; measured in run-0.1.0-r2 |
-| 3 | run-0.1.0 F08: Claude main tallied before two roles returned; entry note on background-task notifications | Skill: wait for every dispatched role; prompt hook ignores `<task-notification>` prompts | made; measured in run-0.1.0-r2 |
+| 1 | run-0.1.0 F03: `status: waiting` with open items released the guard | Guard treats done/waiting with `- [ ]` items as active and says how to resolve; skill: a stop request is `paused` | confirmed: run-0.1.0-r2 G01 (stop request → `paused`); the guard path itself unit-tested only |
+| 2 | run-0.1.0 F07: Codex's sandbox blocks `.git/info/exclude` | `.free-hands/.gitignore` with `*` | confirmed: run-0.1.0-r2 G05 |
+| 3 | run-0.1.0 F08: Claude main tallied before two roles returned; entry note on background-task notifications | Skill: wait for every dispatched role; prompt hook ignores `<task-notification>` prompts | confirmed: run-0.1.0-r2 G04 |
 | 4 | run-0.1.0 F09: Codex children search the web regardless of `--search` | README says so; no code change | docs |
 | 5 | run-0.1.0 F10: native Codex subagents take a model and effort but no read-only control | Keep the `codex exec -s read-only` route | docs |
+
+| 6a | run-0.1.0-r2 G06: a sandboxed Codex main's panel children have no network and fail; the run degrades | README: on Codex the panel needs network for `panel.py run` (approved escalation or a network-enabled sandbox) | docs |
+| 6b | run-0.1.0-r2 G03: the agent rewrote `iterations` itself | README/CLAUDE.md note the counter is agent-writable; no change in 0.1.0 | docs |
 
 ## Not acted on
 
