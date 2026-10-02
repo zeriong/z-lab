@@ -1,0 +1,40 @@
+V00: running
+V00: done
+C01: running
+C01: done
+C02: running
+C02: done
+C03: running
+C03: done
+C04: running
+C04: done
+X01: running
+Traceback (most recent call last):
+  File "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/run-0.1.0/run.py", line 339, in <module>
+    main()
+  File "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/run-0.1.0/run.py", line 333, in main
+    CASES[name](case)
+  File "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/run-0.1.0/run.py", line 247, in x01
+    env, model = codex_home(case)
+  File "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/run-0.1.0/run.py", line 122, in codex_home
+    shutil.copy2(AUTH, home / "auth.json")
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/shutil.py", line 435, in copy2
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/shutil.py", line 264, in copyfile
+    with open(src, 'rb') as fsrc, open(dst, 'wb') as fdst:
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/jeonjelyong/.codex/auth.json'
+X01 first attempt: runner stopped before any CLI call (auth.json looked up under ~/.codex; this account's CODEX_HOME is Orca's). Runner fixed (AUTH from CODEX_HOME), empty runs/X01 removed, Codex cases rerun. 2026-10-01T13:03:05Z
+X01: running
+X01: done
+X02: running
+X02: done
+X03: running
+X03: done
+X04: running
+X04: done
+X05: running
+X05: done
+X06: running
+X06: done
+X07: running
+X07: done

@@ -18,7 +18,7 @@ LAB = Path(__file__).resolve().parent
 RUNS = LAB / "runs"
 SUBJECT = LAB / "subject" / "free-hands"
 TMP = Path(tempfile.gettempdir()).resolve()
-AUTH = Path.home() / ".codex" / "auth.json"
+AUTH = Path(os.environ.get("CODEX_HOME") or Path.home() / ".codex") / "auth.json"  # Orca sets CODEX_HOME per account
 CLAUDE_TOOLS = ["Bash", "Read", "Write", "Edit", "Glob", "Grep", "Task", "Agent", "Skill", "WebSearch", "WebFetch"]
 
 

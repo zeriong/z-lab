@@ -1,0 +1,37 @@
+{
+ "quick-thinker": {
+  "role": "quick-thinker",
+  "model": "gpt-6-luna",
+  "effort": "medium",
+  "exit": 0,
+  "ran": "gpt-6-luna"
+ },
+ "deep-thinker": {
+  "role": "deep-thinker",
+  "model": "gpt-6.1-sol",
+  "effort": "xhigh",
+  "exit": 0,
+  "ran": "gpt-6.1-sol"
+ },
+ "evidence-hunter": {
+  "role": "evidence-hunter",
+  "model": "gpt-6-luna",
+  "effort": "high",
+  "exit": 0,
+  "ran": "gpt-6-luna"
+ },
+ "trend-tracker": {
+  "role": "trend-tracker",
+  "model": "gpt-6-luna",
+  "effort": "high",
+  "exit": 0,
+  "ran": "gpt-6-luna"
+ },
+ "devils-advocate": {
+  "role": "devils-advocate",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "exit": 0,
+  "ran": "gpt-6.1-sol"
+ }
+}

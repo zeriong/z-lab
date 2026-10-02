@@ -1,0 +1,23 @@
+{
+ "round": 1,
+ "attempt": 1,
+ "valid": [
+  "deep-thinker",
+  "devils-advocate",
+  "evidence-hunter",
+  "quick-thinker",
+  "trend-tracker"
+ ],
+ "invalid": {},
+ "missing": [],
+ "options": {
+  "A": [
+   "deep-thinker",
+   "devils-advocate",
+   "evidence-hunter",
+   "quick-thinker",
+   "trend-tracker"
+  ]
+ },
+ "next": "decide"
+}

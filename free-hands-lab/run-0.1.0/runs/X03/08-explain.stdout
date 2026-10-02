@@ -1,0 +1,6 @@
+{"type":"thread.started","thread_id":"01a0f791-dfc6-7f10-852a-319caebbcfcb"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"item.completed","item":{"id":"item_1","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_2","type":"agent_message","text":"free-hands 플러그인은 사용자가 맡긴 목표를 정해진 “free-hands” 방식으로 진행하도록 돕는 플러그인입니다. 실제로 free-hands 모드로 작업해 달라는 요청이 있을 때만 그 모드를 시작하며, 단순히 플러그인이 무엇인지 설명해 달라는 요청에는 실행하지 않습니다."}}
+{"type":"turn.completed","usage":{"input_tokens":14747,"cached_input_tokens":11008,"cache_write_input_tokens":0,"output_tokens":80,"reasoning_output_tokens":0}}

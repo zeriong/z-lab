@@ -1,0 +1,22 @@
+[
+ {
+  "step": "01-claude-version",
+  "argv": [
+   "claude",
+   "--version"
+  ],
+  "cwd": "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/run-0.1.0",
+  "exit": 0,
+  "elapsed_ms": 7
+ },
+ {
+  "step": "02-codex-version",
+  "argv": [
+   "codex",
+   "--version"
+  ],
+  "cwd": "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/run-0.1.0",
+  "exit": 0,
+  "elapsed_ms": 8
+ }
+]

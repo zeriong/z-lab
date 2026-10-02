@@ -1,0 +1,97 @@
+[
+ {
+  "step": "01-yes-entry",
+  "argv": [
+   "claude",
+   "-p",
+   "free-hands\ub85c hello.txt \ud30c\uc77c\uc5d0 hi \ub77c\uace0 \uc368\uc918",
+   "--plugin-dir",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/run-0.1.0/subject/free-hands",
+   "--model",
+   "\u2026"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-c03/yes",
+  "exit": 0,
+  "elapsed_ms": 6324,
+  "tokens": {
+   "input": 2,
+   "output": 284
+  }
+ },
+ {
+  "step": "02-yes-answer",
+  "argv": [
+   "claude",
+   "-p",
+   "\uc751",
+   "--plugin-dir",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/run-0.1.0/subject/free-hands",
+   "--model",
+   "\u2026"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-c03/yes",
+  "exit": 0,
+  "elapsed_ms": 18271,
+  "tokens": {
+   "input": 8,
+   "output": 972
+  }
+ },
+ {
+  "step": "03-no-entry",
+  "argv": [
+   "claude",
+   "-p",
+   "free-hands\ub85c hello.txt \ud30c\uc77c\uc5d0 hi \ub77c\uace0 \uc368\uc918",
+   "--plugin-dir",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/run-0.1.0/subject/free-hands",
+   "--model",
+   "\u2026"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-c03/no",
+  "exit": 0,
+  "elapsed_ms": 6717,
+  "tokens": {
+   "input": 2,
+   "output": 184
+  }
+ },
+ {
+  "step": "04-no-answer",
+  "argv": [
+   "claude",
+   "-p",
+   "\uc544\ub2c8",
+   "--plugin-dir",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/run-0.1.0/subject/free-hands",
+   "--model",
+   "\u2026"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-c03/no",
+  "exit": 0,
+  "elapsed_ms": 6672,
+  "tokens": {
+   "input": 2,
+   "output": 323
+  }
+ },
+ {
+  "step": "05-explain",
+  "argv": [
+   "claude",
+   "-p",
+   "free-hands \ud50c\ub7ec\uadf8\uc778\uc774 \ubb34\uc5c7\uc744 \ud558\ub294\uc9c0 \uc124\uba85\ub9cc \ud574\uc918",
+   "--plugin-dir",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/run-0.1.0/subject/free-hands",
+   "--model",
+   "\u2026"
+  ],
+  "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-c03/explain",
+  "exit": 0,
+  "elapsed_ms": 19503,
+  "tokens": {
+   "input": 4,
+   "output": 1957
+  }
+ }
+]

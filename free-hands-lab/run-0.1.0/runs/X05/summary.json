@@ -1,0 +1,60 @@
+{
+ "codex_model": "gpt-6-luna",
+ "auth_sha256_before": "d043aa62cde100f462a32198a9caba1e6bc6a3235fc625da76b8504891bd5e30",
+ "04-with-role": {
+  "thread_id": "01a0f792-8ad6-7ca1-8b5e-8a006b0188c9",
+  "turns": 1,
+  "messages": [
+   "ok"
+  ],
+  "commands": [],
+  "usage": [
+   {
+    "input_tokens": 14519,
+    "cached_input_tokens": 11008,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 5,
+    "reasoning_output_tokens": 0
+   }
+  ],
+  "errors": [
+   "`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."
+  ]
+ },
+ "with-role": {
+  "goal": "status: active\nmax_iterations: 5\niterations: 0\n## Goal\nlab goal\n## Checklist\n- [ ] never mind\n## Decisions\n## Resume\n",
+  "git_status": "?? .free-hands/goal.md\n",
+  "files": {}
+ },
+ "05-without-role": {
+  "thread_id": "01a0f792-a06c-7181-838a-2da7ca9d6fa0",
+  "turns": 1,
+  "messages": [
+   "ok"
+  ],
+  "commands": [
+   "/bin/zsh -lc 'cat /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-x05/codex-home/plugins/cache/fh-lab/free-hands/0.1.0/skills/run/SKILL.md && cat .free-hands/goal.md'",
+   "/bin/zsh -lc 'cat /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-x05/codex-home/plugins/cache/fh-lab/free-hands/0.1.0/skills/run/references/host-codex.md'",
+   "/bin/zsh -lc \"cat > .free-hands/goal.md <<'EOF'\nstatus: done\nmax_iterations: 5\niterations: 1\n## Goal\nlab goal\n## Checklist\n- [x] never mind\n## Decisions\n- Interpreted “never mind” as the finite request to take no further action; replied as requested.\n## Resume\nNo further work remains.\nEOF\""
+  ],
+  "usage": [
+   {
+    "input_tokens": 70115,
+    "cached_input_tokens": 57344,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 676,
+    "reasoning_output_tokens": 356
+   }
+  ],
+  "errors": [
+   "`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."
+  ]
+ },
+ "without-role": {
+  "goal": "status: done\nmax_iterations: 5\niterations: 1\n## Goal\nlab goal\n## Checklist\n- [x] never mind\n## Decisions\n- Interpreted “never mind” as the finite request to take no further action; replied as requested.\n## Resume\nNo further work remains.\n",
+  "git_status": "?? .free-hands/goal.md\n",
+  "files": {}
+ }
+}
