@@ -27,8 +27,9 @@ for case in sorted(p for p in (LAB / "runs").iterdir() if p.is_dir()):
         lines.append(f"| {case.name} | {row['step']} | `{argv}` | {row['exit']} | {row['elapsed_ms']} | {tin} | {tout} | {cost} |")
 lines += ["", f"{totals['calls']} calls. Claude cost total {totals['claude_cost']:.2f} USD (result `total_cost_usd`, "
           "subagents included). Codex main-session tokens: input "
-          f"{totals['codex_in']} (cached input included), output {totals['codex_out']} (`turn.completed` usage). X06's "
-          "five panel children are one `panel.py run` call; their tokens are in their own logs, not summed here.",
+          f"{totals['codex_in']} (cached input included), output {totals['codex_out']} (`turn.completed` usage). In R06 "
+          "the Codex main ran `panel.py run` inside its own `codex exec` call; the five children's logs are in "
+          "`evidence/r06-free-hands/` and their tokens are not summed here (they failed without network).",
           "Elapsed ms = monotonic end minus start of one subprocess. Deltas: N/A — no comparable baseline was measured."]
 (LAB / "METRICS.md").write_text("\n".join(lines) + "\n")
 print(totals)

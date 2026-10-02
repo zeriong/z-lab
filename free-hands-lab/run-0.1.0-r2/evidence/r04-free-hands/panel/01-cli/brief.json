@@ -1,0 +1,23 @@
+{
+ "question": "Which library should a new small Python command-line tool, tools/report.py, use to parse its arguments?",
+ "options": [
+  {
+   "id": "A",
+   "text": "argparse (standard library)"
+  },
+  {
+   "id": "B",
+   "text": "click"
+  },
+  {
+   "id": "C",
+   "text": "typer"
+  }
+ ],
+ "goal": "Add tools/report.py, a small CLI with three subcommands, maintained by one person for years.",
+ "constraints": [
+  "Python 3.11",
+  "No hard limit applies to this choice (no merge, deletion, deploy or send)."
+ ],
+ "files": []
+}

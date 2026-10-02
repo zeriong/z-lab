@@ -1,0 +1,7 @@
+{
+ "role": "trend-tracker",
+ "model": "gpt-6-luna",
+ "effort": "high",
+ "exit": 1,
+ "ran": "gpt-6-luna"
+}

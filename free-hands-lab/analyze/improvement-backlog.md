@@ -26,10 +26,14 @@ repository; the plan and triage log of the 0.1.0 work are in its `.claude-x-code
 | 5 | run-0.1.0 F10: native Codex subagents take a model and effort but no read-only control | Keep the `codex exec -s read-only` route | docs |
 
 | 6a | run-0.1.0-r2 G06: a sandboxed Codex main's panel children have no network and fail; the run degrades | README: on Codex the panel needs network for `panel.py run` (approved escalation or a network-enabled sandbox) | docs |
-| 6b | run-0.1.0-r2 G03: the agent rewrote `iterations` itself | README/CLAUDE.md note the counter is agent-writable; no change in 0.1.0 | docs |
+| 6b | run-0.1.0-r2 G03 and run-0.1.0 F04: agents rewrote `iterations` themselves (R03, X01, X02, X05) | README/CLAUDE.md note the counter is agent-writable; no change in 0.1.0 | docs |
+
+| 7 | Product review FH-44: a `- [ ]` quoted in Decisions, Resume or a code fence counted as open | The guard counts `- [ ]` only under `## Checklist`, outside fenced code | made; unit tests on the real `guard.py` with hook JSON; not re-run on a host |
+| 8 | Product review FH-45: a prompt quoting a `<task-notification>` was dropped whole | The guard removes notification blocks and keeps the rest of the prompt | made; unit tests as above |
 
 ## Not acted on
 
 | # | Observation | Judgment |
 |---|---|---|
 | 6 | Hard limits are rules only; no hook blocks `gh pr merge` and the like (product review FH-26) | A Bash PreToolUse guard would be new behavior; offered to the maintainer as a follow-up |
+| 9 | Agents rewrite `iterations` (6b) | A guard-owned counter outside the goal file would be new behavior; 0.1.0 documents the limit instead |

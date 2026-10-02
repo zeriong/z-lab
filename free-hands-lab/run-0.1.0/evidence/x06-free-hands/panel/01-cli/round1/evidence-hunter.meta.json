@@ -1,0 +1,7 @@
+{
+ "role": "evidence-hunter",
+ "model": "gpt-6-luna",
+ "effort": "high",
+ "exit": 0,
+ "ran": "gpt-6-luna"
+}

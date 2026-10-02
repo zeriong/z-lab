@@ -2,7 +2,9 @@
 
 Claude Code 2.1.287, Codex CLI 0.160.0 (`runs/V00`; both CLIs were upgraded since run-0.1.0's 2.1.286 / 0.159.3),
 macOS, 2026-10-02. Subject `subject/free-hands/` (sha256 list `subject.sha256`; differs from run-0.1.0's only in
-`scripts/guard.py` and `skills/run/SKILL.md`). Raw records: `runs/<case>/`; numbers: `METRICS.md` (16 calls, all exit 0).
+`scripts/guard.py` and `skills/run/SKILL.md`). Raw records: `runs/<case>/`; the full panel directories of R04 and R06
+were copied into `evidence/` after the run, because the runner cuts stored panel files to 4,000 characters (sha256 list
+`evidence.sha256`); numbers: `METRICS.md` (16 calls, all exit 0).
 n=1 per case.
 
 ## Measured

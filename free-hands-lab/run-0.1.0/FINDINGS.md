@@ -6,24 +6,30 @@ Claude Code 2.1.286, Codex CLI 0.159.3 (`runs/V00`), macOS, 2026-10-01. Subject 
 
 **Deviation.** X01's first attempt stopped inside the runner before any CLI call: it looked for `auth.json` under
 `~/.codex`, but this account's `CODEX_HOME` is Orca's per-account home. The runner was changed to read `CODEX_HOME`, the
-empty `runs/X01` was removed, and X01–X07 ran (`run-log.txt`). C01–C04 were unaffected.
+empty `runs/X01` was removed, and X01–X07 ran (`run-log.txt`). C01–C04 were unaffected. The runner also cut every panel
+file it stored in `summary.json` to 4,000 characters; after the run the full panel directories of C04 and X06 were copied
+from the cases' temporary repositories into `evidence/` (sha256 list `evidence.sha256`), and F08/F09 count from those
+copies (review FH-43).
 
 ## Measured
 
 - **F01 — Claude: the hooks load with `--plugin-dir` and inject the restore note while a goal is active.** SessionStart and
   every UserPromptSubmit returned `[free-hands: ACTIVE] Goal file: …` (C01, C02, C04 hook events).
-- **F02 — Claude: the stop guard blocks and counts.** C02 one block (`iterations` 0 → 1), C04 four blocks (→ 4); each
+- **F02 — Claude: the stop guard blocks and counts** (hook events show each block, so these counts are the hook's). C02 one block (`iterations` 0 → 1), C04 four blocks (→ 4); each
   block reached the model as "Stop hook feedback: free-hands: 1 items still open — keep working …" and the run went on.
 - **F03 — Claude: a finished status released the guard while items were open.** C01's prompt asked to do one item and
   "stop and wait for my approval". The model did the item, set `status: waiting` with two `- [ ]` items left and stopped;
   the guard, which engaged only on `status: active`, did nothing (`iterations` 0). The 0.1.0 skill reserves `waiting`
   for "no `[ ]` left, some `[-]`" and `paused` for a user's stop request, but nothing enforced it.
 - **F04 — Codex: with `--dangerously-bypass-hook-trust` the plugin hooks run.** The models read the skill and the goal
-  file without being told to (X02, X04, X05 without role), and the stop guard blocked and counted: X01 `iterations` 1,
-  X02 2, X05 1. X01 (same prompt as C01) ended `status: paused`, the status the skill prescribes for a stop request.
+  file without being told to (X02, X04, X05 without role) — the restore note reached them. One stop block is evidenced:
+  in X02 the goal file already said `iterations: 1` when the model first read it, before it wrote anything. Codex
+  `exec --json` prints no hook events, so other blocks cannot be told apart: in X01, X02 and X05 the model rewrote the
+  goal file itself with a higher `iterations` (X01 → 1, X02 → 2, X05 → 1; review FH-42). X01 (same prompt as C01) ended
+  `status: paused`, the status the skill prescribes for a stop request.
 - **F05 — `FREE_HANDS_ROLE` keeps a Codex child out of the parent's goal.** X05 with the variable: reply "ok", no file
-  read, `iterations` 0. Without it, the same child read the skill, rewrote the goal (marked its item done, `status: done`)
-  and was blocked once (`iterations` 1).
+  read, goal unchanged. Without it, the same child read the skill and rewrote the parent's goal (marked its item done,
+  `status: done`, `iterations: 1` written by the model).
 - **F06 — Entry routing works on both hosts.** "free-hands로 hello.txt 파일에 hi 라고 써줘" got exactly the entry question
   (C03, X03). "응" → Claude invoked the Skill `free-hands:run`, Codex read the skill file; both wrote the goal file and
   `hello.txt` and ended `done`. "아니" → no goal file, no `hello.txt`, directions offered (Claude) or a plain
@@ -41,7 +47,9 @@ empty `runs/X01` was removed, and X01–X07 ran (`run-log.txt`). C01–C04 were 
   appeared; every free-hands Stop response exited 0, so its source was not identified.
 - **F09 — Codex panel route (`panel.py run` started by the runner).** X06: five children, each header `sandbox:
   read-only`; `ran` = `gpt-6-luna` for quick-thinker, evidence-hunter, trend-tracker and `gpt-6.1-sol` for deep-thinker,
-  devils-advocate, at the efforts `panel.py` sets; five valid replies, all A; tally `decide`. Web searches per log:
+  devils-advocate, at the efforts `panel.py` sets; five valid replies, all A; tally `decide`. Child tokens (`tokens
+  used` in each log): deep-thinker 72,100, devils-advocate 33,983, evidence-hunter 24,524, trend-tracker 33,099,
+  quick-thinker 14,988. Web searches (`web search:` lines in the full logs, `evidence/x06-free-hands/`):
   evidence-hunter 2, trend-tracker 6 — and deep-thinker 10, devils-advocate 6 without `--search`, quick-thinker 0. Codex
   children can search the web by default; `--search` does not limit web use to the two web roles.
 - **F10 — Codex native subagents (self-report, n=1).** X07: the model used `collaboration.spawn_agent` and reported
