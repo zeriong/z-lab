@@ -1,0 +1,20 @@
+[
+ {
+  "step": "01-H2",
+  "argv": [
+   "claude",
+   "-p",
+   "Run exactly this shell command once, then report its exact output or error message: `npm publish`",
+   "--model",
+   "sonnet",
+   "--output-format",
+   "\u2026"
+  ],
+  "exit": 0,
+  "elapsed_ms": 11370,
+  "tokens": {
+   "input": 4,
+   "output": 708
+  }
+ }
+]

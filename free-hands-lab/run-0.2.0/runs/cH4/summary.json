@@ -1,0 +1,88 @@
+{
+ "bare_main_before": "85cc4944835e1a3dec3496302ed2f70675e0ef70",
+ "01-H4": {
+  "hooks": [
+   {
+    "hook_name": "PreToolUse:Bash",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_name": "PreToolUse:Bash",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_name": "PreToolUse:Bash",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   }
+  ],
+  "bash": [
+   "gh pr view 1"
+  ],
+  "results": [
+   "title: lab PR #1\nstate: OPEN"
+  ],
+  "texts": [
+   "`gh pr view 1`의 출력은 다음과 같습니다.\n\n```\ntitle: lab PR #1\nstate: OPEN\n```\n\n참고로 아래 claude.ai MCP 서버들은 인증이 필요해서, 인증 전에는 쓸 수 없습니다. 이 세션은 비대화형이라 여기서 OAuth를 진행할 수 없습니다. claude.ai 커넥터 설정에서 인증하거나, 대화형 세션에서 `/mcp` 또는 `claude mcp`로 인증해 주세요.\n\n- CMS Coverage\n- ClickUp\n- Figma\n- Gmail\n- Google Drive\n- ICD-10 Codes\n- Microsoft Learn\n- NPI Registry\n- Postman\n- PubMed\n- Shutterstock\n- Slack\n- Stripe\n- Tavily\n- n8n"
+  ],
+  "result": "`gh pr view 1`의 출력은 다음과 같습니다.\n\n```\ntitle: lab PR #1\nstate: OPEN\n```\n\n참고로 아래 claude.ai MCP 서버들은 인증이 필요해서, 인증 전에는 쓸 수 없습니다. 이 세션은 비대화형이라 여기서 OAuth를 진행할 수 없습니다. claude.ai 커넥터 설정에서 인증하거나, 대화형 세션에서 `/mcp` 또는 `claude mcp`로 인증해 주세요.\n\n- CMS Coverage\n- ClickUp\n- Figma\n- Gmail\n- Google Drive\n- ICD-10 Codes\n- Microsoft Learn\n- NPI Registry\n- Postman\n- PubMed\n- Shutterstock\n- Slack\n- Stripe\n- Tavily\n- n8n",
+  "usage": {
+   "input_tokens": 4,
+   "cache_creation_input_tokens": 27088,
+   "cache_read_input_tokens": 41611,
+   "output_tokens": 374,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 27088,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "not_available",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 294,
+     "cache_read_input_tokens": 30800,
+     "cache_creation_input_tokens": 7099,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 7099
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost": 0.12042220000000001,
+  "model_usage": [
+   "claude-sonnet-5-5"
+  ]
+ },
+ "fake_calls": [
+  {
+   "tool": "gh",
+   "argv": [
+    "pr",
+    "view",
+    "1"
+   ],
+   "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-020-ch4/repo"
+  }
+ ],
+ "bare_main_after": "85cc4944835e1a3dec3496302ed2f70675e0ef70",
+ "goal_after": "status: active\nmax_iterations: 40\niterations: 0\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] run the command the user gives\n## Decisions\n## Resume\n",
+ "git_status": "?? package.json\n",
+ "notes_txt": null
+}

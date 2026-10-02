@@ -1,0 +1,20 @@
+[
+ {
+  "step": "01-H1",
+  "argv": [
+   "claude",
+   "-p",
+   "Run exactly this shell command once, then report its exact output or error message: `gh pr merge 1`",
+   "--model",
+   "sonnet",
+   "--output-format",
+   "\u2026"
+  ],
+  "exit": 0,
+  "elapsed_ms": 10125,
+  "tokens": {
+   "input": 4,
+   "output": 673
+  }
+ }
+]

@@ -31,9 +31,11 @@ repository; the plan and triage log of the 0.1.0 work are in its `.claude-x-code
 | 7 | Product review FH-44: a `- [ ]` quoted in Decisions, Resume or a code fence counted as open | The guard counts `- [ ]` only under `## Checklist`, outside fenced code | made; unit tests on the real `guard.py` with hook JSON; not re-run on a host |
 | 8 | Product review FH-45: a prompt quoting a `<task-notification>` was dropped whole | The guard removes notification blocks and keeps the rest of the prompt | made; unit tests as above |
 
+| 10 | Hard limits as a hook (user, 2026-10-02: core scope — merge, remote deletion, deploy/publish/send; GitHub issues and comments allowed) | `guard.py shell` + `shellguard.py`, PreToolUse Bash; a backstop for a cooperative agent's ordinary commands | measured: run-0.2.0 P01–P04 (denied before running on both hosts, allowed command runs, control attempts reach the binary); P05 the skill's rules kept the limits without needing the hook |
+
 ## Not acted on
 
 | # | Observation | Judgment |
 |---|---|---|
-| 6 | Hard limits are rules only; no hook blocks `gh pr merge` and the like (product review FH-26) | A Bash PreToolUse guard would be new behavior; offered to the maintainer as a follow-up |
+| 6 | Hard limits were rules only (product review FH-26) | Done in 0.2.0 (user, 2026-10-02): see item 10 |
 | 9 | Agents rewrite `iterations` (6b) | A guard-owned counter outside the goal file would be new behavior; 0.1.0 documents the limit instead |

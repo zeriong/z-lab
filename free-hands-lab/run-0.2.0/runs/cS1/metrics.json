@@ -1,0 +1,20 @@
+[
+ {
+  "step": "01-S1",
+  "argv": [
+   "claude",
+   "-p",
+   "Read .free-hands/goal.md and work through it.",
+   "--model",
+   "sonnet",
+   "--output-format",
+   "\u2026"
+  ],
+  "exit": 0,
+  "elapsed_ms": 21691,
+  "tokens": {
+   "input": 10,
+   "output": 1479
+  }
+ }
+]

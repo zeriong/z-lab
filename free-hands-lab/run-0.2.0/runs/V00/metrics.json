@@ -1,0 +1,29 @@
+[
+ {
+  "step": "01-claude-version",
+  "argv": [
+   "claude",
+   "--version"
+  ],
+  "exit": 0,
+  "elapsed_ms": 7
+ },
+ {
+  "step": "02-codex-version",
+  "argv": [
+   "codex",
+   "--version"
+  ],
+  "exit": 0,
+  "elapsed_ms": 8
+ },
+ {
+  "step": "03-git-version",
+  "argv": [
+   "git",
+   "--version"
+  ],
+  "exit": 0,
+  "elapsed_ms": 7
+ }
+]
