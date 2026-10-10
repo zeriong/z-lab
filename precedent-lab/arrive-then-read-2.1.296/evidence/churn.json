@@ -1,0 +1,5214 @@
+{
+ "head": "fd3ef0c1",
+ "branch": "dev",
+ "filters": {
+  "prefixes": [
+   "apps/",
+   "packages/",
+   ".claude/",
+   "scripts/",
+   "tooling/"
+  ],
+  "exts": [
+   ".ts",
+   ".tsx",
+   ".css",
+   ".mjs",
+   ".sh"
+  ],
+  "exclude": [
+   "node_modules",
+   "history/",
+   "graphify-out",
+   "*.md"
+  ],
+  "merges": "excluded (--no-merges)",
+  "date_basis": "author date (%ad, iso-strict, commit's own tz), filtered in Python",
+  "rename_detection": "-M (git default)",
+  "bulk_threshold": 100,
+  "p90": "nearest-rank"
+ },
+ "windows": {
+  "W0": {
+   "range": [
+    "2026-08-08",
+    "2026-08-19"
+   ],
+   "days": 12,
+   "commits_nonmerge_all": 141,
+   "commits_touching_src": 128,
+   "commits_touching_src_by_committer_date": 128,
+   "commits_per_day": 10.667,
+   "files_per_commit": {
+    "median": 4.5,
+    "p90": 15,
+    "max": 58
+   },
+   "files_per_commit_excl_bulk": {
+    "median": 4.5,
+    "p90": 15,
+    "max": 58
+   },
+   "bulk_commits_ge100": 0,
+   "bulk_commits_ge100_excl_rename": 0,
+   "bulk_list": [],
+   "rename_commit_in_window": false,
+   "rename_commit_src_files": null,
+   "all": {
+    "distinct_files": 455,
+    "touch_median": 1,
+    "touch_p90": 4,
+    "touch_max": 9,
+    "files_ge3": 95,
+    "rework_rate": 0.2088,
+    "top8": [
+     {
+      "file": "apps/ehr-admin/features/diagnostic-report-list/ui/diagnostic-report-form.tsx",
+      "count": 9
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-create/ui/patient-create-form.tsx",
+      "count": 9
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-summary-panel.tsx",
+      "count": 9
+     },
+     {
+      "file": "apps/ehr-admin/features/service-request-list/ui/service-request-form.tsx",
+      "count": 8
+     },
+     {
+      "file": "tooling/config-tailwind/style.css",
+      "count": 7
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-details.tsx",
+      "count": 7
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/model/hooks/use-patient-summary.ts",
+      "count": 7
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-create/ui/address-fields.tsx",
+      "count": 6
+     }
+    ]
+   },
+   "excl_bulk": {
+    "distinct_files": 455,
+    "touch_median": 1,
+    "touch_p90": 4,
+    "touch_max": 9,
+    "files_ge3": 95,
+    "rework_rate": 0.2088,
+    "top8": [
+     {
+      "file": "apps/ehr-admin/features/diagnostic-report-list/ui/diagnostic-report-form.tsx",
+      "count": 9
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-create/ui/patient-create-form.tsx",
+      "count": 9
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-summary-panel.tsx",
+      "count": 9
+     },
+     {
+      "file": "apps/ehr-admin/features/service-request-list/ui/service-request-form.tsx",
+      "count": 8
+     },
+     {
+      "file": "tooling/config-tailwind/style.css",
+      "count": 7
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-details.tsx",
+      "count": 7
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/model/hooks/use-patient-summary.ts",
+      "count": 7
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-create/ui/address-fields.tsx",
+      "count": 6
+     }
+    ]
+   },
+   "distinct_files_per_day": 37.917,
+   "vitals": {
+    "commits": 7,
+    "commits_excl_bulk": 7,
+    "all": {
+     "distinct_files": 14,
+     "touch_median": 1.0,
+     "touch_p90": 3,
+     "touch_max": 3,
+     "files_ge3": 4,
+     "rework_rate": 0.2857,
+     "top8": [
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-history-table.tsx",
+       "count": 3
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/hooks/use-vitals-entry-form.ts",
+       "count": 3
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-summary-cards.tsx",
+       "count": 3
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-entry-form.tsx",
+       "count": 3
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-trend-chart.tsx",
+       "count": 2
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-entry-dialog.tsx",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/index.ts",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/hooks/use-vitals-history.ts",
+       "count": 1
+      }
+     ]
+    },
+    "excl_bulk": {
+     "distinct_files": 14,
+     "touch_median": 1.0,
+     "touch_p90": 3,
+     "touch_max": 3,
+     "files_ge3": 4,
+     "rework_rate": 0.2857,
+     "top8": [
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-history-table.tsx",
+       "count": 3
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/hooks/use-vitals-entry-form.ts",
+       "count": 3
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-summary-cards.tsx",
+       "count": 3
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-entry-form.tsx",
+       "count": 3
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-trend-chart.tsx",
+       "count": 2
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-entry-dialog.tsx",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/index.ts",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/hooks/use-vitals-history.ts",
+       "count": 1
+      }
+     ]
+    }
+   },
+   "cross_check": {
+    "nonmerge_committer_date": 141,
+    "merges_excluded": 102
+   },
+   "per_day": [
+    {
+     "date": "2026-08-08",
+     "dow": "토",
+     "commits": 0,
+     "src_commits": 0
+    },
+    {
+     "date": "2026-08-09",
+     "dow": "일",
+     "commits": 0,
+     "src_commits": 0
+    },
+    {
+     "date": "2026-08-10",
+     "dow": "월",
+     "commits": 24,
+     "src_commits": 22
+    },
+    {
+     "date": "2026-08-11",
+     "dow": "화",
+     "commits": 8,
+     "src_commits": 8
+    },
+    {
+     "date": "2026-08-12",
+     "dow": "수",
+     "commits": 35,
+     "src_commits": 33
+    },
+    {
+     "date": "2026-08-13",
+     "dow": "목",
+     "commits": 28,
+     "src_commits": 27
+    },
+    {
+     "date": "2026-08-14",
+     "dow": "금",
+     "commits": 12,
+     "src_commits": 10
+    },
+    {
+     "date": "2026-08-15",
+     "dow": "토",
+     "commits": 0,
+     "src_commits": 0
+    },
+    {
+     "date": "2026-08-16",
+     "dow": "일",
+     "commits": 0,
+     "src_commits": 0
+    },
+    {
+     "date": "2026-08-17",
+     "dow": "월",
+     "commits": 0,
+     "src_commits": 0
+    },
+    {
+     "date": "2026-08-18",
+     "dow": "화",
+     "commits": 18,
+     "src_commits": 18
+    },
+    {
+     "date": "2026-08-19",
+     "dow": "수",
+     "commits": 16,
+     "src_commits": 10
+    }
+   ],
+   "days_with_commits": 7
+  },
+  "W1": {
+   "range": [
+    "2026-09-17",
+    "2026-09-28"
+   ],
+   "days": 12,
+   "commits_nonmerge_all": 46,
+   "commits_touching_src": 33,
+   "commits_touching_src_by_committer_date": 33,
+   "commits_per_day": 2.75,
+   "files_per_commit": {
+    "median": 2,
+    "p90": 15,
+    "max": 42
+   },
+   "files_per_commit_excl_bulk": {
+    "median": 2,
+    "p90": 15,
+    "max": 42
+   },
+   "bulk_commits_ge100": 0,
+   "bulk_commits_ge100_excl_rename": 0,
+   "bulk_list": [],
+   "rename_commit_in_window": false,
+   "rename_commit_src_files": null,
+   "all": {
+    "distinct_files": 146,
+    "touch_median": 1.0,
+    "touch_p90": 2,
+    "touch_max": 6,
+    "files_ge3": 4,
+    "rework_rate": 0.0274,
+    "top8": [
+     {
+      "file": ".claude/hooks/commit-gate.sh",
+      "count": 6
+     },
+     {
+      "file": "apps/ehr-admin/features/settings/ui/tenant-info-dialog.tsx",
+      "count": 3
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-tabs.tsx",
+      "count": 3
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-summary-panel.tsx",
+      "count": 3
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/model/hooks/use-patient-summary.ts",
+      "count": 2
+     },
+     {
+      "file": "apps/ehr-admin/features/appointment/ui/appointment-dialog.tsx",
+      "count": 2
+     },
+     {
+      "file": "apps/ehr-admin/features/appointment/ui/appointment-list.test.tsx",
+      "count": 2
+     },
+     {
+      "file": "apps/ehr-admin/features/schedule-calendar/ui/appointment-dialog.tsx",
+      "count": 2
+     }
+    ]
+   },
+   "excl_bulk": {
+    "distinct_files": 146,
+    "touch_median": 1.0,
+    "touch_p90": 2,
+    "touch_max": 6,
+    "files_ge3": 4,
+    "rework_rate": 0.0274,
+    "top8": [
+     {
+      "file": ".claude/hooks/commit-gate.sh",
+      "count": 6
+     },
+     {
+      "file": "apps/ehr-admin/features/settings/ui/tenant-info-dialog.tsx",
+      "count": 3
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-tabs.tsx",
+      "count": 3
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-summary-panel.tsx",
+      "count": 3
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/model/hooks/use-patient-summary.ts",
+      "count": 2
+     },
+     {
+      "file": "apps/ehr-admin/features/appointment/ui/appointment-dialog.tsx",
+      "count": 2
+     },
+     {
+      "file": "apps/ehr-admin/features/appointment/ui/appointment-list.test.tsx",
+      "count": 2
+     },
+     {
+      "file": "apps/ehr-admin/features/schedule-calendar/ui/appointment-dialog.tsx",
+      "count": 2
+     }
+    ]
+   },
+   "distinct_files_per_day": 12.167,
+   "vitals": {
+    "commits": 2,
+    "commits_excl_bulk": 2,
+    "all": {
+     "distinct_files": 2,
+     "touch_median": 1.0,
+     "touch_p90": 1,
+     "touch_max": 1,
+     "files_ge3": 0,
+     "rework_rate": 0.0,
+     "top8": [
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/hooks/use-vitals-history.ts",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/utils/vital-parse.ts",
+       "count": 1
+      }
+     ]
+    },
+    "excl_bulk": {
+     "distinct_files": 2,
+     "touch_median": 1.0,
+     "touch_p90": 1,
+     "touch_max": 1,
+     "files_ge3": 0,
+     "rework_rate": 0.0,
+     "top8": [
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/hooks/use-vitals-history.ts",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/utils/vital-parse.ts",
+       "count": 1
+      }
+     ]
+    }
+   },
+   "companion_ssot": {
+    "commits_touching_src": 33,
+    "commits_touching_any_ssot_md": 31,
+    "commits_under_jurisdiction": 32,
+    "accompanied": 26,
+    "candidate_SSOT_OK": 6,
+    "no_jurisdiction": 1
+   },
+   "cross_check": {
+    "nonmerge_committer_date": 46,
+    "merges_excluded": 48
+   },
+   "per_day": [
+    {
+     "date": "2026-09-17",
+     "dow": "목",
+     "commits": 8,
+     "src_commits": 6
+    },
+    {
+     "date": "2026-09-18",
+     "dow": "금",
+     "commits": 21,
+     "src_commits": 14
+    },
+    {
+     "date": "2026-09-19",
+     "dow": "토",
+     "commits": 0,
+     "src_commits": 0
+    },
+    {
+     "date": "2026-09-20",
+     "dow": "일",
+     "commits": 0,
+     "src_commits": 0
+    },
+    {
+     "date": "2026-09-21",
+     "dow": "월",
+     "commits": 0,
+     "src_commits": 0
+    },
+    {
+     "date": "2026-09-22",
+     "dow": "화",
+     "commits": 2,
+     "src_commits": 2
+    },
+    {
+     "date": "2026-09-23",
+     "dow": "수",
+     "commits": 4,
+     "src_commits": 4
+    },
+    {
+     "date": "2026-09-24",
+     "dow": "목",
+     "commits": 0,
+     "src_commits": 0
+    },
+    {
+     "date": "2026-09-25",
+     "dow": "금",
+     "commits": 0,
+     "src_commits": 0
+    },
+    {
+     "date": "2026-09-26",
+     "dow": "토",
+     "commits": 0,
+     "src_commits": 0
+    },
+    {
+     "date": "2026-09-27",
+     "dow": "일",
+     "commits": 0,
+     "src_commits": 0
+    },
+    {
+     "date": "2026-09-28",
+     "dow": "월",
+     "commits": 11,
+     "src_commits": 7
+    }
+   ],
+   "days_with_commits": 5
+  },
+  "W2": {
+   "range": [
+    "2026-09-29",
+    "2026-10-10"
+   ],
+   "days": 12,
+   "commits_nonmerge_all": 139,
+   "commits_touching_src": 118,
+   "commits_touching_src_by_committer_date": 118,
+   "commits_per_day": 9.833,
+   "files_per_commit": {
+    "median": 4.0,
+    "p90": 16,
+    "max": 156
+   },
+   "files_per_commit_excl_bulk": {
+    "median": 4.0,
+    "p90": 16,
+    "max": 39
+   },
+   "bulk_commits_ge100": 2,
+   "bulk_commits_ge100_excl_rename": 1,
+   "bulk_list": [
+    {
+     "sha": "82d80e4c",
+     "date": "2026-10-02",
+     "src_files": 135,
+     "all_files": 147,
+     "subject": "feat(panes): render app screens directly in panes",
+     "is_rename_commit": false
+    },
+    {
+     "sha": "9e8445dc",
+     "date": "2026-09-29",
+     "src_files": 156,
+     "all_files": 236,
+     "subject": "refactor(harness): rename SSoT.md to PRECEDENT.md",
+     "is_rename_commit": true
+    }
+   ],
+   "rename_commit_in_window": true,
+   "rename_commit_src_files": 156,
+   "all": {
+    "distinct_files": 614,
+    "touch_median": 1.0,
+    "touch_p90": 3,
+    "touch_max": 9,
+    "files_ge3": 102,
+    "rework_rate": 0.1661,
+    "top8": [
+     {
+      "file": "apps/ehr-admin/features/pane-workspace/model/hooks/use-pane-workspace.ts",
+      "count": 9
+     },
+     {
+      "file": "apps/ehr-admin/features/smart-search/ui/smart-search-page.tsx",
+      "count": 8
+     },
+     {
+      "file": "apps/ehr-admin/shared/lib/auth.config.ts",
+      "count": 7
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-timeline/ui/timeline-entry-card.tsx",
+      "count": 6
+     },
+     {
+      "file": "packages/ehr/src/widgets/fhir-search-table/ui/column-header/column-header-menu.tsx",
+      "count": 6
+     },
+     {
+      "file": "apps/ehr-admin/features/practitioner-list/model/hooks/use-practitioner-form.test.ts",
+      "count": 6
+     },
+     {
+      "file": "apps/ehr-admin/features/practitioner-list/model/utils/build-practitioner-command.ts",
+      "count": 6
+     },
+     {
+      "file": "apps/ehr-admin/features/task-create/ui/create-task-dialog.tsx",
+      "count": 5
+     }
+    ]
+   },
+   "excl_bulk": {
+    "distinct_files": 474,
+    "touch_median": 1.0,
+    "touch_p90": 3,
+    "touch_max": 8,
+    "files_ge3": 60,
+    "rework_rate": 0.1266,
+    "top8": [
+     {
+      "file": "apps/ehr-admin/features/pane-workspace/model/hooks/use-pane-workspace.ts",
+      "count": 8
+     },
+     {
+      "file": "apps/ehr-admin/features/smart-search/ui/smart-search-page.tsx",
+      "count": 7
+     },
+     {
+      "file": "apps/ehr-admin/shared/lib/auth.config.ts",
+      "count": 7
+     },
+     {
+      "file": "apps/ehr-admin/features/practitioner-list/model/hooks/use-practitioner-form.test.ts",
+      "count": 6
+     },
+     {
+      "file": "apps/ehr-admin/features/practitioner-list/model/utils/build-practitioner-command.ts",
+      "count": 6
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-timeline/ui/timeline-entry-card.tsx",
+      "count": 5
+     },
+     {
+      "file": "apps/ehr-admin/shared/lib/__tests__/token-literal-contract.test.ts",
+      "count": 5
+     },
+     {
+      "file": "packages/ehr/src/widgets/fhir-search-table/ui/column-header/column-header-menu.tsx",
+      "count": 5
+     }
+    ]
+   },
+   "distinct_files_per_day": 51.167,
+   "vitals": {
+    "commits": 3,
+    "commits_excl_bulk": 1,
+    "all": {
+     "distinct_files": 7,
+     "touch_median": 1,
+     "touch_p90": 2,
+     "touch_max": 2,
+     "files_ge3": 0,
+     "rework_rate": 0.0,
+     "top8": [
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-panel.tsx",
+       "count": 2
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-entry-form.tsx",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/hooks/use-vitals-history.ts",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/utils/vital-parse.ts",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-panel-skeleton.tsx",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-summary-cards.tsx",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-trend-chart.tsx",
+       "count": 1
+      }
+     ]
+    },
+    "excl_bulk": {
+     "distinct_files": 1,
+     "touch_median": 1,
+     "touch_p90": 1,
+     "touch_max": 1,
+     "files_ge3": 0,
+     "rework_rate": 0.0,
+     "top8": [
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-panel.tsx",
+       "count": 1
+      }
+     ]
+    }
+   },
+   "companion": {
+    "precedent_set": "HEAD",
+    "head": {
+     "commits_touching_src": 118,
+     "commits_touching_any_precedent_md": 109,
+     "commits_under_jurisdiction": 115,
+     "accompanied": 68,
+     "candidate_PRECEDENT_OK": 47,
+     "no_jurisdiction": 3
+    },
+    "at_commit_tree": {
+     "commits_touching_src": 118,
+     "commits_touching_any_precedent_md": 109,
+     "commits_under_jurisdiction": 110,
+     "accompanied": 70,
+     "candidate_PRECEDENT_OK": 40,
+     "no_jurisdiction": 8
+    },
+    "at_commit_tree_excl_rename": {
+     "commits_touching_src": 117,
+     "commits_touching_any_precedent_md": 108,
+     "commits_under_jurisdiction": 109,
+     "accompanied": 69,
+     "candidate_PRECEDENT_OK": 40,
+     "no_jurisdiction": 8
+    },
+    "rows_at_commit_tree": [
+     {
+      "sha": "0f78d17b",
+      "date": "2026-10-08",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/waiting-monitor/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "7c23fa7e",
+      "date": "2026-10-08",
+      "src_files": 3,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 3,
+      "needed_precedents": [
+       "packages/ehr/src/shared/ui/reference-picker/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "24e7f4a6",
+      "date": "2026-10-08",
+      "src_files": 5,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 5,
+      "needed_precedents": [
+       "apps/ehr-admin/features/task-create/PRECEDENT.md",
+       "apps/ehr-admin/shared/hooks/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/shared/hooks/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "b7e8c105",
+      "date": "2026-10-08",
+      "src_files": 5,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 5,
+      "needed_precedents": [
+       "apps/ehr-admin/e2e/PRECEDENT.md",
+       "apps/ehr-admin/entities/notification/model/utils/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-timeline/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/e2e/PRECEDENT.md",
+       "apps/ehr-admin/entities/notification/model/utils/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "5398b071",
+      "date": "2026-10-08",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       ".claude/hooks/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "4b5360da",
+      "date": "2026-10-08",
+      "src_files": 5,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 5,
+      "needed_precedents": [
+       "packages/ehr/src/shared/ui/reference-picker/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "05cae934",
+      "date": "2026-10-08",
+      "src_files": 10,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 10,
+      "needed_precedents": [
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/task-create/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "a0659000",
+      "date": "2026-10-08",
+      "src_files": 5,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 5,
+      "needed_precedents": [
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "d7df9ff0",
+      "date": "2026-10-08",
+      "src_files": 8,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 8,
+      "needed_precedents": [
+       "apps/ehr-admin/features/waiting-monitor/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "3191d62b",
+      "date": "2026-10-08",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/e2e/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "ef630bc6",
+      "date": "2026-10-08",
+      "src_files": 12,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 12,
+      "needed_precedents": [
+       "apps/ehr-admin/features/home-tenant-prefetch/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-history-diff/PRECEDENT.md",
+       "apps/ehr-admin/features/procedure-list/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/super-admin-audit-logs/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "packages/ehr/src/shared/ui/reference-picker/PRECEDENT.md",
+       "packages/ui/src/components/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/patient-history-diff/PRECEDENT.md",
+       "apps/ehr-admin/features/procedure-list/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "56f1ce6d",
+      "date": "2026-10-08",
+      "src_files": 16,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 15,
+      "needed_precedents": [
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/composition/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/medication-request/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md",
+       "apps/ehr-admin/features/task-list/PRECEDENT.md",
+       "apps/ehr-admin/features/task-properties/PRECEDENT.md",
+       "apps/ehr-admin/widgets/auth-shell/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/composition/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/medication-request/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "e36d7f5c",
+      "date": "2026-10-08",
+      "src_files": 5,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 5,
+      "needed_precedents": [
+       "apps/ehr-admin/features/task-properties/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "packages/ehr/src/shared/ui/reference-picker/PRECEDENT.md",
+       "packages/ui/src/components/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/shared/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "d64de5e0",
+      "date": "2026-10-08",
+      "src_files": 7,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 7,
+      "needed_precedents": [
+       "packages/ehr/src/shared/ui/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md",
+       "packages/ui/src/components/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "ed46304e",
+      "date": "2026-10-08",
+      "src_files": 38,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 31,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/app/[locale]/invite/PRECEDENT.md",
+       "apps/ehr-admin/entities/catalog/PRECEDENT.md",
+       "apps/ehr-admin/entities/encounter/PRECEDENT.md",
+       "apps/ehr-admin/entities/observation/PRECEDENT.md",
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/medication-request/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-vitals/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-timeline/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-renderer/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-management/PRECEDENT.md",
+       "apps/ehr-admin/features/task-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/dashboard-home/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md",
+       "packages/ehr/src/entities/appointment/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/entities/encounter/PRECEDENT.md",
+       "apps/ehr-admin/entities/observation/PRECEDENT.md",
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/medication-request/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-vitals/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-renderer/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-management/PRECEDENT.md",
+       "apps/ehr-admin/features/task-list/PRECEDENT.md",
+       "apps/ehr-admin/widgets/dashboard-home/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md",
+       "packages/ehr/src/entities/appointment/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "5cc664ff",
+      "date": "2026-10-08",
+      "src_files": 7,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 7,
+      "needed_precedents": [
+       "apps/ehr-admin/features/diagnostic-report-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/dashboard-home/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "6d5e951a",
+      "date": "2026-10-07",
+      "src_files": 7,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/features/patient-timeline/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/patient-timeline/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "b654b178",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/access-policy/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "12a8c122",
+      "date": "2026-10-08",
+      "src_files": 8,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 8,
+      "needed_precedents": [
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-list/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/task-list/PRECEDENT.md",
+       "apps/ehr-admin/features/task-properties/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/questionnaire-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "67c63f26",
+      "date": "2026-10-08",
+      "src_files": 21,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 20,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/e2e/PRECEDENT.md",
+       "apps/ehr-admin/entities/catalog/PRECEDENT.md",
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/composition/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/medication-request/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/features/procedure-list/PRECEDENT.md",
+       "apps/ehr-admin/features/waiting-badge/PRECEDENT.md",
+       "apps/ehr-admin/features/waiting-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/dashboard-home/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/e2e/PRECEDENT.md",
+       "apps/ehr-admin/entities/catalog/PRECEDENT.md",
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/composition/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/medication-request/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/features/procedure-list/PRECEDENT.md",
+       "apps/ehr-admin/features/waiting-badge/PRECEDENT.md",
+       "apps/ehr-admin/features/waiting-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/dashboard-home/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "cb541b88",
+      "date": "2026-10-08",
+      "src_files": 16,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 16,
+      "needed_precedents": [
+       "apps/ehr-admin/entities/encounter/PRECEDENT.md",
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/medication-request/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/features/procedure-list/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-renderer/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "6b72c4e1",
+      "date": "2026-10-08",
+      "src_files": 14,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 14,
+      "needed_precedents": [
+       "apps/ehr-admin/e2e/PRECEDENT.md",
+       "apps/ehr-admin/features/command-palette/PRECEDENT.md",
+       "apps/ehr-admin/features/header-resource-search/PRECEDENT.md",
+       "apps/ehr-admin/features/resource-type-picker/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "packages/ehr/src/shared/ui/PRECEDENT.md",
+       "packages/ehr/src/shared/ui/reference-picker/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md",
+       "packages/ui/src/components/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/e2e/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "d36fd7d9",
+      "date": "2026-10-07",
+      "src_files": 13,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 13,
+      "needed_precedents": [
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/procedure-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "b8d91091",
+      "date": "2026-10-07",
+      "src_files": 16,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 9,
+      "needed_precedents": [
+       "apps/ehr-admin/features/diagnostic-report-list/PRECEDENT.md",
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-list/PRECEDENT.md",
+       "apps/ehr-admin/features/service-request-list/PRECEDENT.md",
+       "apps/ehr-admin/features/subscription-list/PRECEDENT.md",
+       "apps/ehr-admin/features/super-admin-audit-logs/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/diagnostic-report-list/PRECEDENT.md",
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-list/PRECEDENT.md",
+       "apps/ehr-admin/features/service-request-list/PRECEDENT.md",
+       "apps/ehr-admin/features/subscription-list/PRECEDENT.md",
+       "apps/ehr-admin/features/super-admin-audit-logs/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "d737d5a5",
+      "date": "2026-10-07",
+      "src_files": 5,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 5,
+      "needed_precedents": [
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "9d568352",
+      "date": "2026-10-07",
+      "src_files": 3,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 3,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "a691a84e",
+      "date": "2026-10-07",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       ".claude/hooks/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "418e7ad0",
+      "date": "2026-10-07",
+      "src_files": 3,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 0,
+      "needed_precedents": [],
+      "missing_precedents": [],
+      "class": "no_jurisdiction"
+     },
+     {
+      "sha": "59459020",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 0,
+      "needed_precedents": [],
+      "missing_precedents": [],
+      "class": "no_jurisdiction"
+     },
+     {
+      "sha": "1cbcfa69",
+      "date": "2026-10-07",
+      "src_files": 14,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 10,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/e2e/PRECEDENT.md",
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/e2e/PRECEDENT.md",
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "7fc20994",
+      "date": "2026-10-07",
+      "src_files": 13,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 11,
+      "needed_precedents": [
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md",
+       "apps/ehr-admin/features/task-detail/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "packages/ui/src/components/PRECEDENT.md",
+       "packages/ui/src/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md",
+       "apps/ehr-admin/features/task-detail/PRECEDENT.md",
+       "packages/ui/src/lib/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "f7d5211e",
+      "date": "2026-10-07",
+      "src_files": 1,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/waiting-monitor/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/waiting-monitor/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "684d101f",
+      "date": "2026-10-07",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/waiting-monitor/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "bda188ca",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "64e67ccb",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "15a0bf18",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "3f38f315",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/waiting-badge/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "db1c80f9",
+      "date": "2026-10-07",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "76b3de43",
+      "date": "2026-10-07",
+      "src_files": 15,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 15,
+      "needed_precedents": [
+       "apps/ehr-admin/features/waiting-monitor/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "4a0af9a7",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/access-policy/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "7b939c30",
+      "date": "2026-10-07",
+      "src_files": 5,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 3,
+      "needed_precedents": [
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "46b84868",
+      "date": "2026-10-07",
+      "src_files": 11,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 5,
+      "needed_precedents": [
+       "apps/ehr-admin/features/patient-timeline/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "1eb2ad5e",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/composition/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "b2d28ac2",
+      "date": "2026-10-07",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "e2c4e0bb",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/widgets/page-shell/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "4bcb582e",
+      "date": "2026-10-07",
+      "src_files": 5,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 0,
+      "needed_precedents": [],
+      "missing_precedents": [],
+      "class": "no_jurisdiction"
+     },
+     {
+      "sha": "cff18898",
+      "date": "2026-10-07",
+      "src_files": 5,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 5,
+      "needed_precedents": [
+       "apps/ehr-admin/entities/observation/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "fe945f53",
+      "date": "2026-10-07",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/care-template-apply/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "e246da27",
+      "date": "2026-10-07",
+      "src_files": 3,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 3,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "77c3d1f4",
+      "date": "2026-10-07",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "packages/ehr/src/shared/ui/reference-picker/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "cc6abf99",
+      "date": "2026-10-07",
+      "src_files": 7,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 7,
+      "needed_precedents": [
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "700d9961",
+      "date": "2026-10-06",
+      "src_files": 9,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 9,
+      "needed_precedents": [
+       "apps/ehr-admin/features/super-admin-audit-logs/PRECEDENT.md",
+       "apps/ehr-admin/features/task-detail/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "2d66e2c5",
+      "date": "2026-10-06",
+      "src_files": 6,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 6,
+      "needed_precedents": [
+       "apps/ehr-admin/features/patient-history-diff/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "188993ba",
+      "date": "2026-10-06",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "packages/ui/src/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "fe622765",
+      "date": "2026-10-06",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "packages/ui/src/components/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "b447cee5",
+      "date": "2026-10-06",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 0,
+      "needed_precedents": [],
+      "missing_precedents": [],
+      "class": "no_jurisdiction"
+     },
+     {
+      "sha": "db4a13af",
+      "date": "2026-10-06",
+      "src_files": 25,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 25,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/app/[locale]/[tenantId]/tasks/PRECEDENT.md",
+       "apps/ehr-admin/entities/appointment/PRECEDENT.md",
+       "apps/ehr-admin/entities/catalog/PRECEDENT.md",
+       "apps/ehr-admin/entities/task/PRECEDENT.md",
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md",
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md",
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md",
+       "apps/ehr-admin/shared/hooks/PRECEDENT.md",
+       "packages/ehr/src/shared/lib/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/entities/task/PRECEDENT.md",
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "b9f63b5c",
+      "date": "2026-10-06",
+      "src_files": 1,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "49e5b269",
+      "date": "2026-10-06",
+      "src_files": 1,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/shared/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "243639fe",
+      "date": "2026-10-06",
+      "src_files": 16,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 16,
+      "needed_precedents": [
+       "apps/ehr-admin/app/[locale]/[tenantId]/tasks/PRECEDENT.md",
+       "apps/ehr-admin/entities/catalog/PRECEDENT.md",
+       "apps/ehr-admin/entities/task/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/entities/task/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "befe3cf2",
+      "date": "2026-10-06",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/entities/appointment/PRECEDENT.md",
+       "apps/ehr-admin/shared/hooks/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "17a84e8f",
+      "date": "2026-10-06",
+      "src_files": 20,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 20,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "7173da46",
+      "date": "2026-10-06",
+      "src_files": 18,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 13,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md",
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "a20363ab",
+      "date": "2026-10-06",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "1d796a83",
+      "date": "2026-10-06",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "b3a580af",
+      "date": "2026-10-06",
+      "src_files": 8,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "5f58a567",
+      "date": "2026-10-06",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "6d0a56b9",
+      "date": "2026-10-06",
+      "src_files": 3,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/config/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "8098648c",
+      "date": "2026-10-06",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "19e21ef9",
+      "date": "2026-10-06",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "57f768a6",
+      "date": "2026-10-06",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "0b3d0d1e",
+      "date": "2026-10-06",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "0d4d4391",
+      "date": "2026-10-06",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "aff2b2d9",
+      "date": "2026-10-06",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "af21887e",
+      "date": "2026-10-06",
+      "src_files": 15,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 15,
+      "needed_precedents": [
+       "apps/ehr-admin/entities/encounter/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/PRECEDENT.md",
+       "apps/ehr-admin/features/waiting-badge/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/entities/encounter/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "d221a99c",
+      "date": "2026-10-06",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "packages/ui/src/components/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "e7be858a",
+      "date": "2026-10-06",
+      "src_files": 39,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 32,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/model/utils/PRECEDENT.md",
+       "apps/ehr-admin/features/waiting-list/PRECEDENT.md",
+       "apps/ehr-admin/features/waiting-monitor/PRECEDENT.md",
+       "tooling/config-tailwind/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/model/utils/PRECEDENT.md",
+       "tooling/config-tailwind/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "b2235911",
+      "date": "2026-10-06",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/realtime-notifications/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "e50dc858",
+      "date": "2026-10-06",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "88af19c9",
+      "date": "2026-10-06",
+      "src_files": 8,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 8,
+      "needed_precedents": [
+       "apps/ehr-admin/features/waiting-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "e66db0c7",
+      "date": "2026-10-06",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "packages/ui/src/components/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "3ebd2eb7",
+      "date": "2026-10-03",
+      "src_files": 7,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 7,
+      "needed_precedents": [
+       "apps/ehr-admin/features/waiting-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "11bff2b3",
+      "date": "2026-10-03",
+      "src_files": 7,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 7,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/waiting-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/config/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/shared/config/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "2643da2d",
+      "date": "2026-10-03",
+      "src_files": 11,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 7,
+      "needed_precedents": [
+       "apps/ehr-admin/features/realtime-notifications/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/model/utils/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/realtime-notifications/model/utils/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "1c6d046d",
+      "date": "2026-10-02",
+      "src_files": 6,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 6,
+      "needed_precedents": [
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "3220d454",
+      "date": "2026-10-02",
+      "src_files": 3,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 3,
+      "needed_precedents": [
+       "apps/ehr-admin/features/allergy/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "cc726e1f",
+      "date": "2026-10-02",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "b0b6561c",
+      "date": "2026-10-02",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "e0f2a3e9",
+      "date": "2026-10-02",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "b9d184bc",
+      "date": "2026-10-02",
+      "src_files": 9,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 9,
+      "needed_precedents": [
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "df4c9459",
+      "date": "2026-10-02",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/entities/task/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "2a0f3f33",
+      "date": "2026-10-02",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "1a11941d",
+      "date": "2026-10-02",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "f8e57a46",
+      "date": "2026-10-02",
+      "src_files": 3,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 3,
+      "needed_precedents": [
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "585428f0",
+      "date": "2026-10-02",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "f67351aa",
+      "date": "2026-10-02",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "9ea529e4",
+      "date": "2026-10-02",
+      "src_files": 28,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 28,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md",
+       "tooling/config-tailwind/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "tooling/config-tailwind/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "82d80e4c",
+      "date": "2026-10-02",
+      "src_files": 135,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 109,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/app/[locale]/[tenantId]/tasks/PRECEDENT.md",
+       "apps/ehr-admin/entities/task/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-vitals/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-list/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/route-access-guard/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/task-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/config/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/page-shell/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/[locale]/[tenantId]/tasks/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-vitals/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/task-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/config/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/page-shell/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "db1aa1c8",
+      "date": "2026-10-02",
+      "src_files": 7,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 7,
+      "needed_precedents": [
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "36282d75",
+      "date": "2026-10-02",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "0cbe284f",
+      "date": "2026-10-02",
+      "src_files": 8,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 8,
+      "needed_precedents": [
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "fad67a3b",
+      "date": "2026-10-02",
+      "src_files": 16,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 16,
+      "needed_precedents": [
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "8a88e41a",
+      "date": "2026-10-02",
+      "src_files": 12,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 8,
+      "needed_precedents": [
+       "apps/ehr-admin/features/access-policy/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-timeline/ui/PRECEDENT.md",
+       "packages/ehr/src/shared/hooks/PRECEDENT.md",
+       "packages/ehr/src/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "1ddf73e2",
+      "date": "2026-10-01",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "ebec20b5",
+      "date": "2026-09-30",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "f517bce0",
+      "date": "2026-09-30",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "8dc6fc56",
+      "date": "2026-09-30",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "92963d8b",
+      "date": "2026-09-30",
+      "src_files": 6,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 6,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/auth/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "01eb8c80",
+      "date": "2026-09-30",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "f333f816",
+      "date": "2026-09-29",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "apps/ehr-admin/widgets/patient-timeline/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "588d7162",
+      "date": "2026-09-29",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "b4b00dfe",
+      "date": "2026-09-29",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/patient-list/PRECEDENT.md",
+       "tooling/config-tailwind/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "1cb864f5",
+      "date": "2026-09-29",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md",
+       "packages/ui/src/components/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "9e8445dc",
+      "date": "2026-09-29",
+      "src_files": 156,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 139,
+      "needed_precedents": [
+       ".claude/hooks/PRECEDENT.md",
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/app/[locale]/[tenantId]/schedule/PRECEDENT.md",
+       "apps/ehr-admin/e2e/PRECEDENT.md",
+       "apps/ehr-admin/entities/appointment/PRECEDENT.md",
+       "apps/ehr-admin/entities/notification/model/utils/PRECEDENT.md",
+       "apps/ehr-admin/entities/observation/PRECEDENT.md",
+       "apps/ehr-admin/entities/task/PRECEDENT.md",
+       "apps/ehr-admin/entities/task/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/access-policy/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/ehr-tenant/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/lab-catalog/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-vitals/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-history-diff/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-timeline/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-detail/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/model/utils/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-management/PRECEDENT.md",
+       "apps/ehr-admin/features/service-request-list/PRECEDENT.md",
+       "apps/ehr-admin/features/sidebar-bookmark/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/task-list/PRECEDENT.md",
+       "apps/ehr-admin/features/tenant-detail/model/hooks/PRECEDENT.md",
+       "apps/ehr-admin/shared/config/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/lab-catalog/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/auth-shell/PRECEDENT.md",
+       "apps/ehr-admin/widgets/dashboard-home/PRECEDENT.md",
+       "apps/ehr-admin/widgets/page-shell/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/patient-timeline/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md",
+       "packages/ehr/src/entities/appointment/PRECEDENT.md",
+       "packages/ehr/src/entities/questionnaire-response/PRECEDENT.md",
+       "packages/ehr/src/entities/questionnaire/PRECEDENT.md",
+       "packages/ehr/src/shared/hooks/PRECEDENT.md",
+       "packages/ehr/src/shared/ui/reference-picker/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md",
+       "packages/ui/src/components/PRECEDENT.md",
+       "packages/ui/src/components/skeleton/PRECEDENT.md",
+       "scripts/PRECEDENT.md",
+       "tooling/config-tailwind/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "9634f5c0",
+      "date": "2026-09-29",
+      "src_files": 3,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 0,
+      "needed_precedents": [],
+      "missing_precedents": [],
+      "class": "no_jurisdiction"
+     },
+     {
+      "sha": "4328ccb7",
+      "date": "2026-09-29",
+      "src_files": 21,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 0,
+      "needed_precedents": [],
+      "missing_precedents": [],
+      "class": "no_jurisdiction"
+     },
+     {
+      "sha": "88850ad3",
+      "date": "2026-09-29",
+      "src_files": 2,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 0,
+      "needed_precedents": [],
+      "missing_precedents": [],
+      "class": "no_jurisdiction"
+     },
+     {
+      "sha": "445e6e2c",
+      "date": "2026-09-29",
+      "src_files": 8,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 0,
+      "needed_precedents": [],
+      "missing_precedents": [],
+      "class": "no_jurisdiction"
+     }
+    ]
+   },
+   "cross_check": {
+    "nonmerge_committer_date": 139,
+    "merges_excluded": 99
+   },
+   "per_day": [
+    {
+     "date": "2026-09-29",
+     "dow": "화",
+     "commits": 18,
+     "src_commits": 9
+    },
+    {
+     "date": "2026-09-30",
+     "dow": "수",
+     "commits": 7,
+     "src_commits": 5
+    },
+    {
+     "date": "2026-10-01",
+     "dow": "목",
+     "commits": 3,
+     "src_commits": 1
+    },
+    {
+     "date": "2026-10-02",
+     "dow": "금",
+     "commits": 22,
+     "src_commits": 19
+    },
+    {
+     "date": "2026-10-03",
+     "dow": "토",
+     "commits": 3,
+     "src_commits": 3
+    },
+    {
+     "date": "2026-10-04",
+     "dow": "일",
+     "commits": 0,
+     "src_commits": 0
+    },
+    {
+     "date": "2026-10-05",
+     "dow": "월",
+     "commits": 0,
+     "src_commits": 0
+    },
+    {
+     "date": "2026-10-06",
+     "dow": "화",
+     "commits": 33,
+     "src_commits": 30
+    },
+    {
+     "date": "2026-10-07",
+     "dow": "수",
+     "commits": 32,
+     "src_commits": 31
+    },
+    {
+     "date": "2026-10-08",
+     "dow": "목",
+     "commits": 21,
+     "src_commits": 20
+    },
+    {
+     "date": "2026-10-09",
+     "dow": "금",
+     "commits": 0,
+     "src_commits": 0
+    },
+    {
+     "date": "2026-10-10",
+     "dow": "토",
+     "commits": 0,
+     "src_commits": 0
+    }
+   ],
+   "days_with_commits": 8
+  },
+  "P0": {
+   "range": [
+    "2026-07-01",
+    "2026-08-19"
+   ],
+   "days": 50,
+   "commits_nonmerge_all": 319,
+   "commits_touching_src": 297,
+   "commits_touching_src_by_committer_date": 296,
+   "commits_per_day": 5.94,
+   "files_per_commit": {
+    "median": 5,
+    "p90": 17,
+    "max": 554
+   },
+   "files_per_commit_excl_bulk": {
+    "median": 5.0,
+    "p90": 17,
+    "max": 58
+   },
+   "bulk_commits_ge100": 1,
+   "bulk_commits_ge100_excl_rename": 1,
+   "bulk_list": [
+    {
+     "sha": "86ea8f49",
+     "date": "2026-07-31",
+     "src_files": 554,
+     "all_files": 569,
+     "subject": "refactor(ehr): project-rules conformance sweep",
+     "is_rename_commit": false
+    }
+   ],
+   "rename_commit_in_window": false,
+   "rename_commit_src_files": null,
+   "all": {
+    "distinct_files": 1215,
+    "touch_median": 1,
+    "touch_p90": 5,
+    "touch_max": 18,
+    "files_ge3": 325,
+    "rework_rate": 0.2675,
+    "top8": [
+     {
+      "file": "apps/ehr-admin/features/patient-create/ui/patient-create-form.tsx",
+      "count": 18
+     },
+     {
+      "file": "apps/ehr-admin/features/diagnostic-report-list/ui/diagnostic-report-form.tsx",
+      "count": 17
+     },
+     {
+      "file": "apps/ehr-admin/features/service-request-list/ui/service-request-form.tsx",
+      "count": 16
+     },
+     {
+      "file": "apps/ehr-admin/features/coverage/ui/coverage-list-row.tsx",
+      "count": 15
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-summary-panel.tsx",
+      "count": 15
+     },
+     {
+      "file": "apps/ehr-admin/features/schedule-calendar/ui/appointment-dialog.tsx",
+      "count": 15
+     },
+     {
+      "file": "apps/ehr-admin/features/service-request-detail/ui/service-request-details.tsx",
+      "count": 14
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-details.tsx",
+      "count": 13
+     }
+    ]
+   },
+   "excl_bulk": {
+    "distinct_files": 936,
+    "touch_median": 1.0,
+    "touch_p90": 5,
+    "touch_max": 17,
+    "files_ge3": 273,
+    "rework_rate": 0.2917,
+    "top8": [
+     {
+      "file": "apps/ehr-admin/features/patient-create/ui/patient-create-form.tsx",
+      "count": 17
+     },
+     {
+      "file": "apps/ehr-admin/features/diagnostic-report-list/ui/diagnostic-report-form.tsx",
+      "count": 16
+     },
+     {
+      "file": "apps/ehr-admin/features/service-request-list/ui/service-request-form.tsx",
+      "count": 15
+     },
+     {
+      "file": "apps/ehr-admin/features/coverage/ui/coverage-list-row.tsx",
+      "count": 14
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-summary-panel.tsx",
+      "count": 14
+     },
+     {
+      "file": "apps/ehr-admin/features/schedule-calendar/ui/appointment-dialog.tsx",
+      "count": 14
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-details.tsx",
+      "count": 13
+     },
+     {
+      "file": "apps/ehr-admin/features/service-request-detail/ui/service-request-details.tsx",
+      "count": 13
+     }
+    ]
+   },
+   "distinct_files_per_day": 24.3,
+   "vitals": {
+    "commits": 17,
+    "commits_excl_bulk": 16,
+    "all": {
+     "distinct_files": 19,
+     "touch_median": 2,
+     "touch_p90": 6,
+     "touch_max": 7,
+     "files_ge3": 9,
+     "rework_rate": 0.4737,
+     "top8": [
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-history-table.tsx",
+       "count": 7
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/hooks/use-vitals-entry-form.ts",
+       "count": 6
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-trend-chart.tsx",
+       "count": 5
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-summary-cards.tsx",
+       "count": 5
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-entry-form.tsx",
+       "count": 5
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/hooks/use-vitals-history.ts",
+       "count": 5
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/utils/vital-view.ts",
+       "count": 3
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/hooks/use-vitals-trends.ts",
+       "count": 3
+      }
+     ]
+    },
+    "excl_bulk": {
+     "distinct_files": 18,
+     "touch_median": 2.5,
+     "touch_p90": 5,
+     "touch_max": 6,
+     "files_ge3": 9,
+     "rework_rate": 0.5,
+     "top8": [
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-history-table.tsx",
+       "count": 6
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/hooks/use-vitals-entry-form.ts",
+       "count": 5
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-trend-chart.tsx",
+       "count": 4
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-summary-cards.tsx",
+       "count": 4
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-entry-form.tsx",
+       "count": 4
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/hooks/use-vitals-history.ts",
+       "count": 4
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/utils/vital-view.ts",
+       "count": 3
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/hooks/use-vitals-trends.ts",
+       "count": 3
+      }
+     ]
+    }
+   },
+   "cross_check": {
+    "nonmerge_committer_date": 318,
+    "merges_excluded": 102
+   }
+  },
+  "P1": {
+   "range": [
+    "2026-08-20",
+    "2026-09-28"
+   ],
+   "days": 40,
+   "commits_nonmerge_all": 353,
+   "commits_touching_src": 235,
+   "commits_touching_src_by_committer_date": 236,
+   "commits_per_day": 5.875,
+   "files_per_commit": {
+    "median": 2,
+    "p90": 12,
+    "max": 59
+   },
+   "files_per_commit_excl_bulk": {
+    "median": 2,
+    "p90": 12,
+    "max": 59
+   },
+   "bulk_commits_ge100": 0,
+   "bulk_commits_ge100_excl_rename": 0,
+   "bulk_list": [],
+   "rename_commit_in_window": false,
+   "rename_commit_src_files": null,
+   "all": {
+    "distinct_files": 596,
+    "touch_median": 1.0,
+    "touch_p90": 4,
+    "touch_max": 15,
+    "files_ge3": 126,
+    "rework_rate": 0.2114,
+    "top8": [
+     {
+      "file": "apps/ehr-admin/app/globals.css",
+      "count": 15
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-tabs.tsx",
+      "count": 12
+     },
+     {
+      "file": "apps/ehr-admin/features/appointment/ui/appointment-dialog.tsx",
+      "count": 11
+     },
+     {
+      "file": "apps/ehr-admin/widgets/dashboard-home/ui/patient-gender-chart.tsx",
+      "count": 10
+     },
+     {
+      "file": "tooling/config-tailwind/style.css",
+      "count": 10
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-summary-panel.tsx",
+      "count": 10
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-detail-shell.tsx",
+      "count": 10
+     },
+     {
+      "file": "apps/ehr-admin/widgets/dashboard-home/ui/appointment-status-chart.tsx",
+      "count": 9
+     }
+    ]
+   },
+   "excl_bulk": {
+    "distinct_files": 596,
+    "touch_median": 1.0,
+    "touch_p90": 4,
+    "touch_max": 15,
+    "files_ge3": 126,
+    "rework_rate": 0.2114,
+    "top8": [
+     {
+      "file": "apps/ehr-admin/app/globals.css",
+      "count": 15
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-tabs.tsx",
+      "count": 12
+     },
+     {
+      "file": "apps/ehr-admin/features/appointment/ui/appointment-dialog.tsx",
+      "count": 11
+     },
+     {
+      "file": "apps/ehr-admin/widgets/dashboard-home/ui/patient-gender-chart.tsx",
+      "count": 10
+     },
+     {
+      "file": "tooling/config-tailwind/style.css",
+      "count": 10
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-summary-panel.tsx",
+      "count": 10
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-detail/ui/patient-detail-shell.tsx",
+      "count": 10
+     },
+     {
+      "file": "apps/ehr-admin/widgets/dashboard-home/ui/appointment-status-chart.tsx",
+      "count": 9
+     }
+    ]
+   },
+   "distinct_files_per_day": 14.9,
+   "vitals": {
+    "commits": 17,
+    "commits_excl_bulk": 17,
+    "all": {
+     "distinct_files": 12,
+     "touch_median": 1.5,
+     "touch_p90": 4,
+     "touch_max": 4,
+     "files_ge3": 4,
+     "rework_rate": 0.3333,
+     "top8": [
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-history-table.tsx",
+       "count": 4
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-summary-cards.tsx",
+       "count": 4
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-trend-chart.tsx",
+       "count": 3
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-panel.tsx",
+       "count": 3
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/hooks/use-vitals-history.ts",
+       "count": 2
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-panel-skeleton.tsx",
+       "count": 2
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/utils/vital-parse.ts",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-entry-dialog.tsx",
+       "count": 1
+      }
+     ]
+    },
+    "excl_bulk": {
+     "distinct_files": 12,
+     "touch_median": 1.5,
+     "touch_p90": 4,
+     "touch_max": 4,
+     "files_ge3": 4,
+     "rework_rate": 0.3333,
+     "top8": [
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-history-table.tsx",
+       "count": 4
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-summary-cards.tsx",
+       "count": 4
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-trend-chart.tsx",
+       "count": 3
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-panel.tsx",
+       "count": 3
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/hooks/use-vitals-history.ts",
+       "count": 2
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-panel-skeleton.tsx",
+       "count": 2
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/utils/vital-parse.ts",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-entry-dialog.tsx",
+       "count": 1
+      }
+     ]
+    }
+   },
+   "companion_ssot": {
+    "commits_touching_src": 235,
+    "commits_touching_any_ssot_md": 120,
+    "commits_under_jurisdiction": 120,
+    "accompanied": 90,
+    "candidate_SSOT_OK": 30,
+    "no_jurisdiction": 115
+   },
+   "cross_check": {
+    "nonmerge_committer_date": 354,
+    "merges_excluded": 244
+   }
+  },
+  "P2": {
+   "range": [
+    "2026-09-29",
+    "2026-10-10"
+   ],
+   "days": 12,
+   "commits_nonmerge_all": 139,
+   "commits_touching_src": 118,
+   "commits_touching_src_by_committer_date": 118,
+   "commits_per_day": 9.833,
+   "files_per_commit": {
+    "median": 4.0,
+    "p90": 16,
+    "max": 156
+   },
+   "files_per_commit_excl_bulk": {
+    "median": 4.0,
+    "p90": 16,
+    "max": 39
+   },
+   "bulk_commits_ge100": 2,
+   "bulk_commits_ge100_excl_rename": 1,
+   "bulk_list": [
+    {
+     "sha": "82d80e4c",
+     "date": "2026-10-02",
+     "src_files": 135,
+     "all_files": 147,
+     "subject": "feat(panes): render app screens directly in panes",
+     "is_rename_commit": false
+    },
+    {
+     "sha": "9e8445dc",
+     "date": "2026-09-29",
+     "src_files": 156,
+     "all_files": 236,
+     "subject": "refactor(harness): rename SSoT.md to PRECEDENT.md",
+     "is_rename_commit": true
+    }
+   ],
+   "rename_commit_in_window": true,
+   "rename_commit_src_files": 156,
+   "all": {
+    "distinct_files": 614,
+    "touch_median": 1.0,
+    "touch_p90": 3,
+    "touch_max": 9,
+    "files_ge3": 102,
+    "rework_rate": 0.1661,
+    "top8": [
+     {
+      "file": "apps/ehr-admin/features/pane-workspace/model/hooks/use-pane-workspace.ts",
+      "count": 9
+     },
+     {
+      "file": "apps/ehr-admin/features/smart-search/ui/smart-search-page.tsx",
+      "count": 8
+     },
+     {
+      "file": "apps/ehr-admin/shared/lib/auth.config.ts",
+      "count": 7
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-timeline/ui/timeline-entry-card.tsx",
+      "count": 6
+     },
+     {
+      "file": "packages/ehr/src/widgets/fhir-search-table/ui/column-header/column-header-menu.tsx",
+      "count": 6
+     },
+     {
+      "file": "apps/ehr-admin/features/practitioner-list/model/hooks/use-practitioner-form.test.ts",
+      "count": 6
+     },
+     {
+      "file": "apps/ehr-admin/features/practitioner-list/model/utils/build-practitioner-command.ts",
+      "count": 6
+     },
+     {
+      "file": "apps/ehr-admin/features/task-create/ui/create-task-dialog.tsx",
+      "count": 5
+     }
+    ]
+   },
+   "excl_bulk": {
+    "distinct_files": 474,
+    "touch_median": 1.0,
+    "touch_p90": 3,
+    "touch_max": 8,
+    "files_ge3": 60,
+    "rework_rate": 0.1266,
+    "top8": [
+     {
+      "file": "apps/ehr-admin/features/pane-workspace/model/hooks/use-pane-workspace.ts",
+      "count": 8
+     },
+     {
+      "file": "apps/ehr-admin/features/smart-search/ui/smart-search-page.tsx",
+      "count": 7
+     },
+     {
+      "file": "apps/ehr-admin/shared/lib/auth.config.ts",
+      "count": 7
+     },
+     {
+      "file": "apps/ehr-admin/features/practitioner-list/model/hooks/use-practitioner-form.test.ts",
+      "count": 6
+     },
+     {
+      "file": "apps/ehr-admin/features/practitioner-list/model/utils/build-practitioner-command.ts",
+      "count": 6
+     },
+     {
+      "file": "apps/ehr-admin/features/patient-timeline/ui/timeline-entry-card.tsx",
+      "count": 5
+     },
+     {
+      "file": "apps/ehr-admin/shared/lib/__tests__/token-literal-contract.test.ts",
+      "count": 5
+     },
+     {
+      "file": "packages/ehr/src/widgets/fhir-search-table/ui/column-header/column-header-menu.tsx",
+      "count": 5
+     }
+    ]
+   },
+   "distinct_files_per_day": 51.167,
+   "vitals": {
+    "commits": 3,
+    "commits_excl_bulk": 1,
+    "all": {
+     "distinct_files": 7,
+     "touch_median": 1,
+     "touch_p90": 2,
+     "touch_max": 2,
+     "files_ge3": 0,
+     "rework_rate": 0.0,
+     "top8": [
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-panel.tsx",
+       "count": 2
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-entry-form.tsx",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/hooks/use-vitals-history.ts",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/model/utils/vital-parse.ts",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-panel-skeleton.tsx",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-summary-cards.tsx",
+       "count": 1
+      },
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-trend-chart.tsx",
+       "count": 1
+      }
+     ]
+    },
+    "excl_bulk": {
+     "distinct_files": 1,
+     "touch_median": 1,
+     "touch_p90": 1,
+     "touch_max": 1,
+     "files_ge3": 0,
+     "rework_rate": 0.0,
+     "top8": [
+      {
+       "file": "apps/ehr-admin/features/observation-vitals/ui/vitals-panel.tsx",
+       "count": 1
+      }
+     ]
+    }
+   },
+   "companion": {
+    "precedent_set": "HEAD",
+    "head": {
+     "commits_touching_src": 118,
+     "commits_touching_any_precedent_md": 109,
+     "commits_under_jurisdiction": 115,
+     "accompanied": 68,
+     "candidate_PRECEDENT_OK": 47,
+     "no_jurisdiction": 3
+    },
+    "at_commit_tree": {
+     "commits_touching_src": 118,
+     "commits_touching_any_precedent_md": 109,
+     "commits_under_jurisdiction": 110,
+     "accompanied": 70,
+     "candidate_PRECEDENT_OK": 40,
+     "no_jurisdiction": 8
+    },
+    "at_commit_tree_excl_rename": {
+     "commits_touching_src": 117,
+     "commits_touching_any_precedent_md": 108,
+     "commits_under_jurisdiction": 109,
+     "accompanied": 69,
+     "candidate_PRECEDENT_OK": 40,
+     "no_jurisdiction": 8
+    },
+    "rows_at_commit_tree": [
+     {
+      "sha": "0f78d17b",
+      "date": "2026-10-08",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/waiting-monitor/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "7c23fa7e",
+      "date": "2026-10-08",
+      "src_files": 3,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 3,
+      "needed_precedents": [
+       "packages/ehr/src/shared/ui/reference-picker/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "24e7f4a6",
+      "date": "2026-10-08",
+      "src_files": 5,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 5,
+      "needed_precedents": [
+       "apps/ehr-admin/features/task-create/PRECEDENT.md",
+       "apps/ehr-admin/shared/hooks/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/shared/hooks/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "b7e8c105",
+      "date": "2026-10-08",
+      "src_files": 5,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 5,
+      "needed_precedents": [
+       "apps/ehr-admin/e2e/PRECEDENT.md",
+       "apps/ehr-admin/entities/notification/model/utils/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-timeline/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/e2e/PRECEDENT.md",
+       "apps/ehr-admin/entities/notification/model/utils/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "5398b071",
+      "date": "2026-10-08",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       ".claude/hooks/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "4b5360da",
+      "date": "2026-10-08",
+      "src_files": 5,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 5,
+      "needed_precedents": [
+       "packages/ehr/src/shared/ui/reference-picker/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "05cae934",
+      "date": "2026-10-08",
+      "src_files": 10,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 10,
+      "needed_precedents": [
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/task-create/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "a0659000",
+      "date": "2026-10-08",
+      "src_files": 5,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 5,
+      "needed_precedents": [
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "d7df9ff0",
+      "date": "2026-10-08",
+      "src_files": 8,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 8,
+      "needed_precedents": [
+       "apps/ehr-admin/features/waiting-monitor/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "3191d62b",
+      "date": "2026-10-08",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/e2e/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "ef630bc6",
+      "date": "2026-10-08",
+      "src_files": 12,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 12,
+      "needed_precedents": [
+       "apps/ehr-admin/features/home-tenant-prefetch/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-history-diff/PRECEDENT.md",
+       "apps/ehr-admin/features/procedure-list/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/super-admin-audit-logs/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "packages/ehr/src/shared/ui/reference-picker/PRECEDENT.md",
+       "packages/ui/src/components/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/patient-history-diff/PRECEDENT.md",
+       "apps/ehr-admin/features/procedure-list/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "56f1ce6d",
+      "date": "2026-10-08",
+      "src_files": 16,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 15,
+      "needed_precedents": [
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/composition/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/medication-request/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md",
+       "apps/ehr-admin/features/task-list/PRECEDENT.md",
+       "apps/ehr-admin/features/task-properties/PRECEDENT.md",
+       "apps/ehr-admin/widgets/auth-shell/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/composition/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/medication-request/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "e36d7f5c",
+      "date": "2026-10-08",
+      "src_files": 5,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 5,
+      "needed_precedents": [
+       "apps/ehr-admin/features/task-properties/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "packages/ehr/src/shared/ui/reference-picker/PRECEDENT.md",
+       "packages/ui/src/components/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/shared/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "d64de5e0",
+      "date": "2026-10-08",
+      "src_files": 7,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 7,
+      "needed_precedents": [
+       "packages/ehr/src/shared/ui/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md",
+       "packages/ui/src/components/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "ed46304e",
+      "date": "2026-10-08",
+      "src_files": 38,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 31,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/app/[locale]/invite/PRECEDENT.md",
+       "apps/ehr-admin/entities/catalog/PRECEDENT.md",
+       "apps/ehr-admin/entities/encounter/PRECEDENT.md",
+       "apps/ehr-admin/entities/observation/PRECEDENT.md",
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/medication-request/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-vitals/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-timeline/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-renderer/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-management/PRECEDENT.md",
+       "apps/ehr-admin/features/task-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/dashboard-home/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md",
+       "packages/ehr/src/entities/appointment/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/entities/encounter/PRECEDENT.md",
+       "apps/ehr-admin/entities/observation/PRECEDENT.md",
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/medication-request/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-vitals/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-renderer/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-management/PRECEDENT.md",
+       "apps/ehr-admin/features/task-list/PRECEDENT.md",
+       "apps/ehr-admin/widgets/dashboard-home/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md",
+       "packages/ehr/src/entities/appointment/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "5cc664ff",
+      "date": "2026-10-08",
+      "src_files": 7,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 7,
+      "needed_precedents": [
+       "apps/ehr-admin/features/diagnostic-report-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/dashboard-home/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "6d5e951a",
+      "date": "2026-10-07",
+      "src_files": 7,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/features/patient-timeline/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/patient-timeline/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "b654b178",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/access-policy/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "12a8c122",
+      "date": "2026-10-08",
+      "src_files": 8,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 8,
+      "needed_precedents": [
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-list/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/task-list/PRECEDENT.md",
+       "apps/ehr-admin/features/task-properties/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/questionnaire-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "67c63f26",
+      "date": "2026-10-08",
+      "src_files": 21,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 20,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/e2e/PRECEDENT.md",
+       "apps/ehr-admin/entities/catalog/PRECEDENT.md",
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/composition/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/medication-request/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/features/procedure-list/PRECEDENT.md",
+       "apps/ehr-admin/features/waiting-badge/PRECEDENT.md",
+       "apps/ehr-admin/features/waiting-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/dashboard-home/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/e2e/PRECEDENT.md",
+       "apps/ehr-admin/entities/catalog/PRECEDENT.md",
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/composition/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/medication-request/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/features/procedure-list/PRECEDENT.md",
+       "apps/ehr-admin/features/waiting-badge/PRECEDENT.md",
+       "apps/ehr-admin/features/waiting-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/dashboard-home/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "cb541b88",
+      "date": "2026-10-08",
+      "src_files": 16,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 16,
+      "needed_precedents": [
+       "apps/ehr-admin/entities/encounter/PRECEDENT.md",
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/medication-request/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/features/procedure-list/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-renderer/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "6b72c4e1",
+      "date": "2026-10-08",
+      "src_files": 14,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 14,
+      "needed_precedents": [
+       "apps/ehr-admin/e2e/PRECEDENT.md",
+       "apps/ehr-admin/features/command-palette/PRECEDENT.md",
+       "apps/ehr-admin/features/header-resource-search/PRECEDENT.md",
+       "apps/ehr-admin/features/resource-type-picker/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "packages/ehr/src/shared/ui/PRECEDENT.md",
+       "packages/ehr/src/shared/ui/reference-picker/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md",
+       "packages/ui/src/components/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/e2e/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "d36fd7d9",
+      "date": "2026-10-07",
+      "src_files": 13,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 13,
+      "needed_precedents": [
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/procedure-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "b8d91091",
+      "date": "2026-10-07",
+      "src_files": 16,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 9,
+      "needed_precedents": [
+       "apps/ehr-admin/features/diagnostic-report-list/PRECEDENT.md",
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-list/PRECEDENT.md",
+       "apps/ehr-admin/features/service-request-list/PRECEDENT.md",
+       "apps/ehr-admin/features/subscription-list/PRECEDENT.md",
+       "apps/ehr-admin/features/super-admin-audit-logs/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/diagnostic-report-list/PRECEDENT.md",
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-list/PRECEDENT.md",
+       "apps/ehr-admin/features/service-request-list/PRECEDENT.md",
+       "apps/ehr-admin/features/subscription-list/PRECEDENT.md",
+       "apps/ehr-admin/features/super-admin-audit-logs/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "d737d5a5",
+      "date": "2026-10-07",
+      "src_files": 5,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 5,
+      "needed_precedents": [
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "9d568352",
+      "date": "2026-10-07",
+      "src_files": 3,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 3,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "a691a84e",
+      "date": "2026-10-07",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       ".claude/hooks/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "418e7ad0",
+      "date": "2026-10-07",
+      "src_files": 3,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 0,
+      "needed_precedents": [],
+      "missing_precedents": [],
+      "class": "no_jurisdiction"
+     },
+     {
+      "sha": "59459020",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 0,
+      "needed_precedents": [],
+      "missing_precedents": [],
+      "class": "no_jurisdiction"
+     },
+     {
+      "sha": "1cbcfa69",
+      "date": "2026-10-07",
+      "src_files": 14,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 10,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/e2e/PRECEDENT.md",
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/e2e/PRECEDENT.md",
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "7fc20994",
+      "date": "2026-10-07",
+      "src_files": 13,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 11,
+      "needed_precedents": [
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md",
+       "apps/ehr-admin/features/task-detail/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "packages/ui/src/components/PRECEDENT.md",
+       "packages/ui/src/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md",
+       "apps/ehr-admin/features/task-detail/PRECEDENT.md",
+       "packages/ui/src/lib/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "f7d5211e",
+      "date": "2026-10-07",
+      "src_files": 1,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/waiting-monitor/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/waiting-monitor/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "684d101f",
+      "date": "2026-10-07",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/waiting-monitor/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "bda188ca",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "64e67ccb",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "15a0bf18",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "3f38f315",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/waiting-badge/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "db1c80f9",
+      "date": "2026-10-07",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "76b3de43",
+      "date": "2026-10-07",
+      "src_files": 15,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 15,
+      "needed_precedents": [
+       "apps/ehr-admin/features/waiting-monitor/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "4a0af9a7",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/access-policy/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "7b939c30",
+      "date": "2026-10-07",
+      "src_files": 5,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 3,
+      "needed_precedents": [
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/allergy/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "46b84868",
+      "date": "2026-10-07",
+      "src_files": 11,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 5,
+      "needed_precedents": [
+       "apps/ehr-admin/features/patient-timeline/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "1eb2ad5e",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/composition/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "b2d28ac2",
+      "date": "2026-10-07",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "e2c4e0bb",
+      "date": "2026-10-07",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/widgets/page-shell/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "4bcb582e",
+      "date": "2026-10-07",
+      "src_files": 5,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 0,
+      "needed_precedents": [],
+      "missing_precedents": [],
+      "class": "no_jurisdiction"
+     },
+     {
+      "sha": "cff18898",
+      "date": "2026-10-07",
+      "src_files": 5,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 5,
+      "needed_precedents": [
+       "apps/ehr-admin/entities/observation/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "fe945f53",
+      "date": "2026-10-07",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/care-template-apply/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "e246da27",
+      "date": "2026-10-07",
+      "src_files": 3,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 3,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "77c3d1f4",
+      "date": "2026-10-07",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "packages/ehr/src/shared/ui/reference-picker/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "cc6abf99",
+      "date": "2026-10-07",
+      "src_files": 7,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 7,
+      "needed_precedents": [
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "700d9961",
+      "date": "2026-10-06",
+      "src_files": 9,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 9,
+      "needed_precedents": [
+       "apps/ehr-admin/features/super-admin-audit-logs/PRECEDENT.md",
+       "apps/ehr-admin/features/task-detail/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "2d66e2c5",
+      "date": "2026-10-06",
+      "src_files": 6,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 6,
+      "needed_precedents": [
+       "apps/ehr-admin/features/patient-history-diff/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "188993ba",
+      "date": "2026-10-06",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "packages/ui/src/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "fe622765",
+      "date": "2026-10-06",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "packages/ui/src/components/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "b447cee5",
+      "date": "2026-10-06",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 0,
+      "needed_precedents": [],
+      "missing_precedents": [],
+      "class": "no_jurisdiction"
+     },
+     {
+      "sha": "db4a13af",
+      "date": "2026-10-06",
+      "src_files": 25,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 25,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/app/[locale]/[tenantId]/tasks/PRECEDENT.md",
+       "apps/ehr-admin/entities/appointment/PRECEDENT.md",
+       "apps/ehr-admin/entities/catalog/PRECEDENT.md",
+       "apps/ehr-admin/entities/task/PRECEDENT.md",
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md",
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md",
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md",
+       "apps/ehr-admin/shared/hooks/PRECEDENT.md",
+       "packages/ehr/src/shared/lib/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/entities/task/PRECEDENT.md",
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "b9f63b5c",
+      "date": "2026-10-06",
+      "src_files": 1,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "49e5b269",
+      "date": "2026-10-06",
+      "src_files": 1,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/shared/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "243639fe",
+      "date": "2026-10-06",
+      "src_files": 16,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 16,
+      "needed_precedents": [
+       "apps/ehr-admin/app/[locale]/[tenantId]/tasks/PRECEDENT.md",
+       "apps/ehr-admin/entities/catalog/PRECEDENT.md",
+       "apps/ehr-admin/entities/task/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/entities/task/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "befe3cf2",
+      "date": "2026-10-06",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/entities/appointment/PRECEDENT.md",
+       "apps/ehr-admin/shared/hooks/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "17a84e8f",
+      "date": "2026-10-06",
+      "src_files": 20,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 20,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "7173da46",
+      "date": "2026-10-06",
+      "src_files": 18,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 13,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md",
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "a20363ab",
+      "date": "2026-10-06",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "1d796a83",
+      "date": "2026-10-06",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "b3a580af",
+      "date": "2026-10-06",
+      "src_files": 8,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "5f58a567",
+      "date": "2026-10-06",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "6d0a56b9",
+      "date": "2026-10-06",
+      "src_files": 3,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/config/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "8098648c",
+      "date": "2026-10-06",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "19e21ef9",
+      "date": "2026-10-06",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "57f768a6",
+      "date": "2026-10-06",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "0b3d0d1e",
+      "date": "2026-10-06",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "0d4d4391",
+      "date": "2026-10-06",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "aff2b2d9",
+      "date": "2026-10-06",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "af21887e",
+      "date": "2026-10-06",
+      "src_files": 15,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 15,
+      "needed_precedents": [
+       "apps/ehr-admin/entities/encounter/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/PRECEDENT.md",
+       "apps/ehr-admin/features/waiting-badge/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/entities/encounter/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "d221a99c",
+      "date": "2026-10-06",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "packages/ui/src/components/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "e7be858a",
+      "date": "2026-10-06",
+      "src_files": 39,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 32,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/model/utils/PRECEDENT.md",
+       "apps/ehr-admin/features/waiting-list/PRECEDENT.md",
+       "apps/ehr-admin/features/waiting-monitor/PRECEDENT.md",
+       "tooling/config-tailwind/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/model/utils/PRECEDENT.md",
+       "tooling/config-tailwind/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "b2235911",
+      "date": "2026-10-06",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/realtime-notifications/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "e50dc858",
+      "date": "2026-10-06",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "88af19c9",
+      "date": "2026-10-06",
+      "src_files": 8,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 8,
+      "needed_precedents": [
+       "apps/ehr-admin/features/waiting-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "e66db0c7",
+      "date": "2026-10-06",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "packages/ui/src/components/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "3ebd2eb7",
+      "date": "2026-10-03",
+      "src_files": 7,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 7,
+      "needed_precedents": [
+       "apps/ehr-admin/features/waiting-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "11bff2b3",
+      "date": "2026-10-03",
+      "src_files": 7,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 7,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/waiting-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/config/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/shared/config/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "2643da2d",
+      "date": "2026-10-03",
+      "src_files": 11,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 7,
+      "needed_precedents": [
+       "apps/ehr-admin/features/realtime-notifications/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/model/utils/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/realtime-notifications/model/utils/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "1c6d046d",
+      "date": "2026-10-02",
+      "src_files": 6,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 6,
+      "needed_precedents": [
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "3220d454",
+      "date": "2026-10-02",
+      "src_files": 3,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 3,
+      "needed_precedents": [
+       "apps/ehr-admin/features/allergy/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "cc726e1f",
+      "date": "2026-10-02",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "b0b6561c",
+      "date": "2026-10-02",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "e0f2a3e9",
+      "date": "2026-10-02",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "b9d184bc",
+      "date": "2026-10-02",
+      "src_files": 9,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 9,
+      "needed_precedents": [
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "df4c9459",
+      "date": "2026-10-02",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/entities/task/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "2a0f3f33",
+      "date": "2026-10-02",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "1a11941d",
+      "date": "2026-10-02",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "f8e57a46",
+      "date": "2026-10-02",
+      "src_files": 3,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 3,
+      "needed_precedents": [
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "585428f0",
+      "date": "2026-10-02",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "f67351aa",
+      "date": "2026-10-02",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "9ea529e4",
+      "date": "2026-10-02",
+      "src_files": 28,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 28,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md",
+       "tooling/config-tailwind/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "tooling/config-tailwind/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "82d80e4c",
+      "date": "2026-10-02",
+      "src_files": 135,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 109,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/app/[locale]/[tenantId]/tasks/PRECEDENT.md",
+       "apps/ehr-admin/entities/task/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-vitals/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/pane-workspace/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-list/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/route-access-guard/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/task-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/config/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/page-shell/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/[locale]/[tenantId]/tasks/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-vitals/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/task-list/PRECEDENT.md",
+       "apps/ehr-admin/shared/config/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/page-shell/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "db1aa1c8",
+      "date": "2026-10-02",
+      "src_files": 7,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 7,
+      "needed_precedents": [
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "36282d75",
+      "date": "2026-10-02",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "0cbe284f",
+      "date": "2026-10-02",
+      "src_files": 8,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 8,
+      "needed_precedents": [
+       "apps/ehr-admin/features/practitioner-list/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "fad67a3b",
+      "date": "2026-10-02",
+      "src_files": 16,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 16,
+      "needed_precedents": [
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "8a88e41a",
+      "date": "2026-10-02",
+      "src_files": 12,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 8,
+      "needed_precedents": [
+       "apps/ehr-admin/features/access-policy/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-timeline/ui/PRECEDENT.md",
+       "packages/ehr/src/shared/hooks/PRECEDENT.md",
+       "packages/ehr/src/shared/lib/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "1ddf73e2",
+      "date": "2026-10-01",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "ebec20b5",
+      "date": "2026-09-30",
+      "src_files": 1,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 1,
+      "needed_precedents": [
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "f517bce0",
+      "date": "2026-09-30",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "8dc6fc56",
+      "date": "2026-09-30",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "92963d8b",
+      "date": "2026-09-30",
+      "src_files": 6,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 6,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/auth/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "01eb8c80",
+      "date": "2026-09-30",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "f333f816",
+      "date": "2026-09-29",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "apps/ehr-admin/widgets/patient-timeline/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "588d7162",
+      "date": "2026-09-29",
+      "src_files": 4,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 4,
+      "needed_precedents": [
+       "apps/ehr-admin/features/smart-search/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "b4b00dfe",
+      "date": "2026-09-29",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/patient-list/PRECEDENT.md",
+       "tooling/config-tailwind/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "1cb864f5",
+      "date": "2026-09-29",
+      "src_files": 2,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 2,
+      "needed_precedents": [
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md",
+       "packages/ui/src/components/PRECEDENT.md"
+      ],
+      "missing_precedents": [
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md"
+      ],
+      "class": "candidate_PRECEDENT_OK"
+     },
+     {
+      "sha": "9e8445dc",
+      "date": "2026-09-29",
+      "src_files": 156,
+      "touches_any_precedent_md": true,
+      "jurisdiction_files": 139,
+      "needed_precedents": [
+       ".claude/hooks/PRECEDENT.md",
+       "apps/ehr-admin/app/PRECEDENT.md",
+       "apps/ehr-admin/app/[locale]/[tenantId]/schedule/PRECEDENT.md",
+       "apps/ehr-admin/e2e/PRECEDENT.md",
+       "apps/ehr-admin/entities/appointment/PRECEDENT.md",
+       "apps/ehr-admin/entities/notification/model/utils/PRECEDENT.md",
+       "apps/ehr-admin/entities/observation/PRECEDENT.md",
+       "apps/ehr-admin/entities/task/PRECEDENT.md",
+       "apps/ehr-admin/entities/task/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/access-policy/PRECEDENT.md",
+       "apps/ehr-admin/features/appointment/PRECEDENT.md",
+       "apps/ehr-admin/features/condition/PRECEDENT.md",
+       "apps/ehr-admin/features/ehr-tenant/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/lab-catalog/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-lab/PRECEDENT.md",
+       "apps/ehr-admin/features/observation-vitals/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-detail/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-history-diff/PRECEDENT.md",
+       "apps/ehr-admin/features/patient-timeline/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-builder/PRECEDENT.md",
+       "apps/ehr-admin/features/questionnaire-detail/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/model/utils/PRECEDENT.md",
+       "apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-calendar/PRECEDENT.md",
+       "apps/ehr-admin/features/schedule-management/PRECEDENT.md",
+       "apps/ehr-admin/features/service-request-list/PRECEDENT.md",
+       "apps/ehr-admin/features/sidebar-bookmark/ui/PRECEDENT.md",
+       "apps/ehr-admin/features/task-list/PRECEDENT.md",
+       "apps/ehr-admin/features/tenant-detail/model/hooks/PRECEDENT.md",
+       "apps/ehr-admin/shared/config/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/PRECEDENT.md",
+       "apps/ehr-admin/shared/lib/lab-catalog/PRECEDENT.md",
+       "apps/ehr-admin/shared/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/auth-shell/PRECEDENT.md",
+       "apps/ehr-admin/widgets/dashboard-home/PRECEDENT.md",
+       "apps/ehr-admin/widgets/page-shell/ui/PRECEDENT.md",
+       "apps/ehr-admin/widgets/patient-timeline/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md",
+       "apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md",
+       "packages/ehr/src/entities/appointment/PRECEDENT.md",
+       "packages/ehr/src/entities/questionnaire-response/PRECEDENT.md",
+       "packages/ehr/src/entities/questionnaire/PRECEDENT.md",
+       "packages/ehr/src/shared/hooks/PRECEDENT.md",
+       "packages/ehr/src/shared/ui/reference-picker/PRECEDENT.md",
+       "packages/ehr/src/widgets/fhir-search-table/PRECEDENT.md",
+       "packages/ui/src/components/PRECEDENT.md",
+       "packages/ui/src/components/skeleton/PRECEDENT.md",
+       "scripts/PRECEDENT.md",
+       "tooling/config-tailwind/PRECEDENT.md"
+      ],
+      "missing_precedents": [],
+      "class": "accompanied"
+     },
+     {
+      "sha": "9634f5c0",
+      "date": "2026-09-29",
+      "src_files": 3,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 0,
+      "needed_precedents": [],
+      "missing_precedents": [],
+      "class": "no_jurisdiction"
+     },
+     {
+      "sha": "4328ccb7",
+      "date": "2026-09-29",
+      "src_files": 21,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 0,
+      "needed_precedents": [],
+      "missing_precedents": [],
+      "class": "no_jurisdiction"
+     },
+     {
+      "sha": "88850ad3",
+      "date": "2026-09-29",
+      "src_files": 2,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 0,
+      "needed_precedents": [],
+      "missing_precedents": [],
+      "class": "no_jurisdiction"
+     },
+     {
+      "sha": "445e6e2c",
+      "date": "2026-09-29",
+      "src_files": 8,
+      "touches_any_precedent_md": false,
+      "jurisdiction_files": 0,
+      "needed_precedents": [],
+      "missing_precedents": [],
+      "class": "no_jurisdiction"
+     }
+    ]
+   },
+   "cross_check": {
+    "nonmerge_committer_date": 139,
+    "merges_excluded": 99
+   }
+  }
+ },
+ "orca": {
+  "source_db": "/Users/jeonjelyong/Library/Application Support/orca/profiles/local-default/profile-state.db (+ -wal, -shm)",
+  "copied_to": "/tmp/orca-db/",
+  "tables": {
+   "profile_state_automation_runs": 0,
+   "profile_state_automation_runs_meta": 1,
+   "profile_state_documents": 32,
+   "profile_state_meta": 3
+  },
+  "document_domains_top": [
+   "workspaceSession",
+   "worktreeMeta",
+   "settings",
+   "ui",
+   "repos",
+   "projects",
+   "worktreeIdentityAliases",
+   "projectHostSetups",
+   "workspaceLineageByChildKey",
+   "worktreeLineageById",
+   "claudeLivePtySessionIds"
+  ],
+  "needle_rows": {
+   "PRECEDENT_OK=1 git commit": 0,
+   "git commit": 0,
+   "PRECEDENT": 1,
+   "synolink": 7,
+   "commit": 1,
+   "terminal": 4,
+   "scrollback": 0
+  },
+  "extra_sources_checked": {
+   "terminal-history/<id>/zsh_history": {
+    "dirs": 81,
+    "dirs_with_file": 20,
+    "total_lines": 109,
+    "git commit": 0,
+    "PRECEDENT_OK=1 git commit": 0,
+    "SSOT_OK=1 git commit": 0,
+    "date_span": "2026-08-22..2026-10-10",
+    "ids_found_in_profile_state_payload": 0
+   },
+   "orchestration.db": {
+    "tables": 26,
+    "worker_terminal_archives_rows": 10,
+    "git commit": 0,
+    "PRECEDENT_OK=1 git commit": 0
+   },
+   "agent-session-journal.db": {
+    "tables": 11,
+    "agent_session_records_rows": 0,
+    "journal_rows": 0,
+    "git commit": 0,
+    "PRECEDENT_OK=1 git commit": 0
+   }
+  }
+ },
+ "ledger_claim_reproduction": {
+  "ledger_claim_source": "b257597c:.claude/pass-ledger.md L5-8",
+  "ledger_claim": {
+   "vitals_slice_commits": 55,
+   "use-vitals-entry-form.ts_touches": 24,
+   "top14_files": [
+    1800,
+    569,
+    392,
+    353,
+    304,
+    215,
+    215,
+    186,
+    145,
+    145,
+    110,
+    102,
+    55,
+    48
+   ]
+  },
+  "reproduced_on_dev_fd3ef0c1_up_to_2026-08-20": {
+   "vitals_slice_commits_no_merges": 29,
+   "vitals_slice_commits_with_merges": 29,
+   "vitals_slice_commits_all_refs": 29,
+   "use-vitals-entry-form.ts_no_merges_follow": 14,
+   "use-vitals-entry-form.ts_with_merges_follow": 14,
+   "use-vitals-entry-form.ts_all_refs": 13,
+   "largest_commit_by_all_files_any_ref": {
+    "sha": "21044b0e",
+    "date": "2026-05-15",
+    "files": 1054
+   },
+   "all_file_ge100_commits_whole_history": 15
+  }
+ },
+ "hook_facts": {
+  "ssot_gate_added": {
+   "sha": "d10063ea",
+   "date": "2026-08-31",
+   "subject": "chore: add SSoT.md convention rules and gate"
+  },
+  "instruction_slimming": {
+   "sha": "1060d016",
+   "date": "2026-09-17",
+   "files": 59,
+   "insertions": 1850,
+   "deletions": 3080
+  },
+  "commit_gate_edits_in_W1": {
+   "file": ".claude/hooks/commit-gate.sh",
+   "touches": 6
+  },
+  "rename_commit": {
+   "sha": "9e8445dc",
+   "date": "2026-09-29T13:00:43+09:00",
+   "files_all": 236,
+   "files_src": 156
+  },
+  "ledger_created": {
+   "sha": "b257597c",
+   "date": "2026-08-20"
+  },
+  "ledger_moved": {
+   "sha": "a999fd2c",
+   "date": "2026-09-29",
+   "files_all": 123
+  },
+  "precedent_md_at_head": 88,
+  "gate_scope": "Claude Code PreToolUse(Bash) hook, fail-open; commits made outside Claude Code are not gated"
+ }
+}

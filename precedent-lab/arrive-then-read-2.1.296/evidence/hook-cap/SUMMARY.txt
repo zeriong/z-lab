@@ -1,0 +1,5 @@
+chars=2000 additionalContext=2396자/2481B hook_stdout=2515자 -> YES cache_create=8900 model=['claude-opus-5-5']
+chars=9600 additionalContext=9996자/15617B hook_stdout=10296자 -> YES cache_create=0 model=['claude-opus-5-5']
+chars=9650 additionalContext=10046자/15676B hook_stdout=10348자 -> NO cache_create=8907 model=['claude-opus-5-5']
+chars=12500 additionalContext=12896자/20358B hook_stdout=13254자 -> NO cache_create=8908 model=['claude-opus-5-5']
+CLAUDE.md 107KB -> YES cache_create 66904
