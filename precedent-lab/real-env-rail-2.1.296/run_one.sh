@@ -19,13 +19,13 @@ START=$(date +%s)
     PRECEDENT_LAB_LOG="$BASE/logs/$ID.hook.jsonl" \
     perl -e 'alarm 1500; exec @ARGV' -- \
     claude -p "$PROMPT" --output-format stream-json --verbose --dangerously-skip-permissions \
-      --max-turns 40 --max-budget-usd 4 "${EXTRA[@]}" \
+      --max-turns 40 --max-budget-usd 4 ${EXTRA[@]+"${EXTRA[@]}"} \
       --disallowedTools "Bash(git commit:*)" "Bash(git push:*)" "Bash(gh:*)" "Bash(pnpm:*)" "Bash(npm:*)" "Bash(npx:*)" \
         "Bash(codex:*)" "Bash(orca:*)" mcp__plugin_chrome-devtools-mcp_chrome-devtools mcp__plugin_ux-ui_chrome-devtools \
         mcp__plugin_ux-ui_mobile-mcp mcp__plugin_ux-ui_ios-simulator mcp__claude-in-chrome \
     < /dev/null > "$BASE/runs/$ID.jsonl" 2> "$BASE/runs/$ID.err" )
 RC=$?
-MARKS=$(find "$RT" -type f -path '*claude-precedent-*' -name 'r-*' 2>/dev/null | wc -l | tr -d ' ')
+MARKS=$(find "$RT" -type f -path '*claude-precedent-*' -not -path '*claude-precedent-inject-*' -name 'r-*' 2>/dev/null | wc -l | tr -d ' ')
 INJ=$(find "$RT" -type f -path '*claude-precedent-inject-*' -name 'r-*' 2>/dev/null | wc -l | tr -d ' ')
 echo "exit=$RC wall=$(( $(date +%s) - START ))s orig_hook_read_marks=$MARKS inject_marks=$INJ" > "$BASE/runs/$ID.meta"
 EXC=(':(exclude).claude/settings.json' ':(exclude)CLAUDE.md')
