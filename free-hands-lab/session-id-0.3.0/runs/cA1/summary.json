@@ -1,0 +1,225 @@
+{
+ "host_id": "b0cb03f4-7caf-48f8-8a65-e60edd238f55",
+ "texts": [
+  "명령 출력 결과입니다:\n\n```\nORCA_AGENT_PANE=5710d6d9-bc3b-4100-b10a-5fcf2d5dee3c:8af01058-3423-4ffb-8342-339c9d547635\nORCA_OPENCODE_AGENT=opencode\nORCA_PI_SOURCE_AGENT_DIR=/Users/jeonjelyong/.pi/agent\nORCA_AGENT_HOOK_ENV=production\nORCA_AGENT_HOOK_TRANSPORT=raw-json-v1\nORCA_AGENT_HOOK_PORT=55748\nORCA_AGENT_HOOK_OPENCODE_TUI=1\nORCA_AGENT_HOOK_VERSION=1\nORCA_OMP_SOURCE_AGENT_DIR=/Users/jeonjelyong/.omp/agent\nORCA_AGENT_HOOK_ENDPOINT=/Users/jeonjelyong/Library/Application Support/orca/agent-hooks/endpoint.env\nAI_AGENT=claude-code_2-1-296_agent\nCLAUDE_CODE_SESSION_ID=b0cb03f4-7caf-48f8-8a65-e60edd238f55\nCLAUDE_CODE_CHILD_SESSION=1\nCLAUDE_CODE_SESSION_ATTENDED=0\nend\n```"
+ ],
+ "bash": [
+  {
+   "tool": "Bash",
+   "input": {
+    "command": "env | grep -E '(SESSION|THREAD|AGENT)[A-Z_]*=' | grep -vE '(TOKEN|KEY|SECRET|AUTH|PASSWORD)'; echo end",
+    "description": "Print matching environment variables"
+   }
+  }
+ ],
+ "result": "명령 출력 결과입니다:\n\n```\nORCA_AGENT_PANE=5710d6d9-bc3b-4100-b10a-5fcf2d5dee3c:8af01058-3423-4ffb-8342-339c9d547635\nORCA_OPENCODE_AGENT=opencode\nORCA_PI_SOURCE_AGENT_DIR=/Users/jeonjelyong/.pi/agent\nORCA_AGENT_HOOK_ENV=production\nORCA_AGENT_HOOK_TRANSPORT=raw-json-v1\nORCA_AGENT_HOOK_PORT=55748\nORCA_AGENT_HOOK_OPENCODE_TUI=1\nORCA_AGENT_HOOK_VERSION=1\nORCA_OMP_SOURCE_AGENT_DIR=/Users/jeonjelyong/.omp/agent\nORCA_AGENT_HOOK_ENDPOINT=/Users/jeonjelyong/Library/Application Support/orca/agent-hooks/endpoint.env\nAI_AGENT=claude-code_2-1-296_agent\nCLAUDE_CODE_SESSION_ID=b0cb03f4-7caf-48f8-8a65-e60edd238f55\nCLAUDE_CODE_CHILD_SESSION=1\nCLAUDE_CODE_SESSION_ATTENDED=0\nend\n```",
+ "cost": 0.1273052,
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 29107,
+  "cache_read_input_tokens": 44492,
+  "output_tokens": 642,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 29107,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "not_available",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 495,
+    "cache_read_input_tokens": 33045,
+    "cache_creation_input_tokens": 7509,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 7509
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": [
+  "claude-sonnet-5-5"
+ ],
+ "result_session": "b0cb03f4-7caf-48f8-8a65-e60edd238f55",
+ "probe": [
+  {
+   "probe_event": "SessionStart",
+   "input": {
+    "session_id": "b0cb03f4-7caf-48f8-8a65-e60edd238f55",
+    "transcript_path": "/Users/jeonjelyong/.claude/projects/-private-var-folders-jx-81xz9-xj7x31h6mwxd7qrlj40000gn-T-free-hands-lab-sid-030-claude-repo/b0cb03f4-7caf-48f8-8a65-e60edd238f55.jsonl",
+    "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-sid-030/claude/repo",
+    "hook_event_name": "SessionStart",
+    "source": "startup"
+   },
+   "env": {
+    "ORCA_AGENT_PANE": "5710d6d9-bc3b-4100-b10a-5fcf2d5dee3c:8af01058-3423-4ffb-8342-339c9d547635",
+    "CLAUDE_CODE_CHILD_SESSION": "1",
+    "ORCA_OPENCODE_AGENT": "opencode",
+    "ORCA_PI_SOURCE_AGENT_DIR": "/Users/jeonjelyong/.pi/agent",
+    "AI_AGENT": "claude-code_2-1-296_harness",
+    "ORCA_AGENT_HOOK_ENV": "production",
+    "ORCA_AGENT_HOOK_TRANSPORT": "raw-json-v1",
+    "CLAUDE_CODE_SESSION_ATTENDED": "0",
+    "ORCA_AGENT_HOOK_PORT": "55748",
+    "ORCA_AGENT_HOOK_OPENCODE_TUI": "1",
+    "ORCA_AGENT_HOOK_VERSION": "1",
+    "ORCA_OMP_SOURCE_AGENT_DIR": "/Users/jeonjelyong/.omp/agent",
+    "CLAUDE_CODE_SESSION_ID": "b0cb03f4-7caf-48f8-8a65-e60edd238f55",
+    "ORCA_AGENT_HOOK_ENDPOINT": "/Users/jeonjelyong/Library/Application Support/orca/agent-hooks/endpoint.env"
+   }
+  },
+  {
+   "probe_event": "UserPromptSubmit",
+   "input": {
+    "session_id": "b0cb03f4-7caf-48f8-8a65-e60edd238f55",
+    "transcript_path": "/Users/jeonjelyong/.claude/projects/-private-var-folders-jx-81xz9-xj7x31h6mwxd7qrlj40000gn-T-free-hands-lab-sid-030-claude-repo/b0cb03f4-7caf-48f8-8a65-e60edd238f55.jsonl",
+    "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-sid-030/claude/repo",
+    "prompt_id": "b49f9feb-c346-4fc2-b63c-b71a7cd59601",
+    "permission_mode": "acceptEdits",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "Run exactly this shell command once and report its output: `env | grep -E '(SESSION|THREAD|AGENT)[A-Z_]*=' | grep -vE '(TOKEN|KEY|SECRET|AUTH|PASSWORD)'; echo end`"
+   },
+   "env": {
+    "ORCA_AGENT_PANE": "5710d6d9-bc3b-4100-b10a-5fcf2d5dee3c:8af01058-3423-4ffb-8342-339c9d547635",
+    "CLAUDE_CODE_CHILD_SESSION": "1",
+    "ORCA_OPENCODE_AGENT": "opencode",
+    "ORCA_PI_SOURCE_AGENT_DIR": "/Users/jeonjelyong/.pi/agent",
+    "AI_AGENT": "claude-code_2-1-296_harness",
+    "ORCA_AGENT_HOOK_ENV": "production",
+    "ORCA_AGENT_HOOK_TRANSPORT": "raw-json-v1",
+    "CLAUDE_CODE_SESSION_ATTENDED": "0",
+    "ORCA_AGENT_HOOK_PORT": "55748",
+    "ORCA_AGENT_HOOK_OPENCODE_TUI": "1",
+    "ORCA_AGENT_HOOK_VERSION": "1",
+    "ORCA_OMP_SOURCE_AGENT_DIR": "/Users/jeonjelyong/.omp/agent",
+    "CLAUDE_CODE_SESSION_ID": "b0cb03f4-7caf-48f8-8a65-e60edd238f55",
+    "ORCA_AGENT_HOOK_ENDPOINT": "/Users/jeonjelyong/Library/Application Support/orca/agent-hooks/endpoint.env"
+   }
+  },
+  {
+   "probe_event": "PreToolUse",
+   "input": {
+    "session_id": "b0cb03f4-7caf-48f8-8a65-e60edd238f55",
+    "transcript_path": "/Users/jeonjelyong/.claude/projects/-private-var-folders-jx-81xz9-xj7x31h6mwxd7qrlj40000gn-T-free-hands-lab-sid-030-claude-repo/b0cb03f4-7caf-48f8-8a65-e60edd238f55.jsonl",
+    "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-sid-030/claude/repo",
+    "prompt_id": "b49f9feb-c346-4fc2-b63c-b71a7cd59601",
+    "permission_mode": "acceptEdits",
+    "effort": {
+     "level": "medium"
+    },
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+     "command": "env | grep -E '(SESSION|THREAD|AGENT)[A-Z_]*=' | grep -vE '(TOKEN|KEY|SECRET|AUTH|PASSWORD)'; echo end",
+     "description": "Print matching environment variables"
+    },
+    "tool_use_id": "toolu_01UzAwozhydeXqFjmFVp9fFe"
+   },
+   "env": {
+    "ORCA_AGENT_PANE": "5710d6d9-bc3b-4100-b10a-5fcf2d5dee3c:8af01058-3423-4ffb-8342-339c9d547635",
+    "CLAUDE_CODE_CHILD_SESSION": "1",
+    "ORCA_OPENCODE_AGENT": "opencode",
+    "ORCA_PI_SOURCE_AGENT_DIR": "/Users/jeonjelyong/.pi/agent",
+    "AI_AGENT": "claude-code_2-1-296_harness",
+    "ORCA_AGENT_HOOK_ENV": "production",
+    "ORCA_AGENT_HOOK_TRANSPORT": "raw-json-v1",
+    "CLAUDE_CODE_SESSION_ATTENDED": "0",
+    "ORCA_AGENT_HOOK_PORT": "55748",
+    "ORCA_AGENT_HOOK_OPENCODE_TUI": "1",
+    "ORCA_AGENT_HOOK_VERSION": "1",
+    "ORCA_OMP_SOURCE_AGENT_DIR": "/Users/jeonjelyong/.omp/agent",
+    "CLAUDE_CODE_SESSION_ID": "b0cb03f4-7caf-48f8-8a65-e60edd238f55",
+    "ORCA_AGENT_HOOK_ENDPOINT": "/Users/jeonjelyong/Library/Application Support/orca/agent-hooks/endpoint.env"
+   }
+  },
+  {
+   "probe_event": "PostToolUse",
+   "input": {
+    "session_id": "b0cb03f4-7caf-48f8-8a65-e60edd238f55",
+    "transcript_path": "/Users/jeonjelyong/.claude/projects/-private-var-folders-jx-81xz9-xj7x31h6mwxd7qrlj40000gn-T-free-hands-lab-sid-030-claude-repo/b0cb03f4-7caf-48f8-8a65-e60edd238f55.jsonl",
+    "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-sid-030/claude/repo",
+    "prompt_id": "b49f9feb-c346-4fc2-b63c-b71a7cd59601",
+    "permission_mode": "acceptEdits",
+    "effort": {
+     "level": "medium"
+    },
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+     "command": "env | grep -E '(SESSION|THREAD|AGENT)[A-Z_]*=' | grep -vE '(TOKEN|KEY|SECRET|AUTH|PASSWORD)'; echo end",
+     "description": "Print matching environment variables"
+    },
+    "tool_response": {
+     "stdout": "ORCA_AGENT_PANE=5710d6d9-bc3b-4100-b10a-5fcf2d5dee3c:8af01058-3423-4ffb-8342-339c9d547635\nORCA_OPENCODE_AGENT=opencode\nORCA_PI_SOURCE_AGENT_DIR=/Users/jeonjelyong/.pi/agent\nORCA_AGENT_HOOK_ENV=production\nORCA_AGENT_HOOK_TRANSPORT=raw-json-v1\nORCA_AGENT_HOOK_PORT=55748\nORCA_AGENT_HOOK_OPENCODE_TUI=1\nORCA_AGENT_HOOK_VERSION=1\nORCA_OMP_SOURCE_AGENT_DIR=/Users/jeonjelyong/.omp/agent\nORCA_AGENT_HOOK_ENDPOINT=/Users/jeonjelyong/Library/Application Support/orca/agent-hooks/endpoint.env\nAI_AGENT=claude-code_2-1-296_agent\nCLAUDE_CODE_SESSION_ID=b0cb03f4-7caf-48f8-8a65-e60edd238f55\nCLAUDE_CODE_CHILD_SESSION=1\nCLAUDE_CODE_SESSION_ATTENDED=0\nend",
+     "stderr": "",
+     "interrupted": false,
+     "isImage": false,
+     "noOutputExpected": false
+    },
+    "tool_use_id": "toolu_01UzAwozhydeXqFjmFVp9fFe",
+    "duration_ms": 1045
+   },
+   "env": {
+    "ORCA_AGENT_PANE": "5710d6d9-bc3b-4100-b10a-5fcf2d5dee3c:8af01058-3423-4ffb-8342-339c9d547635",
+    "CLAUDE_CODE_CHILD_SESSION": "1",
+    "ORCA_OPENCODE_AGENT": "opencode",
+    "ORCA_PI_SOURCE_AGENT_DIR": "/Users/jeonjelyong/.pi/agent",
+    "AI_AGENT": "claude-code_2-1-296_harness",
+    "ORCA_AGENT_HOOK_ENV": "production",
+    "ORCA_AGENT_HOOK_TRANSPORT": "raw-json-v1",
+    "CLAUDE_CODE_SESSION_ATTENDED": "0",
+    "ORCA_AGENT_HOOK_PORT": "55748",
+    "ORCA_AGENT_HOOK_OPENCODE_TUI": "1",
+    "ORCA_AGENT_HOOK_VERSION": "1",
+    "ORCA_OMP_SOURCE_AGENT_DIR": "/Users/jeonjelyong/.omp/agent",
+    "CLAUDE_CODE_SESSION_ID": "b0cb03f4-7caf-48f8-8a65-e60edd238f55",
+    "ORCA_AGENT_HOOK_ENDPOINT": "/Users/jeonjelyong/Library/Application Support/orca/agent-hooks/endpoint.env"
+   }
+  },
+  {
+   "probe_event": "Stop",
+   "input": {
+    "session_id": "b0cb03f4-7caf-48f8-8a65-e60edd238f55",
+    "transcript_path": "/Users/jeonjelyong/.claude/projects/-private-var-folders-jx-81xz9-xj7x31h6mwxd7qrlj40000gn-T-free-hands-lab-sid-030-claude-repo/b0cb03f4-7caf-48f8-8a65-e60edd238f55.jsonl",
+    "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-sid-030/claude/repo",
+    "prompt_id": "b49f9feb-c346-4fc2-b63c-b71a7cd59601",
+    "permission_mode": "acceptEdits",
+    "effort": {
+     "level": "medium"
+    },
+    "hook_event_name": "Stop",
+    "stop_hook_active": false,
+    "last_assistant_message": "명령 출력 결과입니다:\n\n```\nORCA_AGENT_PANE=5710d6d9-bc3b-4100-b10a-5fcf2d5dee3c:8af01058-3423-4ffb-8342-339c9d547635\nORCA_OPENCODE_AGENT=opencode\nORCA_PI_SOURCE_AGENT_DIR=/Users/jeonjelyong/.pi/agent\nORCA_AGENT_HOOK_ENV=production\nORCA_AGENT_HOOK_TRANSPORT=raw-json-v1\nORCA_AGENT_HOOK_PORT=55748\nORCA_AGENT_HOOK_OPENCODE_TUI=1\nORCA_AGENT_HOOK_VERSION=1\nORCA_OMP_SOURCE_AGENT_DIR=/Users/jeonjelyong/.omp/agent\nORCA_AGENT_HOOK_ENDPOINT=/Users/jeonjelyong/Library/Application Support/orca/agent-hooks/endpoint.env\nAI_AGENT=claude-code_2-1-296_agent\nCLAUDE_CODE_SESSION_ID=b0cb03f4-7caf-48f8-8a65-e60edd238f55\nCLAUDE_CODE_CHILD_SESSION=1\nCLAUDE_CODE_SESSION_ATTENDED=0\nend\n```",
+    "background_tasks": [],
+    "session_crons": []
+   },
+   "env": {
+    "ORCA_AGENT_PANE": "5710d6d9-bc3b-4100-b10a-5fcf2d5dee3c:8af01058-3423-4ffb-8342-339c9d547635",
+    "CLAUDE_CODE_CHILD_SESSION": "1",
+    "ORCA_OPENCODE_AGENT": "opencode",
+    "ORCA_PI_SOURCE_AGENT_DIR": "/Users/jeonjelyong/.pi/agent",
+    "AI_AGENT": "claude-code_2-1-296_harness",
+    "ORCA_AGENT_HOOK_ENV": "production",
+    "ORCA_AGENT_HOOK_TRANSPORT": "raw-json-v1",
+    "CLAUDE_CODE_SESSION_ATTENDED": "0",
+    "ORCA_AGENT_HOOK_PORT": "55748",
+    "ORCA_AGENT_HOOK_OPENCODE_TUI": "1",
+    "ORCA_AGENT_HOOK_VERSION": "1",
+    "ORCA_OMP_SOURCE_AGENT_DIR": "/Users/jeonjelyong/.omp/agent",
+    "CLAUDE_CODE_SESSION_ID": "b0cb03f4-7caf-48f8-8a65-e60edd238f55",
+    "ORCA_AGENT_HOOK_ENDPOINT": "/Users/jeonjelyong/Library/Application Support/orca/agent-hooks/endpoint.env"
+   }
+  }
+ ]
+}

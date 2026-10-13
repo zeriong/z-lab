@@ -1,0 +1,23 @@
+[
+ {
+  "step": "01-A6",
+  "argv": [
+   "claude",
+   "-p",
+   "/fh-probe:noop hello",
+   "--plugin-dir",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-sid-030/claude/fh-probe",
+   "--model",
+   "sonnet",
+   "--output-format",
+   "\u2026"
+  ],
+  "exit": 0,
+  "elapsed_ms": 4752,
+  "tokens": {
+   "input": 2,
+   "output": 6
+  },
+  "cost": 0.0812468
+ }
+]

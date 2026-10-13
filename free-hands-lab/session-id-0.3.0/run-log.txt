@@ -1,0 +1,45 @@
+V00: running
+V00: done
+cA1: running
+Traceback (most recent call last):
+  File "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/session-id-0.3.0/run.py", line 255, in <module>
+    main()
+  File "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/session-id-0.3.0/run.py", line 247, in main
+    claude_case(case, name[1:])
+  File "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/session-id-0.3.0/run.py", line 130, in claude_case
+    prompt, extra = {"A1": (ENV_PROMPT, []), "A2": (OK, ["--resume", first_id("c")]), "A3": (OK, ["--continue"]),
+  File "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/session-id-0.3.0/run.py", line 123, in first_id
+    return json.loads((RUNS / f"{host}A1" / "summary.json").read_text())["host_id"]
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1256, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1242, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py", line 1110, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/session-id-0.3.0/runs/cA1/summary.json'
+V00: DONE, skipped
+cA1: running
+cA1: done
+cA2: running
+cA2: done
+cA3: running
+cA3: done
+cA4: running
+cA4: done
+cA5: running
+cA5: done
+cA6: running
+cA6: done
+cA7: running
+cA7: done
+xA1: running
+xA1: done
+xA2: running
+xA2: done
+xA3: running
+xA3: done
+xA5: running
+xA5: done
+xA6: running
+xA6: done
+CLEANUP: codex home removed = True
