@@ -1,0 +1,169 @@
+{
+ "bare_main_before": "6403eb66369dea596a3feffb0f66babe4ab16d8d",
+ "goal_before": "status: active\nmax_iterations: 3\niterations: 0\nowner: lab-session-a\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] write notes.txt containing done\n## Decisions\n## Resume\n",
+ "01-B1": {
+  "session_id": "7b20b820-78f2-4dd1-bb8d-448a5da6b7f7",
+  "hooks": [
+   {
+    "hook_event": "SessionStart",
+    "hook_name": "SessionStart:startup",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "SessionStart",
+    "hook_name": "SessionStart:startup",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "SessionStart",
+    "hook_name": "SessionStart:startup",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "UserPromptSubmit",
+    "hook_name": "UserPromptSubmit",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "UserPromptSubmit",
+    "hook_name": "UserPromptSubmit",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "UserPromptSubmit",
+    "hook_name": "UserPromptSubmit",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "UserPromptSubmit",
+    "hook_name": "UserPromptSubmit",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "PreToolUse",
+    "hook_name": "PreToolUse:Write",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "PostToolUse",
+    "hook_name": "PostToolUse:Write",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "PostToolUse",
+    "hook_name": "PostToolUse:Write",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "Stop",
+    "hook_name": "Stop",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "Stop",
+    "hook_name": "Stop",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "Stop",
+    "hook_name": "Stop",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   }
+  ],
+  "tools": [
+   {
+    "name": "Write",
+    "input": {
+     "file_path": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-030-cb1/repo/hello.txt",
+     "content": "hi\n"
+    }
+   }
+  ],
+  "results": [
+   "File created successfully at: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-030-cb1/repo/hello.txt (file state is current in your context — no need to Read it back)"
+  ],
+  "texts": [
+   "`hello.txt` 파일을 만들었고 내용은 `hi`입니다. 위치는 `/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-030-cb1/repo/hello.txt`입니다."
+  ],
+  "result": "`hello.txt` 파일을 만들었고 내용은 `hi`입니다. 위치는 `/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-030-cb1/repo/hello.txt`입니다.",
+  "usage": {
+   "input_tokens": 4,
+   "cache_creation_input_tokens": 25320,
+   "cache_read_input_tokens": 41107,
+   "output_tokens": 234,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 25320,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "not_available",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 103,
+     "cache_read_input_tokens": 29660,
+     "cache_creation_input_tokens": 7107,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 7107
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost": 0.10773869999999999,
+  "model_usage": [
+   "claude-sonnet-5-5"
+  ],
+  "num_turns": 2
+ },
+ "case_session": "7b20b820-78f2-4dd1-bb8d-448a5da6b7f7",
+ "fake_calls": [],
+ "bare_main_after": "6403eb66369dea596a3feffb0f66babe4ab16d8d",
+ "goal_after": "status: active\nmax_iterations: 3\niterations: 0\nowner: lab-session-a\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] write notes.txt containing done\n## Decisions\n## Resume\n",
+ "goal_unchanged": true,
+ "files": {
+  "hello.txt": "hi\n",
+  "notes.txt": null
+ },
+ "free_hands_dir": [
+  ".gitignore",
+  "goal.md"
+ ],
+ "git_status": "?? hello.txt\n"
+}

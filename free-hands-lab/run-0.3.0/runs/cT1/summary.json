@@ -1,0 +1,210 @@
+{
+ "bare_main_before": "fac71a9cfabcd57efaeeef699304adeae84344a8",
+ "goal_before": "status: active\nmax_iterations: 3\niterations: 0\nowner: lab-session-a\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] write notes.txt containing done\n## Decisions\n## Resume\n",
+ "01-T1": {
+  "session_id": "f81c689e-2815-4a28-833a-83b84f913109",
+  "hooks": [
+   {
+    "hook_event": "SessionStart",
+    "hook_name": "SessionStart:startup",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "SessionStart",
+    "hook_name": "SessionStart:startup",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "SessionStart",
+    "hook_name": "SessionStart:startup",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "UserPromptSubmit",
+    "hook_name": "UserPromptSubmit",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "UserPromptSubmit",
+    "hook_name": "UserPromptSubmit",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "UserPromptSubmit",
+    "hook_name": "UserPromptSubmit",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "UserPromptSubmit",
+    "hook_name": "UserPromptSubmit",
+    "output": "{\"hookSpecificOutput\": {\"hookEventName\": \"UserPromptSubmit\", \"additionalContext\": \"[free-hands: session] This session's id is f81c689e-2815-4a28-833a-83b84f913109: write `owner: f81c689e-2815-4a28-833a-83b84f913109` in the goal file header. Session lab-session-a owns the free-hands run in this repository now; starting or resuming free-hands here moves the run to this session.\"}}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "PreToolUse",
+    "hook_name": "PreToolUse:Bash",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "PreToolUse",
+    "hook_name": "PreToolUse:Bash",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "PreToolUse",
+    "hook_name": "PreToolUse:Bash",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "PostToolUse",
+    "hook_name": "PostToolUse:Bash",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "PreToolUse",
+    "hook_name": "PreToolUse:Bash",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "PreToolUse",
+    "hook_name": "PreToolUse:Bash",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "PreToolUse",
+    "hook_name": "PreToolUse:Bash",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "PostToolUse",
+    "hook_name": "PostToolUse:Bash",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "Stop",
+    "hook_name": "Stop",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "Stop",
+    "hook_name": "Stop",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "Stop",
+    "hook_name": "Stop",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   }
+  ],
+  "tools": [
+   {
+    "name": "Bash",
+    "input": {
+     "command": "git rev-parse --show-toplevel && cat .free-hands/goal.md 2>&1 | head -30; ls"
+    }
+   },
+   {
+    "name": "Bash",
+    "input": {
+     "command": "sed -i '' 's/^owner: .*/owner: f81c689e-2815-4a28-833a-83b84f913109/' .free-hands/goal.md && echo done > notes.txt && cat notes.txt && sed -i '' 's/^- \\[ \\] write notes.txt containing done/- [x] write notes.txt containing done/; s/^status: active/status: done/' .free-hands/goal.md && cat .free-hands/goal.md; ls -a .free-hands; git status --short"
+    }
+   }
+  ],
+  "results": [
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-030-ct1/repo\nstatus: active\nmax_iterations: 3\niterations: 0\nowner: lab-session-a\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] write notes.txt containing done\n## Decisions\n## Resume",
+   "done\nstatus: done\nmax_iterations: 3\niterations: 0\nowner: f81c689e-2815-4a28-833a-83b84f913109\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [x] write notes.txt containing done\n## Decisions\n## Resume\n.\n..\n.gitignore\ngoal.md\n?? notes.txt"
+  ],
+  "texts": [
+   "`notes.txt`를 만들었고 내용은 `done`입니다. 작업은 이것으로 끝났습니다.\n\n- **목표:** 호출 인자에 새 목표가 없어서, 이미 있던 활성 목표 파일(`lab goal`)을 그대로 이어서 진행했습니다. 파일에는 항목이 하나뿐이었습니다.\n- **체크리스트:** \"notes.txt에 done 쓰기\" 항목을 `[x]`로 표시했습니다. `cat notes.txt` 출력이 `done`인 것으로 확인했습니다.\n- **목표 파일:** `owner:`를 이 세션 id(`f81c689e-…`)로 바꾸고 `status: done`으로 설정했습니다.\n- **Git 상태:** `notes.txt`는 아직 커밋하지 않은 새 파일입니다. 커밋은 요청받지 않아서 하지 않았습니다.\n- **결정·PR:** 따로 내린 결정은 없었고, 만든 PR도 없습니다.\n- **`[-]` 항목:** 없습니다."
+  ],
+  "result": "`notes.txt`를 만들었고 내용은 `done`입니다. 작업은 이것으로 끝났습니다.\n\n- **목표:** 호출 인자에 새 목표가 없어서, 이미 있던 활성 목표 파일(`lab goal`)을 그대로 이어서 진행했습니다. 파일에는 항목이 하나뿐이었습니다.\n- **체크리스트:** \"notes.txt에 done 쓰기\" 항목을 `[x]`로 표시했습니다. `cat notes.txt` 출력이 `done`인 것으로 확인했습니다.\n- **목표 파일:** `owner:`를 이 세션 id(`f81c689e-…`)로 바꾸고 `status: done`으로 설정했습니다.\n- **Git 상태:** `notes.txt`는 아직 커밋하지 않은 새 파일입니다. 커밋은 요청받지 않아서 하지 않았습니다.\n- **결정·PR:** 따로 내린 결정은 없었고, 만든 PR도 없습니다.\n- **`[-]` 항목:** 없습니다.",
+  "usage": {
+   "input_tokens": 6,
+   "cache_creation_input_tokens": 30196,
+   "cache_read_input_tokens": 86402,
+   "output_tokens": 989,
+   "output_tokens_details": {
+    "thinking_tokens": 196
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 30196,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "not_available",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 381,
+     "cache_read_input_tokens": 41092,
+     "cache_creation_input_tokens": 551,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 551
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost": 0.1393262,
+  "model_usage": [
+   "claude-sonnet-5-5"
+  ],
+  "num_turns": 3
+ },
+ "case_session": "f81c689e-2815-4a28-833a-83b84f913109",
+ "fake_calls": [],
+ "bare_main_after": "fac71a9cfabcd57efaeeef699304adeae84344a8",
+ "goal_after": "status: done\nmax_iterations: 3\niterations: 0\nowner: f81c689e-2815-4a28-833a-83b84f913109\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [x] write notes.txt containing done\n## Decisions\n## Resume\n",
+ "goal_unchanged": false,
+ "files": {
+  "hello.txt": null,
+  "notes.txt": "done\n"
+ },
+ "free_hands_dir": [
+  ".gitignore",
+  "goal.md"
+ ],
+ "git_status": "?? notes.txt\n"
+}

@@ -1,0 +1,19 @@
+[
+ {
+  "step": "01-B1",
+  "argv": [
+   "claude",
+   "-p",
+   "Create hello.txt containing hi.",
+   "--plugin-dir",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/run-0.3.0/subject/free-hands",
+   "--model",
+   "sonnet",
+   "--output-format",
+   "\u2026"
+  ],
+  "exit": 0,
+  "elapsed_ms": 6137,
+  "tokens": true
+ }
+]

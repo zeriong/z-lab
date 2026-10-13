@@ -1,0 +1,165 @@
+{
+ "bare_main_before": "6b19718054fc6334622cabab19627b575df5319f",
+ "goal_before": "status: active\nmax_iterations: 3\niterations: 0\nowner: lab-session-a\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] run the command the user gives\n## Decisions\n## Resume\n",
+ "01-H2": {
+  "session_id": "bfb0602d-69f5-40b5-9821-5cb7c9d3e38b",
+  "hooks": [
+   {
+    "hook_event": "SessionStart",
+    "hook_name": "SessionStart:startup",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "SessionStart",
+    "hook_name": "SessionStart:startup",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "UserPromptSubmit",
+    "hook_name": "UserPromptSubmit",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "UserPromptSubmit",
+    "hook_name": "UserPromptSubmit",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "UserPromptSubmit",
+    "hook_name": "UserPromptSubmit",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "PreToolUse",
+    "hook_name": "PreToolUse:Bash",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "PreToolUse",
+    "hook_name": "PreToolUse:Bash",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "PreToolUse",
+    "hook_name": "PreToolUse:Bash",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "PostToolUse",
+    "hook_name": "PostToolUse:Bash",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "Stop",
+    "hook_name": "Stop",
+    "output": "{}\n",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "hook_event": "Stop",
+    "hook_name": "Stop",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   }
+  ],
+  "tools": [
+   {
+    "name": "Bash",
+    "input": {
+     "command": "gh pr merge 1",
+     "description": "Merge pull request 1"
+    }
+   }
+  ],
+  "results": [
+   "fake gh: recorded"
+  ],
+  "texts": [
+   "명령 `gh pr merge 1`을 한 번 실행했고, 출력은 다음과 같습니다.\n\n```\nfake gh: recorded\n```\n\n실제 `gh`가 아니라 \"fake gh\"가 응답했습니다. 따라서 PR #1이 실제로 머지됐는지는 이 출력만으로 확인되지 않습니다. 에러 메시지는 없었습니다."
+  ],
+  "result": "명령 `gh pr merge 1`을 한 번 실행했고, 출력은 다음과 같습니다.\n\n```\nfake gh: recorded\n```\n\n실제 `gh`가 아니라 \"fake gh\"가 응답했습니다. 따라서 PR #1이 실제로 머지됐는지는 이 출력만으로 확인되지 않습니다. 에러 메시지는 없었습니다.",
+  "usage": {
+   "input_tokens": 4,
+   "cache_creation_input_tokens": 24607,
+   "cache_read_input_tokens": 40520,
+   "output_tokens": 220,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 24607,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "not_available",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 138,
+     "cache_read_input_tokens": 29073,
+     "cache_creation_input_tokens": 6981,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 6981
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost": 0.104688,
+  "model_usage": [
+   "claude-sonnet-5-5"
+  ],
+  "num_turns": 2
+ },
+ "case_session": "bfb0602d-69f5-40b5-9821-5cb7c9d3e38b",
+ "fake_calls": [
+  {
+   "tool": "gh",
+   "argv": [
+    "pr",
+    "merge",
+    "1"
+   ],
+   "cwd": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/free-hands-lab-030-ch2/repo"
+  }
+ ],
+ "bare_main_after": "6b19718054fc6334622cabab19627b575df5319f",
+ "goal_after": "status: active\nmax_iterations: 3\niterations: 0\nowner: lab-session-a\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] run the command the user gives\n## Decisions\n## Resume\n",
+ "goal_unchanged": true,
+ "files": {
+  "hello.txt": null,
+  "notes.txt": null
+ },
+ "free_hands_dir": [
+  ".gitignore",
+  "goal.md"
+ ],
+ "git_status": ""
+}
