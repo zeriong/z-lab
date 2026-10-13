@@ -141,7 +141,12 @@ if judged:
     pb = lambda arm: sum(1 for r in pj.values() if r['arm'] == arm and r['task'] in TRAP and r['outcome'] in BAD)
     L += ['### 참고 — plan-rail (같은 과제·xhigh, 다른 실행)\n', '| plan-rail arm | 금지 깸 | 이번 대응 arm | 금지 깸 |', '|---|---:|---|---:|',
           f"| P-xh (게이트 파일 노출 3런 포함) | {pb('P-xh')}/12 | C-xh | {cnt('C-xh', bad_)[0]}/12 |",
-          f"| G-xh (원문 사전 읽기 12/15) | {pb('G-xh')}/12 | H-xh | {cnt('H-xh', bad_)[0]}/12 |", '']
+          f"| G-xh (게이트 v1, clone 안·원문 사전 읽기 12/15) | {pb('G-xh')}/12 | H-xh (게이트 v2, 레포 밖) | {cnt('H-xh', bad_)[0]}/12 |", '',
+          'G-xh 와 H-xh 는 배치·게이트 판본(v1 은 python+PRECEDENT.md 명령을 거부, v2 는 통과)·날짜가 모두 다르다.', '']
+    nt = lambda a: (sum(1 for j in judged if j['arm'] == a and j['task'] in ('T2', 'T3', 'T4') and j['outcome'] in BAD), 9)
+    (c_, cn), (h_, hn) = nt('C-xh'), nt('H-xh')
+    L += ['### 사후 비교 (사전 등록 아님) — T1 제외(T1 은 H 3런 모두 python 으로 기록을 써 PreToolUse 게이트가 볼 수 없었다)\n',
+          f"C-xh {c_}/{cn} vs H-xh {h_}/{hn}, Fisher p={fisher(c_, cn - c_, h_, hn - h_):.3g}.", '']
 
 cr = list(csv.DictReader(open(LAB / 'commit_gate_replay.csv')))
 L += ['## ③ commit-gate 백스톱 재생 (replay_commit_gate.py — plan-rail 60 + real-env-rail T1~T5 60)\n',
