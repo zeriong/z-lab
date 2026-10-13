@@ -22,3 +22,4 @@
 | 10-13 15:0x | 실험 경로 memory 사본 4벌 삭제(`~/.claude/projects/-Users-jeonjelyong--cache-precedent-lab-real-env-rail-wt-*/memory`). 원본 memory 는 그대로 | 사용자에게 약속한 정리 |
 | 10-13 15:0x | 커밋 분할: 제8조는 arm 별 커밋이지만, 이번 표본은 회사 소스를 담아 레포 밖(로컬)에만 있어 arm 별로 나눌 산출물이 없다 → 단계(명세 / P0·probe / 본 실행 / x-isolate / 발견)별로 나눴다. 표본은 `specimens.sha256` 해시로만 남긴다 | 제8조 이탈 기록 |
 | 10-13 15:xx | 사후 발견: 19런이 `graphify update .` 실행 → clone 그래프가 런 사이에 바뀜(R·I·L 9,623 → 10,070~10,080 노드). 다음 실험(plan-rail)은 런마다 원본 그래프를 다시 깐다 | FINDINGS 교란 요인에 추가 |
+| 10-13 17:4x | 사용자 지시(「작성자는 jaeryong95@gmail.com, commit + push 까지 강행」)로 미push 커밋 11개를 `origin/main` 위로 rebase 하며 `c324e9a`(→ `2dd88af`)의 작성자를 `zeriong <jaeryong95@gmail.com>` 으로 고침. amend 금지 규약의 예외. 내용 무변경(rebase 전 `backup/pre-author-fix-1295115` 와 precedent-lab 트리 동일), 원격 히스토리 무변경(미push 커밋만 다시 씀) | 이후 해시: 이 표의 이전 커밋 해시는 rebase 전 값 |
