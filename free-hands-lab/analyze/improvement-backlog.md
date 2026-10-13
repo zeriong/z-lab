@@ -33,6 +33,11 @@ repository; the plan and triage log of the 0.1.0 work are in its `.claude-x-code
 
 | 10 | Hard limits as a hook (user, 2026-10-02: core scope — merge, remote deletion, deploy/publish/send; GitHub issues and comments allowed) | `guard.py shell` + `shellguard.py`, PreToolUse Bash; a backstop for a cooperative agent's ordinary commands | measured: run-0.2.0 P01–P04 (denied before running on both hosts, allowed command runs, control attempts reach the binary); P05 the skill's rules kept the limits without needing the hook |
 
+| 11 | User report, 2026-10-13: a second terminal (session B) in the repository of a running goal picked it up and its counter rose; `guard.py` keyed everything on the repository path. Pre-build probe `session-id-0.3.0` S01–S05: both hosts send `session_id` on every hook event, keep it across resume and compaction, give subagents the parent's id; an inherited `CLAUDE_CODE_SESSION_ID` names the wrong session | Goal header `owner: <session id>` from the hook input; only the owner's hooks act (restore note, ask, stop, counter, shell); other sessions get the owner's id only when their prompt mentions free-hands; unowned goals are claimed by the first session under the lock; the skill writes `owner:` from a `[free-hands: session]` note and replaces it on resume or take-over | measured: run-0.3.0 O01 (0.2.0 control reproduces the report on both hosts), O02–O06 |
+
+| D12 | A hook input without a valid `session_id` keeps the 0.2.0 repository-wide guard; a guarded goal without `owner:` (written by 0.2.0, or an agent that left the line out) goes to the first session a hook sees, on any event | Both hosts always send the id (S01); first-come is the only rule that lets a resumed 0.2.0 run (same id, S02) claim its goal without a manual step | decision, 2026-10-13 |
+| D13 | Other sessions are not held to the hard-limit shell hook | They are attended by the user; the user's report was the second session acting as free-hands. The owner's subagents stay covered (O04) | decision, 2026-10-13 |
+
 ## Not acted on
 
 | # | Observation | Judgment |
