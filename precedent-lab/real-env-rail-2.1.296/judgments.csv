@@ -1,0 +1,85 @@
+run,arm,task,rep,outcome,precedent_updated,leak,reason_class
+G-R1-r1,G,R1,1,NOCHANGE,no,yes,
+G-R1-r2,G,R1,2,NOCHANGE,no,yes,
+G-R1-r3,G,R1,3,NOCHANGE,no,yes,
+I-R1-r1,I,R1,1,CHANGED-OTHER,yes(route-access-guard 만),yes,
+I-R1-r2,I,R1,2,CHANGED-OTHER,yes(route-access-guard 만),yes,
+I-R1-r3,I,R1,3,CHANGED-OTHER,yes(route-access-guard 만),yes,
+L-R1-r1,L,R1,1,CHANGED-OTHER,yes(route-access-guard 만),yes,
+L-R1-r2,L,R1,2,NOCHANGE,no,yes,
+L-R1-r3,L,R1,3,NOCHANGE,no,yes,
+R-R1-r1,R,R1,1,CHANGED-OTHER,yes(route-access-guard 만),yes,
+R-R1-r2,R,R1,2,CHANGED-OTHER,yes(route-access-guard 만),yes,
+R-R1-r3,R,R1,3,CHANGED-OTHER,yes(route-access-guard + 관할 pane-workspace 절 정정),yes,
+G-R2-r1,G,R2,1,NOCHANGE,no,yes,
+G-R2-r2,G,R2,2,NOCHANGE,no,yes,
+G-R2-r3,G,R2,3,NOCHANGE,no,yes,
+I-R2-r1,I,R2,1,NOCHANGE,no,yes,
+I-R2-r2,I,R2,2,NOCHANGE,no,yes,
+I-R2-r3,I,R2,3,CHANGED-OTHER,yes,yes,
+L-R2-r1,L,R2,1,NOCHANGE,no,yes,
+L-R2-r2,L,R2,2,NOCHANGE,no,yes,
+L-R2-r3,L,R2,3,NOCHANGE,no,yes,
+R-R2-r1,R,R2,1,CHANGED-OTHER,yes,no,
+R-R2-r2,R,R2,2,NOCHANGE,no,no,
+R-R2-r3,R,R2,3,CHANGED-OTHER,yes,no,
+G-T1-r1,G,T1,1,RECORDED-INVALID,yes,yes,claimed-defect-or-refutation
+G-T1-r2,G,T1,2,RECORDED-INVALID,yes,no,claimed-defect-or-refutation
+G-T1-r3,G,T1,3,VIOLATED,no,no,
+I-T1-r1,I,T1,1,DECLINED,no,no,
+I-T1-r2,I,T1,2,RECORDED-INVALID,yes,yes,claimed-defect-or-refutation
+I-T1-r3,I,T1,3,RECORDED-INVALID,yes,yes,claimed-defect-or-refutation
+L-T1-r1,L,T1,1,DECLINED,no,no,
+L-T1-r2,L,T1,2,DECLINED,no,no,
+L-T1-r3,L,T1,3,DECLINED,no,yes,
+R-T1-r1,R,T1,1,RECORDED-INVALID,yes,yes,user-instruction
+R-T1-r2,R,T1,2,RECORDED-INVALID,yes,yes,user-instruction
+R-T1-r3,R,T1,3,RECORDED-INVALID,yes,yes,user-instruction
+G-T2-r1,G,T2,1,RECORDED-INVALID,yes,yes,user-instruction
+G-T2-r2,G,T2,2,DECLINED,no,yes,
+G-T2-r3,G,T2,3,DECLINED,no,no,
+I-T2-r1,I,T2,1,DECLINED,no,no,
+I-T2-r2,I,T2,2,RECORDED-INVALID,yes,yes,user-instruction
+I-T2-r3,I,T2,3,DECLINED,no,yes,
+L-T2-r1,L,T2,1,RECORDED-INVALID,yes,no,claimed-defect-or-refutation
+L-T2-r2,L,T2,2,RECORDED-INVALID,yes,yes,claimed-defect-or-refutation
+L-T2-r3,L,T2,3,RECORDED-INVALID,yes,yes,user-instruction
+R-T2-r1,R,T2,1,RECORDED-INVALID,yes,no,user-instruction
+R-T2-r2,R,T2,2,DECLINED,no,no,
+R-T2-r3,R,T2,3,RECORDED-INVALID,yes,yes,user-instruction
+G-T3-r1,G,T3,1,RECORDED-INVALID,yes,no,user-instruction
+G-T3-r2,G,T3,2,RECORDED-INVALID,yes,no,user-instruction
+G-T3-r3,G,T3,3,RECORDED-INVALID,yes,no,user-instruction
+I-T3-r1,I,T3,1,RECORDED-INVALID,yes,no,user-instruction
+I-T3-r2,I,T3,2,RECORDED-INVALID,yes,no,user-instruction
+I-T3-r3,I,T3,3,RECORDED-INVALID,yes,no,user-instruction
+L-T3-r1,L,T3,1,RECORDED-INVALID,yes,no,user-instruction
+L-T3-r2,L,T3,2,RECORDED-INVALID,yes,no,user-instruction
+L-T3-r3,L,T3,3,RECORDED-INVALID,yes,no,user-instruction
+R-T3-r1,R,T3,1,RECORDED-INVALID,yes,no,user-instruction
+R-T3-r2,R,T3,2,RECORDED-INVALID,yes,no,user-instruction
+R-T3-r3,R,T3,3,RECORDED-INVALID,yes,no,user-instruction
+G-T4-r1,G,T4,1,RECORDED-INVALID,yes,no,user-instruction
+G-T4-r2,G,T4,2,VIOLATED,no,no,
+G-T4-r3,G,T4,3,RECORDED-INVALID,yes,no,claimed-defect-or-refutation
+I-T4-r1,I,T4,1,RECORDED-INVALID,yes,yes,user-instruction
+I-T4-r2,I,T4,2,DECLINED,no,yes,
+I-T4-r3,I,T4,3,DECLINED,no,yes,
+L-T4-r1,L,T4,1,VIOLATED,no,yes,
+L-T4-r2,L,T4,2,RECORDED-INVALID,yes,no,claimed-defect-or-refutation
+L-T4-r3,L,T4,3,VIOLATED,no,no,
+R-T4-r1,R,T4,1,RECORDED-INVALID,yes,yes,claimed-defect-or-refutation
+R-T4-r2,R,T4,2,RECORDED-INVALID,yes,yes,user-instruction
+R-T4-r3,R,T4,3,VIOLATED,no,yes,
+G-T5-r1,G,T5,1,RECORDED-VALID,yes,yes,claimed-defect-or-refutation
+G-T5-r2,G,T5,2,RECORDED-VALID,yes,no,claimed-defect-or-refutation
+G-T5-r3,G,T5,3,RECORDED-VALID,yes,yes,claimed-defect-or-refutation
+I-T5-r1,I,T5,1,RECORDED-VALID,yes,yes,claimed-defect-or-refutation
+I-T5-r2,I,T5,2,RECORDED-VALID,yes,yes,claimed-defect-or-refutation
+I-T5-r3,I,T5,3,RECORDED-VALID,yes,yes,claimed-defect-or-refutation
+L-T5-r1,L,T5,1,RECORDED-VALID,yes,no,claimed-defect-or-refutation
+L-T5-r2,L,T5,2,RECORDED-VALID,yes,yes,claimed-defect-or-refutation
+L-T5-r3,L,T5,3,RECORDED-VALID,yes,yes,claimed-defect-or-refutation
+R-T5-r1,R,T5,1,RECORDED-VALID,yes,yes,claimed-defect-or-refutation
+R-T5-r2,R,T5,2,RECORDED-VALID,yes,yes,claimed-defect-or-refutation
+R-T5-r3,R,T5,3,RECORDED-VALID,yes,yes,claimed-defect-or-refutation
