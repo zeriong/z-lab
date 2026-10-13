@@ -18,3 +18,6 @@
 | 10-13 14:0x | 재실행 5런 정상 종료(`is_error:false`). R1·R2·T5 새 패킷으로 재판정, X 6런 판정 | X: T2 0/3 · T3 1/3 → SPEC 기준(T3 ≤ 1/3) 충족 |
 | 10-13 14:1x | `x-isolate` 2단계 추가(SPEC 덧붙임을 실행 전 고정): xe = project + `--effort xhigh`, xl = project + `--settings {"language":"korean"}`, T2·T3 × 3 | — |
 | 10-13 14:3x | 발견 ③: 판정 패킷의 「관할 결정 원문」을 `wt-R` **작업 트리**에서 읽었다 — 직전 런의 변경이 남아 있으면 오염된다. 판정자가 YT3 에서 짚음. 전 패킷을 커밋 원문(HEAD)과 대조: YT3 만 불일치(882자 vs 536자), 나머지 10개 일치. 본 실행 T1~T4 를 판정한 13:40 패킷은 그 시점 `wt-R` 마지막 런(R-R2-r3 OAuth 실패, diff 0B)이 작업 트리를 바꾸지 않아 깨끗했다 | 세 생성기를 `git show HEAD:` 기준으로 수정. YT3 만 새 패킷으로 재판정(1차 판정 `Y.judgment.pass1.csv` 보존) |
+| 10-13 15:0x | advisor 검토로 사슬 지표 재정의: 느슨한 지표(목차 주입·목차 grep 도 「근거 도착」)가 R 을 부풀렸다. `strict_chain.py` 로 「관할 결정의 핵심 줄이 모델에 전달된 첫 호출」 재계산 → 함정 엄격 사슬 R 3/15 · I 15/15 · L 15/15 · G 14/15 (느슨: R 10/15, 주입 45/45) | FINDINGS·METRICS·회사 보고서·plan 을 엄격 수치로 수정. 결론 방향은 같고 효과 크기는 더 커짐 |
+| 10-13 15:0x | 실험 경로 memory 사본 4벌 삭제(`~/.claude/projects/-Users-jeonjelyong--cache-precedent-lab-real-env-rail-wt-*/memory`). 원본 memory 는 그대로 | 사용자에게 약속한 정리 |
+| 10-13 15:0x | 커밋 분할: 제8조는 arm 별 커밋이지만, 이번 표본은 회사 소스를 담아 레포 밖(로컬)에만 있어 arm 별로 나눌 산출물이 없다 → 단계(명세 / P0·probe / 본 실행 / x-isolate / 발견)별로 나눴다. 표본은 `specimens.sha256` 해시로만 남긴다 | 제8조 이탈 기록 |

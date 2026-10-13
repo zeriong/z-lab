@@ -105,6 +105,19 @@ for a in ARMS:
     readtool = sum(1 for r in R if 'Read' in r['tool_sequence'].split(' > '))
     L.append(f"| {a} | {sum(1 for r in R if n(r['graphify_calls']))} | {len(arr)} | {fmt(med([n(r['tokens_before_arrival']) for r in arr]))} | {len(inctx)} | {len(near)}/{len(arr)} | {len(before)}/{len(inctx)} | {fmt(med(gaps), 1) if gaps else ''} | {sum(1 for r in R if r['intended_chain'] == 'True')}/21 · {sum(1 for r in trap if r['intended_chain'] == 'True')}/15 | {sum(1 for r in R if r['orig_hook_fired'] == 'True')} | {readtool} | {fmt(med([n(r['inject_events']) for r in R]))} | {fmt(med([n(r['inject_chars']) for r in R]))} |")
 L.append('\n「PRECEDENT 가 context 에 듦」 = 주입 훅이 관할 PRECEDENT 절을 낸 호출 또는 에이전트가 관할 PRECEDENT.md 를 읽은 호출 중 이른 것. R arm 의 현행 훅은 포인터(≤400B)만 내므로 여기서 세지 않는다(발화는 따로 셈).\n')
+sc = LAB / 'strict_chain.csv'
+if sc.exists():
+    S = list(csv.DictReader(open(sc)))
+    L.append('### 엄격한 사슬 (strict_chain.py — 관할 결정 블록의 핵심 줄 `금지:`(없으면 `결정:`)이 모델에 실제로 전달된 첫 호출)\n')
+    L.append('위 표의 「PRECEDENT 가 context 에 든」 열은 목차 주입·목차 grep 도 셌다(느슨). 결론에는 이 표를 쓴다.\n')
+    L.append('| arm | 핵심 줄 도달 | 첫 편집 전 | 도착→핵심 줄 간격 중앙(호출) | 도착 +1 이내 | 엄격 사슬 전체 / 함정 | 주입으로 도달 | 직접 읽기로 도달 |')
+    L.append('|---|---:|---:|---:|---:|---|---:|---:|')
+    for a in ARMS:
+        R = [r for r in S if r['arm'] == a]
+        g = [int(r['key_in_context_call']) - int(r['arrival']) for r in R if r['arrival'] and r['key_in_context_call']]
+        T = [r for r in R if r['task'].startswith('T')]
+        L.append(f"| {a} | {sum(1 for r in R if r['key_in_context_call'])}/21 | {sum(1 for r in R if r['key_before_edit'] == 'True')}/21 | {st.median(g) if g else ''} | {sum(1 for x in g if x <= 1)}/{len(g)} | {sum(1 for r in R if r['strict_chain'] == 'True')}/21 · {sum(1 for r in T if r['strict_chain'] == 'True')}/15 | {sum(1 for r in R if r['key_injected_call'])} | {sum(1 for r in R if r['key_read_call'])} |")
+    L.append('\nFisher(양측) 함정 엄격 사슬 R 3/15 vs I+L+G 44/45: p=4.0e-09.\n')
 L.append('## P1 — 실환경 부작용\n')
 L.append('| arm | Skill 호출(이름×횟수) | convention-review 있는 런 비용 중앙 / 턴 중앙 | 없는 런 비용 중앙 / 턴 중앙 | memory 파일 직접 읽기 | Agent·advisor 호출 | 금지 도구 거절 |')
 L.append('|---|---|---|---|---:|---:|---:|')

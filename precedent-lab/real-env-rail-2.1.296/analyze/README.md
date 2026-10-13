@@ -8,6 +8,8 @@
 | `../METRICS.md` | P0 상주 분해 · arm 별 비용 · 사슬 · 부작용 · 판정 매트릭스(자동 생성) | 숫자를 인용할 때 |
 | `../FINDINGS.md` | 발견 · 효과 표 · 측정하지 않은 것 | 결론을 인용할 때 |
 | `../results.csv` | 런별 기계 지표(도구 순서·도착·주입·비용) | 재집계 |
+| `../strict_chain.csv` · `../strict_chain.py` | 엄격한 사슬 지표(관할 결정 핵심 줄이 모델에 전달된 첫 호출) — 결론은 이 지표를 쓴다 | F2·F3 의 근거 |
+| `../specimens.sha256` | 로컬 표본(트랜스크립트·diff·훅 로그·판정 패킷)의 해시 | 표본이 바뀌지 않았음을 확인할 때 |
 | `../judgments.csv` | 런별 판정 범주(메모·인용은 회사 소스가 섞여 로컬에만) | 재집계 |
 | `../x-isolate/` | 금지 깸 급증의 원인 분리(project / +effort / +language) | F4 의 근거 |
 | `../evidence/graphify-probe.md` | graphify 결정론 probe(모델 없음) | F6 의 근거 |
