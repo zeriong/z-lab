@@ -21,3 +21,4 @@
 | 10-13 15:0x | advisor 검토로 사슬 지표 재정의: 느슨한 지표(목차 주입·목차 grep 도 「근거 도착」)가 R 을 부풀렸다. `strict_chain.py` 로 「관할 결정의 핵심 줄이 모델에 전달된 첫 호출」 재계산 → 함정 엄격 사슬 R 3/15 · I 15/15 · L 15/15 · G 14/15 (느슨: R 10/15, 주입 45/45) | FINDINGS·METRICS·회사 보고서·plan 을 엄격 수치로 수정. 결론 방향은 같고 효과 크기는 더 커짐 |
 | 10-13 15:0x | 실험 경로 memory 사본 4벌 삭제(`~/.claude/projects/-Users-jeonjelyong--cache-precedent-lab-real-env-rail-wt-*/memory`). 원본 memory 는 그대로 | 사용자에게 약속한 정리 |
 | 10-13 15:0x | 커밋 분할: 제8조는 arm 별 커밋이지만, 이번 표본은 회사 소스를 담아 레포 밖(로컬)에만 있어 arm 별로 나눌 산출물이 없다 → 단계(명세 / P0·probe / 본 실행 / x-isolate / 발견)별로 나눴다. 표본은 `specimens.sha256` 해시로만 남긴다 | 제8조 이탈 기록 |
+| 10-13 16:xx | 사후 발견: 19런이 `graphify update .` 실행 → clone 그래프가 런 사이에 바뀜(R·I·L 9,623 → 10,070~10,080 노드). 다음 실험(plan-rail)은 런마다 원본 그래프를 다시 깐다 | FINDINGS 교란 요인에 추가 |
