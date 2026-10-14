@@ -1,0 +1,70 @@
+[
+ {
+  "step": "01-marketplace-add",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "add",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/budget-codex-gate-010-r2/R3/market"
+  ],
+  "exit": 0,
+  "elapsed_ms": 16
+ },
+ {
+  "step": "02-plugin-add-gate-probe",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "gate-probe@gate-lab"
+  ],
+  "exit": 0,
+  "elapsed_ms": 16
+ },
+ {
+  "step": "03-resolve-luna",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/free-hands/scripts/latest-model.py",
+   "codex",
+   "luna",
+   "--effort",
+   "medium"
+  ],
+  "exit": 0,
+  "elapsed_ms": 649
+ },
+ {
+  "step": "04-bootstrap",
+  "argv": [
+   "codex",
+   "exec",
+   "--json",
+   "--dangerously-bypass-hook-trust",
+   "-m",
+   "gpt-6-luna",
+   "-c",
+   "model_reasoning_effort=\"medium\"",
+   "\u2026"
+  ],
+  "exit": 0,
+  "elapsed_ms": 8807
+ },
+ {
+  "step": "05-fresh",
+  "argv": [
+   "codex",
+   "exec",
+   "--json",
+   "--dangerously-bypass-hook-trust",
+   "-m",
+   "gpt-6-luna",
+   "-c",
+   "model_reasoning_effort=\"medium\"",
+   "\u2026"
+  ],
+  "exit": 0,
+  "elapsed_ms": 13708
+ }
+]

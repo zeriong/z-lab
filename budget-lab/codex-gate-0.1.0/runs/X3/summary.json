@@ -1,0 +1,54 @@
+{
+ "auth_sha256_before": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "model": "gpt-6-luna",
+ "threshold": 99,
+ "thread_id": "01a13a3a-4225-75d1-8ffd-34d20e6c7141",
+ "commands": [
+  {
+   "command": "/bin/zsh -lc 'echo open'",
+   "exit_code": 0,
+   "output": "open\n"
+  }
+ ],
+ "messages": [
+  "I’ll run the exact command once.",
+  "`echo open` output:\n\n```text\nopen\n```"
+ ],
+ "usage": [
+  {
+   "input_tokens": 29406,
+   "cached_input_tokens": 22016,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 65,
+   "reasoning_output_tokens": 0
+  }
+ ],
+ "state_files": [
+  "budget.json"
+ ],
+ "gate": [
+  {
+   "event": "UserPromptSubmit",
+   "session_id": "01a13a3a-4225-75d1-8ffd-34d20e6c7141",
+   "at": 1791978263.13553,
+   "threshold": 99
+  },
+  {
+   "event": "PreToolUse",
+   "session_id": "01a13a3a-4225-75d1-8ffd-34d20e6c7141",
+   "at": 1791978265.622043,
+   "threshold": 99,
+   "window": null,
+   "acked": null,
+   "decision": "allow"
+  },
+  {
+   "event": "Stop",
+   "session_id": "01a13a3a-4225-75d1-8ffd-34d20e6c7141",
+   "at": 1791978269.112637,
+   "threshold": 99
+  }
+ ],
+ "auth_sha256_after": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "codex_home_removed": true
+}

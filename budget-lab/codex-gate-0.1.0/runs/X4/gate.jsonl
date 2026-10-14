@@ -1,0 +1,8 @@
+{"event": "UserPromptSubmit", "session_id": "01a13a3a-747b-78f0-a899-24fd629ae21b", "at": 1791978276.0708039, "threshold": 0}
+{"event": "Stop", "session_id": "01a13a3a-747b-78f0-a899-24fd629ae21b", "at": 1791978279.0003011, "threshold": 0}
+{"event": "UserPromptSubmit", "session_id": "01a13a3a-747b-78f0-a899-24fd629ae21b", "at": 1791978286.1494641, "threshold": 0}
+{"event": "PreToolUse", "session_id": "01a13a3a-747b-78f0-a899-24fd629ae21b", "at": 1791978288.806365, "threshold": 0, "window": {"used_percent": 72.0, "window_minutes": 10080, "resets_at": 1792472293}, "acked": null, "decision": "deny"}
+{"event": "Stop", "session_id": "01a13a3a-747b-78f0-a899-24fd629ae21b", "at": 1791978291.4196212, "threshold": 0}
+{"event": "Stop", "session_id": "01a13a3a-747b-78f0-a899-24fd629ae21b", "at": 1791978295.783655, "threshold": 0}
+{"event": "Stop", "session_id": "01a13a3a-747b-78f0-a899-24fd629ae21b", "at": 1791978300.2609658, "threshold": 0}
+{"event": "Stop", "session_id": "01a13a3a-747b-78f0-a899-24fd629ae21b", "at": 1791978304.010798, "threshold": 0}

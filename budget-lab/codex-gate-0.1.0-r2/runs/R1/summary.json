@@ -1,0 +1,121 @@
+{
+ "auth_sha256_before": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "model": "gpt-6-luna",
+ "threshold": 0,
+ "bootstrap_thread": "01a13a3d-16dd-7bc3-8a68-e75de8353558",
+ "fresh": {
+  "thread_id": "01a13a3d-4583-75a1-beb1-a37e5cc78820",
+  "commands": [],
+  "messages": [
+   "I’ll run the exact command once and report the output verbatim.",
+   "지정한 0%에 도달했습니다, 작업을 이어서 진행하시겠어요? (예/아니오)"
+  ],
+  "usage": [
+   {
+    "input_tokens": 29527,
+    "cached_input_tokens": 25088,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 81,
+    "reasoning_output_tokens": 0
+   }
+  ]
+ },
+ "answer": "예",
+ "resume": {
+  "thread_id": "01a13a3d-4583-75a1-beb1-a37e5cc78820",
+  "commands": [
+   {
+    "command": "/bin/zsh -lc 'echo after-yes'",
+    "exit_code": 0,
+    "output": "after-yes\n"
+   }
+  ],
+  "messages": [
+   "명령이 실행되기 전에 차단됐습니다. 요청하신 명령을 한 번 실행하겠습니다.",
+   "```text\nafter-yes\n```"
+  ],
+  "usage": [
+   {
+    "input_tokens": 59437,
+    "cached_input_tokens": 53248,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 198,
+    "reasoning_output_tokens": 43
+   }
+  ]
+ },
+ "state_files": [
+  "acks/01a13a3d-4583-75a1-beb1-a37e5cc78820.json",
+  "budget.json"
+ ],
+ "gate": [
+  {
+   "event": "UserPromptSubmit",
+   "session_id": "01a13a3d-16dd-7bc3-8a68-e75de8353558",
+   "at": 1791978452.030433,
+   "threshold": 0
+  },
+  {
+   "event": "Stop",
+   "session_id": "01a13a3d-16dd-7bc3-8a68-e75de8353558",
+   "at": 1791978453.691904,
+   "threshold": 0
+  },
+  {
+   "event": "UserPromptSubmit",
+   "session_id": "01a13a3d-4583-75a1-beb1-a37e5cc78820",
+   "at": 1791978459.8503811,
+   "threshold": 0
+  },
+  {
+   "event": "PreToolUse",
+   "session_id": "01a13a3d-4583-75a1-beb1-a37e5cc78820",
+   "at": 1791978461.899339,
+   "threshold": 0,
+   "window": {
+    "used_percent": 72.0,
+    "window_minutes": 10080,
+    "resets_at": 1792472293
+   },
+   "source": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/budget-codex-gate-010-r2/R1/codex-home/sessions/2026/10/14/rollout-2026-10-14T20-47-24-01a13a3d-16dd-7bc3-8a68-e75de8353558.jsonl",
+   "acked": null,
+   "decision": "deny"
+  },
+  {
+   "event": "Stop",
+   "session_id": "01a13a3d-4583-75a1-beb1-a37e5cc78820",
+   "at": 1791978463.702477,
+   "threshold": 0
+  },
+  {
+   "event": "UserPromptSubmit",
+   "session_id": "01a13a3d-4583-75a1-beb1-a37e5cc78820",
+   "at": 1791978470.071316,
+   "threshold": 0,
+   "answer": "예",
+   "decision": "ack"
+  },
+  {
+   "event": "PreToolUse",
+   "session_id": "01a13a3d-4583-75a1-beb1-a37e5cc78820",
+   "at": 1791978472.737667,
+   "threshold": 0,
+   "window": {
+    "used_percent": 72.0,
+    "window_minutes": 10080,
+    "resets_at": 1792472293
+   },
+   "source": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/budget-codex-gate-010-r2/R1/codex-home/sessions/2026/10/14/rollout-2026-10-14T20-47-36-01a13a3d-4583-75a1-beb1-a37e5cc78820.jsonl",
+   "acked": 1792472293,
+   "decision": "allow"
+  },
+  {
+   "event": "Stop",
+   "session_id": "01a13a3d-4583-75a1-beb1-a37e5cc78820",
+   "at": 1791978475.053427,
+   "threshold": 0
+  }
+ ],
+ "auth_sha256_after": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "codex_home_removed": true
+}

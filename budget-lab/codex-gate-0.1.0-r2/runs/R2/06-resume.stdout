@@ -1,0 +1,6 @@
+{"type":"thread.started","thread_id":"01a13a3d-bb41-7ba0-8bb2-5c628b94fb50"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"item.completed","item":{"id":"item_1","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_2","type":"agent_message","text":"알겠습니다. 작업을 중단하겠습니다."}}
+{"type":"turn.completed","usage":{"input_tokens":44514,"cached_input_tokens":36096,"cache_write_input_tokens":0,"output_tokens":141,"reasoning_output_tokens":0}}

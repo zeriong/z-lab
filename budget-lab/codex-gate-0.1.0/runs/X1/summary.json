@@ -1,0 +1,53 @@
+{
+ "auth_sha256_before": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "model": "gpt-6-luna",
+ "threshold": 0,
+ "thread_id": "01a13a39-edf8-77d0-bbf5-fb58dc56a5d2",
+ "commands": [
+  {
+   "command": "/bin/zsh -lc 'echo gated'",
+   "exit_code": 0,
+   "output": "gated\n"
+  }
+ ],
+ "messages": [
+  "I’ll run the requested command once.",
+  "`gated`"
+ ],
+ "usage": [
+  {
+   "input_tokens": 29463,
+   "cached_input_tokens": 25088,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 113,
+   "reasoning_output_tokens": 15
+  }
+ ],
+ "state_files": [
+  "budget.json"
+ ],
+ "gate": [
+  {
+   "event": "UserPromptSubmit",
+   "session_id": "01a13a39-edf8-77d0-bbf5-fb58dc56a5d2",
+   "at": 1791978241.016812,
+   "threshold": 0
+  },
+  {
+   "event": "PreToolUse",
+   "session_id": "01a13a39-edf8-77d0-bbf5-fb58dc56a5d2",
+   "at": 1791978243.910215,
+   "threshold": 0,
+   "window": null,
+   "acked": null,
+   "decision": "allow"
+  },
+  {
+   "event": "Stop",
+   "session_id": "01a13a39-edf8-77d0-bbf5-fb58dc56a5d2",
+   "at": 1791978246.474766,
+   "threshold": 0
+  }
+ ],
+ "auth_sha256_after": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1"
+}

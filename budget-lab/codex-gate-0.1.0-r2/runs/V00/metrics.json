@@ -1,0 +1,11 @@
+[
+ {
+  "step": "01-codex-version",
+  "argv": [
+   "codex",
+   "--version"
+  ],
+  "exit": 0,
+  "elapsed_ms": 10
+ }
+]

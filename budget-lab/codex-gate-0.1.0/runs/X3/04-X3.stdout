@@ -1,0 +1,9 @@
+{"type":"thread.started","thread_id":"01a13a3a-4225-75d1-8ffd-34d20e6c7141"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"item.completed","item":{"id":"item_1","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_2","type":"agent_message","text":"I’ll run the exact command once."}}
+{"type":"item.started","item":{"id":"item_3","type":"command_execution","command":"/bin/zsh -lc 'echo open'","aggregated_output":"","exit_code":null,"status":"in_progress"}}
+{"type":"item.completed","item":{"id":"item_3","type":"command_execution","command":"/bin/zsh -lc 'echo open'","aggregated_output":"open\n","exit_code":0,"status":"completed"}}
+{"type":"item.completed","item":{"id":"item_4","type":"agent_message","text":"`echo open` output:\n\n```text\nopen\n```"}}
+{"type":"turn.completed","usage":{"input_tokens":29406,"cached_input_tokens":22016,"cache_write_input_tokens":0,"output_tokens":65,"reasoning_output_tokens":0}}

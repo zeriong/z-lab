@@ -1,0 +1,3 @@
+{"event": "UserPromptSubmit", "session_id": "01a13a3a-4225-75d1-8ffd-34d20e6c7141", "at": 1791978263.13553, "threshold": 99}
+{"event": "PreToolUse", "session_id": "01a13a3a-4225-75d1-8ffd-34d20e6c7141", "at": 1791978265.622043, "threshold": 99, "window": null, "acked": null, "decision": "allow"}
+{"event": "Stop", "session_id": "01a13a3a-4225-75d1-8ffd-34d20e6c7141", "at": 1791978269.112637, "threshold": 99}

@@ -1,0 +1,9 @@
+{"type":"thread.started","thread_id":"01a13a3d-4583-75a1-beb1-a37e5cc78820"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"item.completed","item":{"id":"item_1","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_2","type":"agent_message","text":"명령이 실행되기 전에 차단됐습니다. 요청하신 명령을 한 번 실행하겠습니다."}}
+{"type":"item.started","item":{"id":"item_3","type":"command_execution","command":"/bin/zsh -lc 'echo after-yes'","aggregated_output":"","exit_code":null,"status":"in_progress"}}
+{"type":"item.completed","item":{"id":"item_3","type":"command_execution","command":"/bin/zsh -lc 'echo after-yes'","aggregated_output":"after-yes\n","exit_code":0,"status":"completed"}}
+{"type":"item.completed","item":{"id":"item_4","type":"agent_message","text":"```text\nafter-yes\n```"}}
+{"type":"turn.completed","usage":{"input_tokens":59437,"cached_input_tokens":53248,"cache_write_input_tokens":0,"output_tokens":198,"reasoning_output_tokens":43}}

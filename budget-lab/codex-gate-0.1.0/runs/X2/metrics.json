@@ -1,0 +1,18 @@
+[
+ {
+  "step": "01-X2",
+  "argv": [
+   "codex",
+   "exec",
+   "resume",
+   "01a13a39-edf8-77d0-bbf5-fb58dc56a5d2",
+   "\uc608",
+   "--json",
+   "--dangerously-bypass-hook-trust",
+   "-m",
+   "\u2026"
+  ],
+  "exit": 0,
+  "elapsed_ms": 7870
+ }
+]

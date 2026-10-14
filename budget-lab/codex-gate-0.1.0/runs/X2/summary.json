@@ -1,0 +1,37 @@
+{
+ "auth_sha256_before": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "model": "gpt-6-luna",
+ "thread_id": "01a13a39-edf8-77d0-bbf5-fb58dc56a5d2",
+ "commands": [],
+ "messages": [
+  "“예”라고 답하신 것으로 이해했어요. 더 도와드릴 일이 있으면 말씀해 주세요."
+ ],
+ "usage": [
+  {
+   "input_tokens": 44275,
+   "cached_input_tokens": 39168,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 141,
+   "reasoning_output_tokens": 15
+  }
+ ],
+ "state_files": [
+  "budget.json"
+ ],
+ "gate": [
+  {
+   "event": "UserPromptSubmit",
+   "session_id": "01a13a39-edf8-77d0-bbf5-fb58dc56a5d2",
+   "at": 1791978252.35962,
+   "threshold": 0
+  },
+  {
+   "event": "Stop",
+   "session_id": "01a13a39-edf8-77d0-bbf5-fb58dc56a5d2",
+   "at": 1791978254.928681,
+   "threshold": 0
+  }
+ ],
+ "auth_sha256_after": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "codex_home_removed": true
+}

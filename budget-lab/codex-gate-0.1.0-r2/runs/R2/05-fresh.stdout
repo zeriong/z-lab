@@ -1,0 +1,7 @@
+{"type":"thread.started","thread_id":"01a13a3d-bb41-7ba0-8bb2-5c628b94fb50"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"item.completed","item":{"id":"item_1","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_2","type":"agent_message","text":"I’ll run the exact command once and report what it prints."}}
+{"type":"item.completed","item":{"id":"item_3","type":"agent_message","text":"지정한 0%에 도달했습니다, 작업을 이어서 진행하시겠어요? (예/아니오)"}}
+{"type":"turn.completed","usage":{"input_tokens":29570,"cached_input_tokens":22016,"cache_write_input_tokens":0,"output_tokens":127,"reasoning_output_tokens":0}}

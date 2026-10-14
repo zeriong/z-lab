@@ -1,0 +1,73 @@
+{
+ "auth_sha256_before": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "model": "gpt-6-luna",
+ "threshold": 99,
+ "bootstrap_thread": "01a13a3d-ff42-7811-9a64-592caf129760",
+ "fresh": {
+  "thread_id": "01a13a3e-219e-7873-bb70-f3db3cff36d4",
+  "commands": [
+   {
+    "command": "/bin/zsh -lc 'echo open'",
+    "exit_code": 0,
+    "output": "open\n"
+   }
+  ],
+  "messages": [
+   "open"
+  ],
+  "usage": [
+   {
+    "input_tokens": 29447,
+    "cached_input_tokens": 25088,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 55,
+    "reasoning_output_tokens": 14
+   }
+  ]
+ },
+ "state_files": [
+  "budget.json"
+ ],
+ "gate": [
+  {
+   "event": "UserPromptSubmit",
+   "session_id": "01a13a3d-ff42-7811-9a64-592caf129760",
+   "at": 1791978507.7747111,
+   "threshold": 99
+  },
+  {
+   "event": "Stop",
+   "session_id": "01a13a3d-ff42-7811-9a64-592caf129760",
+   "at": 1791978510.1148438,
+   "threshold": 99
+  },
+  {
+   "event": "UserPromptSubmit",
+   "session_id": "01a13a3e-219e-7873-bb70-f3db3cff36d4",
+   "at": 1791978518.4974551,
+   "threshold": 99
+  },
+  {
+   "event": "PreToolUse",
+   "session_id": "01a13a3e-219e-7873-bb70-f3db3cff36d4",
+   "at": 1791978521.054406,
+   "threshold": 99,
+   "window": {
+    "used_percent": 72.0,
+    "window_minutes": 10080,
+    "resets_at": 1792472293
+   },
+   "source": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/budget-codex-gate-010-r2/R3/codex-home/sessions/2026/10/14/rollout-2026-10-14T20-48-24-01a13a3d-ff42-7811-9a64-592caf129760.jsonl",
+   "acked": null,
+   "decision": "allow"
+  },
+  {
+   "event": "Stop",
+   "session_id": "01a13a3e-219e-7873-bb70-f3db3cff36d4",
+   "at": 1791978523.741023,
+   "threshold": 99
+  }
+ ],
+ "auth_sha256_after": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "codex_home_removed": true
+}

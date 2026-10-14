@@ -1,0 +1,7 @@
+{"event": "UserPromptSubmit", "session_id": "01a13a3d-98f4-7f11-b420-ae23a4ccebef", "at": 1791978481.333241, "threshold": 0}
+{"event": "Stop", "session_id": "01a13a3d-98f4-7f11-b420-ae23a4ccebef", "at": 1791978483.867724, "threshold": 0}
+{"event": "UserPromptSubmit", "session_id": "01a13a3d-bb41-7ba0-8bb2-5c628b94fb50", "at": 1791978489.546004, "threshold": 0}
+{"event": "PreToolUse", "session_id": "01a13a3d-bb41-7ba0-8bb2-5c628b94fb50", "at": 1791978491.815664, "threshold": 0, "window": {"used_percent": 72.0, "window_minutes": 10080, "resets_at": 1792472293}, "source": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/budget-codex-gate-010-r2/R2/codex-home/sessions/2026/10/14/rollout-2026-10-14T20-47-57-01a13a3d-98f4-7f11-b420-ae23a4ccebef.jsonl", "acked": null, "decision": "deny"}
+{"event": "Stop", "session_id": "01a13a3d-bb41-7ba0-8bb2-5c628b94fb50", "at": 1791978493.452401, "threshold": 0}
+{"event": "UserPromptSubmit", "session_id": "01a13a3d-bb41-7ba0-8bb2-5c628b94fb50", "at": 1791978499.3173351, "threshold": 0, "answer": "\uc544\ub2c8\uc624", "decision": "hold"}
+{"event": "Stop", "session_id": "01a13a3d-bb41-7ba0-8bb2-5c628b94fb50", "at": 1791978501.35727, "threshold": 0}

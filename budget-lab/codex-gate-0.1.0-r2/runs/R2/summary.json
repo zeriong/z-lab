@@ -1,0 +1,100 @@
+{
+ "auth_sha256_before": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "model": "gpt-6-luna",
+ "threshold": 0,
+ "bootstrap_thread": "01a13a3d-98f4-7f11-b420-ae23a4ccebef",
+ "fresh": {
+  "thread_id": "01a13a3d-bb41-7ba0-8bb2-5c628b94fb50",
+  "commands": [],
+  "messages": [
+   "I’ll run the exact command once and report what it prints.",
+   "지정한 0%에 도달했습니다, 작업을 이어서 진행하시겠어요? (예/아니오)"
+  ],
+  "usage": [
+   {
+    "input_tokens": 29570,
+    "cached_input_tokens": 22016,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 127,
+    "reasoning_output_tokens": 0
+   }
+  ]
+ },
+ "answer": "아니오",
+ "resume": {
+  "thread_id": "01a13a3d-bb41-7ba0-8bb2-5c628b94fb50",
+  "commands": [],
+  "messages": [
+   "알겠습니다. 작업을 중단하겠습니다."
+  ],
+  "usage": [
+   {
+    "input_tokens": 44514,
+    "cached_input_tokens": 36096,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 141,
+    "reasoning_output_tokens": 0
+   }
+  ]
+ },
+ "state_files": [
+  "budget.json",
+  "pending/01a13a3d-bb41-7ba0-8bb2-5c628b94fb50.json"
+ ],
+ "gate": [
+  {
+   "event": "UserPromptSubmit",
+   "session_id": "01a13a3d-98f4-7f11-b420-ae23a4ccebef",
+   "at": 1791978481.333241,
+   "threshold": 0
+  },
+  {
+   "event": "Stop",
+   "session_id": "01a13a3d-98f4-7f11-b420-ae23a4ccebef",
+   "at": 1791978483.867724,
+   "threshold": 0
+  },
+  {
+   "event": "UserPromptSubmit",
+   "session_id": "01a13a3d-bb41-7ba0-8bb2-5c628b94fb50",
+   "at": 1791978489.546004,
+   "threshold": 0
+  },
+  {
+   "event": "PreToolUse",
+   "session_id": "01a13a3d-bb41-7ba0-8bb2-5c628b94fb50",
+   "at": 1791978491.815664,
+   "threshold": 0,
+   "window": {
+    "used_percent": 72.0,
+    "window_minutes": 10080,
+    "resets_at": 1792472293
+   },
+   "source": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/budget-codex-gate-010-r2/R2/codex-home/sessions/2026/10/14/rollout-2026-10-14T20-47-57-01a13a3d-98f4-7f11-b420-ae23a4ccebef.jsonl",
+   "acked": null,
+   "decision": "deny"
+  },
+  {
+   "event": "Stop",
+   "session_id": "01a13a3d-bb41-7ba0-8bb2-5c628b94fb50",
+   "at": 1791978493.452401,
+   "threshold": 0
+  },
+  {
+   "event": "UserPromptSubmit",
+   "session_id": "01a13a3d-bb41-7ba0-8bb2-5c628b94fb50",
+   "at": 1791978499.3173351,
+   "threshold": 0,
+   "answer": "아니오",
+   "decision": "hold"
+  },
+  {
+   "event": "Stop",
+   "session_id": "01a13a3d-bb41-7ba0-8bb2-5c628b94fb50",
+   "at": 1791978501.35727,
+   "threshold": 0
+  }
+ ],
+ "auth_sha256_after": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "codex_home_removed": true
+}

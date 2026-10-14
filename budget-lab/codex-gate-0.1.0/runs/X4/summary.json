@@ -1,0 +1,88 @@
+{
+ "auth_sha256_before": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "model": "gpt-6-luna",
+ "threshold": 0,
+ "goal_before": "status: active\nmax_iterations: 3\niterations: 0\nowner: 01a13a3a-747b-78f0-a899-24fd629ae21b\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] run the command the user gives\n## Decisions\n## Resume\n",
+ "thread_id": "01a13a3a-747b-78f0-a899-24fd629ae21b",
+ "commands": [],
+ "messages": [
+  "I’ll first read the required free-hands instructions and goal file, then run the requested command once.",
+  "지정한 0%에 도달했습니다, 작업을 이어서 진행하시겠어요? (예/아니오)",
+  "지정한 0%에 도달했습니다, 작업을 이어서 진행하시겠어요? (예/아니오)",
+  "지정한 0%에 도달했습니다, 작업을 이어서 진행하시겠어요? (예/아니오)",
+  "Paused. Open item: run `echo fh`. The command was not run because the execution gate blocked the required preliminary read. I couldn’t update the goal file."
+ ],
+ "usage": [
+  {
+   "input_tokens": 95047,
+   "cached_input_tokens": 81408,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 902,
+   "reasoning_output_tokens": 623
+  }
+ ],
+ "goal_after": "status: active\nmax_iterations: 3\niterations: 3\nowner: 01a13a3a-747b-78f0-a899-24fd629ae21b\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] run the command the user gives\n## Decisions\n## Resume\n",
+ "state_files": [
+  "budget.json",
+  "pending/01a13a3a-747b-78f0-a899-24fd629ae21b.json"
+ ],
+ "gate": [
+  {
+   "event": "UserPromptSubmit",
+   "session_id": "01a13a3a-747b-78f0-a899-24fd629ae21b",
+   "at": 1791978276.0708039,
+   "threshold": 0
+  },
+  {
+   "event": "Stop",
+   "session_id": "01a13a3a-747b-78f0-a899-24fd629ae21b",
+   "at": 1791978279.0003011,
+   "threshold": 0
+  },
+  {
+   "event": "UserPromptSubmit",
+   "session_id": "01a13a3a-747b-78f0-a899-24fd629ae21b",
+   "at": 1791978286.1494641,
+   "threshold": 0
+  },
+  {
+   "event": "PreToolUse",
+   "session_id": "01a13a3a-747b-78f0-a899-24fd629ae21b",
+   "at": 1791978288.806365,
+   "threshold": 0,
+   "window": {
+    "used_percent": 72.0,
+    "window_minutes": 10080,
+    "resets_at": 1792472293
+   },
+   "acked": null,
+   "decision": "deny"
+  },
+  {
+   "event": "Stop",
+   "session_id": "01a13a3a-747b-78f0-a899-24fd629ae21b",
+   "at": 1791978291.4196212,
+   "threshold": 0
+  },
+  {
+   "event": "Stop",
+   "session_id": "01a13a3a-747b-78f0-a899-24fd629ae21b",
+   "at": 1791978295.783655,
+   "threshold": 0
+  },
+  {
+   "event": "Stop",
+   "session_id": "01a13a3a-747b-78f0-a899-24fd629ae21b",
+   "at": 1791978300.2609658,
+   "threshold": 0
+  },
+  {
+   "event": "Stop",
+   "session_id": "01a13a3a-747b-78f0-a899-24fd629ae21b",
+   "at": 1791978304.010798,
+   "threshold": 0
+  }
+ ],
+ "auth_sha256_after": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "codex_home_removed": true
+}

@@ -1,0 +1,9 @@
+{"type":"thread.started","thread_id":"01a13a39-edf8-77d0-bbf5-fb58dc56a5d2"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"item.completed","item":{"id":"item_1","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_2","type":"agent_message","text":"I’ll run the requested command once."}}
+{"type":"item.started","item":{"id":"item_3","type":"command_execution","command":"/bin/zsh -lc 'echo gated'","aggregated_output":"","exit_code":null,"status":"in_progress"}}
+{"type":"item.completed","item":{"id":"item_3","type":"command_execution","command":"/bin/zsh -lc 'echo gated'","aggregated_output":"gated\n","exit_code":0,"status":"completed"}}
+{"type":"item.completed","item":{"id":"item_4","type":"agent_message","text":"`gated`"}}
+{"type":"turn.completed","usage":{"input_tokens":29463,"cached_input_tokens":25088,"cache_write_input_tokens":0,"output_tokens":113,"reasoning_output_tokens":15}}
