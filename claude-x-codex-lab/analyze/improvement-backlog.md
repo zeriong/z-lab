@@ -64,3 +64,10 @@
 - Observation: pinned Codex slugs kept older models after `gpt-6.1-sol` shipped.
 - Action: family settings resolved before every dispatch; stop on failure; ids from the run.
 - Remaining measurement: full orchestration run; sandbox escalation; Orca workers.
+
+## peer-coding 1.1.0 — the mode on the dashboard
+
+- Decision (maintainer, 2026-10-14): every because-i-needed mode shows on the dashboard (root Rule 11).
+- Change: `mode.sh status --json` and `dashboard.json`.
+- Evidence: `dashboard-lab/run-0.1.0` D01, D02, D04.
+

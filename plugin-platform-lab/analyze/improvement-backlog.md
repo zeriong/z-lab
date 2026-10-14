@@ -28,3 +28,14 @@
 - Observation: a pinned slug kept `gpt-6-sol` while `gpt-6.1-sol` was listed; exit status cannot prove a catalog refresh.
 - Action: shared resolver with cache verification, alias-override refusal and stop-on-failure.
 - Remaining measurement: Linux/WSL, other Claude override channels, access-restricted models.
+
+## Claude Code hooks modules beside Codex command hooks (2.1.299)
+
+- Evidence: [mod-dual-host-2.1.299](../mod-dual-host-2.1.299/FINDINGS.md) (M01–M07), [mod-interactive-2.1.299](../mod-interactive-2.1.299/FINDINGS.md) (I01–I05).
+- Observation: Claude runs `hooks/hooks.json` and a manifest `hooks` path both and ignores the Codex manifest; Codex rejects
+  a hooks file naming `modules` and reads its manifest `hooks` path. A module reaches settings, files, processes and the
+  rate-limit windows, draws above the prompt, asks through the engine's dialog and sees subagents' calls; free-hands 0.3.0's
+  ask guard blocked that dialog.
+- Action: layout C for dashboard and budget; free-hands 0.4.0 lets budget's question through.
+- Remaining measurement: installs through a Claude marketplace; desktop and IDE surfaces.
+

@@ -37,6 +37,8 @@ repository; the plan and triage log of the 0.1.0 work are in its `.claude-x-code
 
 | D12 | A hook input without a valid `session_id` keeps the 0.2.0 repository-wide guard; a guarded goal without `owner:` (written by 0.2.0, or an agent that left the line out) goes to the first session a hook sees, on any event | Both hosts always send the id (S01); first-come is the only rule that lets a resumed 0.2.0 run (same id, S02) claim its goal without a manual step | decision, 2026-10-13 |
 | D13 | Other sessions are not held to the hard-limit shell hook | They are attended by the user; the user's report was the second session acting as free-hands. The owner's subagents stay covered (O04) | decision, 2026-10-13 |
+| 12 | plugin-platform-lab mod-interactive I05: the ask guard blocked budget's `$.ui.ask`; budget-lab codex-gate B03: the stop guard kept a gated Codex turn going | 0.4.0: ask and stop guards stand aside while `budget/pending/<session>.json` is open; SKILL.md and the restore note name the one exception | measured: budget-lab run-0.1.0 R04, R07, r2 R12 |
+| 13 | Root Rule 11 (maintainer, 2026-10-14) | 0.4.0: `guard.py status` + `dashboard.json` | measured: dashboard-lab run-0.1.0 D01, D04 |
 
 ## Not acted on
 
