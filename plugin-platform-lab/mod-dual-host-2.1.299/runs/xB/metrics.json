@@ -1,0 +1,55 @@
+[
+ {
+  "step": "01-marketplace-add",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "add",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-dual-host-2299/xB/market"
+  ],
+  "exit": 0,
+  "elapsed_ms": 18
+ },
+ {
+  "step": "02-plugin-add",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "mod-probe@mod-lab"
+  ],
+  "exit": 0,
+  "elapsed_ms": 18
+ },
+ {
+  "step": "03-resolve-luna",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/free-hands-lab/run-0.3.0/subject/free-hands/scripts/latest-model.py",
+   "codex",
+   "luna",
+   "--effort",
+   "medium"
+  ],
+  "exit": 0,
+  "elapsed_ms": 686
+ },
+ {
+  "step": "04-B",
+  "argv": [
+   "codex",
+   "exec",
+   "--json",
+   "--dangerously-bypass-hook-trust",
+   "-m",
+   "gpt-6-luna",
+   "-c",
+   "model_reasoning_effort=\"medium\"",
+   "\u2026"
+  ],
+  "exit": 0,
+  "elapsed_ms": 10587,
+  "tokens": true
+ }
+]

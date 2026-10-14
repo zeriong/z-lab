@@ -1,0 +1,366 @@
+{
+ "hook_events": [
+  {
+   "subtype": "hook_started",
+   "hook_event": "SessionStart",
+   "hook_name": "SessionStart:startup",
+   "exit_code": null,
+   "outcome": null
+  },
+  {
+   "subtype": "hook_started",
+   "hook_event": "SessionStart",
+   "hook_name": "SessionStart:startup",
+   "exit_code": null,
+   "outcome": null
+  },
+  {
+   "subtype": "hook_started",
+   "hook_event": "SessionStart",
+   "hook_name": "SessionStart:startup",
+   "exit_code": null,
+   "outcome": null
+  },
+  {
+   "subtype": "hook_response",
+   "hook_event": "SessionStart",
+   "hook_name": "SessionStart:startup",
+   "exit_code": 0,
+   "outcome": "success"
+  },
+  {
+   "subtype": "hook_response",
+   "hook_event": "SessionStart",
+   "hook_name": "SessionStart:startup",
+   "exit_code": 0,
+   "outcome": "success"
+  },
+  {
+   "subtype": "hook_response",
+   "hook_event": "SessionStart",
+   "hook_name": "SessionStart:startup",
+   "exit_code": 0,
+   "outcome": "success"
+  },
+  {
+   "subtype": "hook_started",
+   "hook_event": "UserPromptSubmit",
+   "hook_name": "UserPromptSubmit",
+   "exit_code": null,
+   "outcome": null
+  },
+  {
+   "subtype": "hook_started",
+   "hook_event": "UserPromptSubmit",
+   "hook_name": "UserPromptSubmit",
+   "exit_code": null,
+   "outcome": null
+  },
+  {
+   "subtype": "hook_started",
+   "hook_event": "UserPromptSubmit",
+   "hook_name": "UserPromptSubmit",
+   "exit_code": null,
+   "outcome": null
+  },
+  {
+   "subtype": "hook_started",
+   "hook_event": "UserPromptSubmit",
+   "hook_name": "UserPromptSubmit",
+   "exit_code": null,
+   "outcome": null
+  },
+  {
+   "subtype": "hook_response",
+   "hook_event": "UserPromptSubmit",
+   "hook_name": "UserPromptSubmit",
+   "exit_code": 0,
+   "outcome": "success"
+  },
+  {
+   "subtype": "hook_response",
+   "hook_event": "UserPromptSubmit",
+   "hook_name": "UserPromptSubmit",
+   "exit_code": 0,
+   "outcome": "success"
+  },
+  {
+   "subtype": "hook_response",
+   "hook_event": "UserPromptSubmit",
+   "hook_name": "UserPromptSubmit",
+   "exit_code": 0,
+   "outcome": "success"
+  },
+  {
+   "subtype": "hook_response",
+   "hook_event": "UserPromptSubmit",
+   "hook_name": "UserPromptSubmit",
+   "exit_code": 0,
+   "outcome": "success"
+  },
+  {
+   "subtype": "hook_started",
+   "hook_event": "PreToolUse",
+   "hook_name": "PreToolUse:Bash",
+   "exit_code": null,
+   "outcome": null
+  },
+  {
+   "subtype": "hook_started",
+   "hook_event": "PreToolUse",
+   "hook_name": "PreToolUse:Bash",
+   "exit_code": null,
+   "outcome": null
+  },
+  {
+   "subtype": "hook_started",
+   "hook_event": "PreToolUse",
+   "hook_name": "PreToolUse:Bash",
+   "exit_code": null,
+   "outcome": null
+  },
+  {
+   "subtype": "hook_response",
+   "hook_event": "PreToolUse",
+   "hook_name": "PreToolUse:Bash",
+   "exit_code": 0,
+   "outcome": "success"
+  },
+  {
+   "subtype": "hook_response",
+   "hook_event": "PreToolUse",
+   "hook_name": "PreToolUse:Bash",
+   "exit_code": 0,
+   "outcome": "success"
+  },
+  {
+   "subtype": "hook_response",
+   "hook_event": "PreToolUse",
+   "hook_name": "PreToolUse:Bash",
+   "exit_code": 0,
+   "outcome": "success"
+  },
+  {
+   "subtype": "hook_started",
+   "hook_event": "PostToolUse",
+   "hook_name": "PostToolUse:Bash",
+   "exit_code": null,
+   "outcome": null
+  },
+  {
+   "subtype": "hook_response",
+   "hook_event": "PostToolUse",
+   "hook_name": "PostToolUse:Bash",
+   "exit_code": 0,
+   "outcome": "success"
+  },
+  {
+   "subtype": "hook_started",
+   "hook_event": "Stop",
+   "hook_name": "Stop",
+   "exit_code": null,
+   "outcome": null
+  },
+  {
+   "subtype": "hook_started",
+   "hook_event": "Stop",
+   "hook_name": "Stop",
+   "exit_code": null,
+   "outcome": null
+  },
+  {
+   "subtype": "hook_started",
+   "hook_event": "Stop",
+   "hook_name": "Stop",
+   "exit_code": null,
+   "outcome": null
+  },
+  {
+   "subtype": "hook_response",
+   "hook_event": "Stop",
+   "hook_name": "Stop",
+   "exit_code": 0,
+   "outcome": "success"
+  },
+  {
+   "subtype": "hook_response",
+   "hook_event": "Stop",
+   "hook_name": "Stop",
+   "exit_code": 0,
+   "outcome": "success"
+  },
+  {
+   "subtype": "hook_response",
+   "hook_event": "Stop",
+   "hook_name": "Stop",
+   "exit_code": 0,
+   "outcome": "success"
+  }
+ ],
+ "result": "명령어를 한 번 실행했고 출력은 다음과 같습니다.\n\n```\nprobe\n```",
+ "cost": 0.1194529,
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 28476,
+  "cache_read_input_tokens": 44409,
+  "output_tokens": 110,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 28476,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 36,
+    "cache_read_input_tokens": 32962,
+    "cache_creation_input_tokens": 6961,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 6961
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "command.jsonl": [
+  {
+   "event": "SessionStart",
+   "input": {
+    "hook_event_name": "SessionStart",
+    "session_id": "9b1b016b-de62-4c4b-963b-f9bca2cf1035",
+    "tool_name": null,
+    "source": "startup"
+   }
+  },
+  {
+   "event": "UserPromptSubmit",
+   "input": {
+    "hook_event_name": "UserPromptSubmit",
+    "session_id": "9b1b016b-de62-4c4b-963b-f9bca2cf1035",
+    "tool_name": null,
+    "source": null
+   }
+  },
+  {
+   "event": "PreToolUse",
+   "input": {
+    "hook_event_name": "PreToolUse",
+    "session_id": "9b1b016b-de62-4c4b-963b-f9bca2cf1035",
+    "tool_name": "Bash",
+    "source": null
+   }
+  },
+  {
+   "event": "Stop",
+   "input": {
+    "hook_event_name": "Stop",
+    "session_id": "9b1b016b-de62-4c4b-963b-f9bca2cf1035",
+    "tool_name": null,
+    "source": null
+   }
+  }
+ ],
+ "module.jsonl": [
+  {
+   "at": 1791977474031,
+   "event": "session.start",
+   "root": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-dual-host-2299/cA/mod-probe",
+   "enabledPlugins": [
+    "frontend-design@claude-plugins-official",
+    "chrome-devtools-mcp@claude-plugins-official",
+    "figma@claude-plugins-official",
+    "ponytail@ponytail",
+    "claude-x-codex@because-i-needed",
+    "harness@because-i-needed",
+    "ux-ui@because-i-needed",
+    "indivisual-commit@zeriong-indivisual-plugins",
+    "zeriong-frontend-conventions@zeriong-indivisual-plugins"
+   ],
+   "home": "/Users/jeonjelyong",
+   "outside": "outside the repository\n",
+   "peerCodingFlag": true,
+   "process": {
+    "exitCode": 0,
+    "stdout": "42\n"
+   }
+  },
+  {
+   "at": 1791977476038,
+   "event": "prompt.submit",
+   "length": 71
+  },
+  {
+   "at": 1791977477657,
+   "event": "tool.call",
+   "command": "echo probe"
+  },
+  {
+   "at": 1791977477680,
+   "event": "session.measure",
+   "rateLimits": [
+    {
+     "kind": "five_hour",
+     "percentUsed": 3,
+     "resetsAt": "2026-10-14T13:00:00.000Z"
+    },
+    {
+     "kind": "seven_day",
+     "percentUsed": 12,
+     "resetsAt": "2026-10-21T03:00:00.000Z"
+    }
+   ],
+   "changed": [
+    "context",
+    "rateLimits",
+    "cost"
+   ]
+  },
+  {
+   "at": 1791977480125,
+   "event": "session.measure",
+   "rateLimits": [
+    {
+     "kind": "five_hour",
+     "percentUsed": 3,
+     "resetsAt": "2026-10-14T13:00:00.000Z"
+    },
+    {
+     "kind": "seven_day",
+     "percentUsed": 12,
+     "resetsAt": "2026-10-21T03:00:00.000Z"
+    }
+   ],
+   "changed": [
+    "context",
+    "cost"
+   ]
+  },
+  {
+   "at": 1791977480209,
+   "event": "session.end",
+   "rateLimits": [
+    {
+     "kind": "five_hour",
+     "percentUsed": 3,
+     "resetsAt": "2026-10-14T13:00:00.000Z"
+    },
+    {
+     "kind": "seven_day",
+     "percentUsed": 12,
+     "resetsAt": "2026-10-21T03:00:00.000Z"
+    }
+   ]
+  }
+ ]
+}

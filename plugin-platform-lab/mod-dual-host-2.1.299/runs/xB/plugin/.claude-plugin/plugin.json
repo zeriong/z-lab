@@ -1,0 +1,9 @@
+{
+ "name": "mod-probe",
+ "version": "0.0.0",
+ "description": "lab: mod and command hooks in one plugin",
+ "author": {
+  "name": "lab"
+ },
+ "hooks": "./mods/hooks.json"
+}

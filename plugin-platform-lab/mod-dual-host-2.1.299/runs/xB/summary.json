@@ -1,0 +1,77 @@
+{
+ "auth_sha256_before": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "plugin_add": {
+  "exit": 0,
+  "stdout": "Added plugin `mod-probe` from marketplace `mod-lab`.\nInstalled plugin root: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-dual-host-2299/xB/codex-home/plugins/cache/mod-lab/mod-probe/0.0.0\n",
+  "stderr": ""
+ },
+ "items": [
+  {
+   "type": "error",
+   "text": "`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."
+  },
+  {
+   "type": "error",
+   "text": "`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."
+  },
+  {
+   "type": "command_execution",
+   "text": "/bin/zsh -lc 'echo probe'"
+  },
+  {
+   "type": "agent_message",
+   "text": "`probe`"
+  }
+ ],
+ "usage": [
+  {
+   "input_tokens": 29367,
+   "cached_input_tokens": 25088,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 61,
+   "reasoning_output_tokens": 18
+  }
+ ],
+ "stderr_tail": "Reading additional input from stdin...\n",
+ "command.jsonl": [
+  {
+   "event": "SessionStart",
+   "input": {
+    "hook_event_name": "SessionStart",
+    "session_id": "01a13a2e-ce05-7f23-8940-d471ae25b331",
+    "tool_name": null,
+    "source": "startup"
+   }
+  },
+  {
+   "event": "UserPromptSubmit",
+   "input": {
+    "hook_event_name": "UserPromptSubmit",
+    "session_id": "01a13a2e-ce05-7f23-8940-d471ae25b331",
+    "tool_name": null,
+    "source": null
+   }
+  },
+  {
+   "event": "PreToolUse",
+   "input": {
+    "hook_event_name": "PreToolUse",
+    "session_id": "01a13a2e-ce05-7f23-8940-d471ae25b331",
+    "tool_name": "Bash",
+    "source": null
+   }
+  },
+  {
+   "event": "Stop",
+   "input": {
+    "hook_event_name": "Stop",
+    "session_id": "01a13a2e-ce05-7f23-8940-d471ae25b331",
+    "tool_name": null,
+    "source": null
+   }
+  }
+ ],
+ "module.jsonl": null,
+ "auth_sha256_after": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "codex_home_removed": true
+}

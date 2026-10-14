@@ -1,0 +1,14 @@
+{
+ "A": {
+  "exit": 0,
+  "output": "Validating plugin manifest: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-dual-host-2299/V/layout-A/.claude-plugin/plugin.json\n\nValidating hooks: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-dual-host-2299/V/layout-A/hooks/hooks.json\n\n  ❯ ./register.ts hooks: session.start, prompt.submit, tool.call{tool=Bash}, session.measure, session.end\n  ❯ ./register.ts gating hook without .catch: prompt.submit\n  ❯ ./register.ts gating hook without .catch: tool.call{tool=Bash}\n  ❯ ./register.ts calls: $.env.get, $.fs.exists, $.fs.read, $.fs.write (via put), $.process.run, $.session.usage, $.settings.read\n  ❯ ./register.ts env writes: nothing\n  ❯ ./register.ts env reads: HOME\n\n✔ Validation passed\n"
+ },
+ "B": {
+  "exit": 0,
+  "output": "Validating plugin manifest: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-dual-host-2299/V/layout-B/.claude-plugin/plugin.json\n\nValidating hooks: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-dual-host-2299/V/layout-B/mods/hooks.json\n\n  ❯ ./register.ts hooks: session.start, prompt.submit, tool.call{tool=Bash}, session.measure, session.end\n  ❯ ./register.ts gating hook without .catch: prompt.submit\n  ❯ ./register.ts gating hook without .catch: tool.call{tool=Bash}\n  ❯ ./register.ts calls: $.env.get, $.fs.exists, $.fs.read, $.fs.write (via put), $.process.run, $.session.usage, $.settings.read\n  ❯ ./register.ts env writes: nothing\n  ❯ ./register.ts env reads: HOME\n\n✔ Validation passed\n"
+ },
+ "C": {
+  "exit": 0,
+  "output": "Validating plugin manifest: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-dual-host-2299/V/layout-C/.claude-plugin/plugin.json\n\nValidating hooks: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-dual-host-2299/V/layout-C/hooks/hooks.json\n\n  ❯ ./register.ts hooks: session.start, prompt.submit, tool.call{tool=Bash}, session.measure, session.end\n  ❯ ./register.ts gating hook without .catch: prompt.submit\n  ❯ ./register.ts gating hook without .catch: tool.call{tool=Bash}\n  ❯ ./register.ts calls: $.env.get, $.fs.exists, $.fs.read, $.fs.write (via put), $.process.run, $.session.usage, $.settings.read\n  ❯ ./register.ts env writes: nothing\n  ❯ ./register.ts env reads: HOME\n\n✔ Validation passed\n"
+ }
+}

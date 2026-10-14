@@ -1,0 +1,19 @@
+[
+ {
+  "step": "01-A",
+  "argv": [
+   "claude",
+   "-p",
+   "Run exactly this shell command once and report its output: `echo probe`",
+   "--plugin-dir",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-dual-host-2299/cA/mod-probe",
+   "--model",
+   "sonnet",
+   "--output-format",
+   "\u2026"
+  ],
+  "exit": 0,
+  "elapsed_ms": 7056,
+  "tokens": true
+ }
+]

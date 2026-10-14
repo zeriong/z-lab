@@ -1,0 +1,10 @@
+{"type":"thread.started","thread_id":"01a13a2e-a286-70e1-a6cf-79db23f98c7a"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"item.completed","item":{"id":"item_1","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"item.completed","item":{"id":"item_2","type":"error","message":"failed to parse plugin hooks config /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-dual-host-2299/xA/codex-home/plugins/cache/mod-lab/mod-probe/0.0.0/hooks/hooks.json: unknown field `modules`, expected `description` or `hooks` at line 44 column 10"}}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_3","type":"agent_message","text":"I’ll run the requested command once and report exactly what it prints."}}
+{"type":"item.started","item":{"id":"item_4","type":"command_execution","command":"/bin/zsh -lc 'echo probe'","aggregated_output":"","exit_code":null,"status":"in_progress"}}
+{"type":"item.completed","item":{"id":"item_4","type":"command_execution","command":"/bin/zsh -lc 'echo probe'","aggregated_output":"probe\n","exit_code":0,"status":"completed"}}
+{"type":"item.completed","item":{"id":"item_5","type":"agent_message","text":"`probe`"}}
+{"type":"turn.completed","usage":{"input_tokens":29368,"cached_input_tokens":25088,"cache_write_input_tokens":0,"output_tokens":62,"reasoning_output_tokens":0}}

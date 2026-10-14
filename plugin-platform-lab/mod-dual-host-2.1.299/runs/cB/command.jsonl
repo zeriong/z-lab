@@ -1,0 +1,4 @@
+{"event": "SessionStart", "input": {"hook_event_name": "SessionStart", "session_id": "ba14291f-60c4-42eb-b3d4-ab99b3c91eac", "tool_name": null, "source": "startup"}}
+{"event": "UserPromptSubmit", "input": {"hook_event_name": "UserPromptSubmit", "session_id": "ba14291f-60c4-42eb-b3d4-ab99b3c91eac", "tool_name": null, "source": null}}
+{"event": "PreToolUse", "input": {"hook_event_name": "PreToolUse", "session_id": "ba14291f-60c4-42eb-b3d4-ab99b3c91eac", "tool_name": "Bash", "source": null}}
+{"event": "Stop", "input": {"hook_event_name": "Stop", "session_id": "ba14291f-60c4-42eb-b3d4-ab99b3c91eac", "tool_name": null, "source": null}}

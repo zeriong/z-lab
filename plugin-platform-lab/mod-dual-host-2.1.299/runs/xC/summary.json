@@ -1,0 +1,81 @@
+{
+ "auth_sha256_before": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "plugin_add": {
+  "exit": 0,
+  "stdout": "Added plugin `mod-probe` from marketplace `mod-lab`.\nInstalled plugin root: /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-dual-host-2299/xC/codex-home/plugins/cache/mod-lab/mod-probe/0.0.0\n",
+  "stderr": ""
+ },
+ "items": [
+  {
+   "type": "error",
+   "text": "`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."
+  },
+  {
+   "type": "error",
+   "text": "`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."
+  },
+  {
+   "type": "agent_message",
+   "text": "I’ll run the command once and report exactly what it prints."
+  },
+  {
+   "type": "command_execution",
+   "text": "/bin/zsh -lc 'echo probe'"
+  },
+  {
+   "type": "agent_message",
+   "text": "probe"
+  }
+ ],
+ "usage": [
+  {
+   "input_tokens": 29366,
+   "cached_input_tokens": 25088,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 58,
+   "reasoning_output_tokens": 0
+  }
+ ],
+ "stderr_tail": "Reading additional input from stdin...\n",
+ "command.jsonl": [
+  {
+   "event": "SessionStart",
+   "input": {
+    "hook_event_name": "SessionStart",
+    "session_id": "01a13a2e-f95d-7022-992a-3a9aba3a4893",
+    "tool_name": null,
+    "source": "startup"
+   }
+  },
+  {
+   "event": "UserPromptSubmit",
+   "input": {
+    "hook_event_name": "UserPromptSubmit",
+    "session_id": "01a13a2e-f95d-7022-992a-3a9aba3a4893",
+    "tool_name": null,
+    "source": null
+   }
+  },
+  {
+   "event": "PreToolUse",
+   "input": {
+    "hook_event_name": "PreToolUse",
+    "session_id": "01a13a2e-f95d-7022-992a-3a9aba3a4893",
+    "tool_name": "Bash",
+    "source": null
+   }
+  },
+  {
+   "event": "Stop",
+   "input": {
+    "hook_event_name": "Stop",
+    "session_id": "01a13a2e-f95d-7022-992a-3a9aba3a4893",
+    "tool_name": null,
+    "source": null
+   }
+  }
+ ],
+ "module.jsonl": null,
+ "auth_sha256_after": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "codex_home_removed": true
+}

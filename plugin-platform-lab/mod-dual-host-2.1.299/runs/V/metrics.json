@@ -1,0 +1,35 @@
+[
+ {
+  "step": "01-validate-A",
+  "argv": [
+   "claude",
+   "plugin",
+   "validate",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-dual-host-2299/V/layout-A"
+  ],
+  "exit": 0,
+  "elapsed_ms": 665
+ },
+ {
+  "step": "02-validate-B",
+  "argv": [
+   "claude",
+   "plugin",
+   "validate",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-dual-host-2299/V/layout-B"
+  ],
+  "exit": 0,
+  "elapsed_ms": 660
+ },
+ {
+  "step": "03-validate-C",
+  "argv": [
+   "claude",
+   "plugin",
+   "validate",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-dual-host-2299/V/layout-C"
+  ],
+  "exit": 0,
+  "elapsed_ms": 645
+ }
+]
