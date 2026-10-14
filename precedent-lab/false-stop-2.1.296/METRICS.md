@@ -45,3 +45,27 @@
 
 판정 ↔ diff 기계 대조 불일치: 0건 . 판정 누출(leak=yes): 0/30런.
 
+## 사후 조작 확인 (사전 등록 아님) — A 의 확인 문구(STOP)가 첫 편집 전에 도착했는가
+
+훅 로그(`logs/*.hook.jsonl`)에서 v3 가 STOP 을 붙이는 주입(full·compact·compact-cut)의 호출 순번을 `first_edit_call` 과 비교한다. STOP 문구는 트랜스크립트에 남지 않는다.
+
+| run | 첫 편집 | 첫 STOP(어느 절이든) | 첫 STOP(대상 파일 절) | 판정 |
+|---|---:|---:|---:|---|
+| A-xh-B1-r1 | 8 | 3 | 3 | COMPLETED |
+| A-xh-B1-r2 | 15 | 5 | 14 | COMPLETED |
+| A-xh-B1-r3 | 6 | 3 | 3 | COMPLETED |
+| A-xh-B2-r1 | 4 | 1 | 1 | COMPLETED |
+| A-xh-B2-r2 | 4 | 1 | 1 | COMPLETED |
+| A-xh-B2-r3 | 4 | 1 | 1 | COMPLETED |
+| A-xh-B3-r1 | 5 | 2 | 2 | COMPLETED |
+| A-xh-B3-r2 | 5 | 2 | 2 | COMPLETED |
+| A-xh-B3-r3 | 4 | 2 | 2 | COMPLETED |
+| A-xh-B4-r1 | 7 | 3 | 3 | COMPLETED |
+| A-xh-B4-r2 | 8 | 3 | 3 | COMPLETED |
+| A-xh-B4-r3 | 6 | 3 | 3 | COMPLETED |
+| A-xh-B5-r1 | 9 | 9 | 9 | COMPLETED |
+| A-xh-B5-r2 | 12 | 6 | 12 | COMPLETED |
+| A-xh-B5-r3 | 5 | 2 | 2 | COMPLETED |
+
+첫 편집 전 STOP 도착: 어느 절이든 14/15, 대상 파일 절 13/15. 도착하지 않은 런은 대상 파일을 읽은 Bash 호출이 오류(`is_error`)로 끝나 그 호출에 주입 이벤트가 없었다(FINDINGS F3).
+
