@@ -1,0 +1,35 @@
+{
+ "goal_before": "status: active\nmax_iterations: 3\niterations: 0\nowner: e8ac971a-7ca2-4af9-8093-d07e0972420e\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] run the command the user gives\n## Decisions\n## Resume\n",
+ "session_id": "e8ac971a-7ca2-4af9-8093-d07e0972420e",
+ "argv": [
+  "claude",
+  "--plugin-dir",
+  "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/budget-run-010/CB4/plugins/budget",
+  "--plugin-dir",
+  "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/budget-run-010/CB4/plugins/free-hands",
+  "--session-id",
+  "e8ac971a-7ca2-4af9-8093-d07e0972420e",
+  "--model",
+  "sonnet",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash",
+  "Agent"
+ ],
+ "dialogs_answered": [
+  "yes"
+ ],
+ "elapsed_ms": 25155,
+ "transcript_rows": [
+  {
+   "bash": "echo four"
+  }
+ ],
+ "budget_files": {
+  "acks/e8ac971a-7ca2-4af9-8093-d07e0972420e.json": "{\"resets_at\":\"2026-10-14T13:00:00.000Z\"}",
+  "pending/e8ac971a-7ca2-4af9-8093-d07e0972420e.json": "{\"open\":false}",
+  "usage.json": "{\"kind\":\"five_hour\",\"used\":18,\"resets_at\":\"2026-10-14T13:00:00.000Z\",\"host\":\"claude\",\"at\":1791979307}"
+ },
+ "goal_after": "status: done\nmax_iterations: 3\niterations: 1\nowner: e8ac971a-7ca2-4af9-8093-d07e0972420e\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [x] run the command the user gives\n## Decisions\n## Resume\n"
+}

@@ -1,0 +1,86 @@
+[
+ {
+  "step": "01-marketplace-add",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "add",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/budget-run-010/XB1/market"
+  ],
+  "exit": 0,
+  "elapsed_ms": 18
+ },
+ {
+  "step": "02-plugin-add-budget",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "budget@because-i-needed"
+  ],
+  "exit": 0,
+  "elapsed_ms": 19
+ },
+ {
+  "step": "03-resolve-luna",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/budget-lab/run-0.1.0/subject/free-hands/scripts/latest-model.py",
+   "codex",
+   "luna",
+   "--effort",
+   "medium"
+  ],
+  "exit": 0,
+  "elapsed_ms": 467
+ },
+ {
+  "step": "04-bootstrap",
+  "argv": [
+   "codex",
+   "exec",
+   "--json",
+   "--dangerously-bypass-hook-trust",
+   "-m",
+   "gpt-6-luna",
+   "-c",
+   "model_reasoning_effort=\"medium\"",
+   "\u2026"
+  ],
+  "exit": 0,
+  "elapsed_ms": 5616
+ },
+ {
+  "step": "05-fresh",
+  "argv": [
+   "codex",
+   "exec",
+   "--json",
+   "--dangerously-bypass-hook-trust",
+   "-m",
+   "gpt-6-luna",
+   "-c",
+   "model_reasoning_effort=\"medium\"",
+   "\u2026"
+  ],
+  "exit": 0,
+  "elapsed_ms": 8028
+ },
+ {
+  "step": "06-answer",
+  "argv": [
+   "codex",
+   "exec",
+   "resume",
+   "01a13a4a-e424-7ce3-bc16-5ef93934d51d",
+   "\uc608",
+   "--json",
+   "--dangerously-bypass-hook-trust",
+   "-m",
+   "\u2026"
+  ],
+  "exit": 0,
+  "elapsed_ms": 8272
+ }
+]

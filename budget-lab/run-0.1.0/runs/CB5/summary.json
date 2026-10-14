@@ -1,0 +1,27 @@
+{
+ "session_id": "3bdf4ca4-b32a-4adb-b131-4cb33720cffd",
+ "argv": [
+  "claude",
+  "--plugin-dir",
+  "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/budget-run-010/CB5/plugins/budget",
+  "--session-id",
+  "3bdf4ca4-b32a-4adb-b131-4cb33720cffd",
+  "--model",
+  "sonnet",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash",
+  "Agent"
+ ],
+ "dialogs_answered": [
+  "yes"
+ ],
+ "elapsed_ms": 25210,
+ "transcript_rows": [],
+ "budget_files": {
+  "acks/3bdf4ca4-b32a-4adb-b131-4cb33720cffd.json": "{\"resets_at\":\"2026-10-14T13:00:00.000Z\"}",
+  "pending/3bdf4ca4-b32a-4adb-b131-4cb33720cffd.json": "{\"open\":false}",
+  "usage.json": "{\"kind\":\"five_hour\",\"used\":18,\"resets_at\":\"2026-10-14T13:00:00.000Z\",\"host\":\"claude\",\"at\":1791979335}"
+ }
+}

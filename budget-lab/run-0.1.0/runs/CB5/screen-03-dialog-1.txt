@@ -1,0 +1,50 @@
+
+ ▐▛███▛█   Claude Code v2.1.299
+▝▜██████▀  Sonnet 5.5 · Claude Team
+ ▝▝   ▝▝   /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/budget-run-010/CB5/repo
+
+
+❯ In one message, start two general-purpose subagents with the Agent tool. The first runs exactly echo sub-a with Bash, the second exactly echo sub-b. Report both outputs.
+
+⏺ Running 2 agents…
+   ├ Run echo sub-a · 0 tool uses
+   │ ⎿  Initializing…
+   └ Run echo sub-b · 0 tool uses
+     ⎿  Initializing…
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ ☐ budget
+
+지정한 1%에 도달했습니다, 작업을 이어서 진행하시겠어요?
+
+❯ 1. 예
+  2. 아니오
+  3. Type something.
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  4. Chat about this
+
+Enter to select · ↑/↓ to navigate · Esc to cancel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

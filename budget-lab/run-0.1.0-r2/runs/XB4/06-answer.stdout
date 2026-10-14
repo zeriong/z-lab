@@ -1,0 +1,11 @@
+{"type":"thread.started","thread_id":"01a13a4e-3a65-7090-a8e7-c46299c79eb3"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"item.completed","item":{"id":"item_1","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_2","type":"agent_message","text":"이어서 두 명령을 차례로 한 번씩 실행하겠습니다."}}
+{"type":"item.started","item":{"id":"item_3","type":"command_execution","command":"/bin/zsh -lc 'echo x-first'","aggregated_output":"","exit_code":null,"status":"in_progress"}}
+{"type":"item.completed","item":{"id":"item_3","type":"command_execution","command":"/bin/zsh -lc 'echo x-first'","aggregated_output":"x-first\n","exit_code":0,"status":"completed"}}
+{"type":"item.started","item":{"id":"item_4","type":"command_execution","command":"/bin/zsh -lc 'echo x-second'","aggregated_output":"","exit_code":null,"status":"in_progress"}}
+{"type":"item.completed","item":{"id":"item_4","type":"command_execution","command":"/bin/zsh -lc 'echo x-second'","aggregated_output":"x-second\n","exit_code":0,"status":"completed"}}
+{"type":"item.completed","item":{"id":"item_5","type":"agent_message","text":"`echo x-first` 출력:\n```text\nx-first\n```\n\n`echo x-second` 출력:\n```text\nx-second\n```"}}
+{"type":"turn.completed","usage":{"input_tokens":59149,"cached_input_tokens":50176,"cache_write_input_tokens":0,"output_tokens":255,"reasoning_output_tokens":27}}

@@ -1,0 +1,75 @@
+{
+ "auth_sha256_before": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "bootstrap": {
+  "thread_id": "01a13a4a-ce58-7693-92e4-c14978edb27c",
+  "commands": [],
+  "messages": [
+   "error: `--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "error: `--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "agent_message: ok"
+  ],
+  "usage": [
+   {
+    "input_tokens": 14540,
+    "cached_input_tokens": 11008,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 5,
+    "reasoning_output_tokens": 0
+   }
+  ]
+ },
+ "first": {
+  "thread_id": "01a13a4a-e424-7ce3-bc16-5ef93934d51d",
+  "commands": [],
+  "messages": [
+   "error: `--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "error: `--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "agent_message: I’ll run the requested command once and report the output.",
+   "agent_message: 지정한 1%에 도달했습니다, 작업을 이어서 진행하시겠어요? (예/아니오)"
+  ],
+  "usage": [
+   {
+    "input_tokens": 29260,
+    "cached_input_tokens": 25088,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 84,
+    "reasoning_output_tokens": 0
+   }
+  ]
+ },
+ "after_first": {
+  "pending/01a13a4a-e424-7ce3-bc16-5ef93934d51d.json": "{\"open\": true, \"resets_at\": 1792472293, \"used\": 72.0, \"threshold\": 1}",
+  "usage.json": "{\"kind\": \"seven_day\", \"used\": 72.0, \"resets_at\": 1792472293, \"host\": \"codex\", \"at\": 1791979353}"
+ },
+ "goal_after_first": null,
+ "answer": {
+  "thread_id": "01a13a4a-e424-7ce3-bc16-5ef93934d51d",
+  "commands": [
+   {
+    "command": "/bin/zsh -lc 'echo x-one'",
+    "exit_code": 0,
+    "output": "x-one\n"
+   }
+  ],
+  "messages": [
+   "error: `--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "error: `--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "agent_message: `echo x-one` output:\n\n```text\nx-one\n```"
+  ],
+  "usage": [
+   {
+    "input_tokens": 58880,
+    "cached_input_tokens": 50176,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 158,
+    "reasoning_output_tokens": 20
+   }
+  ]
+ },
+ "budget_files": {
+  "acks/01a13a4a-e424-7ce3-bc16-5ef93934d51d.json": "{\"resets_at\": 1792472293}",
+  "usage.json": "{\"kind\": \"seven_day\", \"used\": 72.0, \"resets_at\": 1792472293, \"host\": \"codex\", \"at\": 1791979361}"
+ },
+ "codex_home_removed": true,
+ "auth_sha256_after": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1"
+}

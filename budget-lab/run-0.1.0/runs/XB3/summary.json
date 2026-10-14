@@ -1,0 +1,55 @@
+{
+ "auth_sha256_before": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "bootstrap": {
+  "thread_id": "01a13a4b-c15f-7c81-b887-b148338904b4",
+  "commands": [],
+  "messages": [
+   "error: `--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "error: `--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "agent_message: ok"
+  ],
+  "usage": [
+   {
+    "input_tokens": 14540,
+    "cached_input_tokens": 11008,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 5,
+    "reasoning_output_tokens": 0
+   }
+  ]
+ },
+ "first": {
+  "thread_id": "01a13a4b-d445-7de1-9990-3f3ce68b0210",
+  "commands": [
+   {
+    "command": "/bin/zsh -lc 'echo x-three'",
+    "exit_code": 0,
+    "output": "x-three\n"
+   }
+  ],
+  "messages": [
+   "error: `--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "error: `--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "agent_message: I’ll run that command once and return its output.",
+   "agent_message: ```text\nx-three\n```"
+  ],
+  "usage": [
+   {
+    "input_tokens": 29179,
+    "cached_input_tokens": 22016,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 64,
+    "reasoning_output_tokens": 0
+   }
+  ]
+ },
+ "after_first": {
+  "usage.json": "{\"kind\": \"seven_day\", \"used\": 72.0, \"resets_at\": 1792472293, \"host\": \"codex\", \"at\": 1791979414}"
+ },
+ "goal_after_first": null,
+ "budget_files": {
+  "usage.json": "{\"kind\": \"seven_day\", \"used\": 72.0, \"resets_at\": 1792472293, \"host\": \"codex\", \"at\": 1791979414}"
+ },
+ "codex_home_removed": true,
+ "auth_sha256_after": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1"
+}

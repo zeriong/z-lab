@@ -1,0 +1,81 @@
+{
+ "auth_sha256_before": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "bootstrap": {
+  "thread_id": "01a13a4e-2873-7a23-871e-86df9899931c",
+  "commands": [],
+  "messages": [
+   "error: `--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "error: `--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "agent_message: ok"
+  ],
+  "usage": [
+   {
+    "input_tokens": 14558,
+    "cached_input_tokens": 11008,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 5,
+    "reasoning_output_tokens": 0
+   }
+  ]
+ },
+ "first": {
+  "thread_id": "01a13a4e-3a65-7090-a8e7-c46299c79eb3",
+  "commands": [],
+  "messages": [
+   "error: `--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "error: `--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "agent_message: I’ll run each command once, sequentially, and report the exact outputs.",
+   "agent_message: 지정한 1%에 도달했습니다, 작업을 이어서 진행하시겠어요? (예/아니오)"
+  ],
+  "usage": [
+   {
+    "input_tokens": 29352,
+    "cached_input_tokens": 25088,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 112,
+    "reasoning_output_tokens": 0
+   }
+  ]
+ },
+ "after_first": {
+  "pending/01a13a4e-3a65-7090-a8e7-c46299c79eb3.json": "{\"open\": true, \"resets_at\": 1792472293, \"used\": 72.0, \"threshold\": 1}",
+  "usage.json": "{\"kind\": \"seven_day\", \"used\": 72.0, \"resets_at\": 1792472293, \"host\": \"codex\", \"at\": 1791979572}"
+ },
+ "goal_after_first": null,
+ "answer": {
+  "thread_id": "01a13a4e-3a65-7090-a8e7-c46299c79eb3",
+  "commands": [
+   {
+    "command": "/bin/zsh -lc 'echo x-first'",
+    "exit_code": 0,
+    "output": "x-first\n"
+   },
+   {
+    "command": "/bin/zsh -lc 'echo x-second'",
+    "exit_code": 0,
+    "output": "x-second\n"
+   }
+  ],
+  "messages": [
+   "error: `--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "error: `--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+   "agent_message: 이어서 두 명령을 차례로 한 번씩 실행하겠습니다.",
+   "agent_message: `echo x-first` 출력:\n```text\nx-first\n```\n\n`echo x-second` 출력:\n```text\nx-second\n```"
+  ],
+  "usage": [
+   {
+    "input_tokens": 59149,
+    "cached_input_tokens": 50176,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 255,
+    "reasoning_output_tokens": 27
+   }
+  ]
+ },
+ "budget_files": {
+  "acks/01a13a4e-3a65-7090-a8e7-c46299c79eb3.json": "{\"resets_at\": 1792472293}",
+  "usage.json": "{\"kind\": \"seven_day\", \"used\": 72.0, \"resets_at\": 1792472293, \"host\": \"codex\", \"at\": 1791979583}"
+ },
+ "codex_home_removed": true,
+ "auth_sha256_after": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1"
+}

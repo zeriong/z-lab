@@ -1,0 +1,35 @@
+{
+ "session_id": "7e4b9c82-fed1-4079-b0e8-8eeb59011c6e",
+ "argv": [
+  "claude",
+  "--plugin-dir",
+  "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/budget-run-010-r2/CB6/plugins/budget",
+  "--session-id",
+  "7e4b9c82-fed1-4079-b0e8-8eeb59011c6e",
+  "--model",
+  "sonnet",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash",
+  "Agent"
+ ],
+ "dialogs_answered": [
+  "yes"
+ ],
+ "dialog_on_screen_at_end": false,
+ "elapsed_ms": 21164,
+ "transcript_rows": [
+  {
+   "bash": "echo first"
+  },
+  {
+   "bash": "echo second"
+  }
+ ],
+ "budget_files": {
+  "acks/7e4b9c82-fed1-4079-b0e8-8eeb59011c6e.json": "{\"resets_at\":\"2026-10-14T13:00:00.000Z\"}",
+  "pending/7e4b9c82-fed1-4079-b0e8-8eeb59011c6e.json": "{\"open\":false}",
+  "usage.json": "{\"kind\":\"five_hour\",\"used\":19,\"resets_at\":\"2026-10-14T13:00:00.000Z\",\"host\":\"claude\",\"at\":1791979553}"
+ }
+}
