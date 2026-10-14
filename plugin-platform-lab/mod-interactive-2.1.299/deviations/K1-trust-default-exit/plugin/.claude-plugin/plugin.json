@@ -1,0 +1,9 @@
+{
+ "name": "ask-probe",
+ "version": "0.0.0",
+ "description": "lab: interactive mod probe",
+ "author": {
+  "name": "lab"
+ },
+ "types": "./types/index.d.ts"
+}

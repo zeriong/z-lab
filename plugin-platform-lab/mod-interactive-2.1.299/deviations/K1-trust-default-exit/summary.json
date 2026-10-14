@@ -1,0 +1,19 @@
+{
+ "argv": [
+  "claude",
+  "--plugin-dir",
+  "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-interactive-2299/K1/ask-probe",
+  "--model",
+  "sonnet",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash",
+  "Agent"
+ ],
+ "session_id": null,
+ "trust_dialog": true,
+ "dialogs_answered": 0,
+ "elapsed_ms": 312334,
+ "rows": []
+}

@@ -1,0 +1,5 @@
+{"at":1791978097009,"event":"session.start"}
+{"at":1791978097477,"event":"session.measure","rateLimits":[{"kind":"five_hour","percentUsed":4,"resetsAt":"2026-10-14T13:00:00.000Z"},{"kind":"seven_day","percentUsed":12,"resetsAt":"2026-10-21T03:00:00.000Z"}]}
+{"at":1791978102331,"event":"turn.start","turnId":"5565496a-f6d6-40ce-916e-615b47076234"}
+{"at":1791978105495,"event":"turn.complete"}
+{"at":1791978105505,"event":"session.measure","rateLimits":[{"kind":"five_hour","percentUsed":4,"resetsAt":"2026-10-14T13:00:00.000Z"},{"kind":"seven_day","percentUsed":12,"resetsAt":"2026-10-21T03:00:00.000Z"}]}

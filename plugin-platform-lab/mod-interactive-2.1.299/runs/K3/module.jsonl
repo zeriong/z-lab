@@ -1,0 +1,7 @@
+{"at":1791978144197,"event":"session.start"}
+{"at":1791978144562,"event":"session.measure","rateLimits":[{"kind":"five_hour","percentUsed":4,"resetsAt":"2026-10-14T13:00:00.000Z"},{"kind":"seven_day","percentUsed":12,"resetsAt":"2026-10-21T03:00:00.000Z"}]}
+{"at":1791978149532,"event":"turn.start","turnId":"330b28a6-5b3d-4d34-8dca-2e7f533c8366"}
+{"at":1791978153088,"event":"tool.call","command":"echo two","agentId":null,"answer":"아니오"}
+{"at":1791978153090,"event":"abort","ok":true}
+{"at":1791978153097,"event":"turn.complete"}
+{"at":1791978153110,"event":"session.measure","rateLimits":[{"kind":"five_hour","percentUsed":4,"resetsAt":"2026-10-14T13:00:00.000Z"},{"kind":"seven_day","percentUsed":12,"resetsAt":"2026-10-21T03:00:00.000Z"}]}

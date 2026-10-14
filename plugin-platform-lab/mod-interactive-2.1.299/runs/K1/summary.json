@@ -1,0 +1,65 @@
+{
+ "argv": [
+  "claude",
+  "--plugin-dir",
+  "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-interactive-2299/K1/ask-probe",
+  "--model",
+  "sonnet",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash",
+  "Agent"
+ ],
+ "session_id": null,
+ "trust_dialog": true,
+ "dialogs_answered": 0,
+ "elapsed_ms": 16241,
+ "rows": [
+  {
+   "at": 1791978097009,
+   "event": "session.start"
+  },
+  {
+   "at": 1791978097477,
+   "event": "session.measure",
+   "rateLimits": [
+    {
+     "kind": "five_hour",
+     "percentUsed": 4,
+     "resetsAt": "2026-10-14T13:00:00.000Z"
+    },
+    {
+     "kind": "seven_day",
+     "percentUsed": 12,
+     "resetsAt": "2026-10-21T03:00:00.000Z"
+    }
+   ]
+  },
+  {
+   "at": 1791978102331,
+   "event": "turn.start",
+   "turnId": "5565496a-f6d6-40ce-916e-615b47076234"
+  },
+  {
+   "at": 1791978105495,
+   "event": "turn.complete"
+  },
+  {
+   "at": 1791978105505,
+   "event": "session.measure",
+   "rateLimits": [
+    {
+     "kind": "five_hour",
+     "percentUsed": 4,
+     "resetsAt": "2026-10-14T13:00:00.000Z"
+    },
+    {
+     "kind": "seven_day",
+     "percentUsed": 12,
+     "resetsAt": "2026-10-21T03:00:00.000Z"
+    }
+   ]
+  }
+ ]
+}

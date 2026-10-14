@@ -1,0 +1,6 @@
+{"at":1791978188354,"event":"session.start"}
+{"at":1791978188697,"event":"session.measure","rateLimits":[{"kind":"five_hour","percentUsed":4,"resetsAt":"2026-10-14T13:00:00.000Z"},{"kind":"seven_day","percentUsed":12,"resetsAt":"2026-10-21T03:00:00.000Z"}]}
+{"at":1791978193703,"event":"turn.start","turnId":"6284503e-f80e-4ab7-a8b0-c20b6738e104"}
+{"at":1791978195522,"event":"tool.call","command":"echo fh","agentId":null,"answer":"rejected: HooksError: ask-probe: $.ui.ask: no answer (PreToolUse:AskUserQuestion hook error: free-hands: asking the user is off while the goal is open (1 items left in /priva)"}
+{"at":1791978203917,"event":"turn.complete"}
+{"at":1791978203926,"event":"session.measure","rateLimits":[{"kind":"five_hour","percentUsed":4,"resetsAt":"2026-10-14T13:00:00.000Z"},{"kind":"seven_day","percentUsed":12,"resetsAt":"2026-10-21T03:00:00.000Z"}]}

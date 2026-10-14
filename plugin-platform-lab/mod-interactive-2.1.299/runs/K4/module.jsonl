@@ -1,0 +1,17 @@
+{"at":1791978166025,"event":"session.start"}
+{"at":1791978166351,"event":"session.measure","rateLimits":[{"kind":"five_hour","percentUsed":4,"resetsAt":"2026-10-14T13:00:00.000Z"},{"kind":"seven_day","percentUsed":12,"resetsAt":"2026-10-21T03:00:00.000Z"}]}
+{"at":1791978171330,"event":"turn.start","turnId":"b7a79312-d91d-42f7-be7a-0fdcdcefe90d"}
+{"at":1791978173212,"event":"turn.start","turnId":"540a2cbc-55c2-4db7-9fc8-ac0994833bad"}
+{"at":1791978173711,"event":"turn.start","turnId":"0e98cae2-a10e-4bad-8cc7-6d7612c1a9b0"}
+{"at":1791978175238,"event":"turn.complete"}
+{"at":1791978175246,"event":"session.measure","rateLimits":[{"kind":"five_hour","percentUsed":4,"resetsAt":"2026-10-14T13:00:00.000Z"},{"kind":"seven_day","percentUsed":12,"resetsAt":"2026-10-21T03:00:00.000Z"}]}
+{"at":1791978175370,"event":"tool.call","command":"echo sub-a","agentId":"a47d978680b846daa","answer":"예"}
+{"at":1791978175370,"event":"tool.call","command":"echo sub-b","agentId":"af82260fd3b81797c","answer":"예"}
+{"at":1791978177860,"event":"turn.complete"}
+{"at":1791978177947,"event":"turn.start","turnId":"79c8ebea-b689-45c4-ba3a-7c8037c1a47b"}
+{"at":1791978178054,"event":"turn.complete"}
+{"at":1791978179413,"event":"turn.complete"}
+{"at":1791978179425,"event":"session.measure","rateLimits":[{"kind":"five_hour","percentUsed":4,"resetsAt":"2026-10-14T13:00:00.000Z"},{"kind":"seven_day","percentUsed":12,"resetsAt":"2026-10-21T03:00:00.000Z"}]}
+{"at":1791978179458,"event":"turn.start","turnId":"e2aa8ab7-0951-46ff-a7ef-09dbac8fb06c"}
+{"at":1791978180759,"event":"turn.complete"}
+{"at":1791978180767,"event":"session.measure","rateLimits":[{"kind":"five_hour","percentUsed":4,"resetsAt":"2026-10-14T13:00:00.000Z"},{"kind":"seven_day","percentUsed":12,"resetsAt":"2026-10-21T03:00:00.000Z"}]}

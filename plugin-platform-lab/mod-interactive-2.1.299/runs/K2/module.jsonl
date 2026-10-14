@@ -1,0 +1,6 @@
+{"at":1791978122856,"event":"session.start"}
+{"at":1791978123305,"event":"session.measure","rateLimits":[{"kind":"five_hour","percentUsed":4,"resetsAt":"2026-10-14T13:00:00.000Z"},{"kind":"seven_day","percentUsed":12,"resetsAt":"2026-10-21T03:00:00.000Z"}]}
+{"at":1791978128191,"event":"turn.start","turnId":"072e89ed-0845-4e30-8b9f-bc95368b034c"}
+{"at":1791978131248,"event":"tool.call","command":"echo one","agentId":null,"answer":"예"}
+{"at":1791978133353,"event":"turn.complete"}
+{"at":1791978133362,"event":"session.measure","rateLimits":[{"kind":"five_hour","percentUsed":4,"resetsAt":"2026-10-14T13:00:00.000Z"},{"kind":"seven_day","percentUsed":12,"resetsAt":"2026-10-21T03:00:00.000Z"}]}

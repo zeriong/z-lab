@@ -1,0 +1,50 @@
+
+ ▐▛███▛█   Claude Code v2.1.299
+▝▜██████▀  Sonnet 5.5 · Claude Team
+ ▝▝   ▝▝   /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-interactive-2299/K2/repo
+
+
+❯ Run exactly this shell command once and report its output: echo one
+
+  Ran 1 shell command
+
+⏺ 명령 실행 결과:
+
+  one
+
+✻ Crunched for 4s · done 8:42 PM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+probe-band five_hour=4                                                                                                                                                                              [-]
+                                                                                                  tmux focus-events off · add 'set -g focus-events on' to ~/.tmux.conf and reattach for focus tracking
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ 
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⚠ ask-probe: probe-status 4
+
+  ⏵⏵ accept edits on (shift+tab to cycle) · ← 1 agent

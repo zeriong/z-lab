@@ -1,0 +1,50 @@
+
+ ▐▛███▛█   Claude Code v2.1.299
+▝▜██████▀  Sonnet 5.5 · Claude Team
+ ▝▝   ▝▝   /private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/mod-interactive-2299/K4/repo
+
+
+❯ In one message, start two general-purpose subagents with the Agent tool. The first runs exactly echo sub-a with Bash, the second exactly echo sub-b. Report both outputs.
+
+⏺ 2 background agents launched (↓ to manage)
+   ├ Run echo sub-a
+   └ Run echo sub-b
+
+⏺ 서브에이전트 두 개를 동시에 시작했고, 지금은 백그라운드에서 실행 중입니다. 각각 echo sub-a와 echo sub-b를 실행합니다. 두 에이전트의 결과는 아직 받지 못했습니다. 완료 알림이 오면 출력값을
+  보고하겠습니다.
+
+✻ Waiting for 2 background agents to finish
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ ☐ Plugin
+
+probe: continue?
+
+❯ 1. 예
+  2. 아니오
+  3. Type something.
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  4. Chat about this
+
+Enter to select · ↑/↓ to navigate · Esc to cancel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
