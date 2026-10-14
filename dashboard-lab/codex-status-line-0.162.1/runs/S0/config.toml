@@ -1,0 +1,5 @@
+model = "gpt-6-luna"
+model_reasoning_effort = "medium"
+
+[projects."/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/dashboard-codex-status-010/S0/repo"]
+trust_level = "trusted"
