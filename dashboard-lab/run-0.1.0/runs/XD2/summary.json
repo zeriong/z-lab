@@ -1,0 +1,29 @@
+{
+ "auth_sha256_before": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1",
+ "commands": [
+  {
+   "command": "/bin/zsh -lc 'python3 \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/dashboard-run-010/XD2/codex-home/plugins/cache/because-i-needed/dashboard/0.1.0/scripts/dashboard.py\" --host codex'",
+   "exit_code": 0,
+   "output": "No enabled because-i-needed plugin declares a state to show.\n"
+  }
+ ],
+ "messages": [
+  "I’ll run the audit command from the project directory and report its output as-is.",
+  "No enabled because-i-needed plugin declares a state to show."
+ ],
+ "errors": [
+  "`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+  "`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."
+ ],
+ "usage": [
+  {
+   "input_tokens": 30307,
+   "cached_input_tokens": 25088,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 142,
+   "reasoning_output_tokens": 0
+  }
+ ],
+ "codex_home_removed": true,
+ "auth_sha256_after": "6e929f99d156aad176ba4bfe10eb27c3f6a63a5fd8de95934cd82405c4b239b1"
+}

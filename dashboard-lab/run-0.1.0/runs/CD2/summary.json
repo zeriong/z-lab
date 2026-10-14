@@ -1,0 +1,16 @@
+{
+ "argv": [
+  "claude",
+  "--plugin-dir",
+  "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/dashboard-run-010/CD2/plugins/dashboard",
+  "--model",
+  "sonnet",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash"
+ ],
+ "plugin_dirs": "",
+ "reply_done": true,
+ "elapsed_ms": 20180
+}

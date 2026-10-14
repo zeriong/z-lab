@@ -1,0 +1,87 @@
+[
+ {
+  "step": "01-marketplace-add",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "add",
+   "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/dashboard-run-010/XD1/market"
+  ],
+  "exit": 0,
+  "elapsed_ms": 17
+ },
+ {
+  "step": "02-plugin-add-dashboard",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "dashboard@because-i-needed"
+  ],
+  "exit": 0,
+  "elapsed_ms": 17
+ },
+ {
+  "step": "03-plugin-add-budget",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "budget@because-i-needed"
+  ],
+  "exit": 0,
+  "elapsed_ms": 15
+ },
+ {
+  "step": "04-plugin-add-free-hands",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "free-hands@because-i-needed"
+  ],
+  "exit": 0,
+  "elapsed_ms": 17
+ },
+ {
+  "step": "05-plugin-add-peer-coding",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "peer-coding@because-i-needed"
+  ],
+  "exit": 0,
+  "elapsed_ms": 18
+ },
+ {
+  "step": "06-resolve-luna",
+  "argv": [
+   "/Library/Developer/CommandLineTools/usr/bin/python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/dashboard-lab/run-0.1.0/subject/free-hands/scripts/latest-model.py",
+   "codex",
+   "luna",
+   "--effort",
+   "medium"
+  ],
+  "exit": 0,
+  "elapsed_ms": 470
+ },
+ {
+  "step": "07-audit",
+  "argv": [
+   "codex",
+   "exec",
+   "--json",
+   "--dangerously-bypass-hook-trust",
+   "-m",
+   "gpt-6-luna",
+   "-c",
+   "model_reasoning_effort=\"medium\"",
+   "\u2026"
+  ],
+  "exit": 0,
+  "elapsed_ms": 13576
+ }
+]

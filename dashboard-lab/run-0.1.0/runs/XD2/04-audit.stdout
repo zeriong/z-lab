@@ -1,0 +1,9 @@
+{"type":"thread.started","thread_id":"01a13a50-c559-7401-b17c-3ee135eb7dd9"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"item.completed","item":{"id":"item_1","type":"error","message":"`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."}}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_2","type":"agent_message","text":"I’ll run the audit command from the project directory and report its output as-is."}}
+{"type":"item.started","item":{"id":"item_3","type":"command_execution","command":"/bin/zsh -lc 'python3 \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/dashboard-run-010/XD2/codex-home/plugins/cache/because-i-needed/dashboard/0.1.0/scripts/dashboard.py\" --host codex'","aggregated_output":"","exit_code":null,"status":"in_progress"}}
+{"type":"item.completed","item":{"id":"item_3","type":"command_execution","command":"/bin/zsh -lc 'python3 \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/dashboard-run-010/XD2/codex-home/plugins/cache/because-i-needed/dashboard/0.1.0/scripts/dashboard.py\" --host codex'","aggregated_output":"No enabled because-i-needed plugin declares a state to show.\n","exit_code":0,"status":"completed"}}
+{"type":"item.completed","item":{"id":"item_4","type":"agent_message","text":"No enabled because-i-needed plugin declares a state to show."}}
+{"type":"turn.completed","usage":{"input_tokens":30307,"cached_input_tokens":25088,"cache_write_input_tokens":0,"output_tokens":142,"reasoning_output_tokens":0}}
