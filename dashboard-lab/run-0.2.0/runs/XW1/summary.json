@@ -1,0 +1,29 @@
+{
+ "auth_sha256_before": "1ea1e911b75d665ed266cfb4bd1a0009d234607e320a49a63b56ea21f4bb6fb5",
+ "commands": [
+  {
+   "command": "/bin/zsh -lc 'python3 \"/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/dashboard-run-020/XW1/codex-home/plugins/cache/because-i-needed/dashboard/0.1.0/scripts/dashboard.py\" --host codex'",
+   "exit_code": 0,
+   "output": "because-i-needed\n💰budget: 80%   🙌free-hands: active 0/40 · 1 open (project) · owner lab-sess   🤝peer-coding: on (project)\n  budget: 80% (source: global)   project: unset   global: 80%\n  free-hands: active 0/40 · 1 open (source: project)   project: active 0/40 · 1 open   global: unset\n  peer-coding: on (source: project)   project: on   global: unset\n"
+  }
+ ],
+ "messages": [
+  "I’m applying the `dashboard:audit` skill. I’ll run its read-only Codex command from the project directory and report the output as-is.",
+  "because-i-needed\n💰budget: 80%   🙌free-hands: active 0/40 · 1 open (project) · owner lab-sess   🤝peer-coding: on (project)\n  budget: 80% (source: global)   project: unset   global: 80%\n  free-hands: active 0/40 · 1 open (source: project)   project: active 0/40 · 1 open   global: unset\n  peer-coding: on (source: project)   project: on   global: unset"
+ ],
+ "errors": [
+  "`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation.",
+  "`--dangerously-bypass-hook-trust` is enabled. Enabled hooks may run without review for this invocation."
+ ],
+ "usage": [
+  {
+   "input_tokens": 31372,
+   "cached_input_tokens": 23296,
+   "cache_write_input_tokens": 0,
+   "output_tokens": 266,
+   "reasoning_output_tokens": 0
+  }
+ ],
+ "codex_home_removed": true,
+ "auth_sha256_after": "1ea1e911b75d665ed266cfb4bd1a0009d234607e320a49a63b56ea21f4bb6fb5"
+}

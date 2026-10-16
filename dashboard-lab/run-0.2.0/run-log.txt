@@ -1,0 +1,8 @@
+V00: running
+V00: done
+CW1: running
+CW1: done
+CW2: running
+CW2: done
+XW1: running
+XW1: done

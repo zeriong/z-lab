@@ -1,0 +1,22 @@
+{
+ "argv": [
+  "claude",
+  "--plugin-dir",
+  "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/dashboard-run-020/CW1/plugins/dashboard",
+  "--plugin-dir",
+  "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/dashboard-run-020/CW1/plugins/budget",
+  "--plugin-dir",
+  "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/dashboard-run-020/CW1/plugins/free-hands",
+  "--plugin-dir",
+  "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/dashboard-run-020/CW1/plugins/peer-coding",
+  "--model",
+  "sonnet",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash"
+ ],
+ "plugin_dirs": "/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/dashboard-run-020/CW1/plugins/budget:/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/dashboard-run-020/CW1/plugins/free-hands:/private/var/folders/jx/81xz9_xj7x31h6mwxd7qrlj40000gn/T/dashboard-run-020/CW1/plugins/peer-coding",
+ "reply_done": true,
+ "elapsed_ms": 16129
+}
