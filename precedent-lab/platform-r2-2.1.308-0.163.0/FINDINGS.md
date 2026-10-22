@@ -1,8 +1,8 @@
-# FINDINGS — platform r2: Claude 경로 규칙 로딩, 2.1.308 훅 상한 (2026-10-22, Codex 부분 대기)
+# FINDINGS — platform r2: Claude 경로 규칙 로딩, 2.1.308 훅 상한 (2026-10-22)
 
 대상: 합성 fixture. Claude Code **2.1.308**, `claude-sonnet-5-5`, `--setting-sources project`.
 Claude 6케이스 × 1런을 돌렸고, 자가보고 비용은 `runs-public/*/summary.json` 의 `cost_usd` 합이다.
-Codex 4케이스는 계정 사용량 한도로 실행 오류였다. 결과가 아니며 재실행 대기다(`RUNLOG.md`).
+Codex 4케이스는 계정 사용량 한도로 실행 오류였다. 결과가 아니다. 이후 관리자 결정(D5, `../analyze/improvement-backlog.md`)으로 재실행하지 않는다(`RUNLOG.md`).
 
 ## 질문에 대한 답 (Claude)
 
@@ -33,7 +33,7 @@ Codex 4케이스는 계정 사용량 한도로 실행 오류였다. 결과가 �
 
 ## 측정하지 않은 것
 
-- Codex 4케이스(apply_patch 전달, 중첩 `AGENTS.md`, 100,000자 상한). 재실행 대기.
+- Codex 4케이스(apply_patch 전달, 중첩 `AGENTS.md`, 100,000자 상한). 관리자 결정 D5 로 측정 범위에서 뺐다.
 - 대화형 세션, 다른 모델, glob 문법 세부, 규칙이 행동을 바꾸는지.
 - 같은 규칙이 한 세션에서 두 번째로 닿을 때 다시 붙는지.
 - n=1 이다.
