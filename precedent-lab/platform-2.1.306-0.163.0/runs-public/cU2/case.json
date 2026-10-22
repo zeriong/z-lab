@@ -1,0 +1,12 @@
+{
+ "log": "<home>/WorkSpace/Z-Work/z-lab/precedent-lab/platform-2.1.306-0.163.0/runs/cU2/probe.jsonl",
+ "emit": [
+  {
+   "event": "UserPromptSubmit",
+   "tools": null,
+   "size": 10050,
+   "start": "ZQ-7508654f",
+   "end": "ZQ-5416b2d1"
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "case": "cS1",
+ "host": "claude",
+ "cli": "2.1.306 (Claude Code)",
+ "seen_line": "SEEN: ZQ-9ccc657a ZQ-5ef6d1a2",
+ "verdicts": [
+  {
+   "event": "PostToolUse",
+   "size": 400,
+   "verdict": "delivered",
+   "answer_start": true,
+   "answer_end": true,
+   "record_start_hits": 2,
+   "record_end_hits": 2
+  }
+ ],
+ "probe_events": [
+  {
+   "hook_event_name": "PostToolUse",
+   "event_arg": "PostToolUse",
+   "tool_name": "Read",
+   "cwd": "<scratch>/cS1/repo",
+   "agent_id": "ab521f0d187d85b12",
+   "agent_type": "general-purpose",
+   "emitted": {
+    "index": 0,
+    "chars": 400
+   }
+  }
+ ],
+ "rc": 0,
+ "seconds": 14.1,
+ "session_id": "2b86c25c-b988-44ea-994b-dd0d8778dbb7",
+ "model": "claude-sonnet-5-5",
+ "cost_usd": 0.1667594,
+ "transcript_files": 4,
+ "hook_context_records": 2
+}

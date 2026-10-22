@@ -1,0 +1,8 @@
+```text
+export const alpha = 1;
+ls: does-not-exist: No such file or directory
+```
+
+Exit code: 1.
+
+SEEN: ZQ-0cdbd911 ZQ-c8ee69cb

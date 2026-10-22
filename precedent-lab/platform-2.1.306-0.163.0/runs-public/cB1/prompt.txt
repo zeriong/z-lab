@@ -1,0 +1,1 @@
+Use the Bash tool to run exactly: `cat src/alpha.ts` Then end your reply with exactly one line: `SEEN:` followed by every string of the form `ZQ-` plus 8 hex characters that you received in this session from anything other than this prompt (for example hook or system context), separated by spaces — or `SEEN: none`.

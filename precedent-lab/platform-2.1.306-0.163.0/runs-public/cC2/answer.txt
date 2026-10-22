@@ -1,0 +1,5 @@
+`src/alpha.ts` contains one line: `export const alpha = 1;`
+
+The Read call came back with hook context that was truncated. I grepped the saved full output and found two ZQ- strings in it. I only saw ZQ-7500e22d in the truncated preview, so ZQ-05d7f0c6 came only from the grep. Both came from the hook output and neither is in your prompt, so I'm listing both.
+
+SEEN: ZQ-7500e22d ZQ-05d7f0c6

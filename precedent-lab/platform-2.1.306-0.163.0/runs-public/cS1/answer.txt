@@ -1,0 +1,8 @@
+The subagent read `src/alpha.ts`, which contains only `export const alpha = 1;`. It returned two strings, both from the PostToolUse:Read hook's additional context rather than from the file:
+
+- `ZQ-9ccc657a`
+- `ZQ-5ef6d1a2`
+
+I saw no such strings in my own context. The only ones I received outside your prompt are these two, which came in through the subagent's report.
+
+SEEN: ZQ-9ccc657a ZQ-5ef6d1a2

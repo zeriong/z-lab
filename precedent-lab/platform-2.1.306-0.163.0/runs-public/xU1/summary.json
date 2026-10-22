@@ -1,0 +1,44 @@
+{
+ "case": "xU1",
+ "host": "codex",
+ "cli": "codex-cli 0.163.0",
+ "seen_line": "SEEN: ZQ-62871bec ZQ-faa767ee",
+ "verdicts": [
+  {
+   "event": "UserPromptSubmit",
+   "size": 400,
+   "verdict": "delivered",
+   "answer_start": true,
+   "answer_end": true,
+   "record_start_hits": 2,
+   "record_end_hits": 2
+  }
+ ],
+ "probe_events": [
+  {
+   "hook_event_name": "UserPromptSubmit",
+   "event_arg": "UserPromptSubmit",
+   "tool_name": null,
+   "cwd": "<scratch>/xU1/repo",
+   "agent_id": null,
+   "agent_type": null,
+   "emitted": {
+    "index": 0,
+    "chars": 400
+   }
+  }
+ ],
+ "rc": 0,
+ "seconds": 6.1,
+ "model": "gpt-6.1-sol",
+ "rollout_files": 1,
+ "rollout_types": {
+  "session_meta": 1,
+  "event_msg": 6,
+  "response_item": 7,
+  "world_state": 1,
+  "turn_context": 1,
+  "token_usage_record": 1
+ },
+ "codex_home_removed": true
+}

@@ -1,0 +1,12 @@
+{
+ "log": "<home>/WorkSpace/Z-Work/z-lab/precedent-lab/platform-2.1.306-0.163.0/runs/xB1/probe.jsonl",
+ "emit": [
+  {
+   "event": "PostToolUse",
+   "tools": null,
+   "size": 400,
+   "start": "ZQ-48700d4c",
+   "end": "ZQ-b6d6a7fa"
+  }
+ ]
+}

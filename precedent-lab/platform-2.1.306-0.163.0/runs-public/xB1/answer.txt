@@ -1,0 +1,5 @@
+```ts
+export const alpha = 1;
+```
+
+SEEN: ZQ-48700d4c ZQ-b6d6a7fa

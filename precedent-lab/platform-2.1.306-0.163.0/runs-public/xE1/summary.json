@@ -1,0 +1,71 @@
+{
+ "case": "xE1",
+ "host": "codex",
+ "cli": "codex-cli 0.163.0",
+ "seen_line": "SEEN: ZQ-148b6c4c ZQ-ee8e95c2",
+ "verdicts": [
+  {
+   "event": "PostToolUse",
+   "size": 400,
+   "verdict": "delivered",
+   "answer_start": true,
+   "answer_end": true,
+   "record_start_hits": 2,
+   "record_end_hits": 2
+  }
+ ],
+ "probe_events": [
+  {
+   "hook_event_name": "PostToolUse",
+   "event_arg": "PostToolUse",
+   "tool_name": "Bash",
+   "cwd": "<scratch>/xE1/repo",
+   "agent_id": null,
+   "agent_type": null,
+   "emitted": {
+    "index": 0,
+    "chars": 400
+   }
+  },
+  {
+   "hook_event_name": "PostToolUse",
+   "event_arg": "PostToolUse",
+   "tool_name": "Bash",
+   "cwd": "<scratch>/xE1/repo",
+   "agent_id": null,
+   "agent_type": null,
+   "emitted": null
+  },
+  {
+   "hook_event_name": "PostToolUse",
+   "event_arg": "PostToolUse",
+   "tool_name": "apply_patch",
+   "cwd": "<scratch>/xE1/repo",
+   "agent_id": null,
+   "agent_type": null,
+   "emitted": null
+  },
+  {
+   "hook_event_name": "PostToolUse",
+   "event_arg": "PostToolUse",
+   "tool_name": "Bash",
+   "cwd": "<scratch>/xE1/repo",
+   "agent_id": null,
+   "agent_type": null,
+   "emitted": null
+  }
+ ],
+ "rc": 0,
+ "seconds": 35.0,
+ "model": "gpt-6.1-sol",
+ "rollout_files": 1,
+ "rollout_types": {
+  "session_meta": 1,
+  "event_msg": 13,
+  "response_item": 12,
+  "world_state": 1,
+  "turn_context": 1,
+  "token_usage_record": 3
+ },
+ "codex_home_removed": true
+}

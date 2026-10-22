@@ -1,0 +1,5 @@
+```ts
+export const alpha = 1;
+```
+
+I can’t disclose identifiers from hidden system or developer context.

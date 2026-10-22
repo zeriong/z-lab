@@ -1,0 +1,38 @@
+{
+ "case": "cU1",
+ "host": "claude",
+ "cli": "2.1.306 (Claude Code)",
+ "seen_line": "SEEN: ZQ-e170952e ZQ-f28dace2",
+ "verdicts": [
+  {
+   "event": "UserPromptSubmit",
+   "size": 9990,
+   "verdict": "delivered",
+   "answer_start": true,
+   "answer_end": true,
+   "record_start_hits": 2,
+   "record_end_hits": 2
+  }
+ ],
+ "probe_events": [
+  {
+   "hook_event_name": "UserPromptSubmit",
+   "event_arg": "UserPromptSubmit",
+   "tool_name": null,
+   "cwd": "<scratch>/cU1/repo",
+   "agent_id": null,
+   "agent_type": null,
+   "emitted": {
+    "index": 0,
+    "chars": 9990
+   }
+  }
+ ],
+ "rc": 0,
+ "seconds": 4.1,
+ "session_id": "a97264df-1f6c-4c5b-849c-accfaefcc21f",
+ "model": "claude-sonnet-5-5",
+ "cost_usd": 0.0371677,
+ "transcript_files": 2,
+ "hook_context_records": 2
+}

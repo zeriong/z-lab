@@ -1,0 +1,44 @@
+{
+ "case": "xC1",
+ "host": "codex",
+ "cli": "codex-cli 0.163.0",
+ "seen_line": "",
+ "verdicts": [
+  {
+   "event": "PostToolUse",
+   "size": 9990,
+   "verdict": "delivered",
+   "answer_start": false,
+   "answer_end": false,
+   "record_start_hits": 1,
+   "record_end_hits": 1
+  }
+ ],
+ "probe_events": [
+  {
+   "hook_event_name": "PostToolUse",
+   "event_arg": "PostToolUse",
+   "tool_name": "Bash",
+   "cwd": "<scratch>/xC1/repo",
+   "agent_id": null,
+   "agent_type": null,
+   "emitted": {
+    "index": 0,
+    "chars": 9990
+   }
+  }
+ ],
+ "rc": 0,
+ "seconds": 24.1,
+ "model": "gpt-6.1-sol",
+ "rollout_files": 1,
+ "rollout_types": {
+  "session_meta": 1,
+  "event_msg": 10,
+  "response_item": 11,
+  "world_state": 1,
+  "turn_context": 1,
+  "token_usage_record": 2
+ },
+ "codex_home_removed": true
+}
