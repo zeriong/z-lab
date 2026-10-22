@@ -1,0 +1,11 @@
+Here's the audit. It found three problems: the installed hook differs from the plugin's copy by one added comment, and `src/tabs/PRECEDENT.md` has an entry for a file that no longer exists, with no decision line. Nothing was changed.
+
+## context-rail:audit
+- **Resident:** only `CLAUDE.md` is always loaded: 13 lines / 540 chars / 540 bytes.
+- **Hook:** wired for Claude: yes · Codex: not applicable (no `.codex/`) · self-test: pass (18/18) · same as plugin asset: **no** · worst case: 1,494 chars on `src/tabs/tab-keys.mjs` (< 10,000)
+  - The hook-setup check (`install-hooks --check`) stopped with exit code 2 because the installed hook differs from the plugin's copy, so it never reported on the wiring. I compared `.claude/settings.json:3-24` with the installer's expected wiring by hand, and they match. Both hook events are present with the right matchers and command.
+- **Records:** 5 files · orphan headings: `src/tabs/PRECEDENT.md:10` · blocks without a decision line: `src/tabs/PRECEDENT.md:12` · governed files without a section: 2 of 7
+  - The 2 files without a section are probably `src/auth/token.test.mjs` and `src/tabs/tab-keys.test.mjs`. That's my guess, because the headings only name `token.mjs` and `tab-keys.mjs`; the check reports a count, not names. It isn't an error.
+- **Proposed fixes:**
+  1. `.claude/hooks/precedent-context.py:353`: the only difference from the plugin's copy is an added `# local tweak` comment after the final `sys.exit(0)`. It changes nothing at runtime, but it makes the hook-setup check fail. Once you confirm the tweak isn't needed, reinstall the hook with `--replace-hook` through `/context-rail:build`.
+  2. `src/tabs/PRECEDENT.md:10-13`: the `## gone.mjs` heading points to a file that isn't tracked in git, and its `§orphan-note` block has only a `Reason:` line, no `- Decision:` line. Remove the section, or move it into history, through `/context-rail:build`. This also fixes the records check, which currently fails with exit code 1.

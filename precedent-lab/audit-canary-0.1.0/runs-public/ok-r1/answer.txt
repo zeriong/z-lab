@@ -1,0 +1,12 @@
+## context-rail:audit
+- **Resident:** `CLAUDE.md` is 13 lines, 540 characters and 540 bytes, and it's the only resident file. Both rule files (`.claude/rules/migrations.md` and `ui-exports.md`) are limited to certain paths, and both of those paths exist (`migrations/`, `src/ui/`).
+- **Hook:**
+  - Wired for Claude: yes. The `--check` run found nothing to change. Codex isn't set up (there's no `.codex/`), so its check was not run.
+  - Self-test: pass, 18 of 18.
+  - Same as the plugin's copy: yes. `diff` found no difference from `assets/precedent-context.py`.
+  - Worst case: 1,494 characters, from `src/tabs/tab-keys.mjs`, well under the 10,000 limit.
+- **Records:** 5 files: `scripts/`, `src/tabs/`, `src/auth/`, `src/layout/`, `src/head/`.
+  - No headings that point at a missing file.
+  - No decision blocks missing their decision line.
+  - 2 of 7 governed files have no section. They're the test files, `src/tabs/tab-keys.test.mjs` and `src/auth/token.test.mjs`. That's expected: the hook just prints a one-line nudge when they're read, and it did so during this audit.
+- **Proposed fixes:** none. Everything passed.

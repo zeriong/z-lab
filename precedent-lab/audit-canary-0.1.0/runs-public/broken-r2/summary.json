@@ -1,0 +1,25 @@
+{
+ "run": "broken-r2",
+ "fixture": "broken",
+ "rc": 0,
+ "seconds": 44.1,
+ "cost_usd": 0.38029960000000007,
+ "num_turns": 6,
+ "subtype": "success",
+ "cli": "2.1.308",
+ "model": "claude-opus-5-5",
+ "changed": [],
+ "checks_run": {
+  "resident_size": true,
+  "install_check": true,
+  "self_test": true,
+  "max_output": true,
+  "records_lint": true,
+  "asset_compare": true
+ },
+ "named": {
+  "orphan_heading": true,
+  "block_without_decision": true,
+  "hook_differs": true
+ }
+}

@@ -1,0 +1,17 @@
+## context-rail:audit
+- **Resident:** `CLAUDE.md` has 13 lines, 540 chars and 540 bytes. It is the only resident file, so that is also the total.
+- **Hook:**
+  - **Wiring:** Claude: yes. `.claude/settings.json` has the `PostToolUse` (`Read|Edit|Write|MultiEdit|Bash`) and `PostToolUseFailure` (`Bash`) entries the installer expects. Codex: not installed (there is no `.codex/`), so I skipped the Codex checks.
+  - **Wiring check exit code:** `install-hooks.py --check` exited 2 with "existing hook differs; review it before --replace-hook". It stops at that point, so the wiring result above comes from reading the settings file myself.
+  - **Self-test:** passed, 18 of 18.
+  - **Same as the plugin's hook file:** no. The project copy has one extra line at `.claude/hooks/precedent-context.py:353`: `# local tweak`. It's only a comment, so behaviour is the same.
+  - **Worst case:** 1,494 chars (for `src/tabs/tab-keys.mjs`), under the 10,000 limit.
+- **Records:** 5 files. `records-lint` exited 1.
+  - **Orphan headings:** `src/tabs/PRECEDENT.md:10` (`## gone.mjs`). No `gone.mjs` exists.
+  - **Blocks without a decision line:** `src/tabs/PRECEDENT.md:12` (`§orphan-note`). It has only a `Reason:` line.
+  - **Governed files without a section:** 2 of 7. They are most likely `src/auth/token.test.mjs` and `src/tabs/tab-keys.test.mjs`, which are the only ones without a heading. These files just get the one-line "no section" notice; that's information, not a fault.
+- **Proposed fixes:**
+  1. `src/tabs/PRECEDENT.md:10–13`: delete the `## gone.mjs` section, or point it at a file that exists and give `§orphan-note` a `- Decision:` line.
+  2. `.claude/hooks/precedent-context.py:353`: check whether the `# local tweak` line matters to anyone. If not, reinstall the plugin's version with `install-hooks.py --replace-hook`. That also gets `--check` to exit cleanly again.
+
+Run both fixes through `/context-rail:build`. This audit didn't change any files.

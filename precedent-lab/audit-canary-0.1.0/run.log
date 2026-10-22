@@ -1,0 +1,4 @@
+ok-r2 [] {'resident_size': True, 'install_check': True, 'self_test': True, 'max_output': True, 'records_lint': True, 'asset_compare': True} {'orphan_heading': False, 'block_without_decision': True, 'hook_differs': False} 0.28679
+ok-r1 [] {'resident_size': True, 'install_check': True, 'self_test': True, 'max_output': True, 'records_lint': True, 'asset_compare': True} {'orphan_heading': False, 'block_without_decision': True, 'hook_differs': True} 0.34673479999999995
+broken-r2 [] {'resident_size': True, 'install_check': True, 'self_test': True, 'max_output': True, 'records_lint': True, 'asset_compare': True} {'orphan_heading': True, 'block_without_decision': True, 'hook_differs': True} 0.38029960000000007
+broken-r1 [] {'resident_size': True, 'install_check': True, 'self_test': True, 'max_output': True, 'records_lint': True, 'asset_compare': True} {'orphan_heading': True, 'block_without_decision': True, 'hook_differs': True} 0.39213760000000003

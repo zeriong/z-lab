@@ -1,0 +1,5 @@
+## context-rail:audit
+- **Resident:** `CLAUDE.md` is 13 lines / 540 chars / 540 bytes. It's the only resident file.
+- **Hook:** wired for Claude: yes. Codex: not checked, because the project has no `.codex/` directory. Self-test: pass (18 of 18). Same as plugin asset: yes, the files are identical. Worst case: 1,494 chars from `src/tabs/tab-keys.mjs`, under the 10,000 limit.
+- **Records:** 5 files. No orphan headings. No blocks without a decision line. 2 governed files have no section; the linter reports this but doesn't count it as a failure, since most files don't need a record.
+- **Proposed fixes:** none. The settings, hook and records all pass. If you want to add Codex support, `/context-rail:build` with `--host codex` or `both` would set it up.

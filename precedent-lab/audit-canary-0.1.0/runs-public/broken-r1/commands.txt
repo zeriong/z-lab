@@ -1,0 +1,20 @@
+git ls-files && ls -la .claude .codex 2>&1; find . -name PRECEDENT.md -not -path './.git/*'; ls <home>/WorkSpace/Z-Work/z-lab/precedent-lab/build-canary-0.1.0/plugin/context-rail/skills/build/scripts <home>/WorkSpace/Z-Work/z-lab/precedent-lab/build-canary-0.1.0/plugin/context-rail/skills/build/assets
+---
+cd <scratch>/broken-r1/repo
+P="$PWD"; B=<home>/WorkSpace/Z-Work/z-lab/precedent-lab/build-canary-0.1.0/plugin/context-rail/skills/build
+echo "### resident-size"; python3 "$B/scripts/resident-size.py" --project "$P"; echo "exit=$?"
+echo "### install-hooks --check"; python3 "$B/scripts/install-hooks.py" --project "$P" --host claude --check; echo "exit=$?"
+echo "### self-test"; python3 "$P/.claude/hooks/precedent-context.py" --self-test; echo "exit=$?"
+echo "### max-output"; python3 "$P/.claude/hooks/precedent-context.py" --max-output "$P"; echo "exit=$?"
+echo "### records-lint"; python3 "$B/scripts/records-lint.py" --project "$P"; echo "exit=$?"
+echo "### diff vs asset"; diff "$B/assets/precedent-context.py" "$P/.claude/hooks/precedent-context.py"; echo "exit=$?"
+---
+cd <scratch>/broken-r1/repo
+for f in .claude/settings.json .claude/context-rail.json src/tabs/PRECEDENT.md scripts/PRECEDENT.md src/auth/PRECEDENT.md src/head/PRECEDENT.md src/layout/PRECEDENT.md .claude/rules/*.md; do echo "=== $f"; cat -n "$f"; done
+echo "=== hook 345-360"; sed -n '345,360p' .claude/hooks/precedent-context.py | cat -n
+---
+B=<home>/WorkSpace/Z-Work/z-lab/precedent-lab/build-canary-0.1.0/plugin/context-rail/skills/build
+grep -n "governed\|def \|argparse\|add_argument" "$B/scripts/records-lint.py" | head -40; echo ----; grep -n "differs\|--check\|matcher\|PostToolUse\|def \|return 2\|exit(2" "$B/scripts/install-hooks.py" | head -60
+---
+B=<home>/WorkSpace/Z-Work/z-lab/precedent-lab/build-canary-0.1.0/plugin/context-rail/skills/build
+sed -n '12,24p;54,84p' "$B/scripts/install-hooks.py"; echo ----; sed -n '28,60p' "$B/scripts/records-lint.py"

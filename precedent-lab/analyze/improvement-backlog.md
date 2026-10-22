@@ -33,3 +33,6 @@ because-i-needed Rule 9: a maintainer decision that is not a measurement is reco
   effort high/max.
 - The boundary of "names the record": a file name only, or "the old rule".
 - Conflict-free edits close to a decision (the same function, an unrelated branch).
+- `install-hooks.py --check` stops with exit 2 when the installed hook differs from the asset, so `audit` cannot
+  report the wiring from it (`audit-canary-0.1.0` U4). Candidate: separate the wiring check from the content check.
+  Changing the script means a new measurement.

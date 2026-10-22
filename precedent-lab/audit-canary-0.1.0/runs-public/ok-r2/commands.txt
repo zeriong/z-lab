@@ -1,0 +1,11 @@
+P="$PWD"; B="<home>/WorkSpace/Z-Work/z-lab/precedent-lab/build-canary-0.1.0/plugin/context-rail/skills/build"; ls -la "$P" "$P/.claude" "$P/.codex" 2>&1; ls "$P/.claude/hooks" 2>&1; ls "$B/scripts" "$B/assets" 2>&1
+---
+P="$PWD"; B="<home>/WorkSpace/Z-Work/z-lab/precedent-lab/build-canary-0.1.0/plugin/context-rail/skills/build"
+echo "=== resident-size"; python3 "$B/scripts/resident-size.py" --project "$P"; echo "exit=$?"
+echo "=== install-hooks --check"; python3 "$B/scripts/install-hooks.py" --project "$P" --host claude --check; echo "exit=$?"
+echo "=== self-test"; python3 "$P/.claude/hooks/precedent-context.py" --self-test; echo "exit=$?"
+echo "=== max-output"; python3 "$P/.claude/hooks/precedent-context.py" --max-output "$P"; echo "exit=$?"
+echo "=== records-lint"; python3 "$B/scripts/records-lint.py" --project "$P"; echo "exit=$?"
+echo "=== diff vs asset"; diff "$B/assets/precedent-context.py" "$P/.claude/hooks/precedent-context.py" && echo IDENTICAL; echo "exit=$?"
+---
+cat .claude/settings.json; python3 "<home>/WorkSpace/Z-Work/z-lab/precedent-lab/build-canary-0.1.0/plugin/context-rail/skills/build/scripts/records-lint.py" --help 2>&1 | head -20
