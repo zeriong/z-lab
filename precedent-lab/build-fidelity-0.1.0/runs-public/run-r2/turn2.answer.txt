@@ -1,0 +1,17 @@
+## context-rail:build complete
+- **Resident:** 1,906 → 540 chars, 1,912 → 540 bytes (`CLAUDE.md` went from 32 lines to 13)
+- **Items:** 15 total: 6 stayed · 5 records · 2 path rules · 2 proposed (R6 automation, R7 personal). As you asked, I didn't apply R6 or R7; both are still in `CLAUDE.md` word for word.
+- **Records:** `src/tabs/PRECEDENT.md`, `scripts/PRECEDENT.md`, `src/auth/PRECEDENT.md`, `src/layout/PRECEDENT.md`, `src/head/PRECEDENT.md`
+- **Path rules:** `.claude/rules/ui-exports.md` (`src/ui/**`), `.claude/rules/migrations.md` (`migrations/**`)
+- **Hook:** `.claude/hooks/precedent-context.py`, wired in `.claude/settings.json`; it covers `mjs, css, sh` files (set in `.claude/context-rail.json`)
+- **Checks:** all passed: self-test (18/18) · max-output 1,495 chars (largest is `src/tabs/tab-keys.mjs`) · records-lint · resident-size (`grew: false`) · install `--check` (no changes)
+- **Not established by this run:** whether agents now follow the records better. That has only been measured in the maintainer's experiments; see the plugin README.
+
+**Things to know:**
+- **records-lint needed a workaround.** In the repo it reported `records: 0` and passed without checking anything, because it only finds files git tracks (`records-lint.py:33`) and the new records aren't committed. I re-ran it on a scratch copy with the files marked as added. It found all 5 records, no orphan headings and no blocks missing a `Decision`. Your git index wasn't touched.
+- **Wording check:** I compared every moved item against the original `CLAUDE.md`. Each one is word for word at its destination and gone from `CLAUDE.md`; the 8 items that stay are unchanged.
+- **Hook behaviour:**
+  - In a simulated Read of each governed file, the hook injected exactly that file's record, and nothing for `src/ui/button.mjs`, which has no record.
+  - It also fired for real in this session when one of my commands mentioned `tab-keys.mjs`.
+- **Tests:** `npm test` passes, 3 out of 3.
+- **Not committed:** you're on `main`, and your rules say to branch and run `scripts/check.sh` before committing. Tell me if you want a branch and a commit.

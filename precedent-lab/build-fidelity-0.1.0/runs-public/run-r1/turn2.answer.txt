@@ -1,0 +1,26 @@
+## context-rail:build complete
+
+- **Resident:** 1,906 → 540 chars, 1,912 → 540 bytes. `CLAUDE.md` went from 32 to 13 lines.
+- **Items:** 15 in total:
+  - 6 stayed as they were (R1–R5, R8).
+  - 5 became records (R11–R15).
+  - 2 became path rules (R9, R10).
+  - 2 proposals were not applied, as you asked: R6 (automation) and R7 (personal). Both are unchanged in `CLAUDE.md`. Nothing was dropped.
+- **Records:** `src/tabs/PRECEDENT.md`, `src/auth/PRECEDENT.md`, `src/layout/PRECEDENT.md`, `src/head/PRECEDENT.md`, `scripts/PRECEDENT.md`.
+- **Path rules:** `.claude/rules/ui-exports.md` (`src/ui/**`) and `.claude/rules/migrations.md` (`migrations/**`).
+- **Hook:** `.claude/hooks/precedent-context.py`, wired in `.claude/settings.json`, covering `mjs,css,sh` (set in `.claude/context-rail.json`).
+- **Checks:** all passed.
+  - self-test: 18/18.
+  - max-output: 1,494 chars at most, for `src/tabs/tab-keys.mjs`.
+  - records-lint: 5 records, no orphan headings, every block has a `Decision` line.
+  - resident-size: `grew: false`.
+  - install `--check`: no changes pending.
+  - `npm test`: 3/3 passed.
+- **Not established by this run:** whether agents now follow the records better. That has only been measured in the maintainer's experiments; see the plugin README.
+
+**Hand checks:**
+- Each item id R1–R15 has exactly one disposition, and each moved item is gone from `CLAUDE.md`.
+- Moved items keep their exact wording, word for word. The only change is where an item was split into fields: the separator became the field boundary. That was `—` in R11 and R13, `:` in R14 and `;` in R15.
+- I ran the hook once by hand on a Read of `tab-keys.mjs`. It returned that file's decision and the confirm-before-changing paragraph.
+
+**State of the repo:** Nothing is committed and you're still on `main`. The 10 new files are marked intent-to-add (`git add -N`), and `CLAUDE.md` shows as modified.

@@ -1,0 +1,25 @@
+## context-rail:build complete
+- **Resident:** 1,906 → 540 chars, 1,912 → 540 bytes.
+- **Items:** 15 total.
+  - **8 stayed** (R1–R8). This includes R6 (automation), R7 (personal) and R8 (drop), which stay in `CLAUDE.md` unchanged as you asked.
+  - **5 records** (R11–R15).
+  - **2 path rules** (R9, R10).
+  - **0 applied** from the proposals.
+- **Records:** `src/tabs/`, `scripts/`, `src/auth/`, `src/layout/` and `src/head/`, each with a `PRECEDENT.md`.
+- **Path rules:** `.claude/rules/ui-exports.md` (`src/ui/**`) and `.claude/rules/migrations.md` (`migrations/**`). Each glob matches one tracked file.
+- **Hook:** `.claude/hooks/precedent-context.py`, wired in `.claude/settings.json` and configured by `.claude/context-rail.json` (extensions `mjs,css,sh`).
+- **Checks:** all passed.
+  - self-test: 18/18.
+  - max-output: 1,458 chars worst case (`src/tabs/tab-keys.mjs`).
+  - records-lint: 5 records, 0 orphan headings, 0 blocks without a Decision.
+  - resident-size: did not grow.
+  - install --check: no changes.
+- **Fidelity:** every item from R1 to R15 has exactly one disposition. Each moved item's clauses appear word for word at their destination and are gone from `CLAUDE.md`. The `## Code rules` and `## Decisions` headings were removed once those sections were empty.
+- **Tests:** `npm test` passes 3/3.
+- **Not established by this run:** whether agents now follow the records better. That has been measured only in the maintainer's experiments; see the plugin README.
+
+**Run records-lint again after you commit.** It only reads tracked files, so in the repo it saw 0 records and its pass meant nothing. The real result above comes from a staged throwaway copy outside the repo; I didn't touch your index. After you commit, run `python3 "<skill>/scripts/records-lint.py" --project .` in the repo itself.
+
+The hook is already live: it injected the `check.sh` record during one of my own verification commands, because that command mentioned `scripts/check.sh` as text.
+
+Nothing is committed and you're on `main`. Your `CLAUDE.md` says never to push to `main` directly, so commit this on a branch.

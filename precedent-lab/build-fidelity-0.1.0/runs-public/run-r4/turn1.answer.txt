@@ -1,0 +1,39 @@
+I've read the reference docs, `CLAUDE.md`, and every tracked file, and recorded the baseline size. Below is the plan. I haven't changed any files yet.
+
+## Phase 3: please confirm before I change anything
+
+**Baseline:** `CLAUDE.md` is 32 lines, 1,906 chars and 1,912 bytes. It is the only resident file. There are no existing `.claude/` settings, rule files, `PRECEDENT.md` files or hooks, and the working tree is clean on `main`.
+
+| id | source | item (shortened) | disposition | destination | evidence |
+|---|---|---|---|---|---|
+| R1 | CLAUDE.md:3 | "A small workspace UI kit. See `README.md` for the layout." | Resident | stays | README.md:3-9 has the layout |
+| R2 | CLAUDE.md:7 | "Respond in English and keep answers short." | Resident | stays | It's the team's response language, and `classify.md` keeps that resident |
+| R3 | CLAUDE.md:8 | "Run the tests with `npm test` before saying a change is done." | Resident | stays | package.json:6 `"test": "node --test"`; README.md:11 |
+| R4 | CLAUDE.md:9 | "Commit messages follow Conventional Commits; never push to `main`…" | Resident | stays | Commit policy |
+| R5 | CLAUDE.md:10 | "The project has no runtime dependencies; do not add any without asking." | Resident | stays | package.json:1-7 has no `dependencies`, and nothing enforces it |
+| R6 | CLAUDE.md:11 | "Before every commit, run `scripts/check.sh` and read its warnings." | **Automation (proposal only)** | stays for now | check.sh:12-16 prints warnings to stderr and always exits 0. A git pre-commit hook or a Claude `PreToolUse` hook on `git commit` could run it. I won't write either unless you ask. |
+| R7 | CLAUDE.md:12 | "I keep a shell alias `wb` for `npm test -- --watch`…" | **Personal (proposal only)** | stays; you could move it to `CLAUDE.local.md` | It's your own alias. Note that .gitignore:1 only ignores `node_modules/`, so you'd need to add `CLAUDE.local.md` there. |
+| R8 | CLAUDE.md:13 | "Indent with 2 spaces." | Resident (I'm unsure, so it stays) | stays | .editorconfig:4-5 sets the same thing, but nothing enforces it on agent edits: there's no formatter or lint in package.json:6 and no tracked CI. So I'm not proposing to drop it. |
+| R9 | CLAUDE.md:17 | "Components under `src/ui/` use named exports only — no default exports." | Path rule | `.claude/rules/ui-components.md`, `paths: src/ui/**` | The glob matches `src/ui/button.mjs`, which uses a named export at :3 |
+| R10 | CLAUDE.md:18 | "Files in `migrations/` are append-only: never edit a migration that has shipped…" | Path rule | `.claude/rules/migrations.md`, `paths: migrations/**` | The glob matches `migrations/001_init.sql` |
+| R11 | CLAUDE.md:22-24 | Tab keys: "a key is assigned once and never shifted… Do not renumber…" | Record | `src/tabs/PRECEDENT.md` → `## tab-keys.mjs`, `§stable-tab-keys` | tab-keys.mjs:8-14: keys come from `state.next`, and `closeTab` only filters |
+| R12 | CLAUDE.md:25-26 | "`scripts/check.sh` must fail open: `set -uo pipefail` without `-e`… `exit 0`" | Record | `scripts/PRECEDENT.md` → `## check.sh`, `§fail-open` | check.sh:3 `set -uo pipefail`; check.sh:16 `exit 0` |
+| R13 | CLAUDE.md:27-28 | "`resolveToken`… takes the token only from its caller — never from `process.env` or a dotfile" | Record | `src/auth/PRECEDENT.md` → `## token.mjs`, `§caller-token-only` | token.mjs:3-8 has no env or file lookup and throws otherwise |
+| R14 | CLAUDE.md:29-30 | "`shell.css` steps on `@container` queries, not viewport `@media` width queries…" | Record | `src/layout/PRECEDENT.md` → `## shell.css`, `§container-queries` | shell.css:3 `container-type`; shell.css:10 `@container` |
+| R15 | CLAUDE.md:31-32 | "Every favicon entry in `src/head/icons.mjs` carries a `media` query…" | Record | `src/head/PRECEDENT.md` → `## icons.mjs`, `§icon-media` | icons.mjs:4-5: both entries have `media` |
+
+**How the records will be written:**
+- Each record splits the item's own wording into `Decision`, `Forbidden` and `Reason` fields, word for word. A field the item doesn't state is left out. For example, R12 and R15 have no separate `Forbidden` line.
+- There's no `Since` line. The dates in the items (2026-08-29, 09-10, 09-19, 09-14, 09-05) are incident or measurement dates, not decision dates, so they stay inside `Reason` as written.
+- I'll add an `Evidence` line only if you say so. The only candidate is R11: the "close keeps keys" test at `src/tabs/tab-keys.test.mjs:10-14`, which isn't mentioned in the item. `token.test.mjs` doesn't cover the env case, so R13 gets none.
+
+**`CLAUDE.md` after the change:** lines 1-13 stay. The "Code rules" and "Decisions" sections and their headings are removed, with no pointer lines left behind.
+
+**Hook:** I'll install `.claude/hooks/precedent-context.py` and wire it into `.claude/settings.json`, with `.claude/context-rail.json` set to govern the `mjs, css, sh` extensions.
+
+**Verification step:** `records-lint` and `--max-output` only see tracked files, so I'll mark the new files with `git add -N` (intent-to-add). That doesn't stage their content, and I won't commit or push.
+
+Reply with one of these:
+1. **Apply as shown.**
+2. **Apply with changes.** Name them, for example "add the Evidence line to R11", "drop R8", "write the R6 hook too", or "supply Since dates".
+3. **Stop.**

@@ -1,0 +1,25 @@
+## context-rail:build complete
+
+`CLAUDE.md` went from 1,906 to 540 characters. Its decisions now live in `PRECEDENT.md` files next to the code, and every check passed. Nothing is committed: the new files are only marked intent-to-add, and you're on `main`.
+
+- **Resident:** 1,906 → 540 chars, 1,912 → 540 bytes (`CLAUDE.md`, 32 → 13 lines).
+- **Items:** 15 total.
+  - 6 stayed (R1–R5, R8).
+  - 5 became records (R11–R15).
+  - 2 became path rules (R9, R10).
+  - 2 proposals were left in place, as you asked: R6 (automation) and R7 (personal). There were no drop proposals.
+- **Records:** `src/tabs/PRECEDENT.md`, `scripts/PRECEDENT.md`, `src/auth/PRECEDENT.md`, `src/layout/PRECEDENT.md` and `src/head/PRECEDENT.md`. They have no `Since` or `Evidence` lines, as shown in the table.
+- **Path rules:** `.claude/rules/ui-components.md` (`src/ui/**`) and `.claude/rules/migrations.md` (`migrations/**`). Each glob matches one tracked file.
+- **Hook:** `.claude/hooks/precedent-context.py`, wired in `.claude/settings.json` (PostToolUse `Read|Edit|Write|MultiEdit|Bash`, PostToolUseFailure `Bash`). `.claude/context-rail.json` governs `mjs, css, sh`.
+- **Checks:**
+  - self-test: 18 of 18 pass.
+  - max-output: worst case is 1,494 chars, on `src/tabs/tab-keys.mjs`.
+  - records-lint: no orphan headings and no blocks without a Decision line.
+  - resident-size: `"grew": false`.
+  - `install --check`: no pending changes.
+  - A simulated Read of `tab-keys.mjs` injected the §stable-tab-keys section followed by the confirmation paragraph.
+  - `npm test`: 3 of 3 pass.
+- **Hand fidelity check:** each of R1–R15 is in exactly one place. All 8 resident items are still in `CLAUDE.md`. Each of the 7 moved items appears word for word at its destination and is gone from `CLAUDE.md`. The record items are split across their Decision, Forbidden and Reason fields.
+- **Not established by this run:** whether agents now follow the records better. The maintainer has only measured that in their own experiments; see the plugin README.
+
+When you commit, `CLAUDE.md` asks for `scripts/check.sh` first and a Conventional Commits message on a branch rather than `main`.

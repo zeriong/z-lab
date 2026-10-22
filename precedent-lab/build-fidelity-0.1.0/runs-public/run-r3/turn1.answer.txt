@@ -1,0 +1,39 @@
+Inventory and classification are done (baseline: 1,906 chars / 1,912 bytes). Here is the disposition table for your confirmation. Nothing has been written yet.
+
+## context-rail:build — Phase 3: confirm
+
+**Baseline resident:** `CLAUDE.md` is 32 lines, 1,906 chars, 1,912 bytes. There are no existing rule files, `PRECEDENT.md` records or hook settings. The working tree is clean, on `main`.
+
+| id | source | item (shortened) | disposition | destination | evidence |
+|---|---|---|---|---|---|
+| R1 | CLAUDE.md:3 | "A small workspace UI kit. See `README.md`…" | stays | — | It says where things are (README.md:5-9) |
+| R2 | CLAUDE.md:7 | "Respond in English and keep answers short." | stays | — | Response-language rule for the whole project |
+| R3 | CLAUDE.md:8 | "Run the tests with `npm test` before…done." | stays | — | How to run the project (package.json:6 `node --test`) |
+| R4 | CLAUDE.md:9 | "Conventional Commits; never push to `main`" | stays | — | Commit policy |
+| R5 | CLAUDE.md:10 | "no runtime dependencies; do not add any without asking" | stays | — | Applies before any install (package.json:1-7 has no deps) |
+| R6 | CLAUDE.md:11 | "Before every commit, run `scripts/check.sh`…" | **proposed: automation**, stays for now | possibly a commit hook later; not written in this run | "before committing, run Z" pattern (scripts/check.sh:2 is advisory and always exits 0, :16) |
+| R7 | CLAUDE.md:12 | "I keep a shell alias `wb`…in my terminal." | **proposed: personal**, stays | you can move it to `CLAUDE.local.md` yourself | Your own shell alias. Note: `--watch` doesn't exit, so an agent shouldn't run it |
+| R8 | CLAUDE.md:13 | "Indent with 2 spaces." | stays | — | .editorconfig:4-5 sets this for editors, but no lint or format step enforces it on agent edits (package.json:6), so it isn't a drop |
+| R9 | CLAUDE.md:17 | "Components under `src/ui/` use named exports only…" | path rule | `.claude/rules/ui-exports.md`, `paths: src/ui/**` | src/ui/button.mjs:3 uses a named export; the glob matches 1 tracked file |
+| R10 | CLAUDE.md:18 | "Files in `migrations/` are append-only…" | path rule | `.claude/rules/migrations.md`, `paths: migrations/**` | migrations/001_init.sql:1; the glob matches 1 tracked file |
+| R11 | CLAUDE.md:22-24 | Tab keys "assigned once and never shifted…incident 2026-08-29" | record | `src/tabs/PRECEDENT.md` → `## tab-keys.mjs` §stable-tab-keys | tab-keys.mjs:8-9 (keys come from `next`, which only grows), :12-13 (close leaves `next` alone); test at tab-keys.test.mjs:10-14 |
+| R12 | CLAUDE.md:25-26 | "`check.sh` must fail open…(2026-09-10)" | record | `scripts/PRECEDENT.md` → `## check.sh` §check-fails-open | check.sh:3 `set -uo pipefail`, :16 `exit 0` |
+| R13 | CLAUDE.md:27-28 | "`resolveToken`…only from its caller…(2026-09-19)" | record | `src/auth/PRECEDENT.md` → `## token.mjs` §token-from-caller-only | token.mjs:4-7 reads only `options.token` and throws otherwise |
+| R14 | CLAUDE.md:29-30 | "shell layout…`@container`, not `@media`…380px (2026-09-14)" | record | `src/layout/PRECEDENT.md` → `## shell.css` §container-queries | shell.css:3 `container-type`, :10 `@container` |
+| R15 | CLAUDE.md:31-32 | "Every favicon entry…carries a `media` query…(2026-09-05)" | record | `src/head/PRECEDENT.md` → `## icons.mjs` §icon-media-required | icons.mjs:4-5 both entries have `media` |
+
+**How I'll handle the records:**
+- **Wording:** the records keep the item's own words, split into `Decision`, `Forbidden` (only where the item says "do not", "never", "not" or "without") and `Reason`.
+- **Dates:** no `Since` field. The dates in your text are incident or measurement dates, not decision dates, so they stay inside `Reason`.
+- **Evidence:** no `Evidence` field, because none of the items name one. I won't add tests on my own.
+
+**Changes outside the records:**
+- **Headings:** `## Code rules` and `## Decisions` will be empty after the move, so their headings are removed.
+- **Hook:** installed for Claude only, governing extensions `mjs,css,sh`.
+
+**Expected result:** `CLAUDE.md` shrinks to about 900 chars.
+
+How do you want to proceed?
+1. **Apply as shown**
+2. **Apply with changes** (name them, e.g. "keep R12 resident" or "add Evidence lines from the tests")
+3. **Stop**

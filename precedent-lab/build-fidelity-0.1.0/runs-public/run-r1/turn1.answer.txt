@@ -1,0 +1,37 @@
+I've finished the inventory and classification and changed nothing yet. Below is the plan for you to confirm.
+
+## context-rail:build — Phase 3: confirm
+
+**Current size of always-loaded instructions:** `CLAUDE.md` has 32 lines, 1,906 chars and 1,912 bytes. After the moves it would be about 540 chars and 540 bytes.
+
+| id | source | item (shortened) | disposition | destination | evidence |
+|---|---|---|---|---|---|
+| R1 | CLAUDE.md:1-3 | "A small workspace UI kit. See `README.md` for the layout." | Resident | stays | README.md:3-9 has the layout |
+| R2 | CLAUDE.md:7 | "Respond in English and keep answers short." | Resident | stays | It's the response language for the shared repo; nothing says it's only yours |
+| R3 | CLAUDE.md:8 | "Run the tests with `npm test` before saying…done." | Resident | stays | package.json:6 `"test": "node --test"`; README.md:11 |
+| R4 | CLAUDE.md:9 | "Conventional Commits; never push to `main`" | Resident | stays | Commit policy; nothing enforces it (no commitlint or git hook; package.json:1-7) |
+| R5 | CLAUDE.md:10 | "no runtime dependencies; do not add any without asking" | Resident | stays | package.json:1-7 has no `dependencies` |
+| R6 | CLAUDE.md:11 | "Before every commit, run `scripts/check.sh`…" | **Automation (proposal only)** | stays for now; possible PreToolUse hook on `git commit` or a git pre-commit hook | scripts/check.sh:2 calls itself an "Advisory pre-commit check"; no git hook is installed |
+| R7 | CLAUDE.md:12 | "I keep a shell alias `wb`…in my terminal" | **Personal (proposal only)** | stays; I suggest you move it to `CLAUDE.local.md` yourself | It's an alias in your shell, not in the repo (package.json:6). `.gitignore:1` ignores only `node_modules/`, so `CLAUDE.local.md` would also need an ignore entry |
+| R8 | CLAUDE.md:13 | "Indent with 2 spaces." | Resident | stays | `.editorconfig:3-5` says the same, but no lint or CI step enforces it on agent edits, so it isn't safe to drop |
+| R9 | CLAUDE.md:17 | "Components under `src/ui/` use named exports only…" | Path rule | `.claude/rules/ui-exports.md`, `paths: src/ui/**` | src/ui/button.mjs:3; the glob matches 1 tracked file |
+| R10 | CLAUDE.md:18 | "Files in `migrations/` are append-only…" | Path rule | `.claude/rules/migrations.md`, `paths: migrations/**` | migrations/001_init.sql:1-2; the glob matches 1 tracked file |
+| R11 | CLAUDE.md:22-24 | "Tab keys…never shifted…Do not renumber…(incident 2026-08-29)" | Record | `src/tabs/PRECEDENT.md` `## tab-keys.mjs` §stable-tab-keys | tab-keys.mjs:8,12-14; test tab-keys.test.mjs:10-14 |
+| R12 | CLAUDE.md:25-26 | "`scripts/check.sh` must fail open…(2026-09-10)" | Record | `scripts/PRECEDENT.md` `## check.sh` §check-fails-open | check.sh:3 `set -uo pipefail`, :16 `exit 0` |
+| R13 | CLAUDE.md:27-28 | "`resolveToken`…only from its caller — never from `process.env`…" | Record | `src/auth/PRECEDENT.md` `## token.mjs` §token-from-caller | token.mjs:3-7 |
+| R14 | CLAUDE.md:29-30 | "shell.css steps on `@container` queries, not…`@media`…" | Record | `src/layout/PRECEDENT.md` `## shell.css` §container-queries | shell.css:3, :10 |
+| R15 | CLAUDE.md:31-32 | "Every favicon entry…carries a `media` query…" | Record | `src/head/PRECEDENT.md` `## icons.mjs` §favicon-media | icons.mjs:4-5 |
+
+**How the records will be filled:**
+- Each record copies its item's own wording into `Decision`, `Forbidden` (only where the item states one, as in R11 and R13) and `Reason`.
+- `Since` and `Evidence` stay empty. The items give incident or measurement dates, not the date each decision was made, and none of them cite a test.
+
+**Other changes:**
+- Remove R9–R15 from `CLAUDE.md`, together with the `## Code rules` and `## Decisions` headings, which would then be empty. No pointer lines are added.
+- Install the Claude hook for the `mjs,css,sh` extensions.
+- Mark the new files intent-to-add (`git add -N`) so `records-lint` can see them. This doesn't stage their content, and there's no commit.
+
+**How should I proceed?**
+1. Apply as shown.
+2. Apply with changes (tell me which). For example: drop R8 because of `.editorconfig`, or add `Evidence: tab-keys.test.mjs` to R11.
+3. Stop.

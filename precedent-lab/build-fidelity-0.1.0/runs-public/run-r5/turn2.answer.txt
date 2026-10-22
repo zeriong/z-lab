@@ -1,0 +1,20 @@
+## context-rail:build complete
+- **Resident:** 1,906 → 540 chars, 1,912 → 540 bytes (`CLAUDE.md` is 32 → 13 lines).
+- **Items:** 15 in total. 5 stayed (R1–R5), 5 records (R11–R15), 2 path rules (R9–R10), and 3 proposals left in `CLAUDE.md` as you asked: R6 automation, R7 personal, R8 drop.
+- **Records:** `src/tabs/PRECEDENT.md`, `scripts/PRECEDENT.md`, `src/auth/PRECEDENT.md`, `src/layout/PRECEDENT.md` and `src/head/PRECEDENT.md`.
+- **Path rules:** `.claude/rules/ui-components.md` (`src/ui/**`) and `.claude/rules/migrations.md` (`migrations/**`).
+- **Hook:** `.claude/hooks/precedent-context.py`, wired in `.claude/settings.json`, with `.claude/context-rail.json` set to `mjs,css,sh`.
+- **Checks:**
+  - self-test: 18/18 passed.
+  - max-output: 1,457 chars at most, for `src/tabs/tab-keys.mjs`.
+  - records-lint: passed (see the note below).
+  - resident-size: `grew: false`.
+  - install `--check`: no changes needed.
+  - `npm test`: 3/3 passed.
+  - Fidelity: each of the 15 items has exactly one disposition. The wording of every moved item is at its destination, and nothing else was dropped: the only text that didn't carry over is joining punctuation, plus the `Tab keys (…)` label, which is now the `## tab-keys.mjs` heading.
+- **Not established by this run:** whether agents now follow the records better. That was measured only in the maintainer's experiments; see the plugin README.
+
+**Notes:**
+- **records-lint on your working tree:** it reads only files tracked by git, so it found 0 records there and that pass meant nothing. I re-ran it on a staged copy outside the repo: 5 records, no orphan headings, no blocks missing a `Decision`. Re-run it after you commit.
+- **The hook already fired in this session.** It injected the `check.sh` record when my Bash command only mentioned `scripts/check.sh` in a heredoc. So it works live, and it also fires on commands that merely name a governed file.
+- **Nothing is committed and you're on `main`.** Create a branch before committing, and per `CLAUDE.md` run `scripts/check.sh` first.

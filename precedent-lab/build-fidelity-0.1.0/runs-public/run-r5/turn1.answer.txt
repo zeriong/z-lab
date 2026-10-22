@@ -1,0 +1,36 @@
+I've read every file and classified the items. Nothing is written yet; here is the plan for your confirmation.
+
+**Baseline (resident):** `CLAUDE.md` has 32 lines, 1,906 chars and 1,912 bytes. There's no `.claude/` directory, no rule files, no `PRECEDENT.md` files and no git hooks. The working tree is clean, on `main`.
+
+| id | source | item (shortened) | disposition | destination | evidence |
+|---|---|---|---|---|---|
+| R1 | CLAUDE.md:3 | "A small workspace UI kit. See `README.md` for the layout." | Resident | stays | README.md:5-9 is the layout |
+| R2 | CLAUDE.md:7 | "Respond in English and keep answers short." | Resident | stays | sets the response language for the project |
+| R3 | CLAUDE.md:8 | "Run the tests with `npm test` before saying a change is done." | Resident | stays | package.json:6 `"test": "node --test"` |
+| R4 | CLAUDE.md:9 | "Conventional Commits; never push to `main` directly." | Resident | stays | commit policy; no commitlint or CI among tracked files |
+| R5 | CLAUDE.md:10 | "no runtime dependencies; do not add any without asking." | Resident | stays | package.json:1-7 has no `dependencies`, and nothing enforces this |
+| R6 | CLAUDE.md:11 | "Before every commit, run `scripts/check.sh` and read its warnings." | Automation (proposed) | stays until a hook exists. Proposal: a PreToolUse hook on `git commit` that runs `scripts/check.sh` | check.sh:2 "Advisory pre-commit check"; no `.git/hooks/pre-commit` and no `core.hooksPath` |
+| R7 | CLAUDE.md:12 | "I keep a shell alias `wb` … in my terminal." | Personal (proposed) | `CLAUDE.local.md` (you move it; I won't) | personal alias. `CLAUDE.local.md` isn't git-ignored here (.gitignore:1 only has `node_modules/`) |
+| R8 | CLAUDE.md:13 | "Indent with 2 spaces." | Drop (proposed) | remove | .editorconfig:3-5 sets `[*] indent_style = space`, `indent_size = 2`. Caveat: this is an editor setting; no check fails on a wrong indent |
+| R9 | CLAUDE.md:17 | "Components under `src/ui/` use named exports only — no default exports." | Path rule | `.claude/rules/ui-components.md`, `paths: src/ui/**` | the glob matches src/ui/button.mjs; button.mjs:3 is a named export; no linter enforces it |
+| R10 | CLAUDE.md:18 | "Files in `migrations/` are append-only …" | Path rule | `.claude/rules/migrations.md`, `paths: migrations/**` | the glob matches migrations/001_init.sql |
+| R11 | CLAUDE.md:22-24 | Tab keys: "assigned once and never shifted … Do not renumber …" | Record | `src/tabs/PRECEDENT.md` › `## tab-keys.mjs` | tab-keys.mjs:12-13 `closeTab` filters without renumbering; tab-keys.test.mjs:10-14 expects `t1,t3` |
+| R12 | CLAUDE.md:25-26 | "`scripts/check.sh` must fail open …" | Record | `scripts/PRECEDENT.md` › `## check.sh` | check.sh:3 `set -uo pipefail`; check.sh:16 `exit 0` |
+| R13 | CLAUDE.md:27-28 | "`resolveToken` … only from its caller — never from `process.env` …" | Record | `src/auth/PRECEDENT.md` › `## token.mjs` | token.mjs:4-7 reads only `options.token` and throws otherwise |
+| R14 | CLAUDE.md:29-30 | "shell layout … steps on `@container` queries, not viewport `@media` …" | Record | `src/layout/PRECEDENT.md` › `## shell.css` | shell.css:3 `container-type: inline-size`; shell.css:10 `@container` |
+| R15 | CLAUDE.md:31-32 | "Every favicon entry … carries a `media` query …" | Record | `src/head/PRECEDENT.md` › `## icons.mjs` | icons.mjs:4-5: both entries have `media` |
+
+**How the records will be written:**
+- Each item's wording is kept word for word and split into `Decision`, `Forbidden` and `Reason`. `Forbidden` is used only where the item says "do not" or "never" (R11, R13).
+- There will be no `Since` line. The items give incident or measurement dates, not the dates the decisions were made, so each date stays inside `Reason` as you wrote it.
+- There will be no `Evidence` line, because none of the items names one.
+
+**Other changes:**
+- The `## Code rules` and `## Decisions` headings in `CLAUDE.md` will be removed once they are empty.
+- The hook installs `.claude/hooks/precedent-context.py`, `.claude/settings.json` and `.claude/context-rail.json` for `mjs,css,sh` files. The dry run was clean and there's no existing hook to replace.
+- Nothing will be committed.
+
+How should I proceed?
+1. **Apply as shown.** R6 and R7 stay where they are, as proposals only. R8 is removed.
+2. **Apply with changes.** Tell me what to change, for example "keep R8" or "add `tab-keys.test.mjs` as Evidence for R11".
+3. **Stop.**
