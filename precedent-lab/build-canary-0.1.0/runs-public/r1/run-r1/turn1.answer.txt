@@ -1,0 +1,36 @@
+I couldn't find a question tool in this session, so I'm asking here. I haven't written, moved or removed anything yet.
+
+**Baseline:** `CLAUDE.md` is 32 lines, 1,906 chars, 1,912 bytes. If you approve as shown, it drops to about 540 chars / 540 bytes.
+
+| id | source | item (shortened) | disposition | destination | evidence |
+|---|---|---|---|---|---|
+| R1 | CLAUDE.md:3 | "A small workspace UI kit. See `README.md` for the layout." | Resident | stays | README.md:5-9 lists the layout |
+| R2 | CLAUDE.md:7 | "Respond in English and keep answers short." | Resident (response language) | stays | resident test in classify.md |
+| R3 | CLAUDE.md:8 | "Run the tests with `npm test` before saying a change is done." | Resident (how to run) | stays | package.json:6 `"test": "node --test"` |
+| R4 | CLAUDE.md:9 | "Conventional Commits; never push to `main` directly." | Resident (commit policy) | stays | no commitlint or CI config is tracked |
+| R5 | CLAUDE.md:10 | "no runtime dependencies; do not add any without asking." | Resident (safety) | stays | package.json:1-7 has no `dependencies` |
+| R6 | CLAUDE.md:11 | "Before every commit, run `scripts/check.sh` and read its warnings." | **Automation, proposal only** | stays until a hook exists | check.sh:2 calls itself an "Advisory pre-commit check", but no hook runs it. Proposal: a shared `PreToolUse` Bash hook on `git commit` in `.claude/settings.json`. I won't write it. |
+| R7 | CLAUDE.md:12 | "I keep a shell alias `wb` … in my terminal." | **Personal, proposal only** | stays; I suggest moving it to `CLAUDE.local.md` yourself | `wb` appears in no tracked file. .gitignore:1 ignores only `node_modules/`, so `CLAUDE.local.md` would need its own ignore entry. |
+| R8 | CLAUDE.md:13 | "Indent with 2 spaces." | Resident (weak drop candidate) | stays | .editorconfig:4-5 sets the same rule, but no linter or CI checks it, and agent edits don't go through an editor |
+| R9 | CLAUDE.md:17 | "Components under `src/ui/` use named exports only — no default exports." | Path rule | `.claude/rules/ui-exports.md`, `paths: src/ui/**` | src/ui/button.mjs:3 uses a named export; the glob matches 1 tracked file |
+| R10 | CLAUDE.md:18 | "Files in `migrations/` are append-only …" | Path rule | `.claude/rules/migrations.md`, `paths: migrations/**` | migrations/001_init.sql:1; the glob matches 1 tracked file |
+| R11 | CLAUDE.md:22-24 | Tab keys: "never shifted … Do not renumber …" | Record | `src/tabs/PRECEDENT.md` → `## tab-keys.mjs` §stable-tab-keys | tab-keys.mjs:8-9 only ever increments `next`; :12-13 closing filters without renumbering; tab-keys.test.mjs:10-14 "close keeps keys" expects `t1,t3` |
+| R12 | CLAUDE.md:25-26 | "`scripts/check.sh` must fail open …" | Record | `scripts/PRECEDENT.md` → `## check.sh` §check-fails-open | check.sh:3 `set -uo pipefail`; :16 `exit 0` |
+| R13 | CLAUDE.md:27-28 | "`resolveToken` … only from its caller — never from `process.env` …" | Record | `src/auth/PRECEDENT.md` → `## token.mjs` §token-from-caller | token.mjs:4-7 reads only `options.token` and otherwise throws |
+| R14 | CLAUDE.md:29-30 | "shell layout … `@container` queries, not viewport `@media` …" | Record | `src/layout/PRECEDENT.md` → `## shell.css` §container-queries | shell.css:3 `container-type: inline-size`; :10 `@container` |
+| R15 | CLAUDE.md:31-32 | "Every favicon entry … carries a `media` query …" | Record | `src/head/PRECEDENT.md` → `## icons.mjs` §icon-media | icons.mjs:4-5 both entries have `media` |
+
+**Notes on the records**
+- Each record keeps the item's exact wording, split into `Decision`, `Forbidden` and `Reason` lines.
+- No record gets a `Since` line. The dates in your items are incident or measurement dates, not decision dates, so they stay inside `Reason`. If you give me the decision dates, I'll add `Since` lines.
+- R11 is the only record with something your item didn't say: `Evidence: tab-keys.test.mjs ("close keeps keys")`. Approving as shown approves that line.
+
+**Other changes**
+- `CLAUDE.md` loses the `## Code rules` and `## Decisions` headings, which will be empty. No pointer lines replace them.
+- The hook goes in `.claude/hooks/precedent-context.py`, wired in `.claude/settings.json`. `.claude/context-rail.json` will list the extensions `mjs,css,sh`, the file types of the five files that have records.
+- Nothing gets committed. You're on `main`, so if you want a commit I'll create a branch first.
+
+**How should I go ahead?**
+1. Apply as shown.
+2. Apply with changes (name them, e.g. "also drop R8", "write the R6 hook", "omit R11 Evidence").
+3. Stop.

@@ -1,0 +1,10 @@
+b354fe63f3ea7b46441790aa41c704340be3e4722cd759d1b77da284764c82ef  runs/r1/cli-end.txt
+b354fe63f3ea7b46441790aa41c704340be3e4722cd759d1b77da284764c82ef  runs/r1/cli-start.txt
+047d7a866458ee65671d2b1bc516c9849846bdc14e0595b23f7909813de96d2c  runs/r1/run-r1/diff.patch
+55d3aeed93c931449643fec3673f78befe3cfade37cbd9239cebca89db9a1e63  runs/r1/run-r1/hook.jsonl
+2f600293ac9eea0e12c7278bd346b4b052672637f5b55a4d3fd735d403bad303  runs/r1/run-r1/summary.json
+ee905e4232fe1a8b598c49359e72704253789b06db0a706d6eee740276e2d997  runs/r1/run-r1/turn1.answer.txt
+01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b  runs/r1/run-r1/turn1.changes.txt
+030bdd3de9d84d9a55ad3136783ed90ce19cb3323be5b295b42316b94068357a  runs/r1/run-r1/turn1.stream.jsonl
+6aba85ab9cb31309fe20396a5b7330e783df0ef6dae1fe0f396e8f4c66e23337  runs/r1/run-r1/turn2.answer.txt
+f55f81bedf9021d85808a564ea9cefe104adb12b6f78eb8b15c26941e39d4ffe  runs/r1/run-r1/turn2.stream.jsonl
