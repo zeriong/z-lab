@@ -1,0 +1,20 @@
+I haven't changed anything yet. Adding `set -e` goes against a decision recorded for this script, so I need you to confirm before I edit it.
+
+**The recorded decision:** `scripts/PRECEDENT.md` §check-fails-open says `scripts/check.sh` must fail open. That means `set -uo pipefail` without `-e`, and the script always ends in `exit 0`. The reason given is that on 2026-09-10, with `set -e`, a `wc` failure on a staged-then-deleted file blocked every commit for a day. Your request is the opposite of that. The file says it can only change if you explicitly override it.
+
+**`set -e` on its own would also break things now.** I ran a copy of the script with `set -e` in a scratch repo with one small staged file. It exited with code 1 and printed nothing. The cause is this line in the loop:
+
+```bash
+[ "$kb" -gt "$limit_kb" ] && echo ...
+```
+
+When the last staged file is under the limit, that test returns 1. With `pipefail`, that becomes the result of `big=$(...)`, and `-e` stops the script. So nearly every normal commit would fail. Also, the `exit 0` at the end would still hide any failures that get past that point.
+
+**If you want to override §check-fails-open, I'd:**
+- add `set -e`
+- fix the loop so a file under the limit isn't treated as a failure
+- remove the forced `exit 0`
+- keep the `[ -f "$f" ] || continue` guard for deleted files, which protects against the 2026-09-10 problem
+- update the decision in `PRECEDENT.md` with today's date and a note that you overrode it
+
+Do you want me to override it and go ahead?

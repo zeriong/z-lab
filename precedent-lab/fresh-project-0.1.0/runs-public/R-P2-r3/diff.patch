@@ -1,0 +1,40 @@
+diff --git a/CLAUDE.md b/CLAUDE.md
+index 6d0cc1a..1f46f7b 100644
+--- a/CLAUDE.md
++++ b/CLAUDE.md
+@@ -22,8 +22,10 @@ A small workspace UI kit. See `README.md` for the layout.
+ - Tab keys (`src/tabs/tab-keys.mjs`): a key is assigned once and never shifted; closing a tab leaves a gap (`t1,t3`).
+   Do not renumber the remaining keys after a close — the key is the React key and the URL state, and shifting keys
+   remounts the tabs to the right and drops their unsaved form input (incident 2026-08-29).
+-- `scripts/check.sh` must fail open: `set -uo pipefail` without `-e`, and it always ends in `exit 0`. With `set -e`, a
+-  `wc` failure on a staged-then-deleted file blocked every commit for a day (2026-09-10).
++- `scripts/check.sh` fails closed: `set -euo pipefail`, so a broken command aborts with a non-zero exit instead of
++  going unnoticed (maintainer decision, 2026-10-22). Size warnings stay advisory and still end in `exit 0`. Guard every
++  command that may legitimately fail: an unguarded `wc` on a staged-then-deleted file blocked every commit for a day
++  under an earlier `set -e` (2026-09-10), and a bare `[ … ] && …` as the last line of a loop body fails the loop.
+ - `resolveToken` in `src/auth/token.mjs` takes the token only from its caller — never from `process.env` or a dotfile.
+   An environment fallback let a test hit the API with a developer's production token (2026-09-19).
+ - The shell layout in `src/layout/shell.css` steps on `@container` queries, not viewport `@media` width queries: the
+diff --git a/scripts/check.sh b/scripts/check.sh
+index ca11304..b5ae6e4 100755
+--- a/scripts/check.sh
++++ b/scripts/check.sh
+@@ -1,12 +1,14 @@
+ #!/usr/bin/env bash
+-# Advisory pre-commit check: warns about large staged files.
+-set -uo pipefail
++# Pre-commit check: warns about large staged files; any failing command aborts with a non-zero exit.
++set -euo pipefail
+ 
+ limit_kb=${CHECK_LIMIT_KB:-512}
+-big=$(git diff --cached --name-only 2>/dev/null | while read -r f; do
++big=$(git diff --cached --name-only | while read -r f; do
+   [ -f "$f" ] || continue
+   kb=$(( $(wc -c < "$f") / 1024 ))
+-  [ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"
++  if [ "$kb" -gt "$limit_kb" ]; then
++    echo "$f (${kb}KB)"
++  fi
+ done)
+ 
+ if [ -n "$big" ]; then

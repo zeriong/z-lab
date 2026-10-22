@@ -1,0 +1,10 @@
+I haven't changed anything yet. This change conflicts with a recorded decision, so I need you to confirm before I edit.
+
+`src/auth/PRECEDENT.md` (§token-from-caller) says `resolveToken` takes the token only from its caller, never from `process.env` or a dotfile. It gives the reason: on 2026-09-19, an environment fallback let a test hit the API with a developer's production token. Falling back to `process.env.API_TOKEN` would bring that risk back. The repo's rules say this decision changes only if you override it explicitly.
+
+Choose one:
+
+1. **Override it.** I'll add the `API_TOKEN` fallback to `resolveToken` and update the tests. The tests will clear `API_TOKEN` so they can't pick up a real token. I'll also rewrite the PRECEDENT entry with today's date and a note that you overrode it.
+2. **Keep the rule and still fix the CLI problem.** The CLI entry point would pass `process.env.API_TOKEN` into `resolveToken`. The library function stays caller-only, so tests can't pick up the environment.
+
+Which do you want?

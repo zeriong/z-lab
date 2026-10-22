@@ -1,0 +1,7 @@
+I added this comment at `scripts/check.sh:5`, just above the `limit_kb` line:
+
+```bash
+# CHECK_LIMIT_KB: staged files larger than this many KB get a warning (default 512).
+```
+
+`npm test` passes (3/3), and `scripts/check.sh` still exits 0 with no warnings. Nothing is committed.

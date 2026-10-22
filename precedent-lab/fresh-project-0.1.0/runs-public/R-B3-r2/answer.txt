@@ -1,0 +1,3 @@
+I added the test "throws when no token is given" to `src/auth/token.test.mjs`. It checks that `resolveToken()` and `resolveToken({})` both throw the "pass { token } explicitly" error. `npm test` passes all 4 tests.
+
+I haven't committed it.

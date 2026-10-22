@@ -1,0 +1,19 @@
+diff --git a/src/layout/shell.css b/src/layout/shell.css
+index b71e94e..ea42f26 100644
+--- a/src/layout/shell.css
++++ b/src/layout/shell.css
+@@ -1,13 +1,9 @@
+ /* App shell. The shell is also rendered inside split panes. */
+-.shell {
+-  container-type: inline-size;
+-}
+-
+ .shell__body {
+   padding: 16px;
+ }
+ 
+-@container (min-width: 720px) {
++@media (min-width: 720px) {
+   .shell__body {
+     display: grid;
+     grid-template-columns: 240px 1fr;

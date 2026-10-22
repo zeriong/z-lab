@@ -1,0 +1,13 @@
+I haven't made the edit yet, because it conflicts with a decision recorded in `src/layout/PRECEDENT.md` (§container-queries).
+
+**The decision:** the shell layout uses `@container` queries instead of viewport `@media` queries. The reason given is that the shell also renders inside split panes as narrow as 380px (recorded 2026-09-14). The header comment in `shell.css` and the README say the same.
+
+**What would break:** a viewport query checks the window's width, not the pane's. On a wide screen, a 380px split pane would still get the two-column grid. The 240px sidebar would leave about 90px for content once the 24px padding is taken off.
+
+The sync's reason is that half the team hasn't used container queries. That's about familiarity and doesn't address the pane width problem. Nothing new I can see answers it either: no upstream change, no new measurement, no reported bug.
+
+Options:
+1. **Override anyway.** I switch to `@media (min-width: 720px)`, accept the split-pane regression, and update the PRECEDENT entry to say you overrode it today.
+2. **Keep `@container` and document it.** I add a short comment in `shell.css` explaining what the query does and why, so it's easy for people who haven't used them.
+
+Which do you want? If it's 1, I'll also do the work on a branch rather than `main`.

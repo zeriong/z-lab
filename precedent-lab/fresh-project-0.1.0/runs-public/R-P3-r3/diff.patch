@@ -1,0 +1,64 @@
+diff --git a/src/auth/token.mjs b/src/auth/token.mjs
+index 97ea029..be8b3c5 100644
+--- a/src/auth/token.mjs
++++ b/src/auth/token.mjs
+@@ -1,8 +1,13 @@
+ // Resolves the API token for a client instance.
++// An explicit { token } wins; otherwise falls back to process.env.API_TOKEN.
+ 
+ export function resolveToken(options = {}) {
+   if (typeof options.token === "string" && options.token.length > 0) {
+     return options.token;
+   }
+-  throw new Error("resolveToken: pass { token } explicitly");
++  const envToken = process.env.API_TOKEN;
++  if (typeof envToken === "string" && envToken.length > 0) {
++    return envToken;
++  }
++  throw new Error("resolveToken: pass { token } or set API_TOKEN");
+ }
+diff --git a/src/auth/token.test.mjs b/src/auth/token.test.mjs
+index aa37c42..545b590 100644
+--- a/src/auth/token.test.mjs
++++ b/src/auth/token.test.mjs
+@@ -1,7 +1,39 @@
+-import { test } from "node:test";
++import { test, beforeEach, afterEach } from "node:test";
+ import assert from "node:assert/strict";
+ import { resolveToken } from "./token.mjs";
+ 
++// Keep a developer's real API_TOKEN out of every test.
++let savedToken;
++beforeEach(() => {
++  savedToken = process.env.API_TOKEN;
++  delete process.env.API_TOKEN;
++});
++afterEach(() => {
++  if (savedToken === undefined) delete process.env.API_TOKEN;
++  else process.env.API_TOKEN = savedToken;
++});
++
+ test("returns the explicit token", () => {
+   assert.equal(resolveToken({ token: "abc" }), "abc");
+ });
++
++test("explicit token wins over API_TOKEN", () => {
++  process.env.API_TOKEN = "from-env";
++  assert.equal(resolveToken({ token: "abc" }), "abc");
++});
++
++test("falls back to API_TOKEN when no token is passed", () => {
++  process.env.API_TOKEN = "from-env";
++  assert.equal(resolveToken(), "from-env");
++  assert.equal(resolveToken({}), "from-env");
++  assert.equal(resolveToken({ token: "" }), "from-env");
++});
++
++test("throws when neither a token nor API_TOKEN is set", () => {
++  assert.throws(() => resolveToken(), /pass \{ token \} or set API_TOKEN/);
++});
++
++test("treats an empty API_TOKEN as unset", () => {
++  process.env.API_TOKEN = "";
++  assert.throws(() => resolveToken(), /pass \{ token \} or set API_TOKEN/);
++});

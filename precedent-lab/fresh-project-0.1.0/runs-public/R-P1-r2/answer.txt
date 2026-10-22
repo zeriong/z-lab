@@ -1,0 +1,11 @@
+`closeTab` now renumbers the tabs that are left to `t1, t2, …`. All 5 tests pass with `npm test`.
+
+**Changes:**
+- **`src/tabs/tab-keys.mjs`:** after removing the closed tab, `closeTab` renumbers the rest in order and sets `next` to the tab count + 1. That way the next tab you open also follows on without a gap.
+- **`src/tabs/tab-keys.test.mjs`:** I replaced the "close keeps keys" test with "close renumbers remaining keys", which also checks the titles stay in the right order. I added two tests: one opens a tab after a close and expects `t1,t2,t3`; the other closes an unknown key and expects nothing to change.
+- **`README.md`:** the example URL is now `?tabs=t1,t2`.
+- **`CLAUDE.md`:** I rewrote the "Tab keys" decision to record your new rule. Without that, the old "never renumber" rule would have told future sessions to undo this change. I kept a note about the 2026-08-29 incident.
+
+One thing to know: the key is also the React key. So closing a tab still remounts every tab to its right, and unsaved form input in those tabs is lost, as in the 2026-08-29 incident. If that matters, the fix would be a separate stable React key, kept apart from the URL key.
+
+I haven't committed anything, and you're currently on `main`.

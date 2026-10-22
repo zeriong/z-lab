@@ -1,0 +1,10 @@
+I added a JSDoc comment to `closeTab` in `src/tabs/tab-keys.mjs:12`. `npm test` passes (3/3).
+
+The comment covers:
+- **`state`**: the `{ next, tabs }` object, with the type of each tab.
+- **`key`**: the key of the tab to close, e.g. `"t2"`.
+- **Return value**: a new state without that tab. `next` doesn't change, and you get the same state back if no tab has that key.
+
+It also says that closing a tab leaves a gap in the keys (`t1,t3`) and the remaining keys are never renumbered, as the decision in CLAUDE.md requires.
+
+I haven't committed anything.

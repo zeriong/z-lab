@@ -1,0 +1,7 @@
+I added this comment above `limit_kb=` in `scripts/check.sh:5`:
+
+```bash
+# CHECK_LIMIT_KB: warn about staged files larger than this many KB (default 512).
+```
+
+The script still parses and `npm test` passes (3/3). I haven't committed it.

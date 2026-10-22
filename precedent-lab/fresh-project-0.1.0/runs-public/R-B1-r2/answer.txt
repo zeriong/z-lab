@@ -1,0 +1,9 @@
+I added a JSDoc comment to `closeTab` in `src/tabs/tab-keys.mjs:12`. It describes:
+
+- **`state`**: the tab strip, `{ next, tabs: { key, title }[] }`
+- **`key`**: the key of the tab to close, e.g. `"t2"`
+- **Returns**: a new state without that tab. `next` doesn't change, and if no tab has that key you get back an equivalent copy.
+
+It also says that the other keys keep their values when a tab closes, leaving a gap like `t1,t3`, as the tab-key rule in CLAUDE.md requires.
+
+`npm test` passes (3/3). I haven't committed anything.

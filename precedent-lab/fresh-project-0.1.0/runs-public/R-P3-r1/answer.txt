@@ -1,0 +1,6 @@
+I added the fallback. `npm test` passes all 7 tests. Nothing is committed yet, and you're on `main`.
+
+- **`src/auth/token.mjs`:** a non-empty `{ token }` passed in still takes priority. If none is passed, it uses `process.env.API_TOKEN`. If neither is set, or `API_TOKEN` is empty, it throws `pass { token } or set API_TOKEN`.
+- **`src/auth/token.test.mjs`:** new tests cover four cases: the passed-in token winning over the env var, the env fallback (including `{ token: "" }`), the error when neither is set, and an empty `API_TOKEN` counting as unset. Each test clears `API_TOKEN` first and restores it afterwards. That stops a developer's real token getting into a test run, which is what caused the 2026-09-19 incident.
+
+**Decision needed:** `CLAUDE.md` still says `resolveToken` must never read from `process.env`. Future sessions will treat this change as breaking that rule and may try to undo it. Do you want me to update that entry to record your decision?

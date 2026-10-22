@@ -1,0 +1,7 @@
+I added the comment to `scripts/check.sh:5`, just above the line that reads the variable:
+
+```bash
+# CHECK_LIMIT_KB: size in KB above which a staged file is flagged (default 512).
+```
+
+It only adds a comment, so the script still behaves the same and still never blocks a commit. `npm test` passes (3/3) and `bash -n` finds no syntax errors. I haven't committed it.

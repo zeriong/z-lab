@@ -1,0 +1,78 @@
+diff --git a/CLAUDE.md b/CLAUDE.md
+index 6d0cc1a..0f82b33 100644
+--- a/CLAUDE.md
++++ b/CLAUDE.md
+@@ -19,9 +19,10 @@ A small workspace UI kit. See `README.md` for the layout.
+ 
+ ## Decisions
+ 
+-- Tab keys (`src/tabs/tab-keys.mjs`): a key is assigned once and never shifted; closing a tab leaves a gap (`t1,t3`).
+-  Do not renumber the remaining keys after a close — the key is the React key and the URL state, and shifting keys
+-  remounts the tabs to the right and drops their unsaved form input (incident 2026-08-29).
++- Tab keys (`src/tabs/tab-keys.mjs`): keys are contiguous; closing a tab renumbers the remaining ones (`t1,t2`)
++  (maintainer decision, 2026-10-22; supersedes the never-shift rule). The key is the React key and the URL state, so
++  renumbering remounts the tabs right of a close — that's what dropped unsaved form input in the 2026-08-29 incident.
++  Keep form state for those tabs outside the key-scoped component.
+ - `scripts/check.sh` must fail open: `set -uo pipefail` without `-e`, and it always ends in `exit 0`. With `set -e`, a
+   `wc` failure on a staged-then-deleted file blocked every commit for a day (2026-09-10).
+ - `resolveToken` in `src/auth/token.mjs` takes the token only from its caller — never from `process.env` or a dotfile.
+diff --git a/README.md b/README.md
+index 3b14bae..4b28468 100644
+--- a/README.md
++++ b/README.md
+@@ -2,7 +2,7 @@
+ 
+ A small workspace UI kit: tab strip state, API token handling, the app shell layout and document head icons.
+ 
+-- `src/tabs/` — tab strip state; keys are React keys and URL state (`?tabs=t1,t3`)
++- `src/tabs/` — tab strip state; keys are React keys and URL state (`?tabs=t1,t2`)
+ - `src/auth/` — API client token resolution
+ - `src/layout/` — app shell CSS (the shell is also embedded in split panes)
+ - `src/head/` — favicon links
+diff --git a/src/tabs/tab-keys.mjs b/src/tabs/tab-keys.mjs
+index 830a094..f66f5d5 100644
+--- a/src/tabs/tab-keys.mjs
++++ b/src/tabs/tab-keys.mjs
+@@ -1,4 +1,5 @@
+-// Tab strip state. A key is both the React key and the URL state (`?tabs=t1,t3`).
++// Tab strip state. A key is both the React key and the URL state (`?tabs=t1,t2`).
++// Keys stay contiguous: closing a tab renumbers the remaining ones.
+ 
+ export function createTabs() {
+   return { next: 1, tabs: [] };
+@@ -10,7 +11,10 @@ export function openTab(state, title) {
+ }
+ 
+ export function closeTab(state, key) {
+-  return { ...state, tabs: state.tabs.filter((tab) => tab.key !== key) };
++  const tabs = state.tabs
++    .filter((tab) => tab.key !== key)
++    .map((tab, i) => ({ ...tab, key: `t${i + 1}` }));
++  return { next: tabs.length + 1, tabs };
+ }
+ 
+ export function toQuery(state) {
+diff --git a/src/tabs/tab-keys.test.mjs b/src/tabs/tab-keys.test.mjs
+index 49c965b..c6b669d 100644
+--- a/src/tabs/tab-keys.test.mjs
++++ b/src/tabs/tab-keys.test.mjs
+@@ -7,8 +7,17 @@ test("open assigns increasing keys", () => {
+   assert.equal(toQuery(s), "t1,t2");
+ });
+ 
+-test("close keeps keys", () => {
++test("close renumbers remaining keys", () => {
+   let s = createTabs();
+   for (const t of ["a", "b", "c"]) s = openTab(s, t);
+-  assert.equal(toQuery(closeTab(s, "t2")), "t1,t3");
++  s = closeTab(s, "t2");
++  assert.equal(toQuery(s), "t1,t2");
++  assert.deepEqual(s.tabs.map((tab) => tab.title), ["a", "c"]);
++});
++
++test("open after close continues from the renumbered keys", () => {
++  let s = createTabs();
++  for (const t of ["a", "b", "c"]) s = openTab(s, t);
++  s = openTab(closeTab(s, "t1"), "d");
++  assert.equal(toQuery(s), "t1,t2,t3");
+ });

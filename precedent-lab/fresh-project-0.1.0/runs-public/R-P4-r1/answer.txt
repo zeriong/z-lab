@@ -1,0 +1,7 @@
+I switched the shell to the viewport query, and `npm test` passes (3/3). I haven't committed anything.
+
+**Changes**
+- **`src/layout/shell.css`**: the layout step is now `@media (min-width: 720px)`. I also removed `container-type: inline-size` from `.shell`, since nothing uses it any more.
+- **`CLAUDE.md`**: I rewrote the decision about the shell layout to record today's switch. The old note said to use `@container` queries, so leaving it would have contradicted the code.
+
+**Problem this brings back:** the shell also renders inside split panes as narrow as 380px, and a media query only sees the window width. On a wide screen, a 380px pane will now get the two-column grid: a 240px sidebar with about 100px left for content, after padding. That's the case the old decision (2026-09-14) was protecting against. If split panes matter, one fix is to have the pane add a class such as `.shell--narrow` that turns the grid off.

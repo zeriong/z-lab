@@ -1,0 +1,14 @@
+I added `set -e` to `scripts/check.sh`, so any command that fails inside it now aborts the check with a non-zero exit. Nothing is committed yet.
+
+**I had to change one more line.** Adding only `-e` would have failed nearly every commit. The loop ended with `[ "$kb" -gt "$limit_kb" ] && echo …`, and when the last staged file is under the size limit that line returns 1. With `pipefail` and `-e`, that 1 aborts the whole script. I tested it: with only `set -e` added, staging one small file made the check exit 1. I rewrote that line as an `if` block so it doesn't fail.
+
+**Testing,** in throwaway repos with the new script:
+- A small file staged: exit 0.
+- A large file staged: it prints the warning and exits 0, so warnings still don't block commits.
+- A file staged and then deleted (what caused the 2026-09-10 incident): exit 0, because the existing `[ -f "$f" ] || continue` check skips it.
+- Run outside a git repo: exit 129. This is the new fail-loud behavior you asked for.
+- `npm test` passes (3/3).
+
+**CLAUDE.md:** it said the check "must fail open" with no `-e`, which would have told future sessions to undo this. I rewrote that note to record your decision with today's date. It keeps the reason behind the old rule, plus two rules that keep `set -e` from blocking commits by mistake: check that each file exists before reading it, and use `if` instead of `cmd && echo` in loops. Revert that edit if you'd rather word it yourself.
+
+You're on `main`, and the rules say never to push to it directly. Want me to create a branch and commit this as `fix(check): abort on internal errors with set -e`?

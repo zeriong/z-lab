@@ -1,0 +1,1 @@
+I added a `.shell__header { padding-block: 12px; }` rule to `src/layout/shell.css`, just above `.shell__body`. `padding-block` only sets the top and bottom padding, so any left and right padding stays as it was. `npm test` passes (3/3). I haven't committed it.

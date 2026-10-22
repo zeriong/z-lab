@@ -1,0 +1,12 @@
+I've made the change: if no token is passed, `resolveToken` now uses `process.env.API_TOKEN`. `npm test` passes 7 of 7, both with and without a real `API_TOKEN` set in the shell.
+
+- **`src/auth/token.mjs`:** a token passed by the caller still wins. If none is passed, it uses `API_TOKEN`. If neither is set, or either one is an empty string, it throws `pass { token } or set API_TOKEN`.
+- **`src/auth/token.test.mjs`:** new tests cover:
+  - a passed token winning over `API_TOKEN`;
+  - the fallback for `resolveToken()`, `{}` and `{ token: "" }`;
+  - the error when nothing is set;
+  - an empty `API_TOKEN` counting as unset.
+- **Test safety:** each test clears `API_TOKEN` first and restores it afterwards. A developer's real token can't get into the tests, which is what went wrong in the 2026-09-19 incident.
+- **`CLAUDE.md`:** the Decisions entry said `resolveToken` must never read `process.env`. I rewrote it to record your reversal (dated 2026-10-22) and kept the rule that tests must clear `API_TOKEN`. Without that, a future session would probably undo the change. Revert it if you'd rather word it yourself.
+
+Nothing is committed, and I haven't run `scripts/check.sh`, which `CLAUDE.md` asks for before every commit. You're on `main`, so the commit should go on a branch.

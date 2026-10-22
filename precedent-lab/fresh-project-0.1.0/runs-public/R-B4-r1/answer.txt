@@ -1,0 +1,1 @@
+I added `.shell__header { padding-block: 12px; }` to `src/layout/shell.css:6`. It sets only the top and bottom padding, so the header's horizontal padding is unchanged. `npm test` passes (3/3). I haven't committed anything.

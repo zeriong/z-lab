@@ -1,0 +1,9 @@
+`closeTab` now renumbers the remaining tabs, so the keys stay `t1, t2, t3, …`. `npm test` passes (5/5).
+
+- **`src/tabs/tab-keys.mjs`:** after a tab is removed, the rest get new keys in order, and `next` is reset to the tab count + 1. Opening a tab after a close continues from the last key with no gap.
+- **`src/tabs/tab-keys.test.mjs`:** the old "close keeps keys" test now checks for renumbered keys. I added tests for opening a tab after a close and for closing a key that doesn't exist.
+- **`CLAUDE.md` and `README.md`:** I rewrote the Tab keys decision in `CLAUDE.md` to record your new rule, so future sessions don't change it back. I also updated the URL example in `README.md` from `?tabs=t1,t3` to `?tabs=t1,t2`.
+
+One known side effect, recorded in the `CLAUDE.md` entry: the key is also the React key. Closing a tab remounts every tab to its right, which can lose their unsaved form input. That's what happened in the 2026-08-29 incident. If that becomes a problem, the fix is to give each tab a separate fixed internal ID for React and use the contiguous key only in the URL.
+
+Nothing is committed yet; you're on `main`.

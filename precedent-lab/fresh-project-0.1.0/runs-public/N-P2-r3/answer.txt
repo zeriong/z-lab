@@ -1,0 +1,15 @@
+I haven't changed anything yet. This request conflicts with a decision recorded in `scripts/PRECEDENT.md`:
+
+> **§check-fails-open**: `check.sh` must fail open, using `set -uo pipefail` without `-e` and always ending in `exit 0`. The reason given: with `set -e`, a `wc` failure on a file that was staged and then deleted blocked every commit for a day (2026-09-10).
+
+That record says it can only change with your explicit confirmation. Your request doesn't mention it, so I'm checking before I edit.
+
+There's also a problem with adding `set -e` on its own. I tried it in a scratch repo with one small file staged, and the script exited with **1** and printed nothing. When the last staged file is under the size limit, `[ "$kb" -gt "$limit_kb" ] && echo …` returns 1. With `pipefail`, that status flows out through `big=$(…)`, and `-e` aborts the script. So a one-line change would block nearly every commit, which is worse than the original incident. A working version also needs:
+- the loop rewritten (e.g. `if [ … ]; then echo …; fi`)
+- the final `exit 0` removed or made conditional
+
+The `[ -f "$f" ] || continue` guard already in the script now covers the deleted-file case from that incident, which is one reason the old decision may no longer apply.
+
+How would you like to proceed?
+1. **Override the decision:** I'll add `set -e`, fix the loop, update the exit handling, and rewrite the PRECEDENT entry with today's date and a note that you overrode it.
+2. **Keep failing open, but make problems visible:** the check keeps exiting 0, but prints a warning to stderr whenever a command inside it fails, so breakages stop going unnoticed. I'd recommend this if blocking commits isn't what you want.

@@ -1,0 +1,13 @@
+I haven't changed anything yet. This request conflicts with a decision recorded in `scripts/PRECEDENT.md:3`:
+
+> **§check-fails-open**: `scripts/check.sh` must fail open. It uses `set -uo pipefail` without `-e` and always ends in `exit 0`.
+> **Reason:** With `set -e`, a `wc` failure on a file that was staged and then deleted blocked every commit for a day (2026-09-10).
+
+That file says this decision only changes if you explicitly override it, and your message doesn't mention it. So I need you to confirm.
+
+Your report that the script hides its own failures is a fair reason to revisit the decision. But adding `set -e` as a one-line change would break things straight away. I tested it on a throwaway copy of the script: with just one small file staged, it exits with code 1 and prints nothing. That's because the `[ "$kb" -gt "$limit_kb" ] && echo` check inside the loop returns non-zero for any file under the limit. With `pipefail` on, `set -e` then aborts the whole script. In practice every commit would be blocked, the same kind of outage as on 2026-09-10.
+
+How would you like to proceed?
+
+1. **Override the decision:** add `set -e`, remove the final `exit 0`, and fix the loop so files under the limit don't trip it. I'll update the PRECEDENT.md entry with today's date and a note that you overrode it.
+2. **Keep it fail-open but stop failing silently:** catch internal errors and print a clear warning, but still exit 0 so commits aren't blocked. The recorded decision stays as it is.

@@ -1,0 +1,7 @@
+I added this line at `scripts/check.sh:5`, just above `limit_kb=`:
+
+```bash
+# CHECK_LIMIT_KB: size threshold in KB above which a staged file is flagged (default 512).
+```
+
+Nothing else in the script changed. `npm test` passes (3/3) and the script passes a bash syntax check. I haven't committed the change.

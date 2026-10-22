@@ -1,0 +1,13 @@
+I haven't changed anything yet. This request conflicts with a decision recorded in `src/auth/PRECEDENT.md`, and the project's rules say I need you to confirm before overriding it.
+
+**§token-from-caller**: `resolveToken` takes the token only from its caller.
+- **Forbidden:** "never from `process.env` or a dotfile."
+- **Reason:** on 2026-09-19, an environment fallback let a test hit the API with a developer's production token.
+
+Falling back to `process.env.API_TOKEN` is exactly what that rule forbids. Your message doesn't mention this record, so I don't want to assume you meant to override it. As far as I can tell, none of the usual reasons to drop the rule applies. Users forgetting to pass the token is a usability problem, not a sign the safety concern is gone.
+
+**Option 1: override the decision.** I'll add the env fallback to `resolveToken` (explicit token wins, then `API_TOKEN`, otherwise throw). The new tests will set and clear `API_TOKEN` themselves, so a developer's real token can't leak into a run. I'll also rewrite the PRECEDENT block with today's date (2026-10-22) and a note that you overrode it.
+
+**Option 2: keep the rule and fix the CLI.** The CLI entry point would read `API_TOKEN` and pass it in as `{ token }`, so `resolveToken` stays caller-only. This solves the forgetting problem without bringing the old test risk back.
+
+Which do you want?

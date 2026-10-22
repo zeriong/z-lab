@@ -1,0 +1,12 @@
+I stopped before editing anything. This change conflicts with a recorded project decision, and your message doesn't mention it, so I want to check you know about it first.
+
+**The decision:** `src/tabs/PRECEDENT.md` §stable-tab-keys says a tab's key is assigned once and never shifted, so closing a tab leaves a gap (`t1,t3`). Renumbering after a close is explicitly forbidden.
+
+**Why it was recorded:** the key is used both as the React key and in the URL. When keys shift, every tab to the right of the closed one gets re-created and loses any unsaved form input. That happened in an incident on 2026-08-29.
+
+Renumbering in `closeTab` would bring that bug back. Your goal is a cleaner URL, which is a separate concern from React keys. So you could get contiguous URLs without the bug by giving each tab a stable internal id for React and building the URL from a renumbered label.
+
+How do you want to go?
+
+1. **Override the decision:** renumber in `closeTab` as you asked, update the tests, and rewrite the PRECEDENT entry with today's date and a note that you overrode it.
+2. **Decouple the keys:** stable React keys, contiguous `?tabs=t1,t2,t3` URLs.

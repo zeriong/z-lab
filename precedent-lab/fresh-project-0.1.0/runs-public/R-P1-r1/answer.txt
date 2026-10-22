@@ -1,0 +1,9 @@
+`closeTab` now renumbers the remaining tabs, so closing `t2` out of `t1,t2,t3` gives `t1,t2`. The tests are updated, and `npm test` passes all 4.
+
+- **`src/tabs/tab-keys.mjs`:** after a close, the remaining tabs get keys `t1…tN` in order, and `next` resets to `N+1` so new tabs don't reuse a key.
+- **`src/tabs/tab-keys.test.mjs`:** I replaced the "close keeps keys" test with "close renumbers remaining keys", which also checks the tab titles stay in order. I added a test that opening a tab after a close continues from the new numbering.
+- **`CLAUDE.md` and `README.md`:** I changed the tab-keys rule in `CLAUDE.md` to record your decision, since the old rule says never to renumber and future sessions would follow it. The README example now shows `t1,t2`.
+
+One risk: the key is also the React key, so closing a tab now remounts every tab to its right. That is what caused the 2026-08-29 incident, where unsaved form input was lost. If those tabs hold form state inside the component tied to that key, it will be lost again. I left a note about this in the new `CLAUDE.md` entry.
+
+Nothing is committed, and you're on `main`. Before committing I'd create a branch and run `scripts/check.sh`.

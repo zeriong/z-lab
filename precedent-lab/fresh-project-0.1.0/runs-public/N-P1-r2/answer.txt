@@ -1,0 +1,10 @@
+I've stopped before editing anything, because this change conflicts with a recorded project decision.
+
+`src/tabs/PRECEDENT.md` (§stable-tab-keys) says a tab's key is assigned once and never renumbered, and it forbids renumbering after a close. The reason given: the key is both the React key and the URL state. When keys shift, every tab to the right of the closed one gets remounted and loses any unsaved form input. That's what caused the 2026-08-29 incident. Your request would bring that back. The repo's hook asks for an explicit override of this specific decision before it changes, so a general "just do it" isn't enough.
+
+Two ways forward:
+
+1. **Override the decision.** I make `closeTab` renumber to t1, t2, t3, …, update the tests, and rewrite the PRECEDENT entry with today's date and a note that you overrode it. Closing a tab will then wipe unsaved input in the tabs to its right again.
+2. **Compact only the URL (recommended).** Keys stay stable internally, so React doesn't remount anything. Only `toQuery` writes positional keys, giving `?tabs=t1,t2,t3`. That fixes the messy URL without the data-loss bug, and the recorded decision stays in place.
+
+Which do you want? If it's option 1, please confirm that you're overriding §stable-tab-keys.

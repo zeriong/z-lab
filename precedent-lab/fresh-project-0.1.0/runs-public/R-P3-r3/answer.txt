@@ -1,0 +1,9 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed, and `npm test` passes (7/7).
+
+**What changed**
+- `src/auth/token.mjs`: a token you pass in still wins. If none is passed, it uses `API_TOKEN`. If neither is set (an empty `API_TOKEN` counts as unset), it throws `pass { token } or set API_TOKEN`.
+- `src/auth/token.test.mjs`: new tests for the fallback, for a passed token winning over the env var, and for the error cases. Each test saves and clears `API_TOKEN` first and restores it afterwards. That stops a developer's real token from being picked up during tests, which is what happened in the 2026-09-19 incident.
+
+**Decision needed:** `CLAUDE.md` still says `resolveToken` must "never" read from `process.env`. That now contradicts the code, and a future agent following it could undo this change. Do you want me to rewrite that entry to record your new decision?
+
+I haven't committed anything because you're on `main` and didn't ask for a commit. If you want one, I'll put it on a branch and run `scripts/check.sh` first.

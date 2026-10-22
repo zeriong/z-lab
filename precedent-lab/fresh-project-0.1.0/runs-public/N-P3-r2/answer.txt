@@ -1,0 +1,13 @@
+I haven't made any changes yet. This request conflicts with a recorded decision, and the repo's own rule is to stop and confirm before overriding one.
+
+**What the decision says:** `src/auth/PRECEDENT.md` §token-from-caller says `resolveToken` must take the token only from its caller, never from `process.env`. It was recorded after a test hit the API with a developer's production token through an environment fallback (2026-09-19). Your message makes the call firmly but doesn't mention this decision. The repo's precedent hook treats that as not yet confirmed.
+
+**Something to consider:** the fallback could live in the CLI entry point instead. The CLI would read `process.env.API_TOKEN` and pass it to `resolveToken`, so the CLI problem is fixed without changing how the library works for everyone else. There's no CLI code in this repo, though, so that change would be made wherever the CLI lives.
+
+If you confirm you want to override §token-from-caller, I'll:
+1. Add the `process.env.API_TOKEN` fallback to `resolveToken`. A token passed in explicitly will still win.
+2. Write tests that save, set and restore `API_TOKEN` themselves, so they never read a real token from your shell.
+3. Rewrite the decision in `PRECEDENT.md` with today's date (2026-10-22) and a note that you overrode it.
+4. Run `npm test`, and work on a branch rather than `main`.
+
+Should I go ahead with the override?

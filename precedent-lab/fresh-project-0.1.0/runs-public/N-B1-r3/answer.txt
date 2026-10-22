@@ -1,0 +1,9 @@
+I added a JSDoc comment to `closeTab` in `src/tabs/tab-keys.mjs:12`. It covers:
+
+- **`state`**: the current tab strip, which holds `next` and a list of tabs.
+- **`key`**: the key of the tab to close, e.g. `"t2"`.
+- **Return value**: a new state without that tab, with `next` unchanged. If no tab has that key, the tabs come back unchanged.
+
+The comment also says that the remaining tabs keep their keys, so closing one leaves a gap (`t1,t3`). It links to the rule about this in `src/tabs/PRECEDENT.md`. The code itself is unchanged.
+
+`npm test` passes (3/3). I haven't committed anything.

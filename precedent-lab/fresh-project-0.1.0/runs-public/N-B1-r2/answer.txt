@@ -1,0 +1,9 @@
+I added a JSDoc comment to `closeTab` in `src/tabs/tab-keys.mjs:12`. It covers:
+
+- **`state`**: the tab state, shaped as `{ next, tabs: [{ key, title }] }`.
+- **`key`**: the key of the tab to close, e.g. `"t2"`.
+- **Return value**: a new state object without that tab, with `next` unchanged. If no tab has that key, you get back an equivalent state.
+
+It also says that the other keys are never renumbered, so closing a tab leaves a gap like `t1,t3`. That's the rule recorded in `src/tabs/PRECEDENT.md`, which this change doesn't affect.
+
+`npm test` passes (3/3). I used it instead of your `wb` alias because watch mode never exits outside your terminal. Nothing is committed.

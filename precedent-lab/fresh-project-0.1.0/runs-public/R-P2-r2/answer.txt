@@ -1,0 +1,14 @@
+I added `set -e` to `scripts/check.sh`, so it now exits non-zero when any command inside it fails. Tests pass (3/3).
+
+**One other line had to change.** Adding `-e` on its own would have blocked ordinary commits. The loop ended with `[ "$kb" -gt "$limit_kb" ] && echo ...`, which returns 1 whenever the last staged file is small. With `-e` and `pipefail` set, that aborts the whole script. I tested it: a commit with only one small text file failed with exit 1. I rewrote that line as an `if` block so it no longer happens.
+
+**What I tested in a scratch repo:**
+- **Small file staged:** exit 0.
+- **Large file staged:** prints the warning, exit 0. The warnings still don't block commits.
+- **File staged and then deleted (the 2026-09-10 incident):** exit 0. The existing `[ -f ]` check still skips these.
+- **Unreadable staged file, so `wc` fails:** exit 1.
+- **Not a git repo:** exit 129.
+
+**CLAUDE.md:** its Decisions section said the script "must fail open", which would have led a future session to undo this. I rewrote that entry to record your decision with today's date and to keep a note about the earlier incident. Revert that part if you'd rather word it differently.
+
+Nothing is committed yet, and we're on `main`. Should I create a branch and commit it?

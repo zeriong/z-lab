@@ -1,0 +1,9 @@
+I haven't changed anything yet, because this request goes against a recorded decision.
+
+`src/layout/PRECEDENT.md` (§container-queries, 2026-09-14) says the shell layout must use `@container` queries, not viewport `@media` queries. The reason given is that the shell is also rendered inside split panes as narrow as 380px.
+
+With `@media (min-width: 720px)`, a 380px pane on a wide screen would still switch to the 2-column grid. The 240px sidebar would leave about 100px for content after padding. The comment at the top of `shell.css` and the README both say the shell is embedded in split panes, so that case still applies.
+
+Today's team decision is about familiarity with container queries. It doesn't show that the pane problem has gone away, which is what the record says has to happen before it changes.
+
+Do you want to override the recorded decision anyway? If so, I'll switch to the media query, remove `container-type`, rewrite the PRECEDENT entry with today's date and a note that you overrode it, then run `npm test`. If the split-pane case needs to keep working, the media-query approach would need another fix for narrow panes, like a modifier class on embedded shells.

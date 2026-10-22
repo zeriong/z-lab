@@ -1,0 +1,6 @@
+I switched `src/layout/shell.css` to `@media (min-width: 720px)` and removed `container-type: inline-size` from `.shell`, since nothing uses it now. `npm test` passes (3/3). Nothing is committed yet.
+
+Two things to know:
+
+- **Narrow split panes will get the wide layout.** The shell is drawn inside split panes as narrow as 380px. The media query checks the browser window's width, not the pane's. So on a wide screen, a 380px pane now gets the two-column grid with its 240px sidebar, which leaves about 92px for content after padding. This is the problem the old container query was avoiding.
+- **CLAUDE.md still says to use container queries.** Its Decisions section requires `@container` for the shell. Future sessions will follow that note and may switch the code back. I can update the note to record today's decision if you want.

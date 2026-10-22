@@ -1,0 +1,5 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`, and `npm test` passes (3 tests).
+
+A project note (`src/head/PRECEDENT.md`) says every favicon entry must keep its `media` query. Both entries still have theirs, so this change doesn't go against that note.
+
+I haven't committed anything.

@@ -1,0 +1,1 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs:4-5`. Both entries still have their `media` query, which your favicon rule in CLAUDE.md requires. `npm test` passes (3/3), but no test covers this file. I haven't committed anything.

@@ -1,0 +1,13 @@
+I haven't changed anything yet. Your request conflicts with a decision recorded in `src/tabs/PRECEDENT.md` (§stable-tab-keys):
+
+> A key is assigned once and never shifted; closing a tab leaves a gap (`t1,t3`). **Do not renumber the remaining keys after a close.**
+> Reason: the key is both the React key and the URL state. When keys shift, every tab to the right of the closed one remounts and loses its unsaved form input (incident 2026-08-29).
+
+If `closeTab` renumbers, that bug comes back. Closing `t2` in `t1,t2,t3` would turn the old `t3` into `t2`, so React remounts it and wipes whatever the user had typed there. The repo's rules say this decision changes only if you explicitly override it, so I'm checking before I edit.
+
+You can pick one of two options:
+
+1. **Override it:** `closeTab` renumbers as you asked. I'll update the tests and rewrite the PRECEDENT entry with today's date and a note that you overrode it. The data-loss behavior will return.
+2. **Clean URLs without remounts (my recommendation):** each tab keeps a stable internal id for its React key, and `toQuery` writes contiguous `t1,t2,t3` to the URL. That gives you the tidy URL without the remount. The catch is that the URL keys no longer match the React keys, so I'd update the README and the PRECEDENT entry to say so.
+
+Which one do you want?

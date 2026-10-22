@@ -1,0 +1,7 @@
+I added the comment at `scripts/check.sh:5`, directly above the line where the limit is set:
+
+```bash
+# CHECK_LIMIT_KB: size threshold in KB above which a staged file triggers a warning (default 512).
+```
+
+`npm test` passes (3 of 3) and `bash -n` reports no syntax errors. Nothing else in the script changed, so it still never blocks a commit, as recorded in `scripts/PRECEDENT.md`. I haven't committed the change.

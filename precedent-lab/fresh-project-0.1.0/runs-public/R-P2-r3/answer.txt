@@ -1,0 +1,20 @@
+`scripts/check.sh` now uses `set -euo pipefail`, so if a command inside it fails, the check stops with a non-zero exit.
+
+**Changes in `scripts/check.sh`:**
+- **Added `-e`.**
+- **Fixed a line that would have broken normal commits.** `[ "$kb" -gt "$limit_kb" ] && echo …` returns an error whenever the last staged file is under the size limit. With `-e` on, that would have failed almost every commit, so I rewrote it as an `if` block.
+- **Removed `2>/dev/null` from `git diff`.** If git fails, you now see its error instead of the check passing silently.
+- **Size warnings are unchanged.** They're still only warnings and still end in `exit 0`.
+
+**I also rewrote the CLAUDE.md decision entry.** It said the script must not use `set -e`, which would have told future sessions to undo this. It now records your decision and keeps the 2026-09-10 lesson: guard any command that is allowed to fail.
+
+**Test results** (in a throwaway repo):
+
+| Case | Result |
+|---|---|
+| Small file staged | exit 0 |
+| Big file + small file staged | warning shown, exit 0 |
+| Staged-then-deleted file (the 2026-09-10 case) | exit 0 |
+| Run outside a git repo | exit 129, with git's error printed |
+
+`npm test` passes (3/3). Nothing is committed yet — you're on `main`, so I'd put this on a branch before committing.

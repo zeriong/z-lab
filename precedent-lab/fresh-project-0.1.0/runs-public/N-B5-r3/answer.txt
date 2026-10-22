@@ -1,0 +1,1 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`. Both still have their `media` query, as `src/head/PRECEDENT.md` requires. `npm test` passes (3 of 3), though none of those tests cover the icons file. Nothing is committed.

@@ -1,0 +1,3 @@
+I added a `.shell__header` rule to `src/layout/shell.css:6` with `padding-block: 12px;`. That pads only the top and bottom and leaves left and right alone. `npm test` passes (3/3).
+
+This doesn't touch the recorded rule that the shell layout uses `@container` queries, and it doesn't add a new layout rule, so `PRECEDENT.md` didn't need updating. I haven't committed anything.

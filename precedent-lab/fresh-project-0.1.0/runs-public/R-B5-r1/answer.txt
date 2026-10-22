@@ -1,0 +1,3 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`. Both still have their `media` query, as the project rules require. `npm test` passes (3/3).
+
+I didn't commit anything.
