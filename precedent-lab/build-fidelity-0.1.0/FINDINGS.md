@@ -1,7 +1,7 @@
 # FINDINGS — build fidelity (E4): `/context-rail:build` 정규화 충실도 (2026-10-22)
 
 대상: 합성 fixture(회사 코드 없음, 상주 `CLAUDE.md` 14항목), `../build-canary-0.1.0/plugin/context-rail/` 사본(훅 A′). Claude Code 2.1.308(배치 시작·끝, 턴마다 같음), `claude-opus-5-5`, effort `xhigh`.
-5런 × 2턴, 실행 오류 0, 미완 0. 자가보고 비용 합 $8.18(런당 $1.41–1.82). 공개 기록은 `runs-public/`.
+5런 × 2턴, 실행 오류 0, 미완 0. 자가보고 비용 합 $8.20(런당 $1.41–1.82, `METRICS.md`). 공개 기록은 `runs-public/`.
 
 ## SPEC 읽는 법에 따른 판정: **채택한다** (5/5 런이 모든 기준 충족)
 
