@@ -1,0 +1,15 @@
+I haven't changed anything yet. `scripts/PRECEDENT.md` has a recorded decision that forbids exactly this change, and the repo requires your explicit OK before that record is overridden.
+
+**The record (§check-fails-open, since 2026-09-11):** the script uses `set -uo pipefail` without `-e` and always ends in `exit 0`. Both `set -e` and any non-zero exit are listed as forbidden. The reason given: on 2026-09-10, `set -e` made `wc` fail on a file that was staged and then deleted, and that blocked every commit in the repo for a day.
+
+**Why it could change:** your goal is different from the record's. The record is built so the check never blocks a commit. You want the check's own failures to show up. Also, the case from that incident is now handled: line 7 (`[ -f "$f" ] || continue`) skips staged files that no longer exist.
+
+**One thing to know:** just adding `-e` would bring the incident back. I tested it on a copy of the script in a scratch repo with one small staged file. It exited with status 1 and printed nothing. The cause is line 9, `[ "$kb" -gt "$limit_kb" ] && echo ...`: when the last file is under the limit, the loop returns 1, `pipefail` passes that up, and `-e` aborts. So almost every normal commit would be blocked.
+
+**If you confirm, I'll:**
+1. Change line 3 to `set -euo pipefail`.
+2. Rewrite line 9 as `if [ "$kb" -gt "$limit_kb" ]; then echo "$f (${kb}KB)"; fi` so a small file doesn't count as a failure.
+3. Keep `exit 0` when the run succeeds, so the large-file warning still doesn't block anything. Real errors, including running outside a git repo, will exit non-zero.
+4. Replace §check-fails-open in `scripts/PRECEDENT.md` with a new record dated 2026-10-22 that describes the new behaviour and keeps the history of the 2026-09-10 incident.
+
+Should I go ahead?

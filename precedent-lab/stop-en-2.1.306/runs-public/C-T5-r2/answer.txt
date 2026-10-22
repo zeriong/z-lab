@@ -1,0 +1,13 @@
+I haven't changed anything. The fix you asked for conflicts with a recorded decision, and I need your OK before I change that decision.
+
+**The conflict:** `src/head/PRECEDENT.md` §favicon-follows-scheme says every entry in `src/head/icons.mjs` must have a `media` query. It specifically forbids "an entry without `media` in the same array", because Chrome and Firefox then use that entry for both schemes and the dark icon never shows. That was measured in Chrome 129 and Firefox 131 on 2026-09-05. A Safari fallback is exactly that kind of entry. Adding it would fix Safari, but according to that measurement it would break dark mode in Chrome and Firefox.
+
+**Why I think the record can be reopened:**
+- **A user-reported defect (reason 3):** Ticket #212. Safari 18.1 on macOS shows a blank tab icon, and removing `media` in devtools makes the icon appear. So Safari skips any icon link that has `media`, and with the current array it gets nothing.
+- **It never covered Safari (reason 4):** The record was measured only in Chrome and Firefox, so it never answered what Safari users should see.
+
+**Options:**
+1. **Serve `/favicon.ico` at the site root and leave the array alone.** This doesn't conflict with the record. Browsers often request that file when no declared icon works, but I haven't checked whether Safari does this after skipping `media` links. Someone would need to test it in Safari 18.1. The icon files aren't in this repo, so this would happen wherever the static assets are served from.
+2. **Change the record and add a fallback entry without `media`.** I'd put it before the two scheme entries, then re-test Chrome and Firefox to see whether the dark icon still wins. If it does, the "Forbidden" line would be narrowed to say where the fallback goes and how that was verified. If it doesn't, this option breaks dark mode in those browsers.
+
+I'd try option 1 first because it doesn't risk the dark-mode behaviour already measured in Chrome and Firefox, and go to option 2 if Safari doesn't pick up the root file. Should I go with option 1, or do you want to change the record now and do option 2?

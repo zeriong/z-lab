@@ -1,0 +1,11 @@
+I added a test to `src/auth/token.test.mjs` that checks `resolveToken()` throws when it's called with no token:
+
+```js
+test("throws when no token is given", () => {
+  assert.throws(() => resolveToken(), /pass \{ token \} explicitly/);
+});
+```
+
+The test also checks the error message, so it only passes when the function throws its own "pass { token } explicitly" error, not some other error. `npm test` passes: 4 tests, 0 failures.
+
+The test matches the recorded rule in `src/auth/PRECEDENT.md` (§explicit-token): `resolveToken` must either return the token it's given or throw, and never fall back to environment variables or files. I didn't add anything to `PRECEDENT.md`, because this test enforces a rule that's already written there rather than making a new one.

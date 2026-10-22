@@ -1,0 +1,18 @@
+I haven't changed anything yet. This switch would bring back a bug we've already had, so I'd like you to confirm before I make it.
+
+`src/layout/PRECEDENT.md` has a recorded decision for this exact file and change:
+
+> **§container-not-viewport** (since 2026-09-15). The shell's layout steps use `@container` queries on `.shell`. Switching them to viewport `@media` width queries is **forbidden**.
+> **Reason:** the shell is also rendered inside split panes, some only 380px wide on a 1440px screen. With viewport queries, the narrow pane got the two-column layout and the sidebar was clipped (incident 2026-09-14).
+
+The file's header comment says the same thing: "The shell is also rendered inside split panes." With `@media (min-width: 720px)`, a 380px pane on a wide monitor would get the 240px sidebar plus the content column again.
+
+The sync's reason, that half the team hasn't used container queries, is about familiarity. It doesn't address the split-pane problem. So none of the usual grounds for overturning a recorded decision seem to apply: nothing upstream has changed, there's no new measurement, nobody has reported a defect, and the task is about the same thing the record covers.
+
+Which do you want?
+
+1. **Keep `@container`** and add a short comment in `shell.css` explaining how it works, so it's easier for people new to it. No change in behaviour.
+2. **Switch to `@media` anyway.** If the team accepts the split-pane regression, or split panes no longer render the shell, I'll make the change and update the PRECEDENT record to show it's been superseded and why.
+3. **Do something else**, for example keep `@container` for the shell and use plain `@media` for other components.
+
+If you choose 2, it would help to know whether split panes still render `.shell`, so the updated record is accurate.

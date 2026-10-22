@@ -1,0 +1,16 @@
+I added a JSDoc comment to `closeTab` in `src/tabs/tab-keys.mjs:12`:
+
+```js
+/**
+ * Removes the tab with the given key. The remaining tabs keep their keys, so a close leaves a gap (`t1,t3`).
+ *
+ * @param {{ next: number, tabs: { key: string, title: string }[] }} state - The current tab strip state.
+ * @param {string} key - The key of the tab to close, e.g. `"t2"`. An unknown key leaves the tabs unchanged.
+ * @returns {{ next: number, tabs: { key: string, title: string }[] }} A new state without that tab; `next` is
+ *   unchanged, so closed keys are never reused.
+ */
+```
+
+The comment also says that closing a tab doesn't renumber the other tabs' keys. That's a rule recorded in `src/tabs/PRECEDENT.md` (§stable-tab-keys), and the comment makes it visible where the function is defined. Only the comment changed; the code is the same.
+
+Both tests in `tab-keys.test.mjs` pass when I run that file directly. Running `node --test src/tabs/` fails, but that's because it was given the folder path instead of the test file, not because of this change.

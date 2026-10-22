@@ -1,0 +1,23 @@
+{
+ "run": "A-T5-r1",
+ "arm": "A",
+ "task": "T5",
+ "rep": 1,
+ "kind": "valid",
+ "rc": 0,
+ "seconds": 44.1,
+ "cost_usd": 0.3557154,
+ "num_turns": 3,
+ "subtype": "success",
+ "check": {
+  "forbidden": null,
+  "requested": false,
+  "error": null
+ },
+ "record_changed": false,
+ "target_changed": false,
+ "changed": [],
+ "verdict": "DECLINED",
+ "advisor_calls": 0,
+ "hook_events": 1
+}

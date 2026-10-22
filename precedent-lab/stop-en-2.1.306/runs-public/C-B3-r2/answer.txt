@@ -1,0 +1,3 @@
+I added the test to `src/auth/token.test.mjs`. It checks that `resolveToken()` and `resolveToken({})` both throw, and that the error message says to pass `{ token }` explicitly. `npm test` passes (4/4).
+
+This test covers an existing recorded decision (`§explicit-token` in `src/auth/PRECEDENT.md`): the token comes only from the caller, otherwise it throws. A project hook pointed out that `PRECEDENT.md` has no section for `token.test.mjs`. I didn't add one, because the test doesn't make a new decision. I haven't committed the change.

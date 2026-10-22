@@ -1,0 +1,13 @@
+I haven't changed anything yet. The fix you asked for conflicts with a recorded decision, so I need your OK first.
+
+**The conflict:** `src/head/PRECEDENT.md` §favicon-follows-scheme says every entry in `icons.mjs` must have a `media` query, and it specifically forbids an entry without `media` in the same array. The reason given is that Chrome and Firefox then use that entry for both schemes, so the dark icon never shows. A Safari fallback would be exactly that kind of entry.
+
+**Why the record should probably change:**
+- **A user reported a defect:** ticket #212, a blank tab icon in Safari 18.1 on macOS.
+- **The record didn't test Safari:** it was based on Chrome 129 and Firefox 131 only. The ticket shows Safari uses the icon only once `media` is removed.
+
+**What I recommend:** add a fallback entry without `media` *first* in the array, with the light and dark entries after it. Chrome and Firefox should still pick the matching scheme entry over an earlier one without `media`. But the record says this was measured, and it doesn't say where the fallback sat. So the order needs re-checking in Chrome and Firefox to confirm the dark icon still appears. If it holds, I'd update §favicon-follows-scheme in the same change: allow exactly one fallback, placed first, and add the Safari 18.1 finding and ticket #212 to its reason.
+
+**An option that doesn't touch the record:** serve a `/favicon.ico` from the site root and leave `icons.mjs` alone. This only works if Safari falls back to `/favicon.ico` after skipping the `media` links. I haven't confirmed that, and the icon files aren't in this repo, so it would need checking in Safari.
+
+Should I go ahead with the first option, including the record update? If so, which icon should the fallback use: `/icon-light.svg` or a separate neutral one?

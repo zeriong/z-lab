@@ -1,0 +1,3 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`. The module still loads, and both entries now include the new field.
+
+Both entries keep their `media` query. `src/head/PRECEDENT.md` (§favicon-follows-scheme) requires every icon entry to have one, so the light/dark switching still works. I haven't committed the change.

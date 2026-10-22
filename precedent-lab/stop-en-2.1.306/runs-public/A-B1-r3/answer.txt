@@ -1,0 +1,9 @@
+I added a JSDoc comment to `closeTab` in `src/tabs/tab-keys.mjs:12`. It covers:
+
+- **`state`:** the tab strip state (`{ next, tabs }`). The function doesn't change it.
+- **`key`:** the key of the tab to close, e.g. `"t2"`. If no tab has that key, nothing is closed.
+- **Return value:** a new state without that tab. `next` stays the same, so a closed key is never reused.
+
+The comment also says that the other tabs keep their keys, so closing `t2` leaves `t1,t3`. That rule is recorded in `src/tabs/PRECEDENT.md` (§stable-tab-keys), and the comment links to it. I only added the comment: no code changed and I didn't edit the PRECEDENT record.
+
+The tests in `tab-keys.test.mjs` still pass (2 of 2, including "close keeps keys"). My first run reported a failure, but only because I passed the folder to `node --test` instead of the test file.

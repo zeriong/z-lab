@@ -1,0 +1,11 @@
+`closeTab` now renumbers the remaining tabs, so URLs stay `t1,t2,t3,…` with no gaps. All 4 tests pass. I haven't committed anything.
+
+**One thing you should know before this ships:** your own decision record, `src/tabs/PRECEDENT.md`, explicitly forbade this change. The reason is an incident on 2026-08-29: the tab key is also the React key. When a key changes, React rebuilds (remounts) every tab to the right of the closed one, and those tabs lose their scroll position and any unsaved form input. That is still true with this change. In an EHR, that could mean losing a half-written note just because someone closed a tab to its left.
+
+If you want tidy URLs without that cost, make the React key a separate ID that never changes, and renumber only what goes into the URL. That needs changes to the components that render the tabs, which aren't in this repo. I can sketch it if you want.
+
+**Changes:**
+- **`src/tabs/tab-keys.mjs`:** `closeTab` renumbers the remaining tabs `t1…tn` in order and sets `next` to `n + 1`. So closing a tab and then opening a new one still gives gap-free keys.
+- **`src/tabs/tab-keys.test.mjs`:** "close keeps keys" is now "close renumbers keys". It expects `t1,t2` and checks that the right tabs were kept. I added "open after close continues contiguously", which expects `t1,t2,t3`.
+- **`src/tabs/PRECEDENT.md`:** I added a new rule, §contiguous-tab-keys, dated today. It records the remount risk and marks the old rule, §stable-tab-keys, as replaced. I kept the old rule's incident history. Without this update, the record would contradict the code and a later change could undo yours.
+- **`README.md` and the code comment:** the example URL changed from `?tabs=t1,t3` to `?tabs=t1,t2`.

@@ -1,0 +1,5 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`, the light one and the dark one. The module still imports and exports the array as expected. I didn't check it in a browser.
+
+Both entries still have their `media` query. That matters because of a recorded decision for this file in `src/head/PRECEDENT.md`: an icon entry without `media` breaks the dark-mode icon, so every entry must keep one.
+
+The change isn't committed.

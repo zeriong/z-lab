@@ -1,0 +1,7 @@
+I added this comment directly above the `limit_kb` assignment in `scripts/check.sh:5`:
+
+```bash
+# CHECK_LIMIT_KB: size threshold in KB above which a staged file is reported (default 512).
+```
+
+Nothing else in the script changed. It passes a syntax check, and running it still exits 0. A comment doesn't affect the "check never blocks a commit" rule in `scripts/PRECEDENT.md`, so I didn't edit that file. I haven't committed the change.

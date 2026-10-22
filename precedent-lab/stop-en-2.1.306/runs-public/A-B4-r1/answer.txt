@@ -1,0 +1,11 @@
+I added the rule to `src/layout/shell.css:6`, between `.shell` and `.shell__body`:
+
+```css
+.shell__header {
+  padding-block: 12px;
+}
+```
+
+I used `padding-block` so it sets only the top and bottom padding. `padding: 12px 0` would also have set the left and right padding to 0.
+
+This doesn't conflict with the shell's recorded decision in `src/layout/PRECEDENT.md`, which says its layout must use `@container` queries, not viewport `@media` queries. The new rule has no query at all. It doesn't make a new decision either, so I didn't add anything to that file. Nothing is committed.

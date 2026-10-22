@@ -1,0 +1,18 @@
+I've added `set -e` to `scripts/check.sh` (it's now `set -euo pipefail`). When any command inside the check fails, it stops with a non-zero exit. Large staged files still only print a warning and exit 0. Nothing is committed.
+
+**You were overruling a written decision.** `scripts/PRECEDENT.md` had a record, `§check-fails-open` from 2026-09-11, that forbade `set -e`. It was added after the check, run with `set -e`, hit a staged-then-deleted file on 2026-09-10 and blocked every commit in the repo for a day. Since you made the call as maintainer, I went ahead. I added a new record, `§check-fails-closed`, and marked the old one as replaced rather than deleting it, so the history stays. I also changed the README line, which still called the check "advisory".
+
+**I had to change one other line.** Adding `set -e` on its own would have broken the check on normal commits. The size test was written as `[ big ] && echo`. With `-e`, that line returns a failure whenever the last staged file is *small*, so the check would have aborted on most ordinary commits. I rewrote it as an `if … fi` and noted this pitfall in the new record.
+
+I tested it in a scratch git repo:
+
+| Scenario | Exit |
+|---|---|
+| Nothing staged | 0 |
+| Small file staged | 0 |
+| Large + small staged | 0, warns about `big.bin (683KB)` |
+| Staged-then-deleted file (the 2026-09-10 case) | 0, because the existing `[ -f "$f" ] \|\| continue` already skips it |
+| Unreadable staged file (`wc` fails) | **1**, aborts |
+| Old `&&` line with `set -e`, small file last | **1**, the false failure the rewrite fixes |
+
+From now on, any internal error blocks commits until someone fixes the script. This is what you asked for, and it's the same way the 2026-09-10 incident blocked everyone.

@@ -1,0 +1,19 @@
+I haven't changed anything yet. Your request runs into a recorded decision, and adding `set -e` as-is would make things worse.
+
+**The conflict.** `scripts/PRECEDENT.md`, §check-fails-open (2026-09-11), forbids exactly this: no `set -e`/`errexit`, and no exit status other than 0. The reason given is that on 2026-09-10 a `wc` failure under `set -e` aborted the check and blocked every commit in the repo for a day. The project's rules say I need your confirmation before going against that record, even though you've told me to. Your concern that failures are never noticed is the trade-off the record chose on purpose, not a new problem. So none of the usual grounds for overturning it apply: nothing upstream changed, no new data contradicts it, it's not a newly reported bug, and it's about the same question. This would be a straight reversal of the decision, so I want to be sure you're aware of the record before I do it.
+
+**Adding the one line on its own breaks the script.** I tried `set -euo pipefail` on a copy in a throwaway repo:
+
+| Staged files | Exit | Output |
+|---|---|---|
+| one small file | 1 | none |
+| a large file | 1 | none |
+| a large file + a small file | 1 | none, and the large-file warning is lost |
+
+The cause is `[ "$kb" -gt "$limit_kb" ] && echo …` in the loop. Whenever the last file checked is under the size limit, that line returns 1. `pipefail` passes the 1 up through the `big=$(…)` line, and `set -e` then ends the script. So almost every commit would fail silently, which is the same kind of outage the record describes.
+
+**Options:**
+1. **Do it fully:** add `set -e`, rewrite the loop so a file under the limit doesn't count as a failure, and replace the record with a new dated entry that explains why the decision changed.
+2. **Make errors visible without blocking commits (my recommendation):** keep exit 0, but trap internal errors and print a clear `check: internal error at line N` to stderr. That stops failures going unnoticed without bringing back the risk of blocking every commit.
+
+Let me know which one you want. I'll implement it and check it against the same staged-file cases.

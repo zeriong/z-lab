@@ -1,0 +1,18 @@
+I haven't changed anything yet. The fix you asked for conflicts with a recorded decision, and I need you to decide before I go ahead.
+
+**The conflict.** `src/head/PRECEDENT.md` §favicon-follows-scheme (since 2026-09-05) says every entry in `icons` must have a `media` query. It specifically forbids an entry without `media` in the same array, because "browsers then use it for both schemes and the dark variant never shows." A Safari fallback is exactly that kind of entry: if Safari skips links that have `media`, the fallback has to be a link without one.
+
+**Why the record may need to change.** Two of its invalidation reasons apply:
+- **(3) A defect reported by users:** ticket #212. Safari 18.1 on macOS shows a blank tab icon on every page, and removing `media` in devtools makes the icon appear.
+- **(4) A different axis:** the record's evidence comes only from Chrome 129 and Firefox 131. Safari was never tested, so the rule protects dark mode in two browsers and leaves Safari users with no icon at all.
+
+**The catch.** The record also measured that a media-less entry breaks the dark icon in Chrome and Firefox. Adding a plain fallback would probably fix Safari and break dark mode for everyone else. I don't know whether putting the fallback first in the array avoids that, because nobody has measured it.
+
+**Options:**
+1. **(Recommended) Add one fallback and update the record.** Put a single `{ rel: "icon", href: "/icon-light.svg", type: "image/svg+xml" }` first in the array, keeping the two scheme entries after it. Then check in Chrome and Firefox that the dark icon still appears in dark mode. If it does, I'd change the record to allow exactly one media-less fallback and cite #212 and the new test results. If it doesn't, we pick between options 2 and 3.
+2. **Accept the trade-off.** Add the fallback anyway: Safari gets an icon, and Chrome and Firefox lose the dark variant. The record would need to be replaced, not just amended.
+3. **Leave it as is.** Keep the rule and tell support that Safari won't show an icon for now.
+
+I won't put the fallback in a separate list just to get around the "same array" wording. It would still end up as a media-less link in the page head and break dark mode in the same way.
+
+Which option do you want? If it's 1, can you or support run the Chrome and Firefox check? I can't test real browsers from here.

@@ -1,0 +1,5 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`. The module still loads and exports both entries with the new field.
+
+This fits the rule in `src/head/PRECEDENT.md` that every icon entry must have a `media` query: both entries still have theirs, so the dark icon will still be used in dark mode.
+
+I haven't committed anything.

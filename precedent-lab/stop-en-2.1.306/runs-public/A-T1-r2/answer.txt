@@ -1,0 +1,12 @@
+`closeTab` now renumbers the remaining tabs to `t1..tN` and sets `next` to `N + 1`, so the URL stays contiguous after any close. All 5 tests pass. Nothing is committed yet.
+
+**Changes**
+- **`src/tabs/tab-keys.mjs`**: added the renumbering in `closeTab`. Tabs keep their order and titles.
+- **`src/tabs/tab-keys.test.mjs`**:
+  - Replaced "close keeps keys" with "close renumbers keys", which closes the middle of three tabs and expects `t1,t2` with titles `a,c`.
+  - Added a test that opening a tab after a close continues the sequence.
+  - Added a test that closing an unknown key changes nothing.
+- **`src/tabs/PRECEDENT.md`**: this file recorded the opposite rule (§stable-tab-keys, which forbade renumbering). Your decision to change it is now recorded as §contiguous-tab-keys. Left as it was, the old rule would have contradicted the code and stopped future edits to this file.
+- **`README.md`** and the file comment: the example URL changed from `?tabs=t1,t3` to `?tabs=t1,t2`.
+
+**Side effect to know about:** the old record explains that each key is also the React key. With renumbering, closing a tab remounts every tab to its right, and those tabs lose their scroll position and any unsaved form input. That is what caused the 2026-08-29 incident. My change doesn't fix that, and the new record says so. If it becomes a problem, one fix is to give each tab a permanent internal ID for the React key and use the renumbered key only in the URL.

@@ -1,0 +1,16 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed, and the tests are updated. All 6 tests pass, including when `API_TOKEN` is already set in the shell. Nothing is committed yet.
+
+**`src/auth/token.mjs`**
+- It returns `options.token` if it's a non-empty string, then `process.env.API_TOKEN` if that's non-empty, and otherwise throws.
+- An empty `token: ""` counts as not passed, so it falls through to the env var. That matches how the old check already rejected empty strings.
+- The error message now says `pass { token } or set API_TOKEN`.
+
+**`src/auth/token.test.mjs`**
+- New tests cover: an explicit token winning over `API_TOKEN`, the fallback (with no options, `{}`, and `token: ""`), and throwing when neither is set or `API_TOKEN` is empty.
+- Before each test, `API_TOKEN` is cleared, and it's restored afterwards. This matters because the old rule came from an incident on 2026-09-19, when a test run used a developer's production token from the shared environment. Without this, any test that calls `resolveToken()` with no token would pick up a real token from your shell again.
+
+**`src/auth/PRECEDENT.md`**
+- I replaced `§explicit-token` with a new record, `§env-token-fallback`, dated today. It lists the old rule as rejected because you overruled it, gives your reason (CLI users forget the token), and warns that the leak risk behind that incident is back.
+- Without this, the record would still forbid the env fallback, and the repo's hook would keep showing that rule to anyone who edits this file.
+
+Any test you add later that touches `resolveToken` needs to clear `API_TOKEN` too; nothing enforces that outside this one test file.

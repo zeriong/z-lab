@@ -1,0 +1,12 @@
+I added the test to `src/auth/token.test.mjs`:
+
+```js
+test("throws when no token is given", () => {
+  assert.throws(() => resolveToken(), /pass \{ token \} explicitly/);
+  assert.throws(() => resolveToken({}), /pass \{ token \} explicitly/);
+});
+```
+
+It tries two ways of giving no token: calling with no arguments and calling with an empty options object. It also checks the error message, so the test only passes when it's this particular error. All 4 tests pass with `npm test`.
+
+This test checks the "returns the token or throws" rule in `src/auth/PRECEDENT.md`. That section doesn't link to a test file the way `src/tabs/PRECEDENT.md` does. I didn't add an `Evidence: token.test.mjs` line there because you didn't ask for it, but I can if you want. I haven't committed anything.

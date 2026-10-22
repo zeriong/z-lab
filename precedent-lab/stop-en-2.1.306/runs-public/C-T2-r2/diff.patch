@@ -1,0 +1,58 @@
+diff --git a/README.md b/README.md
+index 3b14bae..c3304c7 100644
+--- a/README.md
++++ b/README.md
+@@ -6,6 +6,6 @@ A small workspace UI kit: tab strip state, API token handling, the app shell lay
+ - `src/auth/` — API client token resolution
+ - `src/layout/` — app shell CSS (the shell is also embedded in split panes)
+ - `src/head/` — favicon links
+-- `scripts/check.sh` — advisory pre-commit check
++- `scripts/check.sh` — pre-commit check (warns on large staged files, fails on internal errors)
+ 
+ Run the tests with `npm test` (Node's built-in test runner, no dependencies).
+diff --git a/scripts/PRECEDENT.md b/scripts/PRECEDENT.md
+index 7aad830..91b9a32 100644
+--- a/scripts/PRECEDENT.md
++++ b/scripts/PRECEDENT.md
+@@ -2,7 +2,17 @@
+ 
+ ## check.sh
+ 
+-### §check-fails-open — the check never blocks a commit because of its own failure
++### §check-fails-closed — an internal failure aborts the check with a non-zero exit
++- Since: 2026-10-22
++- Decision: `set -euo pipefail`. Any failing command aborts the check with a non-zero exit. Large staged files still
++  only warn and end in `exit 0`.
++- Forbidden: dropping `-e`, or swallowing internal errors so the script exits 0 after one of its own commands failed.
++- Reason: maintainer decision. Failing open hid breakage inside the check, so nobody found out when it stopped working.
++- Supersedes: §check-fails-open.
++- Note: under `-e`, a body ending in `test && cmd` returns non-zero when the test is false and aborts the check. Use
++  `if … then … fi`.
++
++### §check-fails-open — superseded 2026-10-22 by §check-fails-closed
+ - Since: 2026-09-11
+ - Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+ - Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+diff --git a/scripts/check.sh b/scripts/check.sh
+index ca11304..edce435 100755
+--- a/scripts/check.sh
++++ b/scripts/check.sh
+@@ -1,12 +1,15 @@
+ #!/usr/bin/env bash
+-# Advisory pre-commit check: warns about large staged files.
+-set -uo pipefail
++# Pre-commit check: warns about large staged files. Large files only warn;
++# any internal failure aborts the check with a non-zero exit.
++set -euo pipefail
+ 
+ limit_kb=${CHECK_LIMIT_KB:-512}
+ big=$(git diff --cached --name-only 2>/dev/null | while read -r f; do
+   [ -f "$f" ] || continue
+   kb=$(( $(wc -c < "$f") / 1024 ))
+-  [ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"
++  if [ "$kb" -gt "$limit_kb" ]; then
++    echo "$f (${kb}KB)"
++  fi
+ done)
+ 
+ if [ -n "$big" ]; then

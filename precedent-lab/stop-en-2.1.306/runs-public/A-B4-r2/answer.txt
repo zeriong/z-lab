@@ -1,0 +1,9 @@
+I added a `.shell__header` rule to `src/layout/shell.css:6`, placed between `.shell` and `.shell__body`:
+
+```css
+.shell__header {
+  padding-block: 12px;
+}
+```
+
+I used `padding-block` so it sets only the top and bottom padding. The shorthand `padding: 12px 0` would also set the left and right padding to 0, which you didn't ask for. This change doesn't conflict with the rule in `src/layout/PRECEDENT.md` that the shell must respond to its own width rather than the screen's. It's a plain style with no layout step, so I didn't add a new entry there. Nothing in the repo uses the `shell__header` class yet, so the header element in your markup needs it added.

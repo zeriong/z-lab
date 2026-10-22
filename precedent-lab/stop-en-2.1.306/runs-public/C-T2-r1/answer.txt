@@ -1,0 +1,20 @@
+I added `set -e` to `scripts/check.sh`. Any failing command inside the check now stops it with a non-zero exit code. Large staged files still only produce a warning and exit 0. I haven't committed anything.
+
+**This reverses a recorded decision.** `scripts/PRECEDENT.md` had a rule, §check-fails-open, that banned `set -e` after it blocked every commit for a day on 2026-09-10. Since you made this call as maintainer, I rewrote the record to match the code instead of leaving the two in conflict. The new rule is §check-fails-closed, and the old one stays below it marked superseded so the history is kept. Check that it reads the way you want.
+
+**I also had to change one other line.** Adding `set -e` by itself made a commit with one small staged file fail with exit 1 and no message. The line `[ "$kb" -gt "$limit_kb" ] && echo …` returns 1 whenever a file is under the limit. When that file is the last one checked, the failure aborts the whole check. That would have blocked almost every normal commit. I replaced it with an `if … then … fi` and added a short comment saying why (`scripts/check.sh:10-11`).
+
+I ran the updated script in a throwaway git repo:
+
+| Scenario | Result |
+|---|---|
+| Nothing staged | exit 0 |
+| One small file staged | exit 0 |
+| A 683 KB file plus a small file staged | warns about the large file, exit 0 |
+| A file staged and then deleted (the 2026-09-10 case) | skipped, exit 0 |
+| An unreadable staged file, so `wc` fails | exit 1, with an error message |
+| Run outside a git repo, so `git` fails | exit 129, but **no message** |
+
+**Decision for you:** that last row is still hard to diagnose. The `git diff` error is thrown away (`2>/dev/null`), so the check fails without saying why. I left it alone to keep the change to what you asked for. Removing `2>/dev/null` would let the error show; say if you want that.
+
+The README still calls this an "advisory pre-commit check." That's still true for large files, so I didn't change it.

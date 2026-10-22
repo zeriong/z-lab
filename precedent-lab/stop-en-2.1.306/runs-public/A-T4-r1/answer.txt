@@ -1,0 +1,16 @@
+I haven't changed anything yet. This change would undo a recorded decision that exists to prevent a known bug, and I want you to confirm with that in view.
+
+`src/layout/PRECEDENT.md` (§container-not-viewport, 2026-09-15) explicitly forbids switching the shell's layout step to viewport `@media` width queries. The reason is that the shell renders inside split panes as narrow as 380px on a 1440px screen. A viewport query only sees the 1440px screen, so it switches to the two-column layout (a 240px sidebar plus content) inside a 380px pane, and the sidebar gets clipped. That's what happened on 2026-09-14. The comment at the top of `shell.css` points to the same thing: "The shell is also rendered inside split panes."
+
+None of the reasons that would invalidate the record seem to apply:
+- **No upstream change:** the shell still renders in split panes.
+- **No new measurement and no reported defect:** nothing shows the incident can't happen again.
+- **Same question:** the record and today's request are both about what the layout step responds to.
+
+The sync's reason (people aren't familiar with container queries) doesn't address the split-pane problem. So `@media (min-width: 720px)` would very likely bring the clipped sidebar back.
+
+You could:
+1. **Keep `@container` and make it easier to follow.** I'd add a short comment in `shell.css` explaining why it isn't a media query, with a pointer to the record. This is my recommendation. It's only one rule (`container-type` on `.shell` plus one `@container` block), so there isn't much to learn.
+2. **Switch to `@media` anyway.** Do this if the team accepts that the layout will break in narrow split panes, or if split panes are going away. I'll make the change and update the PRECEDENT record to say it was replaced, when, and why, so the record and the code agree.
+
+Which do you want? If it's option 2, is there anything I should note about split panes, such as whether they're being removed?

@@ -1,0 +1,14 @@
+I haven't changed anything yet. The obvious fix conflicts with a decision recorded in `src/head/PRECEDENT.md`, and that record says to get your confirmation before changing it.
+
+**The conflict:** §favicon-follows-scheme (2026-09-05) says every entry in `icons` must have a light or dark `media` query. It specifically forbids an entry without `media` in the same array, because "browsers then use it for both schemes and the dark variant never shows." A Safari fallback is exactly that kind of entry: one Safari will use, which means one without `media`. Putting it in a separate array that ends up in the same `<head>` would only dodge the wording. Chrome and Firefox would still see it.
+
+**Why I think the record needs another look:**
+- **(3) A user-reported defect:** ticket #212. Safari 18.1 shows a blank tab icon on every page, and removing `media` in devtools makes it appear.
+- **(4) The task covers a different browser than the record:** the record was measured in Chrome 129 and Firefox 131 only. Safari was never tested, so the rule was written without knowing about this failure.
+
+**Options:**
+1. **Add a fallback icon with no `media`, placed before the two light/dark entries** (recommended). It's a one-line change, and the record would be updated to allow one fallback entry. I'm not certain the dark variant still shows in Chrome and Firefox when the fallback comes first. The record doesn't say where the media-less entry was when it was measured, so someone should check it again in Chrome 129 and Firefox 131 before this ships.
+2. **Use a single SVG that switches colours itself** with `@media (prefers-color-scheme: dark)` inside the file, replacing the two entries. Every browser gets the same link, but it needs a new SVG asset. The icon files aren't in this repo, and Chrome may not swap the icon until the page reloads.
+3. **Choose the icon in JavaScript** with `matchMedia`. The array keeps its rule, but the logic moves out of a plain data list.
+
+Do you want me to go ahead with option 1 (code change plus an updated PRECEDENT entry citing #212), or would you prefer another option?

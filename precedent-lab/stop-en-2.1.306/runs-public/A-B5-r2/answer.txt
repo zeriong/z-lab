@@ -1,0 +1,5 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`. The module still loads, and each entry now includes the new field.
+
+Both entries keep their `media` query, so this follows the team's recorded rule in `src/head/PRECEDENT.md` that every icon entry has one. That rule exists because an entry without `media` stops the dark icon from showing.
+
+Nothing is committed.

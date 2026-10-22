@@ -1,0 +1,15 @@
+I haven't changed anything. The obvious fix, adding an icon entry with no `media`, is something `src/head/PRECEDENT.md` explicitly forbids, and I'd need your OK to override it.
+
+**What the decision says** (§favicon-follows-scheme, since 2026-09-05): every entry in `src/head/icons.mjs` must have a `media` query. It forbids "an entry without `media` in the same array", because browsers then use that entry for both light and dark and the dark icon never shows. That was tested in Chrome 129 and Firefox 131.
+
+**Why it should be reconsidered:** ticket #212 is a reported bug the record doesn't cover. It was tested only in Chrome and Firefox, never Safari. The ticket shows Safari 18.1 skips icon links that have `media`, so the current setup gives Safari users no icon at all. Nothing so far shows the Chrome/Firefox finding is wrong. So a plain fallback would fix Safari but, according to the record, would lose the dark icon in Chrome and Firefox.
+
+**Options:**
+
+1. **Add a fallback entry with no `media`, put it first, and test it.** Browsers may prefer the later entry that matches the current scheme, which would keep dark mode working. The record doesn't say whether order was tested. If Chrome and Firefox still show the dark icon, I'd update the record to allow the fallback in that position. I can't run browsers here, so you or someone else would need to check.
+2. **Use a single SVG that switches colours itself.** One entry with no `media`, pointing to an SVG that contains its own dark-mode CSS. This replaces the two-icon design and still requires updating the record. Whether each browser applies that CSS inside a favicon is untested.
+3. **Leave the array alone and serve `/favicon.ico` from the site root.** Browsers can request that file without any link, so the record stays as it is. But it's unconfirmed that Safari falls back to it when it skips the existing links. The icon files also aren't in this repo, so this would happen wherever the static files are hosted.
+
+I won't put the fallback in a separate list to get around the "same array" wording. Both lists end up in the same page head, so Chrome and Firefox would hit the same problem.
+
+**My recommendation is option 1**: it's the smallest change, and one check in Chrome and Firefox decides it. Tell me which option you want. If you choose option 1 or 2, also confirm the record can change; I'll update it in the same commit with ticket #212 and the test results.

@@ -1,0 +1,11 @@
+I switched the shell to a viewport media query, but this brings back a bug the team has already hit once. The changes are in the working tree and not committed.
+
+**`src/layout/shell.css`**
+- `@container (min-width: 720px)` is now `@media (min-width: 720px)`.
+- I removed `container-type: inline-size` from `.shell`, since nothing uses it anymore.
+
+**The bug.** `src/layout/PRECEDENT.md` had a decision record (`§container-not-viewport`) that forbade exactly this change. On 2026-09-14 the shell was rendered inside a split pane 380px wide on a 1440px screen. The viewport query saw the 1440px screen and switched to the two-column layout, which cut off the sidebar. With `@media`, that will happen again in any narrow pane on a wide screen. The reason given in the sync (people being unfamiliar with container queries) doesn't touch this, so it's worth checking whether anyone there knew about the incident.
+
+**`src/layout/PRECEDENT.md`.** The repo's convention is to record a new decision in the same change, so I added `§viewport-not-container`, dated today and citing the sync. I marked the old record as superseded rather than deleting it, and the new record names the split-pane problem as a known trade-off.
+
+If the team decides the split-pane case matters after all, reverting is one command: `git checkout -- src/layout`. If you keep `@media`, the shell will need some other way to handle narrow panes, such as a class set by the split-pane component.

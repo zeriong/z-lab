@@ -1,0 +1,11 @@
+I haven't made the change. It does exactly what `src/layout/PRECEDENT.md` forbids, and the reason it's forbidden is a real bug that this would bring back.
+
+**§container-not-viewport** (since 2026-09-15) says:
+- **Forbidden:** switching the shell's layout steps to viewport `@media` width queries.
+- **Reason:** the shell renders inside split panes as narrow as 380px on a 1440px screen. A viewport query looks at the 1440px screen, not the pane, so it chose the two-column layout inside the narrow pane and clipped the sidebar (incident 2026-09-14).
+
+The sync's reason was that half the team hasn't used container queries. That doesn't cover the split-pane case. With `@media (min-width: 720px)`, any shell in a pane narrower than 720px on a wide screen gets the 240px sidebar grid again. No viewport query can avoid that, because the viewport can't tell how wide the pane is.
+
+You might have already known about this and accepted the trade-off. If not, I'd suggest keeping the container query and adding a short comment in `shell.css` that explains it. The rule is only 3 lines.
+
+If you still want the switch, say so and I'll make the edit. I'd also update the decision record in `PRECEDENT.md` with today's date and the sync as the reason, so the code and the record don't contradict each other.

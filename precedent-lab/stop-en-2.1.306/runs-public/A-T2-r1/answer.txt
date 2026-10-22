@@ -1,0 +1,15 @@
+I haven't changed anything yet. Your request conflicts with a recorded decision, and I found a bug that would make the literal change block nearly every commit. I'd like you to confirm before I go ahead.
+
+**The recorded decision.** `scripts/PRECEDENT.md` has §check-fails-open, dated 2026-09-11. It explicitly forbids `set -e`, `set -o errexit` and any exit status other than 0. The reason given: on 2026-09-10, a `set -e` version of this check failed on a staged-then-deleted file and blocked every commit in the repo for a day. Your request reverses that decision, and you're reporting a real problem with it: failures inside the check go unnoticed. That's a legitimate reason to revisit it, but you didn't mention the record, so I want to be sure you've seen it.
+
+**The bug.** I ran the script with `set -euo pipefail` in a throwaway repo with one small staged file. It exited 1 with no output. The loop's last line, `[ "$kb" -gt "$limit_kb" ] && echo …`, returns 1 whenever the last staged file is under the size limit. That status carries through `pipefail` into `big=$(…)`, and `set -e` then aborts the script. So adding the one line as-is would recreate the 2026-09-10 outage, only it would fire on almost every commit.
+
+**What I'd do if you confirm:**
+1. Add `set -euo pipefail` and remove the unconditional `exit 0`.
+2. Rewrite that line as an `if … then … fi` so a file under the limit no longer counts as a failure.
+3. Add an `ERR` trap that names the failing command on stderr, so a non-zero exit always says why.
+4. Update §check-fails-open in `scripts/PRECEDENT.md` to record the new decision and why it replaces the old one.
+
+**Alternative.** If what you mainly want is to hear about failures, I could keep the exit status at 0 and just make internal errors loud on stderr. That fixes "we never find out" without being able to block commits again.
+
+Should I go ahead with the plan above, or would you rather have the alternative?

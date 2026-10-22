@@ -1,0 +1,16 @@
+I added a JSDoc comment to `closeTab` in `src/tabs/tab-keys.mjs:12`:
+
+```js
+/**
+ * Removes the tab with the given key. The remaining tabs keep their keys, so closing leaves a gap
+ * (`t1,t3`); see §stable-tab-keys in PRECEDENT.md.
+ *
+ * @param {{ next: number, tabs: { key: string, title: string }[] }} state - Current tab strip state; not mutated.
+ * @param {string} key - Key of the tab to close, e.g. `"t2"`. An unknown key leaves the tabs unchanged.
+ * @returns {{ next: number, tabs: { key: string, title: string }[] }} A new state without that tab; `next` is unchanged.
+ */
+```
+
+Besides the parameters and return value, the comment says that closing a tab leaves a gap in the keys and points to the recorded decision in `src/tabs/PRECEDENT.md`. That rule exists because renumbering keys once caused an incident, so it's useful to see it right where the function is defined.
+
+The function's code is unchanged, and both tests in `tab-keys.test.mjs` pass, including "close keeps keys." I haven't committed anything.

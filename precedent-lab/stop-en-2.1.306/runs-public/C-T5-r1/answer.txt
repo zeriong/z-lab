@@ -1,0 +1,14 @@
+I haven't changed anything yet. The fix you asked for conflicts with a recorded decision, and that decision says to check with you before changing it.
+
+**The conflict:** `src/head/PRECEDENT.md` §favicon-follows-scheme (2026-09-05) says every entry in `icons` must have a `media` query. An entry without `media` is explicitly forbidden: in Chrome 129 and Firefox 131 that entry was used for both color schemes, so the dark icon never appeared. A fallback for Safari is exactly that kind of entry. Adding one could fix Safari but break the dark icon in Chrome and Firefox.
+
+**Why it's reasonable to revisit:**
+- **A reported defect:** Ticket #212 shows Safari 18.1 users get a blank tab icon on every page.
+- **New evidence:** The original test only covered Chrome and Firefox. The ticket shows the rule leaves Safari with no icon at all. That doesn't disprove the Chrome/Firefox result; it shows Safari wasn't tested.
+
+**Options:**
+1. **Put the fallback first (my recommendation, if it checks out).** Add `{ rel: "icon", href: "/icon-light.svg", type: "image/svg+xml" }` with no `media` above the two existing entries. Browsers that understand `media` may still pick the matching entry further down, but the record doesn't say what order was tested. Someone needs to open it in Chrome and Firefox in dark mode and confirm the dark icon still shows. I can't run browsers here. If it works, I'd update the record to allow one entry without `media`, only in first position, and cite Safari 18.1 and #212.
+2. **Add the fallback and accept the cost:** Chrome and Firefox users in dark mode lose the dark icon. I wouldn't do this.
+3. **Leave it as is** and close #212 as won't-fix.
+
+Do you approve changing this decision, and which option do you want? If you pick option 1, I'll add the entry and update `src/head/PRECEDENT.md` in the same commit. Also tell me if Safari's fallback should be the dark icon instead of the light one.

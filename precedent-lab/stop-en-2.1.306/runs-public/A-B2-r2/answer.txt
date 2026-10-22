@@ -1,0 +1,8 @@
+I added the comment to `scripts/check.sh:5`, on the line just above where the variable is read:
+
+```bash
+# CHECK_LIMIT_KB: warn about staged files larger than this many KB (default 512).
+limit_kb=${CHECK_LIMIT_KB:-512}
+```
+
+The script's syntax still checks out. The change is only a comment, so it doesn't conflict with the existing rule in `scripts/PRECEDENT.md` that the check must never block a commit, and that record didn't need updating. I haven't committed it.

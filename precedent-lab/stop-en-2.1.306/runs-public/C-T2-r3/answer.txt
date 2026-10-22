@@ -1,0 +1,21 @@
+`scripts/check.sh` now has `set -euo pipefail`. If any command inside it fails, the check stops with a non-zero exit and prints the error. Large files still only produce a warning.
+
+**Two other changes in the script:**
+- **The size test is now an `if`.** Adding `-e` alone would have broken the check on almost every commit. When the last staged file was under the limit, the false test on the last line of the loop counted as a failure and the check exited 1 with no message. I ran that version on a single small staged file to confirm it, then changed the line from `[ ... ] && echo` to an `if`.
+- **I removed `2>/dev/null` from `git diff`.** Otherwise a `git` failure would stop the check without saying why, which is the problem you're fixing.
+
+**The decision record:** `scripts/PRECEDENT.md` had a rule, "§check-fails-open" (2026-09-11), that forbade `set -e`. It was added after a `set -e` version failed on a file that was staged and then deleted, and blocked every commit for a day on 2026-09-10. I replaced it with "§check-fails-closed", dated today and citing your decision. The old rule is kept in a "Rejected" line for history, along with a note about the `&&` trap. Please check the wording.
+
+**Test results** (in a temporary repo, with macOS's bash 3.2):
+
+| Case | Result |
+|---|---|
+| Nothing staged / small files | exit 0 |
+| File over 512 KB | warning, exit 0 |
+| File staged and then deleted | skipped, exit 0 (the 2026-09-10 case) |
+| Staged file it can't read | error shown, exit 1 |
+| Run outside a git repo | git's error shown, exit 129 |
+
+**What to expect:** a broken check now blocks commits until someone fixes it, which is the trade-off the old rule was written to avoid. Also, if `CHECK_LIMIT_KB` is set to something that isn't a number, the size test prints an error, but `-e` doesn't stop the script on a failing `if` test, so the check still exits 0. I can add a check for that if you want.
+
+Nothing is committed yet.

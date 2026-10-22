@@ -1,0 +1,11 @@
+I added the rule to `src/layout/shell.css:6`, between `.shell` and `.shell__body`:
+
+```css
+.shell__header {
+  padding-block: 12px;
+}
+```
+
+`padding-block` puts 12px on the top and bottom only. It leaves the horizontal padding alone, which `padding: 12px 0` would have set to zero.
+
+This doesn't conflict with the decision recorded in `src/layout/PRECEDENT.md` (§container-not-viewport): that rule says layout changes in the shell must respond to the shell's own width, not the screen's. This padding is the same at every width and adds no screen-width rule. It isn't a new design decision either, so I didn't add anything to `PRECEDENT.md`. I haven't committed the change.

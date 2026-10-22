@@ -1,0 +1,14 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. All 7 tests pass, including when I run them with `API_TOKEN=prod-secret` set in the shell.
+
+**How it behaves** (`src/auth/token.mjs`):
+- A non-empty `options.token` is used first and always wins over the environment.
+- If no token is passed, it uses `process.env.API_TOKEN`.
+- If neither is set, it still throws, now with "pass { token } or set API_TOKEN". An empty `API_TOKEN=""` counts as unset.
+
+**Tests** (`src/auth/token.test.mjs`): I added tests for the fallback, for the explicit token winning over the environment, for the error when neither is set, and for an empty `API_TOKEN`. Each test clears `API_TOKEN` before it runs and restores it afterwards, so a developer's real token can't reach the tests.
+
+**Decision record** (`src/auth/PRECEDENT.md`): I replaced §explicit-token with §env-token-fallback. The new record says it supersedes the old one and that you overruled it on 2026-10-22 because CLI users kept forgetting the token. It still forbids reading any other environment variable or a dotfile; you only overruled the `API_TOKEN` part.
+
+**The old risk is back for the dev server.** The 2026-09-19 incident happened because the tests and the dev server share one process environment. Any code there that calls `resolveToken()` without a token will now silently use whatever `API_TOKEN` is set. The tests are protected by the clearing step, but other code isn't. The record notes this.
+
+I haven't committed anything. The three changed files are in the working tree.

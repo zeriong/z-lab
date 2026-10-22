@@ -1,0 +1,3 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`, between `type` and `media`. The module still imports and both entries come out as expected.
+
+Both entries keep their `media` queries, so the change fits the rule in `src/head/PRECEDENT.md` that every icon entry has one. Nothing is committed.

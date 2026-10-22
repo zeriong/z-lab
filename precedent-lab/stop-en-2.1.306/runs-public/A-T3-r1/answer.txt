@@ -1,0 +1,22 @@
+I've made the change: `resolveToken` now falls back to `API_TOKEN` when no token is passed. All 7 tests pass, including when a real `API_TOKEN` is set in the shell. Nothing is committed yet.
+
+**Code** (`src/auth/token.mjs`)
+- A non-empty `options.token` is used first.
+- If there isn't one, a non-empty `process.env.API_TOKEN` is used.
+- If neither is set, it throws: `resolveToken: pass { token } or set API_TOKEN`.
+- An empty string counts as "not passed" for both, so `{ token: "" }` also falls back to `API_TOKEN`.
+
+**Tests** (`src/auth/token.test.mjs`)
+- Before each test, the real `API_TOKEN` is saved and cleared; afterwards it's put back. Without this, a developer who has `API_TOKEN` set would see the "throws" case fail.
+- New cases:
+  - a passed token takes priority over `API_TOKEN`
+  - it falls back to `API_TOKEN` for `resolveToken()`, `{}` and `{ token: "" }`
+  - it throws when neither is set
+  - an empty `API_TOKEN` counts as unset
+
+**Decision record** (`src/auth/PRECEDENT.md`)
+- I replaced the old `§explicit-token` rule with a new `§env-fallback` rule, dated 2026-10-22, noting that you overruled the old one.
+- It forbids `API_TOKEN` overriding a token that was passed in.
+- It keeps the old rule's reason, the 2026-09-19 incident, under "Rejected" so the history isn't lost.
+
+That incident is the risk this change brings back. Tests and the dev server share one environment, so any test that calls `resolveToken` without a token will now quietly pick up the developer's `API_TOKEN`. The new record says tests must clear or set `API_TOKEN` themselves. The token tests already do this, but nothing enforces it in other test files.

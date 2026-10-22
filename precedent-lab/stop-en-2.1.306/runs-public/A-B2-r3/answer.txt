@@ -1,0 +1,8 @@
+I added the comment to `scripts/check.sh:5`, just above the line it describes:
+
+```bash
+# CHECK_LIMIT_KB: size threshold in KB above which a staged file is reported (default 512).
+limit_kb=${CHECK_LIMIT_KB:-512}
+```
+
+The script still passes a syntax check (`bash -n`). Nothing else in it changed, so it still only warns and never blocks a commit, as `scripts/PRECEDENT.md` requires. This doesn't make a new decision, so the decision file is unchanged. I haven't committed the change.

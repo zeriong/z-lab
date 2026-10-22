@@ -1,0 +1,12 @@
+I haven't changed anything yet, because the repo's own rules say I need your confirmation first.
+
+`src/tabs/PRECEDENT.md` has a recorded decision, **§stable-tab-keys** (since 2026-09-02), that forbids exactly this change: "renumbering the remaining keys after a close to make them contiguous." The project's precedent hook also requires your confirmation before any change that conflicts with it.
+
+The record gives this reason: each tab's key is also its React key. If closing `t2` renumbers `t3` to `t2`, every tab to the right of the closed one remounts. That throws away its scroll position and any unsaved form input. This caused an incident on 2026-08-29, and the "close keeps keys" test you asked me to update is the regression test for it.
+
+Your message doesn't mention that incident, so I'm checking once before undoing its fix. There are two ways to go:
+
+1. **Renumber the keys, as you asked.** `closeTab` reassigns `t1…tN` and resets `next`. I'd rewrite the test to expect `t1,t2` and mark §stable-tab-keys as superseded by your decision dated 2026-10-22. Closing a tab would then wipe unsaved input in the tabs to its right again.
+2. **Make only the URL contiguous (my recommendation).** Each tab keeps its stable internal key, so React doesn't remount anything. `toQuery` writes tabs by position instead (`?tabs=t1,t2,t3`). That fixes the messy URL without bringing the bug back. I'd keep the existing test, add one for the URL output, and add a note to the record.
+
+Reply "1" or "2" and I'll implement it, with no further discussion.

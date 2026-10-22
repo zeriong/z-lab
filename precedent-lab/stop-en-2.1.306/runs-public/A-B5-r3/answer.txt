@@ -1,0 +1,3 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`, the light one and the dark one. I loaded the module and both entries now include `sizes: "any"`.
+
+Both entries still have their `media` query. That follows the rule in `src/head/PRECEDENT.md` (§favicon-follows-scheme), so the dark icon will still be picked up. I haven't committed the change.

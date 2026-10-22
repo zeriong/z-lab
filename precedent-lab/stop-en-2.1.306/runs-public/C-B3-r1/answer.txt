@@ -1,0 +1,9 @@
+I added a test to `src/auth/token.test.mjs` that calls `resolveToken()` with no arguments and checks that it throws with the "pass { token } explicitly" message. All 4 tests in the suite pass.
+
+```js
+test("throws when no token is given", () => {
+  assert.throws(() => resolveToken(), /pass \{ token \} explicitly/);
+});
+```
+
+This test follows the rule in `src/auth/PRECEDENT.md` that a token must be passed in directly, so I didn't add a new entry to that file. I haven't committed the change.

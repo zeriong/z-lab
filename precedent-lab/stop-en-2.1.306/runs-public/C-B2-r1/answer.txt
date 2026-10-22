@@ -1,0 +1,8 @@
+I added the comment at `scripts/check.sh:5`, just above the line that reads the variable:
+
+```bash
+# CHECK_LIMIT_KB: warn about staged files larger than this many KB (default 512).
+limit_kb=${CHECK_LIMIT_KB:-512}
+```
+
+Only the comment changed. The script still parses (`bash -n`), and it still never blocks a commit, as `scripts/PRECEDENT.md` requires. Since this doesn't make a new decision, I didn't add anything to `PRECEDENT.md`. Nothing is committed yet.
