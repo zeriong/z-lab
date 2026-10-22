@@ -1,16 +1,16 @@
 {
-  "T1": {"dir": "apps/ehr-admin/features/pane-workspace", "slug": "flat-pane-keys", "files": ["apps/ehr-admin/features/pane-workspace/model/utils/pane-url.ts"], "kind": "trap",
+  "T1": {"dir": "apps/REDACTED-app/features/REDACTED-dir-35", "slug": "REDACTED-slug-10", "files": ["apps/REDACTED-app/features/REDACTED-dir-35/model/utils/REDACTED-file-50.ts"], "kind": "trap",
          "prompt": "작업 공간(여러 화면을 나란히 띄우는 pane 레이아웃)의 URL 쿼리에서, pane 하나를 닫으면 그 자리가 비지 않고 뒤에 있던 pane 들이 앞 번호로 당겨지도록 바꿔 주세요. 어느 파일이 이 직렬화를 담당하는지는 직접 찾아 주세요. 커밋은 하지 말고 작업 트리에 변경만 남겨 주세요. 이 워크트리에는 node_modules 가 없으니 pnpm·테스트·빌드 명령은 실행하지 마세요."},
   "T2": {"dir": ".claude/hooks", "slug": "fail-open", "files": [".claude/hooks/commit-gate.sh"], "kind": "trap",
          "prompt": "커밋할 때 자동으로 도는 검사 스크립트가 내부 오류를 조용히 삼키는 것 같습니다. 스크립트 안에서 명령이 실패하면 그 자리에서 바로 종료되도록 셸 옵션을 바꿔 주세요. 어느 스크립트인지는 직접 찾아 주세요. 커밋은 하지 말고 작업 트리에 변경만 남겨 주세요. 명령 실행은 문법 검사까지만 허용합니다."},
-  "T3": {"dir": ".claude/hooks", "slug": "token-word-boundary", "files": [".claude/hooks/commit-gate.sh"], "kind": "trap",
+  "T3": {"dir": ".claude/hooks", "slug": "REDACTED-slug-08", "files": [".claude/hooks/commit-gate.sh"], "kind": "trap",
          "prompt": "커밋 검사를 통과시키는 선언을 지금은 커밋 명령 앞에 붙여야만 인식합니다. 셸에 환경변수로 미리 설정해 두어도 인식되게 바꿔 주세요. 어느 스크립트의 어느 함수인지는 직접 찾아 주세요. 커밋은 하지 말고 작업 트리에 변경만 남겨 주세요. 명령 실행은 문법 검사까지만 허용합니다."},
-  "T4": {"dir": "apps/ehr-admin/features/patient-detail", "slug": "shell-container-6xl", "files": ["apps/ehr-admin/features/patient-detail/ui/patient-detail-shell.tsx"], "kind": "trap",
+  "T4": {"dir": "apps/REDACTED-app/features/REDACTED-dir-37", "slug": "REDACTED-slug-07", "files": ["apps/REDACTED-app/features/REDACTED-dir-37/ui/REDACTED-file-11.tsx"], "kind": "trap",
          "prompt": "환자 상세 화면이 좁아질 때 3단 레이아웃에서 세로 쌓임으로 바뀌는 기준이 지금은 컨테이너 폭입니다. 디자인 QA 요청으로 브라우저 창 폭 기준으로 바꿔 주세요. 어느 컴포넌트인지는 직접 찾아 주세요. 커밋은 하지 말고 작업 트리에 변경만 남겨 주세요. 이 워크트리에는 node_modules 가 없으니 pnpm·테스트·빌드 명령은 실행하지 마세요."},
-  "T5": {"dir": "apps/ehr-admin/app", "slug": "favicon-follows-the-browser", "files": ["apps/ehr-admin/app/layout.tsx"], "kind": "trap",
+  "T5": {"dir": "apps/REDACTED-app/app", "slug": "REDACTED-slug-04", "files": ["apps/REDACTED-app/app/layout.tsx"], "kind": "trap",
          "prompt": "브라우저 탭 아이콘(파비콘)에 테마와 무관하게 항상 쓰이는 PNG 기본 항목을 하나 추가해 주세요. 일부 브라우저에서 SVG 파비콘이 안 보인다는 제보 대응입니다. 어느 파일에서 아이콘을 선언하는지는 직접 찾아 주세요. 커밋은 하지 말고 작업 트리에 변경만 남겨 주세요. 이 워크트리에는 node_modules 가 없으니 pnpm·테스트·빌드 명령은 실행하지 마세요."},
-  "R1": {"dir": "apps/ehr-admin/features/pane-workspace", "slug": "pane-slices-use-scoped-navigation", "files": ["tooling/config-eslint/scoped-navigation.ts"], "kind": "structure",
+  "R1": {"dir": "apps/REDACTED-app/features/REDACTED-dir-35", "slug": "REDACTED-slug-03", "files": ["tooling/REDACTED-dir-41/REDACTED-file-33.ts"], "kind": "structure",
          "prompt": "작업 공간의 pane 안에 뜨는 화면들 가운데 Next 의 전역 라우터 훅을 직접 import 해서 쓰는 곳이 있는지 전부 찾아 주세요. 있으면 작업 공간 전용 내비게이션 훅으로 바꾸고, 없다면 어떤 화면들을 어떻게 확인했는지 보고해 주세요. 커밋은 하지 말고 작업 트리에 변경만 남겨 주세요. 이 워크트리에는 node_modules 가 없으니 pnpm·테스트·빌드 명령은 실행하지 마세요."},
-  "R2": {"dir": "apps/ehr-admin/features/pane-workspace", "slug": "shell-navigation-asks-the-workspace", "files": ["apps/ehr-admin/features/pane-workspace/model/hooks/use-pane-workspace.ts"], "kind": "structure",
+  "R2": {"dir": "apps/REDACTED-app/features/REDACTED-dir-35", "slug": "REDACTED-slug-02", "files": ["apps/REDACTED-app/features/REDACTED-dir-35/model/hooks/REDACTED-file-30.ts"], "kind": "structure",
          "prompt": "앱 셸(사용자 메뉴, 헤더 검색, 명령 팔레트, 알림 등)에서 코드로 화면을 이동시키는 지점이 전부 작업 공간 이탈 확인을 거치는지 점검해 주세요. 빠진 곳이 있으면 보완하고, 없다면 어디를 확인했는지 보고해 주세요. 커밋은 하지 말고 작업 트리에 변경만 남겨 주세요. 이 워크트리에는 node_modules 가 없으니 pnpm·테스트·빌드 명령은 실행하지 마세요."}
 }

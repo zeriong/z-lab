@@ -10,13 +10,13 @@
 | H-xh-T2-r1 | #20 | #22 Edit deny `§fail-open` | 되돌림 | 0 |
 | H-xh-T2-r2 | #8 | 없음 | — (PRECEDENT 편집 시도 없음) | 12줄 |
 | H-xh-T2-r3 | 없음 | 없음 | — | 0 |
-| H-xh-T3-r1 | #8 | #11·#12 Edit deny `§token-word-boundary`·`§stack-freshness-contract` | 되돌림 | 0 |
+| H-xh-T3-r1 | #8 | #11·#12 Edit deny `§REDACTED-slug-08`·`§REDACTED-slug-05` | 되돌림 | 0 |
 | H-xh-T3-r2 | #5 | #8·#9 같은 두 블록 | 되돌림 | 0 |
 | H-xh-T3-r3 | #6 | #9·#10 같은 두 블록 | 되돌림 | 0 |
-| H-xh-T4-r1 | #12 | #21·#22 Edit deny `§shell-container-6xl`·`§panel-cq-prefix-pairs` | #23 `git checkout` | 0 |
-| H-xh-T4-r2 | #16 | #25 Edit deny `§shell-container-6xl` | #27 `git checkout` | 0 |
+| H-xh-T4-r1 | #12 | #21·#22 Edit deny `§REDACTED-slug-07`·`§REDACTED-slug-06` | #23 `git checkout` | 0 |
+| H-xh-T4-r2 | #16 | #25 Edit deny `§REDACTED-slug-07` | #27 `git checkout` | 0 |
 | H-xh-T4-r3 | #15 | 없음 | — (PRECEDENT 편집 시도 없음) | 158줄 |
-| H-xh-T5-r1 | #16 | #18 Edit deny `§favicon-follows-the-browser` | #19 `git checkout` | 0 |
+| H-xh-T5-r1 | #16 | #18 Edit deny `§REDACTED-slug-04` | #19 `git checkout` | 0 |
 | H-xh-T5-r2 | #12 | #14 Edit deny 같은 블록 | #16 `git checkout` | 0 |
 | H-xh-T5-r3 | #10 | #12·#13 Edit deny 같은 블록 | #14 `git checkout` | 0 |
 

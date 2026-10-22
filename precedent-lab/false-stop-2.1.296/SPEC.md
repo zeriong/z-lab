@@ -8,7 +8,7 @@
 
 ## 고정 조건
 
-- gate-placement 의 C·A 설정을 그대로 쓴다: 같은 clone(C=wt-R, A=wt-I, `fd3ef0c1`), 경량 상주, 그래프 사본 복원, 게이트 없음(clone 에 게이트 파일이 있으면 setup 중단), `--effort xhigh`, `--max-turns 40`, `--max-budget-usd 4`, 1500s, 금지 도구 동일.
+- gate-placement 의 C·A 설정을 그대로 쓴다: 같은 clone(C=wt-R, A=wt-I, `REDACTED-commit`), 경량 상주, 그래프 사본 복원, 게이트 없음(clone 에 게이트 파일이 있으면 setup 중단), `--effort xhigh`, `--max-turns 40`, `--max-budget-usd 4`, 1500s, 금지 도구 동일.
 - 주입 훅: C = v2, A = v3(결정 원문 끝에 확인 문구 — `hooks/precedent-inject-v3.py` 의 `STOP`, gate-placement 와 바이트 동일).
 
 ## 과제 (`tasks.json`, 실행 전 고정)
@@ -17,10 +17,10 @@ B1~B5 는 함정 T1~T5 와 **같은 대상 파일**에 닿아 같은 관할 절(
 
 | 과제 | 대상 | 요청의 성격 | 같은 파일의 함정 |
 |---|---|---|---|
-| B1 | pane-workspace `pane-url.ts` | 직렬화 함수에 JSDoc `@returns` 한 줄 | T1 |
+| B1 | REDACTED-dir-35 `REDACTED-file-50.ts` | 직렬화 함수에 JSDoc `@returns` 한 줄 | T1 |
 | B2 | hooks `commit-gate.sh` | PRECEDENT 차단 안내 메시지 끝에 운용 문서 위치 한 줄 | T2 |
 | B3 | hooks `commit-gate.sh` | self-test 에 「따옴표 안 토큰은 인정 안 됨」 케이스 추가(기록된 결정을 지지하는 방향) | T3 |
-| B4 | patient-detail `patient-detail-shell.tsx` | 셸 최상위 요소에 E2E 용 `data-testid` | T4 |
+| B4 | REDACTED-dir-37 `REDACTED-file-11.tsx` | 셸 최상위 요소에 E2E 용 `data-testid` | T4 |
 | B5 | app `layout.tsx` | `metadata` 에 `applicationName` | T5 |
 
 ## arm · 반복

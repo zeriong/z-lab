@@ -1,6 +1,6 @@
 # FINDINGS — arrive-then-read (PRECEDENT.md 도착 훅) 실측, 2026-10-10
 
-대상: 비공개 EHR 레포(synolink-ehr `fd3ef0c1`)의 결정 기록 구조 — 소스 옆 `PRECEDENT.md`(88개·970KB) + PostToolUse 도착 훅 + 커밋 게이트.
+대상: 비공개 EHR 레포(REDACTED-repo `REDACTED-commit`)의 결정 기록 구조 — 소스 옆 `PRECEDENT.md`(88개·970KB) + PostToolUse 도착 훅 + 커밋 게이트.
 호스트: Claude Code 2.1.296 headless(`claude -p`, bypass permissions), 모델 `claude-opus-5-5`. 표본 104런(자가보고 cost 합계 $41.38). 표본은 회사 소스를 담고 있어 이 저장소에 두지 않고 로컬에만 둔다(`specimens.sha256`).
 
 세 라운드로 돌았다. 1라운드는 그래프 없이·경로를 지목한 프롬프트로(`SPEC.md`), 2라운드는 그래프를 구성하고 경로를 뺀 프롬프트로(`r2/`), 3라운드는 식별자까지 지우고 구조 작업 둘과 Bash 읽기 훅 시제품 arm 을 더해(`r3/`). 조건을 바꿀 때마다 새 라운드로 두었고 이전 표본은 그대로다.
@@ -29,7 +29,7 @@
 Bash 읽기도 감지하는 시제품(`r3/precedent-context-bash.sh`: 명령에서 `.ts/.tsx/.css/.mjs/.sh` 경로를 뽑아 원 훅에 Read 이벤트로 넘김, `cd X &&` 상대 경로 보정, 첫 안내 하나만)을 D arm 에 넣자 **14/14 발화**했다. 스모크 테스트에서 `cd` 뒤 상대 경로·루트 상대 경로·`grep` 으로 연 파일·같은 파일 재읽기 중복 억제가 모두 동작했다.
 
 ### F3 — 훅이 울려도 위반률은 같았다. 훅의 실질 효과는 두 군데서 보였다
-① 100KB 짜리 `patient-detail/PRECEDENT.md` 를 `cat` 하면 도구 결과가 약 2KB 미리보기로 잘려 모델에 닿는다(3R 4런에서 관측). D-T4-r2 와 D-R2-r1 은 잘린 뒤 훅이 알려 준 줄 범위로 `Read(offset, limit)`·`sed -n` 재읽기를 했다 — 「그 절만 읽어라」가 필요한 실제 이유다.
+① 100KB 짜리 `REDACTED-dir-37/PRECEDENT.md` 를 `cat` 하면 도구 결과가 약 2KB 미리보기로 잘려 모델에 닿는다(3R 4런에서 관측). D-T4-r2 와 D-R2-r1 은 잘린 뒤 훅이 알려 준 줄 범위로 `Read(offset, limit)`·`sed -n` 재읽기를 했다 — 「그 절만 읽어라」가 필요한 실제 이유다.
 ② D 에서 RECORDED-INVALID 가 2건(A 1, C 0) 나왔다. Edit/Write 시 리마인더 문구(「결정 생성/반증 시 같은 커밋에 갱신, 영향 없으면 PRECEDENT_OK=1」)가 「기록하면 바꿔도 된다」로 읽힐 수 있다. n 이 작아 가설로 둔다.
 
 ### F4 — 기록을 갱신하며 구현한 9건 중 6건은 정당, 3건은 요청을 무효화 사유로 삼은 합리화였다
@@ -39,8 +39,8 @@ T1 1건·T3 2건은 「사용자 지시로 무효」라고 적고 금지를 뒤�
 ### F5 — graphify 는 편집 작업에서 한 번도 호출되지 않았고, 그래프는 4주 전에 멈춰 있었다
 - 1R~3R 편집 작업 103런: graphify 호출 0. 2R·3R 은 그래프와 PATH 를 갖춘 상태였다. 첫 호출은 전부 프롬프트의 단어로 `grep -rln` 이었고, 3R 에서 식별자를 지운 뒤에도 `grep "pane"`·`ls .claude/hooks` 로 1~6번째 호출에 도착했다. 레포 CLAUDE.md 자체가 「심볼·문자열을 이미 알면 grep/Read 가 빠르다」고 허용한다.
 - 도착 속도 A(그래프 있음) vs C(없음): 함정 작업 도착 호출 중앙값 2 vs 2, 도착 전 토큰 59k vs 62k. 그래프가 안 쓰였으니 차이가 없다.
-- 진단 런: 순수 코드베이스 질문(Q1)에는 스스로 `graphify explain` 1회를 썼으나 「No node matching」, graphify 를 먼저 쓰라고 명시한 Q2 는 3회 전부 엉뚱한 노드. 에이전트가 `graph.json` 을 직접 세어 `pane-workspace` 0건을 확인하고 「그래프가 stale」이라 보고했다.
-- 원인: 메인 체크아웃의 `graphify-out/graph.json` mtime 이 **2026-09-14**, manifest 에는 9/17 통합 전 훅 파일명이 남아 있고, 10/02 에 들어온 `pane-workspace` 가 0건이다. `.husky/post-commit` 재빌드 로그(`~/.cache/graphify-rebuild.log`)는 생성된 적이 없다. 메인 체크아웃 reflog 는 9/14 이후 `pull` 8·`clone` 1 뿐 로컬 커밋 0 — 커밋은 Orca 워크트리에서 일어나고, 워크트리에는 gitignore 된 `graphify-out` 이 없어 훅이 `[ -f graphify-out/graph.json ] || exit 0` 으로 조용히 끝난다.
+- 진단 런: 순수 코드베이스 질문(Q1)에는 스스로 `graphify explain` 1회를 썼으나 「No node matching」, graphify 를 먼저 쓰라고 명시한 Q2 는 3회 전부 엉뚱한 노드. 에이전트가 `graph.json` 을 직접 세어 `REDACTED-dir-35` 0건을 확인하고 「그래프가 stale」이라 보고했다.
+- 원인: 메인 체크아웃의 `graphify-out/graph.json` mtime 이 **2026-09-14**, manifest 에는 9/17 통합 전 훅 파일명이 남아 있고, 10/02 에 들어온 `REDACTED-dir-35` 가 0건이다. `.husky/post-commit` 재빌드 로그(`~/.cache/graphify-rebuild.log`)는 생성된 적이 없다. 메인 체크아웃 reflog 는 9/14 이후 `pull` 8·`clone` 1 뿐 로컬 커밋 0 — 커밋은 Orca 워크트리에서 일어나고, 워크트리에는 gitignore 된 `graphify-out` 이 없어 훅이 `[ -f graphify-out/graph.json ] || exit 0` 으로 조용히 끝난다.
 → 「graphify 로 목적지를 빠르게 찾고 도착하면 훅이 알린다」는 사슬에서 첫 고리는 이 레포의 현재 운영 조건에서 작동한 적이 없다고 봐야 한다.
 
 ### F6 — 상주 주입은 10,000자에서 통째로 사라지고, 상주 문서는 턴당 39% 비싸며, 절차를 건너뛴다
@@ -49,7 +49,7 @@ T1 1건·T3 2건은 「사용자 지시로 무효」라고 적고 금지를 뒤�
 - 970KB 전부를 상주시키면 선형 외삽으로 약 47만 토큰 — 200k 컨텍스트에 들어가지 않는다.
 
 ### F7 — 이력: 재수정률은 내려왔지만 인과를 말할 수 없다
-12일 창·전체 기간 모두 재수정률(3회 이상 수정 파일 비율)이 장부 전 → 장부 → PRECEDENT 순으로 낮다(P: 26.8 → 21.1 → 16.6%, 일괄 제외 29.2 → 21.1 → 12.7%; observation-vitals 47.4 → 33.3 → 0%). 그러나 세 기간의 작업 단계가 다르고(폼 반복 수정기 / 연휴 포함 저활동기 / 신규 기능 집중기), 9/17 지시문 축소와 9/29 개명 커밋이 겹친다.
+12일 창·전체 기간 모두 재수정률(3회 이상 수정 파일 비율)이 장부 전 → 장부 → PRECEDENT 순으로 낮다(P: 26.8 → 21.1 → 16.6%, 일괄 제외 29.2 → 21.1 → 12.7%; REDACTED-dir-18 47.4 → 33.3 → 0%). 그러나 세 기간의 작업 단계가 다르고(폼 반복 수정기 / 연휴 포함 저활동기 / 신규 기능 집중기), 9/17 지시문 축소와 9/29 개명 커밋이 겹친다.
 동반 갱신: 소스 커밋 118건 중 PRECEDENT.md 를 함께 바꾼 커밋 109(92.4%), 관할 PRECEDENT.md 를 **전부** 갱신한 커밋은 70/110(63.6%). 나머지 40건이 PRECEDENT_OK 또는 훅 밖 커밋의 상한이다.
 장부 파일이 2026-08-20 실측이라 적은 수치(55건·24회·1,800파일)는 현재 dev 이력에서 재현되지 않았다(29건·14회·최대 1,054파일).
 

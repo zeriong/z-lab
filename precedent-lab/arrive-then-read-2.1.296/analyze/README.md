@@ -10,5 +10,5 @@
 | 지표 | `../METRICS.md` (1R), `../r2/METRICS.md`, `../r3/METRICS.md` ← `../make-metrics.py`, `../make-metrics-round.py` | 원지표·조건별 요약·델타·훅 상한 프로브 |
 | 훅 상한 증거 | `../evidence/hook-cap/` (`probe.sh`, 결과 JSON, SUMMARY) | additionalContext 9,996자 전달 / 10,046자 누락 |
 | Bash 읽기 훅 시제품 | `../r3/precedent-context-bash.sh`, `../r3/smoke_bash_hook.py` | 3R D arm. 레포 제안 1 |
-| 이력 분석 | `../evidence/churn.md` `churn.json` | 창별 재수정률·일괄 수정·동반 갱신·Orca 기록 탐색 (읽기 전용 git log) |
+| 이력 분석 | `../evidence/churn.md`(집계표만 — 원시 `churn.json` 은 삭제, `../../REDACTION.md`) | 창별 재수정률·일괄 수정·동반 갱신·Orca 기록 탐색 (읽기 전용 git log) |
 | 발견 | `../FINDINGS.md` | 질문별 답 · F1~F8 · 효과 있던 것/없던 것 · 레포 제안 · 측정하지 않은 것 |

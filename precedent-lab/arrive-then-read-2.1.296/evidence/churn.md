@@ -1,7 +1,7 @@
-# synolink-ehr 재수정(rework) 측정 — 장부 전 / PASS 장부 / PRECEDENT.md
+# REDACTED-repo 재수정(rework) 측정 — 장부 전 / PASS 장부 / PRECEDENT.md
 
-- 레포: `/Users/jeonjelyong/WorkSpace/CloudHospital/synolink-ehr`, 브랜치 `dev`, HEAD `fd3ef0c1`
-- 측정일: 2026-10-10. 읽기 전용(`git log`, `git show`, `git ls-tree` 만 사용). 원시 수치는 `/tmp/precedent-lab/churn.json`.
+- 레포: `/path/to/REDACTED-repo`, 브랜치 `dev`, HEAD `REDACTED-commit`
+- 측정일: 2026-10-10. 읽기 전용(`git log`, `git show`, `git ls-tree` 만 사용). 원시 수치는 `churn.json` 이었으나 회사 경로·커밋 목록이라 삭제했다(`../../REDACTION.md`).
 
 ## 방법
 
@@ -9,7 +9,7 @@
 - **소스 파일**: `apps/ packages/ .claude/ scripts/ tooling/` 아래 `*.ts *.tsx *.css *.mjs *.sh`. `node_modules`·`history/`·`graphify-out` 경로 제외, `*.md` 는 확장자 조건에서 제외됩니다. 표의 파일 수는 전부 이 필터 뒤의 수이고, 일괄 수정 커밋 목록(표 5)에만 전체 파일 수를 병기했습니다. 이름 변경은 git 기본 감지(`-M`)를 따라 순수 이름 변경은 새 경로 1건으로 셉니다.
 - **통계**: median 은 짝수 개면 가운데 두 값의 평균, p90 은 nearest-rank(정렬 후 ⌈0.9n⌉번째). **재수정률** = 창 안에서 서로 다른 커밋 3개 이상이 건드린 소스 파일 수 ÷ 창 안에서 건드린 소스 파일 수. **일괄 수정** = 소스 파일 100개 이상을 건드린 커밋. `[일괄 제외]` 행은 그 커밋들을 뺀 뒤 다시 센 값입니다.
 - **동반 갱신**: `.claude/hooks/commit-gate.sh` 의 `gate_precedent` 와 같은 규칙으로 셌습니다 — 소스 파일에서 **가장 가까운 상위 디렉터리**의 `PRECEDENT.md` 가 관할이고, 그 파일이 같은 커밋에 없으면 훅이 차단합니다(`PRECEDENT_OK=1` 토큰이 있으면 통과). 관할 집합은 HEAD 트리(요청 기준)와 각 커밋 시점 트리(`git ls-tree -r <sha>`) 두 가지로 계산했습니다. "후보"는 상한입니다: 훅은 Claude Code 의 PreToolUse(Bash) 훅이고 fail-open 이라, Claude Code 밖(일반 셸·Orca 터미널·다른 에이전트)에서 만든 커밋에는 걸리지 않습니다. 따라서 후보 수 = 「`PRECEDENT_OK=1` 로 통과한 커밋 + 훅 밖에서 만든 커밋」의 합입니다.
-- **장부 원문 수치의 재현 여부**: 장부 생성 커밋 `b257597c` 의 `.claude/pass-ledger.md` 5~8행은 `observation-vitals` 55건, `use-vitals-entry-form.ts` 24회, 상위 14커밋 1800·569·392… 파일을 적고 있습니다. 같은 경로를 현재 `dev` 에서 2026-08-20 까지 세면 슬라이스 **29건**(병합 포함 29, `--all` 29), `use-vitals-entry-form.ts` **14회**(`--follow`, 병합 포함 14, `--all` 13)이고, 전체 이력에서 파일 수가 가장 큰 커밋은 `21044b0e`(2026-05-15) **1054 파일**로 1800 파일 커밋은 어떤 ref 에도 없습니다(569 는 `86ea8f49` 07-31, 392 는 `80381c89` 05-19 로 존재). 장부가 그 수를 어떻게 셌는지는 원문에 없어 재도출하지 않았고, 이 보고서의 수치는 전부 위 필터로 새로 센 값입니다.
+- **장부 원문 수치의 재현 여부**: 장부 생성 커밋 `REDACTED-commit-82` 의 `.claude/pass-ledger.md` 5~8행은 `REDACTED-dir-18` 55건, `REDACTED-file-14.ts` 24회, 상위 14커밋 1800·569·392… 파일을 적고 있습니다. 같은 경로를 현재 `dev` 에서 2026-08-20 까지 세면 슬라이스 **29건**(병합 포함 29, `--all` 29), `REDACTED-file-14.ts` **14회**(`--follow`, 병합 포함 14, `--all` 13)이고, 전체 이력에서 파일 수가 가장 큰 커밋은 `REDACTED-commit-21`(2026-05-15) **1054 파일**로 1800 파일 커밋은 어떤 ref 에도 없습니다(569 는 `REDACTED-commit-64` 07-31, 392 는 `REDACTED-commit-61` 05-19 로 존재). 장부가 그 수를 어떻게 셌는지는 원문에 없어 재도출하지 않았고, 이 보고서의 수치는 전부 위 필터로 새로 센 값입니다.
 
 ## 창별 일자 분포 (비병합 전체 / 소스 커밋)
 
@@ -31,7 +31,7 @@
 | 커밋당 소스 파일 수 median / p90 / max | 4.5 / 15 / 58 | 2 / 15 / 42 | 4 / 16 / 156 |
 | 커밋당 소스 파일 수 (일괄 제외) median / p90 / max | 4.5 / 15 / 58 | 2 / 15 / 42 | 4 / 16 / 39 |
 | 일괄 수정 커밋 (소스 ≥100 파일) | 0 | 0 | 2 |
-| 일괄 수정 커밋 (9e8445dc 제외) | 0 | 0 | 1 |
+| 일괄 수정 커밋 (REDACTED-commit-72 제외) | 0 | 0 | 1 |
 
 ### 표 2. 파일 재수정 (W0/W1/W2)
 
@@ -66,93 +66,26 @@
 
 ### 표 4. 파일당 수정 횟수 상위 8 (전체 커밋 기준)
 
-**W0** (2026-08-08 ~ 2026-08-19)
+(파일·커밋 목록은 회사 식별자라 삭제했다 — `../../REDACTION.md`.)
 
-| 순위 | 파일 | 수정 횟수 |
-|---:|---|---:|
-| 1 | `apps/ehr-admin/features/diagnostic-report-list/ui/diagnostic-report-form.tsx` | 9 |
-| 2 | `apps/ehr-admin/features/patient-create/ui/patient-create-form.tsx` | 9 |
-| 3 | `apps/ehr-admin/features/patient-detail/ui/patient-summary-panel.tsx` | 9 |
-| 4 | `apps/ehr-admin/features/service-request-list/ui/service-request-form.tsx` | 8 |
-| 5 | `tooling/config-tailwind/style.css` | 7 |
-| 6 | `apps/ehr-admin/features/patient-detail/ui/patient-details.tsx` | 7 |
-| 7 | `apps/ehr-admin/features/patient-detail/model/hooks/use-patient-summary.ts` | 7 |
-| 8 | `apps/ehr-admin/features/patient-create/ui/address-fields.tsx` | 6 |
 
-**W1** (2026-09-17 ~ 2026-09-28)
 
-| 순위 | 파일 | 수정 횟수 |
-|---:|---|---:|
-| 1 | `.claude/hooks/commit-gate.sh` | 6 |
-| 2 | `apps/ehr-admin/features/settings/ui/tenant-info-dialog.tsx` | 3 |
-| 3 | `apps/ehr-admin/features/patient-detail/ui/patient-tabs.tsx` | 3 |
-| 4 | `apps/ehr-admin/features/patient-detail/ui/patient-summary-panel.tsx` | 3 |
-| 5 | `apps/ehr-admin/features/patient-detail/model/hooks/use-patient-summary.ts` | 2 |
-| 6 | `apps/ehr-admin/features/appointment/ui/appointment-dialog.tsx` | 2 |
-| 7 | `apps/ehr-admin/features/appointment/ui/appointment-list.test.tsx` | 2 |
-| 8 | `apps/ehr-admin/features/schedule-calendar/ui/appointment-dialog.tsx` | 2 |
 
-**W2** (2026-09-29 ~ 2026-10-10)
 
-| 순위 | 파일 | 수정 횟수 |
-|---:|---|---:|
-| 1 | `apps/ehr-admin/features/pane-workspace/model/hooks/use-pane-workspace.ts` | 9 |
-| 2 | `apps/ehr-admin/features/smart-search/ui/smart-search-page.tsx` | 8 |
-| 3 | `apps/ehr-admin/shared/lib/auth.config.ts` | 7 |
-| 4 | `apps/ehr-admin/features/patient-timeline/ui/timeline-entry-card.tsx` | 6 |
-| 5 | `packages/ehr/src/widgets/fhir-search-table/ui/column-header/column-header-menu.tsx` | 6 |
-| 6 | `apps/ehr-admin/features/practitioner-list/model/hooks/use-practitioner-form.test.ts` | 6 |
-| 7 | `apps/ehr-admin/features/practitioner-list/model/utils/build-practitioner-command.ts` | 6 |
-| 8 | `apps/ehr-admin/features/task-create/ui/create-task-dialog.tsx` | 5 |
 
-**P0** (2026-07-01 ~ 2026-08-19)
 
-| 순위 | 파일 | 수정 횟수 |
-|---:|---|---:|
-| 1 | `apps/ehr-admin/features/patient-create/ui/patient-create-form.tsx` | 18 |
-| 2 | `apps/ehr-admin/features/diagnostic-report-list/ui/diagnostic-report-form.tsx` | 17 |
-| 3 | `apps/ehr-admin/features/service-request-list/ui/service-request-form.tsx` | 16 |
-| 4 | `apps/ehr-admin/features/coverage/ui/coverage-list-row.tsx` | 15 |
-| 5 | `apps/ehr-admin/features/patient-detail/ui/patient-summary-panel.tsx` | 15 |
-| 6 | `apps/ehr-admin/features/schedule-calendar/ui/appointment-dialog.tsx` | 15 |
-| 7 | `apps/ehr-admin/features/service-request-detail/ui/service-request-details.tsx` | 14 |
-| 8 | `apps/ehr-admin/features/patient-detail/ui/patient-details.tsx` | 13 |
 
-**P1** (2026-08-20 ~ 2026-09-28)
 
-| 순위 | 파일 | 수정 횟수 |
-|---:|---|---:|
-| 1 | `apps/ehr-admin/app/globals.css` | 15 |
-| 2 | `apps/ehr-admin/features/patient-detail/ui/patient-tabs.tsx` | 12 |
-| 3 | `apps/ehr-admin/features/appointment/ui/appointment-dialog.tsx` | 11 |
-| 4 | `apps/ehr-admin/widgets/dashboard-home/ui/patient-gender-chart.tsx` | 10 |
-| 5 | `tooling/config-tailwind/style.css` | 10 |
-| 6 | `apps/ehr-admin/features/patient-detail/ui/patient-summary-panel.tsx` | 10 |
-| 7 | `apps/ehr-admin/features/patient-detail/ui/patient-detail-shell.tsx` | 10 |
-| 8 | `apps/ehr-admin/widgets/dashboard-home/ui/appointment-status-chart.tsx` | 9 |
 
-**P2** (2026-09-29 ~ 2026-10-10)
 
-| 순위 | 파일 | 수정 횟수 |
-|---:|---|---:|
-| 1 | `apps/ehr-admin/features/pane-workspace/model/hooks/use-pane-workspace.ts` | 9 |
-| 2 | `apps/ehr-admin/features/smart-search/ui/smart-search-page.tsx` | 8 |
-| 3 | `apps/ehr-admin/shared/lib/auth.config.ts` | 7 |
-| 4 | `apps/ehr-admin/features/patient-timeline/ui/timeline-entry-card.tsx` | 6 |
-| 5 | `packages/ehr/src/widgets/fhir-search-table/ui/column-header/column-header-menu.tsx` | 6 |
-| 6 | `apps/ehr-admin/features/practitioner-list/model/hooks/use-practitioner-form.test.ts` | 6 |
-| 7 | `apps/ehr-admin/features/practitioner-list/model/utils/build-practitioner-command.ts` | 6 |
-| 8 | `apps/ehr-admin/features/task-create/ui/create-task-dialog.tsx` | 5 |
+
 
 ### 표 5. 일괄 수정 커밋 목록 (소스 ≥100 파일)
 
-| 창 | sha | 날짜 | 소스 파일 수 | 전체 파일 수 | 제목 | 비고 |
-|---|---|---|---:|---:|---|---|
-| P0 | 86ea8f49 | 2026-07-31 | 554 | 569 | refactor(ehr): project-rules conformance sweep |  |
-| P2 / W2 | 82d80e4c | 2026-10-02 | 135 | 147 | feat(panes): render app screens directly in panes |  |
-| P2 / W2 | 9e8445dc | 2026-09-29 | 156 | 236 | refactor(harness): rename SSoT.md to PRECEDENT.md | 9e8445dc 이름 변경 커밋 |
+(파일·커밋 목록은 회사 식별자라 삭제했다 — `../../REDACTION.md`.)
 
-### 표 6. observation-vitals 슬라이스
+
+### 표 6. REDACTED-dir-18 슬라이스
 
 | 지표 | W0 | W1 | W2 | P0 | P1 | P2 |
 |---|---:|---:|---:|---:|---:|---:|
@@ -166,79 +99,79 @@
 | [일괄 제외] 파일당 수정 횟수 median / p90 / max | 1 / 3 / 3 | 1 / 1 / 1 | 1 / 1 / 1 | 2.5 / 5 / 6 | 1.5 / 4 / 4 | 1 / 1 / 1 |
 | [일괄 제외] 재수정률 | 28.6% | 0.0% | 0.0% | 50.0% | 33.3% | 0.0% |
 
-**W0** observation-vitals 상위 파일
+**W0** REDACTED-dir-18 상위 파일
 
 | 순위 | 파일 | 수정 횟수 |
 |---:|---|---:|
-| 1 | `ui/vitals-history-table.tsx` | 3 |
-| 2 | `model/hooks/use-vitals-entry-form.ts` | 3 |
-| 3 | `ui/vitals-summary-cards.tsx` | 3 |
-| 4 | `ui/vitals-entry-form.tsx` | 3 |
-| 5 | `ui/vitals-trend-chart.tsx` | 2 |
-| 6 | `ui/vitals-entry-dialog.tsx` | 1 |
+| 1 | `ui/REDACTED-file-15.tsx` | 3 |
+| 2 | `model/hooks/REDACTED-file-14.ts` | 3 |
+| 3 | `ui/REDACTED-file-16.tsx` | 3 |
+| 4 | `ui/REDACTED-file-32.tsx` | 3 |
+| 5 | `ui/REDACTED-file-27.tsx` | 2 |
+| 6 | `ui/REDACTED-file-19.tsx` | 1 |
 | 7 | `index.ts` | 1 |
-| 8 | `model/hooks/use-vitals-history.ts` | 1 |
+| 8 | `model/hooks/REDACTED-file-31.ts` | 1 |
 
-**W1** observation-vitals 상위 파일
-
-| 순위 | 파일 | 수정 횟수 |
-|---:|---|---:|
-| 1 | `model/hooks/use-vitals-history.ts` | 1 |
-| 2 | `model/utils/vital-parse.ts` | 1 |
-
-**W2** observation-vitals 상위 파일
+**W1** REDACTED-dir-18 상위 파일
 
 | 순위 | 파일 | 수정 횟수 |
 |---:|---|---:|
-| 1 | `ui/vitals-panel.tsx` | 2 |
-| 2 | `ui/vitals-entry-form.tsx` | 1 |
-| 3 | `model/hooks/use-vitals-history.ts` | 1 |
-| 4 | `model/utils/vital-parse.ts` | 1 |
-| 5 | `ui/vitals-panel-skeleton.tsx` | 1 |
-| 6 | `ui/vitals-summary-cards.tsx` | 1 |
-| 7 | `ui/vitals-trend-chart.tsx` | 1 |
+| 1 | `model/hooks/REDACTED-file-31.ts` | 1 |
+| 2 | `model/utils/REDACTED-file-45.ts` | 1 |
 
-**P0** observation-vitals 상위 파일
+**W2** REDACTED-dir-18 상위 파일
 
 | 순위 | 파일 | 수정 횟수 |
 |---:|---|---:|
-| 1 | `ui/vitals-history-table.tsx` | 7 |
-| 2 | `model/hooks/use-vitals-entry-form.ts` | 6 |
-| 3 | `ui/vitals-trend-chart.tsx` | 5 |
-| 4 | `ui/vitals-summary-cards.tsx` | 5 |
-| 5 | `ui/vitals-entry-form.tsx` | 5 |
-| 6 | `model/hooks/use-vitals-history.ts` | 5 |
-| 7 | `model/utils/vital-view.ts` | 3 |
-| 8 | `model/hooks/use-vitals-trends.ts` | 3 |
+| 1 | `ui/REDACTED-file-42.tsx` | 2 |
+| 2 | `ui/REDACTED-file-32.tsx` | 1 |
+| 3 | `model/hooks/REDACTED-file-31.ts` | 1 |
+| 4 | `model/utils/REDACTED-file-45.ts` | 1 |
+| 5 | `ui/REDACTED-file-10.tsx` | 1 |
+| 6 | `ui/REDACTED-file-16.tsx` | 1 |
+| 7 | `ui/REDACTED-file-27.tsx` | 1 |
 
-**P1** observation-vitals 상위 파일
-
-| 순위 | 파일 | 수정 횟수 |
-|---:|---|---:|
-| 1 | `ui/vitals-history-table.tsx` | 4 |
-| 2 | `ui/vitals-summary-cards.tsx` | 4 |
-| 3 | `ui/vitals-trend-chart.tsx` | 3 |
-| 4 | `ui/vitals-panel.tsx` | 3 |
-| 5 | `model/hooks/use-vitals-history.ts` | 2 |
-| 6 | `ui/vitals-panel-skeleton.tsx` | 2 |
-| 7 | `model/utils/vital-parse.ts` | 1 |
-| 8 | `ui/vitals-entry-dialog.tsx` | 1 |
-
-**P2** observation-vitals 상위 파일
+**P0** REDACTED-dir-18 상위 파일
 
 | 순위 | 파일 | 수정 횟수 |
 |---:|---|---:|
-| 1 | `ui/vitals-panel.tsx` | 2 |
-| 2 | `ui/vitals-entry-form.tsx` | 1 |
-| 3 | `model/hooks/use-vitals-history.ts` | 1 |
-| 4 | `model/utils/vital-parse.ts` | 1 |
-| 5 | `ui/vitals-panel-skeleton.tsx` | 1 |
-| 6 | `ui/vitals-summary-cards.tsx` | 1 |
-| 7 | `ui/vitals-trend-chart.tsx` | 1 |
+| 1 | `ui/REDACTED-file-15.tsx` | 7 |
+| 2 | `model/hooks/REDACTED-file-14.ts` | 6 |
+| 3 | `ui/REDACTED-file-27.tsx` | 5 |
+| 4 | `ui/REDACTED-file-16.tsx` | 5 |
+| 5 | `ui/REDACTED-file-32.tsx` | 5 |
+| 6 | `model/hooks/REDACTED-file-31.ts` | 5 |
+| 7 | `model/utils/REDACTED-file-49.ts` | 3 |
+| 8 | `model/hooks/REDACTED-file-34.ts` | 3 |
+
+**P1** REDACTED-dir-18 상위 파일
+
+| 순위 | 파일 | 수정 횟수 |
+|---:|---|---:|
+| 1 | `ui/REDACTED-file-15.tsx` | 4 |
+| 2 | `ui/REDACTED-file-16.tsx` | 4 |
+| 3 | `ui/REDACTED-file-27.tsx` | 3 |
+| 4 | `ui/REDACTED-file-42.tsx` | 3 |
+| 5 | `model/hooks/REDACTED-file-31.ts` | 2 |
+| 6 | `ui/REDACTED-file-10.tsx` | 2 |
+| 7 | `model/utils/REDACTED-file-45.ts` | 1 |
+| 8 | `ui/REDACTED-file-19.tsx` | 1 |
+
+**P2** REDACTED-dir-18 상위 파일
+
+| 순위 | 파일 | 수정 횟수 |
+|---:|---|---:|
+| 1 | `ui/REDACTED-file-42.tsx` | 2 |
+| 2 | `ui/REDACTED-file-32.tsx` | 1 |
+| 3 | `model/hooks/REDACTED-file-31.ts` | 1 |
+| 4 | `model/utils/REDACTED-file-45.ts` | 1 |
+| 5 | `ui/REDACTED-file-10.tsx` | 1 |
+| 6 | `ui/REDACTED-file-16.tsx` | 1 |
+| 7 | `ui/REDACTED-file-27.tsx` | 1 |
 
 ### 표 7. PRECEDENT.md 동반 갱신 (W2 / P2)
 
-| 지표 | W2 (HEAD 기준) | W2 (커밋 시점 트리) | W2 (커밋 시점, 9e8445dc 제외) | P2 (HEAD 기준) | P2 (커밋 시점 트리) | P2 (커밋 시점, 9e8445dc 제외) |
+| 지표 | W2 (HEAD 기준) | W2 (커밋 시점 트리) | W2 (커밋 시점, REDACTED-commit-72 제외) | P2 (HEAD 기준) | P2 (커밋 시점 트리) | P2 (커밋 시점, REDACTED-commit-72 제외) |
 |---|---:|---:|---:|---:|---:|---:|
 | 소스 커밋 수 | 118 | 118 | 117 | 118 | 118 | 117 |
 | PRECEDENT.md 를 함께 바꾼 커밋 | 109 | 109 | 108 | 109 | 109 | 108 |
@@ -265,60 +198,20 @@
 
 ### 표 9. W2/P2 PRECEDENT_OK=1 후보 커밋 40건 (커밋 시점 트리 기준)
 
+(파일·커밋 목록은 회사 식별자라 삭제했다 — `../../REDACTION.md`.)
+
 후보 40건 중 **PRECEDENT.md 를 하나도 바꾸지 않은 커밋 4건**, **일부 관할 PRECEDENT.md 는 바꿨지만 전부는 아닌 커밋 36건**입니다. 날짜별: 09-29 1 · 09-30 1 · 10-02 5 · 10-03 2 · 10-06 10 · 10-07 10 · 10-08 11. P2 소스 커밋의 관할 파일 터치 합계는 892건입니다.
 
-| sha | 날짜 | 소스 파일 | 관할 PRECEDENT.md 수 | 미갱신 수 | 미갱신 첫 항목 |
-|---|---|---:|---:|---:|---|
-| 24e7f4a6 | 2026-10-08 | 5 | 2 | 1 | `apps/ehr-admin/shared/hooks/PRECEDENT.md` |
-| b7e8c105 | 2026-10-08 | 5 | 5 | 4 | `apps/ehr-admin/e2e/PRECEDENT.md` |
-| a0659000 | 2026-10-08 | 5 | 2 | 1 | `apps/ehr-admin/shared/lib/PRECEDENT.md` |
-| ef630bc6 | 2026-10-08 | 12 | 9 | 2 | `apps/ehr-admin/features/patient-history-diff/PRECEDENT.md` |
-| 56f1ce6d | 2026-10-08 | 16 | 13 | 7 | `apps/ehr-admin/features/allergy/PRECEDENT.md` |
-| e36d7f5c | 2026-10-08 | 5 | 4 | 1 | `apps/ehr-admin/shared/ui/PRECEDENT.md` |
-| ed46304e | 2026-10-08 | 38 | 20 | 15 | `apps/ehr-admin/app/PRECEDENT.md` |
-| 12a8c122 | 2026-10-08 | 8 | 6 | 2 | `apps/ehr-admin/features/questionnaire-list/PRECEDENT.md` |
-| 67c63f26 | 2026-10-08 | 21 | 17 | 15 | `apps/ehr-admin/e2e/PRECEDENT.md` |
-| cb541b88 | 2026-10-08 | 16 | 9 | 1 | `apps/ehr-admin/shared/lib/PRECEDENT.md` |
-| 6b72c4e1 | 2026-10-08 | 14 | 9 | 1 | `apps/ehr-admin/e2e/PRECEDENT.md` |
-| d36fd7d9 | 2026-10-07 | 13 | 6 | 2 | `apps/ehr-admin/features/allergy/PRECEDENT.md` |
-| b8d91091 | 2026-10-07 | 16 | 7 | 6 | `apps/ehr-admin/features/diagnostic-report-list/PRECEDENT.md` |
-| d737d5a5 | 2026-10-07 | 5 | 2 | 1 | `apps/ehr-admin/widgets/tenant-list-section/PRECEDENT.md` |
-| 9d568352 | 2026-10-07 | 3 | 2 | 1 | `apps/ehr-admin/shared/lib/PRECEDENT.md` |
-| 1cbcfa69 | 2026-10-07 | 14 | 8 | 8 | `apps/ehr-admin/app/PRECEDENT.md` |
-| 7fc20994 | 2026-10-07 | 13 | 6 | 3 | `apps/ehr-admin/features/smart-search/PRECEDENT.md` |
-| f7d5211e | 2026-10-07 | 1 | 1 | 1 | `apps/ehr-admin/features/waiting-monitor/PRECEDENT.md` |
-| db1c80f9 | 2026-10-07 | 1 | 1 | 1 | `apps/ehr-admin/features/realtime-notifications/ui/PRECEDENT.md` |
-| 7b939c30 | 2026-10-07 | 5 | 3 | 3 | `apps/ehr-admin/features/allergy/PRECEDENT.md` |
-| e2c4e0bb | 2026-10-07 | 2 | 2 | 1 | `apps/ehr-admin/app/PRECEDENT.md` |
-| db4a13af | 2026-10-06 | 25 | 11 | 3 | `apps/ehr-admin/app/PRECEDENT.md` |
-| b9f63b5c | 2026-10-06 | 1 | 1 | 1 | `apps/ehr-admin/features/practitioner-list/PRECEDENT.md` |
-| 49e5b269 | 2026-10-06 | 1 | 1 | 1 | `apps/ehr-admin/shared/ui/PRECEDENT.md` |
-| 243639fe | 2026-10-06 | 16 | 7 | 2 | `apps/ehr-admin/entities/task/PRECEDENT.md` |
-| 17a84e8f | 2026-10-06 | 20 | 2 | 1 | `apps/ehr-admin/app/PRECEDENT.md` |
-| 7173da46 | 2026-10-06 | 18 | 5 | 1 | `apps/ehr-admin/app/PRECEDENT.md` |
-| b3a580af | 2026-10-06 | 8 | 2 | 1 | `apps/ehr-admin/app/PRECEDENT.md` |
-| af21887e | 2026-10-06 | 15 | 4 | 2 | `apps/ehr-admin/entities/encounter/PRECEDENT.md` |
-| e7be858a | 2026-10-06 | 39 | 6 | 4 | `apps/ehr-admin/app/PRECEDENT.md` |
-| e50dc858 | 2026-10-06 | 1 | 1 | 1 | `apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md` |
-| 11bff2b3 | 2026-10-03 | 7 | 3 | 2 | `apps/ehr-admin/app/PRECEDENT.md` |
-| 2643da2d | 2026-10-03 | 11 | 3 | 2 | `apps/ehr-admin/features/realtime-notifications/model/utils/PRECEDENT.md` |
-| cc726e1f | 2026-10-02 | 4 | 2 | 1 | `apps/ehr-admin/app/PRECEDENT.md` |
-| b0b6561c | 2026-10-02 | 4 | 2 | 1 | `apps/ehr-admin/widgets/tenant-shell/ui/PRECEDENT.md` |
-| 585428f0 | 2026-10-02 | 2 | 2 | 1 | `apps/ehr-admin/app/PRECEDENT.md` |
-| 9ea529e4 | 2026-10-02 | 28 | 3 | 2 | `apps/ehr-admin/app/PRECEDENT.md` |
-| 82d80e4c | 2026-10-02 | 135 | 20 | 12 | `apps/ehr-admin/app/[locale]/[tenantId]/tasks/PRECEDENT.md` |
-| 92963d8b | 2026-09-30 | 6 | 4 | 2 | `apps/ehr-admin/app/PRECEDENT.md` |
-| 1cb864f5 | 2026-09-29 | 2 | 2 | 1 | `apps/ehr-admin/features/patient-detail/PRECEDENT.md` |
 
 ## Orca 터미널 기록
 
 - 복사: `profile-state.db`, `profile-state.db-wal`, `profile-state.db-shm` → `/tmp/orca-db/`. 원본은 열지 않았고 복사본만 열었습니다(복사본은 WAL 반영을 위해 일반 모드로 열었음).
 - 테이블 4개: `profile_state_automation_runs`(0행) · `profile_state_automation_runs_meta`(1행) · `profile_state_documents`(32행, `domain`/`payload` JSON) · `profile_state_meta`(3행). 페이로드 도메인은 `workspaceSession`·`worktreeMeta`·`settings`·`ui`·`repos`·`projects`·`worktreeIdentityAliases`·`claudeLivePtySessionIds` 등으로, 이 DB 는 워크스페이스·워크트리 상태 저장소이고 **터미널 출력(스크롤백)은 담고 있지 않습니다.**
-- 모든 TEXT 컬럼 검색: `PRECEDENT_OK=1 git commit` **0행**, `git commit` **0행**. (참고 검색: `PRECEDENT` 1행, `synolink` 7행, `commit` 1행, `terminal` 4행, `scrollback` 0행.)
+- 모든 TEXT 컬럼 검색: `PRECEDENT_OK=1 git commit` **0행**, `git commit` **0행**. (참고 검색: `PRECEDENT` 1행, `REDACTED-company` 7행, `commit` 1행, `terminal` 4행, `scrollback` 0행.)
 - 추가로 확인한 곳(복사본, 읽기 전용): `orca/terminal-history/<id>/zsh_history` 81개 디렉터리 중 파일이 있는 20개(총 109줄, 2026-08-22~2026-10-10) — `git commit` **0줄**, `PRECEDENT_OK=1 git commit` **0줄**, `SSOT_OK=1 git commit` 0줄. `orchestration.db`(26 테이블, `worker_terminal_archives` 10행)와 `agent-session-journal.db`(11 테이블, `agent_session_records` 0행·`journal_rows` 0행)의 TEXT 컬럼에서도 두 문자열 0건.
 - 워크스페이스 귀속: zsh_history 디렉터리 id 20개는 `profile-state.db` 페이로드 어디에도 나타나지 않아 폴더 매핑을 DB 로 확인하지 못했습니다.
 - 정리: Orca 저장소에서 `git commit` 문자열은 0건입니다. 커밋 명령이 Orca zsh 터미널에서 입력된 기록이 없고, 에이전트 세션의 Bash 도구 출력은 이 DB 들에 저장되어 있지 않습니다. 따라서 Orca 기록으로는 `PRECEDENT_OK=1` 사용 횟수를 셀 수 없습니다.
 
 ## 교란 요인
 
-세 창의 작업 단계가 다릅니다 — W0 는 폼·패널 반복 수정기(상위 8파일이 전부 `*-form.tsx`·`patient-detail` 계열), W1 은 커밋이 있는 날이 5일(09-19~21·09-24~27 0건, 추석 연휴 09-24~26 포함)이고 소스 커밋 33건으로 표본이 가장 작으며 가장 많이 고친 파일이 `.claude/hooks/commit-gate.sh`(6회) 즉 훅 자체를 손본 기간이고, W2 는 `pane-workspace`·`smart-search` 신규 기능 집중기로 10-06~08 사흘에 소스 커밋 81건이 몰렸습니다. 2026-09-17 의 `1060d016` 「slim the instruction set」(59 파일, +1850/−3080)이 W1 첫날에 있습니다. `9e8445dc`(09-29, 전체 236 파일·소스 156)는 SSoT.md→PRECEDENT.md 이름 변경과 참조 문자열 치환이라 W2/P2 일괄 수정 2건 중 1건이고 제외하면 1건(`82d80e4c` 10-02, 소스 135)입니다 — 이 커밋은 파일당 수정 횟수에도 들어가므로 `[일괄 제외]` 행을 함께 봐야 합니다. SSoT.md 관할 게이트는 2026-08-31(`d10063ea`)부터 있었으므로 W1 은 「장부만」이 아니라 장부 + SSoT.md 게이트 + 훅 정비가 겹친 기간이고, W2 는 같은 게이트의 파일명이 바뀐 뒤입니다(표 8 의 SSoT 동반 갱신 26/32 와 표 7 의 PRECEDENT 동반 갱신 70/110 은 같은 규칙으로 센 값). 창 길이는 12일로 같지만 커밋이 있는 날(7/5/8)과 소스 커밋 수(128/33/118)가 다르고, P2 는 12일로 정의했지만 마지막 커밋이 10-08 이라 실제 데이터는 10일분입니다. 동반 갱신의 "후보" 수는 훅이 Claude Code 안에서만 동작하고 fail-open 이라 상한입니다.
+세 창의 작업 단계가 다릅니다 — W0 는 폼·패널 반복 수정기(상위 8파일이 전부 `*-form.tsx`·`REDACTED-dir-37` 계열), W1 은 커밋이 있는 날이 5일(09-19~21·09-24~27 0건, 추석 연휴 09-24~26 포함)이고 소스 커밋 33건으로 표본이 가장 작으며 가장 많이 고친 파일이 `.claude/hooks/commit-gate.sh`(6회) 즉 훅 자체를 손본 기간이고, W2 는 `REDACTED-dir-35`·`REDACTED-dir-46` 신규 기능 집중기로 10-06~08 사흘에 소스 커밋 81건이 몰렸습니다. 2026-09-17 의 `REDACTED-commit-07` 「slim the instruction set」(59 파일, +1850/−3080)이 W1 첫날에 있습니다. `REDACTED-commit-72`(09-29, 전체 236 파일·소스 156)는 SSoT.md→PRECEDENT.md 이름 변경과 참조 문자열 치환이라 W2/P2 일괄 수정 2건 중 1건이고 제외하면 1건(`REDACTED-commit-63` 10-02, 소스 135)입니다 — 이 커밋은 파일당 수정 횟수에도 들어가므로 `[일괄 제외]` 행을 함께 봐야 합니다. SSoT.md 관할 게이트는 2026-08-31(`REDACTED-commit-98`)부터 있었으므로 W1 은 「장부만」이 아니라 장부 + SSoT.md 게이트 + 훅 정비가 겹친 기간이고, W2 는 같은 게이트의 파일명이 바뀐 뒤입니다(표 8 의 SSoT 동반 갱신 26/32 와 표 7 의 PRECEDENT 동반 갱신 70/110 은 같은 규칙으로 센 값). 창 길이는 12일로 같지만 커밋이 있는 날(7/5/8)과 소스 커밋 수(128/33/118)가 다르고, P2 는 12일로 정의했지만 마지막 커밋이 10-08 이라 실제 데이터는 10일분입니다. 동반 갱신의 "후보" 수는 훅이 Claude Code 안에서만 동작하고 fail-open 이라 상한입니다.

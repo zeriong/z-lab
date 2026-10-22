@@ -3,7 +3,7 @@
 set -uo pipefail
 ARM="$1"
 LAB=/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/precedent-lab/plan-rail-2.1.296
-MAIN=/Users/jeonjelyong/WorkSpace/CloudHospital/synolink-ehr
+MAIN=/path/to/REDACTED-repo
 case "$ARM" in P-hi) C=R ;; P-xh) C=I ;; G-hi) C=L ;; G-xh) C=G ;; *) echo "unknown arm $ARM"; exit 2 ;; esac
 WT=/Users/jeonjelyong/.cache/precedent-lab/real-env-rail/wt-$C
 git -C "$WT" checkout -q -- . && git -C "$WT" clean -fdq -e graphify-out -e .claude/hooks/precedent-inject.py -e .claude/hooks/precedent-write-gate.py

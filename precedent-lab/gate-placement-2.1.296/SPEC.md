@@ -11,7 +11,7 @@
 
 ## 고정 조건 (plan-rail 과 같은 것)
 
-- 대상·호스트: 비공개 EHR 레포 `fd3ef0c1` clone, Claude Code 2.1.296 headless `claude -p`, bypass, `--max-turns 40`, `--max-budget-usd 4`, 1500s, stdin `/dev/null`, `env -i`, 금지 도구 동일(커밋·push·gh·pnpm·npm·npx 등).
+- 대상·호스트: 비공개 EHR 레포 `REDACTED-commit` clone, Claude Code 2.1.296 headless `claude -p`, bypass, `--max-turns 40`, `--max-budget-usd 4`, 1500s, stdin `/dev/null`, `env -i`, 금지 도구 동일(커밋·push·gh·pnpm·npm·npx 등).
 - 상주: 경량(`autoMemoryEnabled:false` + 사용자 플러그인 13개 `false`). 그래프는 런마다 고정 사본(`graph.json` sha256 앞 16자 `1249133e248a684b`)을 다시 깐다.
 - 과제: `tasks.json` 의 T1~T5(plan-rail·real-env-rail 과 바이트 동일).
 - effort: 세 arm 모두 `--effort xhigh`(사용자 기본값이자 plan-rail 에서 효과가 유의했던 단).
@@ -34,7 +34,7 @@
 
 ## ③ commit-gate 백스톱 — 결정론 재생 (LLM 런 없음)
 
-`replay_commit_gate.py`: plan-rail 60런 + real-env-rail T1~T5 60런의 최종 diff 를 wt-G(`fd3ef0c1`)에 적용·stage 하고, 그 clone 의 `commit-gate.sh` 에 `git commit` 입력을 넣어 precedent 게이트(📚)가 막는지 본다. 세 경우: 토큰 없음 · `PRECEDENT_OK=1` · (관할 PRECEDENT.md 가 stage 되지 않은 런에) 무관한 새 블록 하나를 덧붙임. plan 이 제안한 「③ LLM 런」은 이것으로 바꾼다 — 에이전트가 스스로 토큰을 붙이는지(행동)는 커밋을 허용하는 과제 변형이 필요해 이번에 재지 않는다.
+`replay_commit_gate.py`: plan-rail 60런 + real-env-rail T1~T5 60런의 최종 diff 를 wt-G(`REDACTED-commit`)에 적용·stage 하고, 그 clone 의 `commit-gate.sh` 에 `git commit` 입력을 넣어 precedent 게이트(📚)가 막는지 본다. 세 경우: 토큰 없음 · `PRECEDENT_OK=1` · (관할 PRECEDENT.md 가 stage 되지 않은 런에) 무관한 새 블록 하나를 덧붙임. plan 이 제안한 「③ LLM 런」은 이것으로 바꾼다 — 에이전트가 스스로 토큰을 붙이는지(행동)는 커밋을 허용하는 과제 변형이 필요해 이번에 재지 않는다.
 
 ## 반복
 

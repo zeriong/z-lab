@@ -4,7 +4,7 @@
 set -uo pipefail
 ARM="$1"
 LAB=/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/precedent-lab/gate-placement-2.1.296
-MAIN=/Users/jeonjelyong/WorkSpace/CloudHospital/synolink-ehr
+MAIN=/path/to/REDACTED-repo
 BASE=/Users/jeonjelyong/.cache/precedent-lab/gate-placement
 case "$ARM" in C-xh) C=R; INJ=precedent-inject.py ;; H-xh) C=L; INJ=precedent-inject.py ;; A-xh) C=I; INJ=precedent-inject-v3.py ;; *) echo "unknown arm $ARM"; exit 2 ;; esac
 WT=/Users/jeonjelyong/.cache/precedent-lab/real-env-rail/wt-$C

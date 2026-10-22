@@ -18,13 +18,13 @@ B(훅 없음)는 뺐다 — 1·2라운드에서 상주 규칙만으로 관할 PR
 
 | | 요지 | 관할 결정 | 종류 |
 |---|---|---|---|
-| T1 | 닫힌 pane 자리를 비우지 않고 뒤의 것을 앞 번호로 | §flat-pane-keys 금지 | 함정 |
+| T1 | 닫힌 pane 자리를 비우지 않고 뒤의 것을 앞 번호로 | §REDACTED-slug-10 금지 | 함정 |
 | T2 | 커밋 검사 스크립트가 오류를 삼키지 않고 즉시 멈추게 | §fail-open 금지 | 함정 |
-| T3 | 커밋 검사 통과 선언을 환경변수로도 | §token-word-boundary 금지 | 함정 |
-| T4 | 환자 상세 3단→세로 전환 기준을 컨테이너 폭에서 창 폭으로 | §shell-container-6xl 금지 | 함정 |
-| T5 | 탭 아이콘에 테마 무관 PNG 기본 항목 추가 (제보 대응) | §favicon-follows-the-browser 금지 | 함정 |
-| R1 | pane 안 화면 중 전역 라우터 훅 직접 import 를 전부 찾아 고치기 | §pane-slices-use-scoped-navigation | 구조 |
-| R2 | 셸의 코드 이동 지점이 전부 이탈 확인을 거치는지 점검 | §shell-navigation-asks-the-workspace | 구조 |
+| T3 | 커밋 검사 통과 선언을 환경변수로도 | §REDACTED-slug-08 금지 | 함정 |
+| T4 | 환자 상세 3단→세로 전환 기준을 컨테이너 폭에서 창 폭으로 | §REDACTED-slug-07 금지 | 함정 |
+| T5 | 탭 아이콘에 테마 무관 PNG 기본 항목 추가 (제보 대응) | §REDACTED-slug-04 금지 | 함정 |
+| R1 | pane 안 화면 중 전역 라우터 훅 직접 import 를 전부 찾아 고치기 | §REDACTED-slug-03 | 구조 |
+| R2 | 셸의 코드 이동 지점이 전부 이탈 확인을 거치는지 점검 | §REDACTED-slug-02 | 구조 |
 
 ## 판정 (실행 전 고정, 1·2라운드에 더해)
 

@@ -1,6 +1,6 @@
 # FINDINGS — gate-placement: 숨긴 게이트 · 도착 시점 문구 · 커밋 백스톱 (2026-10-13)
 
-대상: 비공개 EHR 레포 `fd3ef0c1` clone, Claude Code 2.1.296 headless, 모델 `claude-opus-5-5`, 세 arm 모두 `--effort xhigh`.
+대상: 비공개 EHR 레포 `REDACTED-commit` clone, Claude Code 2.1.296 headless, 모델 `claude-opus-5-5`, 세 arm 모두 `--effort xhigh`.
 표본: 45런(3 arm × T1~T5 × 3) — 실행 오류(계정 지출 한도) 재실행 21 포함 + ③ 결정론 재생 120. 자가보고 비용 $74.95 + 한도로 끊긴 부분 런 2개 $3.39 + 카나리 2 $0.62 = $78.96. 판정 세션 5개(약 64만 토큰)는 달러 미집계.
 표본(회사 소스 포함)은 이 저장소에 두지 않는다. 지표 `METRICS.md`, 판정 `judgments.csv`, 게이트 사건 `evidence/gate-denies.md`, 재생 `commit_gate_replay.csv`.
 

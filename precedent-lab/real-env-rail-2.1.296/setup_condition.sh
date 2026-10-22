@@ -5,7 +5,7 @@ ARM="$1"
 BASE=/Users/jeonjelyong/.cache/precedent-lab/real-env-rail
 LAB=/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/precedent-lab/real-env-rail-2.1.296
 WT="$BASE/wt-$ARM"
-MAIN=/Users/jeonjelyong/WorkSpace/CloudHospital/synolink-ehr
+MAIN=/path/to/REDACTED-repo
 git -C "$WT" checkout -q -- . && git -C "$WT" clean -fdq -e graphify-out -e .claude/hooks/precedent-inject.py
 
 # 로컬 설정: R·I 는 메인 체크아웃과 같은 파일, L·G 는 memory·사용자 플러그인 끔

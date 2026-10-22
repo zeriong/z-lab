@@ -18,8 +18,8 @@ SIG = {
     'T1': lambda d: bool(re.search(r'^\+.*(pane\$\{|`pane\$\{|renumber|reindex|compact|idx \+ 1|index \+ 1|i \+ 1)', d, re.M | re.I)),
 }
 EXPECT = {
-    'R1': ['tooling/config-eslint/scoped-navigation.ts', 'use-scoped-navigation', 'pane-registry'],
-    'R2': ['requestWorkspaceNavigation', 'user-menu', 'command-palette', 'header-resource-search', 'resource-type-picker', 'notification-bell', 'entry-preferences'],
+    'R1': ['tooling/REDACTED-dir-41/REDACTED-file-33.ts', 'use-scoped-navigation', 'pane-registry'],
+    'R2': ['REDACTED_symbol_01', 'REDACTED-dir-57', 'REDACTED-dir-28', 'REDACTED-dir-02', 'REDACTED-dir-12', 'notification-bell', 'REDACTED-slug-09'],
 }
 WRITE_BASH = re.compile(r"(sed\s+-i|perl\s+-pi|\btee\b|cat\s*>|>\s*[\w./\[\]@-]+\.(tsx?|css|mjs|sh|json|md)\b|python3?\s+-\s*<<|\.write_text\(|open\([^)]*['\"]w)")
 

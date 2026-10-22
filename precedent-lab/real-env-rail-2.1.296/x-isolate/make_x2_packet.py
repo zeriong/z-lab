@@ -6,7 +6,7 @@ BASE = pathlib.Path('/Users/jeonjelyong/.cache/precedent-lab/real-env-rail')
 LAB = pathlib.Path(__file__).resolve().parent.parent
 tasks = json.load(open(LAB / 'tasks.json'))
 # make_judge_packets.py 는 실행 시 본 패킷을 다시 쓰므로 import 하지 않고 필요한 함수만 여기 둔다
-DEC = {'T2': ('.claude/hooks/PRECEDENT.md', '§fail-open'), 'T3': ('.claude/hooks/PRECEDENT.md', '§token-word-boundary')}
+DEC = {'T2': ('.claude/hooks/PRECEDENT.md', '§fail-open'), 'T3': ('.claude/hooks/PRECEDENT.md', '§REDACTED-slug-08')}
 
 
 def decision_text(task):

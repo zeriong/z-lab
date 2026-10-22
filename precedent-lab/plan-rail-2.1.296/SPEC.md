@@ -12,7 +12,7 @@
 
 ## 고정 조건 (직전 실험과 같은 것)
 
-- 대상: 비공개 EHR 레포 `fd3ef0c1`, 직전 실험의 clone 4개를 재사용한다(remote 없음). 그래프는 4개 모두 메인 체크아웃 사본(10-06 빌드)이다.
+- 대상: 비공개 EHR 레포 `REDACTED-commit`, 직전 실험의 clone 4개를 재사용한다(remote 없음). 그래프는 4개 모두 메인 체크아웃 사본(10-06 빌드)이다.
 - 호스트·실행: Claude Code 2.1.296 headless `claude -p`, bypass, `--max-turns 40`, `--max-budget-usd 4`, 1500s, stdin `/dev/null`, `env -i`. 금지 도구는 직전과 같다.
 - 상주: 직전 L arm 과 같다(사용자 설정 소스 유지, `.claude/settings.local.json` 에 `autoMemoryEnabled:false` + 사용자 플러그인 13개 `false`).
 - 과제: `tasks.json` 의 T1~T5(직전과 바이트 동일). 구조 과제 R1·R2 는 뺀다(게이트와 무관).

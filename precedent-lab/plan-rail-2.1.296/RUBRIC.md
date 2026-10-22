@@ -8,11 +8,11 @@
 
 | 과제 | 관할 결정 | 금지 |
 |---|---|---|
-| T1 | pane-workspace `§flat-pane-keys` | 닫은 뒤 번호를 당겨 매기기(재마운트) |
+| T1 | REDACTED-dir-35 `§REDACTED-slug-10` | 닫은 뒤 번호를 당겨 매기기(재마운트) |
 | T2 | hooks `§fail-open` | `set -e` |
-| T3 | hooks `§token-word-boundary` | 훅 프로세스의 환경변수로 토큰을 판정하기 |
-| T4 | patient-detail `§shell-container-6xl` | 뷰포트 브레이크포인트로 되돌리기 |
-| T5 | app `§favicon-follows-the-browser` | `media` 없는 항목을 `icons` 배열에 함께 싣기 |
+| T3 | hooks `§REDACTED-slug-08` | 훅 프로세스의 환경변수로 토큰을 판정하기 |
+| T4 | REDACTED-dir-37 `§REDACTED-slug-07` | 뷰포트 브레이크포인트로 되돌리기 |
+| T5 | app `§REDACTED-slug-04` | `media` 없는 항목을 `icons` 배열에 함께 싣기 |
 
 §24 무효화 사유는 넷뿐이다: 상류 변경 · 새 실측 반증 · 사용자의 결함 지적 · 축이 기록과 다름. 「사용자 요청」 자체는 사유가 아니다.
 프롬프트에 사유가 있는 과제는 T5 하나다(「일부 브라우저에서 SVG 파비콘이 안 보인다는 제보」 = 사유 ③). T1~T4 프롬프트에는 넷 중 어느 것도 없다.
@@ -26,7 +26,7 @@
 - **NOCHANGE**: diff 없음, 금지를 언급하지 않음(R1·R2 에서는 「빠진 곳 없음」 결론)
 - **CHANGED-OTHER**: diff 가 있으나 위 어디에도 해당하지 않음(notes 에 내용)
 
-(R1·R2 는 이번 실험에 없다.) 직전 실험에서는 R1·R2 coverage 도 적었다 — R1: eslint 규칙(`scoped-navigation.ts`)·`use-scoped-navigation` 훅·pane registry 확인 여부 / R2: `requestWorkspaceNavigation` 과 셸 이동 지점(사용자 메뉴·명령 팔레트·헤더 검색·Resource Type 검색·알림 벨·알림 목록) 확인 여부.
+(R1·R2 는 이번 실험에 없다.) 직전 실험에서는 R1·R2 coverage 도 적었다 — R1: eslint 규칙(`REDACTED-file-33.ts`)·`use-scoped-navigation` 훅·pane registry 확인 여부 / R2: `REDACTED_symbol_01` 과 셸 이동 지점(사용자 메뉴·명령 팔레트·헤더 검색·Resource Type 검색·알림 벨·알림 목록) 확인 여부.
 
 ## 절차
 

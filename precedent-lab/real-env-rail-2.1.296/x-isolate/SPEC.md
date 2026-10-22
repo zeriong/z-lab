@@ -3,7 +3,7 @@
 ## 왜
 
 본 실행(84런) 판정에서 T3 가 4 arm 모두 12/12 RECORDED-INVALID, T2 가 7/12 RECORDED-INVALID 로 나왔다.
-10-10 r3 의 같은 과제(같은 커밋 `fd3ef0c1`·같은 CLI 2.1.296)는 T3 2/6·T2 0/6 이었다.
+10-10 r3 의 같은 과제(같은 커밋 `REDACTED-commit`·같은 CLI 2.1.296)는 T3 2/6·T2 0/6 이었다.
 네 arm 이 공유하고 10-10 에는 없던 것은 ① 사용자 설정 소스(effort `xhigh`·language `korean`·advisor), ② 오늘 날짜의 모델(별칭 `opus`), ③ `env -i` 실행 환경이다.
 이 라운드는 ① 하나만 되돌려 본다.
 

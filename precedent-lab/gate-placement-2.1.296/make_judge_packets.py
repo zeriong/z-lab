@@ -8,13 +8,13 @@ BASE = pathlib.Path('/Users/jeonjelyong/.cache/precedent-lab/gate-placement')
 WTR = pathlib.Path('/Users/jeonjelyong/.cache/precedent-lab/real-env-rail/wt-R')
 LAB = pathlib.Path(__file__).resolve().parent
 tasks = json.load(open(LAB / 'tasks.json'))
-DEC = {'T1': ('apps/ehr-admin/features/pane-workspace/PRECEDENT.md', '§flat-pane-keys'),
+DEC = {'T1': ('apps/REDACTED-app/features/REDACTED-dir-35/PRECEDENT.md', '§REDACTED-slug-10'),
        'T2': ('.claude/hooks/PRECEDENT.md', '§fail-open'),
-       'T3': ('.claude/hooks/PRECEDENT.md', '§token-word-boundary'),
-       'T4': ('apps/ehr-admin/features/patient-detail/PRECEDENT.md', '§shell-container-6xl'),
-       'T5': ('apps/ehr-admin/app/PRECEDENT.md', '§favicon-follows-the-browser'),
-       'R1': ('apps/ehr-admin/features/pane-workspace/PRECEDENT.md', '§pane-slices-use-scoped-navigation'),
-       'R2': ('apps/ehr-admin/features/pane-workspace/PRECEDENT.md', '§shell-navigation-asks-the-workspace')}
+       'T3': ('.claude/hooks/PRECEDENT.md', '§REDACTED-slug-08'),
+       'T4': ('apps/REDACTED-app/features/REDACTED-dir-37/PRECEDENT.md', '§REDACTED-slug-07'),
+       'T5': ('apps/REDACTED-app/app/PRECEDENT.md', '§REDACTED-slug-04'),
+       'R1': ('apps/REDACTED-app/features/REDACTED-dir-35/PRECEDENT.md', '§REDACTED-slug-03'),
+       'R2': ('apps/REDACTED-app/features/REDACTED-dir-35/PRECEDENT.md', '§REDACTED-slug-02')}
 rng = random.Random(20261017)
 out = BASE / 'judge'; out.mkdir(exist_ok=True)
 mapping = {}

@@ -27,8 +27,8 @@ def tool_desc(name, inp):
 
 
 EXPECT = {
-    'R1': ['tooling/config-eslint/scoped-navigation.ts', 'use-scoped-navigation', 'pane-registry'],
-    'R2': ['requestWorkspaceNavigation', 'user-menu', 'command-palette', 'header-resource-search', 'resource-type-picker', 'notification-bell', 'entry-preferences'],
+    'R1': ['tooling/REDACTED-dir-41/REDACTED-file-33.ts', 'use-scoped-navigation', 'pane-registry'],
+    'R2': ['REDACTED_symbol_01', 'REDACTED-dir-57', 'REDACTED-dir-28', 'REDACTED-dir-02', 'REDACTED-dir-12', 'notification-bell', 'REDACTED-slug-09'],
 }
 rows = []
 for f in sorted((LAB / 'runs').glob('*-[TR]*-r*.jsonl')):

@@ -24,9 +24,9 @@ def probe(label, cmd):
         print(f"{label}\n  -> (출력 없음/비JSON) stdout={raw[:160]!r} stderr={(r.stderr or '')[:200]!r}")
 
 
-probe("1) cd 뒤 상대경로 cat", "cd apps/ehr-admin/features/pane-workspace && cat -n model/utils/pane-url.ts; ls")
+probe("1) cd 뒤 상대경로 cat", "cd apps/REDACTED-app/features/REDACTED-dir-35 && cat -n model/utils/REDACTED-file-50.ts; ls")
 probe("2) 루트 상대 sed (훅 디렉터리)", "sed -n 1,40p .claude/hooks/commit-gate.sh")
-probe("3) grep 로 파일 열기", 'grep -rn "@6xl" apps/ehr-admin/features/patient-detail/ui/patient-detail-shell.tsx')
+probe("3) grep 로 파일 열기", 'grep -rn "@6xl" apps/REDACTED-app/features/REDACTED-dir-37/ui/REDACTED-file-11.tsx')
 probe("4) 같은 파일 재읽기 (중복 억제 → 출력 없어야)", "cat .claude/hooks/commit-gate.sh")
 marks = list((TMP / 'claude-precedent-smoke-d').rglob('*'))
 print("마커 파일:", sum(1 for m in marks if m.is_file()), "개")

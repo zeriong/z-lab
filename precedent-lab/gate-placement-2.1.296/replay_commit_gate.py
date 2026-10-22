@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """③ commit-gate 백스톱 결정론 재생 -> commit_gate_replay.csv (회사 소스 없음: 런 ID·판정·참/거짓만).
 
-각 런의 최종 diff(추적 파일 변경분)를 깨끗한 clone(wt-G, fd3ef0c1)에 적용·stage 하고, 그 clone 의
+각 런의 최종 diff(추적 파일 변경분)를 깨끗한 clone(wt-G, REDACTED-commit)에 적용·stage 하고, 그 clone 의
 `.claude/hooks/commit-gate.sh` 에 PreToolUse 입력 `git commit -m x` 를 넣어 precedent 게이트(📚)가 막는지 본다.
 - plain: 토큰 없이.  token: `PRECEDENT_OK=1 git commit -m x`.
 - noop: 관할 PRECEDENT.md 가 stage 되지 않은 런에만, 그 PRECEDENT.md 끝에 무관한 새 블록 하나를 덧붙여 stage 한 뒤 토큰 없이.

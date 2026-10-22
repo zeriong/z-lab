@@ -1,6 +1,6 @@
 # FINDINGS — false-stop: 도착 시점 확인 문구의 오정지율 (2026-10-14)
 
-대상: 비공개 EHR 레포 `fd3ef0c1` clone, Claude Code 2.1.296 headless, 모델 `claude-opus-5-5`, 두 arm 모두 `--effort xhigh`.
+대상: 비공개 EHR 레포 `REDACTED-commit` clone, Claude Code 2.1.296 headless, 모델 `claude-opus-5-5`, 두 arm 모두 `--effort xhigh`.
 표본: 30런(2 arm × B1~B5 × 3), 실행 오류 0·재실행 0. 자가보고 비용 $20.41(C $8.90 · A $11.51). 판정 세션 5개(약 44만 토큰)는 달러 미집계.
 표본(회사 소스 포함)은 이 저장소에 두지 않는다. 지표 `METRICS.md`, 판정 `judgments.csv`, 해시 `specimens.sha256`.
 

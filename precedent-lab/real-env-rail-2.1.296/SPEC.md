@@ -10,7 +10,7 @@
 
 ## 고정 조건
 
-- 대상: 비공개 EHR 레포 커밋 `fd3ef0c1`(10-10 실험과 같은 커밋). 표본은 `~/.cache/precedent-lab/real-env-rail/` 에만 두고 이 저장소에 두지 않는다.
+- 대상: 비공개 EHR 레포 커밋 `REDACTED-commit`(10-10 실험과 같은 커밋). 표본은 `~/.cache/precedent-lab/real-env-rail/` 에만 두고 이 저장소에 두지 않는다.
 - fork: arm 마다 독립 `git clone`(remote 제거 → push 불가). memory 경로는 clone 경로에서 파생된다(`-Users-jeonjelyong--cache-precedent-lab-real-env-rail-wt-<arm>`).
 - 호스트: Claude Code 2.1.296 headless `claude -p`, `--dangerously-skip-permissions`, `--max-turns 40`, `--max-budget-usd 4`, 1500s 타임아웃, stdin `/dev/null`.
 - 모델: 사용자 설정 `opus` → 트랜스크립트 `init.model` 로 확인(카나리: `claude-opus-5-5`).
@@ -25,7 +25,7 @@
 | **R** real | — (현재 레포·사용자 환경 그대로) | 사용자+프로젝트+로컬 설정, 플러그인 13, memory 사본 | 현행 `precedent-context.sh` (Read\|Edit\|Write, 포인터 ≤400B) | 메인 체크아웃의 `graphify-out` 사본(10-06 빌드, 9,623노드) |
 | **I** inject | 도착 훅을 `hooks/precedent-inject.py` 로 교체 | R 과 같음 | Read\|Edit\|Write\|MultiEdit\|Bash, **절 본문** 주입(≤6,000자, 넘으면 결정·금지 줄 압축) | R 과 같음 |
 | **L** lean | `.claude/settings.local.json` 에 `autoMemoryEnabled:false` + 사용자 플러그인 13개 `false` | 사용자+프로젝트 설정, 플러그인 0, memory 끔 | I 와 같음 | R 과 같음 |
-| **G** graph-route | 그래프를 `fd3ef0c1` 에서 `graphify update .` 로 재빌드(10,069노드) + 루트 `CLAUDE.md` 14행 교체 | L 과 같음 | I 와 같음 | 최신 |
+| **G** graph-route | 그래프를 `REDACTED-commit` 에서 `graphify update .` 로 재빌드(10,069노드) + 루트 `CLAUDE.md` 14행 교체 | L 과 같음 | I 와 같음 | 최신 |
 
 G 의 루트 `CLAUDE.md` 14행:
 - 현행: `` - `explain`/`path` 를 `query` 보다 먼저. 심볼·문자열을 이미 알면 grep/Read 가 빠르다. ``

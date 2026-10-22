@@ -3,7 +3,7 @@
 # usage: probe.sh <worktree> <chars>   → stdout: 한 줄 요약, 파일: <chars>.hook.json(훅 출력) <chars>.result.json(claude -p 결과)
 set -uo pipefail
 WT="$1"; CH="$2"; OUT="$(dirname "$0")"
-SRC="$WT/apps/ehr-admin/features/patient-detail/PRECEDENT.md"
+SRC="$WT/apps/REDACTED-app/features/REDACTED-dir-37/PRECEDENT.md"
 git -C "$WT" checkout -q -- .claude/critical-core.md
 python3 - "$SRC" "$CH" "$WT" <<'PY'
 import sys, pathlib, subprocess
