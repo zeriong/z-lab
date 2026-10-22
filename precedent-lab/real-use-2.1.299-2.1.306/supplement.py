@@ -6,12 +6,15 @@
 2. The same commit count over Codex rollouts whose session cwd is the repository (Codex `exec` input is JS text,
    so the raw input is matched without stripping quotes).
 3. B and C per transcript, split top-level / subagent.
+Correction (2026-10-22, same day): D′ now counts only commits whose effective directory (record cwd, then any `cd X`
+and `git -C X` in the command) contains --root-match, and the excluded analysis session is no longer listed.
 usage: python3 supplement.py --projects P --key K --exclude-session S --since T --until T --codex-sessions DIR
                              --cwd-match SUBSTRING
 """
 import argparse
 import collections
 import json
+import os
 import re
 from pathlib import Path
 
@@ -20,6 +23,19 @@ RAW_COMMIT_RE = re.compile(r"git(\s+-[Cc]\s+\S+)*\s+commit(\s|\\n|$)")
 TOKEN_RE = re.compile(r"(^|\s)PRECEDENT_OK=1(\s|$)")
 STOP_MARK = "⚠ 이 절의 결정·금지는"
 EDIT_TOOLS = {"Edit", "Write", "MultiEdit"}
+
+
+ARG = r"(\"([^\"]+)\"|'([^']+)'|(\\S+))"
+
+
+def effective_dir(cwd, cmd):
+    d = cwd
+    for m in re.finditer(r"(?:^|[;&|(]\s*)cd\s+" + ARG, cmd):
+        d = os.path.normpath(os.path.join(d, os.path.expanduser(m.group(2) or m.group(3) or m.group(4))))
+    m = re.search(r"git\s+-C\s+" + ARG, cmd)
+    if m:
+        d = os.path.normpath(os.path.join(d, os.path.expanduser(m.group(2) or m.group(3) or m.group(4))))
+    return d
 
 
 def unquote(cmd):
@@ -38,7 +54,8 @@ def rows_of(f):
 
 def main():
     p = argparse.ArgumentParser()
-    for a in ("--projects", "--key", "--exclude-session", "--since", "--until", "--codex-sessions", "--cwd-match"):
+    for a in ("--projects", "--key", "--exclude-session", "--since", "--until", "--codex-sessions", "--cwd-match",
+              "--root-match"):
         p.add_argument(a, required=True)
     a = p.parse_args()
     D = collections.Counter()
@@ -66,9 +83,11 @@ def main():
                 for c in (r.get("message") or {}).get("content") or []:
                     if c.get("type") == "tool_use":
                         name, inp = c.get("name"), c.get("input") or {}
-                        if name == "Bash" and a.since <= ts <= a.until:
-                            cmd = unquote(str(inp.get("command", "")))
-                            if COMMIT_RE.search(cmd) and "--help" not in cmd:
+                        if name == "Bash" and a.since <= ts <= a.until and group != "excluded-analysis":
+                            raw = str(inp.get("command", ""))
+                            cmd = unquote(raw)
+                            if (COMMIT_RE.search(cmd) and "--help" not in cmd
+                                    and a.root_match in effective_dir(r.get("cwd") or "", raw)):
                                 D[f"{group}:commits"] += 1
                                 D[f"{group}:with-token"] += bool(TOKEN_RE.search(cmd))
                         if in_pop and seen_stop and name in EDIT_TOOLS:
@@ -98,14 +117,17 @@ def main():
             pl = r.get("payload") or {}
             if r.get("type") == "response_item" and pl.get("type") in ("function_call", "custom_tool_call"):
                 raw = str(pl.get("input") or pl.get("arguments") or "")
-                if RAW_COMMIT_RE.search(raw) and "--help" not in raw:
+                wd = re.search(r'workdir[\\"\s:]+([^\\",}]+)', raw)
+                if RAW_COMMIT_RE.search(raw) and "--help" not in raw and (
+                        a.root_match in (wd.group(1) if wd else str(meta.get("cwd", "")))):
                     X["commit-calls"] += 1
                     X["with-token"] += bool(re.search(r"PRECEDENT_OK=1\s", raw))
     out = ["# SUPPLEMENT — 사후 보조 집계 (사전 등록 아님, 생성: supplement.py)", "",
            "## D′. 창 안의 커밋 명령 — 레코드 시각 기준, 세션 묶음별 (Claude)", "",
            "| 묶음 | 커밋 명령 | `PRECEDENT_OK=1` |", "|---|---:|---:|",
            *[f"| {g} | {D[g + ':commits']} | {D[g + ':with-token']} |"
-             for g in ("in-population", "started-before-merge", "excluded-analysis")], "",
+             for g in ("in-population", "started-before-merge")], "",
+           "(정정: 대상 레포 안의 커밋만, 분석 세션 제외. 처음 기록한 「36건 중 22건」은 분석 세션의 다른 레포 커밋 5건을 포함했다.)", "",
            "## D″. Codex rollout (세션 cwd 가 레포, 세션 시작이 창 안)", "",
            f"- rollout {X['rollouts']} · 커밋 호출 {X['commit-calls']} · `PRECEDENT_OK=1` {X['with-token']}", "",
            "## C′. transcript 단위 (모집단만)", "",

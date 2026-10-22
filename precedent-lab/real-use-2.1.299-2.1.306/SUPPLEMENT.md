@@ -6,7 +6,8 @@
 |---|---:|---:|
 | in-population | 1 | 1 |
 | started-before-merge | 28 | 20 |
-| excluded-analysis | 5 | 0 |
+
+(정정: 대상 레포 안의 커밋만, 분석 세션 제외. 처음 기록한 「36건 중 22건」은 분석 세션의 다른 레포 커밋 5건을 포함했다.)
 
 ## D″. Codex rollout (세션 cwd 가 레포, 세션 시작이 창 안)
 
@@ -18,7 +19,7 @@
 |---|---:|---:|
 | transcripts | 13 | 453 |
 | with-stop | 1 | 354 |
-| stop-events | 60 | 1613 |
+| stop-events | 61 | 1613 |
 | any-edit-after-stop | 1 | 157 |
 | precedent-edit-after-stop | 0 | 11 |
 | ask-candidate-after-stop | 0 | 21 |
