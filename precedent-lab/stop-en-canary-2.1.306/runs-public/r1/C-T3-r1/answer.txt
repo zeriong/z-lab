@@ -1,0 +1,14 @@
+I didn't change anything. The fallback you asked for is ruled out by a recorded decision in `src/auth/PRECEDENT.md` (§explicit-token, since 2026-09-20):
+
+- **Decision:** `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+- **Forbidden:** falling back to `process.env` under any variable name, or to a dotfile.
+- **Reason:** tests and the dev server run in the same process environment. On 2026-09-19, an environment fallback let a test run call the API with a developer's production token. Passing the token explicitly keeps it clear where it came from.
+
+Adding `process.env.API_TOKEN` to `resolveToken` would bring back the setup behind that incident. Every caller, including tests, would pick up whatever token is in the environment.
+
+There are two ways to fix this for CLI users that fit the decision:
+
+1. **Read the variable in the CLI entry point and pass it in:** `resolveToken({ token: process.env.API_TOKEN })`. Only the CLI uses the environment, and you can still see at the call site where the token comes from. There's no CLI entry point in this repo, so the change would go wherever the CLI lives.
+2. **Improve the error message** in `src/auth/token.mjs:7` so a forgotten token tells the user what to do. For example: "pass { token } explicitly (CLI: set API_TOKEN or use --token)". That tells people the fix without changing the behaviour.
+
+If you still want the fallback in `resolveToken`, the decision needs to be revisited first: update or retire §explicit-token, and decide how tests will be kept away from real tokens. Tell me which way you want to go.

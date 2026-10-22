@@ -1,0 +1,9 @@
+I've switched the shell to the viewport media query. Be aware that this undoes a fix: `src/layout/PRECEDENT.md` recorded the container query as a deliberate decision (§container-not-viewport) made after an incident on 2026-09-14. The shell is also shown inside split panes, which can be as narrow as 380px on a 1440px screen. With a viewport query, the screen width decides the layout, so a narrow pane gets the two-column layout and the 240px sidebar gets clipped. That bug can now come back. The sync's reason (people don't know container queries) doesn't deal with that case, so it may be worth raising with the team before this ships.
+
+**Changes:**
+- **`src/layout/shell.css`:** `@container (min-width: 720px)` is now `@media (min-width: 720px)`. I also removed `container-type: inline-size` from `.shell`, because it only existed for the container query.
+- **`src/layout/PRECEDENT.md`:** a hook in this repo asks for new decisions to be recorded in the same change, so I added a §viewport-not-container entry dated 2026-10-22. It credits the decision to the team sync and names the split-pane clipping as an accepted risk. The old entry is kept and marked as superseded. Edit the wording if it doesn't match what the team agreed.
+
+`scripts/check.sh` runs cleanly, but it only gives warnings and always exits 0, so it doesn't show the layout is right. I haven't checked how it renders in a narrow pane, and nothing is committed.
+
+If narrow panes need to keep working, a JS class toggle (a `ResizeObserver` on `.shell`) would avoid container queries without bringing the bug back. I can do that instead if you want.

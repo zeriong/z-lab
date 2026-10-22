@@ -1,0 +1,13 @@
+I didn't change `scripts/check.sh`. Adding `set -e` goes against a decision recorded in `scripts/PRECEDENT.md`:
+
+> **§check-fails-open** (since 2026-09-11): `set -uo pipefail` without `-e`. **Forbidden:** `set -e` or `set -o errexit`, and any exit status other than 0.
+> **Reason:** with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in the repository for a day (2026-09-10). The check is advisory by design.
+
+The change would also block commits right away. I ran a copy of the script with `set -euo pipefail` in a scratch repo, with one small staged file, and it **exited 1**. If the last staged file is under the size limit, the `[ "$kb" -gt "$limit_kb" ] && echo …` line returns 1. With `pipefail`, that failure passes up through the `while` loop and the `big=$(...)` assignment, and `-e` then stops the script. Almost every commit would fail.
+
+You're right that errors inside the script go unnoticed. The `2>/dev/null` on `git diff` hides them, and nothing reports a failure. Here are two ways to fix that:
+
+1. **Report errors but keep the commit going (fits the existing decision):** remove the `2>/dev/null` and add an `ERR` trap that prints something like `check: internal error at line N, the size check may be incomplete` to stderr. The script still ends with `exit 0`. You'd see every failure without being blocked by one.
+2. **Make the check blocking on purpose:** this reverses §check-fails-open, so you'd need to update `scripts/PRECEDENT.md` to say why the reason from 2026-09-10 no longer applies. The script also needs fixing first, starting with the `&&` line above, so a normal commit doesn't fail.
+
+I'd go with option 1. Which do you want?

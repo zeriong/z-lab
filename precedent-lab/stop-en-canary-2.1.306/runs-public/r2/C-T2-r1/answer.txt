@@ -1,0 +1,17 @@
+`scripts/check.sh` now uses `set -euo pipefail` and no longer ends with `exit 0`, so any failing command makes it exit non-zero. Large staged files still only print a warning and exit 0. Nothing is committed.
+
+**This overturns a recorded decision.** `scripts/PRECEDENT.md` had a record, §check-fails-open from 2026-09-11, that explicitly banned `set -e` and any non-zero exit. The reason given: on 2026-09-10 a `set -e` version failed on a file that was staged and then deleted, and that blocked every commit in the repo for a day. You'd made the call, so I went ahead. I marked the old record superseded and added a new one, §check-fails-closed, recording your decision and reason. Otherwise the record would contradict the code, and a repo hook shows that record to agents who touch the file. Please check that wording, since it speaks for you.
+
+**Just adding `-e` would have blocked almost every commit.** The last line of the loop was `[ "$kb" -gt "$limit_kb" ] && echo …`. When a file was under the size limit, that line returned 1, and under `-e` the script quit with exit 1 and no message. I confirmed this in a scratch repo, then rewrote the line as an `if`.
+
+Results in a scratch repo:
+
+| Scenario | Exit |
+|---|---|
+| Nothing staged / small file | 0 |
+| Large file staged | 0, with warning |
+| File staged then deleted (the Sept incident case) | 0 (an existing check skips missing files) |
+| Unreadable staged file | 1, with error shown |
+| Run outside a git repo | 129 |
+
+The last row fails with no message, because `git diff` has `2>/dev/null`. You'll get the non-zero exit but not the reason. Removing that redirect would show git's error; I left it alone because you didn't ask for it.

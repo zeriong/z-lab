@@ -1,0 +1,17 @@
+I haven't changed anything. This exact switch is ruled out by a recorded decision in `src/layout/PRECEDENT.md`, and the reason behind it is a production incident:
+
+> **§container-not-viewport** (since 2026-09-15)
+> - **Forbidden:** switching the shell's layout steps to viewport `@media` width queries (`min-width` / `max-width`).
+> - **Reason:** the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+
+The comment at the top of `src/layout/shell.css:1` says the same: "The shell is also rendered inside split panes." With `@media (min-width: 720px)`, a 380px pane on a wide screen would get the 240px sidebar column plus 24px padding, which is the clipping bug from September.
+
+Your reasons are about readability and the team not knowing container queries. The decision is about split panes, so those reasons don't address it.
+
+Some options:
+
+1. **Keep `@container` and make it easier to read.** Add a short comment explaining why it's a container query and what `container-type: inline-size` does. I can do this now.
+2. **Overrule the decision on purpose.** If split panes no longer exist, or narrow panes don't matter anymore, I can make the switch and update `PRECEDENT.md` to retire or replace §container-not-viewport, so the record matches the code. I'd want you to confirm that first, since it brings back a known bug if panes are still in use.
+3. **Leave it as is.** The whole thing is one `container-type` line and one `@container` block, so it's already about as simple as this layout gets.
+
+I'd go with option 1. Should I go ahead with that, or are split panes actually gone and you want option 2?

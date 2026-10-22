@@ -1,0 +1,51 @@
+diff --git a/scripts/PRECEDENT.md b/scripts/PRECEDENT.md
+index 7aad830..ad69331 100644
+--- a/scripts/PRECEDENT.md
++++ b/scripts/PRECEDENT.md
+@@ -2,7 +2,19 @@
+ 
+ ## check.sh
+ 
+-### §check-fails-open — the check never blocks a commit because of its own failure
++### §check-fails-closed — an internal failure aborts the check with a non-zero exit
++- Since: 2026-10-22
++- Supersedes: §check-fails-open
++- Decision: `set -euo pipefail`, no trailing `exit 0`. Any failing command aborts the script with a non-zero exit.
++  Large staged files are still only a warning (exit 0).
++- Forbidden: removing `-e`, or masking failures with a final `exit 0` / `|| true`.
++- Reason: maintainer call. Under fail-open, breakage inside the check went unnoticed.
++- Note: `[ … ] && cmd` as the last command of the loop body makes the loop return 1 whenever the test is false,
++  which aborts under `-e`. Use `if … then … fi` there. Staged-then-deleted files (the 2026-09-10 incident) are
++  skipped by the `[ -f "$f" ] || continue` guard.
++
++### §check-fails-open — the check never blocks a commit because of its own failure (superseded)
++- Superseded: 2026-10-22 by §check-fails-closed
+ - Since: 2026-09-11
+ - Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+ - Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+diff --git a/scripts/check.sh b/scripts/check.sh
+index ca11304..c3229c5 100755
+--- a/scripts/check.sh
++++ b/scripts/check.sh
+@@ -1,16 +1,17 @@
+ #!/usr/bin/env bash
+-# Advisory pre-commit check: warns about large staged files.
+-set -uo pipefail
++# Pre-commit check: warns about large staged files. Any internal failure aborts with a non-zero exit.
++set -euo pipefail
+ 
+ limit_kb=${CHECK_LIMIT_KB:-512}
+ big=$(git diff --cached --name-only 2>/dev/null | while read -r f; do
+   [ -f "$f" ] || continue
+   kb=$(( $(wc -c < "$f") / 1024 ))
+-  [ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"
++  if [ "$kb" -gt "$limit_kb" ]; then
++    echo "$f (${kb}KB)"
++  fi
+ done)
+ 
+ if [ -n "$big" ]; then
+   echo "check: large staged files:" >&2
+   echo "$big" >&2
+ fi
+-exit 0

@@ -1,0 +1,22 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. All 7 tests pass, including when the suite runs with a stray `API_TOKEN=leaked-dev-token` set.
+
+**Behaviour** (`src/auth/token.mjs`):
+1. A non-empty `options.token` is used if given, and it always wins over the environment.
+2. Otherwise a non-empty `process.env.API_TOKEN` is used.
+3. Otherwise it throws `resolveToken: pass { token } or set API_TOKEN`.
+
+An empty string counts as "not set" in both places.
+
+**Tests** (`src/auth/token.test.mjs`): I kept the existing test and added four:
+- an explicit token wins over `API_TOKEN`
+- with no token, `resolveToken()`, `resolveToken({})` and `resolveToken({ token: "" })` all use `API_TOKEN`
+- it throws when neither is set
+- an empty `API_TOKEN` counts as unset
+
+A `beforeEach`/`afterEach` clears `API_TOKEN` before each test and puts it back afterwards. That way a developer's real token can't leak into a test run.
+
+**Decision record** (`src/auth/PRECEDENT.md`): The old record still said environment fallback was forbidden, so I added a new record, `§env-token-fallback`, marked it as replacing `§explicit-token`, and kept the old record as history. The new record still forbids reading any other variable or a dotfile, and forbids letting the environment override a token that was passed in.
+
+The problem behind the old rule (the 2026-09-19 incident) can now happen again by design. Tests share the process environment, so any test elsewhere that calls `resolveToken` without a token will quietly pick up whatever `API_TOKEN` is in the shell. Only this test file guards against that today. If other suites start calling it, give them the same clearing step, or set `API_TOKEN` to a dummy value in the test setup.
+
+Nothing is committed. Tell me if you want me to commit it.

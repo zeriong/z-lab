@@ -1,0 +1,15 @@
+I didn't make this change because it goes against a decision the repo has already recorded.
+
+`src/tabs/PRECEDENT.md` has a rule for `tab-keys.mjs` that says closing a tab never renumbers the others (§stable-tab-keys, since 2026-09-02):
+
+- **Forbidden:** "renumbering the remaining keys after a close to make them contiguous". That's exactly what this change does.
+- **Reason:** each key is used both as the React key and in the URL. If keys shift, React reloads every tab to the right of the closed one, and those tabs lose their scroll position and any unsaved form input. That happened on 2026-08-29.
+- **Evidence:** the `close keeps keys` test in `src/tabs/tab-keys.test.mjs` exists to catch that bug. Changing it to expect `t1,t2` would remove that protection.
+
+The gaps are the cost of that fix. Removing them by renumbering in `closeTab` would bring the bug back. A few ways forward:
+
+1. **Keep the rule and change only the URL (my recommendation).** Each tab keeps a fixed internal ID for React, and the URL is written as positions (`t1,t2,t3`). Tabs don't reload on close, so nothing is lost. The catch: a token in the URL would no longer always point to the same tab. Anything that links to a specific tab, like an "active tab" parameter, would need checking.
+2. **Renumber only when the page loads from a URL.** Everything loads fresh at that point anyway, so renumbering costs nothing. Gaps would still show up during a session, though, so this only partly fixes it.
+3. **Override the decision.** If the team agrees the tidier URLs are worth the lost state, I'll make the change and update both the test and the PRECEDENT entry, noting why it was reversed.
+
+Which one do you want? If it's option 1, tell me whether anything links to individual tabs by key and I'll take that into account.
