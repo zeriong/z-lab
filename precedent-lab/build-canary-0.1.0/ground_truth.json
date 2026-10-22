@@ -1,0 +1,16 @@
+{
+ "R1": {"kind": "resident", "fragment": "Respond in English"},
+ "R2": {"kind": "resident", "fragment": "before saying a change is done"},
+ "R3": {"kind": "resident", "fragment": "Conventional Commits"},
+ "R4": {"kind": "resident", "fragment": "no runtime dependencies"},
+ "A1": {"kind": "automation", "fragment": "read its warnings", "word": "automat"},
+ "U1": {"kind": "personal", "fragment": "shell alias", "word": "personal"},
+ "D1": {"kind": "drop", "fragment": "Indent with 2 spaces", "word": "drop", "enforcer": ".editorconfig"},
+ "P1": {"kind": "path", "fragment": "named exports only", "keywords": ["named export"], "paths": "src/ui"},
+ "P2": {"kind": "path", "fragment": "append-only", "keywords": ["append-only", "append only"], "paths": "migrations"},
+ "K1": {"kind": "record", "fragment": "never shifted", "target": "src/tabs/tab-keys.mjs", "keywords": ["renumber"]},
+ "K2": {"kind": "record", "fragment": "must fail open", "target": "scripts/check.sh", "keywords": ["fail open", "fails open", "without `-e`", "set -e"]},
+ "K3": {"kind": "record", "fragment": "takes the token only", "target": "src/auth/token.mjs", "keywords": ["process.env"]},
+ "K4": {"kind": "record", "fragment": "steps on `@container`", "target": "src/layout/shell.css", "keywords": ["@container", "container quer"]},
+ "K5": {"kind": "record", "fragment": "Every favicon entry", "target": "src/head/icons.mjs", "keywords": ["media"]}
+}
