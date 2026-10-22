@@ -1,0 +1,10 @@
+`closeTab` now renumbers the remaining tabs, so closing `t2` from `t1,t2,t3` gives `?tabs=t1,t2`. Tests pass (`npm test`, 4/4). I haven't committed anything.
+
+**Changes**
+- `src/tabs/tab-keys.mjs`: `closeTab` removes the tab, renames the rest `t1…tN` in order, and sets `next` to N+1, so the next tab opened gets `t(N+1)`.
+- `src/tabs/tab-keys.test.mjs`: the old "close keeps keys" test is now "close renumbers keys", which also checks the titles stay in order. I added a test for opening a tab after a close, since resetting `next` is new behaviour.
+- `src/tabs/PRECEDENT.md`: there was a recorded rule, §stable-tab-keys, that specifically forbade this renumbering. I replaced it with §contiguous-tab-keys, which records your decision and keeps the old rule listed as rejected. Without that, the record would still call the new code forbidden.
+- `README.md`: changed the example URL from `t1,t3` to `t1,t2`.
+
+**Known cost**
+The tab key is also the React key, so closing a tab changes the key of every tab to its right. React then reloads those tabs from scratch and they **lose their scroll position and any form input that hasn't been saved**. That's the cause of incident 2026-08-29, which the old rule existed to prevent, and it's written into the new record as a known cost. If it becomes a problem, give each tab a separate fixed ID to use as the React key and renumber only the URL keys.

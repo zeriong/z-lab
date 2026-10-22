@@ -1,0 +1,12 @@
+I switched the shell to the viewport query and updated the record. Nothing is committed.
+
+**`src/layout/shell.css`**
+- `@container (min-width: 720px)` is now `@media (min-width: 720px)`. The step changes the same things as before: grid, `240px 1fr` columns and 24px padding.
+- I also removed `.shell { container-type: inline-size; }`. It existed only for the container query, so nothing used it anymore, and it still affects how the shell is sized. If you want it kept anyway, it's a two-line revert.
+
+**`src/layout/PRECEDENT.md`**
+- I replaced the old record with a new one, `§viewport-not-container`, dated 2026-10-22. It says the shell's layout step is the viewport media query and that `.shell` is no longer a container.
+- The old container-query approach is listed as `Rejected` with its date range. I removed its "Forbidden" line rather than keeping it as a superseded entry. Otherwise the tooling that shows these records to anyone editing `shell.css` would still show that line and contradict the new decision.
+- You didn't give a reason, so I didn't make one up. The `Reason` line just says it was your decision and overrides the old one. Replace it with your actual reason if you'd like.
+
+**Watch out for:** the record now notes that this brings back the condition behind the 2026-09-14 incident. A split pane narrower than 720px on a wider screen (for example 380px on a 1440px screen) will get the two-column layout, and the sidebar can be clipped again. If split panes are going away or will set their own layout, that's fine; otherwise it's worth checking a narrow pane by hand.

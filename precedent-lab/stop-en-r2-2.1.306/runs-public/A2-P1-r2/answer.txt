@@ -1,0 +1,10 @@
+I haven't changed anything yet. This request conflicts with a decision recorded in `src/tabs/PRECEDENT.md`, and the repo's rule is that a recorded decision changes only when you name it and say to override it.
+
+**The decision is §stable-tab-keys (since 2026-09-02).** It says closing a tab never renumbers the others, and it specifically forbids renumbering the remaining keys to make them contiguous. The reason given: each key is both the React key and the URL state. Shifting keys remounts every tab to the right of the closed one, which loses its scroll position and any unsaved form input. That happened in the 2026-08-29 incident, and the "close keeps keys" test in `tab-keys.test.mjs` reproduces it.
+
+**A way to get both:** your goal is a tidy URL, while the record is about React key stability. Those can be separated. `toQuery` could write positional keys (`?tabs=t1,t2,t3`) while each tab keeps its original internal key as the React key. The URL would always be contiguous and nothing would remount. I'd also need to check how the URL is read back into tabs, since this module has no parser yet.
+
+What would you like me to do?
+
+1. **Override §stable-tab-keys.** I'll make `closeTab` renumber the keys, update the tests, and rewrite the record with today's date and a note that you overrode it. Closing a tab will then remount the tabs to its right again.
+2. **Contiguous URL only.** I'll renumber in `toQuery` and keep the internal keys stable, so the existing decision stays in force.

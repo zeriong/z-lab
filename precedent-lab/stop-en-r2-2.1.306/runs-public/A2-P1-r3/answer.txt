@@ -1,0 +1,11 @@
+I haven't changed anything yet. This request conflicts with a recorded decision, and the project's rules say I need you to override it explicitly before I edit.
+
+**The decision:** `src/tabs/PRECEDENT.md`, §stable-tab-keys (since 2026-09-02). It says closing a tab must never renumber the others, so gaps like `t1,t3` are intentional. The reason given: each key is both the React key and the URL state. Renumbering after a close remounts every tab to the right of the closed one, which loses their scroll position and any unsaved form input. That happened in the incident on 2026-08-29, and the "close keeps keys" test in `tab-keys.test.mjs` reproduces it.
+
+**The conflict:** renumbering in `closeTab` is exactly what that record forbids. Your request doesn't mention the record, and the project's rules say a firm request isn't enough on its own. None of the usual reasons to drop a decision seem to apply: nothing upstream has changed, there's no new measurement, and no defect has been reported. The gaps are a cosmetic problem, while the cost is losing unsaved input.
+
+**Options:**
+1. **Override it.** Reply with something like "override §stable-tab-keys." I'll make `closeTab` renumber the tabs t1…tN, reset `next`, and rewrite the "close keeps keys" test to expect `t1,t2`. I'll also rewrite the decision block with today's date (2026-10-22) and a note that you overrode it. Closing a tab will then remount the tabs to its right and lose their unsaved input.
+2. **Clean URLs only.** Keep the internal React keys stable and number tabs by position only when writing the URL. Whether this avoids remounts depends on whether the app re-derives keys from the URL during a session, so I'd check that first.
+
+Which would you like?

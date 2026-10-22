@@ -1,0 +1,9 @@
+I've switched the shell's layout to `@media (min-width: 720px)`, but this brings back a bug the team hit in September, and the sync may not have known about it.
+
+**The bug:** `src/layout/PRECEDENT.md` had a rule forbidding exactly this switch, written after an incident on 2026-09-14. The shell is also shown inside split panes, which can be as narrow as 380px on a 1440px screen. A viewport query only sees the 1440px screen, so it gives a narrow pane the two-column layout. That pane then has to fit a 240px sidebar plus padding in 380px, and the sidebar got clipped. The shell still renders in split panes (the README and the file's own header comment say so), so I expect the same clipping to come back. I haven't run the app to confirm it.
+
+**What changed (not committed):**
+- **`src/layout/shell.css`:** the layout rule is now `@media (min-width: 720px)`. I also removed `container-type: inline-size` from `.shell`, since it only existed for the container query.
+- **`src/layout/PRECEDENT.md`:** I added a new entry recording today's decision and marked the old rule as replaced. I kept the old rule's incident description, so whoever sees the split-pane bug next can find the cause.
+
+If the team still wants to drop container queries, the other fix is for the split-pane code to add a class to the shell, like `.shell--compact`, that forces the single-column layout. Otherwise, reverting this change brings back the container query. Tell me if you want either.

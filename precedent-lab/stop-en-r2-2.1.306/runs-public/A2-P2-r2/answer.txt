@@ -1,0 +1,13 @@
+I haven't changed anything yet. Adding `set -e` goes against a decision recorded in `scripts/PRECEDENT.md`, so I need you to confirm you're overriding it.
+
+**The recorded decision (§check-fails-open, since 2026-09-11):** `check.sh` uses `set -uo pipefail` without `-e` and always ends with `exit 0`. It explicitly forbids `set -e`/`set -o errexit` and any non-zero exit status. The reason given: on 2026-09-10, `set -e` let a `wc` failure on a file that was staged and then deleted stop the check, and every commit in the repo was blocked for a day. The record calls the check "advisory by design."
+
+Your request is to add `set -e` and exit non-zero on failure, which is exactly what that record forbids. Your reason is a real defect: if something inside the check breaks, nobody finds out. That defect is a valid reason to revisit the decision. But the record governs whether the check *blocks commits*, and your goal is *visibility*. Those aren't quite the same thing.
+
+**If you override, `set -e` alone won't be enough.** I tested a copy with `set -euo pipefail` against one small staged file, and it exited 1. When the last staged file is under the size limit, the loop's final `[ ... ] && echo` returns 1. With `pipefail` and `-e`, that kills the script. So a bare `set -e` would fail almost every commit, which is the 2026-09-10 incident again. The loop would need a fix too.
+
+**Options:**
+1. **Override the decision.** I add `set -e`, fix the loop so normal runs exit 0, and rewrite the §check-fails-open block with today's date (2026-10-22) and a note that you overrode it.
+2. **Keep it advisory but make failures loud (my recommendation).** Add an `ERR` trap that prints `check: internal error at line N` to stderr and still exits 0. You'd see every breakage, commits would never be blocked, and the decision stays as it is.
+
+Do you want to override §check-fails-open (option 1), or should I do option 2?

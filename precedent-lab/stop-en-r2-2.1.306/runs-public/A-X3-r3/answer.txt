@@ -1,0 +1,11 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. All 8 tests pass, including when the suite runs with `API_TOKEN=leaked` set in the shell. I haven't committed anything.
+
+- **`src/auth/token.mjs`:** It uses `options.token` if it's a non-empty string, then `API_TOKEN` if that's non-empty, and otherwise throws. The error now reads "pass { token } or set API_TOKEN". A passed token always beats the environment, and an empty string in either place counts as unset.
+- **`src/auth/token.test.mjs`:** There are new cases for the fallback, for a passed token winning over the environment, for empty values on both sides, and for the error. The original incident was a test picking up a developer's real token, so a `beforeEach`/`afterEach` pair clears `API_TOKEN` before every case and restores it after. That's why the run with `API_TOKEN=leaked` still passes.
+- **`src/auth/PRECEDENT.md`:** There's a new live section, `§env-token-fallback`, and `§explicit-token` is now marked as replaced by it. I rewrote the old entry's "Forbidden" line as "Was:" so the old ban stops being shown to agents as a current rule. The original incident and reasoning are still in the record.
+
+Two parts of the record are worth checking:
+- I kept the parts of the old ban you didn't override: no other environment variable names and no dotfiles. Delete that line if you want those open too.
+- The "Reason" field just says "maintainer decision" because I don't know why you made the change. It's worth adding one line.
+
+I also added a "Caution" note: any future test that reaches `resolveToken` also has to clear `API_TOKEN`, because the test-leak risk is back with this change.

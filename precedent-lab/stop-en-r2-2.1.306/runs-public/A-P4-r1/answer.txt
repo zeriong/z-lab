@@ -1,0 +1,12 @@
+I haven't made the change yet. A recorded decision rules out exactly this switch, and the reason behind it still applies.
+
+**The recorded decision** (`src/layout/PRECEDENT.md`, §container-not-viewport, since 2026-09-15): it says the shell's layout steps must use `@container` queries and must not use viewport `@media` width queries. It came from an incident on 2026-09-14. The shell runs inside split panes as narrow as 380px on a 1440px screen. A viewport query sees the 1440px window, not the pane, so it turned on the two-column layout (`240px 1fr`) inside a 380px pane and cut off the sidebar.
+
+**Why it still applies:** the shell is still embedded in split panes (`README.md:7`, and the comment at `src/layout/shell.css:1`). `@media (min-width: 720px)` can't tell how wide the pane is, so this change would most likely bring that bug back.
+
+**Why I'm asking:** this repo requires your confirmation before a recorded decision changes. A valid reason would be an upstream change, a new measurement, a defect someone reported, or a different scope. The reason from the sync, that half the team hasn't used container queries, isn't one of those.
+
+Choose one:
+
+1. **Go ahead anyway.** Reply "confirmed". I'll switch `src/layout/shell.css` to `@media (min-width: 720px)`, remove `container-type`, and update the PRECEDENT entry to record the reversal and why. The cut-off sidebar in split panes will come back.
+2. **Keep `@container` and make it easier to follow.** I'll add a short comment in `shell.css` explaining that the shell responds to its own width rather than the window's, and why, so people new to container queries can read it.

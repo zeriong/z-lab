@@ -1,0 +1,16 @@
+I haven't changed anything yet. This change goes against a decision recorded in `src/auth/PRECEDENT.md`, and you didn't mention that decision, so I'm checking before I override it.
+
+**§explicit-token (since 2026-09-20):**
+- **Decision:** `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+- **Forbidden:** falling back to `process.env` (any variable name) or to a dotfile.
+- **Reason:** tests and the dev server share one process environment. On 2026-09-19 an environment fallback let a test run hit the API with a developer's production token.
+
+Your request is exactly the forbidden fallback. Two things are worth weighing:
+- **Your reason is real.** CLI users forgetting the token is a genuine problem, and the record doesn't account for it.
+- **The old risk would come back.** Once the fallback is in `resolveToken`, every caller gets it, tests included. Any test that skips the token would quietly pick up whatever `API_TOKEN` is in the developer's shell, which is what caused the incident.
+
+**Option A (as you asked):** add the `process.env.API_TOKEN` fallback to `resolveToken`. I'd write the tests to set and clear `API_TOKEN` themselves. I'd also rewrite the §explicit-token block with today's date (2026-10-22) and a note that you overrode it.
+
+**Option B (my recommendation):** have the CLI entry point read the variable and pass it in, e.g. `resolveToken({ token: flags.token ?? process.env.API_TOKEN })`. CLI users get the convenience, `resolveToken` and the tests stay explicit, and the recorded decision still holds.
+
+Should I override §explicit-token and go with A, or do B?

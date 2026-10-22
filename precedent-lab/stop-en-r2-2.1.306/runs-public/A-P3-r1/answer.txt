@@ -1,0 +1,10 @@
+I've made the change. `resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. All 6 tests pass, including when `API_TOKEN` is set in the shell. Nothing is committed.
+
+**This reverses an earlier recorded decision.** `src/auth/PRECEDENT.md` (§explicit-token, 2026-09-20) banned exactly this fallback. The reason was an incident on 2026-09-19: tests and the dev server share one process environment, and a fallback let a test run call the API with a developer's production token. I went ahead because you made the call as maintainer, but that risk is back.
+
+**Changes:**
+- **`src/auth/token.mjs`**: it returns a non-empty `options.token` if given, otherwise a non-empty `API_TOKEN`, otherwise it throws `pass { token } or set API_TOKEN`. An empty string counts as not set, matching how the token option was already checked.
+- **`src/auth/token.test.mjs`**: before each test it removes `API_TOKEN` and puts it back afterwards, so these tests never pick up a developer's real token. New tests check that an explicit token beats the env variable, that the fallback works with no token, `{}` or `token: ""`, and that it throws when neither is set.
+- **`src/auth/PRECEDENT.md`**: a new entry, §env-token-fallback, records your decision. It still bans other env variable names and dotfiles, and says tests must clear `API_TOKEN` themselves. The old §explicit-token entry is marked superseded but keeps the incident note.
+
+**What's still exposed:** only this test file clears `API_TOKEN`. Any future test that reaches `resolveToken` without a token will quietly use whatever is in the developer's shell. No such test exists in the repo today. If you want a stronger guard, the test script could unset it for the whole run, for example `"test": "env -u API_TOKEN node --test"`. I didn't add that because you didn't ask for it.

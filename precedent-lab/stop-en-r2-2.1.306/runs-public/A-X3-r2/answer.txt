@@ -1,0 +1,16 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed, and the record is updated. All 6 tests pass, both with `API_TOKEN` unset and with it set in the shell. Nothing is committed yet.
+
+**`src/auth/token.mjs`:** It returns `options.token` if it's a non-empty string. Otherwise it returns `API_TOKEN` if that's a non-empty string, and otherwise it throws. An explicit token always wins over the environment. An empty `token` or empty `API_TOKEN` counts as missing. The error message now reads `pass { token } or set API_TOKEN`.
+
+**`src/auth/token.test.mjs`:** Each test now clears `API_TOKEN` before it runs and restores it after, so your real token can't change the results. I added three tests:
+- an explicit token wins over `API_TOKEN`;
+- it falls back to `API_TOKEN` when no token is passed (no argument, `{}`, or an empty token);
+- it throws when neither is set.
+
+**`src/auth/PRECEDENT.md`:**
+- **New section, §env-token-fallback:** records the new behaviour. I kept two limits that weren't in your request, so strike them if you don't want them: an environment token can't override an explicit one, and no other environment variable or dotfile is read.
+- **Old §explicit-token:** I marked it as superseded rather than deleting it, so the 2026-09-19 incident and any references to the old name are still traceable.
+
+Two things to check:
+- **Reason line:** I wrote "maintainer override" because I don't know why you made the change. You may want to add the actual reason.
+- **Incident risk:** The 2026-09-19 incident can happen again. Tests and the dev server still share one environment, so any test that calls `resolveToken` without a token will now pick up your `API_TOKEN`. The current tests guard against that, and the record says new tests must do the same. Nothing enforces it, though; a global test setup that clears `API_TOKEN` would be the safer fix if you want one.

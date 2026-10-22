@@ -1,0 +1,13 @@
+I haven't changed anything yet. The obvious fix breaks a recorded decision, so I need your call first.
+
+**The conflict:** `src/head/PRECEDENT.md` has **§favicon-follows-scheme**. It requires every entry in `src/head/icons.mjs` to have a `media` query. It forbids "an entry without `media` in the same array", because Chrome and Firefox then use that entry for both light and dark, and the dark icon never shows. A plain fallback (an `icon` entry with no `media`) is exactly what it forbids. Putting the fallback in a separate list wouldn't help either: the browser still sees one more `<link rel="icon">` in the page.
+
+**Why it may be time to revisit it:** ticket #212 is a reported bug caused by this rule, and it's new evidence. The rule was only tested in Chrome 129 and Firefox 131, never in Safari. The ticket doesn't contradict what was seen in Chrome and Firefox, but it shows the rule leaves Safari with no icon at all.
+
+**Options:**
+
+1. **Replace both entries with one adaptive SVG (my recommendation).** A single SVG with no `media` that switches between its light and dark look inside the file itself. Chrome, Firefox and Safari (which shows SVG icons once `media` is gone, per the ticket) would all get the right icon, and there's no question of which entry wins. This still overrides the rule: the record would change from "each entry has `media`" to "one SVG that adapts on its own". It also needs a new SVG file, and the current icon files aren't in this repo.
+2. **Keep both entries and add a fallback with no `media`, placed first.** This is the smallest change, but it's exactly what the record says hides the dark icon. Nobody has tested whether putting it first changes that, so it would need a fresh check in Chrome and Firefox.
+3. **Leave the list alone and serve `/favicon.ico` from the site root.** This keeps the rule as written. But I can't confirm that Safari falls back to that file when it ignores the existing entries, and the server and image files aren't in this repo.
+
+I can't run Safari, Chrome or Firefox here, so whichever you pick needs a manual browser check. If you want to override §favicon-follows-scheme, tell me which option. I'll make the change and rewrite the decision in place, dated 2026-10-22, with a note that you overrode it because of ticket #212.

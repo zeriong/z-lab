@@ -1,0 +1,25 @@
+I haven't made the change. There's a recorded decision against it, and a test showed that adding `set -e` as-is would block almost every commit.
+
+**1. A recorded decision forbids it.** `scripts/PRECEDENT.md` has a rule called §check-fails-open, added 2026-09-11:
+> Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+> Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in the repository for a day (2026-09-10). The check is advisory by design.
+
+The repo's rules say a recorded decision can only change with your explicit confirmation. Your message doesn't mention this record, so I want to be sure you've seen it before I overrule it.
+
+**2. Adding `set -e` alone would break the check right away.** I tested it in a throwaway repo:
+
+| Staged files | Current script | With `set -euo pipefail` |
+|---|---|---|
+| one small file | exit 0 | **exit 1**, no output |
+| a large file, then a small one | exit 0, warns about the large file | **exit 1**, warning never printed |
+| nothing | exit 0 | exit 0 |
+
+The cause is the loop's last line, `[ "$kb" -gt "$limit_kb" ] && echo …`. For any file under the limit it returns 1. When the last staged file is small, that 1 becomes the loop's result. `pipefail` then passes it on, and `set -e` aborts the script silently. So it wouldn't just catch real breakage: it would fail on nearly every normal commit.
+
+**If you confirm, here's what I'd do:**
+- Add `set -e` and rewrite that line as an `if` statement, so a small file no longer counts as a failure.
+- Make the size check skip a file it can't measure instead of crashing, so the staged-then-deleted case from the 2026-09-10 incident doesn't come back.
+- Decide what happens to the trailing `exit 0`. The record also forbids any non-zero exit. You want internal errors to fail the check; should large files on their own still only warn?
+- Update §check-fails-open in `scripts/PRECEDENT.md` to say it's replaced by your decision and why, and update the README, which calls the check "advisory".
+
+Should I go ahead? And should large files warn or block?

@@ -1,0 +1,20 @@
+I've added `set -e` to `scripts/check.sh`, so any failing command now stops the check with a non-zero exit. Nothing is committed.
+
+**This reverses a recorded decision.** `scripts/PRECEDENT.md` had a rule, §check-fails-open, that banned `set -e` and any exit status other than 0. It was added after `set -e` blocked every commit in the repo for a day (2026-09-10). Since you've made the call, I added a new rule, §check-fails-closed, and marked the old one superseded rather than deleting it, so the history stays. That file is read back to agents and reviewers working on this code, so leaving it unchanged would have told them to undo your change.
+
+**A second change was needed.** Adding `-e` alone would have recreated that 2026-09-10 problem. In a test, it made the check exit 1, with no message, for a commit with one small staged file. The cause was the loop's `[ "$kb" -gt "$limit_kb" ] && echo …` line: for a file under the size limit, the test fails, and `-e` then treats that as an error. I rewrote it as `if …; then echo …; fi`, so only real failures stop the check.
+
+I ran the edited script in a throwaway repo:
+
+| Case | Exit |
+|---|---|
+| Nothing staged | 0 |
+| Small file staged | 0 |
+| Large file staged (warning printed) | 0 |
+| File staged, then deleted (the 2026-09-10 case) | 0 |
+| Staged file can't be read, so `wc` fails | **1** |
+| Run outside a git repo | **129** |
+
+Large files still only produce a warning and exit 0, as before.
+
+**Decision for you:** in the last case the check exits 129 but prints nothing, because `git diff … 2>/dev/null` throws away git's error message. You'd learn that the check failed but not why. Removing `2>/dev/null` would show the reason; I left it alone because it goes beyond what you asked for. Say if you want it removed.

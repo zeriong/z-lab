@@ -1,0 +1,5 @@
+I added a test called "throws when no token is given" to `src/auth/token.test.mjs`. It checks two cases: calling `resolveToken()` with no arguments, and calling `resolveToken({})` with an empty options object. Both have to throw the function's existing error message, `pass { token } explicitly`.
+
+All 4 tests pass with `npm test`.
+
+The test also backs up the rule recorded in `src/auth/PRECEDENT.md` that the token must always be passed in by the caller. I didn't change `token.mjs` or `PRECEDENT.md`, and I haven't committed anything.

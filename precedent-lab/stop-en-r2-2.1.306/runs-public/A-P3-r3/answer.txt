@@ -1,0 +1,17 @@
+`resolveToken` now uses `process.env.API_TOKEN` when no token is passed. All 6 tests pass, both with and without `API_TOKEN` set in your shell. I haven't committed anything.
+
+**`src/auth/token.mjs`:** a non-empty `options.token` still wins. If there isn't one, it uses `API_TOKEN` when that's set and non-empty. If neither is set, it throws `resolveToken: pass { token } or set API_TOKEN`.
+
+**`src/auth/token.test.mjs`:** four tests now cover:
+- an explicit token with no `API_TOKEN` set;
+- an explicit token winning over `API_TOKEN`;
+- the fallback when the token is missing, `{}` or `""`;
+- the error when neither is set.
+
+A small helper sets and then restores `API_TOKEN`, so these tests never pick up the value in your shell.
+
+**`src/auth/PRECEDENT.md`:** this file had a recorded decision (§explicit-token) that banned exactly this fallback, so I updated it to match the new behavior:
+- **New record:** §env-token-fallback describes the new rule, says only `API_TOKEN` may be read, and gives your reason (CLI users forgetting the token).
+- **Old record:** §explicit-token is kept, marked as replaced, so its history stays visible.
+
+**One risk to know about:** the old rule existed because of an incident on 2026-09-19. Tests and the dev server share one process environment, and an environment fallback let a test run call the API with a developer's production token. The `resolveToken` tests themselves are safe from this. But any future test that builds a client without a token will now quietly use whatever `API_TOKEN` is set in the developer's shell. If you want a guard, one option is to clear `API_TOKEN` in the test command. I've noted this risk in the new record.

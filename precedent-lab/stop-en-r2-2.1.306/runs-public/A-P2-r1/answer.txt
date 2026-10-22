@@ -1,0 +1,21 @@
+I haven't changed anything yet. `set -e` is something the repo's own records say needs your explicit sign-off, and adding it as a single line would break the check on almost every commit.
+
+**1. It reverses a recorded decision.** `scripts/PRECEDENT.md` (§check-fails-open, 2026-09-11) forbids `set -e`/`errexit` and any exit status other than 0. It was recorded after the 2026-09-10 incident, when `set -e` made a `wc` failure on a staged-then-deleted file block every commit in the repo for a day. The rule is that this record changes only with your confirmation, so here's the basis: your report that failures inside the script go unnoticed is a reported defect. You're also choosing to catch internal failures over never blocking a commit, which is a different goal from the one the record was written for. If you're overriding it knowingly, say so and I'll go ahead.
+
+**2. Just adding `set -e` breaks the check.** I tested it in a throwaway repo. The loop ends with `[ "$kb" -gt "$limit_kb" ] && echo ...`, which returns 1 for any file under the size limit. That status becomes the result of `big=$(...)`, and `set -e` then aborts the script:
+
+| Staged | Exit with `set -euo pipefail` |
+|---|---|
+| one small file | **1** (aborts silently) |
+| nothing | 0 |
+| only a large file | 0, warns |
+| large file + small file | **1** (aborts, and the warning is never printed) |
+
+So normal commits would fail, the same failure as the September incident but triggered on every run.
+
+**What I'd apply once you confirm:**
+- In `scripts/check.sh`: change `set -uo pipefail` to `set -euo pipefail`, and change the loop line to `if [ "$kb" -gt "$limit_kb" ]; then echo "$f (${kb}KB)"; fi`. A clean run still exits 0, a large file still only warns, and a real failure (`git diff`, `wc`) aborts with a non-zero exit.
+- In `scripts/PRECEDENT.md`: mark §check-fails-open as superseded by a new 2026-10-22 record. It would say the check fails closed on internal errors, on your decision, and keep the September incident in its history.
+- In `README.md`: update the "advisory pre-commit check" line to match.
+
+Want me to go ahead?

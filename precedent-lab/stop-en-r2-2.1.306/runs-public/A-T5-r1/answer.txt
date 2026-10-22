@@ -1,0 +1,21 @@
+I haven't changed anything yet. The fallback you asked for breaks a recorded decision, so I need your OK first.
+
+**The conflict.** `src/head/PRECEDENT.md` has a rule, §favicon-follows-scheme, that covers `src/head/icons.mjs`:
+- Decision: every icon entry has a `media` query for light or dark mode.
+- Forbidden: "an entry without `media` in the same array. Browsers then use it for both schemes and the dark variant never shows."
+- Reason: "measured in Chrome 129 and Firefox 131 on 2026-09-05."
+
+A fallback that Safari will use has to be an entry without `media`, which is exactly what the rule forbids. The record says it can't be changed without your confirmation.
+
+**Why I think the rule can change:**
+- **(3) A user-reported defect:** ticket #212. Safari 18.1 on macOS shows a blank tab icon on every page, and removing `media` in devtools makes the icon appear.
+- **(4) The ticket is about a different browser than the record:** the rule was only measured in Chrome and Firefox. Safari wasn't tested, and the ticket shows it behaves differently.
+
+The record isn't proven wrong for Chrome and Firefox, though. Going by its own measurement, adding the fallback as-is would fix Safari but stop the dark icon from ever showing in Chrome and Firefox.
+
+**Options:**
+1. **Fallback first in the list, then re-test (my recommendation).** Put a `/icon-light.svg` entry without `media` at the top of `icons`, with the two existing entries after it. The record doesn't say where the media-less entry was when it was tested, and browsers often prefer later matching icons. If Chrome and Firefox still pick the media entries in dark mode, I'll update the rule to allow exactly one media-less fallback at the start of the list, citing ticket #212 and the new test results. That check needs a real browser, which I can't run here.
+2. **One adaptive SVG.** Replace both entries with a single SVG that switches colours itself using `prefers-color-scheme`. This also needs the rule changed, plus a new icon asset, and Safari may only ever show the light version.
+3. **Accept the trade-off.** Add the fallback anywhere and accept that, going by the record, Chrome and Firefox will stop showing the dark icon.
+
+Should I go ahead with option 1, including updating the record?

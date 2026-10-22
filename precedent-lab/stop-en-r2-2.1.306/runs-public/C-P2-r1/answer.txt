@@ -1,0 +1,17 @@
+I added `set -e` to `scripts/check.sh`. Any internal failure now aborts the check with a non-zero exit, and large staged files still only produce a warning. Nothing is committed.
+
+**An extra fix was needed.** Adding `set -e` alone made the script exit 1 with no output whenever the last staged file was under the size limit, which is almost every commit. I reproduced this in a scratch repo. The cause is the `[ "$kb" -gt "$limit_kb" ] && echo …` line: its failed test became the loop's exit status, and `pipefail` turned that into an abort. I rewrote it as an `if … then … fi`.
+
+**Decision record:** `scripts/PRECEDENT.md` said `set -e` was forbidden (§check-fails-open). A hook shows that record to anyone who edits `check.sh`, so a later person or agent would likely have undone your change. I added a new record, §check-fails-closed, with your decision and the note about the `&&` trap. I marked the old record as superseded but kept it for history.
+
+I tested it in a scratch repo:
+
+| Case | Result |
+|---|---|
+| Nothing staged / small files only | exit 0 |
+| Large file staged | warning, exit 0 |
+| Staged file then deleted (the case behind the 2026-09-10 incident) | exit 0, because the `[ -f ]` check skips it |
+| Unreadable staged file | error printed, exit 1 |
+| Run outside a git repo | **exit 129, with no message** |
+
+That last row is the one gap left. The script hides `git diff`'s error output (`2>/dev/null`), so when git fails the check stops the commit but doesn't say why. If you'd like every failure to come with a message, I can remove that redirect or add an error trap that prints which line failed.

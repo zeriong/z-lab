@@ -1,0 +1,7 @@
+I added this comment to `scripts/check.sh:5`, right above the line that sets `limit_kb`:
+
+```bash
+# CHECK_LIMIT_KB: size in KB above which a staged file is reported (default 512).
+```
+
+Nothing else in the script changed, and it still parses (`bash -n`). The comment doesn't touch anything covered by the recorded decision in `scripts/PRECEDENT.md` (the check must never block a commit), so I didn't need to update that file. I haven't committed the change.

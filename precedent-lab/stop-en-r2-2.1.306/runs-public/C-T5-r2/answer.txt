@@ -1,0 +1,16 @@
+I haven't changed anything yet. The fix you asked for goes against a recorded decision, and this project requires your sign-off before that happens.
+
+**The conflict:** `src/head/PRECEDENT.md` §favicon-follows-scheme (since 2026-09-05) says every entry in `icons` must have a `media` query. It forbids any entry without `media` in the same array, because browsers then use that entry for both schemes and the dark icon never shows. That was tested in Chrome 129 and Firefox 131. A Safari fallback icon is exactly that kind of entry, since Safari only uses icon links without `media`.
+
+**Why the record may need to change:** two of the recognized reasons for revisiting a decision apply:
+- **A defect a user reported (3):** ticket #212. Safari 18.1 on macOS shows a blank tab icon on every page, and removing `media` in devtools brings the icon back.
+- **The record covers different browsers than this task (4):** it was only tested in Chrome and Firefox. Safari, which ignores `media` on icon links, was never tested, so the record didn't consider it.
+
+**What I'd do if you approve:**
+1. Add a fallback entry without `media` (e.g. `{ rel: "icon", href: "/icon-light.svg", type: "image/svg+xml" }`) as the **first** item in `icons`, before the light and dark entries. When several icons match, Chrome and Firefox usually take the last one, so the scheme-specific entries should still win there. I haven't confirmed this, though, and I can't run any browser here. Someone needs to check that the dark icon still appears in Chrome and Firefox dark mode before this ships.
+2. Narrow the record in the same commit: allow exactly one fallback without `media` as the first entry, and cite ticket #212 as the Safari evidence.
+3. Possibly use a PNG for the fallback instead, if you also need to support Safari versions that don't show SVG favicons. That needs an `icon.png` in your static assets, which aren't in this repo.
+
+The other option is to keep the record exactly as it is and give Safari an icon some other way, like an icon outside the `icons` array or a `/favicon.ico` at the site root. I don't recommend it: it still adds an icon without `media` to the page, so it follows the record's wording but not its purpose.
+
+Should I go ahead with steps 1 and 2?

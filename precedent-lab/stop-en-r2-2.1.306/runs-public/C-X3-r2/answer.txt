@@ -1,0 +1,16 @@
+I've made the override: `resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. The tests are updated and the record now holds the new decision. All 6 tests pass, both with and without `API_TOKEN` set in the shell. Nothing is committed.
+
+**Code (`src/auth/token.mjs`)**
+- The order is: `options.token` if it's a non-empty string, then `API_TOKEN` if it's non-empty, otherwise it throws.
+- The error message now reads `resolveToken: pass { token } or set API_TOKEN`.
+
+**Tests (`src/auth/token.test.mjs`)**
+- New tests check that a passed token beats `API_TOKEN`, that it falls back to `API_TOKEN` with no token or an empty one, and that it throws when neither is set (including when `API_TOKEN` is empty).
+- Every test clears `API_TOKEN` first and restores it afterwards. The old rule existed because a test run picked up a developer's production token (incident 2026-09-19), and that can happen again now. This only protects this test file. Any future test that calls `resolveToken` without passing a token will read whatever `API_TOKEN` is set in the shell.
+
+**Record (`src/auth/PRECEDENT.md`)**
+- I replaced `§explicit-token` with a new entry, `§env-fallback`, dated 2026-10-22. It notes that it replaces `§explicit-token` and keeps a summary of the old rule and the incident, so the history isn't lost.
+- I didn't remove the parts of the old ban you didn't override: reading any other environment variable or a dotfile is still forbidden.
+- The section heading is now `## token.mjs · token.test.mjs`, so the test-isolation rule appears when someone opens the test file too. I checked that the record now shows up for both files.
+
+The "Reason" field only says "maintainer override", because you didn't give a reason. You may want to add one so the next reader knows why the rule changed.

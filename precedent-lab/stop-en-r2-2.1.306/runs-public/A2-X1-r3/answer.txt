@@ -1,0 +1,8 @@
+I've overridden §stable-tab-keys: `closeTab` now renumbers the remaining tabs so the keys stay contiguous (t1, t2, …). All 4 tests pass with `npm test`. The changes are uncommitted.
+
+- **`src/tabs/tab-keys.mjs`:** after removing the closed tab, `closeTab` gives the rest keys `t1…tn` in order and keeps their titles. It also resets `next` to `tabs.length + 1`. Without that, opening a tab after a close would leave a gap again (e.g. `t1,t2,t4`).
+- **`src/tabs/tab-keys.test.mjs`:** I replaced "close keeps keys" with "close renumbers keys". Closing `t2` from `t1,t2,t3` now gives `t1,t2`, and the titles stay in order (`a,c`). I also added "open after close stays contiguous", which checks that opening a tab after a close gives `t1,t2,t3`.
+- **`src/tabs/PRECEDENT.md`:** I rewrote the block in place as §contiguous-tab-keys, dated 2026-10-22. It says you overrode §stable-tab-keys and keeps the old rule under "Rejected".
+- **`README.md` and the comment at the top of `tab-keys.mjs`:** the example URL `?tabs=t1,t3` showed a gap, so I changed it to `?tabs=t1,t2`.
+
+This brings back the problem the old rule was written to prevent. Tab keys are also React keys and the URL state, so closing a tab changes the key of every tab to its right. Those tabs reload and lose their scroll position and any unsaved form input, which is what caused the 2026-08-29 incident. URLs that were saved before a close will also point at different tabs afterwards. I noted the scroll and input loss in the new record.

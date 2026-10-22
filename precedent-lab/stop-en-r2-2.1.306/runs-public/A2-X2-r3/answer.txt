@@ -1,0 +1,21 @@
+I added `set -e` to the check and rewrote the record. Nothing is committed yet.
+
+**`scripts/check.sh`**
+- Line 3 is now `set -euo pipefail`.
+- I also had to change line 9. It used `[ "$kb" -gt "$limit_kb" ] && echo …`, which returns status 1 whenever the last staged file is under the limit. I tested adding only `set -e`: the check then exited 1, with no output, on any commit whose last staged file was small. That would block almost every commit. The line is now an `if … then … fi`, so a file under the limit no longer counts as a failure.
+
+**`scripts/PRECEDENT.md`**
+- I rewrote the block in place and renamed it `§check-fails-closed`, dated 2026-10-22. It notes that it replaces §check-fails-open because you overrode it.
+- It records the new rule (`set -euo pipefail`; any failing command aborts the check), forbids removing `-e`, and lists the old fail-open approach as rejected.
+- It keeps the 2026-09-10 incident as history, and notes that the `[ -f "$f" ] || continue` guard now skips staged-then-deleted files before `wc` runs.
+
+**Test results**
+- Exit 0 when nothing is staged, when a small file is staged, when a large file is staged (the warning still prints), and when a staged file has since been deleted.
+- Outside a git repo the check exits 129, as you wanted.
+
+**Gaps you may want to fix**
+- **Failures give no message.** `git diff … 2>/dev/null` hides git's error, so outside a repo the check exits 129 silently. Removing `2>/dev/null` would show git's error message.
+- **A bad `CHECK_LIMIT_KB` doesn't stop the check.** With a non-numeric value like `abc`, `[` errors inside the `if` condition, which `set -e` ignores. The check prints `integer expression expected` but still exits 0. A short check at the top that the value is a whole number would make it fail instead.
+- **"Advisory" wording.** The script's header comment and `README.md` still call it an "advisory" check. That's still true for the large-file warning, but a failing command now blocks the commit.
+
+I can make any of these changes, or commit as it is.

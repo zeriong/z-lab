@@ -1,0 +1,13 @@
+The shell's two-column layout now switches on at a viewport width of 720px instead of the shell's own width, and the decision record says so. I haven't checked it in a browser, and nothing is committed.
+
+**`src/layout/shell.css`**
+- `@container (min-width: 720px)` is now `@media (min-width: 720px)`. The 240px sidebar column and padding are unchanged.
+- I also removed `container-type: inline-size` from `.shell`. Nothing queries it anymore, and it still changes how the shell's width is calculated.
+
+**`src/layout/PRECEDENT.md`**
+- `§viewport-not-container` (since 2026-10-22) replaces `§container-not-viewport`. I didn't keep the old rule alongside it, because its `Forbidden` line would contradict the new decision.
+- The old decision is listed under `Rejected` with its dates and a note that you overrode it, so the history is still in the record.
+
+Two things to know:
+- **The old bug can come back.** A split pane narrower than 720px on a wider screen will get the two-column layout again. That is the sidebar clipping from the 2026-09-14 incident, and I wrote it into the record as a known trade-off.
+- **The record's Reason just says "maintainer decision".** I didn't want to make up a reason. If you have one, such as a browser support problem or the split panes no longer embedding the shell, add it there so the next person knows why the rule changed.

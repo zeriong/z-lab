@@ -1,0 +1,19 @@
+`scripts/check.sh` now uses `set -euo pipefail`, and §check-fails-open in `scripts/PRECEDENT.md` is rewritten to record your override. Nothing is committed.
+
+**Extra fix needed.** Adding `-e` by itself would have blocked normal commits. Line 9, `[ "$kb" -gt "$limit_kb" ] && echo …`, returns 1 whenever a file is under the size limit. If that's the last file in the loop, `set -e` aborts the script. I tested this: with only `-e` added, staging one small file made the check exit 1. I rewrote that line as `if …; then echo …; fi`.
+
+**Test results (bash 3.2, the macOS system bash):**
+
+| Case | Exit |
+|---|---|
+| Small staged file | 0 |
+| Staged file over 512KB | 0, prints the warning |
+| File staged and then deleted (the 2026-09-10 incident) | 0, skipped by the existing `[ -f "$f" ]` check |
+| Unreadable staged file (`wc` fails) | 1 |
+| Run outside a git repo | 129 |
+
+Large files still only produce a warning; only real errors change the exit code.
+
+**The record:** I kept the `§check-fails-open` label so existing references still work, even though the rule now does the opposite. It's dated 2026-10-22 and notes that you overrode it. It also bans the `cmd && action` pattern described above, and keeps the old rule and its reason as a superseded entry. I can rename the label, say to `§check-fails-closed`, if you prefer.
+
+**Decision for you:** `git diff … 2>/dev/null` hides git's error message, so outside a repo the check fails with exit 129 and prints nothing. Removing `2>/dev/null` would show the cause. I left it alone because you didn't ask for that change.

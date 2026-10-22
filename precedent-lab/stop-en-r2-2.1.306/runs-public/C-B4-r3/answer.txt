@@ -1,0 +1,11 @@
+I added the rule to `src/layout/shell.css:6`, between `.shell` and `.shell__body`:
+
+```css
+.shell__header {
+  padding-block: 12px;
+}
+```
+
+I used `padding-block` so it sets only the top and bottom padding and leaves the sides alone. If you also want the sides set to zero, `padding: 12px 0` would do that.
+
+The rule doesn't change the shell's `@container` layout steps, so it fits the recorded decision in `src/layout/PRECEDENT.md`. It's an ordinary style rule rather than a new decision, so I didn't add anything to that file.

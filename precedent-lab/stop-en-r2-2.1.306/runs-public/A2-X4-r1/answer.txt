@@ -1,0 +1,6 @@
+I switched the shell to a viewport media query and rewrote the decision record. Nothing is committed yet.
+
+- **`src/layout/shell.css:10`**: the two-column step now uses `@media (min-width: 720px)` instead of `@container (min-width: 720px)`.
+- **`src/layout/PRECEDENT.md`**: I rewrote the decision in place and renamed it to **§viewport-media-query**, since the old name "container-not-viewport" now says the opposite of the rule. The new entry is dated 2026-10-22 and says you overrode §container-not-viewport, and it still describes the old rule. You didn't give a reason, so I didn't make one up. Instead it notes the cost: in split panes narrower than 720px on a wider screen, the two-column layout will apply again. That is what clipped the sidebar in the 2026-09-14 incident.
+
+`.shell` still has `container-type: inline-size`. No query in the repo uses it any more. I left it in case styles outside this repo rely on `.shell` being a container. If nothing does, you can delete that line.

@@ -1,0 +1,21 @@
+I added `set -e` to `scripts/check.sh` and replaced the old decision record with a new one. Nothing is committed yet.
+
+**One more line had to change.** Adding `set -e` on its own would have made the check exit 1 on nearly every commit. The size test in the loop was written as `[ "$kb" -gt "$limit_kb" ] && echo …`. When the last staged file is under the limit, that line returns 1, and with `set -e` the whole check then fails. I tested this in a scratch repo: one small staged file gave exit 1. I rewrote that line as an `if … then … fi`.
+
+**Changes:**
+- **`scripts/check.sh`:** `set -uo pipefail` is now `set -euo pipefail`, the size test uses `if`, and the header comment now says internal failures abort the check. Large staged files still only produce a warning and exit 0.
+- **`scripts/PRECEDENT.md`:** the new rule is §check-fails-closed, dated 2026-10-22. It forbids removing `-e`, hiding a failure with `|| true` or similar, and using `cond && cmd` as a statement. `§check-fails-open` stays in the file, marked superseded, so the 2026-09-10 incident is still recorded. A staged-then-deleted file can't cause that incident again because the existing `[ -f "$f" ] || continue` line skips it.
+- **`README.md`:** the one-line description no longer calls the check "advisory".
+
+**Test results in a scratch repo:**
+
+| Case | Exit |
+|---|---|
+| Nothing staged | 0 |
+| Small file staged | 0 |
+| Large file staged | 0, with warning |
+| Staged-then-deleted file | 0 |
+| Unreadable staged file | 1 |
+| Run outside a git repo | 129, no message (git's error output is hidden by `2>/dev/null`) |
+
+**Known gap:** commands that fail inside the `big=$(…)` loop only stop the check if they break the loop's final result, and that is what happened in the unreadable-file case. Bash's `inherit_errexit` option would close the gap, but macOS ships bash 3.2, which doesn't have it. Turning it on there would itself fail and abort every run, so I left it out.

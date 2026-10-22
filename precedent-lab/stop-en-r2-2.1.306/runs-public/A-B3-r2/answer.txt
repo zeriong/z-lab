@@ -1,0 +1,5 @@
+I added the test "throws when no token is given" to `src/auth/token.test.mjs`. It checks that `resolveToken` throws its `pass { token } explicitly` error for two inputs: when it's called with no arguments, and when it's called with an empty object (`{}`). I ran `npm test` and all 4 tests pass.
+
+The test matches the rule recorded in `src/auth/PRECEDENT.md`: `resolveToken` returns `options.token` or throws, and never falls back to environment variables. I didn't change that file or commit anything.
+
+If you want, I can add a second test that sets a token environment variable and checks that `resolveToken({})` still throws. That would guard against the environment fallback that rule forbids. I left it out because you only asked for the no-token case.

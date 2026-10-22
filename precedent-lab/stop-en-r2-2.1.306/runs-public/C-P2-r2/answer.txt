@@ -1,0 +1,23 @@
+I added `set -e` to `scripts/check.sh`. Any failing command inside it now ends the check with a non-zero exit. I didn't commit anything.
+
+**Changes in `scripts/check.sh`**
+- `set -uo pipefail` is now `set -euo pipefail`.
+- **The check would have failed on almost every commit with `set -e` alone.** The loop ended with `[ "$kb" -gt "$limit_kb" ] && echo ...`. When the last staged file is under the size limit, that test fails, so the whole pipeline fails and `-e` stops the script. I reproduced this: one small staged file gave `exit=1` with no message. That line is now an `if …; then …; fi`.
+- I removed `2>/dev/null` from `git diff --cached`. Otherwise a git failure would stop the check without saying why, which keeps your "we never find out" problem.
+
+**Change in `scripts/PRECEDENT.md`**
+The existing record, §check-fails-open, explicitly forbade `set -e`. You've overridden it, so I added a new entry, §check-fails-closed, recording your decision and the `if` rule above. I kept the old entry but marked it superseded, so the history of why it was fail-open stays. Reword it as you like.
+
+**Test results** (in throwaway repos):
+
+| Case | Result |
+|---|---|
+| Nothing staged / one small file | exit 0 |
+| File over 512 KB staged | prints the warning, exit 0 |
+| File staged, then deleted from disk (the 2026-09-10 incident) | skipped by the existing file-exists check, exit 0 |
+| Unreadable staged file | prints the error, exit 1 |
+| Not a git repo | exit 129 |
+
+One thing to know: when run outside a git repo, git itself prints a long usage message before failing. That's noisy, but at least it's visible now.
+
+The old record warned about the risk you're now accepting: if this check runs as a blocking pre-commit hook, any internal failure blocks every commit until someone fixes the script.

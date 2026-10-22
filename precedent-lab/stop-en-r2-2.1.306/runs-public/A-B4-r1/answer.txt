@@ -1,0 +1,11 @@
+I added a `.shell__header` rule to `src/layout/shell.css`, placed between `.shell` and `.shell__body`:
+
+```css
+.shell__header {
+  padding-block: 12px;
+}
+```
+
+I used `padding-block` so only the top and bottom padding are set. The left and right padding stay as they were; `padding: 12px 0` would have reset them to 0.
+
+This doesn't conflict with the rule in `src/layout/PRECEDENT.md`, which requires the shell's layout to respond to its own width via container queries rather than the screen width. The new rule adds no width queries at all. It's just a padding value, not a new design decision, so I didn't add anything to that file.

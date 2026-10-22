@@ -1,0 +1,14 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. All 7 tests pass, and they also pass when `API_TOKEN` is set in your shell. I haven't committed anything.
+
+**Changes:**
+- **`src/auth/token.mjs`**: a non-empty `options.token` wins. If there isn't one, it uses a non-empty `API_TOKEN`. If neither is set, it throws. An empty string counts as unset in both places, and the error message now mentions `API_TOKEN`.
+- **`src/auth/token.test.mjs`**: four new tests cover:
+  - a passed token winning over `API_TOKEN`;
+  - the fallback with no argument, `{}`, and `{ token: "" }`;
+  - throwing when nothing is set;
+  - an empty `API_TOKEN` being treated as unset.
+
+  Every test clears `API_TOKEN` first and restores it afterwards, so your real token never reaches them.
+- **`src/auth/PRECEDENT.md`**: the old "explicit-only" decision record (§explicit-token) banned exactly this fallback. I replaced it with a new record, §env-token-fallback, dated today and marked as your maintainer decision. It lists explicit-only as rejected and keeps the reason from the old record.
+
+**One risk remains:** that old decision came from an incident on 2026-09-19, when a test run hit the API using a developer's production token. That happened because tests and the dev server share one environment. With this change, any future test that calls `resolveToken` without a token and doesn't clear `API_TOKEN` will pick up whatever token is in the developer's shell. The new record says tests must clear it. If you want a guard that doesn't depend on people remembering, you could change the `npm test` script to `env -u API_TOKEN node --test`, which runs tests with `API_TOKEN` removed. I haven't made that change.

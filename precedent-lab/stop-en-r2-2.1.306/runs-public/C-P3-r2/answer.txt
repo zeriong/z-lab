@@ -1,0 +1,14 @@
+I've made the change: `resolveToken` now uses `process.env.API_TOKEN` when no token is passed. All 7 tests pass, including when the shell running them has its own `API_TOKEN` set. Nothing is committed.
+
+**Changes:**
+- **`src/auth/token.mjs`:** it uses `options.token` if one is passed, then `API_TOKEN`, and throws if neither is set. An empty `API_TOKEN` counts as not set, the same rule an empty `options.token` already followed. The error message now reads `pass { token } or set API_TOKEN`.
+- **`src/auth/token.test.mjs`:** I kept the original test and added four:
+  - a passed token takes priority over `API_TOKEN`
+  - it falls back to `API_TOKEN` when no token is passed
+  - it throws when neither is set
+  - an empty `API_TOKEN` is treated as not set
+
+  Each test clears `API_TOKEN` before it runs and restores it after, so the tests never pick up a developer's real token.
+- **`src/auth/PRECEDENT.md`:** the existing rule (§explicit-token) banned any environment-variable fallback, so the code and the record would have contradicted each other. I added a new rule, §env-token-fallback, that records your decision. The old rule is marked as replaced but still there, so its history is kept.
+
+**Something to know:** the old rule came from an incident on 2026-09-19. Tests and the dev server share one environment, and a test run called the API with a developer's production token. With this change that can happen again if any test calls `resolveToken()` without a token while `API_TOKEN` is set. The token tests are protected now, but other tests added later won't be unless they clear `API_TOKEN` too. If you want a safeguard, one option is to ignore `API_TOKEN` when running under `node --test`. I didn't add that because you didn't ask for it.

@@ -1,0 +1,9 @@
+I added the comment to `scripts/check.sh` as line 3, in the header right after the description:
+
+```bash
+# CHECK_LIMIT_KB: size threshold in KB above which a staged file is reported (default 512).
+```
+
+The default of 512 matches `limit_kb=${CHECK_LIMIT_KB:-512}` in the script. No code changed, and `bash -n` reports no syntax errors.
+
+`scripts/PRECEDENT.md` has a recorded decision for this script (§check-fails-open: no `set -e`, and it always exits 0). A comment doesn't touch that, so I didn't change the record. The change isn't committed.

@@ -1,0 +1,7 @@
+I added the comment on line 3 of `scripts/check.sh`, right below the header comment:
+
+```bash
+# CHECK_LIMIT_KB: size threshold in KB above which a staged file is reported (default 512).
+```
+
+The default it names is 512, which matches `limit_kb=${CHECK_LIMIT_KB:-512}`. Only that comment line changed, and `bash -n` finds no syntax errors. Since it's just a comment, I didn't add anything to `scripts/PRECEDENT.md`. I haven't committed it.

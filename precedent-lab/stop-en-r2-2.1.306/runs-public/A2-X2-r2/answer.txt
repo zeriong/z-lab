@@ -1,0 +1,21 @@
+The check now runs with `set -euo pipefail`, so any failing command stops it with a non-zero exit and blocks the commit. Large staged files still only produce a warning. I tested it in a scratch repo, and the changes aren't committed.
+
+**Adding `set -e` alone would have broken it.** I tried that first, and the check exited 1 whenever the last staged file was under the size limit, which is the normal case. So almost every commit would have been blocked. There were two causes:
+- The loop's last line was `[ "$kb" -gt "$limit_kb" ] && echo ...`, which fails when the file is small. I replaced it with an `if`.
+- The loop ran inside `$(...)`, where bash 3.2 (the macOS default) turns `-e` off, so a failure partway through the loop was ignored. The loop now runs in the main shell.
+
+**Other changes:**
+- I removed `2>/dev/null` from `git diff`, so when the check aborts you see the reason.
+- The decision record in `scripts/PRECEDENT.md` is rewritten as **§check-fails-closed**, dated 2026-10-22, with a note that you overrode §check-fails-open. It lists the two patterns above as forbidden. Nothing else referred to the old name.
+- The README called the check "advisory", so I updated that line.
+
+**Test results:**
+
+| Case | Exit |
+|---|---|
+| nothing staged | 0 |
+| small staged file | 0 |
+| large file | 0, with warning |
+| file staged then deleted | 0 (skipped by the existing `[ -f ]` check, so the 2026-09-10 incident doesn't recur) |
+| unreadable file that isn't the last one | 1 |
+| outside a git repo | 129, prints git's full usage text |

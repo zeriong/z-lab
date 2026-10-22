@@ -1,0 +1,14 @@
+I made the change. `closeTab` now renumbers the remaining tabs to `t1…tn`, and `npm test` passes (4 of 4). Nothing is committed yet.
+
+- **`src/tabs/tab-keys.mjs`:** `closeTab` drops the closed tab, renumbers the rest in order, and sets `next` back to `n+1`. Without that reset, the next tab opened after a close would leave a gap again (`t1,t2,t4`). Tab titles and order stay the same; only the keys change.
+- **`src/tabs/tab-keys.test.mjs`:** I replaced "close keeps keys" with "close renumbers keys": closing `t2` of three tabs gives `t1,t2` with titles `a,c`. I also added "open after close stays contiguous": closing `t1` and then opening a tab gives `t1,t2,t3` with titles `b,c,d`.
+- **`src/tabs/PRECEDENT.md`:** I replaced §stable-tab-keys with a new record, §contiguous-tab-keys (since 2026-10-22). It lists the old gap-leaving rule as rejected and overridden by the maintainer, so future readers can see the change was deliberate. The old text is still in git history.
+- **`README.md` and the comment at the top of `tab-keys.mjs`:** both used `?tabs=t1,t3` as their example, which can't happen any more, so they now show `t1,t2,t3`.
+
+The new record also lists the cost, because the old rule was there to prevent it. Since the key is both the React key and the URL state:
+- Every tab to the right of a closed tab will remount and lose its scroll position and any unsaved form input. That's what happened in the 2026-08-29 incident.
+- A key in a saved or shared URL can now point to a different tab after a close.
+
+If you want to keep the contiguous keys in the URL without those effects, the usual fix is a separate stable ID used only as the React key. That's a bigger change; tell me if you want it.
+
+I didn't give a reason for the override in the record beyond "maintainer decision", since I didn't want to make one up. Tell me your reason and I'll add it.

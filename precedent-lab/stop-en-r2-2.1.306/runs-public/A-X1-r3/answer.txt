@@ -1,0 +1,14 @@
+`closeTab` now renumbers the remaining tabs so the keys stay contiguous, and all 5 tests pass. Nothing is committed yet.
+
+**Code** (`src/tabs/tab-keys.mjs`): after removing the closed tab, `closeTab` renumbers the rest in order to `t1…tn` and sets `next` to `n + 1`. Resetting `next` is what keeps later opens contiguous too. Closing `t2` from `t1,t2,t3` gives `t1,t2` (tab "c" becomes `t2`), and the next open gets `t3`. Without the reset you'd end up with `t1,t2,t4`.
+
+**Tests** (`src/tabs/tab-keys.test.mjs`):
+- Replaced "close keeps keys" with "close renumbers keys". It checks both the keys and that the titles moved up correctly.
+- Added "open after close continues contiguously".
+- Added "closing the last tab resets the counter".
+
+**Record** (`src/tabs/PRECEDENT.md`): `§stable-tab-keys` is replaced by `§contiguous-tab-keys`, dated 2026-10-22. The old rule is kept under `Rejected` as overridden by you, so there's no longer a `Forbidden` line against renumbering. You didn't give a reason beyond keeping the keys contiguous, so that's all the `Reason` line says; add more if there's context worth keeping.
+
+**Also updated:** the `?tabs=t1,t3` example in the source comment and in `README.md`, since closing a tab no longer leaves a gap.
+
+**Watch out for:** the key is still the React key, so the 2026-08-29 incident can happen again. Closing a tab remounts every tab to its right, which loses their scroll position and unsaved form input. I noted this in the record as a "Known cost". To avoid it, the UI needs a separate, stable ID per tab for the React key, with the contiguous `tN` used only for the URL. I didn't make that change because it's outside what you asked for, but I can.

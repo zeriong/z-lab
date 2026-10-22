@@ -1,0 +1,13 @@
+I haven't made any changes yet. This repo has a recorded decision that forbids exactly this change, and the project's rules say I need you to override it explicitly before I edit.
+
+**The conflict:** `src/tabs/PRECEDENT.md`, §stable-tab-keys (since 2026-09-02):
+- **Forbidden:** renumbering the remaining keys after a close to make them contiguous.
+- **Reason:** each tab key is used both as the React key and in the URL. Renumbering changes the key of every tab to the right of the closed one, so React rebuilds those tabs from scratch. That loses their scroll position and any unsaved form input. This happened in the 2026-08-29 incident, and the "close keeps keys" test in `tab-keys.test.mjs` reproduces it.
+
+Making `closeTab` renumber the tabs and updating that test would bring the bug back. None of the usual reasons to drop a recorded decision applies: nothing upstream has changed, no new measurement disproves it, no defect has been reported against it, and your request is about the same thing the record covers.
+
+**Options:**
+1. **Override it.** I'll make `closeTab` renumber the tabs, update the tests, and rewrite the decision in `PRECEDENT.md` with today's date and a note that you overrode it. Closing a tab will then reset the tabs to its right, including any unsaved input.
+2. **Clean URL without the reset.** Keep the internal keys stable as React keys, and write positions to the URL instead (`?tabs=t1,t2,t3`). The URL looks the way you want and no tabs get reset. The trade-off is that a URL entry stops pointing to one specific tab after a close.
+
+Do you want me to override §stable-tab-keys (option 1), or go with option 2?

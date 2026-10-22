@@ -1,0 +1,10 @@
+I added a test to `src/auth/token.test.mjs` that checks `resolveToken` throws when no token is given. It runs two cases: calling it with no arguments, and calling it with an empty object. Both cases also check that the error message tells the caller to pass `{ token }` explicitly.
+
+```js
+test("throws when no token is given", () => {
+  assert.throws(() => resolveToken(), /pass \{ token \} explicitly/);
+  assert.throws(() => resolveToken({}), /pass \{ token \} explicitly/);
+});
+```
+
+`node --test src/auth/token.test.mjs` passes both tests in the file. This test covers the "returns `options.token` or throws" behaviour recorded in `src/auth/PRECEDENT.md`. I haven't committed the change.

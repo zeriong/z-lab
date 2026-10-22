@@ -1,0 +1,14 @@
+`closeTab` now renumbers the remaining tabs to `t1…tN`, and all 5 tests pass with `npm test`. Nothing is committed.
+
+**Code** (`src/tabs/tab-keys.mjs:13`): the remaining tabs keep their order and titles and get keys `t1…tN`. `next` is also reset to N+1. Without that, the next `openTab` after a close would leave a gap again (`t1,t2,t4`).
+
+**Tests** (`src/tabs/tab-keys.test.mjs`):
+- "close keeps keys" is replaced by "close renumbers keys": closing `t2` of three tabs gives `t1,t2`, with titles `a,c`.
+- New: "open after close continues contiguously": close `t1`, then open a tab, gives `t1,t2,t3`.
+- New: "closing an unknown key changes nothing".
+
+**Record** (`src/tabs/PRECEDENT.md`): §stable-tab-keys is replaced by §contiguous-tab-keys. The old rule is kept under `Rejected:` with its dates and a note that you overrode it on 2026-10-22. I removed its `Forbidden:` line, because otherwise the hook would keep showing that ban to future agents. You didn't give a reason for the change, so `Reason:` only says "maintainer decision, 2026-10-22". Add your rationale there if you want it on record.
+
+I also changed the `?tabs=t1,t3` example to `t1,t2` in the README and the code comment, since a gap can no longer happen.
+
+**What this costs:** the tab key is both the React key and the URL state. Closing a tab now changes the key of every tab to its right, so React remounts them and they lose their scroll position and unsaved form input. That is the behaviour behind the 2026-08-29 incident, and the test that reproduced it is gone. Saved `?tabs=` URLs can also point to different tabs after a close. I wrote this into the record as a "Known cost" line. If you need contiguous URLs but want tabs to survive a close, the usual fix is to give each tab a separate stable id for the React key and keep the contiguous key only for the URL. Say if you want that.

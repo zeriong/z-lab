@@ -1,0 +1,17 @@
+I made the change. `closeTab` now renumbers the remaining tabs to `t1, t2, t3, …`, and all 5 tests pass with `npm test`. Nothing is committed.
+
+**Code** (`src/tabs/tab-keys.mjs`): after removing the closed tab, `closeTab` renumbers the rest in order. It also resets `next` to `tabs.length + 1`. Without that, opening a tab after a close would reopen a gap (closing `t2` from `t1,t2,t3` and then opening one would give `t1,t2,t4`). I updated the header comment to match.
+
+**Tests** (`src/tabs/tab-keys.test.mjs`):
+- **"close renumbers keys"** replaces "close keeps keys". Closing `t2` from `t1,t2,t3` gives `t1,t2`, with titles `a, c`.
+- **"open after close stays contiguous"** is new. It checks that `next` resets correctly.
+- **"close of an unknown key changes nothing"** is new. It checks that closing a key that doesn't exist leaves the state unchanged.
+
+**Record** (`src/tabs/PRECEDENT.md`):
+- **New entry:** I added `§contiguous-tab-keys`, dated 2026-10-22 and marked as a maintainer override.
+- **Old entry:** I kept `§stable-tab-keys` below it, marked superseded, so the history and the 2026-08-29 incident stay on record.
+- **Reason field:** I didn't make up a reason for the override. The new entry says only that it's a maintainer override and that you accept the costs the old record listed. Add your own reasoning there if you want it on record.
+
+**README:** the `src/tabs/` line showed the gapped example `?tabs=t1,t3`. I changed it to `?tabs=t1,t2` and noted that keys are renumbered on close.
+
+The old record warned about one effect you'll now see: these keys are also React keys. Closing a tab gives every tab to its right a new key, so those tabs remount and lose their scroll position and unsaved form input. Saved or shared `?tabs=` URLs can also end up pointing at different tabs, because the same key now names different tabs over time.

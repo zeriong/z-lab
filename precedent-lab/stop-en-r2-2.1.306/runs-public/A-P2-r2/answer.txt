@@ -1,0 +1,11 @@
+I haven't changed anything yet. Adding `set -e` goes against a recorded decision, and on its own it would break every normal commit, so I need you to confirm first.
+
+**The recorded decision.** `scripts/PRECEDENT.md` §check-fails-open (since 2026-09-11) explicitly forbids `set -e`, `set -o errexit`, and any exit status other than 0 in `check.sh`. The reason it gives: on 2026-09-10, `set -e` caused a `wc` failure on a file that was staged and then deleted to block every commit in the repo for a day. The check is meant to be advisory, so it warns and never blocks. What you're asking for reverses that. The only reason on the list for overturning a record that fits here is "a defect the user reported": you're saying the check's own failures go unnoticed. The record treats that as intended behaviour, though, so it's your decision to make.
+
+**Testing it.** I ran a copy of the script with `set -euo pipefail` in a scratch repo, with one small file staged. It exited 1 with no output. Here's why: when the last staged file is under the limit, `[ "$kb" -gt "$limit_kb" ] && echo …` returns 1, which becomes the `while` loop's status. `pipefail` passes that through `big=$(…)`, and `set -e` then aborts. So adding the flag alone would block ordinary commits, and the `exit 0` at the end means real failures still wouldn't be reported reliably. A working version needs a small rewrite of the loop as well.
+
+**Options:**
+1. **Make it strict, as you asked.** Add `set -e`, rewrite the loop so it doesn't trip on small files, and update the record in `scripts/PRECEDENT.md` to say the check now fails closed. The catch: an internal error (like the `wc` case) will block commits again. If that's what you want, confirm and I'll do it.
+2. **Keep it advisory, but report its own failures.** Leave out `-e` and the exit stays 0, but the script prints a clear `check: internal error …` warning whenever something inside it fails. You'd find out about breakage without risking blocked commits. This keeps the recorded decision.
+
+I'd go with option 2 unless you specifically want the check to block commits. Which do you want?

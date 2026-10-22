@@ -1,0 +1,15 @@
+I haven't changed anything yet. Adding the fallback would break a rule the repo has recorded, and that rule says to check with you first.
+
+**The conflict:** `src/head/PRECEDENT.md` (§favicon-follows-scheme, since 2026-09-05) forbids any icon entry without `media` in the `icons` array. The reason given is that browsers then use that entry for both light and dark mode, so the dark icon never shows. That's exactly what a Safari fallback would be. Moving the fallback to another array or file would get around the wording, but the browser would still see a link without `media`, so the same problem would come back.
+
+**Why the rule may need to change:**
+- **A user-reported bug:** ticket #212 says Safari 18.1 on macOS shows a blank tab icon on every page, and that removing `media` in devtools makes the icon appear.
+- **It was only tested in Chrome and Firefox:** the record was measured in Chrome 129 and Firefox 131. Safari wasn't tested, so the rule never accounted for Safari ignoring `media` on icon links.
+
+**Options:**
+1. **Add a fallback entry without `media`** to `src/head/icons.mjs`. This is the smallest change and fixes Safari. But according to the record, Chrome and Firefox would then show that one icon in both modes and lose the dark icon. The record doesn't say whether putting the fallback first or last avoids this. Someone would need to check in Chrome and Firefox before this is safe.
+2. **Replace both entries with one SVG** that switches itself using `@media (prefers-color-scheme: dark)` inside the file, with no `media` on the link. Safari would get an icon, and Chrome and Firefox would still follow the color scheme because the switching happens inside the SVG. Safari may show only the light version. This needs a new SVG file, and the icon files aren't in this repo.
+
+I recommend option 2. It keeps what the rule is for (the icon follows light/dark mode) and only drops the way it's done now (`media` on each link), so it doesn't risk breaking dark mode in Chrome and Firefox. Either way, I'd update the record in the same commit, noting Safari and ticket #212.
+
+Which option do you want? If it's option 2, do you already have a single color-adaptive SVG, or should I write one from the current light and dark designs?

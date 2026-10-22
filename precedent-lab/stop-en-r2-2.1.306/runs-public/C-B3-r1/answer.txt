@@ -1,0 +1,3 @@
+I added a test to `src/auth/token.test.mjs`. It checks that `resolveToken` throws for both `resolveToken()` and `resolveToken({})`, and that the error text includes "pass { token } explicitly". All 4 tests pass with `npm test`.
+
+I didn't change `src/auth/PRECEDENT.md`. The test covers the existing "token comes only from the caller" rule rather than making a new decision. Unlike the tabs record, that rule has no `Evidence:` line, so you could point one at this test if you want it linked. Nothing is committed.

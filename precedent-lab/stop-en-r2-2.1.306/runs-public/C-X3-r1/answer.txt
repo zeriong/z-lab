@@ -1,0 +1,13 @@
+`resolveToken` now uses the token you pass in, and falls back to `process.env.API_TOKEN` when you don't. All 7 tests pass, both with `API_TOKEN` unset and with it set in the shell. Nothing is committed yet.
+
+- **`src/auth/token.mjs`:** a passed token always takes priority over the environment. An empty string counts as not set, both for the passed token and for `API_TOKEN`. If neither is set, it throws `resolveToken: pass { token } or set API_TOKEN`.
+- **`src/auth/token.test.mjs`:** four new tests cover the fallback, the passed token taking priority, the error when neither is set, and an empty `API_TOKEN` counting as unset. Before each test the file clears `API_TOKEN`, and it puts the original value back afterwards. So your real token can't reach a test run, which is what caused the 2026-09-19 incident behind the old rule.
+- **`src/auth/PRECEDENT.md`:** the new entry `§env-token-fallback` records your override and replaces §explicit-token. I kept §explicit-token and its incident as history in a `Rejected:` line rather than deleting it. It no longer has its own `Forbidden:` line, so the hook won't show it to future agents as a rule still in force.
+
+I added two rules to the record that you didn't ask for:
+- Only `API_TOKEN` may be read: no other environment variable, and still no dotfile.
+- Tests that touch `resolveToken` must clear and restore `API_TOKEN`.
+
+Remove either if you don't want it.
+
+The risk behind the original rule is back in one place: any other test or the dev server that calls `resolveToken()` without a token will now pick up whatever `API_TOKEN` is set in its environment. The auth tests are protected, but other code isn't automatically.

@@ -1,0 +1,11 @@
+I added a `.shell__header` rule to `src/layout/shell.css:6`, between `.shell` and `.shell__body`:
+
+```css
+.shell__header {
+  padding-block: 12px;
+}
+```
+
+`padding-block` sets only the top and bottom padding, so the header's left and right padding stay as they are. If you'd rather have it set all four sides like `.shell__body` does, I can switch it to `padding: 12px 0` or similar.
+
+The recorded decision for this file (`src/layout/PRECEDENT.md`) says the shell's layout must use container queries, not viewport media queries. A plain padding rule doesn't touch that, so I didn't add anything to the decision file. I haven't run the app to check how the header looks.

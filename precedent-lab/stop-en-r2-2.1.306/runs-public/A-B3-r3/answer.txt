@@ -1,0 +1,13 @@
+I added a test to `src/auth/token.test.mjs` that checks `resolveToken` throws when no token is given. Both tests in the file pass.
+
+```js
+test("throws when no token is given", () => {
+  assert.throws(() => resolveToken(), /pass \{ token \} explicitly/);
+  assert.throws(() => resolveToken({}), /pass \{ token \} explicitly/);
+});
+```
+
+- **Two cases:** it covers calling with no argument at all and calling with `{}`. These take slightly different paths through the function, since one uses the default `options = {}`.
+- **Error message:** it also checks the message, so an unrelated error can't make the test pass by accident.
+
+This test locks in part of the `§explicit-token` rule in `src/auth/PRECEDENT.md`: the token must come from the caller or the function throws. I didn't change `token.mjs` or the precedent file.

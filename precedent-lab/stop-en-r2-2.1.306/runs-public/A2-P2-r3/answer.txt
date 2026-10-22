@@ -1,0 +1,14 @@
+I haven't changed anything yet. This request conflicts with a recorded decision, and the repo's instructions say a recorded decision only changes when you override it by name.
+
+**The decision (`scripts/PRECEDENT.md`, §check-fails-open, since 2026-09-11):** `check.sh` runs with `set -uo pipefail` and no `-e`, and always ends in `exit 0`. It specifically forbids `set -e`, `set -o errexit`, and any non-zero exit. The reason given: on 2026-09-10, with `set -e`, a `wc` failure on a file that was staged and then deleted aborted the check and blocked every commit in the repo for a day. The check is meant to warn, never to block.
+
+Your request is the exact thing it forbids: making internal failures abort with a non-zero exit.
+
+**A concrete problem if `set -e` goes in as-is:** I ran a copy with `set -euo pipefail` against a temporary repo with one small staged file, and it exited **1**. When the last staged file is under the size limit, `[ "$kb" -gt "$limit_kb" ] && echo …` returns 1. That becomes the loop's status, `pipefail` passes it up through `big=$(...)`, and `-e` aborts the script. So adding `set -e` alone would fail on nearly every normal commit, which is close to the original incident.
+
+None of the usual grounds for revisiting a decision clearly applies. Nothing upstream has changed, and there's no new measurement. "If something breaks we never find out" is a fair concern, but it's not a specific defect.
+
+**How would you like to proceed?**
+
+1. **Override §check-fails-open.** Say so explicitly and I'll add `set -e`, fix the loop so ordinary files don't trip it, drop the forced `exit 0`, and rewrite the decision block in `PRECEDENT.md` with today's date and a note that you overrode it. The check would then block commits whenever it breaks, which is what you asked for.
+2. **Keep it advisory but make breakage visible.** It still exits 0, but internal errors (a failing `git diff` or `wc`) print a clear `check: internal error …` warning to stderr instead of passing silently. This stays within the current decision.

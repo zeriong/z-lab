@@ -1,0 +1,3 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`, after `type` on each line. I imported the module and both entries come out as expected.
+
+`src/head/PRECEDENT.md` says every entry in this array must have a `media` query (§favicon-follows-scheme). Both entries still have theirs, so the change follows that rule. Nothing is committed.

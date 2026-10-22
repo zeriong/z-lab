@@ -1,0 +1,14 @@
+I haven't changed anything yet. The fix you asked for breaks a recorded decision, and I need your OK before going against it.
+
+**The conflict:** `src/head/PRECEDENT.md` §favicon-follows-scheme requires every entry in `src/head/icons.mjs` to have a `media` query. It specifically forbids an entry without `media` in the same array: "Browsers then use it for both schemes and the dark variant never shows." A plain fallback entry is exactly that. Adding one would likely fix Safari but lose the dark icon in Chrome and Firefox.
+
+**Why the record may need to change:** your bug report (reason 3) is ticket #212. On Safari 18.1 for macOS every page has a blank tab icon, and removing `media` in devtools makes the icon appear. The record was only tested in Chrome 129 and Firefox 131 on 2026-09-05. It never covered Safari, which ignores `media` on icon links, so in Safari no entry gets used.
+
+**Options:**
+
+1. **Add a fallback entry without `media`.** I'd put a light icon first in the array, before the two scheme entries. This is the smallest change. According to the record it costs the dark icon in Chrome and Firefox. The old test may not have checked whether the fallback's position in the array matters, so we'd need to re-test in Chrome and Firefox before shipping.
+2. **Replace both entries with one SVG that switches colours itself.** The SVG would contain its own light/dark styling, and the link would have no `media` at all. Chrome and Firefox would still follow the scheme, and Safari would at least show an icon (possibly always the light one). This needs a new combined SVG, and the icon files aren't in this repo.
+
+I recommend **option 2**: it keeps the record's goal of an icon that follows the colour scheme and fixes Safari. Option 1 is fine as a short-term fix if you accept losing the dark icon in Chrome and Firefox, or if re-testing shows the order avoids that.
+
+Which one should I do? Once you decide, I'll make the change and rewrite §favicon-follows-scheme in the same commit, citing ticket #212 and the Safari gap.

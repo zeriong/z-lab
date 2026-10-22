@@ -1,0 +1,14 @@
+I haven't made the change. `src/layout/PRECEDENT.md` has a recorded decision that forbids exactly this edit, and the incident behind it looks like it would come back.
+
+**The conflict.** `§container-not-viewport` (since 2026-09-15) says the shell's layout steps must use `@container` queries, and it forbids switching them to viewport `@media` width queries. The reason given: the shell renders inside split panes as narrow as 380px on a 1440px screen. On 2026-09-14 a viewport query picked the two-column layout inside a narrow pane and clipped the sidebar. The file itself notes this in `src/layout/shell.css:1`: "The shell is also rendered inside split panes."
+
+With `@media (min-width: 720px)`, a 380px pane on a 1440px screen matches the query, because it checks the window, not the pane. The pane would get `grid-template-columns: 240px 1fr` with 24px padding on each side. That leaves about 92px for the content column, so it's the same bug again.
+
+**Why I'm checking with you first.** The record can only be overridden for specific reasons: an upstream change, a new measurement that disproves it, a defect someone reported, or a task that's about something different from the record. "Half the team hasn't used container queries" is a fair reason, but it isn't one of those, and it doesn't deal with the split-pane case. I can't tell whether the sync knew about the 2026-09-14 incident.
+
+**What would you like?**
+1. **Switch anyway.** I'll swap in `@media (min-width: 720px)`, remove `container-type: inline-size`, and mark the record as retired by today's sync (2026-10-22). You'd accept that narrow split panes may clip the sidebar again.
+2. **Keep the container query and make it easier to follow.** I'll add a short comment in `shell.css` explaining what `@container` does and why the shell needs it. Nothing changes in behaviour.
+3. **Take it back to the team** with the incident details before anything changes.
+
+I'd go with option 2 or 3, but if you confirm option 1 I'll make the change.

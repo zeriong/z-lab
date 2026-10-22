@@ -1,0 +1,22 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. The tests and the decision record are updated too. All 6 tests pass with `API_TOKEN` unset, and they also pass with `API_TOKEN=leaked` in the environment. I haven't committed anything.
+
+**Code (`src/auth/token.mjs`):** The order is: use `options.token` if it's a non-empty string, otherwise use `API_TOKEN` if it's non-empty, otherwise throw. An empty string counts as "not set" in both places, the same as the existing check. The error message now reads `pass { token } or set API_TOKEN`.
+
+**Tests (`src/auth/token.test.mjs`):** I added three cases:
+- An explicit token wins over `API_TOKEN`.
+- With no token, an empty options object, or `token: ""`, it falls back to `API_TOKEN`.
+- It throws when neither is set, including when `API_TOKEN` is an empty string.
+
+Each test clears `API_TOKEN` first and restores your value afterwards, so a real token in your shell can't leak into a test run. That kind of leak caused the 2026-09-19 incident behind the old rule.
+
+**Record (`src/auth/PRECEDENT.md`):** I replaced §explicit-token with a new §env-token-fallback entry. It records:
+- the new rule;
+- that it replaces §explicit-token, with your override dated 2026-10-22;
+- that the incident risk is possible again;
+- that reading a dotfile is still forbidden, since your override only covered the environment variable.
+
+The old wording is still in git history.
+
+**One thing to fill in:** the `Reason:` line in the record only says "maintainer decision", because I don't know why you made the change. A sentence with your reason would help whoever reads the record next.
+
+The tests are protected, but other code isn't. Any test or tool in the same process that calls `resolveToken()` without a token will now silently use whatever `API_TOKEN` your shell has. If the dev server and tests still share an environment, consider unsetting `API_TOKEN` in the test script.

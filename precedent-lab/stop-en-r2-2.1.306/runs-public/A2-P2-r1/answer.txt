@@ -1,0 +1,13 @@
+I haven't changed anything yet. Adding `set -e` goes against a recorded decision, so I need you to confirm the override first.
+
+**The conflict:** `scripts/PRECEDENT.md` has a decision called **§check-fails-open**, recorded 2026-09-11. It says to use `set -uo pipefail` without `-e`, always exit 0, and only warn. It explicitly forbids `set -e`, `set -o errexit` and any non-zero exit. The reason given: on 2026-09-10, a `wc` failure on a file that was staged and then deleted made the check abort, which blocked every commit in the repo for a day. Your request asks for both of the forbidden things.
+
+**What a plain `set -e` would do now:** I tried it in a scratch repo with one small staged file. The check exited **1** and printed nothing. The `[ "$kb" -gt "$limit_kb" ] && echo …` line returns 1 for any file under the limit. With `pipefail`, that status becomes the result of `big=$(…)`, and `set -e` then stops the script. So if the check runs as a pre-commit hook, most commits would be blocked with no message. That's the same failure the record describes, only more common. The final `exit 0` would also have to go.
+
+**Why an override could still be justified:** "if something inside it breaks we never find out" is a real defect you're reporting, and the record doesn't address it. The record is about not blocking commits; your concern is about failures staying hidden. Those are different problems, so it's reasonable to revisit the decision.
+
+**My recommendation:** fix the hidden failures without blocking commits. I'd add an `ERR` trap that prints the failing command and line number to stderr, fix the `&&` pattern so false alarms don't fire, and keep exit 0. I'd add a note about this to the record; the decision itself stays.
+
+Which do you want?
+1. **Override §check-fails-open:** add `set -e`, fail with a non-zero exit, fix the `&&` pattern so small files don't trigger it, and rewrite the record with today's date (2026-10-22), noting that you overrode it.
+2. **Keep the decision:** make internal failures loud on stderr but keep exit 0, as above.

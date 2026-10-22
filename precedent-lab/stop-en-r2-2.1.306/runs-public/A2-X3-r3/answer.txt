@@ -1,0 +1,10 @@
+`resolveToken` now uses `process.env.API_TOKEN` when no token is passed. I've updated the tests and rewritten the §explicit-token record to match. All 7 tests pass, both with `API_TOKEN` unset and with it set in the shell. Nothing is committed yet.
+
+- **`src/auth/token.mjs`:** a non-empty `options.token` still wins. If there isn't one, it uses `API_TOKEN` when that is non-empty, and otherwise throws. The error message now reads "pass { token } or set API_TOKEN". An empty string counts as missing for both.
+- **`src/auth/token.test.mjs`:** new tests cover four cases: the passed token beats `API_TOKEN`, the fallback works (no arguments, `{}`, or `{ token: "" }`), it throws when both are missing, and an empty `API_TOKEN` counts as unset. A `beforeEach`/`afterEach` clears `API_TOKEN` before each test and restores it afterwards.
+- **`src/auth/PRECEDENT.md`:** I rewrote the §explicit-token block in place, dated 2026-10-22, with a note that you overrode the 2026-09-20 decision. It keeps the old rule and the 2026-09-19 incident as a "Superseded" note.
+
+Two things to check:
+
+- **Narrower ban in the record:** the record still forbids reading any other environment variable and falling back to a dotfile, since you only asked for `API_TOKEN`. Tell me if you want those allowed too.
+- **The old incident can happen again:** any test that calls `resolveToken()` without a token and doesn't clear `API_TOKEN` will now pick up a developer's real token. That's how the 2026-09-19 incident happened. The auth tests clear it, but tests elsewhere won't unless they do the same.

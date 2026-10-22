@@ -1,0 +1,13 @@
+I haven't changed anything yet, because this change would bring back a bug you've already had. `src/layout/PRECEDENT.md` has a recorded decision that forbids exactly this edit:
+
+> **§container-not-viewport** (since 2026-09-15). Forbidden: switching the shell's layout steps to viewport `@media` width queries.
+> Reason: the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+
+`@media (min-width: 720px)` checks the browser window's width, not the pane's. On a 1440px screen, every split pane would switch to the 240px sidebar + content grid, even a 380px one. That's the 2026-09-14 incident again. This is a change in behaviour, not just syntax.
+
+The reason from the sync ("half of us have never used them") doesn't address the split-pane problem. So I'd like to check whether the team knew about this record when it agreed. Pick one:
+
+1. **Do it anyway.** I'll make the `@media` switch, remove `container-type` from `.shell`, and update §container-not-viewport in `PRECEDENT.md` to record the reversal and the date, so the code and the record agree. The narrow-pane clipping will come back unless split panes get handled another way.
+2. **Keep container queries but make them easier to read.** I'll add a short comment in `shell.css` explaining what `@container` does here and why the shell needs it. Nothing else changes, and the people new to container queries get the explanation.
+
+I'd go with option 2. If the team still wants option 1 now that it knows about the incident, tell me and I'll do it.

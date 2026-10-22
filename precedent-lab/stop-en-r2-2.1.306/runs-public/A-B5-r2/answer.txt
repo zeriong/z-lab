@@ -1,0 +1,5 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`. The module still loads and both entries come out with the new field.
+
+There's a recorded rule for this file in `src/head/PRECEDENT.md` (§favicon-follows-scheme): every icon entry must keep its `media` query so browsers use the light and dark icons correctly. This change doesn't touch `media`, so it doesn't conflict with that rule.
+
+Nothing is committed yet.

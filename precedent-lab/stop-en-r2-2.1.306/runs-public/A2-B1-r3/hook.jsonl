@@ -1,0 +1,3 @@
+{"session": "aa5e4440-eb35-453f-a6fc-adf1316e7dda", "tool": "Bash", "tool_use_id": "toolu_01PoBJCJWXVMM1voL9amxnR3", "chars": 1411, "stop": true}
+{"session": "aa5e4440-eb35-453f-a6fc-adf1316e7dda", "tool": "Edit", "tool_use_id": "toolu_01UwaVmkkAcayftA29eaEd8p", "chars": 148, "stop": false}
+{"session": "aa5e4440-eb35-453f-a6fc-adf1316e7dda", "tool": "Bash", "tool_use_id": "toolu_018tufmJvebmVQqnPZ1qjKEU", "chars": 142, "stop": false}

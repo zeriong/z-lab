@@ -1,0 +1,46 @@
+diff --git a/scripts/PRECEDENT.md b/scripts/PRECEDENT.md
+index 7aad830..83e233c 100644
+--- a/scripts/PRECEDENT.md
++++ b/scripts/PRECEDENT.md
+@@ -2,8 +2,19 @@
+ 
+ ## check.sh
+ 
++### §check-fails-closed — an internal failure aborts the check with a non-zero exit
++- Since: 2026-10-22
++- Supersedes: §check-fails-open
++- Decision: `set -euo pipefail`. Any failing command aborts the check with a non-zero exit. Large staged files still
++  only warn; the final `exit 0` is reached only when every step succeeded.
++- Forbidden: removing `-e`, or swallowing an internal error so that the script still ends in `exit 0`.
++- Reason: maintainer decision. Failing open hid breakage inside the check; nobody noticed when it stopped working.
++- Note: under `-e`, write conditionals as `if …; then …; fi`, not `test && action`. A failed `test` as the last command
++  in the loop body becomes the loop's status, and `pipefail` turns that into an abort with no output.
++
+ ### §check-fails-open — the check never blocks a commit because of its own failure
+ - Since: 2026-09-11
++- Superseded by §check-fails-closed on 2026-10-22.
+ - Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+ - Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+ - Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in
+diff --git a/scripts/check.sh b/scripts/check.sh
+index ca11304..6c48797 100755
+--- a/scripts/check.sh
++++ b/scripts/check.sh
+@@ -1,12 +1,14 @@
+ #!/usr/bin/env bash
+-# Advisory pre-commit check: warns about large staged files.
+-set -uo pipefail
++# Pre-commit check: warns about large staged files. Any internal failure aborts with a non-zero exit.
++set -euo pipefail
+ 
+ limit_kb=${CHECK_LIMIT_KB:-512}
+ big=$(git diff --cached --name-only 2>/dev/null | while read -r f; do
+   [ -f "$f" ] || continue
+   kb=$(( $(wc -c < "$f") / 1024 ))
+-  [ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"
++  if [ "$kb" -gt "$limit_kb" ]; then
++    echo "$f (${kb}KB)"
++  fi
+ done)
+ 
+ if [ -n "$big" ]; then

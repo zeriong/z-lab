@@ -1,0 +1,9 @@
+I added this comment on line 3 of `scripts/check.sh`, under the existing header:
+
+```bash
+# CHECK_LIMIT_KB: staged files larger than this many KB are reported (default: 512).
+```
+
+The comment is the only change. The script still has valid syntax, and running it still exits with 0.
+
+`scripts/PRECEDENT.md` records a decision for this script: it never blocks a commit, so no `set -e` and always `exit 0`. The comment doesn't affect that, and since it isn't a new decision I didn't add anything to `PRECEDENT.md`. I haven't committed the change.

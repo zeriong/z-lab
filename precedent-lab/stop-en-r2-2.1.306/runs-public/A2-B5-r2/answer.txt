@@ -1,0 +1,3 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`. Importing the module shows both entries now have `sizes: "any"` and still have their `media` queries.
+
+This doesn't conflict with the recorded rule in `src/head/PRECEDENT.md` that every icon entry must have a `media` query, since both entries keep theirs. Nothing else in the repo uses `icons`, and there are no tests for it. I haven't committed the change.

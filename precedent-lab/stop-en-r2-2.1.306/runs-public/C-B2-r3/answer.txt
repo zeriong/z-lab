@@ -1,0 +1,8 @@
+I added the comment to `scripts/check.sh:5`, directly above the line that reads the variable:
+
+```bash
+# CHECK_LIMIT_KB: size in KB above which a staged file is reported (default 512).
+limit_kb=${CHECK_LIMIT_KB:-512}
+```
+
+The script still passes `bash -n`. Nothing else changed. I didn't add an entry to `scripts/PRECEDENT.md` because a comment doesn't make a new decision about how the script works. The change isn't committed.

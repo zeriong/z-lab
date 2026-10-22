@@ -1,0 +1,17 @@
+I haven't changed anything yet. This change directly conflicts with a recorded decision, and your message doesn't mention it, so I'm checking with you first.
+
+**`src/auth/PRECEDENT.md` → §explicit-token (since 2026-09-20)**
+- **Decision:** `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+- **Forbidden:** falling back to `process.env` (any variable name) or to a dotfile.
+- **Reason:** tests and the dev server run in the same process environment. An earlier env fallback let a test run hit the API with a developer's production token (incident 2026-09-19).
+
+A fallback to `process.env.API_TOKEN` is exactly what the record forbids. It would also bring back the incident: the suite runs with plain `node --test`, so any developer with `API_TOKEN` exported would have a production token picked up by default.
+
+The record doesn't cover CLI usability; it was written about tests and the dev server. That's a legitimate reason to revisit it. But nothing upstream has changed and nobody has reported a defect that invalidates the original reason.
+
+How do you want to proceed?
+
+1. **Override §explicit-token.** I add the `process.env.API_TOKEN` fallback to `resolveToken` and add tests for passed token, env fallback, and throw when neither is set. The tests will save and restore `process.env` so they can't leak a real token. I'll also rewrite the decision block in `PRECEDENT.md` with today's date (2026-10-22) and a note that you overrode it.
+2. **Keep the decision and fix it at the CLI.** The CLI entrypoint reads `process.env.API_TOKEN` and passes it as `{ token }`. CLI users stop needing to pass it, `resolveToken` stays explicit, and tests stay isolated. I don't see a CLI entrypoint in this repo, so you'd need to point me to where it lives.
+
+If you choose 1, just say "override §explicit-token" and I'll implement it.

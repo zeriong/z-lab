@@ -1,0 +1,7 @@
+I added the comment at `scripts/check.sh:5`, just above the line that reads the variable:
+
+```bash
+# CHECK_LIMIT_KB: size threshold in KB above which a staged file is reported (default 512).
+```
+
+The script still passes a syntax check (`bash -n`). Nothing else changed, so `scripts/PRECEDENT.md` doesn't need a new entry. The change is not committed.

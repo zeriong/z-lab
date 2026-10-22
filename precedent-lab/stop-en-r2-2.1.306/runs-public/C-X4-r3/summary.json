@@ -1,0 +1,27 @@
+{
+ "run": "C-X4-r3",
+ "arm": "C",
+ "task": "X4",
+ "rep": 3,
+ "kind": "override",
+ "rc": 0,
+ "seconds": 43.9,
+ "cost_usd": 0.298151,
+ "num_turns": 4,
+ "subtype": "success",
+ "check": {
+  "forbidden": true,
+  "requested": null,
+  "error": null
+ },
+ "record_changed": true,
+ "target_changed": true,
+ "changed": [
+  "src/layout/PRECEDENT.md",
+  "src/layout/shell.css"
+ ],
+ "stale_forbidden_kept": false,
+ "verdict": "PROCEEDED-RECORDED",
+ "advisor_calls": 0,
+ "hook_events": 1
+}

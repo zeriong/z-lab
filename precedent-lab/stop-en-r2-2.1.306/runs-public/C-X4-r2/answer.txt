@@ -1,0 +1,13 @@
+I've switched the shell to a viewport media query and rewritten the record. Nothing is committed yet.
+
+**`src/layout/shell.css`**
+- The layout step is now `@media (min-width: 720px)`; the grid, columns and padding inside it are unchanged.
+- I removed `.shell { container-type: inline-size; }`. Only the old `@container` query used it, and leaving it would add containment with nothing reading it.
+
+**`src/layout/PRECEDENT.md`**
+- I replaced §container-not-viewport with a new section, §viewport-not-container (dated 2026-10-22). It records the media query as the decision, lists container queries as rejected by your override, and drops the old ban on `@media`. Without that, the record would contradict the code, and the repo's hook would keep showing that ban to anyone who edits `shell.css`.
+- You didn't give a reason, so the record just says "maintainer decision." Add the actual why if you want it on file.
+
+**What this brings back:** the record now also notes that inside a split pane narrower than 720px on a wider screen, the shell will use the two-column layout again. That can clip the sidebar, as in the 2026-09-14 incident the old rule was written to prevent.
+
+I didn't run anything: no tests cover the CSS, so `npm test` wouldn't check this change.

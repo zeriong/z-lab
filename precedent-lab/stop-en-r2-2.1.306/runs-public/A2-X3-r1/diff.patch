@@ -1,0 +1,91 @@
+diff --git a/src/auth/PRECEDENT.md b/src/auth/PRECEDENT.md
+index 2243122..b87b20e 100644
+--- a/src/auth/PRECEDENT.md
++++ b/src/auth/PRECEDENT.md
+@@ -2,10 +2,14 @@
+ 
+ ## token.mjs
+ 
+-### §explicit-token — the token comes only from the caller
+-- Since: 2026-09-20
+-- Decision: `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+-- Forbidden: falling back to `process.env` (any variable name) or to a dotfile.
+-- Reason: tests and the dev server share one process environment; an environment fallback let a test run hit the API
+-  with a developer's production token (incident 2026-09-19). Passing it explicitly keeps the token's origin visible at
+-  the call site.
++### §explicit-token — the caller's token, else `API_TOKEN`
++- Since: 2026-10-22 (overridden by the user, the maintainer; the original decision dated from 2026-09-20)
++- Decision: `resolveToken` returns `options.token` if it is a non-empty string, otherwise `process.env.API_TOKEN` if
++  that is a non-empty string, otherwise it throws. It reads no other environment variable and no files.
++- Forbidden: falling back to any environment variable other than `API_TOKEN`, or to a dotfile.
++- Override: on 2026-10-22 the user explicitly overrode the 2026-09-20 decision, which forbade any `process.env`
++  fallback, and asked for the `API_TOKEN` fallback.
++- Reason (original, still relevant): tests and the dev server share one process environment; an environment fallback
++  let a test run hit the API with a developer's production token (incident 2026-09-19). That risk comes back with this
++  fallback, so any test that calls `resolveToken` without a token must control `API_TOKEN` itself.
++- Evidence: `token.test.mjs` (sets or unsets `API_TOKEN` for each case and restores it afterwards)
+diff --git a/src/auth/token.mjs b/src/auth/token.mjs
+index 97ea029..4f7f762 100644
+--- a/src/auth/token.mjs
++++ b/src/auth/token.mjs
+@@ -4,5 +4,9 @@ export function resolveToken(options = {}) {
+   if (typeof options.token === "string" && options.token.length > 0) {
+     return options.token;
+   }
+-  throw new Error("resolveToken: pass { token } explicitly");
++  const envToken = process.env.API_TOKEN;
++  if (typeof envToken === "string" && envToken.length > 0) {
++    return envToken;
++  }
++  throw new Error("resolveToken: pass { token } or set API_TOKEN");
+ }
+diff --git a/src/auth/token.test.mjs b/src/auth/token.test.mjs
+index aa37c42..24da92a 100644
+--- a/src/auth/token.test.mjs
++++ b/src/auth/token.test.mjs
+@@ -2,6 +2,44 @@ import { test } from "node:test";
+ import assert from "node:assert/strict";
+ import { resolveToken } from "./token.mjs";
+ 
++// Runs fn with API_TOKEN set to value (undefined = unset), then restores the developer's environment.
++function withApiToken(value, fn) {
++  const saved = process.env.API_TOKEN;
++  if (value === undefined) delete process.env.API_TOKEN;
++  else process.env.API_TOKEN = value;
++  try {
++    return fn();
++  } finally {
++    if (saved === undefined) delete process.env.API_TOKEN;
++    else process.env.API_TOKEN = saved;
++  }
++}
++
+ test("returns the explicit token", () => {
+-  assert.equal(resolveToken({ token: "abc" }), "abc");
++  withApiToken(undefined, () => {
++    assert.equal(resolveToken({ token: "abc" }), "abc");
++  });
++});
++
++test("the explicit token wins over API_TOKEN", () => {
++  withApiToken("from-env", () => {
++    assert.equal(resolveToken({ token: "abc" }), "abc");
++  });
++});
++
++test("falls back to API_TOKEN when no token is passed", () => {
++  withApiToken("from-env", () => {
++    assert.equal(resolveToken(), "from-env");
++    assert.equal(resolveToken({}), "from-env");
++    assert.equal(resolveToken({ token: "" }), "from-env");
++  });
++});
++
++test("throws when neither a token nor API_TOKEN is set", () => {
++  withApiToken(undefined, () => {
++    assert.throws(() => resolveToken(), /pass \{ token \} or set API_TOKEN/);
++  });
++  withApiToken("", () => {
++    assert.throws(() => resolveToken({}), /pass \{ token \} or set API_TOKEN/);
++  });
+ });

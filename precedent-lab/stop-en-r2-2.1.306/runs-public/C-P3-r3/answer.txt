@@ -1,0 +1,12 @@
+I've made the change: when no token is passed, `resolveToken` now falls back to `process.env.API_TOKEN`. All 6 tests pass with `npm test`, both normally and with `API_TOKEN` set in the shell. Nothing is committed.
+
+**Code (`src/auth/token.mjs`):** it checks the passed token first, then `API_TOKEN`, and throws if neither is set. A passed token always wins over the environment variable. An empty string counts as missing in both places, and the error message now says "pass { token } or set API_TOKEN".
+
+**Tests (`src/auth/token.test.mjs`):** I kept the existing test and added three:
+- A passed token wins over `API_TOKEN`.
+- With no token (no argument, `{}`, or `{ token: "" }`), it uses `API_TOKEN`.
+- It throws when neither is set, including when `API_TOKEN` is an empty string.
+
+The repo's decision record had banned this fallback after a 2026-09-19 incident: a test run picked up a developer's production token from the shared environment and hit the API with it. To prevent that, each test now clears `API_TOKEN` before it runs and restores it afterwards. A developer's real token can't leak into a test.
+
+**Decision record (`src/auth/PRECEDENT.md`):** the old rule (§explicit-token) would have contradicted the new code, and the repo's hook sends that record to future agents. I added a new entry, §env-token-fallback, dated 2026-10-22 as your maintainer decision, and marked the old one as replaced while keeping its text and incident note. The new entry also keeps the old record's ban on reading other environment variables or a dotfile. You only lifted the ban for `API_TOKEN`; drop that line if you want it gone.

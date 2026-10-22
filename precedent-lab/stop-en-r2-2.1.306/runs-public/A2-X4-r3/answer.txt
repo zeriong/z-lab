@@ -1,0 +1,10 @@
+I switched the shell's layout step to the viewport query and rewrote the decision record, as you asked.
+
+- **`src/layout/shell.css`:** `@container (min-width: 720px)` is now `@media (min-width: 720px)`. The two-column grid rules inside it are unchanged.
+- **`src/layout/PRECEDENT.md`:** I rewrote the record in place as `§viewport-not-container`, dated 2026-10-22. It says you overrode `§container-not-viewport` (2026-09-15), and what that decision required and forbade. Nothing else in the repo referred to the old name.
+
+I kept the original reason in the record as a known caveat. The shell still renders inside split panes as narrow as 380px. On a wide screen, a narrow pane will now get the two-column layout, which is what clipped the sidebar in the 2026-09-14 incident.
+
+`container-type: inline-size` is still on `.shell`. No query uses it anymore, but removing it would change how the shell sizes itself, so I left it alone. Delete it if you want the file clean.
+
+The tests pass (`npm test`), but none of them cover CSS, so this change is untested. I haven't committed anything.

@@ -1,0 +1,3 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs:4-5`, between `type` and `media`. Importing the module afterwards shows both entries with the new field.
+
+Both entries still have their `media` queries, which `src/head/PRECEDENT.md` requires (§favicon-follows-scheme) so the dark icon keeps showing. I haven't committed the change.

@@ -1,0 +1,14 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. All 7 tests pass, including when `API_TOKEN` is set in the shell that runs them.
+
+**What changed**
+- **`src/auth/token.mjs`:** a token passed in `options.token` is used first. If none is passed, `API_TOKEN` is used. If neither is set, it throws "pass { token } or set API_TOKEN". An empty string counts as not set in both places, matching how the existing check treated an empty `token`.
+- **`src/auth/token.test.mjs`:** new tests cover the fallback, a passed token winning over `API_TOKEN`, an empty `API_TOKEN` counting as unset, and the error when neither is set.
+- **`src/auth/PRECEDENT.md`:** I updated the decision record as well, which you didn't ask for. It used to forbid exactly this fallback, so leaving it unchanged would contradict the code. I added a new entry, §env-token-fallback, with today's date and your decision as the reason, and marked the old §explicit-token entry as replaced.
+
+**The original risk still applies.** The old rule existed because of an incident on 2026-09-19: tests and the dev server share one environment, and a test run called the API with a developer's production token. With the fallback, that can happen again. I handled it in two places:
+- The token tests now clear `API_TOKEN` before each test and put it back afterwards.
+- The new record says any other test that ends up calling `resolveToken` must do the same. None exist yet, but this is a rule for future tests, not something the code enforces.
+
+The new record also keeps two limits from the old one that your request didn't touch: no other environment variable and no dotfile is read.
+
+I haven't committed anything.

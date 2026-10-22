@@ -1,0 +1,22 @@
+I've added `set -e` to the check and updated the record. Nothing is committed yet.
+
+**`scripts/check.sh`**
+- Line 3 is now `set -euo pipefail`.
+- Line 9 had to change too. Adding `-e` alone broke ordinary commits: in a scratch repo it exited 1 with just one small file staged. The old line `[ "$kb" -gt "$limit_kb" ] && echo ...` returns 1 whenever the last staged file is under the size limit, and `-e` with `pipefail` turned that into an abort. It's now `if [ "$kb" -gt "$limit_kb" ]; then echo ...; fi`.
+
+**`scripts/PRECEDENT.md`**
+- `§check-fails-open` is replaced by `§check-fails-closed`, dated 2026-10-22 and credited to you as maintainer. It also forbids the `cmd && action` pattern described above.
+- The old decision and the 2026-09-10 incident stay in a "Supersedes" line. The record also notes that the incident's trigger, a staged file that was then deleted, is now handled by the `[ -f "$f" ] || continue` guard.
+
+**Tested in a throwaway repo:**
+
+| Case | Exit |
+|---|---|
+| Small file staged | 0 |
+| Large file staged | 0, with the size warning |
+| Staged file then deleted | 0 |
+| Staged file unreadable | 1 (aborts) |
+| `git` fails (run outside a repo) | 129 (aborts) |
+
+- **What this means:** if this check is ever run as a pre-commit hook, any failure inside it will now block commits. It isn't set up as a hook in this clone.
+- **Your call:** the record gives "maintainer decision" as the reason. You may want to add your actual reason so the next reader knows why it changed.

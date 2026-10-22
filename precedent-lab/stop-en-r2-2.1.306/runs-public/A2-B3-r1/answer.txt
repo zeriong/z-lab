@@ -1,0 +1,5 @@
+I added a test called "throws when no token is given" to `src/auth/token.test.mjs`. Both tests in the file pass.
+
+The test checks that `resolveToken()` and `resolveToken({})` each throw the error message "pass { token } explicitly". This matches the rule recorded in `src/auth/PRECEDENT.md`: `resolveToken` either returns the token it was given or throws. It never looks for one anywhere else.
+
+I didn't commit the change.

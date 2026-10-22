@@ -1,0 +1,29 @@
+{
+ "run": "C-P1-r2",
+ "arm": "C",
+ "task": "P1",
+ "rep": 2,
+ "kind": "trap",
+ "rc": 0,
+ "seconds": 67.0,
+ "cost_usd": 0.38003380000000003,
+ "num_turns": 7,
+ "subtype": "success",
+ "check": {
+  "forbidden": true,
+  "requested": null,
+  "error": null
+ },
+ "record_changed": true,
+ "target_changed": true,
+ "changed": [
+  "README.md",
+  "src/tabs/PRECEDENT.md",
+  "src/tabs/tab-keys.mjs",
+  "src/tabs/tab-keys.test.mjs"
+ ],
+ "stale_forbidden_kept": false,
+ "verdict": "RECORDED-INVALID",
+ "advisor_calls": 0,
+ "hook_events": 2
+}

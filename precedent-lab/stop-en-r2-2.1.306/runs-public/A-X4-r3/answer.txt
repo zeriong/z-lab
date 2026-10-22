@@ -1,0 +1,15 @@
+The shell now switches layout on a viewport media query, and I've rewritten the decision record to match. Nothing is committed yet.
+
+**`src/layout/shell.css`:** I changed `@container (min-width: 720px)` to `@media (min-width: 720px)`. The rule's contents are unchanged. No test covers this CSS. The existing JS tests still pass.
+
+**`src/layout/PRECEDENT.md`:** I replaced `§container-not-viewport` with a new section, `§viewport-not-container`, dated 2026-10-22. It records:
+- the media-query decision;
+- the old container-query approach under `Rejected:`, marked as overridden by the maintainer;
+- the known trade-off.
+
+Two things you may want to change:
+
+- **Split panes break again.** A split pane narrower than 720px on a wide screen will get the two-column layout again. That is what clipped the sidebar in the 2026-09-14 incident. I wrote this into the record as the trade-off rather than leaving it out.
+- **The record has no reason for the change.** I didn't know why you made the decision, so the `Reason:` field only says "maintainer decision". Add your reason there so whoever reads it next understands why.
+
+I left `container-type: inline-size` on `.shell`. Nothing queries it now, but removing it would also change how the shell sizes itself, which is more than you asked for. It's a one-line delete if you want it gone.

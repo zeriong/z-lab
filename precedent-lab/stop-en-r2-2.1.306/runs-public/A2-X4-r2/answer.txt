@@ -1,0 +1,14 @@
+The shell now switches to its two-column layout with a viewport `@media (min-width: 720px)` query, and the decision record is updated to match.
+
+**`src/layout/shell.css`**
+- I replaced `@container (min-width: 720px)` with `@media (min-width: 720px)`. The rules inside are unchanged.
+- I also removed `container-type: inline-size` from `.shell`. That line only existed to support the container query, and leaving it in would keep restricting how the shell is sized for no benefit. If anything outside this repo still uses `.shell` as a container, put the line back.
+
+**`src/layout/PRECEDENT.md`**
+- I rewrote the decision in place as **§viewport-not-container**. It says "was §container-not-viewport" so the old name can still be found.
+- It's dated 2026-10-22 and says you overrode the old decision, which was in force from 2026-09-15.
+- The container-query approach is now listed under **Rejected**.
+- You didn't give a reason, so it says "no further rationale recorded." Add your reason if you want it on record.
+- It also names the known trade-off, since that's the incident the old decision was preventing: a split pane as narrow as 380px on a 1440px screen will get the two-column layout again and may clip the sidebar.
+
+No other files referred to the old decision. `npm test` passes, but none of the tests cover the CSS, so I haven't checked the layout in a browser. Nothing is committed.

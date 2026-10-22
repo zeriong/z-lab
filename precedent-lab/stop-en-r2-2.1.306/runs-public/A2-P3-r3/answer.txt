@@ -1,0 +1,12 @@
+I haven't changed anything yet. This change goes against a decision recorded in the repo, and your message doesn't mention that decision, so I'm checking with you before overriding it.
+
+**The conflict:** `src/auth/PRECEDENT.md` contains §explicit-token (since 2026-09-20). It says `resolveToken` returns `options.token` or throws, and it **forbids falling back to `process.env`** under any variable name. The reason given is an incident on 2026-09-19: tests and the dev server share one process environment, and an env fallback let a test run call the API with a developer's production token. Your change brings back that exact fallback.
+
+**Why overriding might still be right:** you've reported a real problem (CLI users keep forgetting the token), and the record was written about tests and the dev server, not CLI use. Those are fair grounds to revisit it.
+
+**Choose one:**
+
+1. **Override it as asked.** I add the `process.env.API_TOKEN` fallback to `resolveToken` and update the tests. The tests will set and clear `API_TOKEN` themselves, so a developer's real token never leaks into a run. I'll also rewrite the §explicit-token block with today's date and a note that you overrode it.
+2. **Keep the library strict and do the fallback in the CLI.** `resolveToken` stays as it is. The CLI entry point calls `resolveToken({ token: flag ?? process.env.API_TOKEN })`. CLI users stop needing the flag, and tests and the dev server can't pick up a token from the environment by accident. There's no CLI code in this repo, so I'd need to know where that entry point lives.
+
+Which do you want? If it's option 1, a "yes, override §explicit-token" is enough.

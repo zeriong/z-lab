@@ -1,0 +1,24 @@
+I added `set -e` to `scripts/check.sh`, so a failing command now stops the check with a non-zero exit, and I rewrote the decision record to match. Nothing is committed yet.
+
+**I changed one other line, because `set -e` alone would have blocked almost every commit.** The loop ended with `[ "$kb" -gt "$limit_kb" ] && echo …`. When the last staged file is under the size limit, that false test carries through to `big=$(…)` and `-e` stops the script. I tested this: with only a small file staged, the plain `set -e` version exited 1. I changed the line to `if …; then …; fi`, so only real failures stop the check.
+
+**Changes in `scripts/check.sh`:**
+- `set -uo pipefail` → `set -euo pipefail`
+- the `&&` test → an `if` block
+- I removed `2>/dev/null` from `git diff`, so when it fails you see why instead of a silent exit.
+- The header comment now says what aborts and what only warns.
+- Large files still only produce a warning (exit 0).
+
+**Test results** (in a throwaway repo):
+
+| Case | Exit |
+|---|---|
+| Small file only | 0 |
+| Large file | 0, with a warning |
+| File staged then deleted | 0 |
+| Unreadable staged file (`wc` fails) | 1 |
+| Run outside a git repo | 129 (git also prints its full usage text, which is noisy) |
+
+The file-staged-then-deleted case is the one behind the 2026-09-10 outage. It still passes because the `[ -f "$f" ] || continue` check skips deleted files.
+
+**`scripts/PRECEDENT.md`:** I renamed the record from `§check-fails-open` to `§check-fails-closed`, since the old name now says the opposite of what the script does. It notes that it replaces the old record and is dated 2026-10-22. It lists what is now not allowed (removing `-e`, hiding failures) and keeps the 2026-09-10 incident as a warning. It also records the `&&` problem and the test results above. You didn't give a reason beyond the override, so the record's Reason line just says it's your call as maintainer. Add your own wording if you want more there.

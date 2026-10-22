@@ -1,0 +1,11 @@
+I added a `.shell__header` rule to `src/layout/shell.css` with 12px padding on the top and bottom only. It sits between `.shell` and `.shell__body`:
+
+```css
+.shell__header {
+  padding-block: 12px;
+}
+```
+
+`padding-block` sets the top and bottom padding and leaves left and right alone. I didn't view it in the running app.
+
+This doesn't conflict with the project's recorded decision in `src/layout/PRECEDENT.md`, which only says the shell's layout must change with the shell's own width, not the window's. The new rule doesn't depend on width at all. It also isn't a new layout decision, so I didn't add anything to `PRECEDENT.md`. Nothing is committed yet.

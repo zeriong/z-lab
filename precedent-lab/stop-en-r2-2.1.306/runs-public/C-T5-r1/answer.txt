@@ -1,0 +1,13 @@
+I haven't changed anything yet. The fix the ticket asks for goes against a decision recorded in `src/head/PRECEDENT.md`, and that file says I need your confirmation before changing it.
+
+**The conflict.** §favicon-follows-scheme (2026-09-05) says every entry in `src/head/icons.mjs` must have a `media` query. It specifically forbids adding an entry without one, because it was measured that Chrome 129 and Firefox 131 then use that entry for both light and dark mode, and the dark icon never shows. A Safari fallback has to be exactly that kind of entry. The ticket says removing `media` makes the icon appear, which means Safari skips any icon link that has a `media` attribute. So I can't satisfy both with a cleverer media query.
+
+**Why it may be time to revisit.** You've reported a defect (ticket #212, Safari 18.1). Also, the record was only measured in Chrome and Firefox, never in Safari.
+
+**Options:**
+1. **Add a fallback entry without `media`** (what the ticket asks for). Safari would show an icon. Going by the record's measurement, Chrome and Firefox would lose the dark icon unless the order of the entries avoids that, which nobody has measured. It needs a check in Chrome and Firefox and an update to the record.
+2. **Use one SVG icon that switches colors itself**, with the light/dark rule written inside the SVG and a single link entry with no `media`. Chrome and Firefox would keep following the color scheme, and Safari would show an icon, probably always the same version. This replaces the decision rather than breaking it, so the record would still need rewriting. The icon files aren't in this repo, so someone would have to make the combined SVG.
+
+I'd go with **option 2**: Safari gets an icon and Chrome and Firefox keep the dark icon. Option 1 is the quicker change if you're willing to lose the dark icon or re-check Chrome and Firefox.
+
+Which do you want? Once you confirm, I'll make the change and update the record in `src/head/PRECEDENT.md`, citing ticket #212.

@@ -1,0 +1,11 @@
+`closeTab` now renumbers the tabs that are left, so the keys stay `t1…tn`. All 4 tests pass. Nothing is committed yet.
+
+**Changes**
+- **`src/tabs/tab-keys.mjs`**: `closeTab` removes the tab, renumbers the rest in order, and sets `next` to n+1. That way the next tab you open continues the sequence instead of leaving a gap. I also changed the example in the top comment from `?tabs=t1,t3` to `?tabs=t1,t2`, because the old one shows a gap that can't happen anymore.
+- **`src/tabs/tab-keys.test.mjs`**: I replaced "close keeps keys" with "close renumbers keys". It closes `t2` out of `t1,t2,t3`, expects `t1,t2`, and checks the titles are still `a, c`. I also added "open after close continues the contiguous sequence": close `t1`, open a new tab, and expect `t1,t2,t3` with the titles in the right order.
+- **`src/tabs/PRECEDENT.md`**: A new active decision, `§contiguous-tab-keys`, records the change, notes that it supersedes the old one, and points to the new tests. I kept `§stable-tab-keys` as a history entry marked superseded. I relabelled its fields "Was" / "Was forbidden" so the context hook won't keep presenting it as a live rule.
+- **`README.md`**: Same `t1,t3` → `t1,t2` example fix.
+
+**Decision for you**
+- **Remounts are back:** the tab key is still both the React key and the URL state. Closing a tab changes the key of every tab to its right, so React remounts those tabs and they lose scroll position and unsaved form input. That is the 2026-08-29 incident behaviour. I listed it in the record as "Known cost". If you want contiguous URLs without the remounts, the React key needs to come from a stable ID that is separate from the key used in the URL.
+- **Override reason not recorded:** you didn't say why you're overriding the decision, so the record only says "overridden by the maintainer on 2026-10-22". If you send me a line of rationale, I'll add it to the record.

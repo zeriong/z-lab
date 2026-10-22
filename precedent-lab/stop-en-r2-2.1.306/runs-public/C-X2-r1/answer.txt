@@ -1,0 +1,23 @@
+`scripts/check.sh` now runs with `set -e`, and the record is updated. Nothing is committed.
+
+**Script change (`scripts/check.sh`)**
+- `set -uo pipefail` became `set -euo pipefail`.
+- I had to rewrite one more line. `[ "$kb" -gt "$limit_kb" ] && echo …` is the last command in the loop, so a staged file under the limit made the loop return 1. With `-e` that failed the whole check. I tested the version with only `-e` added, and it exited 1 with a single small file staged. That line is now `if [ … ]; then echo …; fi`.
+
+**Test results**
+
+| Scenario | Exit |
+|---|---|
+| Nothing staged | 0 |
+| Small file staged | 0 |
+| Large file staged (still only a warning) | 0 |
+| Run outside a git repo | 129 |
+| `wc` fails on an unreadable staged file | 1 |
+
+**Record change (`scripts/PRECEDENT.md`)**
+- `§check-fails-open` is replaced by `§check-fails-closed`, dated 2026-10-22. It records `set -euo pipefail` as the rule and forbids dropping `-e` or swallowing a failure to force exit 0.
+- The old fail-open rule and the 2026-09-10 incident behind it are kept under "Rejected". It also notes that the `[ -f "$f" ] || continue` guard now skips that incident's case (a file staged and then deleted).
+- A short note warns about the `[ … ] && …` problem above so nobody brings it back.
+- For the reason, I wrote it as your decision as maintainer, based on what you told me. Edit it if you want a fuller explanation recorded.
+
+If `check.sh` is wired in as a pre-commit hook, an internal error will now block commits, which is the failure mode from 2026-09-10. A large-file finding still won't block one, so the README's "advisory pre-commit check" is still accurate.

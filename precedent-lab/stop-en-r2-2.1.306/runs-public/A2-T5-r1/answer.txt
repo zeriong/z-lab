@@ -1,0 +1,15 @@
+I haven't changed anything yet. The fix you asked for goes against a recorded decision, and I need your go-ahead to override it.
+
+**The decision:** `src/head/PRECEDENT.md`, §favicon-follows-scheme (since 2026-09-05). It says every entry in `icons` in `src/head/icons.mjs` must have a `media` query. An entry without `media` is explicitly forbidden. The reason given is that Chrome 129 and Firefox 131 then use that entry for both light and dark mode, so the dark icon never shows.
+
+**The conflict:** A Safari fallback is exactly that kind of entry. It has no `media`, and that's the only reason Safari would use it. Adding it as written could break dark-mode icons in Chrome and Firefox to fix Safari.
+
+**Why overriding seems reasonable:**
+- **You reported a defect:** ticket #212 shows a blank tab icon on every page in Safari 18.1.
+- **There's new evidence the record doesn't cover:** it was only tested in Chrome and Firefox. The ticket shows the current setup gives Safari no icon at all.
+
+**What I'd do if you approve:**
+1. Put the fallback first in the array, e.g. `{ rel: "icon", href: "/icon-light.svg", type: "image/svg+xml" }`, before the two scheme-specific entries. Chrome and Firefox generally use the last matching icon, so they should still pick the light or dark one. The record doesn't say whether the order was tested, though, and I can't run browsers here. Someone would need to check dark mode in Chrome and Firefox, and the icon in Safari 18.1, before it ships.
+2. Rewrite the §favicon-follows-scheme entry with today's date (2026-10-22). It would note that you overrode it for ticket #212 and that one fallback entry without `media` is now allowed, but only first in the array.
+
+Should I override the decision and go ahead like this? Or would you rather keep the rule and find a Safari fix that doesn't need an icon entry without `media`?

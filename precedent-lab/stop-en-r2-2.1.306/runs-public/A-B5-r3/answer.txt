@@ -1,0 +1,3 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`. Each entry also keeps its `media` query. `src/head/PRECEDENT.md` records a decision (`§favicon-follows-scheme`) that every entry must have one, and this change doesn't affect that.
+
+I checked that the module still loads and exports both entries with the new field. There are no tests for this file. I haven't committed the change.

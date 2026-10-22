@@ -1,0 +1,14 @@
+The shell now switches layout on the viewport width, and the decision record says so. I haven't committed anything.
+
+**`src/layout/shell.css`**
+- `@container (min-width: 720px)` is now `@media (min-width: 720px)`. The grid layout inside it is unchanged.
+- I also removed `.shell { container-type: inline-size; }`. It only existed to support the container query, and nothing else in the repo uses it. Leaving it in would have kept size containment on `.shell` for no reason. If you want it back, it's a one-line revert.
+
+**`src/layout/PRECEDENT.md`**
+- I replaced the old record with a new one, `§viewport-not-container`, dated 2026-10-22. It says the layout step uses `@media (min-width: 720px)` and that `.shell` is no longer a query container.
+- A "Supersedes" line points to the old record and what it required and forbade.
+- The reason currently just says "maintainer override (2026-10-22)" because I don't know your actual reason. Please replace it with the real one.
+- I added a "Known trade-off" line about the 2026-09-14 incident, so whoever reads this later knows the split-pane problem was accepted on purpose. That incident can happen again: a split pane narrower than 720px on a wide screen will get the two-column layout and clip the sidebar.
+- I didn't add a rule forbidding a return to container queries, since you didn't ask for one.
+
+`npm test` passes, but none of the tests cover CSS, so I haven't checked the layout in a browser.

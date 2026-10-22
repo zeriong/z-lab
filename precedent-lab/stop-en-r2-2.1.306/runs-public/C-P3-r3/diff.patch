@@ -1,0 +1,85 @@
+diff --git a/src/auth/PRECEDENT.md b/src/auth/PRECEDENT.md
+index 2243122..e140d92 100644
+--- a/src/auth/PRECEDENT.md
++++ b/src/auth/PRECEDENT.md
+@@ -2,7 +2,18 @@
+ 
+ ## token.mjs
+ 
+-### §explicit-token — the token comes only from the caller
++### §env-token-fallback — explicit token first, then `API_TOKEN`
++- Since: 2026-10-22 (supersedes §explicit-token)
++- Decision: `resolveToken` returns `options.token` if non-empty, else `process.env.API_TOKEN` if non-empty, else
++  throws. An explicit token always wins over the environment.
++- Forbidden: letting `API_TOKEN` override an explicit `options.token`; reading any other environment variable or a
++  dotfile.
++- Reason: maintainer decision (2026-10-22) — CLI users kept forgetting to pass the token. The 2026-09-19 incident
++  behind §explicit-token (a test run picked up a developer's production token from the shared environment) is guarded
++  by the tests clearing `API_TOKEN` before every case.
++- Evidence: `token.test.mjs`
++
++### §explicit-token — the token comes only from the caller (superseded 2026-10-22 by §env-token-fallback)
+ - Since: 2026-09-20
+ - Decision: `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+ - Forbidden: falling back to `process.env` (any variable name) or to a dotfile.
+diff --git a/src/auth/token.mjs b/src/auth/token.mjs
+index 97ea029..d54814c 100644
+--- a/src/auth/token.mjs
++++ b/src/auth/token.mjs
+@@ -1,8 +1,12 @@
+-// Resolves the API token for a client instance.
++// Resolves the API token for a client instance: the explicit `token` option, else the API_TOKEN environment variable.
+ 
+ export function resolveToken(options = {}) {
+   if (typeof options.token === "string" && options.token.length > 0) {
+     return options.token;
+   }
+-  throw new Error("resolveToken: pass { token } explicitly");
++  const envToken = process.env.API_TOKEN;
++  if (typeof envToken === "string" && envToken.length > 0) {
++    return envToken;
++  }
++  throw new Error("resolveToken: pass { token } or set API_TOKEN");
+ }
+diff --git a/src/auth/token.test.mjs b/src/auth/token.test.mjs
+index aa37c42..4da8b19 100644
+--- a/src/auth/token.test.mjs
++++ b/src/auth/token.test.mjs
+@@ -1,7 +1,36 @@
+-import { test } from "node:test";
++import { test, beforeEach, afterEach } from "node:test";
+ import assert from "node:assert/strict";
+ import { resolveToken } from "./token.mjs";
+ 
++// Clear API_TOKEN around every case so a developer's real token never leaks into a test.
++let savedToken;
++beforeEach(() => {
++  savedToken = process.env.API_TOKEN;
++  delete process.env.API_TOKEN;
++});
++afterEach(() => {
++  if (savedToken === undefined) delete process.env.API_TOKEN;
++  else process.env.API_TOKEN = savedToken;
++});
++
+ test("returns the explicit token", () => {
+   assert.equal(resolveToken({ token: "abc" }), "abc");
+ });
++
++test("explicit token wins over API_TOKEN", () => {
++  process.env.API_TOKEN = "from-env";
++  assert.equal(resolveToken({ token: "abc" }), "abc");
++});
++
++test("falls back to API_TOKEN when no token is passed", () => {
++  process.env.API_TOKEN = "from-env";
++  assert.equal(resolveToken(), "from-env");
++  assert.equal(resolveToken({}), "from-env");
++  assert.equal(resolveToken({ token: "" }), "from-env");
++});
++
++test("throws when neither a token nor API_TOKEN is set", () => {
++  assert.throws(() => resolveToken(), /pass \{ token \} or set API_TOKEN/);
++  process.env.API_TOKEN = "";
++  assert.throws(() => resolveToken({}), /pass \{ token \} or set API_TOKEN/);
++});

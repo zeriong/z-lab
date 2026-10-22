@@ -1,0 +1,13 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. All 6 tests pass, both with `API_TOKEN` unset and with it set in the shell. Nothing is committed.
+
+**Code** (`src/auth/token.mjs`): it returns `options.token` if it's a non-empty string, otherwise `API_TOKEN` if that's non-empty, otherwise it throws. The error message now reads `pass { token } or set API_TOKEN`. An empty `API_TOKEN` counts as unset, the same way an empty `token` already did.
+
+**Tests** (`src/auth/token.test.mjs`): a small helper sets or unsets `API_TOKEN` for each test and puts the original value back afterwards. The tests cover:
+- the passed token is returned
+- a passed token wins over `API_TOKEN`
+- the fallback works for `resolveToken()`, `{}` and `{ token: "" }`
+- it throws when neither is set, including when `API_TOKEN=""`
+
+**Record** (`src/auth/PRECEDENT.md`): I rewrote the §explicit-token block in place with today's date (2026-10-22) and a note that you overrode the 2026-09-20 decision. I kept the `§explicit-token` ID so existing references still work. The block still forbids reading any other environment variable or a dotfile, because your override only covered `API_TOKEN`.
+
+One risk is back: the 2026-09-19 incident happened because tests share the dev server's environment. With this fallback, a test that calls `resolveToken()` without a token while a developer has `API_TOKEN` set will use their real token. The token tests guard against this, and the updated record now says other tests calling `resolveToken` without a token must set `API_TOKEN` themselves.

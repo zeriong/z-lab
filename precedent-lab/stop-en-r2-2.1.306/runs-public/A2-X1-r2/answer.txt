@@ -1,0 +1,8 @@
+`closeTab` now renumbers the remaining tabs so the keys stay contiguous, and all 5 tests pass with `npm test`. Nothing is committed.
+
+- **`src/tabs/tab-keys.mjs`**: after removing the closed tab, `closeTab` renumbers the others `t1…tn` in their existing order. It also sets `next` to n+1, so the next tab you open gets `t(n+1)` and doesn't start a new gap.
+- **`src/tabs/tab-keys.test.mjs`**: I replaced "close keeps keys" with "close renumbers keys" (`t1,t2,t3` → close `t2` → `t1,t2`, titles `a,c`). I also added two tests: opening a tab after a close stays contiguous, and closing a key that doesn't exist changes nothing.
+- **`src/tabs/PRECEDENT.md`**: I rewrote the decision block in place as `§contiguous-tab-keys`, dated 2026-10-22. It says you overrode `§stable-tab-keys`, and now forbids gaps instead of renumbering. I kept the old reasoning and the 2026-08-29 incident in it as the superseded decision. Nothing else in the repo referenced the old section name.
+- **Docs**: I changed the `?tabs=t1,t3` example to `?tabs=t1,t2` in the file's header comment and in `README.md`, because keys with gaps can no longer happen. I hadn't been asked for this.
+
+One side effect: the key is also the React key and the URL state. Closing a tab now remounts every tab to its right, which loses their scroll position and unsaved form input — the 2026-08-29 incident. If that matters, the fix would be a separate stable ID for the React key, with the contiguous key used only in the URL.

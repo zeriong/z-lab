@@ -1,0 +1,7 @@
+I made the switch, but it brings back a bug the team had already hit once. `src/layout/PRECEDENT.md` recorded the container queries on purpose, after an incident on 2026-09-14. The shell is embedded in split panes as narrow as 380px on a 1440px screen. With viewport queries, those panes got the two-column layout and the 240px sidebar was clipped. The new `@media (min-width: 720px)` puts that failure back for any pane narrower than 720px on a screen 720px or wider.
+
+**What changed (nothing is committed):**
+- **`src/layout/shell.css`**: the layout step is now `@media (min-width: 720px)`, with the same grid and padding as before. I also removed `container-type: inline-size` from `.shell`, since nothing uses it now and it would confuse people new to container queries.
+- **`src/layout/PRECEDENT.md`**: I added a new record, `§viewport-not-container`, dated today, giving the sync decision as the reason and naming the split-pane cost. The old record is marked superseded instead of deleted. Otherwise the file would still forbid what the code now does, and someone could switch it back without knowing about today's decision. Adjust the wording if it doesn't match what was agreed.
+
+If the sync didn't cover the split-pane case, it's worth raising before you commit. The two options don't mix: no viewport media query can see how wide a pane is. The way to keep both is to stay on container queries and add a short comment explaining them. To undo this, run `git checkout -- src/layout`.

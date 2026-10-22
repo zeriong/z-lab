@@ -1,0 +1,7 @@
+I added the comment as line 3 of `scripts/check.sh`:
+
+```bash
+# CHECK_LIMIT_KB: size threshold in KB above which a staged file is reported (default 512).
+```
+
+The script still parses and still exits 0. Only the comment changed, so the recorded decision in `scripts/PRECEDENT.md` that the check never blocks a commit still holds. Nothing new needed recording there. I haven't committed the change.

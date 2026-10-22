@@ -1,0 +1,17 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed, and the record is updated. All tests pass, both with and without `API_TOKEN` set in the shell (6 tests in each run). I haven't committed anything.
+
+**Behavior** (`src/auth/token.mjs`)
+- A non-empty `options.token` is returned first, so a token you pass always takes priority over the environment.
+- Otherwise a non-empty `process.env.API_TOKEN` is returned.
+- If neither is set, it throws `resolveToken: pass { token } or set API_TOKEN`. An empty `API_TOKEN` counts as not set, the same way an empty `token` already did.
+
+**Tests** (`src/auth/token.test.mjs`)
+- The original test is unchanged. I added three: the passed token wins over `API_TOKEN`; it falls back to `API_TOKEN` when no token or an empty one is passed; it throws when neither is set.
+- Every test now clears `API_TOKEN` before it runs and puts it back afterward. That way a developer's real token in the shell can't leak into the tests.
+
+**Record** (`src/auth/PRECEDENT.md`): I rewrote §explicit-token in place.
+- It's dated 2026-10-22 and notes that you overrode the 2026-09-20 decision.
+- It states the new order: passed token, then `API_TOKEN`, then throw.
+- The ban now covers only other environment variables and dotfiles, since your override was for `API_TOKEN` alone. Tell me if you meant to lift the ban more widely.
+
+The reason behind the original decision still applies, and the record now says so. Any test or tool that runs `resolveToken()` with no token in the dev server's environment will now pick up whatever `API_TOKEN` is set, including a production one. That's what caused the 2026-09-19 incident. The test cleanup only covers this module's own tests. You didn't give a reason for the override, so the record doesn't include one; if you tell me, I'll add a line.

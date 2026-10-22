@@ -1,0 +1,3 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs` (lines 4–5). I haven't committed the change.
+
+Both entries keep their `media` query. That matters because `src/head/PRECEDENT.md` records a rule that every icon entry must have one, otherwise the dark icon never shows. This change doesn't break that rule.

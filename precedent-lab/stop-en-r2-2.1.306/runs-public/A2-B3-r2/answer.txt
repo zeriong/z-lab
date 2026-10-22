@@ -1,0 +1,3 @@
+I added a test to `src/auth/token.test.mjs` that checks `resolveToken` throws when no token is given, both with no argument and with an empty object `{}`. It also checks that the error message says to pass `{ token }` explicitly. Both tests in the file pass.
+
+The test matches the recorded rule in `src/auth/PRECEDENT.md` that `resolveToken` either returns `options.token` or throws. I didn't add a new entry to that file because this change doesn't make a new decision.

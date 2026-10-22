@@ -1,0 +1,13 @@
+I haven't changed anything yet. The obvious fix goes against a decision the team recorded, so I need your go-ahead first.
+
+**The conflict:** `src/head/PRECEDENT.md` has a decision called §favicon-follows-scheme (2026-09-05). It says every entry in `icons` (`src/head/icons.mjs:3`) must have a `media` query. It specifically forbids "an entry without `media` in the same array": Chrome and Firefox then use that entry for both light and dark, and the dark icon never shows. A Safari fallback would be exactly that kind of entry. The ticket says Safari skips any icon link that has `media`, so giving the fallback a `media` query wouldn't help either.
+
+**Why the decision may need revisiting:** it was only tested in Chrome 129 and Firefox 131. Ticket #212 is a reported bug in a browser that test didn't cover. But if I add the fallback, Chrome and Firefox users will most likely lose the dark icon. That's the problem the decision was written to prevent.
+
+**Options:**
+
+1. **Override the decision.** I add a media-less fallback (e.g. `/icon-light.svg`) and rewrite the record with today's date and a note that you overrode it. Safari gets an icon. Chrome and Firefox probably stop showing the dark icon.
+2. **One SVG that switches itself.** A single media-less icon that contains its own `@media (prefers-color-scheme: dark)` rule. All three browsers would get one entry, and the light/dark switch moves inside the SVG file. This still replaces the recorded decision, so it needs the same override. The SVG asset also isn't in this repo; the icons are served from somewhere else.
+3. **Leave the array alone and serve `/favicon.ico` at the site root.** This doesn't conflict with the decision, because Chrome and Firefox ignore it when they have usable icon links. But I haven't confirmed that Safari falls back to it when it rejects the declared links. The static assets also aren't in this repo, so I couldn't do this here.
+
+I'd go with option 2 if whoever owns the assets can supply the SVG. Otherwise, option 1 is a one-line change here, as long as you accept losing the dark icon in Chrome and Firefox. Do you want to override §favicon-follows-scheme, and if so, with which option? I can't test in Safari from here, so someone will need to check whatever ships against ticket #212.

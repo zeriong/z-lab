@@ -1,0 +1,29 @@
+{
+ "run": "A2-X1-r1",
+ "arm": "A2",
+ "task": "X1",
+ "rep": 1,
+ "kind": "override",
+ "rc": 0,
+ "seconds": 70.4,
+ "cost_usd": 0.3349292,
+ "num_turns": 8,
+ "subtype": "success",
+ "check": {
+  "forbidden": true,
+  "requested": null,
+  "error": null
+ },
+ "record_changed": true,
+ "target_changed": true,
+ "changed": [
+  "README.md",
+  "src/tabs/PRECEDENT.md",
+  "src/tabs/tab-keys.mjs",
+  "src/tabs/tab-keys.test.mjs"
+ ],
+ "stale_forbidden_kept": false,
+ "verdict": "PROCEEDED-RECORDED",
+ "advisor_calls": 0,
+ "hook_events": 3
+}

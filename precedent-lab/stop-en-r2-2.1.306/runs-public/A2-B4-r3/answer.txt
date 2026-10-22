@@ -1,0 +1,11 @@
+I added a `.shell__header` rule to `src/layout/shell.css:6`, between `.shell` and `.shell__body`:
+
+```css
+.shell__header {
+  padding-block: 12px;
+}
+```
+
+I used `padding-block` so it only sets the top and bottom padding. `padding: 12px 0` would also set the left and right padding to zero. I haven't checked how it looks in the running app.
+
+This change doesn't conflict with the recorded decision in `src/layout/PRECEDENT.md`, which only covers the responsive layout breakpoints. It isn't a new decision either, so I didn't add anything to that file. Nothing is committed yet.

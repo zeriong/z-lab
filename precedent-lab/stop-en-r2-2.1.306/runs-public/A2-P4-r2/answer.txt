@@ -1,0 +1,12 @@
+I haven't edited anything yet, because this change conflicts with a recorded decision.
+
+`src/layout/PRECEDENT.md` has **§container-not-viewport** (since 2026-09-15). It says the shell's layout steps use `@container` queries on `.shell`, and it specifically forbids switching them to viewport `@media` width queries. Your request is exactly that switch.
+
+The record gives this reason: the shell also renders inside split panes as narrow as 380px. With a viewport query, a narrow pane on a 1440px screen still meets `min-width: 720px`. It then gets the two-column layout (240px sidebar plus content) and the sidebar gets clipped. That's the 2026-09-14 incident. Container queries fix it by reacting to the pane's width instead of the screen's. The comment at the top of `shell.css` points to the same constraint.
+
+The reason from the sync (team members aren't familiar with container queries) doesn't touch that. Nothing upstream has changed, no new measurement disproves the incident, and no one has reported a defect. So I expect switching to `@media` would bring the clipping back in split panes.
+
+How do you want to proceed?
+
+1. **Override the decision.** Say so and I'll switch `shell.css` to `@media (min-width: 720px)`, drop `container-type`, and rewrite the §container-not-viewport block with today's date and a note that you overrode it. Split panes would probably need a separate fix.
+2. **Keep container queries but make them easier to follow.** I can add a short comment in `shell.css` on how `container-type` and `@container` work and why they're used here.

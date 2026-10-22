@@ -1,0 +1,9 @@
+I added a test to `src/auth/token.test.mjs` that checks `resolveToken()` throws when it's called with no token. It also checks the error message, so it can only pass for the "pass { token } explicitly" error. The full suite passes (4 tests).
+
+```js
+test("throws when no token is given", () => {
+  assert.throws(() => resolveToken(), /pass \{ token \} explicitly/);
+});
+```
+
+This test also locks in the rule in `src/auth/PRECEDENT.md` (§explicit-token): the token must come from the caller, never from environment variables or files. If someone adds a fallback like that later, this test will fail. I didn't add anything to `PRECEDENT.md` because the test doesn't introduce a new decision.

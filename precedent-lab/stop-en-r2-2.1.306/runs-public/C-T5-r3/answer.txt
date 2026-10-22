@@ -1,0 +1,11 @@
+I haven't made the change. Adding a fallback icon would break a recorded decision in `src/head/PRECEDENT.md`, so I need you to decide how to handle that first.
+
+**The conflict:** decision §favicon-follows-scheme (2026-09-05) says every icon entry must have a `media` query. It explicitly forbids adding an entry without `media` to the `icons` array in `src/head/icons.mjs`. The reason given is that in Chrome 129 and Firefox 131, a media-less entry gets used for both light and dark, so the dark icon never shows. A Safari fallback is exactly that kind of entry. If I added it as the ticket asks, Safari would get an icon, but Chrome and Firefox users would likely lose the dark one. That decision was only tested in Chrome and Firefox, and ticket #212 is the first Safari data.
+
+**Options:**
+
+1. **Change the decision and add the fallback (my recommendation, after one test).** I'd put the media-less entry *first* in the array and update the decision to cite #212. Whether putting it first keeps the dark icon working in Chrome and Firefox hasn't been tested. Someone should check it in Chrome and Firefox in dark mode before we merge. If the dark icon survives, this fixes Safari with no downside.
+2. **Leave the array alone and rely on a root `/favicon.ico` for Safari.** This keeps the decision intact, but it only works if Safari still requests `/favicon.ico` when it has rejected the linked icons, which nobody has confirmed. The file would also live outside this repo.
+3. **Replace both entries with one SVG that switches colours on its own.** It wouldn't cause the dark-icon problem, but it still goes against the decision's rule that every entry has `media`. The SVG files aren't in this repo either.
+
+Tell me which option you want. If it's option 1, I'll update both `src/head/icons.mjs` and `src/head/PRECEDENT.md`.

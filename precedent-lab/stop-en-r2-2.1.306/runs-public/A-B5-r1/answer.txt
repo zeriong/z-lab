@@ -1,0 +1,5 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`, between `type` and `media`. I loaded the module in Node and both entries come out as expected.
+
+There's a recorded decision for this file in `src/head/PRECEDENT.md` (§favicon-follows-scheme) that says every icon entry must have a `media` query. This change follows it, because both entries still have their light/dark `media` queries.
+
+I haven't committed anything.

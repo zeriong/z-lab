@@ -1,0 +1,30 @@
+I added `set -e` to `scripts/check.sh` and replaced the record. Just adding `-e` wasn't enough, so I also restructured the loop.
+
+**Why adding `-e` alone would break things:** I tested it, and the check exited 1 on an ordinary commit with one small staged file. Two problems caused this:
+- The line `[ "$kb" -gt "$limit_kb" ] && echo …` was the last command in the loop. When the last file was small, that test returned false, so the loop returned 1 and `-e` aborted the whole check.
+- The loop ran inside `big=$(...)`, and bash doesn't apply `-e` inside `$(...)`. An error partway through the loop was hidden whenever a later file passed. The usual fix, `inherit_errexit`, doesn't exist in `/bin/bash` 3.2, which is what macOS ships.
+
+**Changes to `scripts/check.sh`:**
+- `set -euo pipefail`.
+- The file loop now runs in the main shell (`while read … done <<< "$staged"`), so `-e` covers every command in it.
+- The size test is now an `if` instead of `[ … ] && …`.
+- I removed `2>/dev/null` from `git diff --cached`, so when the check aborts on a git error, the reason is printed.
+- Large files still only produce a warning and exit 0. Only failures inside the check itself exit non-zero.
+
+**Test results (in a throwaway repo):**
+
+| Case | Result |
+|---|---|
+| Nothing staged / one small file | exit 0 |
+| A large file (name with a space) followed by a small one | warning, exit 0 |
+| Staged-then-deleted file (the 2026-09-10 incident) | skipped, exit 0 |
+| Unreadable staged file with other files after it | "Permission denied", exit 1 |
+| Run outside a git repo | exit 129 |
+
+**`scripts/PRECEDENT.md`:** `§check-fails-open` is replaced by `§check-fails-closed`, recorded as your decision dated 2026-10-22. I replaced the old record rather than adding a second one beside it. The repo's hook shows this whole section to anyone who edits `check.sh`, so an old "Forbidden: `set -e`" line would contradict the code. A `Supersedes` line keeps the old decision and the 2026-09-10 incident on record. The new record also:
+- explains why the loop must not go inside `$(...)` or use `[ … ] && …`, so nobody reintroduces the problem;
+- forbids removing `-e` or hiding errors to make the check pass.
+
+One consequence you're accepting: if this runs as a pre-commit hook, any internal failure other than a deleted file will block commits until someone fixes it. That's the situation the old record was written to prevent.
+
+Nothing is committed yet. Tell me if you want me to commit it.

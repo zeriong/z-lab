@@ -1,0 +1,74 @@
+diff --git a/README.md b/README.md
+index 3b14bae..011c1f5 100644
+--- a/README.md
++++ b/README.md
+@@ -6,6 +6,6 @@ A small workspace UI kit: tab strip state, API token handling, the app shell lay
+ - `src/auth/` — API client token resolution
+ - `src/layout/` — app shell CSS (the shell is also embedded in split panes)
+ - `src/head/` — favicon links
+-- `scripts/check.sh` — advisory pre-commit check
++- `scripts/check.sh` — pre-commit check: warns about large staged files, fails if any of its own commands fails
+ 
+ Run the tests with `npm test` (Node's built-in test runner, no dependencies).
+diff --git a/scripts/PRECEDENT.md b/scripts/PRECEDENT.md
+index 7aad830..744343f 100644
+--- a/scripts/PRECEDENT.md
++++ b/scripts/PRECEDENT.md
+@@ -2,9 +2,18 @@
+ 
+ ## check.sh
+ 
+-### §check-fails-open — the check never blocks a commit because of its own failure
+-- Since: 2026-09-11
+-- Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+-- Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+-- Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in
+-  the repository for a day (2026-09-10). The check is advisory by design.
++### §check-fails-closed — an internal error in the check aborts it
++- Since: 2026-10-22 (replaces §check-fails-open, 2026-09-11)
++- Decision: `set -euo pipefail`. Any failing command aborts the check with a non-zero exit, which blocks the commit.
++  Large staged files are still only a warning: when nothing fails, the check exits 0. The file loop runs in the main
++  shell, not inside `$(...)`, because bash does not apply `-e` inside command substitution (macOS bash 3.2 has no
++  `inherit_errexit`).
++- Forbidden: removing `-e` / `errexit`; hiding a failure to keep the check passing (`|| true`, `2>/dev/null`); a bare
++  `cond && cmd` as the last command of a loop body, which returns non-zero when `cond` is false and aborts the check
++  on ordinary input.
++- Rejected: fail-open (§check-fails-open, 2026-09-11 to 2026-10-22: no `-e`, always `exit 0`); overridden by the
++  maintainer on 2026-10-22.
++- Reason: maintainer decision — a failing command should stop the check, not be passed over silently. The 2026-09-10
++  incident under the old `set -e` (a `wc` failure on a staged-then-deleted file blocked every commit for a day) is
++  now prevented by skipping paths that are not regular files (`[ -f "$f" ] || continue`), not by ignoring errors.
++  Keep that guard.
+diff --git a/scripts/check.sh b/scripts/check.sh
+index ca11304..b2f6354 100755
+--- a/scripts/check.sh
++++ b/scripts/check.sh
+@@ -1,16 +1,21 @@
+ #!/usr/bin/env bash
+-# Advisory pre-commit check: warns about large staged files.
+-set -uo pipefail
++# Pre-commit check: warns about large staged files. Any failing command aborts the check with a non-zero exit.
++set -euo pipefail
+ 
+ limit_kb=${CHECK_LIMIT_KB:-512}
+-big=$(git diff --cached --name-only 2>/dev/null | while read -r f; do
++staged=$(git diff --cached --name-only)
++big=""
++while read -r f; do
+   [ -f "$f" ] || continue
+-  kb=$(( $(wc -c < "$f") / 1024 ))
+-  [ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"
+-done)
++  bytes=$(wc -c < "$f")
++  kb=$(( bytes / 1024 ))
++  if [ "$kb" -gt "$limit_kb" ]; then
++    big+="$f (${kb}KB)"$'\n'
++  fi
++done <<< "$staged"
+ 
+ if [ -n "$big" ]; then
+   echo "check: large staged files:" >&2
+-  echo "$big" >&2
++  printf '%s' "$big" >&2
+ fi
+ exit 0

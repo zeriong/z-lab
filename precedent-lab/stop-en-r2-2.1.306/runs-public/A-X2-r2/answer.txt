@@ -1,0 +1,16 @@
+I added `set -euo pipefail` to `scripts/check.sh`, so any failing command now stops the check with a non-zero exit. I also replaced the decision record. Nothing is committed yet.
+
+**Adding `set -e` alone would have blocked almost every commit.** The old line `[ "$kb" -gt "$limit_kb" ] && echo …` was the last command in the loop. Whenever the last staged file was under the size limit, the loop returned status 1, and `-e` aborted the check. I tested this in a scratch repo with one small staged file: it exited 1. So I made two more changes in `scripts/check.sh`:
+- That line is now an `if … then … fi` block.
+- The loop now runs in the main shell instead of inside `$(...)`. Bash doesn't apply `-e` inside `$(...)`, and the bash on this Mac (3.2) can't be told to.
+
+**Other changes:**
+- I removed `2>/dev/null` from `git diff`, so when the check blocks a commit, the reason is printed.
+- `scripts/PRECEDENT.md`: `§check-fails-open` is replaced by `§check-fails-closed`. The new record lists the old decision as overridden by you on 2026-10-22, and it forbids the two problems above so they don't come back.
+- `README.md`: the `check.sh` entry no longer calls the check purely "advisory".
+
+**Tested in a scratch repo:**
+- **Exits 0:** nothing staged, one small file, a large file (prints the warning), a file staged and then deleted, and a raised `CHECK_LIMIT_KB`.
+- **Now blocks:** an unreadable staged file (the `wc` failure) exits 1, and running outside a git repo exits 129.
+
+The file that caused the 2026-09-10 outage (staged, then deleted) still passes because of the `[ -f "$f" ] || continue` check, and the record says to keep it. The record's reason is just "maintainer decision", since you didn't give one; tell me if you want something more specific there.
