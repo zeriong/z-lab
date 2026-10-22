@@ -1,0 +1,15 @@
+{
+ "log": "<home>/WorkSpace/Z-Work/z-lab/precedent-lab/platform-unit-2.1.306/runs/uK2/probe.jsonl",
+ "filler": "도착주입확인용채움문장",
+ "emit": [
+  {
+   "event": "PostToolUse",
+   "tools": [
+    "Read"
+   ],
+   "size": 9990,
+   "start": "ZQ-089fbe0f",
+   "end": "ZQ-37105ffc"
+  }
+ ]
+}

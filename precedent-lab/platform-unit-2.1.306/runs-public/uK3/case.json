@@ -1,0 +1,13 @@
+{
+ "log": "<home>/WorkSpace/Z-Work/z-lab/precedent-lab/platform-unit-2.1.306/runs/uK3/probe.jsonl",
+ "filler": "도착주입확인용채움문장",
+ "emit": [
+  {
+   "event": "UserPromptSubmit",
+   "tools": null,
+   "size": 4000,
+   "start": "ZQ-87034d3e",
+   "end": "ZQ-c43a08e0"
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "case": "uK2",
+ "cli": "2.1.306 (Claude Code)",
+ "event": "PostToolUse",
+ "emitted": [
+  {
+   "index": 0,
+   "chars": 9990,
+   "bytes": 29922
+  }
+ ],
+ "rendered": [
+  {
+   "chars": 10069,
+   "bytes": 30001,
+   "persisted": false,
+   "start": true,
+   "end": true
+  },
+  {
+   "chars": 10069,
+   "bytes": 30001,
+   "persisted": false,
+   "start": true,
+   "end": true
+  }
+ ],
+ "seen_start": true,
+ "seen_end": true,
+ "seen_line": "SEEN: ZQ-089fbe0f ZQ-37105ffc",
+ "rc": 0,
+ "seconds": 7.2,
+ "session_id": "d677a38b-e8e3-4acf-b436-b2d6f6c6aa97",
+ "model": "claude-sonnet-5-5",
+ "cost_usd": 0.08407690000000001,
+ "transcript_files": 2,
+ "hook_context_records": 2
+}
