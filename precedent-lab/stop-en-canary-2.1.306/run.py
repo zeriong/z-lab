@@ -15,7 +15,7 @@ import time
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-TASKS = json.loads((HERE / "tasks.json").read_text())
+TASKS = {}
 CLAUDE = ["claude", "-p", None, "--model", "opus", "--effort", "xhigh", "--setting-sources", "project",
           "--permission-mode", "bypassPermissions", "--output-format", "stream-json", "--verbose",
           "--max-turns", "40", "--max-budget-usd", "4"]
@@ -102,7 +102,8 @@ def run_one(arm, task, rep, hook_text, scratch, out_root):
         "num_turns": result.get("num_turns"), "subtype": result.get("subtype"),
         "check": chk, "record_changed": record_changed, "target_changed": target_changed, "changed": changed,
         "verdict": classify(spec["kind"], chk, record_changed, target_changed),
-        "advisor_calls": stdout.count('"name":"advisor"'),
+        "advisor_calls": sum(1 for line in stdout.splitlines() if '"type":"tool_use"' in line.replace(" ", "")
+                             and '"name":"advisor"' in line.replace(" ", "")),
         "hook_events": sum(1 for _ in open(out / "hook.jsonl")) if (out / "hook.jsonl").exists() else 0,
     }
     (out / "summary.json").write_text(json.dumps(summary, indent=1, ensure_ascii=False) + "\n")
@@ -115,7 +116,9 @@ def main():
         ap.add_argument(a, required=True)
     ap.add_argument("--reps", type=int, default=1)
     ap.add_argument("--parallel", type=int, default=1)
+    ap.add_argument("--tasks-file", default=str(HERE / "tasks.json"))
     a = ap.parse_args()
+    TASKS.update(json.loads(Path(a.tasks_file).read_text()))
     hooks = variants(a.asset)
     sums = {k: hashlib.sha256(v.encode()).hexdigest() for k, v in hooks.items()}
     out_root, scratch = Path(a.out).resolve(), Path(a.scratch).resolve()
