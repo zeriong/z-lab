@@ -1,0 +1,36 @@
+{
+ "case": "rB",
+ "host": "claude",
+ "cli": "2.1.308 (Claude Code)",
+ "records": {
+  "TA": [
+   "attachment/nested_memory",
+   "api-request-blob/tool_result",
+   "assistant/-"
+  ],
+  "TB": [],
+  "TC": [
+   "attachment/instructions",
+   "api-request-blob/-"
+  ],
+  "TD1": [],
+  "TD2": [],
+  "TN": []
+ },
+ "seen_line": "SEEN: ZQ-45f559a7",
+ "tools_touching_rules": 0,
+ "probe_events": [
+  {
+   "hook_event_name": "PostToolUse",
+   "tool_name": "Bash",
+   "emitted": null
+  }
+ ],
+ "rc": 0,
+ "seconds": 9.2,
+ "session_id": "ab627b75-dc04-4216-9e43-fb3127ede251",
+ "model": "claude-sonnet-5-5",
+ "cost_usd": 0.0649165,
+ "transcript_files": 2,
+ "hook_context_records": 0
+}

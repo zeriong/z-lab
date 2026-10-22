@@ -96,10 +96,6 @@ def main():
         base.fixture(repo)
         files(repo)
         toks = {k: base.token() for k in ("TA", "TB", "TC", "TD1", "TD2", "TN")}
-        if host == "claude":
-            rules(repo, toks)
-        else:
-            (repo / "src" / "AGENTS.md").write_text(f"# src notes\n- Marker {toks['TN']}.\n")
         case = {"log": str(out / "probe.jsonl"),
                 "emit": [{"event": ev, "tools": tools, "size": size, "start": base.token(), "end": base.token()}
                          for ev, tools, size in emits]}
@@ -108,8 +104,10 @@ def main():
         events = sorted({e[0] for e in emits}) or ["PostToolUse"]
         if host == "claude":
             base.claude_settings(repo, case_json, events)
+            rules(repo, toks)
         else:
             base.codex_hooks(repo, case_json, events)
+            (repo / "src" / "AGENTS.md").write_text(f"# src notes\n- Marker {toks['TN']}.\n")
         base.sh(["git", "add", "-A"], repo)
         base.sh(["git", "-c", "user.name=lab", "-c", "user.email=lab@example.invalid", "commit", "-qm", "probe"], repo)
         prompt = f"{action} {base.TAIL}"

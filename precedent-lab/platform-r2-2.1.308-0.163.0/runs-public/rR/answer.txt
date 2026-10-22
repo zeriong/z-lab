@@ -1,0 +1,5 @@
+`src/tabs/a.ts` has one line: `export const x = 1;`
+
+Two ZQ markers reached me from outside your prompt. The `always.md` rule, in the system context, carried `ZQ-6247c7ff`. The `tabs.md` rule, which loaded after the file read, carried `ZQ-24f2e49e`.
+
+SEEN: ZQ-6247c7ff ZQ-24f2e49e

@@ -1,0 +1,20 @@
+{
+ "log": "<home>/WorkSpace/Z-Work/z-lab/precedent-lab/platform-r2-2.1.308-0.163.0/runs/xL/probe.jsonl",
+ "emit": [
+  {
+   "event": "PostToolUse",
+   "tools": null,
+   "size": 100000,
+   "start": "ZQ-8e94b913",
+   "end": "ZQ-410b72b3"
+  }
+ ],
+ "tokens": {
+  "TA": "ZQ-12c0d025",
+  "TB": "ZQ-f3a84c35",
+  "TC": "ZQ-6f5d11c5",
+  "TD1": "ZQ-4113a287",
+  "TD2": "ZQ-76d82222",
+  "TN": "ZQ-44e907a1"
+ }
+}

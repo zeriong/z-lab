@@ -1,0 +1,37 @@
+{
+ "case": "rR",
+ "host": "claude",
+ "cli": "2.1.308 (Claude Code)",
+ "records": {
+  "TA": [
+   "attachment/nested_memory",
+   "api-request-blob/tool_result",
+   "assistant/-"
+  ],
+  "TB": [],
+  "TC": [
+   "attachment/instructions",
+   "api-request-blob/-",
+   "assistant/-"
+  ],
+  "TD1": [],
+  "TD2": [],
+  "TN": []
+ },
+ "seen_line": "SEEN: ZQ-6247c7ff ZQ-24f2e49e",
+ "tools_touching_rules": 0,
+ "probe_events": [
+  {
+   "hook_event_name": "PostToolUse",
+   "tool_name": "Read",
+   "emitted": null
+  }
+ ],
+ "rc": 0,
+ "seconds": 11.1,
+ "session_id": "caa7159e-4dc2-4ae7-bde9-91f844ed2166",
+ "model": "claude-sonnet-5-5",
+ "cost_usd": 0.0422968,
+ "transcript_files": 2,
+ "hook_context_records": 0
+}

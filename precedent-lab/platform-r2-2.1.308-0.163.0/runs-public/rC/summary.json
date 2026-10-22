@@ -1,0 +1,53 @@
+{
+ "case": "rC",
+ "host": "claude",
+ "cli": "2.1.308 (Claude Code)",
+ "records": {
+  "TA": [],
+  "TB": [],
+  "TC": [
+   "attachment/instructions",
+   "api-request-blob/-",
+   "assistant/-"
+  ],
+  "TD1": [],
+  "TD2": [],
+  "TN": [],
+  "E0start": [
+   "attachment/hook_success",
+   "attachment/hook_additional_context",
+   "api-request-blob/-",
+   "user/tool_result",
+   "assistant/-"
+  ],
+  "E0end": [
+   "attachment/hook_success",
+   "user/tool_result",
+   "assistant/-"
+  ]
+ },
+ "seen_line": "SEEN: ZQ-334604c1 ZQ-e3341635 ZQ-f0499c30",
+ "tools_touching_rules": 0,
+ "probe_events": [
+  {
+   "hook_event_name": "PostToolUse",
+   "tool_name": "Read",
+   "emitted": {
+    "index": 0,
+    "chars": 10050
+   }
+  },
+  {
+   "hook_event_name": "PostToolUse",
+   "tool_name": "Bash",
+   "emitted": null
+  }
+ ],
+ "rc": 0,
+ "seconds": 16.1,
+ "session_id": "add72cee-30fe-4254-8760-70a0acd8f178",
+ "model": "claude-sonnet-5-5",
+ "cost_usd": 0.0805681,
+ "transcript_files": 2,
+ "hook_context_records": 2
+}

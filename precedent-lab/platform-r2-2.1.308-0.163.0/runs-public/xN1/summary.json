@@ -1,0 +1,28 @@
+{
+ "case": "xN1",
+ "host": "codex",
+ "cli": "codex-cli 0.163.0",
+ "records": {
+  "TA": [],
+  "TB": [],
+  "TC": [],
+  "TD1": [],
+  "TD2": [],
+  "TN": []
+ },
+ "seen_line": "",
+ "tools_touching_rules": null,
+ "probe_events": [],
+ "rc": 1,
+ "seconds": 2.9,
+ "model": "gpt-6.1-sol",
+ "rollout_files": 1,
+ "rollout_types": {
+  "session_meta": 1,
+  "event_msg": 5,
+  "response_item": 5,
+  "world_state": 1,
+  "turn_context": 1
+ },
+ "codex_home_removed": true
+}

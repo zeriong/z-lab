@@ -1,0 +1,3 @@
+`src/alpha.ts` contains one line: `export const alpha = 1;`
+
+SEEN: ZQ-334604c1 ZQ-e3341635 ZQ-f0499c30

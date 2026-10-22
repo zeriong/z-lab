@@ -1,0 +1,5 @@
+The file `src/tabs/big.ts` contains one line: `export const x = 1;`
+
+Beyond this prompt, I received three markers from the rule files that loaded after the read: ZQ-1ff2af2e, ZQ-1aab3e71 and ZQ-bd0658b8. The marker ZQ-29646bcb was in the original prompt, so I left it out.
+
+SEEN: ZQ-1ff2af2e ZQ-1aab3e71 ZQ-bd0658b8

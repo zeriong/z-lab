@@ -1,0 +1,26 @@
+{
+ "case": "rN",
+ "host": "claude",
+ "cli": "2.1.308 (Claude Code)",
+ "records": {
+  "TA": [],
+  "TB": [],
+  "TC": [
+   "attachment/instructions",
+   "api-request-blob/-"
+  ],
+  "TD1": [],
+  "TD2": [],
+  "TN": []
+ },
+ "seen_line": "SEEN: none",
+ "tools_touching_rules": 0,
+ "probe_events": [],
+ "rc": 0,
+ "seconds": 7.8,
+ "session_id": "5e70dd11-c937-41c5-af4f-ae0bacf061d7",
+ "model": "claude-sonnet-5-5",
+ "cost_usd": 0.0360117,
+ "transcript_files": 2,
+ "hook_context_records": 0
+}

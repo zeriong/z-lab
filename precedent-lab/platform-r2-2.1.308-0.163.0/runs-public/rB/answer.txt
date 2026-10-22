@@ -1,0 +1,7 @@
+Output of `cat src/tabs/a.ts`:
+
+```ts
+export const x = 1;
+```
+
+SEEN: ZQ-45f559a7
