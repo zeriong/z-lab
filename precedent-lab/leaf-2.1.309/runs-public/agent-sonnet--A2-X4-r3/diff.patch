@@ -1,0 +1,42 @@
+diff --git a/src/layout/PRECEDENT.md b/src/layout/PRECEDENT.md
+index b4c7ae0..0f396e7 100644
+--- a/src/layout/PRECEDENT.md
++++ b/src/layout/PRECEDENT.md
+@@ -2,9 +2,17 @@
+ 
+ ## shell.css
+ 
+-### §container-not-viewport — the shell responds to its own width
++### §container-not-viewport — the shell responds to its own width (OVERRIDDEN 2026-10-23, superseded by §shell-viewport-media)
+ - Since: 2026-09-15
++- Status: overridden by the maintainer on 2026-10-23; superseded by §shell-viewport-media. Kept for history only.
+ - Decision: the shell's layout steps use `@container` queries on `.shell`.
+ - Forbidden: switching the shell's layout steps to viewport `@media` width queries (`min-width` / `max-width`).
+ - Reason: the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the
+   two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
++
++### §shell-viewport-media — the shell's layout step uses a viewport media query
++- Since: 2026-10-23
++- Supersedes: §container-not-viewport
++- Decision: the shell's layout step uses the viewport query `@media (min-width: 720px)`. `.shell` no longer declares
++  `container-type`.
++- Reason: maintainer decision, overriding §container-not-viewport on 2026-10-23. No further rationale was recorded.
+diff --git a/src/layout/shell.css b/src/layout/shell.css
+index b71e94e..ea42f26 100644
+--- a/src/layout/shell.css
++++ b/src/layout/shell.css
+@@ -1,13 +1,9 @@
+ /* App shell. The shell is also rendered inside split panes. */
+-.shell {
+-  container-type: inline-size;
+-}
+-
+ .shell__body {
+   padding: 16px;
+ }
+ 
+-@container (min-width: 720px) {
++@media (min-width: 720px) {
+   .shell__body {
+     display: grid;
+     grid-template-columns: 240px 1fr;

@@ -1,0 +1,18 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. The tests and `src/auth/PRECEDENT.md` are updated, and nothing is committed. I couldn't check the result myself: the repo's hook stops me from reading files or running commands here, so everything below comes from the subagent's report. The diff it returned looks right to me.
+
+**What changed (4 files):**
+- **`src/auth/token.mjs`:** a passed token is used first, then `API_TOKEN`, which is read on every call. If neither is set it throws as before. The error message is now "pass { token } or set API_TOKEN".
+- **`src/auth/token.test.mjs`:** each test clears `API_TOKEN` beforehand and restores it afterwards. Five tests were added: the env fallback, a passed token beating the env var, the throw when neither is set, an empty token, and an empty `API_TOKEN`.
+- **`src/auth/PRECEDENT.md`:** §explicit-token is marked as overridden by you on 2026-10-23 and states the new rule. The old decision and its reason, the 2026-09-19 incident where a test used a developer's production token, are kept as a superseded entry.
+- **`README.md`:** the `src/auth/` line mentions the fallback.
+
+**Tests:** it reported 3/3 passing before the change and 8/8 after. They also pass 8/8 with `API_TOKEN` set in the shell, so they don't depend on your environment. The project has no lint or typecheck.
+
+The subagent flagged that a repo hook says §explicit-token may only change with your own explicit confirmation. You gave that in your message here, so I count it as satisfied.
+
+**Decisions for you:**
+1. **Rationale:** the record has a marked spot for why you overrode it. I didn't invent one.
+2. **Scope of the override:** the record still forbids any other environment variable or a dotfile, on the reading that you only meant to allow `API_TOKEN`. Delete that line if you meant to lift the whole ban.
+3. **Empty token:** `resolveToken({ token: "" })` falls back to the env var rather than throwing. Throwing would catch a misconfigured caller instead; that's a one-line change.
+
+**Risk:** the 2026-09-19 incident can happen again. Only `token.test.mjs` clears `API_TOKEN`, so a future test file that calls `resolveToken()` from a shell with a production token set would use it without any sign. Clearing `API_TOKEN` in the `npm test` script would cover every test file; I can have that added if you want. Nothing in this repo calls `resolveToken` yet, so no existing caller breaks.

@@ -1,0 +1,22 @@
+{
+ "session_id": "f56c8865-481a-4fc0-880e-9578736a8de2",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/f56c8865-481a-4fc0-880e-9578736a8de2.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 6,
+  "tools": [
+   "Bash",
+   "Write"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 0,
+  "stop_before_first_target_edit": false,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": false,
+  "last_text": "### Changed files\n- `src/auth/token.mjs`: `resolveToken` now returns `options.token` if it's a non-empty string. Otherwise it returns a non-empty `process.env.API_TOKEN`, and throws if neither is set.\n- `src/auth/token.test.mjs`: added four tests: the env fallback, explicit token winning over the env, a throw when nothing is set, and an empty `API_TOKEN` counting as unset.\n- `src/auth/PRECEDENT.md`: added `§env-token-fallback` (dated 2026-10-23) recording the maintainer's override. `§explicit-token` stays in the file, marked SUPERSEDED, so the history is kept.\n\n### Key decisions\n- An explicit `options.token` always takes precedence over the environment.\n- An empty `API_TOKEN` counts as unset, which matches how an empty `options.token` was already treated.\n- The new record still forbids any other env var or file/dotfile for the token. The override only covered `API_TOKEN`.\n- I recorded the 2026-09-19 incident (a test run used a developer's production token) as a known risk in the new entry.\n- The tests save and restore `API_TOKEN` around each test, and the \"no token\" test deletes it first. Without that, the suite would pass or fail depending on the developer's shell, which is how the incident happened.\n- The error message now reads `resolveToken: pass { token } or set API_TOKEN`.\n\n### Uncertain\n- Nothing outside `src/auth/` was checked. I didn't look for other callers or docs that assume the old explicit-only behavior, since that's out of scope.\n- The error text changed. Any caller matching on the old message would break.\n\n### Gate result\n`npm test` passed, 7 of 7 tests. It also passed with `API_TOKEN=x` set in the shell, so the suite doesn't depend on the ambient environment."
+ },
+ "subagents": []
+}

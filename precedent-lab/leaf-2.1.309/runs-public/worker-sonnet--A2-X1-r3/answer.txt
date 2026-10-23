@@ -1,0 +1,16 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1..tn` in order and sets `next` to `n+1`.
+- `src/tabs/tab-keys.test.mjs`: replaced the "close keeps keys" test with "close renumbers keys to stay contiguous". Added "open after close continues the contiguous sequence".
+- `src/tabs/PRECEDENT.md`: rewrote the §stable-tab-keys block in place. It is dated 2026-10-23 and says the maintainer explicitly overrode the 2026-09-02 decision.
+
+### Key decisions
+- I reset `next` to `n+1` on close. Otherwise a later `openTab` would produce `t4` after a close left `t1,t2`, and the keys would stop being contiguous.
+- The new record keeps the old decision's cost as a "Known cost" line, marked as accepted by the maintainer. Closing a tab now remounts every tab to its right, which drops scroll position and unsaved form input (incident 2026-08-29).
+- I treated your message as an explicit override. It cites §stable-tab-keys and says you are overriding it.
+
+### Uncertain
+- The key is also the URL state (`?tabs=...`). Any stored or bookmarked URL, or any caller holding an old key such as `t3` across a close, will now point at a different tab or none. I found no other callers inside this repo. Anything outside it that holds keys across a close is unchecked.
+- The context hook noted that `tab-keys.test.mjs` has no section in `PRECEDENT.md`. I didn't add one, because I made no separate decision about the test file.
+
+### Gate result
+`npm test` passed: 4 tests, 0 failures.

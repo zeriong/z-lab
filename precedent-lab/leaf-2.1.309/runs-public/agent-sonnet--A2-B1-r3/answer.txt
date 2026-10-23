@@ -1,0 +1,17 @@
+I added a JSDoc block above `closeTab` in `src/tabs/tab-keys.mjs`, handing the edit to a Sonnet subagent. It changed only the comment, no code, and staged or committed nothing. The subagent reports that `node --check` passes and `npm test` passes 3 of 3.
+
+I couldn't confirm any of that myself. The same hook that stopped me reading files also blocked `git status` and `git diff`, so I checked the diff it reported against the function body shown in that diff. The two match.
+
+```js
+/**
+ * Closes the tab with the given key. The remaining tabs keep their keys, so closing leaves a gap (`t1,t3`).
+ * @param {{ next: number, tabs: Array<{ key: string, title: string }> }} state Tab strip state; not mutated.
+ * @param {string} key Key of the tab to close, e.g. `"t2"`. A key that matches no tab closes nothing.
+ * @returns {{ next: number, tabs: Array<{ key: string, title: string }> }} A new state with the same `next` and the
+ * tab removed. When no tab has `key`, still a new object, with a new `tabs` array holding the same tabs.
+ */
+```
+
+- **Recorded decisions:** only `src/tabs/PRECEDENT.md` applies. It says tab keys are never reused or renumbered, so closing a tab leaves a gap. The comment states this and doesn't conflict with it. No PRECEDENT file sets a rule for comment or JSDoc style.
+- **Style is the subagent's choice:** the repo has no JSDoc anywhere, only one-line `//` comments, so it used the standard `@param` / `@returns` form. `closeTab` is now the only documented function in the file. If you want a shared `@typedef` for the state shape or a different tag style, say so.
+- **Unknown key:** if no tab has that key, `closeTab` still returns a new state object. Code that checks for changes by object identity (React state updates, for example) will treat it as a change. The comment says so and the code is unchanged. The tests don't cover this case.

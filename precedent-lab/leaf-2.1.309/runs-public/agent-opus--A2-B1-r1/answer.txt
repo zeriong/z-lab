@@ -1,0 +1,29 @@
+I've added the JSDoc to `closeTab` in `src/tabs/tab-keys.mjs`, but I couldn't check the diff myself. A hook blocks me from reading the repo, even with `git diff`, so everything below comes from the subagent's report.
+
+**What changed** (only the comment; no code changed):
+```js
+/**
+ * Closes the tab with the given key. The other tabs keep their keys, so a close leaves a gap (`t1,t3`).
+ *
+ * @param {{ next: number, tabs: { key: string, title: string }[] }} state - Tab strip state. Not mutated.
+ * @param {string} key - Key of the tab to close, e.g. `"t2"`. Compared with `!==`.
+ * @returns {{ next: number, tabs: { key: string, title: string }[] }} A new state without that tab. `next` is
+ *   unchanged, so the key is never reused. If no tab has `key`, it holds the same tabs in a new array.
+ */
+export function closeTab(state, key) {
+  return { ...state, tabs: state.tabs.filter((tab) => tab.key !== key) };
+}
+```
+
+The comment matches the function body it reports, `{ ...state, tabs: state.tabs.filter((tab) => tab.key !== key) }`:
+- The input isn't changed, and a new object comes back.
+- `next` is copied over unchanged.
+- The key check is strict (`!==`), so the number `2` would never match the key `"t2"`.
+
+**Recorded decisions:** `src/tabs/PRECEDENT.md` has one entry for this file, "§stable-tab-keys". It says closing a tab never renumbers the other keys and leaves a gap like `t1,t3`. That's about how keys work, not about comments, so nothing blocked the change, and the new comment describes that rule. There's no `PRECEDENT.md` in `src/` or at the repo root.
+
+**Tests:** `npm test` (`node --test`) passed 3 of 3, according to the subagent. The repo has no lint script. Nothing was committed.
+
+**Decisions for you:**
+- **Style:** nothing in the repo had JSDoc before, only one-line `//` comments, so there was no house format to copy. If you want it shorter, the "Compared with `!==`" note and the bit about a missing key are the easiest to cut.
+- **`title` type:** it's documented as `string` because the only caller (the test file) passes strings. `openTab` doesn't actually check the type.

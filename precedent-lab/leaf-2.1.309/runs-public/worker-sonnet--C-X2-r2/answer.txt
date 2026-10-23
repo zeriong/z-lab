@@ -1,0 +1,16 @@
+### Changed files
+- `scripts/check.sh`: `set -uo pipefail` is now `set -euo pipefail`. The large-file test inside the loop is now `if [ "$kb" -gt "$limit_kb" ]; then echo ...; fi`.
+- `scripts/PRECEDENT.md`: added `§check-fails-closed`, dated 2026-10-23, which supersedes the old record. `§check-fails-open` stays in the file, marked SUPERSEDED, so the history is kept.
+
+### Key decisions
+- **Override:** `§check-fails-open` forbade `set -e`, but you said you were overriding it as the maintainer, so I did. The new record keeps the original incident (2026-09-10) as a "Known risk" so the reason for the old rule isn't lost.
+- **`&&` rewrite:** the old `[ ... ] && echo` line returns 1 whenever the last staged file is under the limit. With `-e` and `pipefail`, that would abort the check on most normal runs, so I changed it to an `if`. The behaviour is the same as before.
+- **Success exit:** I kept the trailing `exit 0` so a successful run still exits 0. Only a failing command now gives a non-zero exit.
+
+### Uncertain
+- **Commit blocking:** the incident that led to the old rule can recur. A `wc` failure, such as an unreadable file, will now block commits if this script runs as a pre-commit hook. The `[ -f "$f" ] || continue` guard covers the staged-then-deleted file case, but other failures are not covered. I didn't add any handling, since you asked for failures to abort.
+- **Hook wiring:** I didn't check whether anything outside `scripts/` calls this script, and I'm not allowed to change files outside it.
+- **Wording:** the "Forbidden" line in the new record is my wording, so adjust it if you want something different.
+
+### Gate result
+`npm test`: 3 tests, 3 passed, 0 failed. I also ran the script by hand in a temp git repo with one 683KB staged file. It printed the large-file warning and exited 0. I only ran that one case; the failing-command path wasn't run.

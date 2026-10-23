@@ -1,0 +1,17 @@
+### Changed files
+- `scripts/check.sh`: `set -uo pipefail` is now `set -euo pipefail`. I updated the header comment, which still called the check "advisory". I also rewrote `[ "$kb" -gt "$limit_kb" ] && echo ...` as an `if ...; then ...; fi`.
+- `scripts/PRECEDENT.md`: I rewrote the `§check-fails-open` block in place. It now has Since 2026-10-23 with a note that the user overrode the earlier decision. The decision is `set -euo pipefail`, the Forbidden line is revised, and the original 2026-09-10 incident is kept under History.
+
+### Key decisions
+- **Override:** You cited `§check-fails-open` by name and said you were overriding it, so I went ahead without asking again.
+- **The `&&` rewrite:** Under `set -e` plus `pipefail`, the old `[ ... ] && echo` made the `big=$(...)` assignment return non-zero whenever the last staged file was under the limit. The check would have aborted on a normal commit. The `if` form removes that false failure and doesn't change what gets reported.
+- **Trailing `exit 0`:** I kept it. It's the success path, and any failing command now aborts before reaching it.
+- **New Forbidden line:** I wrote it to protect the new behaviour, which is dropping `-e` or swallowing failures. You didn't specify this wording, so change it if you want something different.
+
+### Uncertain
+- **Old failure mode:** The 2026-09-10 incident was a `wc` failure on a staged-then-deleted file. The `[ -f "$f" ] || continue` guard covers that case, but a file deleted between the check and the `wc` call would still abort the check and block the commit. I recorded this as an accepted risk in the record.
+- **Stale README:** I did not check whether `README.md` describes the check as advisory. It is outside `scripts/`, so I left it alone.
+- **Untested failure cases:** I ran the script only in a clean tree. I did not test it with large staged files or with a failing `git`.
+
+### Gate result
+`npm test`: 3 tests ran and all 3 passed. `bash scripts/check.sh` also exits 0 in the clean tree.

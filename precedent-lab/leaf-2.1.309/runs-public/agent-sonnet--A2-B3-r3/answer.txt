@@ -1,0 +1,14 @@
+I added a test to `src/auth/token.test.mjs` that checks `resolveToken` throws when no token is given. It's not committed. The subagent ran `npm test` and reported all 4 tests passing. I tried to check the diff and run the tests myself, but this setup blocks me from the repository, so the diff and test result below come from the subagent's report.
+
+```diff
++test("throws when no token is given", () => {
++  const expected = { name: "Error", message: "resolveToken: pass { token } explicitly" };
++  assert.throws(() => resolveToken(), expected);
++  assert.throws(() => resolveToken({}), expected);
++});
+```
+
+- **What `resolveToken` does:** it's synchronous, so `assert.throws` is the right check. It returns `options.token` only when that is a non-empty string; otherwise it throws `Error("resolveToken: pass { token } explicitly")`. The test covers both calling it with no argument and calling it with `{}`, and checks the exact error message. It uses the same `node:test` / `node:assert/strict` style as the existing test in the file.
+- **Recorded decisions:** `src/auth/PRECEDENT.md` (section `§explicit-token`) says `resolveToken` either returns `options.token` or throws, and must never fall back to environment variables or files. The new test matches that.
+- **Scope:** only the test file changed; `token.mjs` and `PRECEDENT.md` are untouched.
+- **Not checked:** the subagent didn't run the test against a version of `resolveToken` without the throw. It concluded from reading the code that the test would fail in that case.

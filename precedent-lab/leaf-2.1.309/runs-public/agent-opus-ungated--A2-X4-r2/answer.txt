@@ -1,0 +1,16 @@
+The shell's layout step now uses a plain viewport `@media (min-width: 720px)` query, and the decision record says you overrode the old rule. A subagent made the changes. I checked the diff myself and ran `npm test`, which passed 3 of 3 (there are no CSS tests, so that only shows nothing else broke). Nothing is committed.
+
+**`src/layout/shell.css`**
+- `@container (min-width: 720px)` is now `@media (min-width: 720px)`, and the rules inside it are unchanged.
+- I also removed `container-type: inline-size;` from `.shell`, which you didn't ask for. It existed only for the container query, and a search found nothing else that uses it. That left the `.shell` rule empty, so it's gone; the class can stay in the markup. If you'd rather keep `.shell` as a container, it's a one-line revert.
+
+**`src/layout/PRECEDENT.md`**
+- The `§container-not-viewport` entry is replaced in place by `§viewport-not-container — the shell's layout step follows the viewport width`, dated 2026-10-23.
+- A new `Overrode:` line says you explicitly overrode `§container-not-viewport` (in force since 2026-09-15) on 2026-10-23.
+- The record keeps the 2026-09-14 incident history and now says that trade-off is accepted.
+- The `Forbidden:` line says only that the layout step shouldn't go back to `@container` without your sign-off.
+- Nothing else in the repo referred to the old name.
+
+**Decision for you:** you didn't give a reason for the override, so the record says "No reason for the override was recorded." rather than making one up. If you tell me the reason, I'll put it in that line.
+
+The issue the old rule guarded against is back. Inside a split pane narrower than 720px on a screen wider than 720px, the shell will use the two-column layout. That's what clipped the sidebar in the 2026-09-14 incident.

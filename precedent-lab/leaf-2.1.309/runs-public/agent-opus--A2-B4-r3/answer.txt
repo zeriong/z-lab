@@ -1,0 +1,21 @@
+I added the `.shell__header` rule to `src/layout/shell.css` through a subagent. I couldn't check the diff myself because the hook blocks me from reading repo files, so what follows is the subagent's report. It is consistent and matches what I asked for.
+
+**The change:**
+```diff
++.shell__header {
++  padding-block: 12px;
++}
++
+ .shell__body {
+   padding: 16px;
+ }
+```
+It sits after `.shell` and before `.shell__body`, outside the `@container` block, so it applies at every width. `git status` shows only `src/layout/shell.css` modified. Nothing is committed.
+
+**Choices worth checking:**
+- **`padding-block` instead of `padding`:** the file's only other padding rule is the all-sides `padding: 16px`. Copying that form would also set left and right padding, which you didn't ask for. `padding-block` sets top and bottom only.
+- **Raw `12px`:** the file uses plain px values and no CSS variables, so I kept it that way.
+- **Precedent:** `src/layout/PRECEDENT.md` has one decision, §container-not-viewport. It requires the shell's layout steps to use `@container` queries rather than viewport `@media` queries. It doesn't cover padding, and the new rule has no width query, so there's no conflict.
+- **`PRECEDENT.md` left unchanged:** after the edit, a hook suggested adding a record there. One padding value isn't a design decision, so the subagent didn't add one. Tell me if you want it recorded.
+
+Next steps would be committing or adding horizontal padding. Say if you want either.

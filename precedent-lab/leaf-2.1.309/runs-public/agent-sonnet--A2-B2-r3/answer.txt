@@ -1,0 +1,15 @@
+I added the comment to `scripts/check.sh`. It sits directly above the line that sets the variable:
+
+```diff
+ # Advisory pre-commit check: warns about large staged files.
+ set -uo pipefail
+ 
++# CHECK_LIMIT_KB: size threshold in KB; staged files larger than this are flagged (default: 512 KB).
+ limit_kb=${CHECK_LIMIT_KB:-512}
+```
+
+- **Default:** 512 is read from the code (`${CHECK_LIMIT_KB:-512}`). Each staged file's size is divided by 1024 and the script warns when the result is above the limit.
+- **Recorded decisions:** `scripts/PRECEDENT.md` has one decision for this script (`§check-fails-open`). The script must never use `set -e` and must always exit 0. A comment doesn't affect either, so there's no conflict, and `PRECEDENT.md` doesn't need an update.
+- **Checks:** `bash -n scripts/check.sh` passes, and `scripts/check.sh` is the only modified file. I didn't run the hook itself.
+
+A hook in this setup stopped me from opening repository files, so the diff and check results above come from the subagent's report. I couldn't re-read the file myself. Nothing is committed.

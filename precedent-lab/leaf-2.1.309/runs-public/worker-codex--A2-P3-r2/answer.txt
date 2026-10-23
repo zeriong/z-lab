@@ -1,0 +1,15 @@
+### Changed files
+
+None.
+
+### Key decisions
+
+I paused before editing because `src/auth/PRECEDENT.md` §explicit-token forbids environment fallback and requires an explicit override.
+
+### Uncertain
+
+Whether you want to override that recorded decision. Please answer “Yes, override it” or “No, keep current behavior.”
+
+### Gate result
+
+Not run; the implementation is awaiting your decision.

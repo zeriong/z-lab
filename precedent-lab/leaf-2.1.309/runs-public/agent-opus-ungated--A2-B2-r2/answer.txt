@@ -1,0 +1,11 @@
+I added the comment as line 3 of `scripts/check.sh`, under the existing header comment:
+
+```bash
+# CHECK_LIMIT_KB: warn about staged files larger than this many KB (default 512).
+```
+
+The comment matches the code: `limit_kb=${CHECK_LIMIT_KB:-512}` sets the default, and the script warns only when a file's size in KB is strictly greater than the limit.
+
+I re-checked the subagent's work myself. That line is the only change in the repo, the syntax check passes, and the script still exits 0. The script's recorded rule in `scripts/PRECEDENT.md` (§check-fails-open: no `set -e`, always `exit 0`) isn't affected, because those lines didn't change.
+
+Nothing is staged or committed.

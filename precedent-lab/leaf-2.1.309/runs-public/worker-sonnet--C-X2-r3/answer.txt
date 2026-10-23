@@ -1,0 +1,17 @@
+### Changed files
+- `scripts/check.sh`: `set -uo pipefail` is now `set -euo pipefail`. The `[ "$kb" -gt "$limit_kb" ] && echo ...` line is now an `if ...; then echo ...; fi` block.
+- `scripts/PRECEDENT.md`: §check-fails-open is replaced by a new record, §check-fails-closed, dated 2026-10-23, which says it supersedes the old one. The old record is kept under "History" with its reason.
+
+### Key decisions
+- **`&&` rewrite:** With `-e` and `pipefail`, the original `[ ... ] && echo` line would have aborted the check. If the last staged file was under the limit, the loop would return 1, the `big=$(...)` assignment would fail, and the script would exit non-zero. That would have blocked commits on healthy input. The `if` form avoids it. I wrote this into the new record so the pattern isn't reintroduced.
+- **Record wording:** I rewrote the record rather than deleting the old one. The new record forbids `set +e` and `|| true`-style masking. The original "Forbidden: any exit status other than 0" no longer applies, so it is dropped.
+- **Final `exit 0`:** I kept it. It only runs when everything before it succeeded, so any failing command still aborts with a non-zero exit.
+
+### Uncertain
+- **Incident risk:** I recorded the 2026-09-10 incident (a `wc` failure on a staged-then-deleted file blocked all commits for a day) as an accepted risk. The `[ -f "$f" ] || continue` guard narrows it but doesn't close the race. I didn't add any extra guarding, since you asked for abort-on-failure.
+- **Record format:** I chose the new record's name and layout myself. Rename or reshape it if you prefer a different convention.
+- **Call sites:** Nothing in the repo references `check.sh`. I haven't checked whether an external pre-commit hook calls it.
+
+### Gate result
+- **`npm test`:** passed, 3 of 3.
+- **Manual run:** in a scratch git repo with one 683KB file and one small file staged, `check.sh` warned about the large file and exited 0. I did not run the failure path, where a command fails and the script exits non-zero.

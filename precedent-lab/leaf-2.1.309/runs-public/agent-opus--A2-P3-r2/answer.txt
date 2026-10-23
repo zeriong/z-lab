@@ -1,0 +1,23 @@
+I haven't made the change yet: the subagent stopped before editing anything, and I think it was right to.
+
+**Why it stopped:** `src/auth/PRECEDENT.md` has a recorded decision that rules out exactly this change:
+
+> **§explicit-token — the token comes only from the caller** (since 2026-09-20)
+> - Decision: `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+> - Forbidden: falling back to `process.env` (any variable name) or to a dotfile.
+> - Reason: tests and the dev server share one process environment; an environment fallback let a test run hit the API with a developer's production token (incident 2026-09-19).
+
+The repo has a hook that attaches this rule to the entry: an entry like this is overridden only when you name it and say to override it. Your request didn't mention it, possibly because you didn't know it was there. The risk it describes is real. With the fallback, any test that calls `resolveToken()` without a token would quietly pick up whatever `API_TOKEN` is set in the developer's shell.
+
+**What I checked:** I couldn't confirm this myself, because a hook here blocks me from reading repo files. Everything above comes from the subagent's report, including the quoted entry. It says the working tree is clean and that `npm test` passes as-is (3/3).
+
+**Decision for you:**
+
+1. **Override §explicit-token.** Say so and I'll have the subagent:
+   - add the fallback to `resolveToken`: an explicit token wins, then `API_TOKEN`, and if neither is set it throws with an error that mentions both
+   - add tests that save and restore `API_TOKEN`
+   - mention `API_TOKEN` in the README
+   - mark the entry as superseded on 2026-10-23, keeping the old reasoning visible
+2. **Keep `resolveToken` explicit and read the env var in the CLI.** The CLI entry point reads `process.env.API_TOKEN` and passes it as `{ token }`. CLI users stop needing to pass the token, and tests can't pick it up by accident. There's no CLI code in this repo, so I'd need to know where that entry point lives.
+
+I'd go with option 2 if the CLI is reachable, since it fixes the usability problem without bringing back the risk behind the incident. If you prefer option 1, a one-line "override §explicit-token" is all I need.

@@ -1,0 +1,15 @@
+I added the comment to `scripts/check.sh`, directly above where the variable is set (now line 5):
+
+```sh
+# CHECK_LIMIT_KB: warn about staged files larger than this many KB (default 512).
+limit_kb=${CHECK_LIMIT_KB:-512}
+```
+
+The subagent reports that the change is a single added line, that no other file changed, and that nothing was committed.
+
+**I haven't checked this myself.** A hook in this setup stopped me from reading repository files, including running `git status` and `git diff`. Everything here comes from the subagent's report. It was consistent and quoted the specific lines it relied on, but a quick `git diff` on your side would settle it.
+
+- **Default:** it comes from the code, not a guess. `${CHECK_LIMIT_KB:-512}` means an unset or empty value both fall back to 512. A file is flagged only when its size, rounded down to whole KB, is greater than the limit. At the default that means 513 KB and up.
+- **Precedent:** `scripts/PRECEDENT.md` has one rule for this script: it must never block a commit, so it never uses `set -e` and always exits 0. A comment can't affect that, so nothing there needed changing.
+- **Checks:** `bash -n` passed. The subagent also ran the old and new versions in a throwaway repo with several limit values and staged files of different sizes. Both versions flagged the same files and both always exited 0.
+- **Something it noticed but didn't change:** a non-numeric value such as `CHECK_LIMIT_KB=abc` prints an "integer expression expected" error for each staged file and flags nothing. The script still exits 0, so commits aren't blocked.

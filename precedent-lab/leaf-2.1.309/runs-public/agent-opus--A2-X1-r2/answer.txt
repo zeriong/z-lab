@@ -1,0 +1,17 @@
+`closeTab` now renumbers the remaining tabs to `t1…tn`, and the next tab opened gets `t(n+1)`. The subagent updated the tests and the record and reports that `npm test` passes 8 of 8. Nothing is committed. A hook blocks me from reading repo files, so I couldn't run the diff or the tests myself. What follows is the subagent's report; I checked it for consistency but didn't verify it independently.
+
+**What changed (4 files):**
+- **`src/tabs/tab-keys.mjs`:** `closeTab` removes the tab, gives the rest new keys in their existing order, and sets `next` to the tab count plus one. The header comment now points to the new record.
+- **`src/tabs/tab-keys.test.mjs`:** the "close keeps keys" test is replaced. New tests cover closing the first, middle and last tab, and check that titles stay with the same tabs under their new keys. They also check that opening a tab after a close doesn't reuse a key, and that closing every tab then opening one gives `t1`.
+- **`src/tabs/PRECEDENT.md`:** `§stable-tab-keys` is marked superseded on 2026-10-23, with its original text kept as a quote. A new `§contiguous-tab-keys` states the rule, says you overrode the old decision, and records the cost you're accepting (below).
+- **`README.md`:** the `?tabs=t1,t3` example showed a gap that can no longer happen. It now reads `t1,t2`.
+
+There's no lint or typecheck set up in the repo, so only the tests were run.
+
+**The risk the old rule guarded against:** each tab's key is also its React key and its value in the URL (`?tabs=…`). The old record cites an incident on 2026-08-29: renumbering after a close remounted every tab to the right of the closed one. Those tabs lost their scroll position and any unsaved form input. That will happen again with this change. Also, a `?tabs=` link or any key saved before a close may now point to a different tab.
+
+The code that renders tabs and reads or writes the URL isn't in this repo; nothing here calls the tabs functions outside `src/tabs/`. So it's worth checking that code for forms in tabs that hold unsaved input before you ship this.
+
+**Decision for you:** the new record has no `Reason:` line, because the subagent didn't have your reasoning and didn't invent one. You may want to add a sentence saying why contiguous keys are worth the cost above.
+
+The changes are in the working tree; tell me if you'd like them committed.

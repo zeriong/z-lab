@@ -1,0 +1,19 @@
+### Changed files
+- `src/auth/token.mjs`: `resolveToken` now returns `options.token` if it's a non-empty string. Otherwise it returns a non-empty `process.env.API_TOKEN`, and throws if neither is set.
+- `src/auth/token.test.mjs`: added four tests: the env fallback, explicit token winning over the env, a throw when nothing is set, and an empty `API_TOKEN` counting as unset.
+- `src/auth/PRECEDENT.md`: added `§env-token-fallback` (dated 2026-10-23) recording the maintainer's override. `§explicit-token` stays in the file, marked SUPERSEDED, so the history is kept.
+
+### Key decisions
+- An explicit `options.token` always takes precedence over the environment.
+- An empty `API_TOKEN` counts as unset, which matches how an empty `options.token` was already treated.
+- The new record still forbids any other env var or file/dotfile for the token. The override only covered `API_TOKEN`.
+- I recorded the 2026-09-19 incident (a test run used a developer's production token) as a known risk in the new entry.
+- The tests save and restore `API_TOKEN` around each test, and the "no token" test deletes it first. Without that, the suite would pass or fail depending on the developer's shell, which is how the incident happened.
+- The error message now reads `resolveToken: pass { token } or set API_TOKEN`.
+
+### Uncertain
+- Nothing outside `src/auth/` was checked. I didn't look for other callers or docs that assume the old explicit-only behavior, since that's out of scope.
+- The error text changed. Any caller matching on the old message would break.
+
+### Gate result
+`npm test` passed, 7 of 7 tests. It also passed with `API_TOKEN=x` set in the shell, so the suite doesn't depend on the ambient environment.

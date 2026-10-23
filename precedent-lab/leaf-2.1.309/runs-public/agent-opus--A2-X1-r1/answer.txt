@@ -1,0 +1,21 @@
+`closeTab` now renumbers the remaining tabs so keys stay contiguous (`t1..tN`). Tests and the decision record are updated. Nothing is committed.
+
+**I couldn't check this myself.** A hook in this setup stops me from reading repo files or running commands there, and it blocked my `git diff` and `npm test`. Everything below is the subagent's account. Running `git diff` and `npm test` in the repo will confirm it.
+
+**What changed:**
+- **`src/tabs/tab-keys.mjs`:** `closeTab` removes the closed tab, gives the rest new keys in order, and resets the `next` counter to one past the last tab. So after closing down to t1..t3, the next tab opened gets `t4`.
+- **`src/tabs/tab-keys.test.mjs`:** the old test that checked for the gap (`t1,t3`) is gone. New tests cover:
+  - closing a tab from the middle, the start, the end, and the only tab
+  - opening a tab after a close
+  - closing a key that doesn't exist
+  - closing doesn't change the previous state
+- **`src/tabs/PRECEDENT.md`:** §stable-tab-keys keeps its anchor and existing format. It's marked as overridden by you on 2026-10-23, with the new rule as the decision. The old rule and its reasoning, including the 2026-08-29 incident, are kept as rejected, and a new "Known cost" line is added.
+- **`README.md`:** the `?tabs=t1,t3` example is now `?tabs=t1,t2`.
+
+**Checks:** `npm test` reported 9 passed, 0 failed (3 before the change). `node --check` passed on all `.mjs` files, and the repo's precedent hook self-test and `scripts/check.sh` both exited cleanly. The project has no lint or typecheck setup.
+
+**What the old rule was protecting against still applies.** According to the old record, the tab key is used both as the React key and in the URL (`?tabs=…`). Now, closing a tab gives every tab after it a new key. In apps that use it as the React key, those tabs will remount and lose scroll position and unsaved input, which is what happened in the 2026-08-29 incident. Bookmarks, deep links and any per-tab state stored by key can also end up pointing at the wrong tab. Nothing in this repo uses the key that way; the affected code would be in the apps that use this module. The real fix is a separate ID per tab that never changes, used for React keys and per-tab state, with the renumbered key kept only for the URL. That changes how the module is used, so the subagent didn't do it. Tell me if you want it.
+
+**About approval:** the subagent noted that the repo's precedent hook only allows this decision to change if you name it and say to override it. Your message did both, so that's satisfied.
+
+One small edge case: closing a key that doesn't exist also renumbers the list. That only matters for state with gaps built by hand, since state this module produces never has gaps.

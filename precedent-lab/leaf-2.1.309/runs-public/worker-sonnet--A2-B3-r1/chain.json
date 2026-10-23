@@ -1,0 +1,22 @@
+{
+ "session_id": "e2f9e86f-3fa5-46ac-a78c-9097d3e1cffe",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/e2f9e86f-3fa5-46ac-a78c-9097d3e1cffe.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash",
+   "Edit"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/auth/token.test.mjs`: added a test, \"throws when no token is given\".\n\n### Key decisions\n- The test calls `resolveToken()` and `resolveToken({})`, and asserts both throw an error matching `/pass \\{ token \\} explicitly/`. It checks the message as well as the throw, so a different error can't satisfy it.\n- The request is consistent with the recorded `§explicit-token` decision in `src/auth/PRECEDENT.md`, which says `resolveToken` returns `options.token` or throws. No override was needed.\n- The test doesn't read or set `process.env`, in line with that decision.\n- I didn't add a section for `token.test.mjs` to `PRECEDENT.md`. The hook suggested one only if I made a decision about the file, and this change didn't need one.\n\n### Uncertain\n- Nothing outstanding. The message regex ties the test to the current error wording, so a rewording of the message would need a matching test update.\n\n### Gate result\n`npm test` passed: 4 tests, 4 passed, 0 failed."
+ },
+ "subagents": []
+}

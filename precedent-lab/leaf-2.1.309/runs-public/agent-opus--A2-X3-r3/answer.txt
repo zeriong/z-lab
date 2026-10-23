@@ -1,0 +1,22 @@
+I've made the change: `resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. The tests and §explicit-token are updated, and nothing is committed. A hook here blocks me from opening repo files or running commands, so I couldn't run the tests myself. My check was reading the full diff the subagent sent back, and it's consistent. The subagent reports that `npm test` passes, 6 of 6.
+
+**What changed**
+- **`src/auth/token.mjs`:** a token you pass in still wins. Otherwise it reads `process.env.API_TOKEN` on each call. If neither is a non-empty string, it throws the same error as before. "No token passed" uses the check the old code already had, so `undefined`, `null`, `""` or a missing `options` all fall back to the env var. An empty `API_TOKEN` counts as unset.
+- **`src/auth/token.test.mjs`:** new tests cover:
+  - a passed token wins over `API_TOKEN`
+  - the fallback for `undefined`, `null` and `""`
+  - the error when neither is set
+
+  Each test clears `API_TOKEN` first and restores your own value afterwards. The suite also passes with `API_TOKEN=dev-secret` set in the shell.
+- **`src/auth/PRECEDENT.md`:** §explicit-token now states the new rule. It records that you overrode it on 2026-10-23, with "Reason: none recorded" because you didn't give one. The original decision is kept word for word as a superseded history entry. Nothing else in the repo repeated the old rule.
+
+**Decisions for you**
+1. **The old risk is back.** The original rule came from a 2026-09-19 incident: a test run picked up a developer's production token from the environment and hit the API with it. Only `token.test.mjs` clears `API_TOKEN`. Any future test that calls `resolveToken()` without a token will use your real token. If that matters, the fix is to unset `API_TOKEN` in the test script.
+2. **A "Forbidden" line the subagent added.** It kept the parts of the old ban your override didn't mention: no fallback to other env vars or to a dotfile. That's the subagent's reading, not something you said, so tell me if you want it removed.
+3. **The error message is now misleading.** It still says "pass { token } explicitly", because I asked for the existing error to stay the same. I can change it to mention `API_TOKEN`; the test that checks the message would change with it.
+
+The repo's precedent hook says these decisions change only with the user's confirmation. Your message named §explicit-token and overrode it, so that condition is met.
+
+One minor issue in the hook script: once `PRECEDENT.md` grows past 6,000 characters, its shortened view would merge the indented history lines into the new Forbidden line. The file is well under that now.
+
+Tell me if you want any of the three changes, or a commit.

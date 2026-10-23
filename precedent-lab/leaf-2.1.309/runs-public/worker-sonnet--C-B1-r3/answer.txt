@@ -1,0 +1,13 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: added a JSDoc block to `closeTab` with `@param` entries for `state` and `key` and an `@returns`.
+
+### Key decisions
+- The doc spells out the `{ next, tabs }` state shape instead of using a typedef. The file has no typedefs, and I didn't want to add a new construct.
+- The comment says that closing leaves a gap, that `next` is unchanged, and that closed keys are never reused. This follows `§stable-tab-keys` in `src/tabs/PRECEDENT.md`, so the doc doesn't suggest that keys are renumbered.
+- I didn't add a `PRECEDENT.md` entry. A doc comment records no new decision, and the existing entry already covers this behavior.
+
+### Uncertain
+- The `@param`/`@returns` text says an unknown key removes nothing and that `state` isn't mutated. I got both from reading the `filter` implementation, and no test covers them.
+
+### Gate result
+`npm test` passed: 3 tests, 3 pass, 0 fail.

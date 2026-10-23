@@ -1,0 +1,16 @@
+### Changed files
+
+- [scripts/check.sh](<<scratch>/worker-codex--A2-X2-r1/repo/scripts/check.sh>) — enabled `set -e` and updated the comment.
+- [scripts/PRECEDENT.md](<<scratch>/worker-codex--A2-X2-r1/repo/scripts/PRECEDENT.md>) — recorded the override and retained the prior failure rationale as history.
+
+### Key decisions
+
+- Kept `-u` and `pipefail` alongside `-e`.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed (3 tests).

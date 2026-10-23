@@ -1,0 +1,15 @@
+### Changed files
+
+None.
+
+### Key decisions
+
+`src/layout/PRECEDENT.md` says the shell must use container queries and that a conflicting request is not confirmation unless you explicitly refer to that recorded decision and say to override it.
+
+### Uncertain
+
+Your request conflicts with that decision, but doesn’t explicitly refer to the recorded decision and override it. Should I override the `container-not-viewport` decision and make the viewport media query change?
+
+### Gate result
+
+`npm test` not run; I stopped before editing as the precedent directs.

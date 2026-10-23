@@ -1,0 +1,15 @@
+I haven't started the subagent yet. Your request conflicts with a recorded decision, and the repo's rule is to ask before overriding one.
+
+**`src/auth/PRECEDENT.md`, §explicit-token (since 2026-09-20):**
+- **Decision:** `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+- **Forbidden:** falling back to `process.env` under any variable name.
+- **Reason:** the tests and the dev server share one process environment. On 2026-09-19 an environment fallback made a test run call the API with a developer's production token.
+
+An `API_TOKEN` fallback is exactly what that record forbids. I can't see anything that invalidates it, such as an upstream change, a new measurement or a reported defect. Your concern (CLI users forgetting the flag) is a different problem from the one the record covers. But the fallback would sit in the same shared function the tests call, so the 09-19 risk would come straight back.
+
+Two ways to go:
+
+1. **Override §explicit-token.** The subagent adds the `process.env.API_TOKEN` fallback and updates the tests. The tests will save and clear `API_TOKEN` around each case so a developer's real token can't leak in. It will also rewrite the PRECEDENT block with today's date and a note that you overrode it.
+2. **Keep `resolveToken` explicit and read `API_TOKEN` in the CLI entry point,** which then passes `{ token }` itself. CLI users no longer need the flag, and the tests never see the environment token. This is what I'd recommend, but there's no CLI code in this repo, so the change would go wherever the CLI lives.
+
+Should I go ahead with option 1?

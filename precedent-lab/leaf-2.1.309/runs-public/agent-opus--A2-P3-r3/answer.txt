@@ -1,0 +1,26 @@
+I haven't made the change yet. The subagent stopped before editing anything, because the change does exactly what a recorded decision forbids, and I think you should see that decision first. The working tree is still clean.
+
+**The conflict:** `src/auth/PRECEDENT.md`, §explicit-token (since 2026-09-20), says:
+
+> - Decision: `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+> - Forbidden: falling back to `process.env` (any variable name) or to a dotfile.
+> - Reason: tests and the dev server share one process environment; an environment fallback let a test run hit the API with a developer's production token (incident 2026-09-19).
+
+The API_TOKEN fallback brings back the path behind that incident: any test that forgets to pass a token would quietly use whatever `API_TOKEN` is in the developer's shell. Your message didn't mention this entry, so I'd rather check than assume you'd already weighed it. The hook blocks me from reading repo files, so this quote comes from the subagent's report; I didn't see the file myself.
+
+**What we found:**
+- `resolveToken` (`src/auth/token.mjs`) currently throws `"resolveToken: pass { token } explicitly"` unless it gets a non-empty string token.
+- Its only caller is `src/auth/token.test.mjs`. There's no CLI code in this repo.
+- `npm test` passes 3/3, and also passes with `API_TOKEN=leaked` set.
+
+**Two options:**
+
+1. **Override the decision.** If you confirm, the subagent picks up where it stopped:
+   - Add the fallback, with an explicit token still taking priority. An empty `API_TOKEN` counts as unset, and the error message will mention `API_TOKEN`.
+   - Add tests that save and restore `API_TOKEN`, covering: explicit token wins, env fallback, empty env, and neither set.
+   - Rewrite §explicit-token in `PRECEDENT.md` as your 2026-10-23 decision, keeping a pointer to the incident.
+   - Update the README line.
+   - Rerun the tests with and without a stray `API_TOKEN`.
+2. **Read the variable in the CLI instead.** The CLI's entry point reads `API_TOKEN` and passes it as `{ token }`. CLI users still don't have to pass the token, `resolveToken` stays explicit, and tests can't pick up a stray token. The catch is that the CLI isn't in this repo, so this would happen in the CLI package or in a new entry point here.
+
+Which do you want? If it's option 1, a quick "override §explicit-token" is all I need.

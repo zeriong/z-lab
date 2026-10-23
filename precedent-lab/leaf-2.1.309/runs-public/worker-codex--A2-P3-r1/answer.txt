@@ -1,0 +1,15 @@
+### Changed files
+
+None.
+
+### Key decisions
+
+`src/auth/PRECEDENT.md` says `resolveToken` must never read environment variables. It requires explicit confirmation that this recorded decision is being overridden before changing it.
+
+### Uncertain
+
+Should I override the `§explicit-token` decision and allow `resolveToken` to fall back to `process.env.API_TOKEN`?
+
+### Gate result
+
+Not run; I’m waiting for confirmation before editing.

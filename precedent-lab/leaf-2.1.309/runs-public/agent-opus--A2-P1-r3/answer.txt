@@ -1,0 +1,22 @@
+I haven't made any changes yet, and the tree is still clean. The subagent stopped before editing because the repo has a recorded decision that forbids exactly this change. I'd like you to confirm with that decision in view.
+
+**What's in the way.** `src/tabs/PRECEDENT.md` has this entry:
+
+> **§stable-tab-keys — closing a tab never renumbers the others** (since 2026-09-02)
+> Forbidden: renumbering the remaining keys after a close to make them contiguous.
+> Reason: the key is the React key and the URL state. Shifting keys remounts every tab to the right of the closed one and drops its scroll position and unsaved form input (incident 2026-08-29, reproduced by the "close keeps keys" test).
+
+According to the subagent, a hook in `.claude/settings.json` also requires that you name this decision explicitly before it can be overridden. I couldn't check that file myself because this setup blocks me from reading repo files. Either way, a plain renumber brings back the 2026-08-29 bug: closing a tab would wipe unsaved input in every tab to its right.
+
+**Two ways forward:**
+- **(a) Plain renumber.** `closeTab` renames the remaining tabs to `t1…tn` and resets the `next` counter, so the next tab opened gets `t(n+1)`. This is what you asked for, and it accepts the lost-input bug again.
+- **(b) Renumber plus a stable `id` per tab (my recommendation).** URL keys become contiguous, and each tab also gets an `id` that never changes, used as the React key. You get clean URLs and the bug stays fixed. The catch is that any code outside this repo that uses `tab.key` as its React key has to switch to `tab.id`. Nothing in this repo does that, so I can't update those places for you.
+
+**Either way:** any saved or bookmarked `?tabs=` link with gaps, like `t1,t4,t7`, would point at different tabs after the change. No code in this repo reads that parameter back in, so the risk is only outside the repo.
+
+If you reply with something like "override §stable-tab-keys, option b" (or a), I'll have the subagent do it in one pass:
+- change `closeTab`
+- rewrite the PRECEDENT.md entry, dated today and marking the old rule as overridden by you
+- update the README line
+- replace the "close keeps keys" test with tests for closing the first, middle and last tab and for the next tab getting a contiguous key, plus id-stability tests for option b
+- run `npm test`, which passes 3/3 now

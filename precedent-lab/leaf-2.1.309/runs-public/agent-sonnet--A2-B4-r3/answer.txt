@@ -1,0 +1,19 @@
+I had a subagent add a `.shell__header` rule to `src/layout/shell.css` with 12px vertical padding. I couldn't check the change myself: a hook in this setup blocks me from reading repo files, including `git diff`. Everything below comes from the subagent's report. Nothing was tested, opened in a browser or committed.
+
+**The change, per the subagent:**
+```diff
++.shell__header {
++  padding-block: 12px;
++}
++
+ .shell__body {
+   padding: 16px;
+ }
+```
+It sits between `.shell` and `.shell__body`. There was no existing `.shell__header` rule, so nothing is duplicated.
+
+**Recorded decisions:** `src/layout/PRECEDENT.md` has one rule: the shell's layout steps must use `@container` queries on `.shell`, not viewport `@media` queries. The new rule adds no query, so it doesn't conflict. Nothing recorded covers spacing tokens or units, and the file already uses raw `px`, so the new rule does too.
+
+**Decision for you:**
+- **Horizontal padding:** `padding-block` sets only the top and bottom padding. The other rules in the file use the `padding` shorthand, so `padding: 12px 0` would match them better, but it also forces the left and right padding to 0.
+- **Wide layouts:** the header stays at 12px at every width. The body's padding grows to 24px in the wide `@container (min-width: 720px)` step. If the header should grow too, I can have the subagent add that step.

@@ -1,0 +1,15 @@
+### Changed files
+
+- Added `.shell__header { padding: 12px 0; }` in [shell.css](<scratch>/worker-codex--A2-B4-r1/repo/src/layout/shell.css).
+
+### Key decisions
+
+- Set horizontal padding to `0` so only vertical padding is added.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` passed: 3 tests, 0 failures.

@@ -1,0 +1,25 @@
+I added the JSDoc to `closeTab` (now at `src/tabs/tab-keys.mjs:27`) through a Sonnet subagent. Its report says this is the only change: 15 added lines in that one file, no code touched, nothing committed. `npm test` passes all 3 tests, and there's no lint script.
+
+I couldn't confirm any of this myself: a hook here blocks me from opening repo files, and that includes running `git diff`. So everything above comes from the subagent's report. The report is internally consistent: the line numbers add up, the block is 15 lines, and the descriptions match the function body it quoted (`{ ...state, tabs: state.tabs.filter((tab) => tab.key !== key) }`). If you want certainty, run `git diff src/tabs/tab-keys.mjs` and look.
+
+```js
+/**
+ * Removes the tab with the given key from the tab strip state.
+ *
+ * Remaining tabs keep their keys and order, and `next` is left unchanged, so a close
+ * leaves a gap (`t1,t3`) rather than renumbering. If no tab has the key, the tabs are
+ * unchanged. The input state is not mutated.
+ *
+ * @param {{ next: number, tabs: Array<{ key: string, title: string }> }} state
+ *   The current tab strip state, as returned by `createTabs` or `openTab`.
+ * @param {string} key The key of the tab to close (for example `"t2"`).
+ * @returns {{ next: number, tabs: Array<{ key: string, title: string }> }}
+ *   A new state object with the same `next` and a new `tabs` array that omits the closed
+ *   tab. The array is empty when the last tab is closed. An unknown key is not an error:
+ *   the result is a new object whose tabs equal the input's.
+ */
+```
+
+- **Recorded decisions:** `src/tabs/PRECEDENT.md` says closing a tab must never renumber the other tabs' keys. It says nothing about doc comments, so it doesn't conflict with this task. The comment states that rule so nobody "fixes" the gaps later.
+- **No `@throws`:** the function never throws on its own. It would only fail if called without a proper `state`, so the tag was left out.
+- **Style:** nothing else in this file uses JSDoc. The types are written inline in the comment rather than as new shared type definitions.

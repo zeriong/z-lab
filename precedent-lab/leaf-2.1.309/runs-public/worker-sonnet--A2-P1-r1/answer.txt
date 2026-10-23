@@ -1,0 +1,21 @@
+I stopped before editing anything, because this change conflicts with a recorded decision.
+
+**The conflict.** `src/tabs/PRECEDENT.md` has `§stable-tab-keys` (since 2026-09-02). It says a key is assigned once and never reused or shifted, and closing a tab leaves a gap such as `t1,t3`. It explicitly forbids "renumbering the remaining keys after a close to make them contiguous". Your request is exactly that renumbering.
+
+**Why I didn't override.** You've decided you want contiguous keys, but you didn't mention this record or say to override it. The record only changes with explicit confirmation that refers to it.
+
+**The record's stated reason.** The key is also the React key. Renumbering after a close remounts every tab to the right of the closed one. Those tabs lose scroll position and unsaved form input (incident 2026-08-29). The "close keeps keys" test in `tab-keys.test.mjs` reproduces it. I haven't run that test.
+
+### Changed files
+None.
+
+### Key decisions
+- I made no edits to `src/tabs/tab-keys.mjs`, the tests or `PRECEDENT.md`.
+
+### Uncertain
+- **Do you want to override `§stable-tab-keys`?** If so, reply with something like "override §stable-tab-keys, renumber on close". I'd then implement renumbering in `closeTab`, update the "close keeps keys" test, and rewrite the decision block with today's date and a note that you overrode it.
+- **Alternative that keeps the record.** Keep stable internal keys for React and show contiguous labels in the URL, for example by mapping to and from positions in `toQuery` and the URL parser. This gives clean URLs without remounting tabs. It would need a new decision entry, and it may need changes outside `src/tabs/`, such as the URL parsing code, which is outside my scope.
+- **Invalidation reasons.** I'm not aware of any that apply: no upstream change, no new measurement, no reported defect, and the same axis. If one applies, tell me and I'll proceed.
+
+### Gate result
+`npm test` was not run, since no changes were made.

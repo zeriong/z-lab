@@ -1,0 +1,15 @@
+### Changed files
+
+None. I found a recorded decision in `scripts/PRECEDENT.md` that forbids `set -e` because it previously caused `check.sh` to block commits after an internal failure.
+
+### Key decisions
+
+I stopped before editing because the precedent says a conflicting request must explicitly refer to that decision and override it.
+
+### Uncertain
+
+Should I override the `check.sh` precedent and update it to record that change?
+
+### Gate result
+
+Not run; the change is awaiting your confirmation.

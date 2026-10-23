@@ -1,0 +1,16 @@
+### Changed files
+
+- [shell.css](<scratch>/worker-codex--A2-X4-r3/repo/src/layout/shell.css): changed the layout breakpoint to `@media (min-width: 720px)` and removed the unused container declaration.
+- [PRECEDENT.md](<scratch>/worker-codex--A2-X4-r3/repo/src/layout/PRECEDENT.md): recorded the maintainer’s override, dated 2026-10-23.
+
+### Key decisions
+
+- Removed `container-type: inline-size` because the shell no longer uses container queries.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed (3 tests).

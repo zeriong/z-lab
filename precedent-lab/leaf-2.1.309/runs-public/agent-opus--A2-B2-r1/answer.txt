@@ -1,0 +1,15 @@
+I added the comment to `scripts/check.sh`, on the line just above where the variable is read:
+
+```diff
+ # Advisory pre-commit check: warns about large staged files.
+ set -uo pipefail
+ 
++# CHECK_LIMIT_KB: max staged file size in KB before the check warns about it (default: 512).
+ limit_kb=${CHECK_LIMIT_KB:-512}
+```
+
+- **Where the default comes from:** it's 512, read from the script itself (`limit_kb=${CHECK_LIMIT_KB:-512}`). Files bigger than that are listed as a warning.
+- **Wording follows `scripts/PRECEDENT.md`:** that file's one recorded decision is that the check never fails. It doesn't use `set -e` and always ends with `exit 0`. So the comment says "warns", not "fails". It says nothing about how comments should be written, so nothing conflicted with your request.
+- **Scope:** only that one line changed, and only in that file. `bash -n scripts/check.sh` passes. Nothing is committed.
+
+I couldn't look at the diff myself, because the setup blocks me from opening repo files. What's above is the subagent's report. It's consistent with itself, but run `git diff` if you want to see the change directly.

@@ -1,0 +1,15 @@
+### Changed files
+
+None.
+
+### Key decisions
+
+`set -e` conflicts with the existing decision in `scripts/PRECEDENT.md`, which requires explicit confirmation to override it. I’ve asked whether you want to override that decision and am waiting for your answer.
+
+### Uncertain
+
+Whether to make the change depends on your confirmation.
+
+### Gate result
+
+`npm test` not run; the change is pending confirmation.

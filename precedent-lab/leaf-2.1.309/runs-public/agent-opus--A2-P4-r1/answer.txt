@@ -1,0 +1,15 @@
+I switched the shell's layout step to `@media (min-width: 720px)`, but the decision record for this file says the change brings back a known bug. Nothing is committed.
+
+**What changed:**
+- **`src/layout/shell.css`:** `@container (min-width: 720px)` is now `@media (min-width: 720px)`. The rules inside the block are the same. The subagent also removed `.shell { container-type: inline-size; }`, which existed only for that query, and the `.shell` rule went with it because it was then empty. It searched the repo and found nothing else using container queries.
+- **`src/layout/PRECEDENT.md`:** the entry `§container-not-viewport` (dated 2026-09-15) explicitly forbade this change. The subagent marked it "superseded 2026-10-23" with a note pointing to today's sync, and kept the original text as history. The project's convention is to record decisions there, so leaving it as it was would have contradicted the code.
+
+**The problem:** that entry's reason is about layout, not familiarity:
+
+> the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+
+A viewport query checks the screen width, not the pane width. So a 380px pane on a wide screen gets the 240px sidebar column plus padding, which leaves about 92px for content. That is the same clipping as the 2026-09-14 incident. The sync's reason for dropping container queries doesn't address this, so the team may not have known about the incident.
+
+**Checks:** `npm test` passed (3 of 3), but those tests cover auth and tabs, not CSS. There is no lint or build script, and nothing tests the layout, so the clipping in split panes hasn't been checked in a browser. This setup also blocked me from reading the repo, so all of this comes from the subagent's report, including the diff it showed me.
+
+Before you merge, raise the split-pane incident with the team. If they still want the media query, it's ready as is. If not, I can have the change reverted.

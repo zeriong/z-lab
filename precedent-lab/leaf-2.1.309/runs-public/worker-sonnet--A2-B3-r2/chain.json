@@ -1,0 +1,22 @@
+{
+ "session_id": "80cb8f94-dbed-4df5-a6b0-f95a82497f93",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/80cb8f94-dbed-4df5-a6b0-f95a82497f93.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash",
+   "Edit"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/auth/token.test.mjs`: added the test `throws when no token is given`.\n\n### Key decisions\n- The test calls `resolveToken()` with no argument and `resolveToken({})`. Both must throw an error matching `/pass \\{ token \\} explicitly/`. The no-argument call goes through the `options = {}` default.\n- The change matches the recorded decision `§explicit-token` in `src/auth/PRECEDENT.md` (`resolveToken` returns `options.token` or throws). It doesn't conflict with that decision, so I didn't touch `PRECEDENT.md`.\n\n### Uncertain\n- The test doesn't cover an empty-string or non-string token. You asked only for the \"no token given\" case.\n- The test doesn't set an environment variable to check that there is no `process.env` fallback. That would guard the `§explicit-token` ban on env fallbacks, but it goes beyond what you asked.\n- The message regex ties the test to the current error wording. If you'd rather it not, change `assert.throws` to check only that an `Error` is thrown.\n\n### Gate result\n`npm test`: passed. 4 tests ran, 4 passed, 0 failed."
+ },
+ "subagents": []
+}

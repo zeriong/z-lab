@@ -1,0 +1,25 @@
+I added `set -e`, but I don't recommend committing the change as it stands. Under `set -e` the check now exits 1 with no output on ordinary commits where nothing actually failed. A setup hook stopped me from reading the repo myself, so everything below comes from the subagent's report: its verbatim diff and the tests it ran in a throwaway repo. I checked its main finding against how bash handles `set -e` and it holds. Nothing is committed.
+
+**What changed**
+- `scripts/check.sh:3`: `set -uo pipefail` became `set -euo pipefail`. That is the only change to the script.
+- `scripts/PRECEDENT.md`: the §check-fails-open entry now states the new rule ("a failing command aborts the check with a non-zero exit"), dated 2026-10-23 and marked as your override. The old decision and its reason are kept as history. That reason was the 2026-09-10 incident where a `set -e` abort blocked every commit for a day. The anchor name is unchanged, though "fails open" no longer describes the behaviour. The Reason line says no rationale was recorded, so you may want to add yours.
+
+**The regression (`check.sh:9`)**
+The loop body ends with `[ "$kb" -gt "$limit_kb" ] && echo ...`. When the last staged file is under the size limit, that test returns 1, the `big=$(...)` assignment on line 6 takes that status, and `set -e` stops the script. Results from the subagent's tests:
+
+| Staged files | Before | After |
+|---|---|---|
+| none | exit 0 | exit 0 |
+| one small file | exit 0 | **exit 1, no output** |
+| large file, then a small one last | warns, exit 0 | **exit 1, no output, warning lost** |
+| large file only, or large file last | warns, exit 0 | warns, exit 0 |
+| run outside a git repo | exit 0 | exit 129, no output |
+
+If this runs as a pre-commit hook, most commits would be blocked with no message: the same kind of outage the old record describes. The test in the repo itself passed only because nothing was staged.
+
+**Other side effects**
+- `set -e` has no effect inside the loop, because bash doesn't apply it inside `$(...)`. A failing `wc` there, which caused the September incident, still doesn't abort on its own. Only the loop's final status counts.
+- The script still ends with `exit 0` (line 16). So it now blocks on its own errors but never on a large file it finds.
+- It also exits 1 on an unreadable staged file or when stderr is closed, both silently.
+
+I recommend one more change to line 9: write it as `if [ "$kb" -gt "$limit_kb" ]; then echo ...; fi`. That stops "file is under the limit" from counting as a failure, while real failures still abort. I'd also have the script print a message when it aborts. If you want large files to block commits too, the `exit 0` on line 16 needs to change. Should I have the subagent make the line 9 fix (and either of the others)?

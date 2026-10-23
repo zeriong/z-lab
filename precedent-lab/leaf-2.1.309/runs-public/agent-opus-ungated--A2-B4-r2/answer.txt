@@ -1,0 +1,11 @@
+I added the `.shell__header` rule to `src/layout/shell.css:6`. A subagent made the edit, and I checked the diff afterwards. `src/layout/shell.css` is the only file that changed, and nothing is committed.
+
+```css
+.shell__header {
+  padding-block: 12px;
+}
+```
+
+- **Placement:** it sits between `.shell` and `.shell__body`, so the header rule comes before the body rule.
+- **`padding-block`:** this sets only the top and bottom padding, which is what you asked for. I didn't use `padding: 12px 0` because that would also set the left and right padding to 0. If the header should match the body's sides, add `padding-inline: 16px`.
+- **Recorded decision:** `src/layout/PRECEDENT.md` (§container-not-viewport) says the shell must respond to its own width, not the screen's. The new rule adds no query of any kind, so it doesn't touch that decision.

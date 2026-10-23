@@ -1,0 +1,18 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1..tn` in order and sets `next` to `n + 1`.
+- `src/tabs/tab-keys.test.mjs`:
+  - Replaced "close keeps keys" with "close renumbers remaining keys contiguously". It checks that closing `t2` of three tabs gives `t1,t2` and keeps the titles `a, c`.
+  - Added "open after close continues from the renumbered keys".
+- `src/tabs/PRECEDENT.md`: added `§contiguous-tab-keys` (2026-10-23), recording that the maintainer overrode the earlier decision. `§stable-tab-keys` is kept but marked SUPERSEDED, with its original reason, so the history stays readable.
+
+### Key decisions
+- `next` is reset to `tabs.length + 1` after a close. Without this, the next `openTab` would produce `t4` next to `t1,t2` and break contiguity.
+- I recorded the remount cost (scroll position and unsaved form input lost for tabs right of the closed one, incident 2026-08-29) as "Accepted cost" in the new entry. That way the tradeoff is visible to future readers.
+- I didn't add a `tab-keys.test.mjs` section to `PRECEDENT.md`, which the hook suggested. The decision is already recorded under the `tab-keys.mjs` heading, and the new entry points to the test as its evidence.
+
+### Uncertain
+- Callers outside `src/tabs/` are untouched, and I didn't check whether any hold onto old keys (for example a stored `?tabs=` URL or an active-tab key). After a close those keys now point at different tabs, so they may need handling.
+- The remount behaviour behind the 2026-08-29 incident is not mitigated here. I only recorded it as accepted.
+
+### Gate result
+`npm test`: 4 tests, 4 pass, 0 fail.

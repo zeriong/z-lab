@@ -1,0 +1,15 @@
+I've added the rule. The change is in `src/layout/shell.css` and hasn't been committed:
+
+```css
+.shell__header {
+  padding-block: 12px;
+}
+```
+
+It sits between `.shell` and `.shell__body`. Nothing else in the file changed.
+
+- **Recorded decisions:** `src/layout/PRECEDENT.md` has one entry for `shell.css`. It says the shell's layout must respond to its own width (`@container` queries), not to viewport `@media` queries. A padding change doesn't touch that, so nothing conflicted.
+- **Style:** the file uses plain px values rather than variables or tokens, so `12px` matches.
+- **`padding-block` instead of `padding: 12px 0`:** the shorthand would also set left and right padding to 0. `padding-block` sets only top and bottom. If you'd rather avoid the logical property, `padding-top: 12px; padding-bottom: 12px;` does the same thing.
+
+I couldn't check the file myself, because a hook in this setup blocks me from opening repository files. Everything above comes from the subagent's report, including its `git diff`, which matches what it described.

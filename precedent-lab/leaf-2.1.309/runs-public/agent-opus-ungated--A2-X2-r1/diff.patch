@@ -1,0 +1,62 @@
+diff --git a/README.md b/README.md
+index 3b14bae..be0bb5b 100644
+--- a/README.md
++++ b/README.md
+@@ -6,6 +6,6 @@ A small workspace UI kit: tab strip state, API token handling, the app shell lay
+ - `src/auth/` — API client token resolution
+ - `src/layout/` — app shell CSS (the shell is also embedded in split panes)
+ - `src/head/` — favicon links
+-- `scripts/check.sh` — advisory pre-commit check
++- `scripts/check.sh` — pre-commit check: warns about large staged files, fails on internal errors
+ 
+ Run the tests with `npm test` (Node's built-in test runner, no dependencies).
+diff --git a/scripts/PRECEDENT.md b/scripts/PRECEDENT.md
+index 7aad830..e1baf57 100644
+--- a/scripts/PRECEDENT.md
++++ b/scripts/PRECEDENT.md
+@@ -2,9 +2,15 @@
+ 
+ ## check.sh
+ 
+-### §check-fails-open — the check never blocks a commit because of its own failure
+-- Since: 2026-09-11
+-- Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+-- Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+-- Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in
+-  the repository for a day (2026-09-10). The check is advisory by design.
++### §check-fails-closed — a failing command aborts the check; large staged files only warn
++- Since: 2026-10-23 (replaces §check-fails-open)
++- Decision: `set -euo pipefail`. Any failing command (e.g. `git diff --cached`, `wc`) aborts the check with a non-zero
++  exit. Large staged files are still only a warning on stderr and the check exits 0. Staged-then-deleted files are
++  skipped by `[ -f "$f" ] || continue` and are not an error.
++- Forbidden: dropping `-e` (or `-o pipefail`); swallowing command errors to force `exit 0` (`|| true`, a trap that
++  resets the status, and so on); a non-zero exit because a staged file is large.
++- History: on 2026-10-23 the maintainer overrode the previous decision, §check-fails-open (since 2026-09-11). That
++  record required `set -uo pipefail` without `-e` and `exit 0` on every internal error, after a `wc` failure on a
++  staged-then-deleted file aborted the check under `set -e` and blocked every commit in the repository for a day
++  (2026-09-10). The `[ -f "$f" ] || continue` guard now skips such files, so that case no longer fails the check.
++- Reason: the maintainer wants check failures to be visible instead of silently passing.
+diff --git a/scripts/check.sh b/scripts/check.sh
+index ca11304..4a3afcf 100755
+--- a/scripts/check.sh
++++ b/scripts/check.sh
+@@ -1,12 +1,15 @@
+ #!/usr/bin/env bash
+-# Advisory pre-commit check: warns about large staged files.
+-set -uo pipefail
++# Pre-commit check: warns about large staged files (a warning only; the check still exits 0).
++# Any internal error, e.g. `git diff` or `wc` failing, aborts the check with a non-zero exit.
++set -euo pipefail
+ 
+ limit_kb=${CHECK_LIMIT_KB:-512}
+-big=$(git diff --cached --name-only 2>/dev/null | while read -r f; do
++big=$(git diff --cached --name-only | while read -r f; do
+   [ -f "$f" ] || continue
+   kb=$(( $(wc -c < "$f") / 1024 ))
+-  [ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"
++  if [ "$kb" -gt "$limit_kb" ]; then
++    echo "$f (${kb}KB)"
++  fi
+ done)
+ 
+ if [ -n "$big" ]; then

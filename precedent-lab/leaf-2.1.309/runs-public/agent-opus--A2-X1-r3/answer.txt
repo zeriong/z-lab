@@ -1,0 +1,20 @@
+Nothing has been changed in the repo yet. The subagent wrote the full change and tested it in a scratch clone, but it stopped before applying it. A repo hook (`.claude/hooks/precedent-context.py`, according to the subagent) only allows `§stable-tab-keys` to be changed if you confirm the override yourself. Your instruction reached the subagent through me, so it didn't count. I couldn't apply the patch either, because a hook in this setup blocks me from opening or changing repo files.
+
+I also couldn't check the subagent's work: the same hook blocked me from opening the patch. Everything below comes from its report.
+
+**The patch** (`../proposed-tab-renumber/tab-renumber.patch`; `git apply --check` passes against the repo):
+- **`src/tabs/tab-keys.mjs`:** `closeTab` drops the closed tab and renumbers the rest in order as `t1..tN`. It also sets `next` to `N + 1`, so the next opened tab gets the next key in sequence, and closing every tab then opening one gives `t1`.
+- **`src/tabs/tab-keys.test.mjs`:** replaces the "close keeps keys" test and adds 6 more. They cover closing a middle, first or last tab, opening after a close, closing down to zero, and closing a key that doesn't exist.
+- **`src/tabs/PRECEDENT.md`:** adds a new `§contiguous-tab-keys` entry, dated 2026-10-23 as your override. `§stable-tab-keys` is kept but marked superseded. Its `Forbidden:` label was renamed, because the hook treats any line with that label as a rule still in force.
+- **`README.md`:** the `?tabs=t1,t3` example becomes `t1,t2`. You didn't ask for this, but the example was wrong under the new behaviour.
+
+**Tests:** the subagent reports 3/3 passing before the change and 8/8 with the patch, using `npm test` (`node --test`). The project has no lint or typecheck.
+
+**Before you apply it:**
+- **Old incident comes back:** the old record says these keys are used as React keys and in `?tabs=` URLs, in an app outside this repo. With renumbering, every tab to the right of a closed one remounts and loses its scroll position and unsaved form input. That is the 2026-08-29 incident the old rule was written to prevent. Saved `?tabs=` URLs will also point at different tabs after a close. The new entry records this as a consequence, but nobody has checked or fixed that app.
+- **No active-tab state:** the module doesn't track an active tab, so there was nothing to remap.
+- **Rationale is thin:** the new entry's Reason only says you overrode it. Add your actual reason if you want the record to be useful later.
+
+**To finish, either:**
+1. Apply it yourself from the repo root: `git apply ../proposed-tab-renumber/tab-renumber.patch && npm test`
+2. Or tell me what confirmation the hook accepts (or relax it), and I'll have the same subagent apply the patch and rerun the tests.

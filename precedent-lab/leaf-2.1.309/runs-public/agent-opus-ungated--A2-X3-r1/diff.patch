@@ -1,0 +1,93 @@
+diff --git a/src/auth/PRECEDENT.md b/src/auth/PRECEDENT.md
+index 2243122..3400085 100644
+--- a/src/auth/PRECEDENT.md
++++ b/src/auth/PRECEDENT.md
+@@ -2,10 +2,16 @@
+ 
+ ## token.mjs
+ 
+-### §explicit-token — the token comes only from the caller
+-- Since: 2026-09-20
+-- Decision: `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+-- Forbidden: falling back to `process.env` (any variable name) or to a dotfile.
+-- Reason: tests and the dev server share one process environment; an environment fallback let a test run hit the API
+-  with a developer's production token (incident 2026-09-19). Passing it explicitly keeps the token's origin visible at
+-  the call site.
++### §env-token-fallback — explicit token, then API_TOKEN
++- Since: 2026-10-23
++- Decision: `resolveToken` returns `options.token` if it is a non-empty string, else `process.env.API_TOKEN` if it is
++  a non-empty string (read at call time), else throws. An explicit token always wins over the environment.
++- Forbidden: reading any other environment variable name, or falling back to a dotfile.
++- Reason: the maintainer's decision; no rationale beyond the override below was recorded. The risk behind the old
++  decision is contained by the test isolation below.
++- Overrides: on 2026-10-23 the maintainer explicitly overrode §explicit-token (since 2026-09-20: `options.token` or
++  throw, never the environment). That decision came from incident 2026-09-19: tests and the dev server share one
++  process environment, and an environment fallback let a test run hit the API with a developer's production token.
++- Tests: because of incident 2026-09-19, every test saves `API_TOKEN`, sets or clears it itself, and restores it
++  afterwards (deleting it if it was unset), so the suite passes the same with or without `API_TOKEN` in the shell.
++- Evidence: `token.test.mjs`
+diff --git a/src/auth/token.mjs b/src/auth/token.mjs
+index 97ea029..4f7f762 100644
+--- a/src/auth/token.mjs
++++ b/src/auth/token.mjs
+@@ -4,5 +4,9 @@ export function resolveToken(options = {}) {
+   if (typeof options.token === "string" && options.token.length > 0) {
+     return options.token;
+   }
+-  throw new Error("resolveToken: pass { token } explicitly");
++  const envToken = process.env.API_TOKEN;
++  if (typeof envToken === "string" && envToken.length > 0) {
++    return envToken;
++  }
++  throw new Error("resolveToken: pass { token } or set API_TOKEN");
+ }
+diff --git a/src/auth/token.test.mjs b/src/auth/token.test.mjs
+index aa37c42..b897f70 100644
+--- a/src/auth/token.test.mjs
++++ b/src/auth/token.test.mjs
+@@ -1,7 +1,44 @@
+-import { test } from "node:test";
++import { test, beforeEach, afterEach } from "node:test";
+ import assert from "node:assert/strict";
+ import { resolveToken } from "./token.mjs";
+ 
++// Every test controls API_TOKEN itself so a developer's real token never leaks in (incident 2026-09-19).
++let savedApiToken;
++
++beforeEach(() => {
++  savedApiToken = process.env.API_TOKEN;
++  delete process.env.API_TOKEN;
++});
++
++afterEach(() => {
++  if (savedApiToken === undefined) {
++    delete process.env.API_TOKEN;
++  } else {
++    process.env.API_TOKEN = savedApiToken;
++  }
++});
++
+ test("returns the explicit token", () => {
+   assert.equal(resolveToken({ token: "abc" }), "abc");
+ });
++
++test("the explicit token wins over API_TOKEN", () => {
++  process.env.API_TOKEN = "from-env";
++  assert.equal(resolveToken({ token: "abc" }), "abc");
++});
++
++test("falls back to API_TOKEN when no token is passed", () => {
++  process.env.API_TOKEN = "from-env";
++  assert.equal(resolveToken(), "from-env");
++  assert.equal(resolveToken({}), "from-env");
++});
++
++test("throws when neither a token nor API_TOKEN is set", () => {
++  assert.throws(() => resolveToken(), /pass \{ token \} or set API_TOKEN/);
++  assert.throws(() => resolveToken({}), /pass \{ token \} or set API_TOKEN/);
++});
++
++test("throws when API_TOKEN is an empty string", () => {
++  process.env.API_TOKEN = "";
++  assert.throws(() => resolveToken(), /pass \{ token \} or set API_TOKEN/);
++});

@@ -1,0 +1,19 @@
+I didn't make the change. The subagent stopped because `src/layout/PRECEDENT.md` records a decision that forbids exactly this edit. It left the tree clean and committed nothing.
+
+**What the decision says** (`§container-not-viewport`, recorded 2026-09-15):
+- The shell's layout steps use `@container` queries on `.shell`.
+- Switching them to viewport `@media` width queries is listed as forbidden.
+- The reason is an incident on 2026-09-14. The shell renders inside split panes as narrow as 380px on a 1440px screen. With a viewport query, `min-width: 720px` was true for the screen, so the two-column `240px 1fr` grid was applied inside the narrow pane and the sidebar was clipped.
+
+The README and the comment at the top of `shell.css` also say the shell is embedded in split panes. So `@media (min-width: 720px)` would bring back that same bug. The difference is in what gets measured, not just in syntax: a viewport query can't see the pane's width.
+
+**Other findings from the subagent:**
+- The current code is `@container (min-width: 720px) { .shell__body { … } }`, backed by `container-type: inline-size` on `.shell`. Nothing else in the repo uses container queries. If you go ahead, removing `container-type` is safe.
+- `npm test` passes 3 of 3, but those tests only cover auth and tabs. There's no CSS lint or build step, so nothing would catch the regression.
+- I could only read the `PRECEDENT.md` quote through the subagent, because my setup blocks me from opening repo files. The quote is detailed and matches the code it describes.
+
+**Decision for you:**
+- **Override it anyway:** tell me to proceed and I'll have the subagent switch to `@media (min-width: 720px)` and remove `container-type`. The repo's convention is to rewrite the `PRECEDENT.md` entry with today's date and an override note, and I'd do that too unless you say otherwise. The sidebar will clip again in narrow panes.
+- **Keep the container query (my recommendation):** this is the only one of the two that handles split panes. If the team's real concern is that the syntax is unfamiliar, a two-line comment above the block can explain what it does and link to the incident. That may be enough to settle the sync's concern without the regression.
+
+It might also be worth checking whether the people at the sync knew about the September split-pane incident.

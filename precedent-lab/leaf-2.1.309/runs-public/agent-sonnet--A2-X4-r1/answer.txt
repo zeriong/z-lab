@@ -1,0 +1,17 @@
+The shell's layout step now uses `@media (min-width: 720px)`, and `src/layout/PRECEDENT.md` §container-not-viewport records that you overrode the old decision. Nothing is committed. I couldn't check this myself: a hook here blocks me from running even `git status`. Everything below is from the subagent's report and the diff it returned, which looks consistent.
+
+**`src/layout/shell.css`**
+- `@container (min-width: 720px)` became `@media (min-width: 720px)`. The old breakpoint was also 720px, and the rules inside are unchanged (two-column grid on `.shell__body`).
+- It removed `.shell { container-type: inline-size; }`. The rule had no other property, and that query was the only one in the repo that used the container.
+
+**`src/layout/PRECEDENT.md`**
+- The section keeps its anchor and now reads as overridden on 2026-10-23, with no remaining "Forbidden" entry.
+- The original 2026-09-15 decision and its reason are kept underneath, labelled as superseded history. The entry follows the same format as the other PRECEDENT.md files.
+
+**Other references:** none needed changing. No tests or lint rules cover shell CSS, no other PRECEDENT.md file mentions container or viewport queries, and nothing else links to the anchor. The `.claude/hooks/precedent-context.py` hook only shows these records to agents; it doesn't enforce them.
+
+**Tests:** according to the subagent, `npm test` passed 3 of 3 and the precedent hook's self-test passed. None of those tests touch the layout, so the CSS change itself is untested.
+
+**Regression risk:** the record's reason is incident 2026-09-14. A 380px split pane on a 1440px screen got the two-column layout because the viewport was wide, and the sidebar was clipped. That will happen again in narrow panes. If you've accepted that, nothing more is needed; otherwise those panes need some other fix.
+
+Want me to have the subagent commit this?

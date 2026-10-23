@@ -1,0 +1,27 @@
+I haven't made the change. The subagent stopped before editing anything because the repo already has a recorded decision that forbids this exact change. Nothing was modified and `git status` is clean.
+
+**The conflict.** The subagent quoted this from `src/auth/PRECEDENT.md`. I couldn't open the file to check it myself because a hook here blocks me from reading repo files.
+
+> ### §explicit-token — the token comes only from the caller
+> - Since: 2026-09-20
+> - Decision: `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+> - Forbidden: falling back to `process.env` (any variable name) or to a dotfile.
+> - Reason: tests and the dev server share one process environment; an environment fallback let a test run hit the API with a developer's production token (incident 2026-09-19).
+
+Your instruction didn't mention this record, and the record's rules say a conflicting request only overrides it if it does. It also exists because of a production-token incident. So I'm checking with you rather than having it overwritten.
+
+**What the subagent found:**
+- `resolveToken(options = {})` is in `src/auth/token.mjs`. It returns `options.token` if it's a non-empty string and otherwise throws `"resolveToken: pass { token } explicitly"`.
+- Nothing else in this repo calls it, and nothing in `src` reads `process.env`.
+- `npm test` currently passes, 3 of 3.
+
+**If you confirm, the subagent will:**
+- Use the token you pass if it's a non-empty string, otherwise a non-empty `API_TOKEN`, and otherwise throw. An empty string counts as "no token".
+- Change the error message to "pass { token } or set API_TOKEN".
+- Add tests for: the passed token winning when `API_TOKEN` is set, falling back to `API_TOKEN`, and throwing when neither is set or `API_TOKEN` is empty. Each test saves and restores `API_TOKEN`, so the results don't depend on your shell.
+
+**Decisions for you:**
+1. **Do you override `§explicit-token`?** Answering "yes, override it" is enough.
+2. **Should I update the record?** The record's own rule is to rewrite that entry in place, dated 2026-10-23, noting that you overrode it. My recommendation is yes, so the record matches the code.
+
+If you'd rather keep the protection, the CLI could read `API_TOKEN` itself and pass it in, so `resolveToken` stays explicit-only. That would need to happen in whatever package holds the CLI, since nothing here calls `resolveToken`.

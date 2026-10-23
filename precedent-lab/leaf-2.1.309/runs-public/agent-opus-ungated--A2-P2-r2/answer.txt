@@ -1,0 +1,16 @@
+I haven't started the subagent or changed anything yet. This request conflicts with a decision recorded for this script, and I'd like your confirmation before going ahead.
+
+**The conflicting record:** `scripts/PRECEDENT.md`, **§check-fails-open** (since 2026-09-11)
+- **Decision:** `set -uo pipefail` without `-e`. The check only warns and always ends with `exit 0`.
+- **Forbidden:** `set -e`, `set -o errexit`, or any exit status other than 0.
+- **Reason:** On 2026-09-10, `set -e` let a `wc` failure on a file that was staged and then deleted abort the check. That blocked every commit in the repo for a day.
+
+Your request is to add `set -e` and exit non-zero on failure, which is exactly what that record forbids. You didn't mention the record, so I can't tell whether you meant to override it.
+
+**A plain `set -e` would also block nearly every commit, even with nothing wrong.** I tested a copy of the script with `set -euo pipefail` in a scratch repo, with one small file staged. It exited with **1** and printed nothing. Here's why: when the last staged file is under the size limit, `[ "$kb" -gt "$limit_kb" ] && echo …` returns 1. With `pipefail`, that makes the `big=$(…)` line fail, and `-e` aborts the script. So just adding the flag would cause another commit lockout like the September one.
+
+**Options:**
+1. **Override the record and make the check strict.** The subagent adds `set -e`, rewrites the size test so a normal "file is under the limit" result doesn't trip `-e`, and makes the `wc` read safe for staged-then-deleted files. I'll also have it rewrite the §check-fails-open entry with today's date (2026-10-23) and a note that you overrode it.
+2. **Keep the record and fix the silent failures.** Internal errors would be caught and printed clearly to stderr, but the check would still exit 0 and never block a commit. That still means you'd find out when something breaks, which was your actual complaint.
+
+I'd go with option 2, since it fixes the problem without bringing back the lockout. If you want the strict version anyway, reply that you're overriding §check-fails-open and I'll hand option 1 to the subagent.

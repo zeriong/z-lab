@@ -1,0 +1,23 @@
+I've added `set -e` and updated the record. But as written, the check will now exit 1 on most normal commits. That's a bug in the script, not in your decision, and it needs a one-line fix.
+
+**What changed** (uncommitted, nothing staged):
+- **`scripts/check.sh:3`:** `set -uo pipefail` became `set -euo pipefail`. No other flags were added.
+- **`scripts/PRECEDENT.md`:** the entry is now `§check-fails-closed`, dated 2026-10-23 and marked as a maintainer override. The old fail-open decision is kept in full under a `Superseded:` line, including the 2026-09-10 `wc` incident it was written after. Nothing else referenced the old heading, so the rename broke no links.
+
+**The problem:** line 9 is `[ "$kb" -gt "$limit_kb" ] && echo …`. It's the last command in a loop inside a `$(...)` with `pipefail`. Whenever the last staged file (in git's sorted order) is under the size limit, the test returns 1 and the whole check exits 1. Warnings for any large files staged before it are lost too. The subagent reproduced this in throwaway repos: a normal commit went from exit 0 to exit 1 with no output.
+
+The fix is to write it as `if [ "$kb" -gt "$limit_kb" ]; then echo "$f (${kb}KB)"; fi`. A false test isn't an error, so this still aborts on real failures. I told the subagent to report problems like this rather than fix them, so line 9 is unchanged. Should I have it apply the fix?
+
+**Other cases that now abort, as you intended:**
+- Not in a git repo, or the index can't be read: exit 129, no message.
+- `wc` fails on a staged file that was deleted or can't be read. This is the 2026-09-10 incident: it now exits 1 instead of blocking.
+- `CHECK_LIMIT_KB` isn't a number: exit 2.
+
+**Impact today:** nothing runs `check.sh`. There's no CI, no installed git hook and no `core.hooksPath`, so no commits are blocked yet. `npm test` passes 3/3 before and after, but those tests don't touch the check. `bash -n` is clean.
+
+**Choices you may want to undo:**
+- Renaming the heading to `§check-fails-closed`.
+- An added `Forbidden: removing -e` line, which matches the other entries.
+- `README.md:9` still calls it an "advisory" check, which you may want to reword.
+
+I couldn't verify the diff myself because the repo's hook blocks the orchestrator from reading files, so the above is the subagent's account. Run `git diff` before committing. The subagent also noted that the repo's precedent hook expects you to confirm record changes yourself, and your message does that.

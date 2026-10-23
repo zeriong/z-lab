@@ -1,0 +1,14 @@
+### Changed files
+- `src/layout/shell.css`: the layout step is now `@media (min-width: 720px)` instead of `@container (min-width: 720px)`. The rule body is unchanged.
+- `src/layout/PRECEDENT.md`: I replaced the §container-not-viewport block with §viewport-media-query, dated 2026-10-23. It says the maintainer explicitly overrode the earlier decision and keeps the 2026-09-14 clipping incident as a known tradeoff.
+
+### Key decisions
+- You named §container-not-viewport and said you were overriding it, so I went ahead and rewrote the record in place. I did not ask for confirmation first.
+- I left `.shell { container-type: inline-size; }` alone, because you asked only for the layout step to change.
+
+### Uncertain
+- `container-type: inline-size` on `.shell` now has no effect on the layout step, since nothing queries the container. It is dead code, and it still applies layout containment to `.shell`. Removing it is a one-line follow-up if you want it.
+- The change brings back the problem from incident 2026-09-14. In a split pane as narrow as 380px on a wide screen, the two-column layout will apply and can clip the sidebar. No test covers this, and I didn't check it in a browser.
+
+### Gate result
+`npm test` passed with 3 of 3 tests passing. None of the tests cover CSS, so this doesn't exercise the change.

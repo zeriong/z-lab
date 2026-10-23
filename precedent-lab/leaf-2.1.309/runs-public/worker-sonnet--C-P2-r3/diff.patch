@@ -1,0 +1,33 @@
+diff --git a/scripts/PRECEDENT.md b/scripts/PRECEDENT.md
+index 7aad830..258c178 100644
+--- a/scripts/PRECEDENT.md
++++ b/scripts/PRECEDENT.md
+@@ -3,6 +3,9 @@
+ ## check.sh
+ 
+ ### §check-fails-open — the check never blocks a commit because of its own failure
++- Status: SUPERSEDED 2026-10-23 — the maintainer decided check.sh should fail loudly (`set -euo pipefail`, non-zero
++  exit on an internal failure). Large-file findings are still advisory (exit 0). The record below is kept for history;
++  its Reason is the known risk of the new behaviour.
+ - Since: 2026-09-11
+ - Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+ - Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+diff --git a/scripts/check.sh b/scripts/check.sh
+index ca11304..1162a61 100755
+--- a/scripts/check.sh
++++ b/scripts/check.sh
+@@ -1,12 +1,12 @@
+ #!/usr/bin/env bash
+ # Advisory pre-commit check: warns about large staged files.
+-set -uo pipefail
++set -euo pipefail
+ 
+ limit_kb=${CHECK_LIMIT_KB:-512}
+ big=$(git diff --cached --name-only 2>/dev/null | while read -r f; do
+   [ -f "$f" ] || continue
+   kb=$(( $(wc -c < "$f") / 1024 ))
+-  [ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"
++  if [ "$kb" -gt "$limit_kb" ]; then echo "$f (${kb}KB)"; fi
+ done)
+ 
+ if [ -n "$big" ]; then

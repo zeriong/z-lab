@@ -1,0 +1,13 @@
+### Changed files
+- `scripts/check.sh`: added one comment line directly above `limit_kb=${CHECK_LIMIT_KB:-512}`:
+  `# CHECK_LIMIT_KB: staged files larger than this many KB are reported (default: 512).`
+
+### Key decisions
+- I put the comment right above the line that reads the variable, after the `set` line, since that is the nearest place to the code it explains.
+- I did not touch `scripts/PRECEDENT.md`. The change is a comment only, so it makes no new decision. It also leaves the §check-fails-open rule alone: there is still no `set -e`, and the script still ends in `exit 0`.
+
+### Uncertain
+- Nothing.
+
+### Gate result
+- `npm test` passed with 3 tests, 3 passing and 0 failing. These tests don't exercise `scripts/check.sh`, so I didn't run the script itself.

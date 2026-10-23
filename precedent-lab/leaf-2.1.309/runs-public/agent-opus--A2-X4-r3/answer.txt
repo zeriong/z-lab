@@ -1,0 +1,18 @@
+I've switched the shell to the viewport media query and updated the record. The changes are uncommitted in the working tree, and `npm test` passes (3/3).
+
+**`src/layout/shell.css`**
+- `@container (min-width: 720px)` is now `@media (min-width: 720px)`. The old breakpoint was already 720px, so only the query type changed. The rules for `.shell__body` inside it are the same.
+- The `.shell { container-type: inline-size; }` rule is gone, because nothing else used `.shell` as a container. It was the only container query in the repo.
+
+**`src/layout/PRECEDENT.md`**
+- There's a new entry, §viewport-layout-step, dated 2026-10-23. Its reason is just "maintainer override", with nothing else added.
+- It has a `Supersedes:` line that points to §container-not-viewport. The old entry is kept word for word underneath as a quote and marked as no longer in force.
+- The repo's precedent hook (`.claude/hooks/precedent-context.py`) shows these records to agents working on a file. The subagent checked that for `shell.css` it now shows the new decision, not the old ban.
+
+**How I checked:** a hook in this setup stopped me from opening repo files, so I couldn't read them myself. I reviewed the full diff the subagent sent back. It matches what you asked for, its line counts add up, and it doesn't touch anything else. `git diff` will show you the same changes.
+
+**Two things to know:**
+- **The old problem will probably come back.** The old record existed because of an incident on 2026-09-14. A shell in a narrow split pane (380px on a 1440px screen) took the two-column layout and clipped the sidebar. A viewport query brings that behaviour back.
+- **Outside code may be affected.** If code outside this repo uses its own container queries inside the shell, those were measuring against `.shell` and won't be any more. Nothing in this repo does that.
+
+Nothing is committed. Tell me if you want a commit.

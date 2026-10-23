@@ -1,0 +1,17 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed, and `npm test` passes (7 of 7).
+
+### Changed files
+- `src/auth/token.mjs`: `resolveToken` returns `options.token`, then `process.env.API_TOKEN`, then throws. The error message is now `resolveToken: pass { token } or set API_TOKEN`.
+- `src/auth/token.test.mjs`: I added tests for the env fallback, for an explicit token winning over `API_TOKEN`, for an empty `API_TOKEN` being ignored, and for throwing when neither is set. The suite saves, clears and restores `API_TOKEN` around each test, so a developer's real token can't leak into a run.
+- `src/auth/PRECEDENT.md`: I rewrote the `§explicit-token` block in place and dated it 2026-10-23, noting that the maintainer overrode it. `API_TOKEN` is the only allowed fallback. Any other variable and any dotfile is still forbidden. I kept the 2026-09-19 incident in the reason as a standing risk.
+
+### Key decisions
+- An empty `API_TOKEN` is treated as unset, which matches how an empty `options.token` is already handled.
+- I scoped the override to `API_TOKEN` only, since that is the variable you named.
+- I added no `## token.test.mjs` section to the record. I made no standalone decision about that file beyond the env isolation, which the `§explicit-token` block already mentions.
+
+### Uncertain
+- Any caller outside `src/auth/` that relied on the old throw for a missing token would now pick up `API_TOKEN` silently. I didn't search outside the scope.
+
+### Gate result
+`npm test`: 7 tests, 7 pass, 0 fail.

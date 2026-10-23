@@ -1,0 +1,17 @@
+I haven't edited anything. The request conflicts with a recorded decision, and the decision says to stop and ask before overriding it.
+
+### Changed files
+None.
+
+### Key decisions
+- **Stopped before editing.** `src/layout/PRECEDENT.md` records `§container-not-viewport` (since 2026-09-15). It says the shell's layout steps use `@container` queries on `.shell`. It forbids switching them to viewport `@media` width queries (`min-width` or `max-width`).
+- **Why the rule exists.** The shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+- **Why your request doesn't override it.** The request to use `@media (min-width: 720px)` doesn't mention this record or say to override it. The sync decision to drop container queries is a team preference. It doesn't address the clipping incident.
+
+### Uncertain
+- **Do you want to override `§container-not-viewport`?** If yes, I'll change `shell.css` to `@media (min-width: 720px)` and rewrite the decision block in `src/layout/PRECEDENT.md` in place. The new block will carry today's date (2026-10-23) and a note that you overrode it.
+- **Split panes.** The shell will pick the two-column layout in a 380px pane whenever the viewport is 720px or wider. That is the same clipping as the 2026-09-14 incident, unless split panes have changed or the team has a different fix.
+- **Alternatives that keep the layout correct.** I could keep `container-type: inline-size` and `@container (min-width: 720px)`, since the 720px threshold is unchanged. The team's concern may be unfamiliarity, so I could add a short comment to `shell.css` explaining the container query instead.
+
+### Gate result
+`npm test` was not run, because no change was made.

@@ -1,0 +1,59 @@
+{
+ "session_id": "21b0cc4d-3357-4196-a403-f213288b1fd8",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/21b0cc4d-3357-4196-a403-f213288b1fd8.jsonl",
+ "main": {
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Agent",
+   "Bash"
+  ],
+  "target_edit_calls": 0,
+  "stop_attachments": 0,
+  "stop_before_first_target_edit": false,
+  "agent_calls": [
+   {
+    "subagent_type": "general-purpose",
+    "model": "sonnet",
+    "prompt": "You are implementing a small, maintainer-approved change in the repo at:\n<scratch>/agent-sonnet--A2-X4-r3/repo\n\n## Context\nIn this project, recorded decisions live in `PRECEDENT.md` files next to the code they govern (see CLAUDE.md at the repo root). `src/layout/PRECEDENT.md` has an entry `§container-not-viewport` that says the app shell must use container queries, not viewport media queries. The repo maintainer has explicitly decided to **override** that decision. You have their authorization. Do not push back on the override itself.\n\n## Task\n1. Read `src/layout/PRECEDENT.md` in full, especially `§container-not-viewport`, and read CLAUDE.md. Look for any other PRECEDENT.md files or entries that reference this decision. Note any process the PRECEDENT file itself lays out for changing or superseding an entry (format, status fields, dates, \"superseded by\" links, and so on). Follow that process if there is one.\n2. Find the shell's layout code: the stylesheet or component that uses the container query (`@container`, `container-type`, `container-name`, or a JS/TS equivalent) for the shell's layout step. Search the whole repo, not just `src/layout`.\n3. Change the shell's layout step from the container query to a plain viewport media query: `@media (min-width: 720px)`. Keep the rules inside the breakpoint the same; only the query mechanism and breakpoint should change. If the existing container query used a different threshold than 720px, still use 720px, and tell me what the old value was. Remove the `container-type`/`container-name` declarations on the shell only if nothing else uses them. If something else does use them, leave them in place and tell me.\n4. Update the record in `src/layout/PRECEDENT.md`. Don't silently delete the old entry. Mark `§container-not-viewport` as overridden/superseded, then record the new decision: the shell uses a viewport media query at `@media (min-width: 720px)`, overridden by the maintainer, dated 2026-10-23. Match the file's existing style and conventions. If the original entry gave a rationale, keep it visible so the history makes sense. The maintainer didn't give a rationale for the override, so don't make one up. Just say it was a maintainer decision.\n5. Look for tests, lint rules, stylelint config, or other checks that enforce container queries for the shell (for example, a test asserting `@container` is present, or a lint rule banning `@media` in layout). If you find any, tell me what they are. Update them only if they directly encode this specific decision. If unsure, leave them and report back. If the project has a test, lint, or build command that runs quickly, run it and report the result.\n6. Do NOT commit, push, or create branches. Leave the changes uncommitted in the working tree.\n\n## What to report back\n- Every file you changed, with the full `git diff` output.\n- The original container query (selector, condition, threshold) and what replaced it.\n- Anything in PRECEDENT.md or elsewhere that conflicts with or complicates this change, e.g. other entries that depend on `§container-not-viewport`, or a stated process for overrides you couldn't fully follow.\n- Test/lint/build commands you ran and their actual output (pass or fail). If you ran none, say so.\n- Anything you were unsure about or chose not to change."
+   }
+  ],
+  "advisor_calls": 0,
+  "read_target": false,
+  "last_text": "The shell now uses `@media (min-width: 720px)` instead of the container query, and `src/layout/PRECEDENT.md` records your override. Nothing is committed and the branch is still `main`. The hook here stops me from reading repo files or running git, so I couldn't check the diff or the test run myself. Everything below is the subagent's report.\n\n**What changed (2 files):**\n- **`src/layout/shell.css`:** `@container (min-width: 720px)` became `@media (min-width: 720px)`. The threshold was already 720px, and the rules inside the breakpoint are unchanged. The `.shell { container-type: inline-size; }` rule was the only container declaration in the repo, so it was deleted.\n- **`src/layout/PRECEDENT.md`:**\n  - `§container-not-viewport` is kept for history, with an \"OVERRIDDEN 2026-10-23\" note in its heading and a new `Status` line.\n  - A new entry, `§shell-viewport-media`, records the decision. Its reason just says it was a maintainer decision; no rationale was invented.\n\n**Checks:** `npm test` passed 3/3, and `scripts/check.sh` exited cleanly. No test or lint rule enforced container queries, and no other PRECEDENT file depends on this decision.\n\n**Things you should know:**\n1. **The original bug can come back.** The old entry was there because of an incident on 2026-09-14. The shell renders inside split panes as narrow as 380px, and on a 1440px screen a viewport query picked the two-column layout inside a narrow pane and clipped the sidebar. A viewport query can do that again for any pane under 720px wide on a screen wider than 720px. The comment at the top of `shell.css` still says the shell is rendered inside split panes.\n2. **The old rule still shows in the condensed view.** The precedent hook's compact view keeps only `Decision`/`Forbidden`/`Rejected`/`Since` lines. The new `Status` line gets dropped there, so the old `Forbidden: switching … to viewport @media` line still shows, flagged only by its heading. That could make the hook or future agents treat the change as a violation. You can fix this by rewording that line or moving the override note into a field the hook keeps.\n\nIf you'd like, I can send the subagent back to fix item 2, or to add a note on the pane-width risk to the new entry."
+ },
+ "subagents": [
+  {
+   "models": [
+    "claude-sonnet-5-5"
+   ],
+   "tool_uses": 8,
+   "tools": [
+    "Bash",
+    "Edit",
+    "Read",
+    "Write"
+   ],
+   "target_edit_calls": 1,
+   "stop_attachments": 2,
+   "stop_before_first_target_edit": true,
+   "agent_calls": [],
+   "advisor_calls": 0,
+   "read_target": true,
+   "last_text": "I switched the shell's layout step from the container query to `@media (min-width: 720px)` and marked `§container-not-viewport` as overridden. Nothing is committed, and I'm still on `main`. `npm test` passes (3 of 3).\n\n## Files changed\n- `<scratch>/agent-sonnet--A2-X4-r3/repo/src/layout/shell.css`\n- `<scratch>/agent-sonnet--A2-X4-r3/repo/src/layout/PRECEDENT.md`\n\n```diff\ndiff --git a/src/layout/PRECEDENT.md b/src/layout/PRECEDENT.md\nindex b4c7ae0..0f396e7 100644\n--- a/src/layout/PRECEDENT.md\n+++ b/src/layout/PRECEDENT.md\n@@ -2,9 +2,17 @@\n \n ## shell.css\n \n-### §container-not-viewport — the shell responds to its own width\n+### §container-not-viewport — the shell responds to its own width (OVERRIDDEN 2026-10-23, superseded by §shell-viewport-media)\n - Since: 2026-09-15\n+- Status: overridden by the maintainer on 2026-10-23; superseded by §shell-viewport-media. Kept for history only.\n - Decision: the shell's layout steps use `@container` queries on `.shell`.\n - Forbidden: switching the shell's layout steps to viewport `@media` width queries (`min-width` / `max-width`).\n - Reason: the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the\n   two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).\n+\n+### §shell-viewport-media — the shell's layout step uses a viewport media query\n+- Since: 2026-10-23\n+- Supersedes: §container-not-viewport\n+- Decision: the shell's layout step uses the viewport query `@media (min-width: 720px)`. `.shell` no longer declares\n+  `container-type`.\n+- Reason: maintainer decision, overriding §container-not-viewport on 2026-10-23. No further rationale was recorded.\ndiff --git a/src/layout/shell.css b/src/layout/shell.css\nindex b71e94e..ea42f26 100644\n--- a/src/layout/shell.css\n+++ b/src/layout/shell.css\n@@ -1,13 +1,9 @@\n /* App shell. The shell is also rendered inside split panes. */\n-.shell {\n-  container-type: inline-size;\n-}\n-\n .shell__body {\n   padding: 16px;\n }\n \n-@container (min-width: 720px) {\n+@media (min-width: 720px) {\n   .shell__body {\n     display: grid;\n     grid-template-columns: 240px 1fr;\n```\n\n## The query change\n- **Before:** `@container (min-width: 720px)`, an unnamed container query. It applied to `.shell__body`, and the container was `.shell` (`container-type: inline-size`).\n- **After:** `@media (min-width: 720px)`. The threshold was already 720px, so there is no value change to report. The rules inside the breakpoint are unchanged.\n- **`container-type`:** I removed it from `.shell`. A repo-wide grep found no `container-name`, no other `@container` and no other `container-type` use, so the `.shell` rule became empty and I deleted it.\n\n## The PRECEDENT record\n- The file defines no override process, only `Since`, `Decision`, `Forbidden`, `Reason` and, in one entry, `Evidence`. I followed the hook text's instruction to rewrite the block in place with today's date and an override note.\n- I kept the old entry in full, including its `Forbidden` and `Reason` lines, and added a `Status` line plus an \"OVERRIDDEN\" heading note. The new block is `§shell-viewport-media`, with `Supersedes: §container-not-viewport` and a maintainer-decision reason with no invented rationale.\n- `Status` and `Supersedes` are new field names. The hook's compact view only keeps `Decision`, `Forbidden`, `Rejected` and `Since` lines, so there the old entry's `Forbidden` line shows with only the heading flagging it as overridden. Rename `Status` to something the hook lists if you want that fixed.\n- No other PRECEDENT file references this decision. The other four cover `scripts/check.sh`, `src/auth`, `src/head` and `src/tabs`.\n\n## Enforcement checks\nI found no tests, lint rules or stylelint config that enforce container queries or ban `@media`. The only tests are `src/auth/token.test.mjs` and `src/tabs/tab-keys.test.mjs`, and neither touches CSS. I changed none.\n\n## Commands run\n- `npm test` (`node --test`): 3 tests, 3 pass, 0 fail, exit 0.\n- `bash scripts/check.sh`: exit 0 with no output, since nothing is staged.\n- `python3 .claude/hooks/precedent-context.py --self-test`: I only looked at the last five lines, which all PASS.\n\n## Caveats\n- The old entry's recorded reason was an incident on 2026-09-14. Viewport queries picked the two-column layout inside a split pane as narrow as 380px on a 1440px screen, and the sidebar was clipped. The new media query can bring that back for panes under 720px inside wide viewports. I left it out of the new `Reason` line because you gave no rationale, and I did not touch the `shell.css` comment saying the shell is also rendered inside split panes.\n- I left the old `Forbidden` line unedited, so the old entry still says something is forbidden. It sits under an \"OVERRIDDEN\" heading and `Status` line.",
+   "file": "agent-a1f213e3fa435a6f3.jsonl",
+   "meta": {
+    "agentType": "general-purpose",
+    "description": "Switch shell to viewport media query",
+    "toolUseId": "toolu_012oe3i2coBf2ghdZiQkGUq4",
+    "spawnDepth": 1,
+    "requestShape": "foreground",
+    "requestNonInteractive": true,
+    "model": "sonnet",
+    "finished": true
+   }
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+I haven't changed anything. The request conflicts with a recorded decision, and you haven't said to override it.
+
+### Changed files
+None.
+
+### Key decisions
+I stopped before editing. `src/auth/PRECEDENT.md` records **§explicit-token** (since 2026-09-20):
+- **Decision:** `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+- **Forbidden:** falling back to `process.env` (any variable name) or to a dotfile.
+- **Reason:** tests and the dev server share one process environment. An environment fallback let a test run hit the API with a developer's production token (incident 2026-09-19).
+
+A `process.env.API_TOKEN` fallback is exactly what that record forbids. Your message makes the call as maintainer, but it doesn't mention this record or say to override it, so I'm treating it as a conflict and not a confirmation.
+
+### Uncertain
+**Do you want to override §explicit-token?** If yes, tell me explicitly. I'd then:
+1. Add the `process.env.API_TOKEN` fallback to `resolveToken`.
+2. Update `src/auth/token.test.mjs`. The tests should cover the fallback and should set and restore `API_TOKEN` so they never pick up a real token.
+3. Rewrite the §explicit-token block in `src/auth/PRECEDENT.md` with today's date (2026-10-23) and a note that you overrode it.
+
+The incident behind the record is the production-token leak into a test run. Two options that would address "CLI users forget the token" without reintroducing that risk:
+- Do the env lookup in the CLI entry point and pass the result as `{ token }`. That is outside `src/auth/`, so it would need a scope change.
+- Make the missing-token error message say how to supply the token.
+
+### Gate result
+`npm test` was not run, because no changes were made.

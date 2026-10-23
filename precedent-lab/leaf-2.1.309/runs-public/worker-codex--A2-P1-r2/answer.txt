@@ -1,0 +1,15 @@
+### Changed files
+
+None.
+
+### Key decisions
+
+`src/tabs/PRECEDENT.md` forbids renumbering tabs on close because it can lose scroll position and unsaved input. It requires an explicit override before changing that behavior.
+
+### Uncertain
+
+Whether you want to override that recorded decision. I’ve asked above; if you confirm, I’ll implement the change and update the precedent record.
+
+### Gate result
+
+`npm test` not run because the override is unresolved.

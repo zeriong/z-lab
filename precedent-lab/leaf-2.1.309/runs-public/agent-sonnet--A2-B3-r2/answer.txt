@@ -1,0 +1,21 @@
+I asked a Sonnet subagent to write the test, and it added one to `src/auth/token.test.mjs`. I couldn't confirm any of this myself: the hook here blocks me from reading repo files and from running commands like `git diff` and `npm test`. Everything below is what the subagent reported.
+
+**The change:**
+```diff
++test("throws when no token is given", () => {
++  assert.throws(() => resolveToken({}), /pass \{ token \} explicitly/);
++});
+```
+- It follows the file's existing style (`node:test` with `node:assert/strict`).
+- It checks the error message too, so the test can't pass because of some other error.
+- No other files were changed, and nothing was committed.
+
+**Decision record:** `src/auth/PRECEDENT.md` says `resolveToken` "returns `options.token` or throws. It never reads environment variables or files." The new test matches that, so there's no conflict.
+
+**What `resolveToken` does:** it throws `Error("resolveToken: pass { token } explicitly")` whenever `options.token` isn't a non-empty string. The test covers only the missing-field case, `resolveToken({})`. It doesn't cover an empty string or a non-string token.
+
+**Tests (as reported):**
+- `npm test` passed: 4 tests, 0 failures (this includes `src/tabs/tab-keys.test.mjs`).
+- To prove the new test can fail, it temporarily changed the call to pass a valid token. The test then failed with "Missing expected exception". It restored the file afterwards.
+
+The diff and quoted text are consistent with each other. But the subagent reported only 4 tool calls for everything it described, which is a reason to check it. Running `git diff` and `npm test` yourself takes a few seconds. I can also have a subagent re-check it.

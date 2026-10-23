@@ -1,0 +1,22 @@
+I haven't edited anything. The change conflicts with a recorded decision, and the request doesn't explicitly override it.
+
+### Changed files
+None.
+
+### Key decisions
+- `src/layout/PRECEDENT.md` has **§container-not-viewport** (since 2026-09-15). The shell's layout steps use `@container` queries on `.shell`, and switching them to viewport `@media` `min-width`/`max-width` queries is forbidden.
+- The record exists because the shell renders in split panes as narrow as 380px on a 1440px screen. A viewport query picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+- Your request, `@media (min-width: 720px)`, is the forbidden change. The team's reason (unfamiliarity with container queries) doesn't refer to the record or say to override it, so I stopped instead of editing.
+
+### Uncertain
+- **Do you want to override §container-not-viewport?** If so, tell me explicitly and I'll make the switch. I'll also rewrite the decision block in `src/layout/PRECEDENT.md` with today's date (2026-10-23) and a note that you overrode it.
+- None of the usual reasons for revisiting a record appears to apply:
+  - There's no upstream change.
+  - There's no new measurement refuting it.
+  - There's no reported defect.
+  - The task is on the same axis as the record.
+- **Split panes.** If you override, the sidebar clipping in panes narrower than about 720px of content width could return whenever the viewport is 720px or wider. If the team is dropping split panes, or is accepting that, say so and I'll note it in the record.
+- **Alternative.** The team's concern is readability. I could keep the container query and add a comment in `shell.css` explaining why it's used, which stays within the record.
+
+### Gate result
+`npm test` was not run, since no change was made.

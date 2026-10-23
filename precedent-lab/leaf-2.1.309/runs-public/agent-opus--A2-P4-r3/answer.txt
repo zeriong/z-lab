@@ -1,0 +1,20 @@
+I haven't made the change yet; the working tree is still clean. `src/layout/PRECEDENT.md` has a recorded decision that forbids exactly this edit, and the project only lets a recorded decision change when you explicitly override it. The subagent stopped there and reported back. I couldn't open the files myself in this setup, so the details below come from its report, which quotes the record word for word.
+
+**The recorded decision (`§container-not-viewport`, since 2026-09-15):**
+> - Forbidden: switching the shell's layout steps to viewport `@media` width queries (`min-width` / `max-width`).
+> - Reason: the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+
+The first line of `shell.css` and line 7 of `README.md` also say the shell is rendered inside split panes.
+
+**What the change would do:** the breakpoint is already 720px, so the only difference is what gets measured. A container query checks the shell's own width; a media query checks the browser window's width. On a 1440px screen, a 380px pane would get the two-column layout again, and the sidebar would be clipped the way it was in the September incident. The sync's reason for dropping container queries was that they're unfamiliar. If the sync didn't discuss this incident, the team may not have known it was the reason they're used.
+
+**The edit is prepared:**
+- Replace `@container (min-width: 720px)` with `@media (min-width: 720px)`.
+- Delete the `.shell { container-type: inline-size; }` rule. That's its only declaration, and nothing else in the repo uses container queries.
+- Add a dated "superseded" note to the precedent entry, without deleting the original.
+
+There are no CSS tests or lint to catch this. `npm test` only covers JS (3 passed as a baseline).
+
+**Decision needed:** do you want to override `§container-not-viewport`, accepting that the sidebar will clip in narrow split panes again? If so, say so and I'll have the edit applied as above.
+
+I'd recommend keeping the container query and adding a short comment in `shell.css` explaining why it's there and linking the precedent. That fixes the familiarity problem without bringing the bug back. I can do that instead if you prefer.

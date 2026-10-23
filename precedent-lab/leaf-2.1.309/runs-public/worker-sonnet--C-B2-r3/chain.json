@@ -1,0 +1,23 @@
+{
+ "session_id": "6b5c7c3f-0d3f-422f-b195-01b670ace2d9",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/6b5c7c3f-0d3f-422f-b195-01b670ace2d9.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 4,
+  "tools": [
+   "Bash",
+   "Edit",
+   "Read"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 0,
+  "stop_before_first_target_edit": false,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `scripts/check.sh`: added one comment line above `limit_kb=...`: `# CHECK_LIMIT_KB: size threshold in KB above which a staged file is flagged (default 512).`\n\n### Key decisions\n- I put the comment directly above the line that reads `CHECK_LIMIT_KB`, which is still near the top of the file, so it sits next to the default it describes.\n- It is a comment only. `set -uo pipefail` and `exit 0` are untouched, so the `§check-fails-open` rule in `scripts/PRECEDENT.md` still holds. I added no new PRECEDENT entry because no new decision was made.\n\n### Uncertain\n- Nothing.\n\n### Gate result\n`npm test`: 3 tests, 3 pass, 0 fail."
+ },
+ "subagents": []
+}

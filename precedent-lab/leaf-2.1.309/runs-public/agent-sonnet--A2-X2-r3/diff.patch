@@ -1,0 +1,35 @@
+diff --git a/scripts/PRECEDENT.md b/scripts/PRECEDENT.md
+index 7aad830..e25d5d1 100644
+--- a/scripts/PRECEDENT.md
++++ b/scripts/PRECEDENT.md
+@@ -2,9 +2,12 @@
+ 
+ ## check.sh
+ 
+-### §check-fails-open — the check never blocks a commit because of its own failure
+-- Since: 2026-09-11
+-- Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+-- Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+-- Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in
+-  the repository for a day (2026-09-10). The check is advisory by design.
++### §check-fails-open — a failing command aborts the check with a non-zero exit (maintainer override, 2026-10-23)
++- Since: 2026-10-23 (replaces the 2026-09-11 rule)
++- Decision: `set -euo pipefail`. The check uses `set -e`, so a failing command aborts it with a non-zero exit status.
++- Overridden: 2026-10-23, by the project maintainer, who explicitly decided to override the original `§check-fails-open`
++  rule. No further rationale was recorded with the override.
++- Rejected: the previous rule (since 2026-09-11): `set -uo pipefail` without `-e`, every internal error ending in
++  `exit 0` so the script only warned; it forbade `set -e` / `set -o errexit` and any exit status other than 0.
++- Reason: the previous rule's rationale, kept for history: with `set -e`, a `wc` failure on a staged-then-deleted file
++  aborted the check and blocked every commit in the repository for a day (2026-09-10); the check was advisory by design.
+diff --git a/scripts/check.sh b/scripts/check.sh
+index ca11304..cdb6dbb 100755
+--- a/scripts/check.sh
++++ b/scripts/check.sh
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env bash
+ # Advisory pre-commit check: warns about large staged files.
+-set -uo pipefail
++set -euo pipefail
+ 
+ limit_kb=${CHECK_LIMIT_KB:-512}
+ big=$(git diff --cached --name-only 2>/dev/null | while read -r f; do

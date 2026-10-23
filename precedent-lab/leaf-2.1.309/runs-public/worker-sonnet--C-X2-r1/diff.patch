@@ -1,0 +1,45 @@
+diff --git a/scripts/PRECEDENT.md b/scripts/PRECEDENT.md
+index 7aad830..dfc5f8b 100644
+--- a/scripts/PRECEDENT.md
++++ b/scripts/PRECEDENT.md
+@@ -2,9 +2,12 @@
+ 
+ ## check.sh
+ 
+-### §check-fails-open — the check never blocks a commit because of its own failure
+-- Since: 2026-09-11
+-- Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+-- Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+-- Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in
+-  the repository for a day (2026-09-10). The check is advisory by design.
++### §check-aborts-on-error — any failing command aborts the check with a non-zero exit
++- Since: 2026-10-23
++- Supersedes: §check-fails-open (2026-09-11), overridden by the maintainer.
++- Decision: `set -euo pipefail`. Any failing command aborts the check with a non-zero exit. Large staged files are
++  still only warned about (exit 0 when nothing fails).
++- Forbidden: dropping `-e`, and swallowing internal errors to force `exit 0`.
++- Reason: the maintainer prefers a check that surfaces its own failures over one that silently passes.
++- Known risk: the original fail-open decision came from a `wc` failure on a staged-then-deleted file blocking every
++  commit (2026-09-10). The `[ -f "$f" ] || continue` guard skips deleted files; keep it.
+diff --git a/scripts/check.sh b/scripts/check.sh
+index ca11304..12123ac 100755
+--- a/scripts/check.sh
++++ b/scripts/check.sh
+@@ -1,12 +1,13 @@
+ #!/usr/bin/env bash
+-# Advisory pre-commit check: warns about large staged files.
+-set -uo pipefail
++# Pre-commit check: warns about large staged files; any failing command aborts it non-zero.
++set -euo pipefail
++shopt -s inherit_errexit 2>/dev/null || true
+ 
+ limit_kb=${CHECK_LIMIT_KB:-512}
+-big=$(git diff --cached --name-only 2>/dev/null | while read -r f; do
++big=$(git diff --cached --name-only | while read -r f; do
+   [ -f "$f" ] || continue
+   kb=$(( $(wc -c < "$f") / 1024 ))
+-  [ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"
++  if [ "$kb" -gt "$limit_kb" ]; then echo "$f (${kb}KB)"; fi
+ done)
+ 
+ if [ -n "$big" ]; then

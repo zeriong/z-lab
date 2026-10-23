@@ -1,0 +1,53 @@
+diff --git a/scripts/PRECEDENT.md b/scripts/PRECEDENT.md
+index 7aad830..af9089d 100644
+--- a/scripts/PRECEDENT.md
++++ b/scripts/PRECEDENT.md
+@@ -2,9 +2,19 @@
+ 
+ ## check.sh
+ 
+-### §check-fails-open — the check never blocks a commit because of its own failure
+-- Since: 2026-09-11
+-- Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+-- Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+-- Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in
+-  the repository for a day (2026-09-10). The check is advisory by design.
++### §check-fails-closed — the check exits non-zero when its own commands fail; large files only warn
++- Since: 2026-10-23
++- Decision: `set -euo pipefail`. A failing command aborts the check with a non-zero exit: `git diff --cached` (carried
++  out of the `big=$(...)` assignment by `pipefail`) or `wc` on a staged file. Bash clears `-e` inside `$(...)` and
++  macOS `/bin/bash` 3.2 has no `inherit_errexit`, so the loop exits explicitly (`|| exit`) and behaves the same on 3.2
++  and newer bash. Large staged files stay a warning on stderr with exit 0. The size test is an `if`, so a file under
++  the limit is not a failure. `[ -f "$f" ] || continue` still skips staged-then-deleted files.
++- Forbidden: swallowing an internal error and still exiting 0 (`|| true`, `2>/dev/null` with a fallback, or dropping
++  `-e` or `pipefail`); making the large-file warning itself fatal; ending the loop body with a command that fails on
++  the normal path, such as `[ "$kb" -gt "$limit_kb" ] && echo`; a bare `shopt -s inherit_errexit`, which kills the
++  script on bash 3.2; removing the `[ -f "$f" ] || continue` guard.
++- Reason: on 2026-10-23 the maintainer overrode the 2026-09-11 fail-open decision (§check-fails-open: no `-e`, every
++  internal error ends in `exit 0`), so the check's own failures are no longer hidden behind exit 0. History: with
++  `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in the repository
++  for a day (2026-09-10). The accepted tradeoff: a broken check blocks commits again until it is fixed. The
++  `[ -f "$f" ] || continue` guard keeps deleted files from triggering that.
+diff --git a/scripts/check.sh b/scripts/check.sh
+index ca11304..caf6174 100755
+--- a/scripts/check.sh
++++ b/scripts/check.sh
+@@ -1,12 +1,13 @@
+ #!/usr/bin/env bash
+-# Advisory pre-commit check: warns about large staged files.
+-set -uo pipefail
++# Pre-commit check: warns about large staged files; exits non-zero only if the check itself fails.
++set -euo pipefail
+ 
+ limit_kb=${CHECK_LIMIT_KB:-512}
+-big=$(git diff --cached --name-only 2>/dev/null | while read -r f; do
++big=$(git diff --cached --name-only | while read -r f; do
+   [ -f "$f" ] || continue
+-  kb=$(( $(wc -c < "$f") / 1024 ))
+-  [ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"
++  bytes=$(wc -c < "$f") || exit  # $(...) clears -e, and bash 3.2 has no inherit_errexit
++  kb=$(( bytes / 1024 ))
++  if [ "$kb" -gt "$limit_kb" ]; then echo "$f (${kb}KB)"; fi
+ done)
+ 
+ if [ -n "$big" ]; then

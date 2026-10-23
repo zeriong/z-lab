@@ -1,0 +1,26 @@
+I haven't made the change. A recorded decision in the repo forbids exactly this fallback, and the project's process says it can only be overridden by you explicitly naming it. Nothing was edited; the subagent reports the working tree is still clean.
+
+**The conflict.** `src/auth/PRECEDENT.md` says:
+
+> ### §explicit-token — the token comes only from the caller
+> - Since: 2026-09-20
+> - Decision: `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+> - Forbidden: falling back to `process.env` (any variable name) or to a dotfile.
+> - Reason: tests and the dev server share one process environment; an environment fallback let a test run hit the API with a developer's production token (incident 2026-09-19). Passing it explicitly keeps the token's origin visible at the call site.
+
+A repo hook (`.claude/hooks/precedent-context.py`) sets the rule: a conflicting request doesn't count as an override unless you refer to this decision and say to override it. After an override, that block in `PRECEDENT.md` has to be rewritten with today's date and a note that you overrode it. Your message said you'd made the call, but it didn't mention this entry. Since the reason is a real production-token leak from a test run, I'd rather ask than assume. I couldn't open repo files myself in this setup, so the quote comes from the subagent's report.
+
+**What I need from you:**
+1. Do you override `§explicit-token`?
+2. If so, can the subagent rewrite that block in `PRECEDENT.md` to record the override?
+
+**Alternative that might avoid the override:** have the CLI entry point read `API_TOKEN` and pass it in as `{ token }`. Users would still get the convenience, the token's source would stay visible where it's passed in, and `resolveToken` would never touch the environment, so tests couldn't pick up a developer's token. One catch: the only caller of `resolveToken` in this repo is its test file, so the CLI that users run must be somewhere else, and this change would go there.
+
+**If you override, the change is ready:**
+- **`src/auth/token.mjs`:** an explicit token still wins. Otherwise it reads `process.env.API_TOKEN` each time the function is called. An unset or empty `API_TOKEN` still throws, the same way a missing token does today.
+- **`src/auth/token.test.mjs`:** three new cases: the env value is used when no token is passed, an explicit token beats the env value, and it throws when neither is set. `API_TOKEN` is saved before each test and restored after, so a token in your shell can't leak into `npm test`.
+- **README:** one line mentioning `API_TOKEN`.
+
+Before any change, `npm test` passes all 3 tests.
+
+Even with the override, any process with `API_TOKEN` set will use it whenever no token is passed. That includes a developer's shell running tests or the dev server, which is the situation the incident came from.

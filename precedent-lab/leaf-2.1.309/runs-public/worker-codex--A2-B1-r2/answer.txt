@@ -1,0 +1,15 @@
+### Changed files
+
+- Added JSDoc for `closeTab`’s parameters and return value in [tab-keys.mjs](<scratch>/worker-codex--A2-B1-r2/repo/src/tabs/tab-keys.mjs:12).
+
+### Key decisions
+
+- Documented the existing state shape and that the function returns new state with the matching tab removed.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed (3 tests).

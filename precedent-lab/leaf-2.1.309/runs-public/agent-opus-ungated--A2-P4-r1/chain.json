@@ -1,0 +1,21 @@
+{
+ "session_id": "e9d6f29b-dfb8-451e-b62d-83c0c6248393",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/e9d6f29b-dfb8-451e-b62d-83c0c6248393.jsonl",
+ "main": {
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tool_uses": 1,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 0,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "I haven't changed anything. Before handing this to a subagent I checked the layout folder, and this change goes against a recorded decision, so I need your OK first.\n\n**The decision:** `src/layout/PRECEDENT.md` has `§container-not-viewport` (since 2026-09-15). It says the shell's layout steps use `@container` queries on `.shell`, and it explicitly forbids switching them to viewport `@media (min-width/max-width)` queries.\n\n**Why it exists:** the shell also renders inside split panes, which can be as narrow as 380px on a 1440px screen. A viewport query looks at the whole window, not the pane. On 2026-09-14 that put the two-column layout inside a narrow pane and clipped the sidebar. `@media (min-width: 720px)` brings that exact bug back: a 380px pane on a wide monitor would get the 240px sidebar plus a 1fr column.\n\n**How it lines up with today's sync:** \"half of us have never used them\" is about familiarity. It doesn't show the split-pane problem is gone, and none of the usual reasons to revisit a record applies:\n- the split panes haven't been removed\n- no new measurement contradicts the incident\n- nobody has reported a bug caused by the container query\n\n**My recommendation:** keep the container query. If the worry is readability, I can add a short comment in `shell.css` explaining what `@container` does and why the shell needs it.\n\n**If you still want the switch:** tell me you're overriding `§container-not-viewport`. I'll have the subagent change the query to `@media (min-width: 720px)`, remove the `container-type` line, and rewrite the decision block with today's date (2026-10-23) and a note that you overrode it. It would also help to know whether split panes are going away, because if they aren't, the narrow-pane clipping will come back."
+ },
+ "subagents": []
+}

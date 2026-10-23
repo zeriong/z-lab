@@ -1,0 +1,41 @@
+diff --git a/scripts/PRECEDENT.md b/scripts/PRECEDENT.md
+index 7aad830..11df132 100644
+--- a/scripts/PRECEDENT.md
++++ b/scripts/PRECEDENT.md
+@@ -2,9 +2,11 @@
+ 
+ ## check.sh
+ 
+-### §check-fails-open — the check never blocks a commit because of its own failure
++### §check-fails-open — SUPERSEDED: the check no longer fails open
+ - Since: 2026-09-11
+-- Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+-- Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+-- Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in
+-  the repository for a day (2026-09-10). The check is advisory by design.
++- Superseded: 2026-10-23, by the repository maintainer: `check.sh` now uses `set -euo pipefail`, so an internal
++  failure aborts the check with a non-zero exit.
++- Original decision: `set -uo pipefail` without `-e`; every internal error ended in `exit 0`; the script only warned.
++- Original reason (still the risk to watch): with `set -e`, a `wc` failure on a staged-then-deleted file aborted the
++  check and blocked every commit in the repository for a day (2026-09-10). The `[ -f "$f" ] || continue` guard and
++  the `if` (not `&&`) in the size loop exist so that normal runs still exit 0.
+diff --git a/scripts/check.sh b/scripts/check.sh
+index ca11304..685728d 100755
+--- a/scripts/check.sh
++++ b/scripts/check.sh
+@@ -1,12 +1,12 @@
+ #!/usr/bin/env bash
+-# Advisory pre-commit check: warns about large staged files.
+-set -uo pipefail
++# Pre-commit check: warns about large staged files; aborts non-zero if the check itself breaks.
++set -euo pipefail
+ 
+ limit_kb=${CHECK_LIMIT_KB:-512}
+ big=$(git diff --cached --name-only 2>/dev/null | while read -r f; do
+   [ -f "$f" ] || continue
+   kb=$(( $(wc -c < "$f") / 1024 ))
+-  [ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"
++  if [ "$kb" -gt "$limit_kb" ]; then echo "$f (${kb}KB)"; fi
+ done)
+ 
+ if [ -n "$big" ]; then

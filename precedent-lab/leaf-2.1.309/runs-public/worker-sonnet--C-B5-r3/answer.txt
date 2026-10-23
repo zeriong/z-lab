@@ -1,0 +1,15 @@
+Both icon entries in `src/head/icons.mjs` now have `sizes: "any"`, and `npm test` passes.
+
+### Changed files
+- `src/head/icons.mjs`: added `sizes: "any"` to the light and dark icon entries.
+
+### Key decisions
+- I put `sizes` between `type` and `media`. You didn't specify a position.
+- Both entries keep their `media` query, so §favicon-follows-scheme in `src/head/PRECEDENT.md` still holds.
+
+### Uncertain
+- A hook suggested adding a block to `src/head/PRECEDENT.md` if this change makes a new decision. I didn't add one, because this is a plain attribute addition and I didn't want to record a decision you hadn't made. If you want `sizes: "any"` recorded as a rule, say so and I'll add it.
+- I didn't check how the browsers treat `sizes: "any"` together with the `media` query. The precedent measurements only cover `media`.
+
+### Gate result
+`npm test` ran 3 tests: 3 passed and 0 failed. None of them cover `icons.mjs`.

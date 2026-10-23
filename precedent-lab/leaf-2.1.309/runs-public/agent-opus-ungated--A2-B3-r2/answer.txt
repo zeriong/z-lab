@@ -1,0 +1,14 @@
+I added a test to `src/auth/token.test.mjs` that checks `resolveToken` throws when no token is given. I ran `npm test` myself afterwards and all 4 tests pass.
+
+```js
+test("throws when no token is given", () => {
+  assert.throws(() => resolveToken(), /pass \{ token \} explicitly/);
+  assert.throws(() => resolveToken({}), /pass \{ token \} explicitly/);
+});
+```
+
+- **What it checks:** it calls `resolveToken()` with no argument and with an empty object `{}`, and both must throw. It matches part of the error message rather than the whole string, so a small rewording won't break it.
+- **Fits the recorded decision:** `src/auth/PRECEDENT.md` says `resolveToken` either returns the token you pass in or throws, and never falls back to environment variables. The test follows that rule and doesn't read or set environment variables.
+- **What changed:** only the test file. `token.mjs` and `PRECEDENT.md` are untouched, and nothing is staged or committed.
+
+The work was done by one subagent, and I checked its result against the actual file changes and a fresh test run. I can commit it if you want.

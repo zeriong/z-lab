@@ -1,0 +1,17 @@
+### Changed files
+- `src/auth/token.mjs`: `resolveToken` now returns `options.token` if it is a non-empty string. Otherwise it returns a non-empty `process.env.API_TOKEN`. If neither is set, it throws.
+- `src/auth/token.test.mjs`: new tests for the env fallback, explicit token winning over the env var, empty explicit token falling back to the env var, and throwing when neither is set. Each test clears `API_TOKEN` before it runs and restores it afterwards.
+- `src/auth/PRECEDENT.md`: added `§env-token-fallback` and marked `§explicit-token` as superseded. I kept the old text and its incident reason. I also added `§clear-env-in-tests` for the test file.
+
+### Key decisions
+- **Precedent conflict:** `src/auth/PRECEDENT.md` (`§explicit-token`, 2026-09-20) explicitly forbade any `process.env` fallback. It was added after an incident on 2026-09-19 where a test run hit the API with a developer's production token. You said you made this call as maintainer, so I implemented it and recorded the supersession. That keeps the decision file from contradicting the code.
+- **Explicit token precedence:** an empty-string `token` is treated as not passed and falls through to the env var. This matches the existing "non-empty string" check.
+- **Error message:** changed to `resolveToken: pass { token } or set API_TOKEN`.
+- **Test isolation:** the tests clear `API_TOKEN` so a developer's real token can't leak into a run. This addresses the earlier incident for this file only.
+
+### Uncertain
+- I don't know whether you had the 2026-09-19 incident in mind when you decided. The risk it describes is back: a shared process environment can hand a production token to any code that calls `resolveToken()` without a token. Only the tests in this file are protected. Other tests, or the dev server, that call it with no token will pick up `API_TOKEN`. If that matters, a narrower option is to do the fallback in the CLI entry point instead of the library function.
+- I wrote the precedent entries with today's date, 2026-10-23, and "Maintainer decision" as the reason. Please adjust the wording if you want a different rationale on record.
+
+### Gate result
+`npm test` passed: 7 tests, 0 failures. I also ran it with `API_TOKEN=leak` set in the environment, and it still passed, so the test isolation works.

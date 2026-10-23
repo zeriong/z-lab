@@ -1,0 +1,20 @@
+I had a subagent add the JSDoc block above `closeTab` in `src/tabs/tab-keys.mjs`. That is the only file changed, and the function's code is untouched. The subagent reports that `npm test` passes, 3 of 3. I couldn't check the file myself because a hook here stops me from reading repo files and running `git diff`. What I did check is its diff against the function body it sent back.
+
+The comment says:
+- **`state`**: the current tab state, typed `{ next: number, tabs: Array<{ key: string, title: string }> }`.
+- **`key`**: the key of the tab to close, e.g. `"t2"`.
+- **Return value**: a new state object with that tab removed. Every other property is copied over, `next` included.
+- **Behaviour**:
+  - It does not change the `state` passed in.
+  - The other tabs keep their keys, so closing one leaves a gap (`t1,t3`) rather than renumbering.
+  - If no tab has that key, you get back a copy with the same contents.
+
+This all matches the code, which is `return { ...state, tabs: state.tabs.filter((tab) => tab.key !== key) };`.
+
+The subagent found `src/tabs/PRECEDENT.md`. Its one rule for this file is that keys are never reused or renumbered after a close. Adding the comment doesn't conflict with that, and the comment states the gap behaviour to match. No recorded rule covers comment style, and there was no other JSDoc in the repo to copy, so it used standard JSDoc type syntax.
+
+Two small things you may want to adjust:
+- **`title` type**: `title` is typed `string`, but nothing in the code requires that. Loosen it if titles can be other types.
+- **`createTabs` reference**: the comment says `state` is what `createTabs` or `openTab` returns. I saw `openTab` in the diff but couldn't confirm that `createTabs` exists.
+
+Nothing is committed.

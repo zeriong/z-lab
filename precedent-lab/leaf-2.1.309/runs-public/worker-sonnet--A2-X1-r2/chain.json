@@ -1,0 +1,21 @@
+{
+ "session_id": "8bdd98c7-1c84-40ed-89d6-d8814d3e8694",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/8bdd98c7-1c84-40ed-89d6-d8814d3e8694.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": false,
+  "last_text": "### Changed files\n- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1..tn` in order and sets `next` to `n + 1`.\n- `src/tabs/tab-keys.test.mjs`: replaced the \"close keeps keys\" test with \"close renumbers remaining keys contiguously\". Added \"open after close continues from the renumbered keys\".\n- `src/tabs/PRECEDENT.md`: rewrote the §stable-tab-keys block in place. It is dated 2026-10-23, records that the maintainer overrode the 2026-09-02 decision, keeps the old rule as \"previous (overridden)\", and notes the accepted cost.\n\n### Key decisions\n- Your request cited §stable-tab-keys and said you were overriding it, so I went ahead without asking again.\n- `next` resets to `tabs.length + 1` after a close. Without that, the next `openTab` would reuse a stale counter and produce a gap or a duplicate key. For example, closing `t2` of three tabs would leave `next=4`, and the next open would give `t1,t2,t4`.\n- I kept the incident reason in the record as a known, accepted cost rather than deleting it.\n\n### Uncertain\n- Nothing outside `src/tabs/` was changed. The renumbering shifts keys, which are also the React key and the `?tabs=` URL state. Any caller outside `src/tabs/` that holds old keys, such as a stored active-tab key, will see them change. A grep found no other references in this repo, so this only matters for code outside it.\n- The \"Known cost\" line in the record is my wording of the old rationale. Please check it matches your intent.\n\n### Gate result\n`npm test` passed: 4 tests, 4 passed, 0 failed."
+ },
+ "subagents": []
+}

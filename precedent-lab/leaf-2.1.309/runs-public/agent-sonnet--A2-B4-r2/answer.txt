@@ -1,0 +1,15 @@
+I added the `.shell__header` rule to `src/layout/shell.css`, through a Sonnet subagent. A hook stopped me from reading the repo or running `git diff` myself, so I haven't checked the file directly. Everything below comes from the subagent's report.
+
+```diff
++.shell__header {
++  padding-block: 12px;
++}
++
+ .shell__body {
+   padding: 16px;
+ }
+```
+
+- **Recorded decisions:** `src/layout/PRECEDENT.md` has one entry for `shell.css` (§container-not-viewport). It forbids moving the shell's layout to viewport `@media` width queries. The new rule uses no media or container query, so it doesn't conflict.
+- **How it's written:** `padding-block` sets only top and bottom padding and leaves left and right alone. `padding: 12px 0` would have set the sides to 0. The subagent wrote raw `12px` because the file uses px values and no CSS variables, and placed the rule before `.shell__body`.
+- **What else changed:** only `shell.css` was edited. Nothing was committed, no formatter was run, and `PRECEDENT.md` wasn't changed, since a padding value isn't a new decision worth recording.

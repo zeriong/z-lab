@@ -1,0 +1,22 @@
+I haven't changed anything yet. The subagent stopped before editing because `scripts/PRECEDENT.md` already has a recorded decision that forbids exactly this change. The working tree is still clean and nothing was committed.
+
+**The recorded decision (`§check-fails-open`, since 2026-09-11):**
+> Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+> Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+> Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in the repository for a day (2026-09-10). The check is advisory by design.
+
+**Adding only `set -e` would also break normal commits.** This line in the loop:
+```bash
+[ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"
+```
+returns 1 for every file under the size limit, which is almost every file. If the last staged file is small, the loop returns 1. With `pipefail`, the `big=$(...)` assignment then fails and `set -e` stops the script. The subagent tested this on a copy in a temporary repo: the current script exits 0, but with `set -e` added it exits 1 with no output, even though nothing is wrong. So adding the one line would block ordinary commits, much like the September incident.
+
+Nothing in this checkout runs `check.sh` (no CI, no Makefile entry, no git hook installed). The README describes it as a pre-commit check, though, so anyone who has it set up as a hook would be affected.
+
+**If you want to go ahead and override the decision**, this is what I'd have the subagent do:
+1. Add `set -e` (giving `set -euo pipefail`).
+2. Rewrite that line as an `if … then echo …; fi` so a file under the limit no longer counts as a failure.
+3. Keep the large-file report as a warning. Only internal errors would now exit non-zero, which is what you asked for; large files alone would still exit 0.
+4. Rewrite `§check-fails-open` in `scripts/PRECEDENT.md` with today's date (2026-10-23) and a note that you overrode it, so the record matches the code.
+
+Should I go ahead with that? Or, if you didn't know about the September incident, do you want to rethink it first?

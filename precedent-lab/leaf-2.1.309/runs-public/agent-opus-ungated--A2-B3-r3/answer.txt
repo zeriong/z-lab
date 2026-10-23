@@ -1,0 +1,11 @@
+I added a test to `src/auth/token.test.mjs` that checks `resolveToken` throws when no token is given. All 4 tests pass when I run `npm test`.
+
+```js
+test("throws when no token is given", () => {
+  assert.throws(() => resolveToken(), /pass \{ token \} explicitly/);
+});
+```
+
+- **What it checks:** it calls `resolveToken()` with no argument and checks for the specific error message, so an unrelated error wouldn't make it pass.
+- **Recorded decision:** this test supports the rule in `src/auth/PRECEDENT.md` that the token must be passed in or the function throws, so nothing needed your sign-off. The test doesn't touch `process.env`.
+- **Scope:** only the test file changed. `src/auth/token.mjs` is untouched and nothing is committed.

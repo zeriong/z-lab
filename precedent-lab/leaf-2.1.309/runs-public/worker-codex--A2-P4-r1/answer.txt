@@ -1,0 +1,15 @@
+### Changed files
+
+None.
+
+### Key decisions
+
+`src/layout/PRECEDENT.md` says shell layout must use container queries and requires an explicit override before changing that decision. Your request conflicts with it but doesn’t explicitly refer to the recorded decision and say to override it, so I stopped before editing.
+
+### Uncertain
+
+Should I override the recorded decision and switch to `@media (min-width: 720px)`?
+
+### Gate result
+
+`npm test` not run because the change is awaiting that clarification.

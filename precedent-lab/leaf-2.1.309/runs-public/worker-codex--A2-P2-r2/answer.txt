@@ -1,0 +1,15 @@
+### Changed files
+
+None. I’m waiting for your explicit override before editing `scripts/check.sh`.
+
+### Key decisions
+
+`scripts/PRECEDENT.md` forbids `set -e` and requires an explicit override to change that decision.
+
+### Uncertain
+
+Whether you want to override the recorded decision.
+
+### Gate result
+
+Not run; the change is awaiting your response.

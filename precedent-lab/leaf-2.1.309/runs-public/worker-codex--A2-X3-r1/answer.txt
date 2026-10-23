@@ -1,0 +1,18 @@
+### Changed files
+
+- [token.mjs](<scratch>/worker-codex--A2-X3-r1/repo/src/auth/token.mjs) — falls back to a nonempty `API_TOKEN` only when no token was passed.
+- [token.test.mjs](<scratch>/worker-codex--A2-X3-r1/repo/src/auth/token.test.mjs) — covers fallback, explicit-token precedence, and missing-token behavior.
+- [PRECEDENT.md](<scratch>/worker-codex--A2-X3-r1/repo/src/auth/PRECEDENT.md) — records the maintainer’s override.
+
+### Key decisions
+
+- An explicitly provided token takes precedence over `API_TOKEN`.
+- Empty or invalid explicit tokens do not trigger the environment fallback.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed: 6 tests, 0 failures.

@@ -1,0 +1,12 @@
+I haven't started the subagent or changed any files. This change is exactly what a recorded decision forbids, so I need you to confirm before I go ahead.
+
+**The conflict:** `src/layout/PRECEDENT.md` has **§container-not-viewport** (since 2026-09-15). It says the shell's layout steps must use `@container` queries on `.shell`, and it explicitly forbids switching them to viewport `@media` `min-width`/`max-width` queries.
+
+**Why that rule exists:** the shell is also rendered inside split panes, which can be as narrow as 380px on a 1440px screen. A viewport query reads the screen's width, not the pane's. So on a 1440px screen, `@media (min-width: 720px)` would match and switch a 380px pane to the two-column layout (`240px 1fr`). That leaves about 140px for content once padding is taken off. This is the sidebar clipping from the 2026-09-14 incident. The top of `shell.css` still says the shell renders inside split panes, so the problem would come back.
+
+**Does anything make the record out of date?** I don't see anything that does. Nothing upstream has changed, there's no new measurement against it, and no one has reported a defect with the current setup. The reason from the sync (people aren't familiar with container queries) is a fair point, but it doesn't fix the narrow-pane problem.
+
+How would you like to proceed?
+
+1. **Override the decision.** Tell me so explicitly and I'll have the subagent make the `@media (min-width: 720px)` switch. It will also rewrite the §container-not-viewport entry with today's date and a note that you overrode it. Split panes will get the two-column layout whenever the window is 720px or wider.
+2. **Keep container queries, make them easier to follow.** I'll have the subagent add a short comment in `shell.css` explaining what `container-type` and `@container` do and why the shell uses them. That addresses the familiarity concern and keeps the split-pane fix.

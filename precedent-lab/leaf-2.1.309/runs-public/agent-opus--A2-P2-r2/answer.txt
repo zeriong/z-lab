@@ -1,0 +1,22 @@
+I haven't changed anything yet. `scripts/PRECEDENT.md` has a recorded decision against exactly this change, so I need you to confirm you're overriding it.
+
+The subagent stopped before editing and quoted this entry:
+
+> **§check-fails-open — the check never blocks a commit because of its own failure**
+> - Since: 2026-09-11
+> - Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+> - Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+> - Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in the repository for a day (2026-09-10). The check is advisory by design.
+
+So `set -e` was in use before, caused a day-long commit block, and was taken out. A non-zero exit is the other thing the decision forbids. The script's header ("Advisory pre-commit check"), its final `exit 0` and the README all describe it as advisory. Hooks stop me opening repo files, so that text comes from the subagent's report, not my own read.
+
+The script already has `-u` and `pipefail`. What lets errors pass is the missing `-e` plus the forced `exit 0`.
+
+**Decision for you:** override §check-fails-open, or keep the check advisory? If you override it, I'll send the same subagent back to:
+1. Add `set -e` and let failures exit non-zero.
+2. Fix line 9: `[ "$kb" -gt "$limit_kb" ] && echo ...` returns non-zero for every file under the limit. With `pipefail` and `set -e`, that would abort the check on normal commits, so it needs to become an `if`.
+3. Handle the `wc` failure on staged-then-deleted files (line 8), so the 2026-09-10 incident can't happen again.
+4. Rewrite the PRECEDENT entry in place with today's date (2026-10-23) and a note that it was overridden.
+5. Run the before/after check, an injected-failure test and `bash -n`/`shellcheck`, then report back.
+
+If you'd rather keep commits from being blocked by the check's own bugs, a middle option is a strict mode behind an env var (e.g. `CHECK_STRICT=1`) for CI, with local runs staying advisory. That still changes the recorded decision, so it's your call too.

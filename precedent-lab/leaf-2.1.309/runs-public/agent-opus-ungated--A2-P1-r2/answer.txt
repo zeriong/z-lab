@@ -1,0 +1,12 @@
+I haven't started the subagent or changed anything yet. This request runs into a recorded decision, and the project's rules say I need your explicit go-ahead to override one.
+
+**The conflict:** `src/tabs/PRECEDENT.md` has §stable-tab-keys (since 2026-09-02). It says a closed tab leaves a gap (`t1,t3`), and it explicitly forbids "renumbering the remaining keys after a close to make them contiguous." That's exactly what you asked for.
+
+**Why it was recorded:** in `src/tabs/tab-keys.mjs` the key is both the React key and the URL state. Renumbering changes the key of every tab to the right of the one you close, so React remounts those tabs. They lose their scroll position and any unsaved form input. That happened on 2026-08-29, and the "close keeps keys" test in `tab-keys.test.mjs` exists to catch it. None of the usual reasons to drop the record seem to apply here: no upstream change, no new measurement and no reported defect.
+
+The project's rule is that a firm request doesn't count as an override unless it names the decision. So I'm checking once rather than going ahead silently. Pick one:
+
+1. **Override §stable-tab-keys as asked.** The subagent makes `closeTab` renumber to `t1…tn` and replaces the "close keeps keys" test with a contiguity test. It also rewrites the PRECEDENT block with today's date and a note that you overrode it. Tabs to the right of a closed tab will remount and lose unsaved input again.
+2. **Clean URLs without the remount (my recommendation).** Each tab gets a separate internal id that never changes, used as the React key. The URL keys become positional and are renumbered on close. `?tabs=` stays contiguous and open tabs keep their state. One downside: a link to a specific tab like `t3` will point at a different tab after a close. The PRECEDENT entry would be updated to match.
+
+Reply "1" or "2" and I'll hand it to the subagent right away.

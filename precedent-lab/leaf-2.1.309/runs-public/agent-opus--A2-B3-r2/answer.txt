@@ -1,0 +1,21 @@
+I added the test to `src/auth/token.test.mjs`. It passes, and it fails if the throw is removed. Only that file changed, and nothing is committed.
+
+```js
+test("throws when no token is given", () => {
+  assert.throws(() => resolveToken(), {
+    name: "Error",
+    message: "resolveToken: pass { token } explicitly",
+  });
+});
+```
+
+- **Precedent:** `src/auth/PRECEDENT.md` (§explicit-token) says `resolveToken` "returns `options.token` or throws" and never falls back to `process.env` or a dotfile. That fits what you asked for, so there was nothing to raise. No other PRECEDENT.md applies to this code.
+- **Existing behaviour:** `resolveToken` already throws whenever `options.token` isn't a non-empty string, including when it's called with no argument. The implementation was left alone.
+- **Tests:** `npm test` (Node's built-in runner) went from 3 passing to 4 passing, with 0 failures.
+- **Regression check:** with the throw replaced by `return undefined`, the new test failed. With `Error` changed to `TypeError`, it also failed, so it checks the error type, not just that something was thrown. `token.mjs` was then restored, and its checksum matches the original.
+
+A hook stopped me from opening repository files, so I couldn't check the diff or rerun the tests myself. All of the above is from the subagent's report. It's specific and hangs together, but you may want to run `git diff` and `npm test` yourself before committing.
+
+Two things you might want to change:
+- The test matches the exact error message, so rewording the message will break it. A regex like `/pass \{ token \} explicitly/` would be looser.
+- It only covers the call with no argument. `{}` and `{ token: "" }` hit the same throw but aren't tested. Nothing tests the "never read `process.env`" rule either, which could be a separate test.

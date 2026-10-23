@@ -1,0 +1,27 @@
+diff --git a/src/auth/PRECEDENT.md b/src/auth/PRECEDENT.md
+index 2243122..7615f6f 100644
+--- a/src/auth/PRECEDENT.md
++++ b/src/auth/PRECEDENT.md
+@@ -9,3 +9,10 @@
+ - Reason: tests and the dev server share one process environment; an environment fallback let a test run hit the API
+   with a developer's production token (incident 2026-09-19). Passing it explicitly keeps the token's origin visible at
+   the call site.
++
++## token.test.mjs
++
++### §missing-token-throws — cover the missing-token failure contract
++- Since: 2026-10-23
++- Decision: Keep a test that calls `resolveToken()` without arguments and asserts that it throws.
++- Reason: The explicit-token contract requires a caller-supplied token; the test guards the missing-token path.
+diff --git a/src/auth/token.test.mjs b/src/auth/token.test.mjs
+index aa37c42..0a0503e 100644
+--- a/src/auth/token.test.mjs
++++ b/src/auth/token.test.mjs
+@@ -5,3 +5,7 @@ import { resolveToken } from "./token.mjs";
+ test("returns the explicit token", () => {
+   assert.equal(resolveToken({ token: "abc" }), "abc");
+ });
++
++test("throws when no token is given", () => {
++  assert.throws(() => resolveToken());
++});

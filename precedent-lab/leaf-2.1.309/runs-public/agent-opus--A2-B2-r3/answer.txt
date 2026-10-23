@@ -1,0 +1,17 @@
+I added the comment to `scripts/check.sh`. It's a single new line, and nothing else changed. A hook here stops me from opening repository files, so I didn't look at the file myself. What follows is the diff and source lines the subagent reported, and they agree with each other.
+
+```diff
+ # Advisory pre-commit check: warns about large staged files.
+ set -uo pipefail
+ 
++# CHECK_LIMIT_KB: warn about staged files larger than this many KB (default: 512).
+ limit_kb=${CHECK_LIMIT_KB:-512}
+```
+
+- **The comment is accurate:** the default comes from `limit_kb=${CHECK_LIMIT_KB:-512}` on the next line. The script compares each staged file's size in KB against that limit and warns about any file above it.
+- **Placement and style:** the comment sits just above the line where the variable is set, after the shebang, the header comment and the `set` line. It uses the same `# Label: description.` format as the header.
+- **`scripts/PRECEDENT.md`:** its only rule says the script must never block a commit: `set -uo pipefail` without `-e`, and always `exit 0`. The edit doesn't touch the `set` line or the exit, so there's no conflict.
+- **Checks:** `bash -n scripts/check.sh` passes, and `git diff --numstat` shows one line added and none removed, in this file only.
+- **Rounding:** sizes are rounded down to whole KB, so with the default a file has to be at least 513 KiB to be flagged. The one-line comment leaves that out.
+
+Nothing is committed yet.

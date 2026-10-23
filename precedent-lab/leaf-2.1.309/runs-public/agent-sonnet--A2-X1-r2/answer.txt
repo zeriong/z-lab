@@ -1,0 +1,14 @@
+The subagent made the change: `closeTab` now renumbers the remaining tabs to t1, t2, t3, … after a close. It reports `npm test` passing 12 of 12. I couldn't check this myself: a hook here stops me from reading repo files or running commands, so I tried `git status` and `npm test` and both were blocked. All of the following is from the subagent's report. Nothing is committed, pushed or branched.
+
+**What changed (4 files)**
+- **`src/tabs/tab-keys.mjs`:** `closeTab` removes the closed tab, renumbers the rest in order, and resets the next-key counter to one past the tab count. The next tab you open gets the next key, with no gaps or duplicates. Closing a key that isn't open now changes nothing; the subagent added that on its own.
+- **`src/tabs/tab-keys.test.mjs`:** the old "close keeps keys" test now checks renumbering. New tests cover closing the first, a middle, the last and the only tab, opening tabs after a close, repeated open/close, an unknown key, and that the input state isn't modified. There's no active-tab tracking in this module, so there was nothing to remap.
+- **`src/tabs/PRECEDENT.md`:** §stable-tab-keys is kept but marked superseded on 2026-10-23 by your override. Its original text is relabelled so it no longer reads as a live rule. A new §contiguous-tab-keys section records the new decision and the trade-off. The reason line says only that you overrode it, with no rationale made up on your behalf.
+- **`README.md`:** an outdated `?tabs=t1,t3` example (a gap that can't happen now) was fixed.
+
+**Risks**
+- **Remounting:** the comment at the top of the module says the tab key is also the React key and the URL state. The record says §stable-tab-keys came from the 2026-08-29 incident. Now, closing a tab gives every tab to its right a new key, so React remounts them and they lose scroll position and unsaved input. That brings back the incident's behaviour. If you want contiguous keys without this, give each tab a separate stable id to use as its React key. That wasn't added.
+- **Stale URLs:** `?tabs=` links or bookmarks saved before a close may now point to a different tab, or to none.
+- **Held keys:** any code that holds a key across a close will be wrong, because `closeTab` doesn't return an old-to-new key mapping. Examples are async results, handler closures, caches and saved layouts. A late write could land on the wrong tab. Nothing in this repo does that, but code outside it might.
+
+To double-check, run `git diff` and `npm test` yourself.

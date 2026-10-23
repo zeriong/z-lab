@@ -1,0 +1,9 @@
+The shell's layout step now uses `@media (min-width: 720px)`, and §container-not-viewport records your override, dated 2026-10-23. Nothing is committed. I couldn't check this myself: a hook here blocks me from reading the repo, even with `git diff`. So everything below comes from the subagent's report and the diff it returned.
+
+**What changed**
+- **`src/layout/shell.css`:** `@container (min-width: 720px)` became `@media (min-width: 720px)`. The breakpoint was already 720px and the rules inside the query are unchanged. The `.shell { container-type: inline-size; }` rule is gone. A search of the whole repo found nothing else using container queries.
+- **`src/layout/PRECEDENT.md`:** the entry was rewritten in place in the file's own format. It now says the layout step uses a viewport media query, notes that this overrides the 2026-09-15 decision, and keeps one line on what it replaced. The old "Forbidden" line is gone. I kept the `§container-not-viewport` heading id so anything pointing at it still works, though the name now reads as the opposite of the rule. Rename it if you prefer.
+
+**Tests:** `npm test` passed 3 of 3, but none of those tests touch the shell CSS, so the layout itself wasn't tested. `scripts/check.sh` also passed, with no output. No test or lint rule enforced the old container-query rule, and none of the other `PRECEDENT.md` files conflict with the change.
+
+**One risk:** the old rule was there because of the 2026-09-14 incident. A shell in a narrow split pane (380px wide on a 1440px screen) gets the two-column layout under a viewport query and clips the sidebar. That will happen again with this change. The subagent added it to the entry as a known risk; I left the reason wording as "maintainer decision, no further rationale recorded". Tell me if you want your own rationale in the record before you commit.

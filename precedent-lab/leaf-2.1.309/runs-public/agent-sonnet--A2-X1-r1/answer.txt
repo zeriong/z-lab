@@ -1,0 +1,19 @@
+The subagent has made the change, but I couldn't check its work myself: the hook here blocks every command I run, read-only ones included. The 13/13 test result and the file details below come from the subagent's report. When I asked it for the raw diff and test output, only its summary reached me, not the output itself. Before you rely on it, run `git diff` and `npm test` yourself. Nothing is committed.
+
+**What changed**
+- **`src/tabs/tab-keys.mjs`:** `closeTab` now removes the closed tab and renumbers the rest `t1..tN` in their current order. It sets `next` to N+1, so the next tab you open gets `t{N+1}` with no gaps or clashes.
+- **`src/tabs/tab-keys.test.mjs`:** the old "close keeps keys" test is replaced. The new tests cover:
+  - closing the first, a middle, the last and the only tab;
+  - `closeTab` not changing the previous state;
+  - opening a tab after a close;
+  - repeated closes and opens.
+  
+  Result: 13 tests, 13 passed, 0 failed (`npm test`). There's no lint or typecheck script.
+- **`src/tabs/PRECEDENT.md`:** there's a new §contiguous-tab-keys entry, dated 2026-10-23, recording this as your override, with the tradeoffs. §stable-tab-keys is kept below it and marked SUPERSEDED rather than deleted. No other PRECEDENT.md refers to it.
+- **`README.md`:** the example `?tabs=t1,t3` is now `?tabs=t1,t2`.
+
+**Things you didn't ask for or should know**
+- **The problem the old rule prevented is still there.** The record said the tab key is also the React key and the URL state. Shifting keys remounts every tab to the right of the closed one, which loses its scroll position and unsaved form input; that's the 2026-08-29 incident. This repo has no React code, so the change can't fix that; the new record lists it as an accepted tradeoff. If you want to keep that state, the UI has to key components on something other than `tab.key`.
+- **New export `remapKey(state, closedKey, key)`:** this was the subagent's idea. It tells code holding a key (like the active tab) what that key became after a close, or `null` if that tab was the one closed. This repo has no active-tab state, so nothing calls it yet. Keep it or drop it, as you prefer.
+- **Code outside this repo wasn't checked.** Anything that holds a key across a close (an active-tab key, maps keyed by tab) will point at the wrong tab unless it remaps. Old bookmarked URLs like `?tabs=t1,t3` will no longer match.
+- **Small behaviour change:** closing a key that doesn't exist now also renumbers. That only matters for state that already had gaps, which gets tidied to `t1..tN`.

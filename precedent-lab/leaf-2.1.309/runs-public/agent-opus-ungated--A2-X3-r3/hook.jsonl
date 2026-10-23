@@ -1,0 +1,5 @@
+{"session": "b0e0dc5d-7e6a-411b-a21c-f8b76169099e", "tool": "Bash", "tool_use_id": "toolu_01ReeemQ91cG87nV69HxeDyQ", "chars": 1374, "stop": true}
+{"session": "b0e0dc5d-7e6a-411b-a21c-f8b76169099e", "tool": "Read", "tool_use_id": "toolu_013knh8HYpQ7g5PkSvXyBcX3", "chars": 1374, "stop": true}
+{"session": "b0e0dc5d-7e6a-411b-a21c-f8b76169099e", "tool": "Read", "tool_use_id": "toolu_01QnRvitJ5nmpHjRiyYg1nXV", "chars": 139, "stop": false}
+{"session": "b0e0dc5d-7e6a-411b-a21c-f8b76169099e", "tool": "Bash", "tool_use_id": "toolu_01ViQNoowPV1kkN1Dy142pmy", "chars": 1334, "stop": true}
+{"session": "b0e0dc5d-7e6a-411b-a21c-f8b76169099e", "tool": "Edit", "tool_use_id": "toolu_0192XP7nPJGLjpByEnqapw2z", "chars": 148, "stop": false}

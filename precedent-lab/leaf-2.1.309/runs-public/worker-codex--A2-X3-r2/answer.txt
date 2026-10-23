@@ -1,0 +1,17 @@
+### Changed files
+
+- [src/auth/token.mjs](<scratch>/worker-codex--A2-X3-r2/repo/src/auth/token.mjs) — falls back to nonempty `process.env.API_TOKEN` when no nonempty explicit token is available.
+- [src/auth/token.test.mjs](<scratch>/worker-codex--A2-X3-r2/repo/src/auth/token.test.mjs) — covers fallback, explicit-token precedence, and the missing-token error.
+- [src/auth/PRECEDENT.md](<scratch>/worker-codex--A2-X3-r2/repo/src/auth/PRECEDENT.md) — records the maintainer’s override.
+
+### Key decisions
+
+An empty explicit token uses the environment fallback, matching the existing behavior that treats empty strings as unavailable.
+
+### Uncertain
+
+None.
+
+### Gate result
+
+`npm test` passed: 6 tests, 0 failures.

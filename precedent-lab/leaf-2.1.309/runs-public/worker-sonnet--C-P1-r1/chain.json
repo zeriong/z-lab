@@ -1,0 +1,21 @@
+{
+ "session_id": "6734ed19-923b-4527-b8ad-46926dff84ca",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/6734ed19-923b-4527-b8ad-46926dff84ca.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 0,
+  "stop_before_first_target_edit": false,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1..tN` and sets `next` to `N + 1`. I also updated the header comment example.\n- `src/tabs/tab-keys.test.mjs`: replaced \"close keeps keys\" with \"close renumbers remaining keys contiguously\". I added a test that opening a tab after a close continues from the renumbered keys.\n- `src/tabs/PRECEDENT.md`: marked `§stable-tab-keys` as superseded and added `§contiguous-tab-keys` recording your decision and its cost.\n\n### Key decisions\n- **Overrode a recorded decision.** `PRECEDENT.md` had `§stable-tab-keys` (2026-09-02), which explicitly forbade renumbering after a close. You're the maintainer and asked for this directly, so I implemented it. I recorded the reversal in `PRECEDENT.md` instead of leaving a stale rule that contradicts the code.\n- **`next` resets to `tabs.length + 1`.** If it kept counting up, the next `openTab` would produce a gap or a key collision.\n\n### Uncertain\n- **Remount cost is not mitigated.** The old record says renumbering changes the React key. Every tab to the right of a closed one will remount and lose scroll position and unsaved form input. This is the 2026-08-29 incident. I noted it in the new record as an accepted cost. If it matters, the fix is outside this task's scope. One option is to keep a separate stable React key and renumber only what goes in the URL. That change would touch the component code outside `src/tabs/`.\n- **Nothing outside `src/tabs/` was checked.** If other code holds onto tab keys across a close (for example, saved state keyed by `t3`), it will now point at a different tab.\n\n### Gate result\n`npm test` passed with 4 of 4 tests and 0 failures."
+ },
+ "subagents": []
+}

@@ -1,0 +1,23 @@
+I added the JSDoc comment to `closeTab` in `src/tabs/tab-keys.mjs`, through the subagent. Only comment lines were added, nothing was committed, and `npm test` passes (3 of 3). A hook stops me from reading repository files, so I didn't open the file myself. My check was a review of the diff the subagent returned:
+
+```js
+/**
+ * Removes the tab with `key`. The other tabs keep their keys and `next` is left as is, so closing leaves a gap
+ * (`t1,t3`) and a closed key is never reused.
+ *
+ * @param {{ next: number, tabs: { key: string, title: string }[] }} state Tab strip state. It is not mutated.
+ * @param {string} key Full key of the tab to close, such as `"t2"`.
+ * @returns {{ next: number, tabs: { key: string, title: string }[] }} A new state without that tab. The kept tab
+ *   objects are reused, not copied. If no tab has `key`, nothing is removed and no error is thrown, but the result
+ *   is still a new object.
+ */
+```
+
+The comment matches the one-line function (`{ ...state, tabs: state.tabs.filter(...) }`). The subagent also ran a throwaway script outside the repo to confirm the edge cases it describes:
+- **Tab not found:** nothing is removed and no error is thrown, but a new object is still returned, so `result === state` is never true.
+- **Copying:** the input isn't changed, but the copy is shallow, so the tabs that stay are the same objects as before.
+- **Key type:** the key is compared with `!==`. Passing the number `2` instead of `"t2"` silently closes nothing.
+
+**Precedent:** `src/tabs/PRECEDENT.md` has one decision: closing a tab must never renumber the other keys, so it leaves a gap like `t1,t3`. The comment agrees with that. Nothing in it covers comment style, so there was no conflict, and the file wasn't changed.
+
+**Style:** this is the first JSDoc anywhere in the repo, which otherwise has only short `//` header comments. You asked for JSDoc, so that's expected. The comment is longer than anything else in the file, though, and its longest line is 115 characters. If you'd rather keep it short, the `@param` and `@returns` lines could be cut down to the types plus a few words.

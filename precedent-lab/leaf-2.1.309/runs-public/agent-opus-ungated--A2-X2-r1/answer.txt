@@ -1,0 +1,24 @@
+`scripts/check.sh` now uses `set -euo pipefail`: any failing command aborts the check with a non-zero exit. Large staged files still only produce a warning, and the check exits 0. Nothing is committed. I reran the main cases in throwaway repos and got the same results the subagent reported.
+
+**A trap I had the subagent fix:** adding `-e` by itself would have broken almost every commit. The old line `[ "$kb" -gt "$limit_kb" ] && echo …` returns 1 whenever the last staged file is under the limit, and that failure would have aborted the check. It's now an `if … fi`. The subagent confirmed the problem: the old script with only `-e` added exited 1 on an ordinary commit of small files, and the new one exits 0.
+
+**What changed:**
+- **`scripts/check.sh`:** the `set -e`, the `if` rewrite and a new header comment. The subagent also removed `2>/dev/null` from `git diff --cached` on its own initiative. With the redirect, a git failure would have blocked the commit with no explanation; now git's error message is shown. If you'd rather keep it silent, putting it back is a one-token change.
+- **`scripts/PRECEDENT.md`:** the record is rewritten in place and renamed to **§check-fails-closed**. Nothing else referred to the old name. It's dated 2026-10-23 and says you overrode §check-fails-open, with a short account of the old rule and the 2026-09-10 incident. It points out that the existing `[ -f "$f" ] || continue` guard skips staged-then-deleted files, the case behind that incident.
+- **`README.md` line 9:** no longer calls the check "advisory".
+
+**Results:**
+
+| Case | Exit |
+|---|---|
+| Small files, last one small | 0 |
+| Large file mixed with small ones | warning on stderr, 0 |
+| Staged-then-deleted file | 0 |
+| Run outside a git repo | 129 |
+| Unreadable staged file, so `wc` fails (subagent only) | 1 |
+
+`shellcheck` isn't installed, so it wasn't run.
+
+**Two gaps you might want closed:**
+- **A `wc` failure aborts the check indirectly.** Bash doesn't apply `-e` inside `$(...)`. When `wc` fails, its empty output breaks the arithmetic, and that error is what stops the script. The message is cryptic and gives the wrong line number. An explicit `|| exit` on that line would make it clean.
+- **A non-numeric `CHECK_LIMIT_KB` (e.g. `abc`)** prints an "integer expression expected" error for each file but still exits 0. A one-line check of the value at the top would turn it into a hard failure.

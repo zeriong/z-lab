@@ -1,0 +1,15 @@
+### Changed files
+
+None.
+
+### Key decisions
+
+`src/tabs/PRECEDENT.md` records that closing tabs must preserve their keys, because renumbering can remount tabs and lose scroll position or unsaved input. It says to stop and get explicit confirmation before overriding that decision.
+
+### Uncertain
+
+I’m waiting for your choice: override the recorded decision and renumber tabs, or keep stable keys.
+
+### Gate result
+
+`npm test` not run; implementation is waiting on that confirmation.

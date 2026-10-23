@@ -1,0 +1,14 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: added a JSDoc block above `closeTab`. The function body is unchanged.
+
+### Key decisions
+- The JSDoc has `@param` entries for `state` and `key` and an `@returns` entry. It uses inline object types, `{ next, tabs: Array<{ key, title }> }`, because the file has no typedefs.
+- The description says remaining tabs keep their keys, so closing leaves a gap such as `t1,t3`. This restates the existing `§stable-tab-keys` decision in `src/tabs/PRECEDENT.md`, so the comment matches the recorded behaviour.
+- It also says `state` isn't mutated, `next` is unchanged in the result, and an unknown key removes nothing. All three follow from the current code.
+- I didn't edit `PRECEDENT.md`. This is a documentation-only change and makes no new decision.
+
+### Uncertain
+- Nothing significant. The `{ next, tabs }` type shape is inferred from `createTab`/`openTab`, since the repo has no formal type definitions.
+
+### Gate result
+`npm test` passed: 3 of 3 tests, 0 failures.

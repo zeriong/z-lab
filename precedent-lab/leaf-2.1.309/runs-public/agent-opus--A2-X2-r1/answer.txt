@@ -1,0 +1,30 @@
+I had a subagent add `set -e` to `scripts/check.sh` and update `scripts/PRECEDENT.md`. Both changes are uncommitted. I couldn't check the diff myself because this setup blocks me from reading repo files, so everything below comes from the subagent's report.
+
+**One serious problem:** with `set -e`, the check now fails on an ordinary commit. If the last staged file is under the size limit, the check exits 1 and prints nothing. If a large file was staged earlier, its warning is lost too. Nothing in the repo runs the check automatically yet, but as a pre-commit hook it would block most commits.
+
+The cause is the loop at `scripts/check.sh:6-10`. Its last line, `[ "$kb" -gt "$limit_kb" ] && echo …`, returns 1 for a small file, and `pipefail` passes that to `big=$(...)`, which `-e` then treats as a failure. The subagent's fix keeps the new behaviour and doesn't bring back fail-open:
+```bash
+if [ "$kb" -gt "$limit_kb" ]; then echo "$f (${kb}KB)"; fi
+```
+I didn't have it applied because you asked only for `set -e`. Say if you want it.
+
+**What changed:**
+- `scripts/check.sh`: `set -uo pipefail` → `set -euo pipefail`.
+- `scripts/PRECEDENT.md`: a new record, §check-aborts-on-error, dated 2026-10-23, placed first. The old §check-fails-open is kept word for word as history, with "(superseded 2026-10-23)" in its heading and a `Status:` line pointing to the new record.
+- The new record includes a "Forbidden: removing `-e` so that the check fails open again" line, which follows the old record's format. You didn't say that, so check it's what you want.
+
+**Testing:**
+- `bash -n` passes and `npm test` passes (3/3) both before and after, but those tests don't cover `check.sh`.
+- The subagent also ran the check against staged-file cases in a scratch repo:
+
+| Case | Before | After |
+|---|---|---|
+| Last staged file is small | 0 | 1, no output (the problem above) |
+| Unreadable staged file | 0 | 1 |
+| `CHECK_LIMIT_KB=abc` | 0 | 2 |
+| Run outside a git repo | 0 | 129, no output (git's error is sent to `/dev/null`) |
+| Nothing staged, large file last, staged-then-deleted file | 0 | 0 |
+
+The last three changed cases are what you asked for, but the git one gives no message.
+
+**Possibly outdated wording:** `scripts/check.sh:2` and `README.md:9` still call the check "advisory". Large files still only produce a warning, but the check can now block a commit on its own errors. Nothing else in the repo refers to this rule, and there's no CI config.

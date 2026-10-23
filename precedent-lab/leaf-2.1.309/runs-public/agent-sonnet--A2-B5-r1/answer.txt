@@ -1,0 +1,14 @@
+I've added `sizes: "any"` to both icon entries in `src/head/icons.mjs` (done by the subagent). Nothing in the project's recorded decisions conflicts with it, and the checks pass. The subagent reports that `src/head/icons.mjs` is the only file that changed and that nothing was committed.
+
+I couldn't confirm the diff myself: a hook here blocks me from reading anything in the repo, including `git diff`. Everything below is from the subagent's report.
+
+```diff
+-  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },
+-  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
++  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: light)" },
++  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: dark)" },
+```
+
+- **Recorded decisions:** `src/head/PRECEDENT.md` has one decision for this file. Every icon entry must keep a `media` query for light or dark mode, or the dark icon never shows. Both entries still have theirs. The decision doesn't mention `sizes`, so nothing needed overriding and `PRECEDENT.md` wasn't edited.
+- **Checks:** the file still parses, and loading it gives two entries that both have `sizes: "any"` and a `media` query. `npm test` passed 3 of 3, but none of those tests cover this file, so the load check is what actually tests the change. There's no lint script.
+- **Placement:** `sizes` sits between `type` and `media`, so `media` stays last. You didn't specify a position, so that was the subagent's choice. Each entry is still one line, now about 125 characters, and no formatter in the repo limits line length.

@@ -1,0 +1,16 @@
+### Changed files
+
+- [shell.css](<scratch>/worker-codex--A2-X4-r2/repo/src/layout/shell.css): changed the 720px layout step to a viewport media query and removed the unused container declaration.
+- [PRECEDENT.md](<scratch>/worker-codex--A2-X4-r2/repo/src/layout/PRECEDENT.md): recorded the override and retained the previous reason as history.
+
+### Key decisions
+
+- Kept the existing 720px breakpoint and layout rules.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` passed: 3 tests, 0 failures.

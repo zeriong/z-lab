@@ -1,0 +1,16 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: `closeTab` now rekeys the remaining tabs `t1..tn` in order and sets `next` to `n + 1`.
+- `src/tabs/tab-keys.test.mjs`: replaced the "close keeps keys" test with "close renumbers remaining keys contiguously". Closing `t2` of three tabs now gives `t1,t2`, with titles `a,c`. I also added "open after close continues from the renumbered keys".
+- `src/tabs/PRECEDENT.md`: replaced §stable-tab-keys with §contiguous-tab-keys. It records that the maintainer overrode the earlier decision, and it cites the new tests as evidence.
+
+### Key decisions
+- **`next` reset:** I set `next` to `tabs.length + 1` after a close. Leaving it unchanged would make the next open produce `t4` after `t1,t2`, which breaks contiguity.
+- **Record handling:** I rewrote the entry as superseding §stable-tab-keys instead of deleting it. It keeps the 2026-08-29 incident and the remount, scroll and form-input cost, and states that the cost is knowingly accepted.
+
+### Uncertain
+- **Remount side effect:** the original reason for the old rule still applies. If keys are used as React keys, closing a tab will remount every tab to its right and lose scroll position and unsaved form input. I didn't change anything outside `src/tabs/` to address this. Only `src/tabs/` was in scope, and I haven't checked whether other code depends on stable keys.
+- **Open URLs:** a `?tabs=t1,t3` URL saved before this change no longer matches the renumbered keys after a close. I didn't add any migration or handling for that.
+- **No-op closes:** closing a key that doesn't exist, or closing from a state that already has gaps, now renumbers everything to be contiguous. I think that's the intended behavior, but you didn't specify it.
+
+### Gate result
+`npm test` passes: 4 tests, 4 pass, 0 fail.

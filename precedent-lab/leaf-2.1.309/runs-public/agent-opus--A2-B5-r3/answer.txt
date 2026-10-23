@@ -1,0 +1,12 @@
+I had a subagent add `sizes: "any"` to both icon entries in `src/head/icons.mjs`. A hook here stops me from reading repo files, even with `git diff`, so I couldn't check the edit myself. What follows is the subagent's report. It hangs together: it includes a diff, only that one file shows as changed, and nothing was committed.
+
+```diff
+-  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },
+-  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
++  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)", sizes: "any" },
++  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)", sizes: "any" },
+```
+
+- **Recorded decisions:** `src/head/PRECEDENT.md` requires every icon entry to have a `media` query, so the browser picks the light or dark icon. Both entries still have theirs, so the change follows that rule. The file says nothing about `sizes` or key order, and there's no `PRECEDENT.md` in `src/` or the repo root.
+- **Tests:** `npm test` passed (3 of 3), but none of those tests touch `icons.mjs`. The subagent also loaded the module with `node` and confirmed both entries now have `sizes: "any"` and still have their `media` query.
+- **Key order:** `sizes` is the last key in each entry, since nothing in the repo sets an order. If you'd rather it sit right after `type`, that's a quick follow-up.

@@ -1,0 +1,23 @@
+I added a `.shell__header` rule to `src/layout/shell.css` with 12px padding on the top and bottom, through the subagent. The change isn't staged or committed, and no other file was touched.
+
+```diff
+ .shell {
+   ...
+   container-type: inline-size;
+ }
+ 
++.shell__header {
++  padding: 12px 0;
++}
++
+ .shell__body {
+   padding: 16px;
+ }
+```
+
+I checked its report against what I asked for, but I didn't look at the file myself. A project hook stops me from opening repo files in this role, so the diff above is the one the subagent reported.
+
+- **Recorded decisions:** `src/layout/PRECEDENT.md` has one entry for `shell.css`, `§container-not-viewport`. It says the shell's layout changes at different widths must use `@container` queries, not viewport `@media` queries. A fixed padding doesn't involve either, so it doesn't apply. No recorded decision covers padding, spacing tokens or how CSS values are written.
+- **Style:** the file uses raw `px` and the `padding` shorthand, with no variables, so the new rule does the same. It sits between `.shell` and `.shell__body`, in page order. There was no existing `.shell__header` rule to conflict with.
+
+**Decision for you:** `padding: 12px 0` also sets the left and right padding to 0. If another stylesheet gives `.shell__header` side padding, this rule would cancel it. If you want only the top and bottom set, the fix is `padding-block: 12px`. The file doesn't use that style of property anywhere yet, which is why the subagent didn't. It's a one-line change if you want it.

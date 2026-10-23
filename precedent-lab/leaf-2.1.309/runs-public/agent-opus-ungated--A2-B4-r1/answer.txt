@@ -1,0 +1,14 @@
+I added the `.shell__header` rule to `src/layout/shell.css:6`, between `.shell` and `.shell__body`:
+
+```css
+.shell__header {
+  padding-block: 12px;
+}
+```
+
+A subagent made the edit. I checked the diff myself, and `shell.css` is the only file that changed. Nothing is committed.
+
+- **Vertical padding only:** `padding-block` sets the top and bottom padding and leaves the left and right alone. `padding: 12px 0` would have set the sides to zero, and you didn't ask for that.
+- **Recorded decision:** `src/layout/PRECEDENT.md` says the shell's responsive layout must use `@container` queries, not viewport `@media` queries. This change adds no responsive behaviour at all, so it doesn't conflict, and `PRECEDENT.md` didn't need updating.
+
+There's no test or build step for this CSS, so I didn't check it in a running app.

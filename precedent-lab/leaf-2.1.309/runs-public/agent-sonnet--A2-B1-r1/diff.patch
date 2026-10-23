@@ -1,0 +1,26 @@
+diff --git a/src/tabs/tab-keys.mjs b/src/tabs/tab-keys.mjs
+index 830a094..2383638 100644
+--- a/src/tabs/tab-keys.mjs
++++ b/src/tabs/tab-keys.mjs
+@@ -9,6 +9,21 @@ export function openTab(state, title) {
+   return { next: state.next + 1, tabs: [...state.tabs, { key, title }] };
+ }
+ 
++/**
++ * Removes the tab with the given key from the tab strip state.
++ *
++ * Remaining tabs keep their keys and order, and `next` is left unchanged, so a close
++ * leaves a gap (`t1,t3`) rather than renumbering. If no tab has the key, the tabs are
++ * unchanged. The input state is not mutated.
++ *
++ * @param {{ next: number, tabs: Array<{ key: string, title: string }> }} state
++ *   The current tab strip state, as returned by `createTabs` or `openTab`.
++ * @param {string} key The key of the tab to close (for example `"t2"`).
++ * @returns {{ next: number, tabs: Array<{ key: string, title: string }> }}
++ *   A new state object with the same `next` and a new `tabs` array that omits the closed
++ *   tab. The array is empty when the last tab is closed. An unknown key is not an error:
++ *   the result is a new object whose tabs equal the input's.
++ */
+ export function closeTab(state, key) {
+   return { ...state, tabs: state.tabs.filter((tab) => tab.key !== key) };
+ }

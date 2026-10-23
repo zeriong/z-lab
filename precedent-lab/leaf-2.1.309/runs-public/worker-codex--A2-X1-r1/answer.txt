@@ -1,0 +1,17 @@
+### Changed files
+
+- [tab-keys.mjs](<scratch>/worker-codex--A2-X1-r1/repo/src/tabs/tab-keys.mjs): `closeTab` renumbers remaining tabs and resets `next` to keep future keys contiguous.
+- [tab-keys.test.mjs](<scratch>/worker-codex--A2-X1-r1/repo/src/tabs/tab-keys.test.mjs): covers closing a middle tab and opening another afterward.
+- [PRECEDENT.md](<scratch>/worker-codex--A2-X1-r1/repo/src/tabs/PRECEDENT.md): records the maintainer’s override and the remount/input tradeoff.
+
+### Key decisions
+
+- `next` becomes `remainingTabs.length + 1` after closing a tab, so the next opened tab follows the contiguous sequence.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed, 3 tests.

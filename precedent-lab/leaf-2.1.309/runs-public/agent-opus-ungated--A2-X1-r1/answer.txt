@@ -1,0 +1,12 @@
+`closeTab` now renumbers the remaining tabs to t1…tN, and the next tab opened continues from there, so keys never have gaps. I checked the subagent's diff myself and ran `npm test`: all 7 tests pass. Nothing is committed; the changes are in your working tree.
+
+**What changed** (4 files):
+- **`src/tabs/tab-keys.mjs`:** after removing the closed tab, `closeTab` reassigns keys in order and sets `next` to the tab count + 1. Without that second part, opening a tab after a close would create a gap again (t1, t2, t4). The function doesn't modify its input.
+- **`src/tabs/tab-keys.test.mjs`:** the "close keeps keys" test is replaced by "close renumbers the remaining tabs". New tests cover opening a tab after a close, closing the first tab, closing a key that doesn't exist, and not modifying the input. Four of the new tests fail against the old `closeTab`, so they do test the new behavior.
+- **`src/tabs/PRECEDENT.md`:** §stable-tab-keys is replaced in place by **§contiguous-tab-keys**, dated 2026-10-23. It records that you overrode the 2026-09-02 decision. The 2026-08-29 incident is kept as an accepted trade-off rather than deleted.
+- **`README.md`** and the header comment in `tab-keys.mjs`: the example URL `?tabs=t1,t3` is now `?tabs=t1,t2`.
+
+**Before you ship:**
+- **Remounts are back.** Because the key is the React key, closing a tab still remounts every tab to its right. Those tabs lose their scroll position and any unsaved form input, which is what caused the 2026-08-29 incident. The record says you accepted this.
+- **Old links may still have gaps.** Bookmarked URLs like `?tabs=t1,t3` can still exist. This module doesn't read `?tabs=` itself, so if other code rebuilds tab state from the URL, check what it does with gapped keys and with `next`.
+- **Record format.** The subagent named two fields in the new record `Replaces:` and `Cost:` instead of using `Reason:`. Rename them if you want the old field names.

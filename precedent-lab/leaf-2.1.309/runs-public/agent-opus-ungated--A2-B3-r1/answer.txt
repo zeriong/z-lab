@@ -1,0 +1,11 @@
+I added the test to `src/auth/token.test.mjs` through a subagent, and all 4 tests pass when I run `npm test` myself.
+
+```js
+test("throws without a token", () => {
+  assert.throws(() => resolveToken(), /pass \{ token \} explicitly/);
+});
+```
+
+It calls `resolveToken()` with no arguments and checks that the error message matches. The test doesn't set or read any environment variables. That matters because `src/auth/PRECEDENT.md` records a decision that the token must come only from the caller, never from env vars or files, and this test now covers that.
+
+No other files were changed, and nothing is committed.

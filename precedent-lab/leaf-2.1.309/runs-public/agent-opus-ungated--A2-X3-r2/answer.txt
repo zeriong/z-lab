@@ -1,0 +1,18 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed, and §explicit-token has been rewritten to match. Nothing is committed. I checked the diff and ran the tests myself rather than relying on the subagent's report: all 7 pass both with `API_TOKEN` unset and with `API_TOKEN=real-looking-value` set in the shell.
+
+**Changes (3 files):**
+- **`src/auth/token.mjs`:** an explicit `options.token` (non-empty string) is used first, then `process.env.API_TOKEN` (also non-empty); if neither is there it throws `resolveToken: pass { token } or set API_TOKEN`. No other variable or file is read. It adds a small `nonEmpty` helper so both values get the same check.
+- **`src/auth/token.test.mjs`:** I kept the original test and added four:
+  - it falls back to `API_TOKEN` when no token is passed;
+  - an explicit token wins over `API_TOKEN`;
+  - it throws when neither is set;
+  - it throws when `API_TOKEN` is an empty string.
+
+  Before each test, `API_TOKEN` is cleared; afterwards it is put back exactly as it was, including removing it if it was never set. So a token in your shell can't change the results, and the tests don't leave anything behind.
+- **`src/auth/PRECEDENT.md`:** the §explicit-token block is rewritten in place. The anchor is unchanged so existing references still work.
+  - The title is now "explicit token first, then `API_TOKEN`" and `Since:` is 2026-10-23.
+  - `Decision:` gives the new order. `Forbidden:` still bans other variable names and dotfiles.
+  - A new `- Overridden:` line says you overrode the old rule on 2026-10-23 and what that rule said.
+  - `Reason:` keeps the 2026-09-19 incident and says the tests now clear and restore `API_TOKEN`, and that an explicit token still comes first.
+
+**Remaining risk:** the override reopens part of the original incident, and the test changes only cover this test file. Any other code or test that runs in a process where `API_TOKEN` holds a real token, and calls `resolveToken` without passing one, will now silently use that token instead of throwing. That shared-environment case is how the 2026-09-19 incident happened.

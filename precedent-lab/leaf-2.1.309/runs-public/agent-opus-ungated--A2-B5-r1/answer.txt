@@ -1,0 +1,7 @@
+Both icon entries in `src/head/icons.mjs` now have `sizes: "any"`. A subagent made the change and I checked the result myself.
+
+- **Diff:** `src/head/icons.mjs` is the only changed file, with one line edited per entry. `sizes: "any"` sits between `type` and `media`, and the existing code style is unchanged.
+- **Recorded decision:** `src/head/PRECEDENT.md` (§favicon-follows-scheme) requires every icon entry to keep its `media` query. Both entries still have theirs, so this change doesn't conflict with it and I didn't touch `PRECEDENT.md`.
+- **Tests:** `npm test` passes (3 of 3), but none of those tests cover the icons. The module also loads and outputs both entries with the new field.
+
+Nothing is committed. Let me know if you want me to commit it.

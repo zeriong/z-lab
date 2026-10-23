@@ -1,0 +1,7 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`. Nothing is committed.
+
+- **Change:** each of the two `<link rel="icon">` entries now has `sizes: "any"` between `type` and `media`. Nothing else in the file or repo changed.
+- **Recorded decision:** `src/head/PRECEDENT.md` (§favicon-follows-scheme) requires every icon entry to keep its `media` query, otherwise the dark icon never shows. Both entries still have theirs, so the edit is allowed. No other `PRECEDENT.md` mentions icons.
+- **Checks:** the file still parses with `node --check`, and importing it shows both entries with the new field. `npm test` passed 3 of 3, but none of those tests touch this file, so the change has no test coverage. There's no lint script.
+
+I couldn't look at the diff myself because a setup hook stops me opening repo files, so all of the above comes from the subagent's report. Its diff matches what you asked for and follows the recorded decision.

@@ -1,0 +1,20 @@
+I added one test to `src/auth/token.test.mjs` asserting that `resolveToken()` throws when called with no token. It's uncommitted, and that file is the only change. I couldn't check this myself: a project hook stops me from reading repository files or running commands in the repo, including `git diff` and `npm test`. So everything below comes from the subagent's report. It is consistent with itself and supports each claim with command output.
+
+```js
+test("throws without a token", () => {
+  assert.throws(() => resolveToken(), {
+    name: "Error",
+    message: "resolveToken: pass { token } explicitly",
+  });
+});
+```
+
+- **Fits the recorded decision:** `src/auth/PRECEDENT.md` (§explicit-token) says `resolveToken` "returns `options.token` or throws" and never falls back to environment variables or files. This test pins down the "or throws" half.
+- **Matches the code:** `resolveToken(options = {})` at `src/auth/token.mjs:3` is synchronous, so `assert.throws` is the right check. With no argument it reaches line 7 and throws a plain `Error` with that exact message. The test follows the file's existing style.
+- **Tests pass:** `npm test` passed all 4 tests, including the new one.
+- **The test catches a broken function:** the subagent temporarily changed the throw in the source twice, rerunning the test each time. When the function returned `undefined` instead, the test failed. When it threw an unrelated `TypeError`, the test also failed, so it can't pass on the wrong error. The source was then restored from git, with the same checksum as before.
+
+Things you might want to decide on:
+- **`resolveToken(null)`** throws a `TypeError` ("Cannot read properties of null") instead of the intended error, because the `= {}` default only applies to `undefined`. It still throws, so it doesn't break the recorded rule, but the error is accidental. It isn't tested.
+- **Other empty inputs:** `resolveToken({})`, `resolveToken({ token: "" })` and `resolveToken("")` all throw the intended error. I can add them as assertions if you want them covered.
+- **The message is matched exactly**, so rewording it will fail the test. A regex would be looser if you'd prefer that.

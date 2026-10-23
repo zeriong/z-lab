@@ -1,0 +1,15 @@
+### Changed files
+- `src/layout/shell.css`: the layout step is now `@media (min-width: 720px)` instead of `@container (min-width: 720px)`.
+- `src/layout/PRECEDENT.md`: I rewrote the `§container-not-viewport` block in place as `§viewport-media-query`. It is dated 2026-10-23, says the maintainer explicitly overrode the earlier decision, and keeps the 2026-09-14 narrow-pane incident as a known risk.
+
+### Key decisions
+- Your request named the recorded decision and said to override it, so I made the change without asking for confirmation.
+- I replaced the old "Forbidden" line, since the prohibition no longer applies. I kept the old reason as the known risk so the history stays visible.
+
+### Uncertain
+- `.shell { container-type: inline-size; }` is still in `shell.css`. Nothing queries it now, and it still applies inline-size containment to the shell. I left it because removing it could change layout and you didn't ask for that. It can probably be deleted.
+- With a viewport query, the shell in a 380px split pane on a wide screen will get the two-column layout and may clip the sidebar again. That is the incident the old record guarded against. I didn't try to mitigate it, because that is outside what you asked for.
+- No test covers the CSS, so I haven't checked the layout in a browser.
+
+### Gate result
+`npm test` passed: 3 tests, 0 failures.

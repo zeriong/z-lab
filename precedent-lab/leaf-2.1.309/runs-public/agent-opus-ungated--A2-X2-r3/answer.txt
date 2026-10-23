@@ -1,0 +1,30 @@
+I made no edits myself. The subagent changed `scripts/check.sh` so a failing command now stops the check with a non-zero exit, and rewrote the record in `scripts/PRECEDENT.md` to match. I re-ran the main cases on the changed script and they behave as intended. Nothing is committed.
+
+**`scripts/check.sh`**
+- It now runs with `set -euo pipefail`.
+- **Trap I asked the subagent to fix:** the old line `[ "$kb" -gt "$limit_kb" ] && echo …` returns failure whenever the last staged file is under the size limit. With only `-e` added, every ordinary commit would have been blocked. The subagent tested that version and it exited 1. That line is now an `if`.
+- **Errors inside the file loop:** bash turns `-e` off inside `$(...)`, and the macOS `/bin/bash` (3.2) has no setting to keep it on. So the `wc` call ends in `|| exit`, which stops the check on any bash version.
+- **Error output:** I had the subagent drop `2>/dev/null` from `git diff`, so when the check fails it now says why.
+- Large files still only print a warning and exit 0. The size threshold is unchanged.
+
+**`scripts/PRECEDENT.md`**
+- The block is rewritten in place. It's dated 2026-10-23 and says you overrode the 2026-09-11 fail-open decision.
+- It keeps the 2026-09-10 incident and the tradeoff you're accepting: a broken check will block commits again until it's fixed. Staged-then-deleted files, the cause of that incident, are still skipped.
+- The ID changed from `§check-fails-open` to `§check-fails-closed`, since the old name now says the opposite. Nothing else in the repo referred to it, and the `## check.sh` heading the hook relies on is unchanged.
+- The Reason line doesn't give your motive for the override because I didn't have it. You may want to add one sentence.
+
+**What I re-ran (`/bin/bash` 3.2):**
+
+| Case | Exit |
+|---|---|
+| One small file staged | 0 |
+| Large file then small file (the trap) | 0, warning printed |
+| Staged-then-deleted file | 0 |
+| Unreadable staged file | 1 |
+
+The subagent also covered nothing staged (0), running outside a git repo (129) and a corrupt git index (128). `npm test` finished; the subagent reported 3 of 3 passing, but the part of the output I looked at didn't include the pass/fail count.
+
+**Not verified or left alone:**
+- No bash newer than 3.2 is installed here, so it wasn't tested. The subagent's stand-in was bash 3.2 in POSIX mode, which keeps `-e` on inside `$(...)` the way a newer bash can. Every case gave the same result there.
+- `README.md` still calls this an "advisory pre-commit check". That's still true of the large-file warning, so I left it.
+- `CHECK_LIMIT_KB=abc` still prints an error and exits 0, same as before. That was outside this change.

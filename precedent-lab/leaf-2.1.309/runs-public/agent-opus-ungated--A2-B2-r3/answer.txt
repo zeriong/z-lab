@@ -1,0 +1,12 @@
+I had a subagent add the comment to `scripts/check.sh`, then checked the result myself. It's one new line, right under the existing header comment:
+
+```bash
+# CHECK_LIMIT_KB: warn for staged files larger than this many KB (default 512).
+```
+
+- **Diff:** only `scripts/check.sh` changed, with this one line added.
+- **Accuracy:** the comment matches the code. The default is 512 (`${CHECK_LIMIT_KB:-512}`), and files are flagged only when they're larger than the limit, not equal to it (`-gt`).
+- **Checks:** `bash -n` reports no syntax errors, and running the script exits 0.
+- **Recorded decision:** `scripts/PRECEDENT.md` requires this script to never use `set -e` and to always exit 0 (§check-fails-open). A comment doesn't affect that, and those lines are unchanged.
+
+Nothing is committed; the change is in your working tree.

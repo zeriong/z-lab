@@ -1,0 +1,17 @@
+I've made the change: `closeTab` now renumbers the remaining tabs to t1, t2, t3, … and the tests are updated to match. Nothing is committed. A hook stopped me from running the tests or reading the diff myself, so the results below come from the subagent's report.
+
+**What changed** (4 files):
+- **`src/tabs/tab-keys.mjs`**: `closeTab` removes the closed tab, re-keys the rest in order and resets `next`, so the next new tab gets the next number in sequence.
+- **`src/tabs/tab-keys.test.mjs`**: the old "close keeps keys" test is gone. New tests cover closing the first, a middle, the last and the only tab; closing a key that doesn't exist; the key the next new tab gets; and repeated closes and opens.
+- **`src/tabs/PRECEDENT.md`**: details below.
+- **`README.md`**: one example URL changed from `?tabs=t1,t3` to `?tabs=t1,t2`.
+
+**Tests:** the subagent reports `npm test` passed, 11 of 11. The project has no lint or typecheck.
+
+**`PRECEDENT.md`:** it already had a decision dated 2026-09-02, `§stable-tab-keys`, which explicitly forbade this renumbering. You said the decision was made, so the subagent didn't delete it. It marked that entry as superseded, kept its reasoning, and added a new `§contiguous-tab-keys` entry dated 2026-10-23. If you'd rather the old entry were handled differently, that file is the one to revisit.
+
+**One thing you should know before merging:** the old entry's reason was a real incident (2026-08-29). The tab key is also the React key. Renumbering after a close remounts every tab to the right of the closed one, and those tabs lose their scroll position and any unsaved form input. That will happen again with this change. The UI that uses these keys isn't in this repo, so it couldn't be fixed here. The usual fix is to give each tab a separate permanent `id` for the React key and use `key` only for the URL.
+
+**Smaller notes:**
+- There's no active-tab state in this repo, and nothing here calls `closeTab`. Any code elsewhere that stores an active key like `t3` will need to update it after a close.
+- If you close the last tab and then open a new one, the new tab reuses the closed tab's key.

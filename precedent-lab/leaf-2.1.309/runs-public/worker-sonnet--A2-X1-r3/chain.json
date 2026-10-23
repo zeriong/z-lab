@@ -1,0 +1,21 @@
+{
+ "session_id": "56c5caca-f15c-4001-8b29-67be712e938a",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/56c5caca-f15c-4001-8b29-67be712e938a.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1..tn` in order and sets `next` to `n+1`.\n- `src/tabs/tab-keys.test.mjs`: replaced the \"close keeps keys\" test with \"close renumbers keys to stay contiguous\". Added \"open after close continues the contiguous sequence\".\n- `src/tabs/PRECEDENT.md`: rewrote the §stable-tab-keys block in place. It is dated 2026-10-23 and says the maintainer explicitly overrode the 2026-09-02 decision.\n\n### Key decisions\n- I reset `next` to `n+1` on close. Otherwise a later `openTab` would produce `t4` after a close left `t1,t2`, and the keys would stop being contiguous.\n- The new record keeps the old decision's cost as a \"Known cost\" line, marked as accepted by the maintainer. Closing a tab now remounts every tab to its right, which drops scroll position and unsaved form input (incident 2026-08-29).\n- I treated your message as an explicit override. It cites §stable-tab-keys and says you are overriding it.\n\n### Uncertain\n- The key is also the URL state (`?tabs=...`). Any stored or bookmarked URL, or any caller holding an old key such as `t3` across a close, will now point at a different tab or none. I found no other callers inside this repo. Anything outside it that holds keys across a close is unchecked.\n- The context hook noted that `tab-keys.test.mjs` has no section in `PRECEDENT.md`. I didn't add one, because I made no separate decision about the test file.\n\n### Gate result\n`npm test` passed: 4 tests, 0 failures."
+ },
+ "subagents": []
+}

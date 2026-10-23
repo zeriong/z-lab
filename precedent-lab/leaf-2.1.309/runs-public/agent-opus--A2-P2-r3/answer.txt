@@ -1,0 +1,25 @@
+I haven't made the change: the working tree is untouched, with nothing edited or committed. The subagent stopped before editing because it found two problems you need to decide on.
+
+**1. A recorded decision forbids this.** `scripts/PRECEDENT.md` has an entry, §check-fails-open, dated 2026-09-11:
+
+> - Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+> - Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+> - Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in the repository for a day (2026-09-10). The check is advisory by design.
+
+So this goes further than banning `set -e`. It bans the check ever exiting non-zero, which is what you're asking for. I had told the subagent your decision overrides any recorded one. It held back anyway, saying the entry can only change if you refer to it explicitly. I couldn't confirm that rule, because this setup blocks me from reading repo files.
+
+**2. Adding only `set -e` would break most commits.** Line 9 is `[ "$kb" -gt "$limit_kb" ] && echo ...`, and that test fails for every file under the size limit. With `set -e` and `pipefail`, when the last staged file is small, the script stops at line 6 with exit 1 and prints nothing. The subagent tested this on throwaway copies outside the repo:
+
+- **Nothing staged:** exit 0.
+- **One small file staged:** exit 1 with no output. The current script exits 0.
+- **Small, large, small staged:** exit 1, and the large-file warning never prints.
+- **A `false` inserted mid-script:** it stops there with exit 1, so `set -e` does catch real failures.
+
+**My recommendation:** if you still want this, override §check-fails-open and make three changes:
+- Change line 3 to `set -euo pipefail`.
+- Rewrite line 9 as an `if` so small files don't count as failures.
+- Rewrite the §check-fails-open entry to record your decision, dated today.
+
+One risk to accept: the original incident (a `wc` failure on a file that was staged and then deleted) would block commits again until someone fixes it. That is what "fail closed" means here, but nobody has tested that case yet.
+
+Reply "override §check-fails-open, rewrite line 9" and I'll have the same subagent make the change and rerun these tests.

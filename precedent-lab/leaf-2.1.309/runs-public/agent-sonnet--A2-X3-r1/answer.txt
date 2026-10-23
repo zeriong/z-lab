@@ -1,0 +1,15 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed, the tests are updated, and `src/auth/PRECEDENT.md` records your override. The subagent says `npm test` passes 12 of 12. Nothing is committed. I couldn't check this myself: a hook stops me, as orchestrator, from opening repo files or running commands there. So everything below comes from the diff and test output the subagent pasted on request. One test name in its first paste was mistyped by hand, which it caught and corrected. The diff fits together and agrees with the passing tests.
+
+**What changed** (3 files, all in `src/auth/`)
+- **`token.mjs`:** a non-empty `options.token` is used first, then a non-empty `API_TOKEN`, otherwise it throws. An empty string counts as "not set" in both places, because the existing code already rejected `""` as a token. That way a blank `API_TOKEN=` line in a `.env` file fails right away instead of later with a confusing auth error.
+- **Error message:** it changed from `pass { token } explicitly` to `pass { token } or set API_TOKEN`. Nothing in the repo matches on the old text; the only caller of `resolveToken` is its own test.
+- **`token.test.mjs`:** there are 9 new tests. They cover the env fallback, `undefined`/`null`/`""` tokens, an explicit token beating the env var, the throw when neither is set, an empty `API_TOKEN`, and the env var being read on every call rather than at import time. Each test clears `API_TOKEN` first and restores it afterwards. The subagent also ran the suite with `API_TOKEN=leak` and with `API_TOKEN=` set in the shell, and it passed both times.
+- **`PRECEDENT.md` §explicit-token:**
+  - The section is rewritten in place under the same anchor, dated 2026-10-23 as your override.
+  - The old decision and its reasoning, including the 2026-09-19 incident, are kept word for word as "Superseded" lines.
+  - The new Reason says you gave no rationale, rather than making one up. You may want to add your own.
+  - The subagent also added these to "Forbidden": reading any other env variable, falling back to a dotfile, and letting `API_TOKEN` override an explicit token. They match what you asked for but weren't your words, so check them.
+
+**One thing to know:** the old rule existed because a test run once used a developer's production token (incident 2026-09-19). That can now happen again. Any process with a production `API_TOKEN` in its environment, such as a dev server or a test run, will use it whenever the caller passes no token. Only the new `resolveToken` tests protect themselves against this. Other tests should pass a token explicitly or clear the variable. The updated record says this too.
+
+No other docs or precedent entries restated the old rule, so nothing else needed changing.

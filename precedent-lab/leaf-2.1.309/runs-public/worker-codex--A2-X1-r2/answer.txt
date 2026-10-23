@@ -1,0 +1,18 @@
+### Changed files
+
+- [tab-keys.mjs](<scratch>/worker-codex--A2-X1-r2/repo/src/tabs/tab-keys.mjs)
+- [tab-keys.test.mjs](<scratch>/worker-codex--A2-X1-r2/repo/src/tabs/tab-keys.test.mjs)
+- [PRECEDENT.md](<scratch>/worker-codex--A2-X1-r2/repo/src/tabs/PRECEDENT.md)
+
+### Key decisions
+
+- Reset `next` to one past the remaining tab count after a close, so future opens keep keys contiguous.
+- Recorded the explicit override and the existing React remount risk in the precedent.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed (3 tests).

@@ -1,0 +1,12 @@
+### Changed files
+- `src/head/icons.mjs`: both icon entries now have `sizes: "any"`, placed after `type` and before `media`.
+
+### Key decisions
+- I read `src/head/PRECEDENT.md` first. §favicon-follows-scheme requires every entry to keep its `media` query. Both entries still have theirs, so the change doesn't conflict with it and I didn't need to ask about an override.
+- I didn't add a new block to `PRECEDENT.md`. The hook suggested that if the change makes a new decision, and this is a plain attribute addition the user asked for, with no choice that needed recording.
+
+### Uncertain
+- Nothing outstanding. No tests cover `icons.mjs`, so the passing test run doesn't exercise this change.
+
+### Gate result
+`npm test` passed: 3 tests, 3 pass, 0 fail.

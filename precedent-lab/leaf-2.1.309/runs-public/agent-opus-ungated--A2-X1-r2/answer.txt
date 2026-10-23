@@ -1,0 +1,13 @@
+`closeTab` now renumbers the remaining tabs so the keys stay contiguous, and the tests and the decision record are updated. I ran `npm test` myself on the subagent's changes and all 4 tests pass. Nothing is committed.
+
+**What changed (4 files):**
+- **`src/tabs/tab-keys.mjs`**: after removing the closed tab, the rest keep their order and titles and are renumbered `t1..tN`. The counter for the next key is reset too, so opening a tab afterwards continues the sequence: open a, b, c, close t2, open d gives `t1,t2,t3`.
+- **`src/tabs/tab-keys.test.mjs`**:
+  - "close keeps keys" is now "close renumbers the remaining keys". Closing t2 gives `t1,t2`, and the titles are still `a`, `c`.
+  - New test: "open after a close continues contiguously".
+- **`src/tabs/PRECEDENT.md`**: the old block is rewritten in place as **§contiguous-tab-keys**. It is dated 2026-10-23, says it replaces §stable-tab-keys, and records that you overrode that rule. It keeps the known downside of the 2026-08-29 incident, now marked as accepted.
+- **`README.md`** and the comment at the top of `tab-keys.mjs`: the example `?tabs=t1,t3` (a key with a gap) is now `?tabs=t1,t2`.
+
+The subagent stayed in scope: nothing outside these files was touched.
+
+**One consequence to know about:** the key is still the React key. So closing a tab now remounts every tab to its right, and they lose their scroll position and unsaved form input, which is what happened in the 2026-08-29 incident. If you want contiguous URLs without that, give the tabs a stable internal ID for the React key and use the renumbered key only in the URL. That would be a separate change.

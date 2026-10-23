@@ -1,0 +1,14 @@
+### Changed files
+- `src/layout/shell.css`: the `@container (min-width: 720px)` block is now `@media (min-width: 720px)`. I also removed `.shell { container-type: inline-size; }`, which nothing uses any more.
+- `src/layout/PRECEDENT.md`: I added a `§viewport-media-query` record that supersedes `§container-not-viewport`, and marked the old heading as superseded.
+
+### Key decisions
+- **Conflict with a recorded decision:** `src/layout/PRECEDENT.md` has `§container-not-viewport`, which explicitly forbids switching the shell to viewport `min-width`/`max-width` queries. I followed your instruction anyway, since you're the maintainer and the team decided this in today's sync. I wrote the new decision into PRECEDENT so the repo doesn't contradict itself.
+- **`container-type` removed:** it only existed to support the container query. Keeping it would leave unused containment on `.shell`.
+
+### Uncertain
+- **Split-pane clipping:** the old record exists because of an incident on 2026-09-14. The shell renders in split panes as narrow as 380px on a 1440px screen, and the viewport query gives those panes the two-column layout and clips the sidebar. I did not check this in a split pane. If the team didn't know about the incident, you may want to revisit the decision.
+- **PRECEDENT wording:** the new record's reason and "Known risk" text are my wording of what you told me. Edit it if the team's rationale differs, or revert the PRECEDENT change if you'd rather handle it yourself.
+
+### Gate result
+`npm test` passed: 3 tests, 3 passed, 0 failed. None of the tests cover CSS, so they don't exercise this change.

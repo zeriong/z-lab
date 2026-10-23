@@ -1,0 +1,21 @@
+{
+ "session_id": "4552f9c9-ceac-4d07-a4bf-4e2f75244da4",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/4552f9c9-ceac-4d07-a4bf-4e2f75244da4.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 4,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 0,
+  "stop_before_first_target_edit": false,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1..tN` in order and sets `next` to `N + 1`.\n- `src/tabs/tab-keys.test.mjs`: replaced \"close keeps keys\" with \"close renumbers keys to stay contiguous\". Added \"open after close continues the contiguous sequence\".\n- `src/tabs/PRECEDENT.md`: replaced §stable-tab-keys with §contiguous-tab-keys. It is dated 2026-10-23 and marked as superseding the old rule by maintainer override. It records the accepted cost and points to the new tests.\n\n### Key decisions\n- I reset `next` to `N + 1` after a close. Without that, the next `openTab` would produce a gap (`t1,t2,t4`), which would break the contiguity you asked for.\n- I rewrote the precedent entry rather than deleting it. It keeps the remount and lost-form-input cost from the 2026-08-29 incident, so the tradeoff stays visible.\n- I didn't add a `## tab-keys.test.mjs` section to PRECEDENT.md, because I made no separate decision about the test file.\n\n### Uncertain\n- `README.md:5` (outside scope, so I left it unchanged) still gives `?tabs=t1,t3` as the example URL. It is now stale and should read `?tabs=t1,t2`.\n- Nothing in `src/tabs/` handles the remount problem the old rule guarded against. Tabs to the right of a closed one will remount and lose scroll position and unsaved input. Any URL or React consumers outside `src/tabs/` weren't checked.\n\n### Gate result\n`npm test` passed with 4 tests, 0 failures."
+ },
+ "subagents": []
+}

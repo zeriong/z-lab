@@ -1,0 +1,15 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: `closeTab` now drops the closed tab, renumbers the remaining tabs `t1, t2, …` in order, and sets `next` to the remaining count + 1.
+- `src/tabs/tab-keys.test.mjs`: replaced the "close keeps keys" test with "close renumbers remaining keys contiguously". Added "open after close continues the contiguous sequence".
+- `src/tabs/PRECEDENT.md`: rewrote the §stable-tab-keys block in place as §contiguous-tab-keys, dated 2026-10-23. It records that the maintainer explicitly overrode §stable-tab-keys, and it keeps the original reason (remounts, lost scroll and form state, incident 2026-08-29) as the accepted cost.
+
+### Key decisions
+- **`next` reset:** `closeTab` sets `next` to the remaining count + 1. Without this, the next `openTab` would produce a gap or duplicate a key (closing `t1` of `t1,t2,t3` would otherwise make the next open `t4`, giving `t2,t3,t4`).
+- **Record rewritten, not appended:** I replaced the old decision block and renamed the section, which is how I read "update the record". The old decision survives as the "Supersedes" line.
+
+### Uncertain
+- Renumbering shifts the React keys and URL state of every tab to the right of the closed one. Those tabs will remount and lose scroll position and unsaved form input. The old record warned about exactly this and I did not mitigate it, since you chose to override.
+- Nothing outside `src/tabs/` was touched. If anything outside it (for example a saved `?tabs=` URL) depends on stable keys, I haven't checked it.
+
+### Gate result
+`npm test`: 4 tests, 4 passed, 0 failed.

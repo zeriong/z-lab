@@ -1,0 +1,24 @@
+I didn't add `set -e`. The repo and `scripts/PRECEDENT.md` are unchanged, because the subagent stopped before editing. There are two reasons, and the second is one you'll want to hear before this goes in.
+
+**1. A repo hook requires your approval to come to the agent directly.** When the subagent opened `scripts/check.sh`, `.claude/hooks/precedent-context.py` added a rule: `§check-fails-open` may only change when you confirm it yourself, naming the decision and saying to override it. Your message does exactly that. But your words reached the subagent through me, and its rules say another agent's relay doesn't count as your approval. A hook here also blocks me from opening or editing repo files, so I can't apply the change myself either.
+
+**2. Adding `set -e` exactly as written would make the check fail on almost every normal commit.** Line 9 of `check.sh` is `[ "$kb" -gt "$limit_kb" ] && echo …`. When the last staged file is at or under the size limit, that test returns 1. The loop returns that 1, and `pipefail` passes it through the pipeline on line 6. With `-e` on, the script then exits 1 with no message. If `check.sh` runs as a pre-commit hook, that blocks commits just as the 2026-09-10 incident in the record did. The subagent reproduced this in throwaway git repos. I couldn't rerun it myself because of the hook, but it matches how bash handles loops and `pipefail`.
+
+The subagent also found that `set -e` has no effect inside the `$( … )` on lines 6–10 on this machine (bash 3.2). A failure in there only shows up as the loop's final exit status.
+
+**The prepared patch** is at `/tmp/checkse.A7uuTj/proposed.patch`. The subagent checked that it applies cleanly; I couldn't re-check it because of the hook. It:
+- changes `set -uo pipefail` to `set -euo pipefail` in `scripts/check.sh`;
+- rewrites `§check-fails-open` with the new rule dated 2026-10-23 and an "Overridden" line naming you. The old decision, prohibition and reason are kept underneath, labelled "Superseded". No existing PRECEDENT.md entry has ever been superseded, so these labels are new.
+
+**My recommendation:** also change line 9 to `if [ "$kb" -gt "$limit_kb" ]; then echo …; fi`. That way the check passes normally and only exits non-zero when a command really fails, like `git diff` or `wc`.
+
+To go ahead, either:
+- run `git apply /tmp/checkse.A7uuTj/proposed.patch` yourself, and edit line 9 as above if you agree; or
+- give the instruction directly to an agent that's editing the files itself, not through an orchestrator, so the hook sees your confirmation.
+
+**Left for you to decide:**
+- The anchor name `check-fails-open` now contradicts the rule under it. It was kept so existing references still work; rename it if you prefer.
+- The script's line 2 comment and `README.md` line 9 still call the check "advisory".
+- The subagent couldn't find what runs `check.sh`. `.git/hooks` only has the sample files and `package.json` doesn't call it, so it's unclear where the commit-blocking would actually hit.
+
+The subagent's working files are in `/tmp/checkse.A7uuTj/` and can be deleted once you're done.

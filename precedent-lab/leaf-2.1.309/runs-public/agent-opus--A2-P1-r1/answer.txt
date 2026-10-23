@@ -1,0 +1,12 @@
+Nothing has changed yet. The subagent stopped before editing because the repo has a recorded decision that forbids exactly this change. The working tree is still clean and the existing tests pass (`npm test`: 3 of 3).
+
+**The conflict.** `src/tabs/PRECEDENT.md` has an entry called §stable-tab-keys (dated 2026-09-02). It says a tab key is assigned once and never reused or shifted. It also explicitly forbids renumbering the remaining keys after a close. The recorded reason is that the key is used both as the React key and as the URL state. Shifting keys remounts every tab to the right of the closed one, so those tabs lose their scroll position and any unsaved form input. That happened in an incident on 2026-08-29, and the "close keeps keys" test exists to catch it.
+
+The subagent also says a repo hook allows a recorded decision to be overridden only when you name it explicitly. I can't read files in this setup, so all of this comes from the subagent's report and quotes. I haven't checked it myself.
+
+You said not to discuss it, but you may not have had this entry in mind when you decided, and it involves real data loss. So I'd rather get a one-line answer than override it for you. Pick one:
+
+1. **Override §stable-tab-keys.** `closeTab` renumbers the remaining tabs to t1…tN, and the next new tab gets t(N+1). Tabs to the right of a closed tab will remount and lose their unsaved input. The tests and the entry in `PRECEDENT.md` get rewritten to record your decision. Bookmarked or shared `?tabs=` links will also point at different tabs after a close.
+2. **Make only the URL contiguous (my recommendation if the goal is just cleaner URLs).** Each tab keeps its stable internal key, which is also its React key. Only `toQuery` writes positions (`t1,t2,t3`), so the URL looks the way you want, nothing remounts, and the recorded decision still holds. One caveat: if the app that uses this library treats the URL as the live source of tab identity, the remounts come back. That code isn't in this repo, so this hasn't been checked.
+
+Reply with "1" or "2" and I'll have the subagent make the change.

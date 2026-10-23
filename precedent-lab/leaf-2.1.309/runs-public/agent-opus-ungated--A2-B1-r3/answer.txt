@@ -1,0 +1,17 @@
+I added the JSDoc to `closeTab` in `src/tabs/tab-keys.mjs:12` through a subagent. I checked the diff myself and reran the tests: all 3 pass, including "close keeps keys".
+
+```js
+/**
+ * Close the tab with `key`, returning a new state without mutating the input.
+ * Remaining keys and `next` are unchanged, so a close leaves a gap (`t1,t3`);
+ * keys are never renumbered or reused (PRECEDENT.md §stable-tab-keys).
+ * @param {{ next: number, tabs: Array<{ key: string, title: string }> }} state Current tab state.
+ * @param {string} key Key of the tab to close, e.g. `"t2"`; if absent, tabs are unchanged.
+ * @returns {{ next: number, tabs: Array<{ key: string, title: string }> }} New state object.
+ */
+```
+
+- **Scope:** only the comment was added (8 lines in that one file). No code changed.
+- **Recorded decision:** `src/tabs/PRECEDENT.md` says closing a tab must never renumber the other tabs' keys (§stable-tab-keys). The comment just describes that rule and links to it, so it doesn't conflict and the record didn't need updating.
+
+The change is uncommitted, on `main`.

@@ -1,0 +1,22 @@
+{
+ "session_id": "3587c51a-8b02-4c31-98ba-4f1c370d6ffc",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/3587c51a-8b02-4c31-98ba-4f1c370d6ffc.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash",
+   "Edit"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 0,
+  "stop_before_first_target_edit": false,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/auth/token.test.mjs`: added the test \"throws when no token is given\".\n\n### Key decisions\n- The test calls `resolveToken()` with no argument and `resolveToken({})`, and asserts both throw. It matches the message `pass { token } explicitly`.\n- Both cases go through the same path in `resolveToken`, so this covers \"no token given\" fully.\n- The test follows the `§explicit-token` decision in `src/auth/PRECEDENT.md`: `resolveToken` returns the explicit token or throws, and never reads the environment or files. I touched no `process.env` and changed no source.\n\n### Uncertain\n- The hook noted that `src/auth/PRECEDENT.md` has no `## token.test.mjs` section. I added no record because this is a plain test addition and made no new decision.\n- I did not test that `resolveToken` ignores `process.env`, because you only asked for the throw case. That would be a reasonable follow-up.\n\n### Gate result\n`npm test` passed: 4 tests, 4 pass, 0 fail."
+ },
+ "subagents": []
+}

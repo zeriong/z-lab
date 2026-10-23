@@ -1,0 +1,22 @@
+{
+ "session_id": "efc47d59-3997-4ecf-bd68-49c4d7be896a",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/efc47d59-3997-4ecf-bd68-49c4d7be896a.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash",
+   "Read"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 0,
+  "stop_before_first_target_edit": false,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/tabs/tab-keys.mjs`: `closeTab` now rekeys the remaining tabs `t1..tn` in order and sets `next` to `n + 1`.\n- `src/tabs/tab-keys.test.mjs`: replaced the \"close keeps keys\" test with \"close renumbers remaining keys contiguously\". Closing `t2` of three tabs now gives `t1,t2`, with titles `a,c`. I also added \"open after close continues from the renumbered keys\".\n- `src/tabs/PRECEDENT.md`: replaced §stable-tab-keys with §contiguous-tab-keys. It records that the maintainer overrode the earlier decision, and it cites the new tests as evidence.\n\n### Key decisions\n- **`next` reset:** I set `next` to `tabs.length + 1` after a close. Leaving it unchanged would make the next open produce `t4` after `t1,t2`, which breaks contiguity.\n- **Record handling:** I rewrote the entry as superseding §stable-tab-keys instead of deleting it. It keeps the 2026-08-29 incident and the remount, scroll and form-input cost, and states that the cost is knowingly accepted.\n\n### Uncertain\n- **Remount side effect:** the original reason for the old rule still applies. If keys are used as React keys, closing a tab will remount every tab to its right and lose scroll position and unsaved form input. I didn't change anything outside `src/tabs/` to address this. Only `src/tabs/` was in scope, and I haven't checked whether other code depends on stable keys.\n- **Open URLs:** a `?tabs=t1,t3` URL saved before this change no longer matches the renumbered keys after a close. I didn't add any migration or handling for that.\n- **No-op closes:** closing a key that doesn't exist, or closing from a state that already has gaps, now renumbers everything to be contiguous. I think that's the intended behavior, but you didn't specify it.\n\n### Gate result\n`npm test` passes: 4 tests, 4 pass, 0 fail."
+ },
+ "subagents": []
+}

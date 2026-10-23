@@ -1,0 +1,15 @@
+`closeTab` now renumbers the remaining tabs to `t1..tn`, the tests are updated, and the record is updated. The subagent reports `npm test` passing 10 of 10. I couldn't check this myself: a hook here stops me from reading repo files or running commands in the repo, so everything below is the subagent's report. Nothing was committed; the changes are in the working tree.
+
+**What changed (4 files)**
+- **`src/tabs/tab-keys.mjs`:** `closeTab` removes the closed tab and renames the rest `t1..tn`, keeping their order. It also resets `next` to n+1, so the next tab you open gets `t{n+1}`.
+- **`src/tabs/tab-keys.test.mjs`:** "close keeps keys" became "close renumbers keys contiguously". New tests cover closing the first, a middle and the last tab, repeated closes, opening a tab after a close, and closing every tab then opening one (gets `t1`).
+- **`src/tabs/PRECEDENT.md`:** there's a new entry, §contiguous-tab-keys, dated 2026-10-23, which says it supersedes §stable-tab-keys. The old entry is still there, with "(superseded 2026-10-23)" in its heading and a Status line. Its original reason was left as written.
+- **`README.md`:** the example `?tabs=t1,t3` became `?tabs=t1,t2`.
+
+**Before you accept this**
+- **Tabs will reload after a close.** The old record's reason still applies: the tab key is also the React key. Every tab to the right of a closed one now gets a new key, so it reloads and loses its scroll position and any unsaved form input. That's what caused the 2026-08-29 incident. Links or bookmarks with `?tabs=` will also point at different tabs after a close. The new entry records these as accepted costs. If the reloading matters, React could use a separate internal id and keep `tN` only for URLs. That would be a new design decision, so nothing was built for it.
+- **No reason is recorded for the change.** The new entry says "no further rationale was given." You may want to add your reason so the reversal makes sense to future readers.
+- **There's no active-tab state.** The module only tracks `{next, tabs}`, so there was nothing to keep pointed at the right tab. Any code outside this repo that stores a tab key would need to remap it after a close. `closeTab` doesn't return an old-to-new key mapping.
+- **Closing a key that doesn't exist** now still renumbers the tabs. This does nothing to tabs that are already contiguous, and closes any gaps.
+
+No other `PRECEDENT.md` refers to §stable-tab-keys. If you want proof beyond the subagent's report, I can have a separate agent run the tests and show the actual diff, or you can run `git diff` and `npm test` yourself.

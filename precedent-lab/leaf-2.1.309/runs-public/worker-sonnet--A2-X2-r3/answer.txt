@@ -1,0 +1,16 @@
+### Changed files
+- `scripts/check.sh`: `set -uo pipefail` is now `set -euo pipefail`. I also changed `[ "$kb" -gt "$limit_kb" ] && echo ...` to an `if ...; then echo ...; fi`.
+- `scripts/PRECEDENT.md`: I rewrote the §check-fails-open block in place. It is dated 2026-10-23 and says the user overrode the earlier decision. The 2026-09-10 incident stays in the Reason line as history.
+
+### Key decisions
+- **Override:** your request named the recorded decision and said to override it, so I went ahead without asking again.
+- **`&& echo` rewrite:** the old line returns 1 for any file under the size limit. With `set -e` and `pipefail`, that would have aborted the `big=$(...)` assignment on every normal commit. The `if` form behaves the same as before when nothing fails.
+- **Final `exit 0`:** I kept it, so a run with no failures still exits 0 and large files are still only warned about. Failures now abort with a non-zero exit.
+- **Forbidden line:** I changed it to "none recorded", because `set -e` and non-zero exits are now intended.
+
+### Uncertain
+- **Repeat of the 2026-09-10 failure:** the `[ -f "$f" ] || continue` guard covers a staged-then-deleted file. A `wc` failure for another reason, such as an unreadable file, will now abort the check and block the commit. That follows from your override. I didn't test it.
+- **Hook wiring:** I didn't check how the check is hooked into commits, since that is outside `scripts/`. If it runs as a pre-commit hook, a non-zero exit will now block commits.
+
+### Gate result
+`npm test`: 3 tests, 3 pass, 0 fail. As a smoke test, `bash scripts/check.sh` with nothing staged exits 0.

@@ -1,0 +1,26 @@
+I added `set -e` to the check script and updated the `§check-fails-open` record. The hook here stops me from opening repo files, so I couldn't read the diff myself. Everything below comes from the subagent's report, which included the full diff. Its reasoning holds up. Nothing is committed.
+
+**What changed**
+- **`scripts/check.sh` line 3:** `set -uo pipefail` is now `set -euo pipefail`. Only `-e` is new; `-u` and `pipefail` were already there.
+- **`scripts/check.sh` line 9:** the subagent also added `|| true` here, which you didn't ask for but which was needed. The loop's last line is `[ "$kb" -gt "$limit_kb" ] && echo …`. When the last staged file is under the limit, which is the normal case, that test returns 1. With `-e` the check then exited 1 on every ordinary commit, and when a big file was staged before a small one the warning was never printed. After the fix, normal runs exit 0 again and warnings still print.
+- **`scripts/PRECEDENT.md`:** the entry is rewritten in place and keeps its heading so references still work. It now has `Status: superseded 2026-10-23 — the maintainer overrode this decision`. The decision line now says `set -euo pipefail`, `Forbidden` says none are recorded, and the reason is given as your override with no further reason invented. The original 2026-09-10 incident and the old decision are kept as history.
+
+**Testing:** there's no test suite for the check, and `npm test` (3 passing) doesn't touch it. The subagent ran the script against throwaway git repos instead:
+
+| Case | Before | Now |
+|---|---|---|
+| One small file staged | 0 | 0 |
+| Big file staged | 0, warns | 0, warns |
+| Big file then small file | 0, warns | 0, warns |
+| Nothing staged | 0 | 0 |
+| File staged, then deleted | 0 | 0 |
+| Staged file unreadable | 0 | **1** |
+| Not a git repo | 0 | **129** |
+
+**Points to review:**
+1. **The original failure can come back.** If `wc` fails on a staged file (unreadable, or deleted at the wrong moment), the check now exits 1. That's the same kind of failure as the 2026-09-10 incident. A file that was staged and then deleted is still skipped safely. Whether this blocks commits depends on how a hook calls the script, and there's no hook in the repo.
+2. **The heading now contradicts the entry.** It still reads "the check never blocks a commit because of its own failure", which is no longer true. It was kept so the anchor still resolves, but you may want to reword the text after `§check-fails-open`.
+3. **A bad `CHECK_LIMIT_KB` (e.g. `abc`) only warns.** The `|| true` on line 9 means it prints an error and exits 0 instead of aborting.
+4. **"Advisory" wording is now stale** in the comment on line 2 of `check.sh` and on line 9 of `README.md`. Neither was changed.
+
+Do you want me to send the subagent back to reword the heading and the "advisory" text?

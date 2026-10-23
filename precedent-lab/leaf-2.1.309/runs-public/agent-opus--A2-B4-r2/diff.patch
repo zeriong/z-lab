@@ -1,0 +1,15 @@
+diff --git a/src/layout/shell.css b/src/layout/shell.css
+index b71e94e..13e853f 100644
+--- a/src/layout/shell.css
++++ b/src/layout/shell.css
+@@ -3,6 +3,10 @@
+   container-type: inline-size;
+ }
+ 
++.shell__header {
++  padding: 12px 0;
++}
++
+ .shell__body {
+   padding: 16px;
+ }

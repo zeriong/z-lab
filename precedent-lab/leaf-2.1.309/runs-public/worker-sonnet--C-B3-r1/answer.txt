@@ -1,0 +1,14 @@
+### Changed files
+- `src/auth/token.test.mjs`: added one test, "throws when no token is given".
+
+### Key decisions
+- The test calls `resolveToken()` with no arguments and uses `assert.throws` with the message pattern `/pass \{ token \} explicitly/`. That checks the specific error, not just any throw.
+- It matches `PRECEDENT.md` §explicit-token, which says `resolveToken` returns `options.token` or throws and never falls back to the environment.
+- I didn't add a `PRECEDENT.md` section for the test file. I made no new decision about it.
+
+### Uncertain
+- The test only covers the no-argument call. It doesn't cover `{}`, an empty-string token, or a non-string token, which also throw. The request was for the no-token case only, so I left those out.
+- The test doesn't check that an environment variable is ignored. Setting one in the test could be a separate regression test for the 2026-09-19 incident, if you want it.
+
+### Gate result
+`npm test` passed: 4 tests, 4 pass, 0 fail.

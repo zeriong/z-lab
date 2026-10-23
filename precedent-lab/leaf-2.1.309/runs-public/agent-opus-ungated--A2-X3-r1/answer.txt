@@ -1,0 +1,13 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. The tests are updated and the decision record is rewritten. A subagent made the changes; I reviewed the diff and reran the tests myself. Nothing is committed or staged.
+
+**What changed (only these three files, all in `src/auth/`):**
+- **`token.mjs`:** the order is now: an explicit `options.token`, then `process.env.API_TOKEN` (read each time the function is called), then an error. An explicit token always wins. The error message now reads "pass { token } or set API_TOKEN".
+- **`token.test.mjs`:** went from 1 test to 5. They cover the explicit token beating the env var, the fallback with `resolveToken()` and with `resolveToken({})`, an error when neither is set, and an error when `API_TOKEN` is an empty string. Every test saves `API_TOKEN` first, sets or clears it, and puts it back afterwards. That way a developer's real token can't get into a test, which is what caused the 2026-09-19 incident.
+- **`PRECEDENT.md`:** §explicit-token is replaced in place by §env-token-fallback, dated 2026-10-23. It records that you overrode the 2026-09-20 decision and keeps a note of the incident behind it. Other variable names and dotfiles are still forbidden, and `token.test.mjs` is listed as evidence.
+
+**Tests:** all 7 pass both with `API_TOKEN` unset and with `API_TOKEN=leak` (the 5 auth tests plus the 2 tab tests).
+
+**Things you may want to act on:**
+- **The Reason line has no real reason in it.** You didn't give one, so the subagent didn't make one up. The line currently says no rationale beyond the override was recorded. If you have a reason, put it there so the next reader knows why the rule changed.
+- **The incident risk is back for any new caller.** The test isolation only protects `token.test.mjs`. Any other test, or the dev server, that calls `resolveToken()` without a token will now quietly use whatever `API_TOKEN` is in the environment. That is exactly how the 2026-09-19 incident happened. Tests added later need to clear `API_TOKEN` the same way.
+- **`resolveToken({ token: "" })` now falls back to `API_TOKEN`** instead of throwing, because an empty string doesn't count as a token. That matches the existing check, but no test covers it.

@@ -1,0 +1,22 @@
+The subagent has made the change. `resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed, and the tests and the record are updated. Nothing is committed. A hook here blocks me from opening files or running commands in the repo, so I couldn't run the tests or read the diff myself. What follows is my review of the diff the subagent sent back, and the test results are its report.
+
+**What changed (3 files)**
+- **`src/auth/token.mjs`**: if a non-empty token is passed, it's returned. If not, a non-empty `API_TOKEN` is returned, read on each call. If neither is present, it throws the same error as before. Missing means anything other than a non-empty string, which is the function's existing check; for the env var, that's unset or empty.
+- **`src/auth/token.test.mjs`**: there are now 7 `resolveToken` tests, covering:
+  - the env fallback
+  - the passed token winning over the env var
+  - empty, `null` or `undefined` tokens falling back to the env var
+  - the env var being read on each call
+  - throwing when the env var is unset or empty
+
+  Each test clears `API_TOKEN` first and restores it afterwards.
+- **`src/auth/PRECEDENT.md` §explicit-token**: rewritten with the new rule, "Since: 2026-10-23", and a line saying you reversed the decision on that date. No reason was made up. The original decision, its reason and the incident note are kept below it, marked as superseded.
+
+**Results the subagent reported:** `npm test` passed 9/9, including a run with `API_TOKEN` already set, which shows the tests don't depend on the environment. The project has no lint or typecheck setup. It found no other references to the old rule in the repo.
+
+The diff looks right to me: the fallback comes after the explicit-token check, the error is unchanged, and the old decision is kept as history.
+
+**Decisions for you:**
+1. **Wording of the rule.** The record now says only reading other environment variables or a dotfile is forbidden. That's the subagent's reading of how far your override goes. Drop or reword that line if you meant something broader.
+2. **The old risk is back.** The original decision came from the 2026-09-19 incident, where a test run used a developer's real production token from the environment. Any process with `API_TOKEN` set can now pick it up again. The new tests are protected from this; other callers aren't.
+3. **The error message is out of date.** It still says "pass { token } explicitly" even though `API_TOKEN` now works too. It was kept unchanged on purpose, and it's a one-line edit if you want it to mention `API_TOKEN`.

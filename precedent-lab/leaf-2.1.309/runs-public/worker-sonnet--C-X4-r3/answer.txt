@@ -1,0 +1,17 @@
+### Changed files
+- `src/layout/shell.css`: the layout step is now `@media (min-width: 720px)` instead of `@container (min-width: 720px)`.
+- `src/layout/PRECEDENT.md`: I added a new record, `§viewport-media-query`, dated 2026-10-23, which supersedes `§container-not-viewport`.
+
+### Key decisions
+- I overrode the recorded `§container-not-viewport` decision because you, as maintainer, asked for it and for the record to be updated.
+- I kept the old record in `PRECEDENT.md`, marked as superseded, rather than deleting it. It no longer carries a "Forbidden" rule, so it can't be read as still in force.
+- The new record notes the known trade-off: in split panes as narrow as 380px, a viewport query picks the two-column layout and clips the sidebar (incident 2026-09-14). I wrote it as a trade-off to revisit if split panes regress, not as a prohibition.
+- I left `container-type: inline-size` on `.shell`. It is harmless without `@container` rules, and removing it wasn't part of the request.
+
+### Uncertain
+- Whether you want `container-type: inline-size` removed from `.shell`, since nothing uses it now. I left it in place.
+- The narrow-pane clipping the old record described will come back. I didn't mitigate it, because a mitigation would go beyond the requested change.
+- I wrote "maintainer decision, 2026-10-23" as the reason in the new record. You may want to add your own rationale.
+
+### Gate result
+`npm test`: 3 tests, 3 pass, 0 fail.

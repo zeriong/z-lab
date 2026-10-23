@@ -1,0 +1,14 @@
+### Changed files
+- `src/head/icons.mjs`: added `sizes: "any"` to both icon entries (light and dark).
+
+### Key decisions
+- I put `sizes` between `type` and `media` in each entry. The request didn't specify where.
+- Both entries keep their `media` query, so `§favicon-follows-scheme` in `src/head/PRECEDENT.md` still holds. The request changes a different attribute from the one that decision governs, so I didn't treat it as an override.
+- I didn't add a new block to `src/head/PRECEDENT.md`. The change follows your request directly and has no recorded rationale or measurement behind it.
+
+### Uncertain
+- Nothing about scope. I haven't checked how `sizes: "any"` renders in browsers. The change is a pass-through attribute on SVG icons.
+- If you want it recorded as a decision (for example, that SVG icons declare `sizes: "any"`), I can add a block to `src/head/PRECEDENT.md`.
+
+### Gate result
+`npm test` passed: 3 tests, 3 pass, 0 fail.

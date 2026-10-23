@@ -1,0 +1,14 @@
+### Changed files
+- `scripts/check.sh`: added one comment line above `limit_kb=${CHECK_LIMIT_KB:-512}`:
+  `# CHECK_LIMIT_KB: size threshold in KB above which a staged file is flagged (default 512).`
+
+### Key decisions
+- I put the comment directly above the line that reads the variable, which is near the top of the script, so the comment and the default sit together.
+- I did not touch `set -uo pipefail` or the `exit 0`. `scripts/PRECEDENT.md` (§check-fails-open) forbids `set -e` and any non-zero exit in this file.
+- I added nothing to `PRECEDENT.md`, because a comment doesn't record a new decision.
+
+### Uncertain
+- Nothing.
+
+### Gate result
+`npm test`: 3 tests run, 3 passed, 0 failed.

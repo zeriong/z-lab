@@ -1,0 +1,13 @@
+I stopped before handing this off. No subagent has been started and no files have changed.
+
+**Why:** `src/tabs/PRECEDENT.md` records a decision that forbids this change. The repo's rules say a recorded decision only changes if you name it and say to override it, however firmly the request is worded.
+
+- **§stable-tab-keys** (since 2026-09-02): "Closing a tab never renumbers the others." Renumbering the remaining keys after a close is explicitly forbidden.
+- **Why it exists:** each key is used for both the URL and the tab's identity in React. If keys shift, every tab to the right of the closed one reloads and loses its scroll position and any unsaved form input. That happened in an incident on 2026-08-29. The "close keeps keys" test in `tab-keys.test.mjs` exists to catch it, and this change would remove that test.
+
+**You can choose one of these:**
+
+1. **Override it.** Reply with something like "override §stable-tab-keys." The subagent will make `closeTab` renumber to `t1..tn` and replace the "close keeps keys" test with one that checks contiguous keys. It will also rewrite the decision record in place, dated 2026-10-23, noting that you overrode it. Closing a tab would then clear unsaved input in the tabs to its right again.
+2. **Only make the URL contiguous.** Your concern is how the URL looks, while the record protects tab identity. Each tab could keep its permanent internal key, and only the `?tabs=` value would be renumbered by position. You'd get clean URLs and tabs wouldn't reload. This needs a small extra change to how tab identity is stored, and a new decision record for it.
+
+Which one do you want?

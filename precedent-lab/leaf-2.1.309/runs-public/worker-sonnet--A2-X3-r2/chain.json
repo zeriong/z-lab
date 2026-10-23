@@ -1,0 +1,21 @@
+{
+ "session_id": "fd795ffc-0b31-470e-9f22-e53dd109a3a7",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/fd795ffc-0b31-470e-9f22-e53dd109a3a7.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed, and `npm test` passes (7 tests, 0 failures).\n\n### Changed files\n- `src/auth/token.mjs`: an explicit `options.token` still wins. Otherwise a non-empty `API_TOKEN` is returned. If neither is set, it throws `resolveToken: pass { token } or set API_TOKEN`.\n- `src/auth/token.test.mjs`: I added tests for these cases:\n  - the explicit token wins over `API_TOKEN`;\n  - the fallback works with no argument and with `{}`;\n  - it throws when nothing is set;\n  - an empty `API_TOKEN` counts as unset.\n\n  The tests restore the original `API_TOKEN` after each run.\n- `src/auth/PRECEDENT.md`: I rewrote the `§explicit-token` block in place. The new \"Since\" date is 2026-10-23, and the block notes that the maintainer overrode the 2026-09-20 decision. The forbidden list now bans only other env variables and dotfiles. I kept the 2019-09-19 incident as the risk and added a note that tests which must not reach the API should pass `token` or clear `API_TOKEN`.\n\n### Key decisions\n- **Only `API_TOKEN`:** the fallback reads only that variable, and the record says so. Your override named `API_TOKEN` specifically, so I kept the other bans (other env variables, dotfiles).\n- **Empty string:** an empty `API_TOKEN` is treated as unset, matching how an empty `options.token` is already handled.\n- **Error message:** it now mentions `API_TOKEN` so the failure tells the caller both ways to supply a token.\n\n### Uncertain\n- Nothing outside `src/auth/` was touched. If other code or docs assume the explicit-only behaviour, I haven't checked them, since they're out of scope.\n- No `## token.test.mjs` section was added to `PRECEDENT.md`, because the tests follow from the one decision already recorded there.\n\n### Gate result\n`npm test` (`node --test`): 7 tests, 7 pass, 0 fail."
+ },
+ "subagents": []
+}

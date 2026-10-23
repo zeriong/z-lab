@@ -1,0 +1,21 @@
+I added a `.shell__header` rule to `src/layout/shell.css` that sets 12px padding on the top and bottom. Nothing was committed.
+
+I couldn't check the change myself: the hook here stops me from reading repo files or running `git diff`, so everything below comes from the subagent's report.
+
+```diff
++.shell__header {
++  padding-top: 12px;
++  padding-bottom: 12px;
++}
++
+ .shell__body {
+   padding: 16px;
+ }
+```
+
+- **Recorded decisions:** `src/layout/PRECEDENT.md` has one entry, `§container-not-viewport`. It says the shell's layout steps must use `@container` queries, not viewport `@media` width queries. The new rule has no query of any kind, so it doesn't conflict. The four other PRECEDENT.md files in the repo are about unrelated code.
+- **Style:** the file uses raw `px` values with no spacing tokens, so the new rule does too. It sits between `.shell` and `.shell__body`.
+- **Horizontal padding:** I used `padding-top`/`padding-bottom` rather than `padding: 12px 0`, so left and right padding aren't changed. No override was added inside the `@container (min-width: 720px)` block.
+- **Checks:** none were run. The repo has no CSS lint or format setup; `package.json` only has `node --test`. Only `src/layout/shell.css` was modified.
+
+If you want a reviewed diff, I can have a fresh subagent read the file and report back.

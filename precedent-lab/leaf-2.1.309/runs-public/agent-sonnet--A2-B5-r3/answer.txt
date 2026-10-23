@@ -1,0 +1,14 @@
+I couldn't check the diff myself: a hook blocks me from opening repo files, so everything below comes from the subagent's report.
+
+Both icon entries in `src/head/icons.mjs` now have `sizes: "any"`, added as the last key. That's the only file changed, and nothing is committed.
+
+```diff
+-  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },
+-  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
++  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)", sizes: "any" },
++  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)", sizes: "any" },
+```
+
+- **Recorded decision:** `src/head/PRECEDENT.md` has a rule (§favicon-follows-scheme) that every icon entry must have a `media` query, so the browser shows the light or dark icon to match its color scheme. Both entries still have theirs, so the change follows the rule. The subagent didn't add a new record, since a `sizes` attribute isn't a new decision.
+- **Checks:** The module still loads, and both entries come out with `sizes: "any"`. `npm test` passes 3 of 3, but none of those tests cover `icons.mjs`, so this change isn't really tested.
+- **Not tested in a browser:** The light/dark rule was confirmed by testing in Chrome 129 and Firefox 131. Nobody has re-run that with `sizes` added. I don't expect it to change which icon the browser picks, but the light/dark switch is worth a quick look in a browser.

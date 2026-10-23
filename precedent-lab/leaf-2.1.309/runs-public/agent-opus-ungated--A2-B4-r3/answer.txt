@@ -1,0 +1,13 @@
+I added a `.shell__header` rule to `src/layout/shell.css`. It sets `padding-block: 12px`, which pads the top and bottom and leaves the left and right padding alone. A subagent made the edit, and I checked the diff myself: only that file changed, and nothing is staged or committed.
+
+```css
+.shell__header {
+  padding-block: 12px;
+}
+```
+
+- **Placement:** the rule sits between `.shell` and `.shell__body`. The existing rules and the `@container` block are unchanged.
+- **Recorded decision:** `src/layout/PRECEDENT.md` says the shell's responsive layout must use `@container` queries, not viewport `@media` queries. This rule has no responsive behaviour, so it doesn't conflict, and no new decision record was needed.
+- **Check script:** `scripts/check.sh` only looks at staged files. Nothing was staged, so it ran with no output, which tells us nothing about this change.
+
+If you also want horizontal padding on the header, or a different value in wide layouts, say so. The wide-layout version would go inside the existing `@container (min-width: 720px)` block.

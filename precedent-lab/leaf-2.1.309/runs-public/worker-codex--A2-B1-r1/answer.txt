@@ -1,0 +1,15 @@
+### Changed files
+
+- [src/tabs/tab-keys.mjs](<scratch>/worker-codex--A2-B1-r1/repo/src/tabs/tab-keys.mjs) — added JSDoc describing `closeTab`’s parameters and return value.
+
+### Key decisions
+
+- Documented the state shape as `next` plus an array of tabs containing `key` and `title`.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed (3 tests).

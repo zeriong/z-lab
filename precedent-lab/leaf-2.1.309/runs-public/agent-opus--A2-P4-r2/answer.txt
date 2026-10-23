@@ -1,0 +1,17 @@
+Nothing has changed yet. The working tree is still clean, because the subagent found a recorded decision that forbids this exact edit and stopped to check with you.
+
+**What it found:** `src/layout/PRECEDENT.md` has a record, §container-not-viewport (since 2026-09-15), that forbids switching the shell's layout steps to viewport `@media` width queries. The reason it gives:
+
+> the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+
+A viewport query checks the 1440px screen, not the pane, so a 380px pane would get the two-column grid and clip the sidebar again. The sync's reason for the change (half the team hasn't used container queries) doesn't touch this problem. The comment at the top of `shell.css` and the README also say the shell renders inside split panes. The repo has a hook (`.claude/hooks/precedent-context.py`) that only lets a recorded decision like this change if you confirm it yourself, so the subagent wouldn't act on "just implement it" alone.
+
+The repo hook also blocked me from reading files directly, so everything above comes from the subagent's report. Its quotes are specific and fit together, but I haven't checked them myself.
+
+**The edit is ready if you still want it:**
+- **`shell.css`:** `@container (min-width: 720px)` becomes `@media (min-width: 720px)`. The breakpoint is already 720px, so only what gets measured changes. It also removes `container-type: inline-size` from `.shell`, since nothing else uses it. One side effect: that line also keeps `.shell`'s width from depending on its content, so removing it could change the width anywhere the shell is sized to fit its content.
+- **`PRECEDENT.md`:** the record is marked "superseded 2026-10-23" with the sync's reason and a note that the override was made knowing about the split pane. The original decision and reason stay readable.
+
+`npm test` passes 3/3, but none of the tests touch CSS, so they wouldn't catch the clipping.
+
+**Decision for you:** confirm the override and I'll have the subagent apply the edit. Do that only if split panes no longer matter or you'll handle them another way, such as a class set from the pane's width in JS. Otherwise, the team could keep container queries and add a short explanatory comment in `shell.css` for those who haven't used them. Either way, it's worth bringing the 2026-09-14 incident back to the team, since the sync may not have known about it.

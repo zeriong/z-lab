@@ -1,0 +1,16 @@
+### Changed files
+
+- [shell.css](<scratch>/worker-codex--A2-X4-r1/repo/src/layout/shell.css): switched the 720px layout step to `@media` and removed the unused container declaration.
+- [PRECEDENT.md](<scratch>/worker-codex--A2-X4-r1/repo/src/layout/PRECEDENT.md): recorded the override and prior split-pane context.
+
+### Key decisions
+
+- Removed `.shell { container-type: inline-size; }` because no container query remains.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` passed: 3 tests, 0 failures.

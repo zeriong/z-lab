@@ -1,0 +1,27 @@
+`scripts/check.sh` now runs under `set -euo pipefail`, so a failing command aborts the check with a non-zero exit. `npm test` passes, 3 of 3.
+
+### Changed files
+- `scripts/check.sh`
+- `scripts/PRECEDENT.md`
+
+### Key decisions
+- **Override recorded as a new entry.** I added `§check-aborts-on-error` (dated 2026-10-23), which supersedes `§check-fails-open`. It states that `-e` is required and that swallowing errors to force `exit 0` is forbidden. It also keeps the original incident (the `wc` failure on a deleted file) and notes that the `[ -f "$f" ] || continue` guard is what handles it.
+- **Loop rewrite.** The old loop ended in `[ ... ] && echo`, which returns 1 for any file under the limit. With `-e` and `pipefail` that would have aborted every run whose last staged file was small. I changed it to `if ...; then echo ...; fi`.
+- **`inherit_errexit`.** I added `shopt -s inherit_errexit 2>/dev/null || true` so errors inside the `$(...)` pipeline also abort. It is optional because macOS's bash 3.2 doesn't have it.
+- **Large files still only warn.** The script still ends in `exit 0` when nothing fails.
+
+### Uncertain
+- **Pre-commit can now block.** The incident that led to the old rule was exactly this: a failing command blocking every commit. If this script is wired into a pre-commit hook, any real error such as a git failure will now block commits. That is what you asked for, but you may want to confirm it.
+- **`inherit_errexit` is skipped on macOS's bash 3.2.** The `wc` call inside the `$(...)` pipeline relies on it to abort. With system bash, a `wc` failure on a file that exists would not abort. I did not test this.
+- **Test coverage.** `npm test` doesn't exercise `check.sh`; I checked it by hand.
+
+### Gate result
+`npm test` → 3 pass, 0 fail.
+
+Manual runs of the script:
+
+| Case | Result |
+|---|---|
+| Large staged file | warns, exit 0 |
+| Staged-then-deleted file | exit 0 |
+| Run outside a git repo | exit 129 (git error aborts the check, as intended) |

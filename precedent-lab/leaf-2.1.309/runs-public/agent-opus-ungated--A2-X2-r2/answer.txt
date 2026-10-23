@@ -1,0 +1,26 @@
+`scripts/check.sh` now runs with `set -euo pipefail`, and the record is rewritten in place as **§check-fails-closed**. The subagent made the change; I reviewed the diff and reran the main cases in a scratch repo. Nothing is committed.
+
+**A second line had to change.** Adding `-e` alone would have broken the check. The loop ended with `[ "$kb" -gt "$limit_kb" ] && echo ...`. When the last staged file is under the size limit, that line returns 1, `pipefail` passes it up, and the check exits 1 with no output, so ordinary commits would be blocked. The subagent confirmed this on the original script, and it's now an `if ...; then ...; fi`. That and the `set` line are the whole change to the script.
+
+**Results after the change** (bash 3.2, the version on this Mac; I reran the first four rows myself):
+
+| Case | Exit |
+|---|---|
+| Nothing staged, or only small files | 0 |
+| Large file staged | 0, prints the warning (still advisory) |
+| Staged file that was then deleted | 0 (still skipped, which avoids a repeat of the 2026-09-10 lockout) |
+| Unreadable staged file | 1 |
+| Run outside a git repo | 129 |
+
+**The record** now states:
+- the new decision, dated 2026-10-23, with a note that you overrode the 2026-09-11 fails-open decision;
+- what is forbidden now: dropping `-e`, `|| true` or `|| exit 0` workarounds, and the `[ ] && echo` pattern at the end of the loop;
+- the 2026-09-10 history, plus why the deleted-file case still doesn't abort.
+
+README's "advisory pre-commit check" is still accurate, and nothing else referred to the old section name.
+
+**Things to know:**
+- **Silent failure outside a repo:** the check exits 129 there with no message, because the existing `2>/dev/null` on `git diff` hides git's error. If you want a readable error, drop that redirect or print a short message.
+- **Cryptic unreadable-file error:** an unreadable file aborts the check with "Permission denied" followed by a bash arithmetic syntax error. It fails reliably, but the second message is confusing.
+- **Bad size limit is ignored:** a non-numeric `CHECK_LIMIT_KB` turns the size warning off without any message, as it did before.
+- **Line length:** line 6 of `scripts/PRECEDENT.md` is 121 characters, one over the file's 120 wrap. The subagent said all lines fit. It's a one-word re-wrap, and I left it since I'm not editing files in this task.

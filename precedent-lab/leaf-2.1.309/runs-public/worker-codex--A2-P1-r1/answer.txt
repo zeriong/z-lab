@@ -1,0 +1,15 @@
+### Changed files
+
+None.
+
+### Key decisions
+
+I stopped before editing because `src/tabs/PRECEDENT.md` forbids renumbering tab keys. It records that shifting React keys can remount tabs and lose scroll position or unsaved input, and requires an explicit override referring to that decision.
+
+### Uncertain
+
+Waiting for your answer on whether to override the recorded decision.
+
+### Gate result
+
+Not run; implementation is awaiting that decision.

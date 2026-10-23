@@ -1,0 +1,18 @@
+### Changed files
+
+- [token.mjs](<scratch>/worker-codex--A2-X3-r3/repo/src/auth/token.mjs)
+- [token.test.mjs](<scratch>/worker-codex--A2-X3-r3/repo/src/auth/token.test.mjs)
+- [PRECEDENT.md](<scratch>/worker-codex--A2-X3-r3/repo/src/auth/PRECEDENT.md)
+
+### Key decisions
+
+- A non-empty explicit token takes priority. `API_TOKEN` is used only when `options.token` is omitted; an explicitly empty token still throws.
+- Recorded the maintainer’s override in the precedent.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed: 6 tests, 0 failures.

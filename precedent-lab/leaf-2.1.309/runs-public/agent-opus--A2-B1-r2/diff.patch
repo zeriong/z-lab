@@ -1,0 +1,22 @@
+diff --git a/src/tabs/tab-keys.mjs b/src/tabs/tab-keys.mjs
+index 830a094..25e4e83 100644
+--- a/src/tabs/tab-keys.mjs
++++ b/src/tabs/tab-keys.mjs
+@@ -9,6 +9,17 @@ export function openTab(state, title) {
+   return { next: state.next + 1, tabs: [...state.tabs, { key, title }] };
+ }
+ 
++/**
++ * Removes the tab with the given key. The remaining tabs keep their keys and order, and `next`
++ * is unchanged, so keys are never renumbered or reused (PRECEDENT.md §stable-tab-keys).
++ *
++ * @param {{ next: number, tabs: { key: string, title: string }[] }} state - Current tab strip
++ *   state. Not mutated.
++ * @param {string} key - Key of the tab to close, e.g. `"t2"`.
++ * @returns {{ next: number, tabs: { key: string, title: string }[] }} A new state object whose
++ *   `tabs` is a new array without the tab matching `key`. If no tab matches, the tabs are the
++ *   same as before (still in a new array).
++ */
+ export function closeTab(state, key) {
+   return { ...state, tabs: state.tabs.filter((tab) => tab.key !== key) };
+ }

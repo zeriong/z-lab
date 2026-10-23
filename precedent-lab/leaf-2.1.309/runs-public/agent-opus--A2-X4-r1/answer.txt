@@ -1,0 +1,20 @@
+The shell now switches layout on the viewport width at 720px, and `src/layout/PRECEDENT.md` records your override. Nothing is committed. I couldn't check the files myself, because this setup blocks the orchestrator from reading the repo, even with `git diff`. What follows is the subagent's report and the diff it returned.
+
+**Before you ship it:** the old record names a specific failure this change brings back. *"the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14)."* The repo still says the shell is embedded in split panes, in the comment at the top of `shell.css` and at line 7 of the README. On a wide screen, a narrow pane will get the two-column layout again. If that use is gone or acceptable now, this needs nothing more.
+
+**Changes in `src/layout/shell.css`:**
+- `@container (min-width: 720px)` is now `@media (min-width: 720px)`. The threshold was already 720px, so only the query type changed; the grid, columns and padding inside it are unchanged.
+- The `.shell { container-type: inline-size; }` rule is gone. Nothing else used it: there were no other `@container` queries, no container units and no `container-name`.
+
+**Changes in `src/layout/PRECEDENT.md`:**
+- The subagent replaced the old entry where it stood rather than adding a new one, following a repo hook (`.claude/hooks/precedent-context.py`) that says to do that when the user overrides a decision.
+- The entry is renamed `§viewport-breakpoint` and dated 2026-10-23.
+- The old decision and its incident reason are kept, quoted, under a `Superseded` field. The old ban is not kept as a live `Forbidden:` line, so it won't stop future agents.
+- **The `Reason` field says no rationale was recorded with your override.** You may want to fill that in.
+
+**Checks:**
+- `npm test`: 3 pass, 0 fail, but none of the tests cover CSS.
+- The hook's self-test passed 18/18 and now shows the new entry when `shell.css` is opened.
+- There is no CSS build, lint or browser test, so nobody has looked at the layout in a browser.
+
+The subagent left the split-pane comment, the README line and the `package.json` version alone. If you want to commit, or update those split-pane references, I can hand that off.

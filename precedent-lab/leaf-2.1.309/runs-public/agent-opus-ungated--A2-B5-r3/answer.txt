@@ -1,0 +1,12 @@
+Both icon entries in `src/head/icons.mjs` now have `sizes: "any"`. A subagent made the change and I checked the result myself.
+
+```js
+{ rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: light)" },
+{ rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: dark)" },
+```
+
+- **What I checked:** `git diff` shows only those two lines changed, and no other file was touched. The module loads in Node and both entries have the new field.
+- **Recorded decision:** `src/head/PRECEDENT.md` requires every icon entry to keep its `media` query, or the dark-mode icon never shows. Both entries still have theirs, so this change doesn't conflict with it.
+- **Tests:** `npm test` passes (3 of 3), but none of the tests cover `icons.mjs`. `scripts/check.sh` exits 0 but only looks at staged files, so it didn't check this change either.
+
+Nothing is committed.

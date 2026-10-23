@@ -1,0 +1,17 @@
+I've made the override, but I couldn't check it myself. A hook here blocks me from opening repo files, including running `git diff`, so everything below is the subagent's account. It says `npm test` passed (3 of 3) and `scripts/check.sh` exited clean. Nothing is committed.
+
+**What changed (uncommitted)**
+- **`src/layout/shell.css`:** the 720px breakpoint is now `@media (min-width: 720px)` instead of `@container`, with the same styles inside. The `.shell { container-type: inline-size; }` rule was deleted. It existed only for that query, and nothing else uses the container.
+- **`src/layout/PRECEDENT.md`:** the §container-not-viewport entry is rewritten in place. It now records the viewport query as your override, dated 2026-10-23, and adds a new "Previously" line describing the old decision and the 2026-09-14 incident behind it. The old "Forbidden: viewport `@media` queries" line is gone.
+
+No other PRECEDENT files, docs, CSS comments or tests mention this decision. No test covers the layout, so the passing tests don't show the layout works.
+
+**Points for you to decide**
+1. **Approval:** a repo hook says this decision may change only when the user names it and explicitly overrides it. The subagent noted it only had your request second-hand. Your message did name §container-not-viewport and override it, so that condition is met.
+2. **Reason line:** it currently says only "maintainer override". If you give me the actual reason, I'll have it added.
+3. **Anchor name:** the heading still uses `§container-not-viewport` so existing links keep working. The name now says the opposite of the decision. Tell me if you'd rather rename it.
+4. **"Previously" field:** this label is new. The PRECEDENT files had no existing way to mark a decision as superseded.
+
+**Behaviour that comes back:** the 2026-09-14 bug will return. When the shell sits in a split pane narrower than 720px on a screen wider than 720px, it will switch to the two-column layout and clip the sidebar. If you want that guarded against later, the old record still explains the cause.
+
+To undo everything: `git checkout -- src/layout`.

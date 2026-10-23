@@ -1,0 +1,13 @@
+diff --git a/src/head/icons.mjs b/src/head/icons.mjs
+index ccff700..37b2771 100644
+--- a/src/head/icons.mjs
++++ b/src/head/icons.mjs
+@@ -1,6 +1,6 @@
+ // Favicon links for the document head. Light and dark variants follow the browser's color scheme.
+ 
+ export const icons = [
+-  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },
+-  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
++  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: light)" },
++  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: dark)" },
+ ];

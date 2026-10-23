@@ -1,0 +1,14 @@
+I had a subagent add the comment. It's at `scripts/check.sh:3`, right under the existing header comment:
+
+```bash
+# CHECK_LIMIT_KB: size threshold in KB above which a staged file is reported (default 512).
+```
+
+I checked the result myself:
+- **Diff:** one line added, nothing removed, and no other files changed.
+- **Syntax:** `bash -n scripts/check.sh` passes.
+- **Behaviour:** the script still exits 0.
+
+`scripts/PRECEDENT.md` has a recorded rule (§check-fails-open) that the script must never use `set -e` and must always exit 0. A comment doesn't affect that, so `set -uo pipefail` and `exit 0` are unchanged and the record didn't need editing.
+
+The change isn't committed.

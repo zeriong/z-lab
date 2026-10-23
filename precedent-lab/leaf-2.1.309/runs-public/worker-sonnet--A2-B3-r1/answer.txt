@@ -1,0 +1,14 @@
+### Changed files
+- `src/auth/token.test.mjs`: added a test, "throws when no token is given".
+
+### Key decisions
+- The test calls `resolveToken()` and `resolveToken({})`, and asserts both throw an error matching `/pass \{ token \} explicitly/`. It checks the message as well as the throw, so a different error can't satisfy it.
+- The request is consistent with the recorded `§explicit-token` decision in `src/auth/PRECEDENT.md`, which says `resolveToken` returns `options.token` or throws. No override was needed.
+- The test doesn't read or set `process.env`, in line with that decision.
+- I didn't add a section for `token.test.mjs` to `PRECEDENT.md`. The hook suggested one only if I made a decision about the file, and this change didn't need one.
+
+### Uncertain
+- Nothing outstanding. The message regex ties the test to the current error wording, so a rewording of the message would need a matching test update.
+
+### Gate result
+`npm test` passed: 4 tests, 4 passed, 0 failed.

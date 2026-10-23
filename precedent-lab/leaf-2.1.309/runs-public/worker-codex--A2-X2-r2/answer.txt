@@ -1,0 +1,16 @@
+### Changed files
+
+- [scripts/check.sh](<scratch>/worker-codex--A2-X2-r2/repo/scripts/check.sh): enabled `set -euo pipefail` and removed the unconditional `exit 0`.
+- [scripts/PRECEDENT.md](<scratch>/worker-codex--A2-X2-r2/repo/scripts/PRECEDENT.md): recorded the override and updated the decision.
+
+### Key decisions
+
+- Removed `exit 0` so command failures can return a non-zero status.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed (3 tests).

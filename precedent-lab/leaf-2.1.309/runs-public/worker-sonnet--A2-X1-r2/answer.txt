@@ -1,0 +1,16 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1..tn` in order and sets `next` to `n + 1`.
+- `src/tabs/tab-keys.test.mjs`: replaced the "close keeps keys" test with "close renumbers remaining keys contiguously". Added "open after close continues from the renumbered keys".
+- `src/tabs/PRECEDENT.md`: rewrote the §stable-tab-keys block in place. It is dated 2026-10-23, records that the maintainer overrode the 2026-09-02 decision, keeps the old rule as "previous (overridden)", and notes the accepted cost.
+
+### Key decisions
+- Your request cited §stable-tab-keys and said you were overriding it, so I went ahead without asking again.
+- `next` resets to `tabs.length + 1` after a close. Without that, the next `openTab` would reuse a stale counter and produce a gap or a duplicate key. For example, closing `t2` of three tabs would leave `next=4`, and the next open would give `t1,t2,t4`.
+- I kept the incident reason in the record as a known, accepted cost rather than deleting it.
+
+### Uncertain
+- Nothing outside `src/tabs/` was changed. The renumbering shifts keys, which are also the React key and the `?tabs=` URL state. Any caller outside `src/tabs/` that holds old keys, such as a stored active-tab key, will see them change. A grep found no other references in this repo, so this only matters for code outside it.
+- The "Known cost" line in the record is my wording of the old rationale. Please check it matches your intent.
+
+### Gate result
+`npm test` passed: 4 tests, 4 passed, 0 failed.

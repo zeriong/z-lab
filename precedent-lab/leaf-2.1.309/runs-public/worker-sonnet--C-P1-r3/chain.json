@@ -1,0 +1,21 @@
+{
+ "session_id": "9958001d-5857-4dd9-b65c-f622d1f26f8b",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/9958001d-5857-4dd9-b65c-f622d1f26f8b.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 4,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 0,
+  "stop_before_first_target_edit": false,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs to `t1…tn` in order and sets `next` to `n + 1`.\n- `src/tabs/tab-keys.test.mjs`: replaced the \"close keeps keys\" test with \"close renumbers remaining keys contiguously\". Added \"open after close continues from the renumbered keys\".\n- `src/tabs/PRECEDENT.md`: marked `§stable-tab-keys` as SUPERSEDED. Added `§contiguous-tab-keys` recording your decision, dated 2026-10-23.\n\n### Key decisions\n- **Overriding a recorded decision.** `PRECEDENT.md` had `§stable-tab-keys`, which explicitly forbade renumbering after a close. You are the maintainer and said you had decided, so I implemented the change and recorded the reversal in `PRECEDENT.md`. I did not delete the old entry.\n- **`next` resets after a close.** I set it to `n + 1`, so the next `openTab` doesn't leave a gap. The new test covers this.\n\n### Uncertain\n- **Remounting is back.** The old entry says keys are also React keys. Renumbering gives every tab to the right of a closed one a new key, so it remounts and loses scroll position and unsaved form input. That was the 2026-08-29 incident. I noted it as an accepted cost in the new entry. If it matters, the fix would be a separate stable React key from the URL key, but that would change callers outside `src/tabs/`, so I left it alone.\n- **Callers outside `src/tabs/`.** The only references to `closeTab` and `toQuery` are inside `src/tabs/`. Nothing in the repo holds a key across a close, but I can't see anything outside this repo. A bookmarked or shared URL with the old keys would point at different tabs after a close.\n\n### Gate result\n`npm test`: 4 tests, 4 pass, 0 fail."
+ },
+ "subagents": []
+}

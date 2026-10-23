@@ -1,0 +1,15 @@
+### Changed files
+
+- [scripts/check.sh](<scratch>/worker-codex--A2-B2-r3/repo/scripts/check.sh): added a one-line comment explaining `CHECK_LIMIT_KB` and its default of `512`.
+
+### Key decisions
+
+- Described the value as a warning threshold in KB, matching the script’s behavior.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed; 3 tests passed, 0 failed.

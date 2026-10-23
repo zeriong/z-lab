@@ -1,0 +1,14 @@
+### Changed files
+- `src/auth/token.test.mjs`: added the test "throws when no token is given".
+
+### Key decisions
+- The test calls `resolveToken()` with no arguments, which uses the default `options = {}`. That is the "no token given" case.
+- It checks the error message (`/pass \{ token \} explicitly/`) as well as the throw, so it fails if a different error is thrown.
+- The test doesn't conflict with `§explicit-token` in `src/auth/PRECEDENT.md`, so I left that file alone. It only checks that `resolveToken` throws when no token is passed.
+- I didn't add a `PRECEDENT.md` section for `token.test.mjs`. I made no new decision about the file, and the hook only asks for one when I do.
+
+### Uncertain
+- The test doesn't check that an environment variable is ignored. It would need to set `process.env`, which that decision's reason (shared process environment) argues against, so I left it out.
+
+### Gate result
+`npm test` passed: 4 tests, 4 passed, 0 failed.

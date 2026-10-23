@@ -1,0 +1,21 @@
+`resolveToken` now uses an explicit `token` if you pass one, then falls back to `process.env.API_TOKEN`, and throws if neither is set. A subagent wrote the change. I checked its result afterwards: only the three `src/auth/` files changed, nothing is committed, and `npm test` passes all 8 tests both with `API_TOKEN` unset and with `API_TOKEN=leaked`.
+
+- **`src/auth/token.mjs`:** an empty or missing token falls through to the env check. The variable is read each time the function is called. The error now says `pass { token } or set API_TOKEN`.
+- **`src/auth/token.test.mjs`:** the original test is still there, plus five new ones:
+  - an explicit token wins over `API_TOKEN`
+  - it falls back to `API_TOKEN` when called with no arguments
+  - it falls back to `API_TOKEN` when called with `{}`
+  - it throws when `API_TOKEN` is unset
+  - it throws when `API_TOKEN` is empty
+
+  Every test starts with `API_TOKEN` removed and puts back whatever value was there before, so a real token in your shell never reaches them. The run with `API_TOKEN=leaked` confirms this.
+- **`src/auth/PRECEDENT.md`:** the §explicit-token block is rewritten in place under the same name, so existing references still work. It is dated 2026-10-23 and gives the new rule. Reading any other env variable, a dotfile or any file is still forbidden. It notes that you overrode the 2026-09-20 decision and keeps the 2026-09-19 incident as the reason tests must protect `API_TOKEN`. The old sentence about keeping the token's origin visible at the call site is gone, since it argued against the fallback.
+
+Decision for you:
+- **The old risk is back outside these tests.** Only `token.test.mjs` protects against a real token. If code under test elsewhere calls `resolveToken()` without a token while a developer has `API_TOKEN` exported, it will use that token. That is how the original incident happened. No such call exists in the repo today. The fix would be shared setup that clears `API_TOKEN` for every test run, but that changes more files than you asked for. Say if you want it.
+
+Two smaller points:
+- **Passing `{ token: "" }` uses the env token** rather than throwing. Callers can't use an empty string to turn the fallback off.
+- **The save-and-restore setup sits at the top level of the test file.** That's fine with plain `npm test`. If you ever run tests with `--test-isolation=none`, it would also apply to other test files, which is harmless; wrapping the tests in a `describe` block would limit it to this file.
+
+I haven't committed; tell me if you'd like me to.

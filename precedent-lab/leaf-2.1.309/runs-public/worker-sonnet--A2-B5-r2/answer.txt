@@ -1,0 +1,12 @@
+### Changed files
+- `src/head/icons.mjs`: added `sizes: "any"` to both icon entries (light and dark).
+
+### Key decisions
+- I put `sizes` between `type` and `media` in each entry.
+- I checked `src/head/PRECEDENT.md` (`§favicon-follows-scheme`). It requires every icon entry to keep a `media` query, and both entries still have one, so the change doesn't conflict. I didn't edit `PRECEDENT.md`, since this isn't a new decision.
+
+### Uncertain
+- Nothing about scope. I haven't checked how browsers handle `sizes: "any"` together with the `media` queries. The recorded decision was measured in Chrome 129 and Firefox 131 without `sizes`, so the light/dark switching is untested with this attribute.
+
+### Gate result
+`npm test`: 3 tests run, 3 passed, 0 failed.

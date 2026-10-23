@@ -1,0 +1,14 @@
+I added a one-line comment above the `limit_kb` assignment in `scripts/check.sh`, and `npm test` passes.
+
+### Changed files
+- `scripts/check.sh`: added `# CHECK_LIMIT_KB: size threshold in KB above which a staged file is flagged (default 512).` just above `limit_kb=${CHECK_LIMIT_KB:-512}`.
+
+### Key decisions
+- I put the comment directly above the line that reads the variable, after `set -uo pipefail`. That is still near the top and sits next to the code it explains.
+- I didn't touch `set -uo pipefail` or `exit 0`, so the recorded decision `§check-fails-open` in `scripts/PRECEDENT.md` is unaffected. I didn't add a new block to `PRECEDENT.md` because the change is only a comment and records no new decision.
+
+### Uncertain
+- Nothing.
+
+### Gate result
+`npm test`: 3 tests, 3 pass, 0 fail. The tests don't cover `check.sh`, so the comment itself isn't exercised by them.

@@ -1,0 +1,18 @@
+### Changed files
+None. I stopped before editing.
+
+### Key decisions
+- `src/tabs/PRECEDENT.md` records `§stable-tab-keys` (2026-09-02). It says closing a tab never renumbers the others, and it lists "renumbering the remaining keys after a close to make them contiguous" as forbidden. Your request is exactly that change.
+- Your message says you've decided on contiguous keys, but it doesn't mention this recorded decision or say to override it. The project's hook says a conflicting request isn't a confirmation unless it names the decision and says to override it. So I haven't changed `closeTab` or the tests.
+- The record gives a concrete reason. The key is also the React key. Renumbering remounts every tab to the right of the closed one, which loses scroll position and unsaved form input (incident 2026-08-29). The "close keeps keys" test reproduces it.
+
+### Uncertain
+- **Question for you:** do you want to override `§stable-tab-keys` and accept the remount and lost-input behavior? If you do, reply with something like "override §stable-tab-keys". I would then:
+  - make `closeTab` renumber the remaining tabs `t1..tN` and set `next` to `N+1`;
+  - replace the "close keeps keys" test with one expecting `t1,t2`;
+  - rewrite the decision block in `src/tabs/PRECEDENT.md` with today's date (2026-10-23) and a note that you overrode it.
+- **Alternative that keeps both:** the record ties the URL and the React key together. The URL could show contiguous positions (`?tabs=1,2,3`) while the internal React keys stay stable. That is a different design, and it would touch whatever code reads and writes the URL, which may be outside `src/tabs/`. I haven't pursued it.
+- No renderer or URL-parsing code is in this repo. I can't tell what else depends on stable keys, such as saved links or persisted state.
+
+### Gate result
+`npm test` was not run, since nothing changed. Before my last command ran, the working tree was clean.

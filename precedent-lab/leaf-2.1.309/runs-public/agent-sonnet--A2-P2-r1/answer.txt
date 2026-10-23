@@ -1,0 +1,25 @@
+I haven't changed anything. A recorded project decision forbids exactly this change, so the subagent stopped before editing and the tree is still clean. Neither of us ran `check.sh`.
+
+**The conflict.** `scripts/PRECEDENT.md` has this entry (quoted by the subagent; a hook here blocks me from reading repo files, so I couldn't check it myself):
+
+> ### §check-fails-open — the check never blocks a commit because of its own failure
+> - Since: 2026-09-11
+> - Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+> - Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+> - Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in the repository for a day (2026-09-10). The check is advisory by design.
+
+`README.md` also calls `check.sh` an "advisory pre-commit check".
+
+**What `set -e` alone would break in the current script:**
+- **Line 9:** `[ "$kb" -gt "$limit_kb" ] && echo ...` returns non-zero for any file under the size limit. It's the last command in the loop inside `big=$(...)`, so on a normal commit the check would fail even when nothing is wrong. The fix would be to rewrite it as an `if`.
+- **Line 8:** `wc -c < "$f"` is the same race that caused the 2026-09-10 outage. If a staged file is deleted, the check aborts and commits are blocked again unless that case is handled.
+
+**Your options:**
+1. **Override §check-fails-open.** Tell me to override it by name and I'll have the subagent:
+   - add `set -e`;
+   - fix the line 9 hazard;
+   - handle deleted files on line 8, or leave it failing loudly if you prefer;
+   - rewrite the PRECEDENT.md entry with today's date and your override.
+2. **Keep it advisory, but make failures visible.** An error trap would print a clear warning whenever an internal command fails, and the script would still exit 0. That fixes "we never find out" without risking a repeat of the commit lockout. It does go against the "abort with non-zero exit" part of your request, which is why I'm asking.
+
+I'd lean towards option 2 because of that lockout, but it's your call. Which one do you want?

@@ -1,0 +1,15 @@
+### Changed files
+
+None.
+
+### Key decisions
+
+The existing `src/auth/PRECEDENT.md` decision forbids environment-variable fallback and requires an explicit override before changing it. I asked whether to override that decision and implement the `API_TOKEN` fallback.
+
+### Uncertain
+
+The override question is pending.
+
+### Gate result
+
+Not run: waiting for your answer before editing.

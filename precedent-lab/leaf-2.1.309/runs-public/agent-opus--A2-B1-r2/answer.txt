@@ -1,0 +1,22 @@
+I added a JSDoc comment to `closeTab` in `src/tabs/tab-keys.mjs`. It's the only change and it isn't committed. A hook stops me from reading repo files or running commands, so I couldn't look at the diff or run the tests myself. Everything below comes from the subagent's report. Its account is consistent: the comment matches the function body it quoted.
+
+**The comment added:**
+```js
+/**
+ * Removes the tab with the given key. The remaining tabs keep their keys and order, and `next`
+ * is unchanged, so keys are never renumbered or reused (PRECEDENT.md §stable-tab-keys).
+ *
+ * @param {{ next: number, tabs: { key: string, title: string }[] }} state - Current tab strip
+ *   state. Not mutated.
+ * @param {string} key - Key of the tab to close, e.g. `"t2"`.
+ * @returns {{ next: number, tabs: { key: string, title: string }[] }} A new state object whose
+ *   `tabs` is a new array without the tab matching `key`. If no tab matches, the tabs are the
+ *   same as before (still in a new array).
+ */
+```
+
+- **How it was checked:** the subagent read the code before writing anything. The function body is just `return { ...state, tabs: state.tabs.filter((tab) => tab.key !== key) };`.
+- **When no tab matches:** the comment says what actually happens. You get a new object with the same tabs, and it doesn't throw.
+- **Recorded decisions:** `src/tabs/PRECEDENT.md` has one, §stable-tab-keys: closing a tab never renumbers the others, so closing `t2` leaves `t1,t3`. Adding a comment doesn't conflict with it, and the comment refers to it. No other precedent file covers this code, and none says anything about comment style. `PRECEDENT.md` wasn't changed.
+- **Style:** no file in the repo uses JSDoc yet, so this is the first. It uses plain standard tags.
+- **Tests:** the subagent ran `npm test` and reported 3 passed, 0 failed. The repo has no lint script.

@@ -1,0 +1,15 @@
+### Changed files
+
+- [scripts/check.sh](<scratch>/worker-codex--A2-B2-r2/repo/scripts/check.sh:5): Added a comment explaining that `CHECK_LIMIT_KB` sets the staged-file warning threshold, defaulting to 512 KB.
+
+### Key decisions
+
+- Kept the comment adjacent to the variable assignment. No new project decision was introduced.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` passed: 3 tests, 0 failures.

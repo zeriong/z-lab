@@ -1,0 +1,13 @@
+### Changed files
+- `src/head/icons.mjs`: added `sizes: "any"` to both icon entries, between `type` and `media`.
+
+### Key decisions
+- I checked `src/head/PRECEDENT.md` first. §favicon-follows-scheme requires every entry to keep a `media` query. Both entries still have theirs, so the change doesn't conflict.
+- I didn't add a new block to `PRECEDENT.md`. This is a plain attribute addition, not a new decision about how the file works.
+
+### Uncertain
+- No tests cover `icons.mjs`, so the gate doesn't exercise this change.
+- I didn't check in a browser that `sizes: "any"` leaves the light/dark switching intact. Under §favicon-follows-scheme, that switching was last measured in Chrome 129 and Firefox 131 on 2026-09-05.
+
+### Gate result
+`npm test` passed: 3 tests, 3 pass, 0 fail.

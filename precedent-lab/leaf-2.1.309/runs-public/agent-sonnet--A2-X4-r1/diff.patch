@@ -1,0 +1,44 @@
+diff --git a/src/layout/PRECEDENT.md b/src/layout/PRECEDENT.md
+index b4c7ae0..0d0f163 100644
+--- a/src/layout/PRECEDENT.md
++++ b/src/layout/PRECEDENT.md
+@@ -2,9 +2,14 @@
+ 
+ ## shell.css
+ 
+-### §container-not-viewport — the shell responds to its own width
+-- Since: 2026-09-15
+-- Decision: the shell's layout steps use `@container` queries on `.shell`.
+-- Forbidden: switching the shell's layout steps to viewport `@media` width queries (`min-width` / `max-width`).
+-- Reason: the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the
+-  two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
++### §container-not-viewport — overridden 2026-10-23: the shell's layout step now uses the viewport width
++- Since: 2026-10-23 (supersedes the 2026-09-15 decision below)
++- Decision: overridden/superseded by maintainer decision on 2026-10-23. The shell's layout step now uses the viewport
++  media query `@media (min-width: 720px)`; `.shell` no longer sets `container-type`.
++- Forbidden: none. The earlier prohibition on viewport `@media` width queries for the shell's layout steps no longer
++  applies.
++- Superseded (2026-09-15): the shell's layout steps use `@container` queries on `.shell`; switching them to viewport
++  `@media` width queries (`min-width` / `max-width`) was forbidden.
++- Reason (of the superseded decision, kept as history): the shell renders inside split panes as narrow as 380px on a
++  1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident
++  2026-09-14).
+diff --git a/src/layout/shell.css b/src/layout/shell.css
+index b71e94e..ea42f26 100644
+--- a/src/layout/shell.css
++++ b/src/layout/shell.css
+@@ -1,13 +1,9 @@
+ /* App shell. The shell is also rendered inside split panes. */
+-.shell {
+-  container-type: inline-size;
+-}
+-
+ .shell__body {
+   padding: 16px;
+ }
+ 
+-@container (min-width: 720px) {
++@media (min-width: 720px) {
+   .shell__body {
+     display: grid;
+     grid-template-columns: 240px 1fr;

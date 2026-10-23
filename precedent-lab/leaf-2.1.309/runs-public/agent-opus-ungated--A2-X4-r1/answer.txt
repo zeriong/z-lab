@@ -1,0 +1,15 @@
+The shell's two-column layout now switches on at a 720px browser width instead of a 720px shell width, and the decision record is updated. I checked the diff myself and ran `npm test`: 3 passed, 0 failed (there are no tests for the CSS). Nothing is committed.
+
+**`src/layout/shell.css`**: the one changed line is `@container (min-width: 720px)` → `@media (min-width: 720px)`. The rules inside are the same.
+
+**`src/layout/PRECEDENT.md`**: I rewrote the old record in place and renamed it **§viewport-media-query**.
+- `Since: 2026-10-23` notes that you overrode §container-not-viewport, which had applied since 2026-09-15.
+- `Decision:` the layout switch uses `@media (min-width: 720px)`.
+- The old ban on viewport queries is gone, and no new ban was added.
+- A `Rejected:` line keeps the container-query approach and why it was chosen (the 2026-09-14 split-pane incident).
+- `Reason:` says "maintainer override; no further reason recorded", since you didn't give one. Add yours if you'd like it on record.
+- Nothing else in the repo referred to the old name, so nothing else needed changing.
+
+Two things to be aware of:
+- **The split-pane clipping can come back.** The file's own comment says the shell also renders inside split panes. A 380px pane on a 1440px screen will now get the two-column layout with its 240px sidebar column. That is what clipped the sidebar in the 2026-09-14 incident.
+- **`container-type: inline-size` on `.shell` is now unused.** Nothing reads it anymore. I left it in to keep the change to what you asked for. It does no harm, but it can be deleted if you want to clean up.

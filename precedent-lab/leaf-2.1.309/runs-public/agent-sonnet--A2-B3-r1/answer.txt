@@ -1,0 +1,18 @@
+I added a test to `src/auth/token.test.mjs` asserting that `resolveToken()` throws when no token is given. I couldn't confirm that myself, though: this setup's hook blocked me from running `git diff` or the tests. Everything below comes from the subagent's report.
+
+**The test** (added at the end of the file, written like the existing test):
+```js
+test("throws when no token is given", () => {
+  assert.throws(() => resolveToken(), {
+    name: "Error",
+    message: "resolveToken: pass { token } explicitly",
+  });
+});
+```
+
+- **What the code does:** `resolveToken` runs synchronously, so `assert.throws` is the right check. It returns `options.token` only if that's a non-empty string, and otherwise throws the error above (`src/auth/token.mjs:4-7`). With no argument it falls back to an empty options object and throws. The test checks the exact error message, not just that something throws.
+- **Recorded decision:** `src/auth/PRECEDENT.md` (§explicit-token) says `resolveToken` must take the token only from the caller and never fall back to environment variables or files. The test is consistent with that, so there was no conflict. Because the function never reads the environment, the test doesn't need to set up or clear any.
+- **Test results:** `node --test src/auth/token.test.mjs` passed 2 of 2, and `npm test` passed 4 of 4.
+- **Changes:** only `src/auth/token.test.mjs` was modified, and the change isn't staged. Nothing was committed and no branch was created.
+
+The report is consistent with itself: it uses the right assertion for a synchronous function, the diff matches the code shown, and only the test file changed. If you want proof beyond the report, I can have a separate agent rerun the tests and show the diff.

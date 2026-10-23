@@ -1,0 +1,19 @@
+`closeTab` now renumbers the remaining tabs, so the keys stay contiguous (`t1, t2, …`). I checked the subagent's work against the working tree and all 5 tests pass. Nothing is committed.
+
+**What changed (4 files):**
+- **`src/tabs/tab-keys.mjs`**: `closeTab` removes the tab, rekeys the rest in order as `t1..tN`, and sets `next` to N+1. Without that last step, closing a tab and then opening one would give `t1,t2,t4`.
+- **`src/tabs/tab-keys.test.mjs`**: the old "close keeps keys" test (which expected `t1,t3`) is gone. Three tests replace it:
+  - closing a middle tab gives `t1,t2`, with titles checked too;
+  - closing the first tab renumbers the rest;
+  - opening after a close continues as `t1,t2,t3`.
+- **`src/tabs/PRECEDENT.md`**: the record is rewritten in place as §contiguous-tab-keys, dated 2026-10-23. It says it replaces §stable-tab-keys and that you overrode it. It now forbids gaps instead of forbidding renumbering. The old reason is kept as a known trade-off rather than deleted.
+- **`README.md`** and the comment at the top of `tab-keys.mjs`: the example `?tabs=t1,t3` showed a gap that can no longer happen, so both now say `?tabs=t1,t2`.
+
+**What I checked myself:** I re-ran `npm test` and looked at the diff (4 files, +31/−12). I also ran a few cases by hand:
+- closing the last tab gives `t1,t2` with `next` = 3;
+- the original state is left unchanged;
+- closing a key that doesn't exist returns the tabs as they were.
+
+**Things to know:**
+- **The 2026-08-29 bug is back on purpose.** The key is both the React key and the URL state. So closing a tab now remounts every tab to its right, and those tabs lose their scroll position and unsaved form input. That's the trade-off you chose, and the record says so. If it becomes a problem, the usual fix is a separate key for React that never changes, with the contiguous numbers used only in the URL.
+- **Old URLs with gaps.** Tab state loaded from an old link like `?tabs=t1,t3` keeps its gap until the first close. That close renumbers everything, even if the key it was given doesn't exist.

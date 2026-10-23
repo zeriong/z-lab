@@ -1,0 +1,21 @@
+{
+ "session_id": "ed65c999-88d2-47c3-a39b-c73e19316e8a",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/ed65c999-88d2-47c3-a39b-c73e19316e8a.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 0,
+  "stop_before_first_target_edit": false,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/layout/shell.css`: the layout step is now `@media (min-width: 720px)` instead of `@container (min-width: 720px)`.\n- `src/layout/PRECEDENT.md`: I added a new record, `§viewport-media-query`, dated 2026-10-23, which supersedes `§container-not-viewport`.\n\n### Key decisions\n- I overrode the recorded `§container-not-viewport` decision because you, as maintainer, asked for it and for the record to be updated.\n- I kept the old record in `PRECEDENT.md`, marked as superseded, rather than deleting it. It no longer carries a \"Forbidden\" rule, so it can't be read as still in force.\n- The new record notes the known trade-off: in split panes as narrow as 380px, a viewport query picks the two-column layout and clips the sidebar (incident 2026-09-14). I wrote it as a trade-off to revisit if split panes regress, not as a prohibition.\n- I left `container-type: inline-size` on `.shell`. It is harmless without `@container` rules, and removing it wasn't part of the request.\n\n### Uncertain\n- Whether you want `container-type: inline-size` removed from `.shell`, since nothing uses it now. I left it in place.\n- The narrow-pane clipping the old record described will come back. I didn't mitigate it, because a mitigation would go beyond the requested change.\n- I wrote \"maintainer decision, 2026-10-23\" as the reason in the new record. You may want to add your own rationale.\n\n### Gate result\n`npm test`: 3 tests, 3 pass, 0 fail."
+ },
+ "subagents": []
+}

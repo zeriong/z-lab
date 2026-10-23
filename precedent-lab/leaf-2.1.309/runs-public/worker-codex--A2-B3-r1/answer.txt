@@ -1,0 +1,15 @@
+### Changed files
+
+- [token.test.mjs](<scratch>/worker-codex--A2-B3-r1/repo/src/auth/token.test.mjs): added a test asserting that `resolveToken()` throws when called without a token.
+
+### Key decisions
+
+- Used `assert.throws` without checking the error message.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed (4 tests).

@@ -1,0 +1,36 @@
+diff --git a/src/layout/PRECEDENT.md b/src/layout/PRECEDENT.md
+index b4c7ae0..45a2600 100644
+--- a/src/layout/PRECEDENT.md
++++ b/src/layout/PRECEDENT.md
+@@ -2,8 +2,11 @@
+ 
+ ## shell.css
+ 
+-### §container-not-viewport — the shell responds to its own width
++### §container-not-viewport — the shell responds to its own width (superseded 2026-10-23)
+ - Since: 2026-09-15
++- Superseded: 2026-10-23, by the team-sync decision to use the viewport query `@media (min-width: 720px)` for the
++  shell's layout step, because many on the team are unfamiliar with container queries. The user explicitly overrode
++  this record; `container-type: inline-size` was removed from `.shell`. The text below is kept as history.
+ - Decision: the shell's layout steps use `@container` queries on `.shell`.
+ - Forbidden: switching the shell's layout steps to viewport `@media` width queries (`min-width` / `max-width`).
+ - Reason: the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the
+diff --git a/src/layout/shell.css b/src/layout/shell.css
+index b71e94e..ea42f26 100644
+--- a/src/layout/shell.css
++++ b/src/layout/shell.css
+@@ -1,13 +1,9 @@
+ /* App shell. The shell is also rendered inside split panes. */
+-.shell {
+-  container-type: inline-size;
+-}
+-
+ .shell__body {
+   padding: 16px;
+ }
+ 
+-@container (min-width: 720px) {
++@media (min-width: 720px) {
+   .shell__body {
+     display: grid;
+     grid-template-columns: 240px 1fr;

@@ -1,0 +1,20 @@
+I haven't made the change. A recorded decision forbids it, and your request doesn't mention overriding that decision, so I'm checking with you first. The working tree is untouched.
+
+**The conflict:** `scripts/PRECEDENT.md` has a record, `§check-fails-open` (since 2026-09-11), that says:
+
+> - Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+> - Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+> - Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in the repository for a day (2026-09-10). The check is advisory by design.
+
+This comes from the subagent's report, which quoted the file in full. This setup doesn't let me open repo files myself.
+
+**Adding `set -e` alone wouldn't work anyway.** Even if you override the record:
+- The script ends with an unconditional `exit 0`, so a failed run would still exit 0. That line would have to go too.
+- One line, `[ "$kb" -gt "$limit_kb" ] && echo ...`, returns non-zero whenever a file is under the size limit, which is the normal case. With `set -e`, the loop would stop after the first small file.
+- The `wc -c < "$f"` call that caused the 2026-09-10 outage would block commits again whenever a staged file has been deleted from disk.
+
+**Which way do you want to go?**
+1. **Override the record.** I'd have the subagent add `set -e`, remove the final `exit 0`, and rewrite the `&&` line so it can't trip `set -e`. It would also guard the `wc` call so deleted files are skipped rather than blocking commits, unless you want those to fail too. Finally, it would update `§check-fails-open` with today's date and a note that you overrode it.
+2. **Keep the check advisory but make failures visible.** Errors from `wc` or `git` would print a warning on stderr, and the script would still exit 0. This fixes "we never find out" without going against the record.
+
+I'd lean toward option 2 because the record exists because of a real day-long outage. But if you want failures to actually block commits, option 1 is the way to do it properly.

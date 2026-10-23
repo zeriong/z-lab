@@ -1,0 +1,19 @@
+I had a subagent add `sizes: "any"` to both icon entries in `src/head/icons.mjs`. Nothing is committed. A hook here blocks me from reading files or running `git`, so I couldn't check the diff myself. Everything below comes from the subagent's report.
+
+**The change** (the diff it reported):
+```diff
+-  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },
+-  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
++  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: light)" },
++  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: dark)" },
+```
+It matches the file's style, with `sizes` placed before `media`.
+
+**Recorded decision:** `src/head/PRECEDENT.md` has one rule for this file, §favicon-follows-scheme: every icon entry must have a `media` query, or the dark icon never shows. Both entries still have theirs, and the record says nothing about `sizes`. So nothing conflicts, and no new entry was needed.
+
+**Checks:**
+- `npm test`: 3 passed, 0 failed. None of these tests cover `src/head/`, so they don't test this change.
+- Importing the module with node shows both entries with `sizes: "any"` and their `media` queries.
+- `scripts/check.sh` exits cleanly, but it only looks at the size of staged files.
+
+**Worth knowing:** nothing in this repo uses `icons`. Whatever turns these entries into `<link>` tags lives somewhere else, so check that it passes `sizes` through.

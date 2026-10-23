@@ -1,0 +1,21 @@
+{
+ "session_id": "888dd11b-1134-45ca-afd7-5cf5d9331547",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/888dd11b-1134-45ca-afd7-5cf5d9331547.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 0,
+  "stop_before_first_target_edit": false,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `scripts/check.sh`: `set -uo pipefail` is now `set -euo pipefail`. The large-file test inside the loop is now `if [ \"$kb\" -gt \"$limit_kb\" ]; then echo ...; fi`.\n- `scripts/PRECEDENT.md`: added `§check-fails-closed`, dated 2026-10-23, which supersedes the old record. `§check-fails-open` stays in the file, marked SUPERSEDED, so the history is kept.\n\n### Key decisions\n- **Override:** `§check-fails-open` forbade `set -e`, but you said you were overriding it as the maintainer, so I did. The new record keeps the original incident (2026-09-10) as a \"Known risk\" so the reason for the old rule isn't lost.\n- **`&&` rewrite:** the old `[ ... ] && echo` line returns 1 whenever the last staged file is under the limit. With `-e` and `pipefail`, that would abort the check on most normal runs, so I changed it to an `if`. The behaviour is the same as before.\n- **Success exit:** I kept the trailing `exit 0` so a successful run still exits 0. Only a failing command now gives a non-zero exit.\n\n### Uncertain\n- **Commit blocking:** the incident that led to the old rule can recur. A `wc` failure, such as an unreadable file, will now block commits if this script runs as a pre-commit hook. The `[ -f \"$f\" ] || continue` guard covers the staged-then-deleted file case, but other failures are not covered. I didn't add any handling, since you asked for failures to abort.\n- **Hook wiring:** I didn't check whether anything outside `scripts/` calls this script, and I'm not allowed to change files outside it.\n- **Wording:** the \"Forbidden\" line in the new record is my wording, so adjust it if you want something different.\n\n### Gate result\n`npm test`: 3 tests, 3 passed, 0 failed. I also ran the script by hand in a temp git repo with one 683KB staged file. It printed the large-file warning and exited 0. I only ran that one case; the failing-command path wasn't run."
+ },
+ "subagents": []
+}

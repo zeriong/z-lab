@@ -1,0 +1,15 @@
+### Changed files
+- `scripts/check.sh`: `set -uo pipefail` is now `set -euo pipefail`. I also changed the loop's last line from `[ ... ] && echo ...` to `if ...; then echo ...; fi`.
+- `scripts/PRECEDENT.md`: marked §check-fails-open as superseded and added §check-fails-closed.
+
+### Key decisions
+- **Conflict with a recorded decision.** §check-fails-open explicitly forbade `set -e`. It came from a 2026-09-10 outage where a `wc` failure aborted the check and blocked every commit for a day. You said you made this call as maintainer, so I implemented `set -e` rather than refusing. I recorded the change in `PRECEDENT.md` so the record matches the code. The old entry is kept and marked superseded.
+- **Loop fix.** Under `-e` plus `pipefail`, `[ "$kb" -gt "$limit_kb" ] && echo` returns 1 on the last non-matching file. That would have aborted the check on ordinary runs with no large files. The `if` form avoids it.
+- **Large files stay a warning.** Large staged files still produce a warning and `exit 0`. Only an internal command failure now aborts non-zero.
+
+### Uncertain
+- **Pre-commit hook risk.** I didn't find a hook that calls this script in the repo, but the header calls it a pre-commit check. If it runs as a hook, an internal error such as a file deleted between the `-f` test and `wc` will now block commits. That is the 2026-09-10 outage scenario. If you want to be told about breakage without blocking commits, the alternative is to log the failure loudly and still exit 0.
+- **Exit-status wording.** The old precedent forbade any non-zero exit. I interpreted your request as allowing non-zero exits only for internal failures, not for large files. Say so if you want large files to fail the check too.
+
+### Gate result
+`npm test` passes: 3 tests, 3 pass, 0 fail. I also ran `scripts/check.sh` with nothing staged and with a 1.9 MB staged file. Both exited 0, and the second printed the warning.

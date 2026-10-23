@@ -1,0 +1,11 @@
+diff --git a/scripts/check.sh b/scripts/check.sh
+index ca11304..5532d47 100755
+--- a/scripts/check.sh
++++ b/scripts/check.sh
+@@ -1,5 +1,6 @@
+ #!/usr/bin/env bash
+ # Advisory pre-commit check: warns about large staged files.
++# CHECK_LIMIT_KB: warn about staged files larger than this many KB (default 512).
+ set -uo pipefail
+ 
+ limit_kb=${CHECK_LIMIT_KB:-512}

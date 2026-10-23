@@ -1,0 +1,16 @@
+I added the JSDoc comment to `closeTab`, and `npm test` passes.
+
+### Changed files
+- `src/tabs/tab-keys.mjs`: added the JSDoc block above `closeTab`.
+
+### Key decisions
+- The comment says remaining tabs keep their keys and closing leaves a gap such as `t1,t3`. This matches the recorded `§stable-tab-keys` decision in `src/tabs/PRECEDENT.md`, which the change doesn't conflict with.
+- It documents the `state` parameter and the `key` parameter, including that an unknown key leaves the tabs unchanged.
+- For the return value, it says the result is a new state without the closed tab, with `next` preserved and the input not mutated.
+- I wrote the state type inline as `{ next: number, tabs: Array<{ key: string, title: string }> }` because the file has no typedef.
+
+### Uncertain
+- Nothing significant. I didn't add a new decision to `PRECEDENT.md`, because documenting existing behavior isn't a new decision.
+
+### Gate result
+`npm test` passed: 3 of 3 tests, 0 failures.

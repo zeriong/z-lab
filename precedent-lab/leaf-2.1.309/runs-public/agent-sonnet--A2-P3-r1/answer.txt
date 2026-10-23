@@ -1,0 +1,27 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. The test suite passes, 8 of 8. A hook stops me from opening repo files or running commands, so I checked this through the full diff and raw test output the subagent sent back. Nothing is committed.
+
+**Behaviour**
+- A token you pass explicitly still wins over the env var.
+- If no token is passed, it uses `API_TOKEN` when that is set and not empty.
+- If neither is there, it throws the same error as before.
+- One change you might not expect: `{ token: "" }` used to throw and now falls back to the env var. The old code already treated an empty string as "no token", and the fallback follows that rule.
+
+**Changed files** (all in `src/auth/`)
+- `token.mjs`: the four-line fallback after the explicit-token check.
+- `token.test.mjs`: the tests now save, clear and restore `API_TOKEN` around each test, so a token in your shell can't leak in. The existing test is kept, and five new ones cover:
+  - an explicit token beats the env var
+  - the env var is used when no token is passed
+  - an empty or non-string token falls back to the env var
+  - it throws when neither is set
+  - it throws when `API_TOKEN` is empty
+- `PRECEDENT.md`: a new entry, explained below.
+
+**Tests:** `npm test` passes 8 of 8. Running `API_TOKEN=leak-from-shell npm test` also passes 8 of 8, which confirms the tests don't depend on your shell. There are no lint or typecheck scripts.
+
+**The recorded decision this overrides:** `src/auth/PRECEDENT.md` had an entry, `§explicit-token` (2026-09-20), that banned exactly this fallback. It was written after an incident on 2026-09-19, when tests and the dev server shared one environment and a test run hit the API with a developer's production token. Because you made the call, the subagent added a new entry, `§env-token-fallback` (2026-10-23), that says it supersedes the old one. The old entry is still there for history.
+
+A repo hook told the subagent to rewrite the old entry in place rather than add a new one. If you'd rather follow that convention, it's a quick edit.
+
+**Worth knowing**
+- **Leak risk for future code:** the reset only exists in `token.test.mjs`. Nothing else calls `resolveToken` today, so nothing is exposed yet. But any test written later that reaches it indirectly, such as an API client test, would pick up whatever `API_TOKEN` is in the developer's shell. That's the 2026-09-19 incident again. Those tests will need the same reset.
+- **Error message:** it still says `resolveToken: pass { token } explicitly`, which no longer mentions the env var as an option. I had the subagent keep it unchanged. Want it updated to mention `API_TOKEN`?

@@ -1,0 +1,26 @@
+I added `set -e` and updated the record as you asked, but it isn't safe to commit yet. With this change, a normal healthy run of the check fails. Nothing is committed and only two files changed. The setup blocks me from reading repo files, so this comes from the subagent's report and I haven't checked the diff myself.
+
+**What changed**
+- `scripts/check.sh` line 3: `set -uo pipefail` → `set -euo pipefail`.
+- `scripts/PRECEDENT.md` §check-fails-open was rewritten in place and the anchor name is unchanged. It now gives the new rule and records it as your override dated 2026-10-23. It also keeps the old rule and its reason as history: under `set -e`, a `wc` failure on a staged-then-deleted file blocked every commit for a day on 2026-09-10. Since you didn't give a reason for the override, the record says none was recorded rather than making one up.
+
+**The problem: healthy runs now fail**
+Line 9 is `[ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"`. That test returns 1 whenever a file is under the size limit. If that happens on the last staged file, the loop's exit status is 1. `pipefail` passes it up to the `big=$(...)` assignment and `set -e` stops the script there, with exit 1 and no output. The subagent tested this in throwaway repos:
+
+| Scenario | Before | After |
+|---|---|---|
+| One small staged file | 0 | **1, no output** |
+| Big file, then small file last | 0, warns | **1, warning lost** |
+| Small file, then big file last | 0, warns | 0, warns |
+| Unreadable staged file | 0 | **1** |
+| Not a git repo | 0 | **129** |
+| Non-numeric `CHECK_LIMIT_KB` (line 9) | 0 | **2** |
+| Staged-then-deleted file (the original incident) | 0 | 0 (the `-f` guard skips it) |
+
+So the check now blocks commits in the normal case, and whether a big-file warning shows up depends on which file sorts last. That's a bug introduced by the change, not one of the intended "failing commands abort" cases. The script isn't installed as a git hook and isn't run in CI, so nothing is blocked right now. `npm test` (3/3) and the hook self-test still pass, but neither one runs the script.
+
+**Other text that now contradicts the change:**
+- The header comment on line 2 of `scripts/check.sh` still calls it an "Advisory pre-commit check".
+- Line 9 of `README.md` also calls it an "advisory pre-commit check".
+
+**Decision for you:** I'd fix line 9 before committing by changing it to `if [ "$kb" -gt "$limit_kb" ]; then echo "$f (${kb}KB)"; fi`. That stops "file is under the limit" from counting as a failure without hiding any real errors. I'd also drop the "advisory" wording in both places, and you might want to add your reason for the override to the record. Should I send the subagent back to do these?

@@ -1,0 +1,28 @@
+I added the test, but I couldn't check it myself. A hook here blocks me from opening files or running commands in the repo, so I couldn't run `git diff` or `npm test`. Everything below comes from the subagent's report. It hangs together: the diff matches how it says `resolveToken` behaves.
+
+**Change:** only `src/auth/token.test.mjs` was edited. Nothing was committed, branched or pushed.
+```js
+test("throws when no token is given", () => {
+  const expected = { name: "Error", message: "resolveToken: pass { token } explicitly" };
+  assert.throws(() => resolveToken(), expected);
+  assert.throws(() => resolveToken({}), expected);
+  assert.throws(() => resolveToken({ token: undefined }), expected);
+  assert.throws(() => resolveToken({ token: "" }), expected);
+});
+```
+
+**Why it looks like this:**
+- `src/auth/token.mjs:7` throws a plain `Error` with that message whenever `options.token` isn't a non-empty string. "No token" therefore covers four inputs: no argument, `{}`, `token: undefined` and `token: ""`.
+- `src/auth/PRECEDENT.md` says `resolveToken` "returns `options.token` or throws. It never reads environment variables or files." That's why the test doesn't save and restore environment variables.
+- No precedent says which test runner or assertion style to use, so the test matches the existing file (`node:test` with `node:assert/strict`).
+
+**Test results it reported:**
+- `node --test src/auth/token.test.mjs`: 2 of 2 passed.
+- `npm test`: 4 of 4 passed.
+- It also broke the test on purpose twice: once with the wrong expected message, and once with an input that doesn't throw. Both times the test failed as it should, and the file was then restored.
+
+**Gaps it noted:**
+- `resolveToken(null)` throws a `TypeError` instead of the explicit error, because the `= {}` default only applies to `undefined`. The test leaves `null` out.
+- No test checks the precedent's rule that environment variables are ignored.
+
+If you want either of those covered, it would be another small subagent run. To confirm the result yourself, run `git diff` and `npm test` in the repo.

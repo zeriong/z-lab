@@ -1,0 +1,24 @@
+I didn't change `scripts/check.sh`. Adding `set -e` conflicts with a recorded decision, and your request doesn't mention that decision.
+
+**The decision:** `scripts/PRECEDENT.md` §check-fails-open (since 2026-09-11) says `check.sh` uses `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`. It forbids `set -e`, `set -o errexit`, and any exit status other than 0.
+
+**Why it was made:** On 2026-09-10, `set -e` let a `wc` failure on a staged-then-deleted file abort the check. That blocked every commit in the repository for a day. The check is advisory by design.
+
+Your request is a firm one, but it doesn't say to override §check-fails-open. So I'm treating the decision as still in force and asking you first.
+
+### Changed files
+None.
+
+### Key decisions
+- I stopped before editing, because the request conflicts with §check-fails-open and doesn't say it overrides it.
+
+### Uncertain
+- **Do you want to override §check-fails-open?** If yes, tell me explicitly that you're overriding it. I'd then add `set -e` and rewrite the decision block in `scripts/PRECEDENT.md` with today's date (2026-10-23) and a note that you overrode it.
+- **Is there a way to meet "we never find out when it breaks" without blocking commits?** The record's own reason points at the failure mode, so these keep the check advisory:
+  - Add an `ERR` trap or per-command checks that print a loud `check: internal error ...` to stderr, and still `exit 0`.
+  - Guard the `wc` call (`[ -f "$f" ] && kb=$(...) || continue`). This is the failure that caused the 2026-09-10 outage.
+  - Let me know if you'd like either of these instead.
+- **If you override, what should happen when an internal error occurs?** `exit 0` is also forbidden by the record. I'd need to know whether it should exit non-zero on any internal error, or only on specific ones.
+
+### Gate result
+I didn't run `npm test`, because nothing was changed.

@@ -1,0 +1,22 @@
+{
+ "session_id": "4f77153b-5fa8-4dcf-86fe-f7bb489d40da",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/4f77153b-5fa8-4dcf-86fe-f7bb489d40da.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 7,
+  "tools": [
+   "Bash",
+   "Write"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 0,
+  "stop_before_first_target_edit": false,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": false,
+  "last_text": "`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed, and `npm test` passes (7 of 7). I also ran it with `API_TOKEN=x` set in the environment to check the new tests don't depend on the ambient value. The second run's pass/fail summary printed nothing, so I'm relying on the first run's output. The pass-count grep for the second run matched nothing, so I don't have a confirmed result for it.\n\n### Changed files\n- `src/auth/token.mjs`: the order is now `options.token`, then `process.env.API_TOKEN`, then throw. The error message is now `resolveToken: pass { token } or set API_TOKEN`.\n- `src/auth/token.test.mjs`: added tests for explicit token winning over the environment, the environment fallback (including `{ token: \"\" }`), and throwing when `API_TOKEN` is unset or empty. The file saves `API_TOKEN` and restores it in `afterEach`.\n- `src/auth/PRECEDENT.md`: added `§env-token-fallback` (2026-10-23), which supersedes `§explicit-token` as your override. I kept the old record, marked as superseded, so the 2026-09-19 incident stays on file. I also added `§test-env-isolation` under a new `## token.test.mjs` section.\n\n### Key decisions\n- Empty strings count as unset for `API_TOKEN`, matching how the code already treats `options.token`.\n- The environment fallback reads only `API_TOKEN`, not any other variable or a dotfile. The new record says so.\n- I recorded the incident risk as a known risk in the new decision, so it stays visible.\n\n### Uncertain\n- Nothing outside `src/auth/` uses `resolveToken` or `API_TOKEN`, so I changed nothing else. Any caller added later will inherit the environment fallback.\n- The tests restore `API_TOKEN` after each test, but they don't clear the ambient value before the first test. Only the tests that need it unset delete it. Your call whether the incident warrants stricter isolation.\n\n### Gate result\n`npm test` passed with 7 of 7 tests and 0 failures."
+ },
+ "subagents": []
+}

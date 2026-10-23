@@ -1,0 +1,18 @@
+### Changed files
+- `src/auth/token.mjs`: `resolveToken` now returns `options.token` if it's a non-empty string. Otherwise it returns `process.env.API_TOKEN` if that's non-empty, and otherwise throws.
+- `src/auth/token.test.mjs`: added three tests: the explicit token wins over `API_TOKEN`, the env fallback works, and it throws when neither is set. A small helper saves and restores `API_TOKEN`, so the tests don't depend on or change the ambient environment.
+- `src/auth/PRECEDENT.md`: amended §explicit-token to record your override (dated 2026-10-23). The original decision text is kept under "Superseded", and the 2026-09-19 incident stays in the reason as a known risk.
+
+### Key decisions
+- An explicit `options.token` always takes priority over the environment.
+- An empty `API_TOKEN` is treated as unset, which matches how an empty `options.token` is already handled.
+- Only `API_TOKEN` is read. The record's ban on other env variables and dotfiles still applies.
+- The error message is now `resolveToken: pass { token } or set API_TOKEN`.
+- I amended the existing record rather than deleting it, so the history of the reversal is still there.
+
+### Uncertain
+- The 2026-09-19 incident (a test run hitting the API with a production token) can recur for any test that calls `resolveToken()` without a token while `API_TOKEN` is set. The tests I added guard against that for this file only. I couldn't check other callers: nothing outside `src/auth/` uses `resolveToken`, and I stayed within scope.
+- `README.md` wasn't checked for mentions of token handling because it's outside `src/auth/`.
+
+### Gate result
+`npm test` passed: 6 tests, 6 passed, 0 failed.

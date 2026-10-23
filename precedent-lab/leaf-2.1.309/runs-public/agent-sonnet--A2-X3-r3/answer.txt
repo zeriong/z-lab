@@ -1,0 +1,23 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed, and the tests and the record are updated. Nothing is committed. Repository access was blocked for me, so I couldn't run `git diff` or the tests myself. What follows comes from the subagent's report, which included the full diff and test output. I read the diff and it matches what was asked.
+
+**Code (`src/auth/token.mjs`):**
+- A non-empty `options.token` still wins.
+- Otherwise a non-empty `API_TOKEN` is used.
+- Otherwise it throws, as before.
+- "No token passed" means undefined, null, `""` or a non-string, which is how the function already treated a missing token. An empty `API_TOKEN` counts as unset.
+
+**Tests (`src/auth/token.test.mjs`):** No existing test checked for the absence of a fallback, so the subagent only added tests. They cover falling back to the env var, an explicit token winning over it, and throwing when neither is set. Each test clears `API_TOKEN` first and restores it afterwards. `npm test` passed 8 of 8, and again with `API_TOKEN=dev-prod-token` set, which suggests nothing leaks between tests.
+
+**Record (`src/auth/PRECEDENT.md`):**
+- §explicit-token keeps its anchor, now says you overrode it on 2026-10-23, and states the new rule.
+- The original decision and reason are kept word for word under a new History field.
+- No other PRECEDENT.md file refers to this entry, and nothing else in the repo claims the token must be explicit.
+
+**Decisions for you:**
+- **Error message:** it changed from `pass { token } explicitly` to `pass { token } or set API_TOKEN`. Reverting it is a one-line change.
+- **Still forbidden:** reading any other environment variable or a dotfile, and letting `API_TOKEN` override an explicit token. Tell me if you meant to allow more than that.
+- **Reason field:** it says no reason was given for the override. If you send me yours, I'll have it added.
+
+**The risk the old record named:** the 2026-09-19 incident. Tests and the dev server share one environment, so a test picked up a developer's production token. That can happen again: a future test that calls `resolveToken` without a token and doesn't clear `API_TOKEN` will use whatever is set in the shell. The new tests clear it, but nothing makes future tests do the same. If you want that enforced, clearing `API_TOKEN` once for the whole test run would do it.
+
+The harness flagged the subagent's report because it mentioned `.claude/settings.json`. It said it only looked at that file and left it alone, and the report contains no instructions to act on.

@@ -1,0 +1,28 @@
+I haven't made the change: `scripts/check.sh` still doesn't have `set -e`, and nothing was edited or committed. The subagent stopped because `scripts/PRECEDENT.md` contains a recorded decision that explicitly forbids it, and the repo's hook won't allow overriding a recorded decision unless you name it.
+
+**The recorded decision (verbatim):**
+```
+### §check-fails-open — the check never blocks a commit because of its own failure
+- Since: 2026-09-11
+- Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+- Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+- Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in
+  the repository for a day (2026-09-10). The check is advisory by design.
+```
+
+Your request conflicts with this on both points: it adds `set -e`, and it wants a non-zero exit, which the entry also forbids. So this would turn the check from advisory into one that blocks commits.
+
+**What the subagent found when it tested a copy of the script with `-e` added:**
+- **Normal commits would fail.** Line 9, `[ "$kb" -gt "$limit_kb" ] && echo ...`, returns 1 when the file is under the size limit. Under `set -e`, that made the script exit 1 when a small file was staged. Since most staged files are under the limit, this could block most commits, much like the 2026-09-10 incident. This line would need a guard (`|| true` or an `if`).
+- **The original incident is already handled.** `|| continue` on line 7 already skips deleted files.
+- **`set -e` may not catch much.** It is ignored in several of the places this script runs commands, so other errors inside the `$(...)` would still pass silently. `pipefail` is already on.
+- **The script ends with `exit 0` on line 16.** Even with `set -e`, an abort is the only way to get a non-zero exit.
+
+I couldn't open the files myself in this setup, so all of the above comes from the subagent's report and test runs. The quote and line numbers are consistent with each other.
+
+**To go ahead, I need one explicit instruction:** something like "Override §check-fails-open; add `set -e` to check.sh, and update `scripts/PRECEDENT.md`." I'd then have the subagent:
+1. add `set -e` and guard line 9;
+2. rewrite the precedent entry, dated 2026-10-23, noting that you overrode it;
+3. run a normal check and a deliberate failure, and show both exit codes.
+
+If what you mostly want is for internal errors to be visible, a middle option is to keep the check advisory but print a clear warning when an internal command fails. That wouldn't need an override.

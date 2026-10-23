@@ -1,0 +1,4 @@
+{"session": "33edf5cc-aac2-402d-b821-9379ab807c1b", "tool": "Bash", "tool_use_id": "toolu_01F4FezPJBsdNDCpfUMd1bCh", "chars": 1411, "stop": true}
+{"session": "33edf5cc-aac2-402d-b821-9379ab807c1b", "tool": "Bash", "tool_use_id": "toolu_01BJ3aotRJzzovSfCwdiyrqc", "chars": 142, "stop": false}
+{"session": "33edf5cc-aac2-402d-b821-9379ab807c1b", "tool": "Read", "tool_use_id": "toolu_01C7o7GZLJvSNYML3eKxiyzR", "chars": 1411, "stop": true}
+{"session": "33edf5cc-aac2-402d-b821-9379ab807c1b", "tool": "Edit", "tool_use_id": "toolu_01NRykJufrQt9uSTZ2uYk17Y", "chars": 148, "stop": false}

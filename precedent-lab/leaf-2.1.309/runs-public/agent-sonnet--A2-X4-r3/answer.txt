@@ -1,0 +1,15 @@
+The shell now uses `@media (min-width: 720px)` instead of the container query, and `src/layout/PRECEDENT.md` records your override. Nothing is committed and the branch is still `main`. The hook here stops me from reading repo files or running git, so I couldn't check the diff or the test run myself. Everything below is the subagent's report.
+
+**What changed (2 files):**
+- **`src/layout/shell.css`:** `@container (min-width: 720px)` became `@media (min-width: 720px)`. The threshold was already 720px, and the rules inside the breakpoint are unchanged. The `.shell { container-type: inline-size; }` rule was the only container declaration in the repo, so it was deleted.
+- **`src/layout/PRECEDENT.md`:**
+  - `§container-not-viewport` is kept for history, with an "OVERRIDDEN 2026-10-23" note in its heading and a new `Status` line.
+  - A new entry, `§shell-viewport-media`, records the decision. Its reason just says it was a maintainer decision; no rationale was invented.
+
+**Checks:** `npm test` passed 3/3, and `scripts/check.sh` exited cleanly. No test or lint rule enforced container queries, and no other PRECEDENT file depends on this decision.
+
+**Things you should know:**
+1. **The original bug can come back.** The old entry was there because of an incident on 2026-09-14. The shell renders inside split panes as narrow as 380px, and on a 1440px screen a viewport query picked the two-column layout inside a narrow pane and clipped the sidebar. A viewport query can do that again for any pane under 720px wide on a screen wider than 720px. The comment at the top of `shell.css` still says the shell is rendered inside split panes.
+2. **The old rule still shows in the condensed view.** The precedent hook's compact view keeps only `Decision`/`Forbidden`/`Rejected`/`Since` lines. The new `Status` line gets dropped there, so the old `Forbidden: switching … to viewport @media` line still shows, flagged only by its heading. That could make the hook or future agents treat the change as a violation. You can fix this by rewording that line or moving the override note into a field the hook keeps.
+
+If you'd like, I can send the subagent back to fix item 2, or to add a note on the pane-width risk to the new entry.

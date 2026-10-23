@@ -1,0 +1,15 @@
+Nothing has been changed yet. The subagent stopped before editing because the request conflicts with a decision recorded in the repo, and the reason recorded for that decision is a past data-loss incident.
+
+**The conflict:** `src/tabs/PRECEDENT.md` has an entry, `§stable-tab-keys` (since 2026-09-02), that forbids renumbering tabs after a close. Its stated reason:
+
+> the key is the React key and the URL state. Shifting keys remounts every tab to the right of the closed one and drops its scroll position and unsaved form input (incident 2026-08-29, reproduced by the "close keeps keys" test).
+
+So if `closeTab` renumbers, closing `t2` changes the key of every tab after it. React then remounts those tabs, and users lose unsaved form input in them, which is the same failure as the 2026-08-29 incident. The repo's rule is that this decision changes only when you override it by name. Your request didn't mention it, so the subagent didn't treat it as an override. I couldn't open the files myself in this setup, so the quote above comes from the subagent's report.
+
+**State of the repo:** the working tree is clean. `npm test` passes 3/3 on the unchanged code. The project has no lint or typecheck scripts.
+
+**Two ways to proceed:**
+- **A. Renumber as you asked.** `closeTab` renumbers to `t1…tn`. It also resets the `next` counter; otherwise the next new tab brings a gap back (`t1,t2,t5`). The "close keeps keys" test gets replaced with tests for closing the first, middle and last tab, and for opening a tab after a close. The `PRECEDENT.md` entry gets rewritten as your override, dated 2026-10-23. The remount and lost-input problem comes back until the tab component changes.
+- **B. Separate the two roles of the key (my recommendation).** Each tab gets a permanent `id` that serves as the React key, and `key` becomes a position-based value used only in the URL. You get `?tabs=t1,t2,t3` with no remounts. The catch is that the tab-strip component isn't in this repo, so someone has to switch it to `key={tab.id}` separately.
+
+Reply with "A" or "B" and say it overrides `§stable-tab-keys`, and I'll have the same subagent make the change. It already has the context, so either one is a small change.

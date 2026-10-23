@@ -1,0 +1,15 @@
+### Changed files
+
+- [src/head/icons.mjs](<scratch>/worker-codex--A2-B5-r1/repo/src/head/icons.mjs): added `sizes: "any"` to both icon entries.
+
+### Key decisions
+
+- Kept the existing light and dark media queries unchanged.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed (3 tests).

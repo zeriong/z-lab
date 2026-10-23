@@ -1,0 +1,24 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed, and `npm test` passes (7 tests, 0 failures).
+
+### Changed files
+- `src/auth/token.mjs`: an explicit `options.token` still wins. Otherwise a non-empty `API_TOKEN` is returned. If neither is set, it throws `resolveToken: pass { token } or set API_TOKEN`.
+- `src/auth/token.test.mjs`: I added tests for these cases:
+  - the explicit token wins over `API_TOKEN`;
+  - the fallback works with no argument and with `{}`;
+  - it throws when nothing is set;
+  - an empty `API_TOKEN` counts as unset.
+
+  The tests restore the original `API_TOKEN` after each run.
+- `src/auth/PRECEDENT.md`: I rewrote the `§explicit-token` block in place. The new "Since" date is 2026-10-23, and the block notes that the maintainer overrode the 2026-09-20 decision. The forbidden list now bans only other env variables and dotfiles. I kept the 2019-09-19 incident as the risk and added a note that tests which must not reach the API should pass `token` or clear `API_TOKEN`.
+
+### Key decisions
+- **Only `API_TOKEN`:** the fallback reads only that variable, and the record says so. Your override named `API_TOKEN` specifically, so I kept the other bans (other env variables, dotfiles).
+- **Empty string:** an empty `API_TOKEN` is treated as unset, matching how an empty `options.token` is already handled.
+- **Error message:** it now mentions `API_TOKEN` so the failure tells the caller both ways to supply a token.
+
+### Uncertain
+- Nothing outside `src/auth/` was touched. If other code or docs assume the explicit-only behaviour, I haven't checked them, since they're out of scope.
+- No `## token.test.mjs` section was added to `PRECEDENT.md`, because the tests follow from the one decision already recorded there.
+
+### Gate result
+`npm test` (`node --test`): 7 tests, 7 pass, 0 fail.

@@ -1,0 +1,13 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: added a JSDoc block above `closeTab`. No code changed.
+
+### Key decisions
+- The comment documents `state` as `{ next, tabs: [{ key, title }] }`, `key` as a string, and the return value as a new state with `next` unchanged. It also says the input isn't mutated.
+- It states that remaining tabs keep their keys, with the example `t1,t2,t3` → `t1,t3`. This restates `§stable-tab-keys` in `src/tabs/PRECEDENT.md`, so the change doesn't conflict with it. I made no new decision, so I didn't edit `PRECEDENT.md`.
+- I wrote the types inline instead of adding a `@typedef`, because nothing else in the file uses one.
+
+### Uncertain
+- The comment says an unknown key "closes nothing". That matches the code, but it returns a new state object with the same contents, not the same reference. I didn't state that detail in the comment.
+
+### Gate result
+`npm test` passed: 3 tests, 3 pass, 0 fail.

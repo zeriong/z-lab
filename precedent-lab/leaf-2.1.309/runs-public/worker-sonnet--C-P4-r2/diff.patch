@@ -1,0 +1,32 @@
+diff --git a/src/layout/PRECEDENT.md b/src/layout/PRECEDENT.md
+index b4c7ae0..eaa3366 100644
+--- a/src/layout/PRECEDENT.md
++++ b/src/layout/PRECEDENT.md
+@@ -3,6 +3,8 @@
+ ## shell.css
+ 
+ ### §container-not-viewport — the shell responds to its own width
++- Status: SUPERSEDED 2026-10-23 by maintainer request (team sync: drop container queries). `shell.css` now uses
++  `@media (min-width: 720px)`. The incident below is not addressed by the new rule; revisit if split panes clip again.
+ - Since: 2026-09-15
+ - Decision: the shell's layout steps use `@container` queries on `.shell`.
+ - Forbidden: switching the shell's layout steps to viewport `@media` width queries (`min-width` / `max-width`).
+diff --git a/src/layout/shell.css b/src/layout/shell.css
+index b71e94e..ea42f26 100644
+--- a/src/layout/shell.css
++++ b/src/layout/shell.css
+@@ -1,13 +1,9 @@
+ /* App shell. The shell is also rendered inside split panes. */
+-.shell {
+-  container-type: inline-size;
+-}
+-
+ .shell__body {
+   padding: 16px;
+ }
+ 
+-@container (min-width: 720px) {
++@media (min-width: 720px) {
+   .shell__body {
+     display: grid;
+     grid-template-columns: 240px 1fr;

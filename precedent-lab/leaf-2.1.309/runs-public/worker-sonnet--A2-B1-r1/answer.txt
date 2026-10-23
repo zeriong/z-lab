@@ -1,0 +1,16 @@
+I added the JSDoc comment to `closeTab`, and `npm test` passes.
+
+### Changed files
+- `src/tabs/tab-keys.mjs`: added the JSDoc block above `closeTab`. The code itself is unchanged.
+
+### Key decisions
+- The `@param` and `@returns` types are inline object shapes (`{ next, tabs: [{ key, title }] }`) because the file has no typedef for the state.
+- The description says remaining tabs keep their keys and closing leaves a gap. This matches `§stable-tab-keys` in `src/tabs/PRECEDENT.md`, which the comment doesn't contradict.
+- The comment also notes that an unknown key is a no-op and that `state` is not mutated. Both follow from the existing `filter` implementation.
+- I did not touch `PRECEDENT.md`. The comment records no new decision.
+
+### Uncertain
+- Nothing unresolved.
+
+### Gate result
+`npm test`: 3 tests run, 3 passed, 0 failed.

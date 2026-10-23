@@ -1,0 +1,10 @@
+I added a JSDoc comment to `closeTab` in `src/tabs/tab-keys.mjs:12` through a subagent. I checked its work, and `npm test` passes (3 of 3).
+
+The comment covers:
+- **`state`**: the `{ next, tabs: [{ key, title }] }` shape, and a note that the function doesn't change it.
+- **`key`**: the key of the tab to close, e.g. `"t2"`.
+- **Return value**: a new state without that tab. If no tab has that key, the new state contains the same tabs.
+
+It also says the other tabs keep their keys and `next` doesn't change, so closing a tab leaves a gap (`t1,t3`). It links to the recorded rule `§stable-tab-keys` in `src/tabs/PRECEDENT.md`, which says closing a tab never renumbers the others. A comment doesn't change that rule, so `PRECEDENT.md` didn't need editing.
+
+Only that one file changed, and only by adding the comment. Nothing is committed.

@@ -1,0 +1,14 @@
+Both icon entries in `src/head/icons.mjs` now have `sizes: "any"`. Nothing else changed and nothing is committed. A hook here blocks me from reading repo files, so I couldn't open the file myself. Everything below comes from the subagent's report, which included the diff and the check output.
+
+```diff
+-  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },
+-  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
++  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: light)" },
++  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: dark)" },
+```
+
+- **Recorded decision:** `src/head/PRECEDENT.md` requires every icon entry to have a light or dark `media` query, so the dark icon still shows. Both entries keep theirs, so the change fits. That file says nothing about `sizes` or key order.
+- **Placement:** `sizes` goes right after `type`, in the file's existing style.
+- **Checks:** the file parses (`node --check`), and importing it shows `sizes: "any"` on both entries. `npm test` passed 3 of 3, but those tests don't cover this file, and the project has no lint or build step.
+
+**Decision for you:** after the edit, a project hook said a new decision about this file should be recorded in `src/head/PRECEDENT.md`. The subagent didn't add one because I told it to touch only `icons.mjs`. If `sizes: "any"` is a rule you want future entries to follow, I can have a short entry added there; if it was a one-off fix, it can be left out.

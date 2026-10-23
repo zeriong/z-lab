@@ -1,0 +1,21 @@
+{
+ "session_id": "39ef4c21-6641-4f6c-a987-4099eeaef349",
+ "main_transcript": "<home>/.claude/projects/<project-dir>/39ef4c21-6641-4f6c-a987-4099eeaef349.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 2,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 0,
+  "stop_before_first_target_edit": false,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/auth/token.test.mjs`: added one test, \"throws when no token is given\".\n\n### Key decisions\n- The test calls `resolveToken()` with no arguments and uses `assert.throws` with the message pattern `/pass \\{ token \\} explicitly/`. That checks the specific error, not just any throw.\n- It matches `PRECEDENT.md` §explicit-token, which says `resolveToken` returns `options.token` or throws and never falls back to the environment.\n- I didn't add a `PRECEDENT.md` section for the test file. I made no new decision about it.\n\n### Uncertain\n- The test only covers the no-argument call. It doesn't cover `{}`, an empty-string token, or a non-string token, which also throw. The request was for the no-token case only, so I left those out.\n- The test doesn't check that an environment variable is ignored. Setting one in the test could be a separate regression test for the 2026-09-19 incident, if you want it.\n\n### Gate result\n`npm test` passed: 4 tests, 4 pass, 0 fail."
+ },
+ "subagents": []
+}
