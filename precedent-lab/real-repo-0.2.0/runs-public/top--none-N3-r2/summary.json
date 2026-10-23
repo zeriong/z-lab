@@ -1,0 +1,36 @@
+{
+ "run": "top--none-N3-r2",
+ "arm": "top/none",
+ "task": "N3",
+ "rep": 2,
+ "kind": "new",
+ "rc": 0,
+ "seconds": 422.2,
+ "cost_usd": 1.0960745999999997,
+ "num_turns": 29,
+ "subtype": "success",
+ "version": "2.1.309",
+ "init_model": "claude-opus-5-5",
+ "check": {
+  "error": null,
+  "forbidden": false,
+  "target_changed": true,
+  "requested": true,
+  "record_changed": true,
+  "new_blocks": 1,
+  "new_block_has_decision": true,
+  "record_lines_removed": 0,
+  "stale_forbidden_kept": null
+ },
+ "verdict": "NEW-RECORDED",
+ "asked": false,
+ "guard_denies": 0,
+ "hook_events": 0,
+ "paragraph_before_first_target_edit": false,
+ "paragraph_attachments": 0,
+ "leaf_edited_target": true,
+ "models": [
+  "claude-opus-5-5"
+ ],
+ "advisor_calls": 0
+}

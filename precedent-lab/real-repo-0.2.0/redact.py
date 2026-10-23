@@ -15,6 +15,8 @@ SOURCES = [("runs", "runs-public"), ("canary/runs", "canary/runs-public")]
 
 def forbidden():
     words = list(json.loads((HERE / "local" / "mask.json").read_text())["forbidden_words"])
+    extra = HERE / "local" / "mask-extra.json"  # identifiers the runs wrote or cited (slugs, headings, SHAs)
+    words += json.loads(extra.read_text()) if extra.exists() else []
     for t in TARGETS.values():
         words += [t["slug"], t["slug"].lstrip("§"), Path(t["file"]).name, t["forbid_line"]]
     return re.compile("|".join(re.escape(w) for w in words), re.I)
@@ -41,13 +43,14 @@ def main():
             out = d / f.relative_to(s)
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(text)
-    for extra in ("canary/runs-interrupted",):
+    for extra in ("canary/runs-interrupted", "runs-interrupted"):
         for f in sorted((HERE / extra).rglob("*")) if (HERE / extra).exists() else []:
             if f.is_file():
                 hashes.append(f"{hashlib.sha256(f.read_bytes()).hexdigest()}  {f.relative_to(HERE)}")
     for f in sorted((HERE / "local").glob("*")):
         hashes.append(f"{hashlib.sha256(f.read_bytes()).hexdigest()}  {f.relative_to(HERE)}")
-    for name in ("SPEC.md", "tasks.public.json", "METRICS.md", "FINDINGS.md", "RUNLOG.md", "canary/CANARY.md"):
+    for name in ("SPEC.md", "tasks.public.json", "METRICS.md", "FINDINGS.md", "RUNLOG.md", "run.log", "accounts.json", "canary/CANARY.md",
+                 "canary/build.log", "canary/work.log"):
         p = HERE / name
         if p.exists() and bad.search(p.read_text()):
             sys.exit(f"identifier left in {name}: {bad.search(p.read_text()).group(0)!r}")
