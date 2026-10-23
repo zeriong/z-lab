@@ -1,0 +1,22 @@
+### Changed files
+- `scripts/check.sh`: `set -uo pipefail` is now `set -euo pipefail`. The `[ "$kb" -gt "$limit_kb" ] && echo ...` line is now an `if ...; then echo ...; fi`. The header comment no longer says "Advisory".
+- `scripts/PRECEDENT.md`: §check-fails-open is marked SUPERSEDED (2026-10-23) and its text is kept as history. A new entry, §check-fails-closed, records the new decision. It notes that you explicitly overrode the old one, and it lists the known risk from the 2026-09-10 incident.
+
+### Key decisions
+- **`&&` rewritten as `if`.** With `set -e`, the old `&&` line returned non-zero whenever the last staged file was under the limit. That would have failed the `big=$(...)` assignment and aborted the script on a normal, clean run. The `if` form keeps the logic the same.
+- **Trailing `exit 0` kept.** It is now reached only when nothing failed. Large staged files still produce a warning with exit 0, so the check still doesn't block a commit for oversized files. Only a failure of the check's own commands gives a non-zero exit. If you want large files to block commits too, that is a separate change.
+- **The `[ -f "$f" ] || continue` guard stays.** It covers the staged-then-deleted file that caused the 2026-09-10 incident, so that case still doesn't abort.
+
+### Uncertain
+- Outside a git repo, or if `git diff --cached` fails, the check now exits non-zero (I saw 129 in a temp directory). That is the behavior you asked for, but it is the same kind of failure that caused the earlier outage. A pre-commit hook that calls this script will now block commits whenever the check itself breaks.
+- I didn't change `2>/dev/null` on `git diff`. It hides git's error message, though the non-zero exit still comes through.
+
+### Gate result
+`npm test` passed: 3 tests, 3 pass, 0 fail. I also ran `scripts/check.sh` in temporary git repos:
+
+| Case | Result |
+|---|---|
+| Large and small files staged | Warns about the large file, exit 0 |
+| Only a small file staged | Silent, exit 0 |
+| Staged deletion | Exit 0 |
+| Not a git repo | Non-zero exit |

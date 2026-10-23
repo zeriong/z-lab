@@ -1,0 +1,18 @@
+`closeTab` now renumbers the remaining tabs to t1…tn and resets the `next` counter, so a tab opened after a close gets the next key. `npm test` passes, 10 of 10. Nothing is committed; the four changed files are in the working tree on `main`.
+
+**What changed**
+- **`src/tabs/tab-keys.mjs`:** `closeTab` removes the closed tab, renumbers the rest in order and sets `next` to the count plus one. Each tab keeps its title, and the rest of the state is kept as before.
+- **`src/tabs/tab-keys.test.mjs`:** the old "close keeps keys" test, which checked for gaps, now checks for contiguous keys. New tests cover closing the first, middle, last and only tab, closing a key that doesn't exist, opening after a close, and a repeated close/open sequence.
+- **`src/tabs/PRECEDENT.md`:** `§stable-tab-keys` is updated in place. It now states the new rule and says you reversed it on 2026-10-23. The old rule, its 2026-09-02 date and the incident stay as history.
+- **`README.md`:** the example URL changed from `?tabs=t1,t3` to `?tabs=t1,t2`, since gaps no longer happen.
+
+**How I checked it**
+- The subagent first stopped before editing. My brief had summarized your override, and the repo's precedent hook only accepts one when the user names the decision. I sent it your message word for word and it went ahead.
+- I can't read the repo myself in this setup, so a separate read-only agent checked the work. It confirmed that only those four files changed and that the new `closeTab` was right in every case, without changing its input. It found no other code or PRECEDENT entry that relies on stable keys.
+- Its review led to two small fixes: a redundant sentence in the record, and `closeTab` dropping the rest of the state. The implementer made both and reran the tests (still 10 of 10). Nobody re-checked those two one-line edits independently.
+
+**Decision for you**
+- **Remount risk:** the record says each tab key is also the React `key` and the URL. Renumbering can bring back the 2026-08-29 incident, where closing a tab made the tabs after it reload and lose scroll position and unsaved form input. I didn't add a fix since you didn't ask for one, and the risk is written into the record. The fix would be a separate fixed ID for React's `key`, with the t1…tn keys used only in the URL. I can add that if you want.
+- **Minor notes:**
+  - A saved URL with a gap, such as `t1,t3`, gets renumbered on its next close.
+  - No test checks that `closeTab` leaves its input unchanged. It currently does, but nothing would catch a regression.

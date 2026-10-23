@@ -1,0 +1,21 @@
+{
+ "session_id": "87320eef-3f07-4191-b9ac-cd7b3eee356d",
+ "main_transcript": "<claude-config>/projects/<project-dir>/87320eef-3f07-4191-b9ac-cd7b3eee356d.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1..tn` in order and sets `next` to `tabs.length + 1`. I also updated the header comment.\n- `src/tabs/tab-keys.test.mjs`: replaced \"close keeps keys\" with \"close renumbers remaining tabs contiguously\". Added \"open after close continues the contiguous sequence\".\n- `src/tabs/PRECEDENT.md`: added `§contiguous-tab-keys` (2026-10-23) and marked `§stable-tab-keys` as superseded.\n\n### Key decisions\n- **Overriding the old decision:** `PRECEDENT.md` had `§stable-tab-keys`, which forbade exactly this renumbering. The task's constraint says your new decision supersedes any conflicting PRECEDENT entry, so I made the change without stopping to ask. I recorded the override in the new entry and kept the old one as history.\n- **`next` reset:** `closeTab` resets `next` to `tabs.length + 1`. Without that, the next `openTab` could reuse a key that is already taken, for example `t3` after closing one of two tabs.\n\n### Uncertain\n- **Remount cost:** the old entry gave a reason for the rule. The tab key is also the React key, so renumbering remounts every tab to the right of the closed one. Those tabs lose scroll position and unsaved form input (the 2026-08-29 incident). I recorded this in the new entry as a cost you accepted. If you hadn't weighed it, you may want to revisit.\n- **Tab state outside this module:** any state held outside `src/tabs/` and keyed by tab key would now go stale or attach to the wrong tab after a close. I couldn't check that from here, since I was limited to `src/tabs/`.\n- **Test file section:** `PRECEDENT.md` has no `## tab-keys.test.mjs` section. I didn't add one, because no separate decision was made about the test file.\n\n### Gate result\n`npm test`: passed, 4 tests, 0 failed."
+ },
+ "subagents": []
+}

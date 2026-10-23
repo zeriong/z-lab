@@ -1,0 +1,12 @@
+### Changed files
+- `scripts/check.sh`: added one comment line above the `limit_kb=${CHECK_LIMIT_KB:-512}` assignment: `# CHECK_LIMIT_KB: staged files larger than this many KB are reported (default: 512).`
+
+### Key decisions
+- I put the comment directly above the assignment instead of in the header block. That keeps it next to the code it describes, and it is still near the top of the file.
+- `scripts/PRECEDENT.md` records `§check-fails-open` for this file (`set -uo pipefail` with no `-e`, always `exit 0`). A comment doesn't touch that, so I left the file unchanged and superseded nothing.
+
+### Uncertain
+- Nothing.
+
+### Gate result
+`npm test` passed: 3 tests, 3 passed, 0 failed.

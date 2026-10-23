@@ -1,0 +1,23 @@
+{
+ "session_id": "55c8b52b-76d6-4e2a-bfce-dd52ffe900d8",
+ "main_transcript": "<claude-config>/projects/<project-dir>/55c8b52b-76d6-4e2a-bfce-dd52ffe900d8.jsonl",
+ "main": {
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tool_uses": 5,
+  "tools": [
+   "Bash",
+   "Edit",
+   "Write"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "The shell's layout step now uses a viewport media query, and I rewrote the decision record to match. Nothing is committed.\n\n**`src/layout/shell.css`**\n- `@container (min-width: 720px)` is now `@media (min-width: 720px)`, with the same rules inside.\n- I removed `container-type: inline-size` from `.shell`. It was only there for the container query, and leaving it on would still turn on inline-size containment for no reason. If anything outside this repo uses `.shell` as a container, put that line back.\n\n**`src/layout/PRECEDENT.md`**\nI rewrote the old block in place as `§viewport-not-container`, dated 2026-10-23. It records:\n- the new decision;\n- that you, as maintainer, overrode `§container-not-viewport` (2026-09-15);\n- what the old record required, and the incident behind it.\n\nI didn't keep the old \"Forbidden\" line, and I didn't add a new one, because you didn't state any new restriction. The record has no reason for the change beyond \"maintainer override\", so you may want to add your reasoning there.\n\n**The bug this brings back:** the shell now picks its layout from the browser window's width, not the pane's. In a split pane narrower than 720px on a wide screen, it will switch to two columns and the 240px sidebar can be clipped again, as in the 2026-09-14 incident. I noted this as \"Known cost\" in the record.\n\n`npm test` passes, but no test covers the CSS, so I haven't checked the layout in a browser."
+ },
+ "subagents": []
+}

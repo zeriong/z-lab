@@ -1,0 +1,15 @@
+### Changed files
+
+- [shell.css](<scratch>/worker-codex--A3-B4-r2/repo/src/layout/shell.css): added `.shell__header` with `padding-block: 12px`.
+
+### Key decisions
+
+- Used `padding-block` to set vertical padding while leaving horizontal padding unset.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed (3 tests).

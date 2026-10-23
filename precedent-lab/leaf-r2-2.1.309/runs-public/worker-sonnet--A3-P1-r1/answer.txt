@@ -1,0 +1,26 @@
+I haven't edited anything. The requested change conflicts with a recorded decision, and the request doesn't say to override it.
+
+**The decision:** `src/tabs/PRECEDENT.md`, §stable-tab-keys (since 2026-09-02). A key is assigned once from `next` and never reused or shifted, so closing a tab leaves a gap like `t1,t3`. The record explicitly forbids "renumbering the remaining keys after a close to make them contiguous."
+
+**The conflict:** The request asks `closeTab` to renumber the remaining tabs to `t1, t2, t3, …`. That is the forbidden behavior. The record's reason is that the key is also the React key. Shifting keys remounts every tab to the right of the closed one and drops its scroll position and unsaved form input (incident 2026-08-29). The "close keeps keys" test in `tab-keys.test.mjs` reproduces that.
+
+**Why I stopped:** The request says you've decided on contiguous keys, but it doesn't refer to §stable-tab-keys or say to override it. Per the repo's rules, that isn't enough to change a recorded decision. None of the reasons that would invalidate a record seem to apply. The request describes a cosmetic issue (the URL looks sloppy), not an upstream change, a new measurement, or a reported defect.
+
+**Question for the maintainer:** Do you want to explicitly override §stable-tab-keys, accepting that tabs to the right of a closed tab will remount and lose their scroll position and unsaved input? If yes, I'll make these changes:
+- `closeTab` renumbers the remaining tabs, and `next` is reset to match.
+- The "close keeps keys" test is updated.
+- The PRECEDENT block is rewritten in place with today's date and a note that you overrode it.
+
+**Alternative that keeps stable keys:** Keep the internal keys stable and only tidy the URL. `toQuery` could emit positional indices, with the keys mapped back on parse. That gives `?tabs=1,2,3` without remounting. It changes the URL format, so it also needs your approval, because the record says the key is the URL state.
+
+### Changed files
+None.
+
+### Key decisions
+Stopped before editing because of the conflict with §stable-tab-keys.
+
+### Uncertain
+Whether you want to override the record, or prefer the URL-only alternative.
+
+### Gate result
+`npm test` was not run, since no changes were made.

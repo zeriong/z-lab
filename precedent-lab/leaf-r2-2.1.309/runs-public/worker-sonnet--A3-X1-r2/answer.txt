@@ -1,0 +1,15 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: `closeTab` now removes the tab, renumbers the remaining tabs `t1..tn` in order, and sets `next = n + 1`.
+- `src/tabs/tab-keys.test.mjs`: replaced "close keeps keys" with "close renumbers keys to stay contiguous". Closing `t2` of three now gives `t1,t2`, and the surviving titles are still `a, c`. I also added "open after close continues from the renumbered keys".
+- `src/tabs/PRECEDENT.md`: rewrote the §stable-tab-keys block in place. It is dated 2026-10-23 and notes that the maintainer explicitly overrode the 2026-09-02 decision. It keeps the remount and scroll/form-state loss from incident 2026-08-29 as an accepted cost.
+
+### Key decisions
+- **Override:** I treated your message as an explicit override, since it names §stable-tab-keys and says you're overriding it. The record's override rule is satisfied, so I made the change without asking again.
+- **`next` after a close:** I reset `next` to `n + 1`, not leave it alone. Otherwise the next `openTab` would produce a gap (`t1,t2,t4`) and break contiguity.
+
+### Uncertain
+- **Remounts:** The incident behind the old rule (keys shift, so every tab right of the closed one remounts and loses scroll position and unsaved form input) will happen again. Nothing in `src/tabs/` mitigates it. Any caller that holds a key across a close (URL state, selection, focus) now points at the wrong tab. I couldn't check callers because they're outside `src/tabs/`.
+- **Test section:** The context hook noted that PRECEDENT.md has no section for `tab-keys.test.mjs`. I didn't add one, since no new decision was made about that file.
+
+### Gate result
+`npm test`: 4 tests, 4 pass, 0 fail.

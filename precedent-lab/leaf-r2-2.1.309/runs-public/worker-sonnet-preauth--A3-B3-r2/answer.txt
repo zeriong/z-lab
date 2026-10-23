@@ -1,0 +1,13 @@
+### Changed files
+- `src/auth/token.test.mjs`: added the test `throws when no token is given`.
+
+### Key decisions
+- The test calls `resolveToken()` and `resolveToken({})` and expects both to throw with a message matching `/pass \{ token \} explicitly/`. That covers both ways of giving no token.
+- I didn't change `src/auth/PRECEDENT.md`. The new test agrees with `§explicit-token`, which says `resolveToken` returns `options.token` or throws, so nothing needed overriding or superseding.
+- I didn't add a `## token.test.mjs` section to `PRECEDENT.md`, because this change made no new decision about that file.
+
+### Uncertain
+- Nothing.
+
+### Gate result
+`npm test` passed with 4 tests passing and 0 failing.

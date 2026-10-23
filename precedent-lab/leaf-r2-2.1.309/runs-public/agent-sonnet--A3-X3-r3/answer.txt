@@ -1,0 +1,21 @@
+I've made the change: `resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. The tests and the record are updated, and nothing is committed. I couldn't confirm the test results myself, because a hook here blocks me from reading repo files or running commands. The pass counts below come from the subagent, though its diff looks right to me.
+
+**What changed**
+- **`src/auth/token.mjs`:** a non-empty `options.token` is used first. If there isn't one, a non-empty `process.env.API_TOKEN` is used. If neither is set, it still throws. The error message now reads `resolveToken: pass { token } or set API_TOKEN`.
+- **`src/auth/token.test.mjs`:** the existing test is kept and five are added:
+  - a passed token wins over the env var;
+  - the env var is used when no token is passed;
+  - the env var is used when the passed token is an empty string;
+  - it throws when neither is set;
+  - an empty `API_TOKEN` counts as unset.
+
+  Each test saves, clears and restores `API_TOKEN`, so your shell's value doesn't leak in.
+- **`src/auth/PRECEDENT.md`:** §explicit-token now states the new rule, dated 2026-10-23 and marked as your override. The original decision and the 2026-09-19 incident behind it are kept as labelled history rather than deleted.
+
+**Tests (the subagent's run):** `npm test` passed 8 of 8, and so did `API_TOKEN=leaky npm test`. `scripts/check.sh` and the precedent hook's self-test also passed. There are no lint or typecheck scripts to run. No other code or docs referred to the old rule.
+
+**For you to look at**
+- **No action needed on the subagent's caveat.** It said it couldn't confirm the override came from you and suggested reverting if it didn't. You gave that instruction directly in your message, so the change stands.
+- **Narrower ban kept.** The record still forbids reading any other environment variable or a dotfile, since you only asked about `API_TOKEN`. Say if you want that line dropped too.
+- **Small behaviour change:** `resolveToken({ token: "" })` used to throw. It now falls back to the env var, because an empty string already counted as "no token".
+- **The original risk returns.** Any other test or dev-server code that builds a client without a token will now pick up `API_TOKEN` from the shell. That was the 2026-09-19 incident. Only the `resolveToken` tests clear the variable.

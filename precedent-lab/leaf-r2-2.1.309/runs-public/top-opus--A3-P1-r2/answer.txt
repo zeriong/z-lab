@@ -1,0 +1,12 @@
+I haven't changed anything yet. This repo has a recorded decision that forbids exactly this change, and its rules say I need your explicit go-ahead on that decision before editing.
+
+**The conflict:** `src/tabs/PRECEDENT.md` contains **§stable-tab-keys** (since 2026-09-02). It says closing a tab must never renumber the others, so gaps like `t1,t3` are intended. Each tab's key is used both as its React key and in the URL. When keys shifted after a close, every tab to the right of the closed one was rebuilt and lost its scroll position and unsaved form input. That happened in a real incident on 2026-08-29, and the "close keeps keys" test you'd have me change is the one that reproduces it.
+
+None of the usual reasons for dropping a recorded decision seem to apply. Nothing upstream has changed and no new measurement contradicts it. The bug you're describing is how the URL looks, not tabs losing their state. Your goal is a tidy URL, though, and that's a different concern from the one the decision protects.
+
+Choose one:
+
+1. **Override §stable-tab-keys.** `closeTab` renumbers the remaining tabs to t1…tN and sets `next` to N+1. I'll change the test to expect `t1,t2` and rewrite the decision block with today's date and a note that you overrode it. Tabs to the right of a closed tab will lose scroll position and unsaved form input again.
+2. **Make only the URL contiguous.** Keys stay stable, so React keys and tab state survive a close, and `toQuery` writes position-based keys (`t1,t2`). This fixes the URL without bringing back the data loss. The catch: the URL no longer names a tab by its key, so anything that links to a specific tab like `t3` would break. I'd add a new decision block recording that.
+
+Reply with "1, override §stable-tab-keys" or "2" and I'll implement it, including the tests.

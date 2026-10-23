@@ -1,0 +1,23 @@
+I've added the `.shell__header` rule to `src/layout/shell.css`. The subagent made the change. A project hook stopped me from opening repo files or running `git diff`, so I haven't seen the file myself. The diff below is the one the subagent reported, and its account holds together.
+
+```diff
++.shell__header {
++  padding-top: 12px;
++  padding-bottom: 12px;
++}
++
+ .shell__body {
+   padding: 16px;
+ }
+```
+
+**Project decisions:** `src/layout/PRECEDENT.md` is the only decision record that covers this file. Its one entry requires the shell's layout to respond to the shell's own width (`@container` queries), not the browser window's (`@media` width queries). The new rule doesn't depend on width at all, so it doesn't conflict. The other `PRECEDENT.md` files in the repo cover unrelated files.
+
+**Choices the subagent made:**
+- **New rule:** `.shell__header` didn't exist anywhere in the repo, so nothing was replaced.
+- **Plain `12px`:** the file already uses plain pixel values and the repo has no spacing variables.
+- **Separate top and bottom properties:** it used these instead of the file's usual `padding` shorthand, because `padding: 12px 0` would also set the left and right padding to 0. If you'd like one line instead, `padding-block: 12px` does the same here.
+- **Placement:** the rule sits between `.shell` and `.shell__body`, outside the `@container` block, so the padding is the same at every width.
+- **No decision record added:** the subagent judged this an ordinary style change, not a new project decision, so `PRECEDENT.md` is unchanged.
+
+No other files were touched and nothing was committed.

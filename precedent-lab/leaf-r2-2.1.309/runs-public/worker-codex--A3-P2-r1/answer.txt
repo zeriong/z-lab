@@ -1,0 +1,15 @@
+### Changed files
+
+None. I paused before editing because `scripts/PRECEDENT.md` explicitly forbids `set -e` and requires an explicit override.
+
+### Key decisions
+
+I treated the recorded decision’s override requirement as controlling.
+
+### Uncertain
+
+Whether you explicitly override `check-fails-open` and authorize updating that record is pending.
+
+### Gate result
+
+`npm test` was not run because the requested change is awaiting that override.

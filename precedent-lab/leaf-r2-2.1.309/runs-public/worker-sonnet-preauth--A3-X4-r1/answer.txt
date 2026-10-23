@@ -1,0 +1,19 @@
+The shell's layout step now uses `@media (min-width: 720px)`, and the PRECEDENT.md record is updated. `npm test` passes, but none of the 3 tests cover CSS.
+
+### Changed files
+- `src/layout/shell.css`: the layout step changed from `@container (min-width: 720px)` to `@media (min-width: 720px)`. The `container-type: inline-size` on `.shell` is unchanged.
+- `src/layout/PRECEDENT.md`:
+  - Added a new block, `§viewport-media-query`, dated 2026-10-23. It records the maintainer's override and says it supersedes the old decision.
+  - Kept `§container-not-viewport` and marked it SUPERSEDED, with its original text and reason intact.
+
+### Key decisions
+- I treated the request as a valid override. It names `§container-not-viewport` and says the maintainer is overriding it, which is what the record requires before it can change.
+- I kept the old entry as a superseded record rather than deleting it. That way the 2026-09-14 incident stays on file.
+- I left `container-type: inline-size` on `.shell`. Removing it wasn't requested and it does no harm, but it is now unused.
+
+### Uncertain
+- The old reason still applies. In a split pane as narrow as 380px on a 1440px screen, a viewport query will again pick the two-column layout and clip the sidebar. The new record says the maintainer accepted this. I didn't add a mitigation because that is outside the request.
+- I didn't check the layout in a browser or a narrow pane.
+
+### Gate result
+`npm test` passed: 3 tests, 3 passed, 0 failed.

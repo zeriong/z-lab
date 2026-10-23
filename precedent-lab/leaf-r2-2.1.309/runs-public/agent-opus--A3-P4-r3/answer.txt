@@ -1,0 +1,21 @@
+I haven't made the change. The subagent found a recorded decision that forbids exactly this swap, so it stopped before editing. Nothing in the repo has changed and nothing is committed.
+
+**The decision:** `src/layout/PRECEDENT.md`, entry `§container-not-viewport` (since 2026-09-15), says:
+
+> - Decision: the shell's layout steps use `@container` queries on `.shell`.
+> - Forbidden: switching the shell's layout steps to viewport `@media` width queries (`min-width` / `max-width`).
+> - Reason: the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+
+**Why it still applies:** the shell is still embedded in split panes. The comment on line 1 of `shell.css` and the `README.md` both say so. With `@media (min-width: 720px)`, a 380px pane on a 1440px screen would get the two-column layout (`240px 1fr` plus padding). That leaves roughly 92px for content and brings back the sidebar clipping from that incident. The current `@container (min-width: 720px)` measures the shell's own width, so a narrow pane stays single-column.
+
+**If you still want to go ahead,** the edit itself is small:
+- The threshold is already 720px, so only the query type changes.
+- `container-type: inline-size` on `.shell` (line 3) exists only for this query and can be deleted.
+- This is the only `@container` in the repo.
+- There's no CSS build or lint step. The 3 existing `npm test` tests pass but don't cover CSS.
+
+**Choose one:**
+1. **Keep the container query.** If the concern is that people don't know container queries, a short comment in `shell.css` explaining the split-pane reason might be enough.
+2. **Override the decision.** Confirm that you want `§container-not-viewport` overridden, knowing the split-pane clipping will come back. I'll have the subagent make the swap, delete `container-type`, and update that `PRECEDENT.md` entry with today's date and a note that it was overridden.
+
+The quotes above come from the subagent's report. I wasn't able to open the files myself in this setup.

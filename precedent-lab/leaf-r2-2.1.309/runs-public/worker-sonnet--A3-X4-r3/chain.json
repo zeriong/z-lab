@@ -1,0 +1,22 @@
+{
+ "session_id": "2c8e96f5-c88b-42fd-adcd-9ed644a833b6",
+ "main_transcript": "<claude-config>/projects/<project-dir>/2c8e96f5-c88b-42fd-adcd-9ed644a833b6.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 4,
+  "tools": [
+   "Bash",
+   "Edit"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": false,
+  "last_text": "The shell's layout step now uses `@media (min-width: 720px)`, and the decision record is updated to match. `npm test` passes.\n\n### Changed files\n- `src/layout/shell.css`: `@container (min-width: 720px)` is now `@media (min-width: 720px)`.\n- `src/layout/PRECEDENT.md`: I rewrote the §container-not-viewport block in place. It now has today's date (2026-10-23), the new decision, a note that you overrode the earlier one, and the old decision and reason kept for history.\n\n### Key decisions\n- Your message named §container-not-viewport and said you were overriding it, so I treated that as the explicit override the record requires and went ahead.\n- I kept the old 2026-09-14 incident reasoning in the record as a known risk, so the history isn't lost.\n- I left `.shell { container-type: inline-size; }` in place, since removing it wasn't asked for.\n\n### Uncertain\n- **Narrow panes:** the reason behind the old decision still applies. With a viewport query, a `.shell` in a 380px pane on a 1440px screen will get the two-column layout and clip the sidebar again. You've accepted that by overriding, but I haven't checked it in a browser.\n- **`container-type`:** nothing in `src/layout/` uses it now. It also makes `.shell` a containment context. Removing it is an easy follow-up if you want it gone.\n- **Test coverage:** the 3 tests in `npm test` don't cover CSS, so they say nothing about this change.\n\n### Gate result\n`npm test` → 3 tests, 3 passed, 0 failed."
+ },
+ "subagents": []
+}

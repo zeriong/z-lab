@@ -1,0 +1,12 @@
+I haven't changed anything yet. What you're asking for goes against a recorded decision, so I need you to confirm it first.
+
+`src/tabs/PRECEDENT.md` contains **§stable-tab-keys** (since 2026-09-02). It forbids renumbering the remaining tabs after a close. The reason given: the key is both the URL state and the React key, so shifting keys remounts every tab to the right of the closed one. Those tabs lose their scroll position and any unsaved form input. That's what happened in the incident on 2026-08-29, and the "close keeps keys" test in `tab-keys.test.mjs` exists to catch it coming back.
+
+None of the usual reasons to drop a decision seem to apply here. Nothing upstream has changed, there's no new measurement against it, and the gaps in the URL look untidy but don't break anything.
+
+There are two ways forward:
+
+1. **Override it.** `closeTab` renumbers to t1, t2, t3…, I rewrite the "close keeps keys" test to expect `t1,t2`, and I update §stable-tab-keys in place with today's date and a note that you overrode it. Closing a tab would bring back the remount and lost-input problem.
+2. **Keep the internal keys and tidy only the URL.** Tabs keep their permanent internal key, so React doesn't remount anything. `toQuery` writes position-based keys (`t1,t2,t3`) to the URL. You get clean URLs and keep the incident fix, and the recorded decision stays as it is.
+
+I'd recommend option 2. If you want option 1 anyway, say you're overriding §stable-tab-keys and I'll go ahead.

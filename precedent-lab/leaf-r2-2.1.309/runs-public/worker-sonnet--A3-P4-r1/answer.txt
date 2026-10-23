@@ -1,0 +1,19 @@
+I made no edit to `src/layout/shell.css`. The change conflicts with a recorded decision, and nothing in the request overrides it.
+
+### Changed files
+None.
+
+### Key decisions
+- **Conflict:** `src/layout/PRECEDENT.md` records `§container-not-viewport` (since 2026-09-15). It says the shell's layout steps use `@container` queries on `.shell`. It forbids switching them to viewport `@media` width queries (`min-width` / `max-width`). Your request is exactly that switch.
+- **Why it was recorded:** the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+- **Why I stopped:** the request says the team agreed to drop container queries. It doesn't mention this recorded decision or say to override it. The record only changes on your explicit confirmation. None of the four invalidation reasons applies: there is no upstream change, no new measurement, no reported defect, and the task covers the same layout steps the record governs.
+
+### Uncertain
+Question for you: do you want to override `§container-not-viewport` and use `@media (min-width: 720px)` on `.shell__body`?
+
+- **If yes:** I'll make the change. I'll also rewrite the decision block in `src/layout/PRECEDENT.md` with today's date (2026-10-23) and a note that you overrode it.
+- **Layout risk:** with a viewport query, a pane under 720px wide on a viewport of 720px or more gets the two-column layout. The sidebar would clip again, as in the 2026-09-14 incident. This holds unless split panes are removed or handled some other way.
+- **If no:** the container query stays. If the team just wants it easier to follow, I can add comments to `shell.css` explaining it.
+
+### Gate result
+`npm test` was not run, because there is no change to verify.

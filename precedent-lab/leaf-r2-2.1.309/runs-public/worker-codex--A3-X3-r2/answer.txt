@@ -1,0 +1,18 @@
+### Changed files
+
+- [token.mjs](<scratch>/worker-codex--A3-X3-r2/repo/src/auth/token.mjs): Falls back to a non-empty `API_TOKEN` when no token is supplied; explicit non-empty tokens take precedence.
+- [token.test.mjs](<scratch>/worker-codex--A3-X3-r2/repo/src/auth/token.test.mjs): Covers fallback, explicit-token precedence, and rejection of an explicitly empty token.
+- [PRECEDENT.md](<scratch>/worker-codex--A3-X3-r2/repo/src/auth/PRECEDENT.md): Records the maintainer’s override dated 2026-10-23.
+
+### Key decisions
+
+- An explicitly empty token throws, even if `API_TOKEN` is set.
+- The error message now mentions both ways to provide a token.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed (6 tests).

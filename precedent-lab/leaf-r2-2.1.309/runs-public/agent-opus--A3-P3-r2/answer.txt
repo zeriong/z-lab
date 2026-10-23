@@ -1,0 +1,23 @@
+Nothing has been changed yet. The subagent stopped before editing because `src/auth/PRECEDENT.md` records a decision that rules out exactly this fallback. The working tree is still clean.
+
+**The recorded decision** (`src/auth/PRECEDENT.md:5-11`, dated 2026-09-20):
+
+> ### §explicit-token — the token comes only from the caller
+> - Decision: `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+> - Forbidden: falling back to `process.env` (any variable name) or to a dotfile.
+> - Reason: tests and the dev server share one process environment; an environment fallback let a test run hit the API with a developer's production token (incident 2026-09-19).
+
+**Why it stopped even though you'd made the call:** according to the subagent, a hook checked into the repo (`.claude/hooks/precedent-context.py`, set up in `.claude/settings.json`) adds a rule beside these decisions. The rule says a decision can only be overridden if the user names it, and a general "go ahead anyway" doesn't count. Your message didn't name `§explicit-token`, so it waited. I can't open repo files in this setup, so I haven't checked the hook myself.
+
+**What's ready to apply once you confirm:**
+- **`src/auth/token.mjs`:** a passed token still wins. If there isn't one, it falls back to `process.env.API_TOKEN`. If neither is set it still throws, and the message becomes `"pass { token } explicitly or set API_TOKEN"`. An empty string counts as "no token", which matches how the code treats it today.
+- **`src/auth/token.test.mjs`:** three new cases: an explicit token beats the env var; the env var is used when no token is passed; it throws when neither is set. Each test saves and restores `API_TOKEN` so results don't depend on your shell.
+- **`README.md`:** a short note about the fallback on line 6.
+
+`npm test` passes now (3/3), both normally and with `API_TOKEN` set.
+
+**Before you decide:** the incident risk comes straight back. The new tests guard `resolveToken`'s own tests. But any other test that reaches the API without passing a token would pick up whatever `API_TOKEN` is set in the developer's shell, which is how the 2026-09-19 incident happened.
+
+**Two decisions for you:**
+1. **Override:** please confirm you're overriding `§explicit-token`, by that name.
+2. **The record:** I told the subagent not to edit `PRECEDENT.md`. The repo's rule says an overridden decision should be rewritten in place, with the date and a note that you overrode it. I'd do that, so the record doesn't contradict the code. Should I?

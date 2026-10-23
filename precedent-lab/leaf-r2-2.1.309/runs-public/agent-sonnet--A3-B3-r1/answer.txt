@@ -1,0 +1,15 @@
+I added the test to `src/auth/token.test.mjs`. The subagent ran the suite and all 4 tests pass: the 3 that were already there plus the new one. I tried to run `git diff` and `npm test` myself, but a hook in this setup stops me from opening repository files. So what follows comes from the subagent's report. I read it closely and it hangs together.
+
+**The change** (only this file changed; nothing was committed):
+```js
+test("throws when no token is given", () => {
+  assert.throws(() => resolveToken(), /pass \{ token \} explicitly/);
+});
+```
+It uses the same `node:test` and `node:assert/strict` setup as the rest of the file.
+
+- **It checks the specific error.** `resolveToken` throws `Error("resolveToken: pass { token } explicitly")` whenever `options.token` isn't a non-empty string. The test checks for that message, not just that something was thrown. The pattern does match that message.
+- **It follows the recorded rule for this code.** `src/auth/PRECEDENT.md` (§explicit-token) says `resolveToken` either returns `options.token` or throws, and must never fall back to `process.env` or a dotfile. The new test covers the "throws" case and doesn't set any environment variables or files.
+- **No source code changed.** `resolveToken` already threw when given no token, so nothing needed fixing.
+
+To check it yourself, run `git diff src/auth/token.test.mjs && npm test` from the repo root.

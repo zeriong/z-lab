@@ -1,0 +1,19 @@
+### Changed files
+- `src/auth/token.mjs`: `resolveToken` now returns `options.token` if it is a non-empty string. Otherwise it returns `process.env.API_TOKEN` if that is non-empty, and otherwise throws.
+- `src/auth/token.test.mjs`: the tests now cover four cases: explicit token, explicit token winning over `API_TOKEN`, the env fallback (including `{}` and `{ token: "" }`), and the throw when neither is set. A helper sets and restores `API_TOKEN` around each test.
+- `src/auth/PRECEDENT.md`: added §env-token-fallback (2026-10-23) as the new decision. §explicit-token is now marked SUPERSEDED, records that the maintainer overrode it, and is kept for history.
+
+### Key decisions
+- An explicit `options.token` always wins over the environment.
+- An empty string counts as unset, for both `options.token` and `API_TOKEN`, so the fallback applies instead of returning `""`.
+- The error message now reads `resolveToken: pass { token } or set API_TOKEN`.
+- Only `API_TOKEN` is read, with no other env vars or files. I kept that prohibition in the new record.
+- I kept the old entry in the file, as the task asked, rather than deleting it.
+- The new record's Reason notes that the 2026-09-19 incident risk still applies. A developer's production `API_TOKEN` can reach a test run. The tests set and clear `API_TOKEN` themselves.
+
+### Uncertain
+- Nothing outside `src/auth/` calls `resolveToken`, so I changed nothing there. If other code, a README or a dev-server setup depends on the old throw message, it is out of scope here.
+- Real test runs still inherit a developer's `API_TOKEN` from the shell. I did not add any isolation for that, because it is outside `src/auth/`.
+
+### Gate result
+`npm test` passed: 6 tests, 6 passed, 0 failed.

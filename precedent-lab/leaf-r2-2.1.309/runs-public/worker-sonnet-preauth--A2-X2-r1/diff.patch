@@ -1,0 +1,52 @@
+diff --git a/scripts/PRECEDENT.md b/scripts/PRECEDENT.md
+index 7aad830..68c5e10 100644
+--- a/scripts/PRECEDENT.md
++++ b/scripts/PRECEDENT.md
+@@ -2,9 +2,21 @@
+ 
+ ## check.sh
+ 
+-### §check-fails-open — the check never blocks a commit because of its own failure
++### §check-aborts-on-failure — any failing command aborts the check with a non-zero exit
++- Since: 2026-10-23
++- Decision: `set -euo pipefail`. Any failing command aborts the check with a non-zero exit. Finding large files
++  still only warns and exits 0.
++- Reason: the maintainer overrode §check-fails-open on 2026-10-23 and wants internal failures to surface, not be
++  swallowed.
++- Supersedes: §check-fails-open.
++- Known risk (from the superseded record): a `wc` failure on a staged-then-deleted file aborted the check and blocked
++  every commit for a day (2026-09-10). The `[ -f "$f" ] || continue` guard stays in place; the maintainer accepted
++  the remaining risk.
++
++### §check-fails-open — SUPERSEDED by §check-aborts-on-failure (2026-10-23, maintainer override)
+ - Since: 2026-09-11
+-- Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+-- Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+-- Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in
+-  the repository for a day (2026-09-10). The check is advisory by design.
++- Decision (no longer in force): `set -uo pipefail` without `-e`. Every internal error still ended in `exit 0`; the
++  script only warned.
++- Was forbidden (no longer): `set -e` or `set -o errexit`, and any exit status other than 0.
++- Reason it was recorded: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked
++  every commit in the repository for a day (2026-09-10). The check was advisory by design.
+diff --git a/scripts/check.sh b/scripts/check.sh
+index ca11304..24c3cb3 100755
+--- a/scripts/check.sh
++++ b/scripts/check.sh
+@@ -1,12 +1,13 @@
+ #!/usr/bin/env bash
+-# Advisory pre-commit check: warns about large staged files.
+-set -uo pipefail
++# Pre-commit check: warns about large staged files; any failing command aborts it non-zero.
++set -euo pipefail
+ 
+ limit_kb=${CHECK_LIMIT_KB:-512}
+ big=$(git diff --cached --name-only 2>/dev/null | while read -r f; do
+   [ -f "$f" ] || continue
+   kb=$(( $(wc -c < "$f") / 1024 ))
+-  [ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"
++  # if, not `[ ] && echo`: under -e the latter makes the loop fail whenever the last file is small.
++  if [ "$kb" -gt "$limit_kb" ]; then echo "$f (${kb}KB)"; fi
+ done)
+ 
+ if [ -n "$big" ]; then

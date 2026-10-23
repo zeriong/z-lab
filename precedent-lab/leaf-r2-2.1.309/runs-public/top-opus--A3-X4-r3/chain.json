@@ -1,0 +1,22 @@
+{
+ "session_id": "4e1169d5-e56e-417d-abcb-5945ea778939",
+ "main_transcript": "<claude-config>/projects/<project-dir>/4e1169d5-e56e-417d-abcb-5945ea778939.jsonl",
+ "main": {
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tool_uses": 6,
+  "tools": [
+   "Bash",
+   "Write"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "I've switched the shell's layout step to a viewport media query and rewritten the decision record. The tests pass, but none of them cover CSS, so I haven't checked the layout in a browser.\n\n**`src/layout/shell.css`**\n- `@container (min-width: 720px)` is now `@media (min-width: 720px)`. The grid columns and padding inside it are unchanged.\n- I removed `.shell { container-type: inline-size; }`. Only the container query used it, and leaving it would have kept inline-size containment on `.shell` for no reason. If anything else depends on that containment, put it back.\n\n**`src/layout/PRECEDENT.md`**\nI rewrote the decision in place as `§viewport-not-container` (dated 2026-10-23). It now:\n- records the `@media (min-width: 720px)` decision;\n- notes that you, as maintainer, overrode `§container-not-viewport` (dated 2026-09-15);\n- lists the old `@container` approach as rejected.\n\nYou didn't give a reason, so I didn't make one up. The record says the override was yours; add your reasoning if you want it there. Nothing else in the repo referred to the old section name.\n\n**Known risk:** the old decision came from the 2026-09-14 incident. The shell is rendered inside split panes as narrow as 380px, and on a 1440px screen a viewport query picks the two-column layout inside such a pane and clips the sidebar. That will happen again with this change. I noted it in the record as a known risk.\n\nNothing is committed yet."
+ },
+ "subagents": []
+}

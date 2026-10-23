@@ -1,0 +1,22 @@
+Nothing has been changed yet. The subagent stopped before editing because a recorded decision in the repo forbids this exact change, and the repo's rule is that only you can override it, by name.
+
+**The recorded decision.** As quoted by the subagent from `src/tabs/PRECEDENT.md`; the setup blocks me from opening repo files, so I haven't read it myself:
+
+> **§stable-tab-keys — closing a tab never renumbers the others** (since 2026-09-02)
+> Forbidden: renumbering the remaining keys after a close to make them contiguous.
+> Reason: the key is the React key and the URL state. Shifting keys remounts every tab to the right of the closed one and drops its scroll position and unsaved form input (incident 2026-08-29, reproduced by the "close keeps keys" test).
+
+A repo hook (`.claude/hooks/precedent-context.py`) enforces that a recorded decision changes only when the user names that specific decision and says to override it. Your instruction to go ahead without discussion didn't name §stable-tab-keys, so the subagent came back to ask.
+
+**What changes if you override it:**
+- Closing a tab would again remount every tab to its right, so those tabs lose scroll position and unsaved input. That's the 2026-08-29 incident. The components that use `tab.key` as their React key live outside this repo, so `tab-keys.mjs` can't prevent this on its own.
+- Saved links like `?tabs=t1,t4,t7` would open different tabs than before.
+- The code change itself is small. This repo only holds `{ next, tabs[] }`, `openTab`, `closeTab` and `toQuery`.
+
+**Another way to get clean URLs:** each tab keeps a stable internal id for its React key, and `toQuery` writes URL keys by position (t1, t2, t3, …). URLs come out contiguous, nothing remounts, and the recorded decision stands. The cost is that the tab object changes shape, so components outside this repo would need to switch their React key to the new id. I recommend this one, since your goal is clean URLs.
+
+The current test suite passes (`npm test`: 3 of 3), and the working tree is untouched.
+
+**Which do you want?**
+1. **Override §stable-tab-keys**, accepting the remount and lost-input risk. The subagent will implement renumbering in `closeTab`, update the tests (including "close keeps keys"), and rewrite the decision record with today's date and a note of what it replaces.
+2. **Position-based URL keys**, leaving the recorded decision in place.

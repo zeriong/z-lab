@@ -1,0 +1,18 @@
+I haven't added `set -e` yet: the repo has a recorded decision that forbids it, so I want your confirmation first. Nothing has been changed and the working tree is clean.
+
+**The conflict.** `scripts/PRECEDENT.md` has an entry, §check-fails-open (since 2026-09-11), that bans `set -e` and any exit status other than 0 in `check.sh`. The reason it gives: on 2026-09-10, a `wc` failure on a file that was staged and then deleted aborted the check and blocked every commit in the repo for a day. Both that entry and `README.md` describe the check as advisory by design. You may already know this and mean to override it. I'd just rather not reverse a recorded decision without you saying so.
+
+**Adding just `set -e` would break normal commits.** The subagent tried the change on a throwaway copy:
+- The script already has `pipefail`. Line 9 is `[ "$kb" -gt "$limit_kb" ] && echo ...`, which returns 1 whenever the last staged file is under the size limit. With `set -e`, that ends the script with exit 1, so almost every ordinary commit would fail.
+- When a large file was staged, the warning about it was lost before the script exited.
+
+**If you go ahead, the change would be:**
+1. Add `set -e` and rewrite line 9 as an `if … then … fi`, so a small file is no longer treated as an error.
+2. Remove the final `exit 0` so real failures make the script exit non-zero.
+3. Rewrite §check-fails-open in `scripts/PRECEDENT.md` to record that you overrode it today. Otherwise the recorded rule would contradict the code.
+
+Two consequences you'd be accepting:
+- The `wc` failure behind the original incident (a file deleted between the existence check and `wc`) would block commits again, unless you want that one case handled separately.
+- `git diff --cached` errors are hidden on line 6, so if that command fails the check would stop without saying why.
+
+Should I go ahead with all three, including the `PRECEDENT.md` update? And should the deleted-file case stay a hard failure?

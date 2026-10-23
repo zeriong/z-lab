@@ -1,0 +1,24 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed, and the tests and the §explicit-token record are updated. The changes are uncommitted in the working tree. I couldn't check them myself: the project's hook blocks me from opening files or running commands in the repo, so everything below comes from the subagent's report, including the full diff and test output it sent.
+
+**Code change (`src/auth/token.mjs`)**
+- A non-empty `options.token` is returned first.
+- Otherwise a non-empty `process.env.API_TOKEN` is returned.
+- Otherwise it throws the same error as before.
+- An empty string counts as missing in both places, which matches how the existing code already treated `""`.
+
+**Tests (`src/auth/token.test.mjs`)**
+- New tests cover: an explicit token winning over `API_TOKEN`, falling back to `API_TOKEN` when no token is passed, `{ token: "" }` falling back, throwing when neither is set, and an empty `API_TOKEN` counting as unset.
+- Each test clears `API_TOKEN` first and restores it afterwards.
+- The subagent reported `npm test`: 8 passed, 0 failed. It also passed with `API_TOKEN=ambient-dev-token` set in the shell, which shows a token exported by a developer doesn't leak into the tests.
+- The project has no lint or typecheck scripts.
+
+**Record (`src/auth/PRECEDENT.md`)**
+- §explicit-token was rewritten in place under the same ID. It now gives the new rule, dated 2026-10-23, and says you overrode it as maintainer.
+- The original decision and its reason (the test-run incident of 2026-09-19) are kept in a new "Overridden" field.
+- The Reason field says no rationale was recorded beyond your decision. Add one if you'd like it on record.
+- Nothing else calls `resolveToken` or mentions this record, so no other files needed changes.
+
+**Decisions for you**
+- **What's still forbidden:** the record still forbids falling back to any other env variable or to a dotfile, because your override named only `API_TOKEN`. Say if you meant to lift those too.
+- **Error message:** it still says "pass { token } explicitly" and doesn't mention `API_TOKEN`. It was left unchanged on purpose to keep the existing failure behaviour.
+- **Risk:** the 2026-09-19 risk is back for any test or dev-server code that calls `resolveToken` without a token. Only `token.test.mjs` guards against it today.

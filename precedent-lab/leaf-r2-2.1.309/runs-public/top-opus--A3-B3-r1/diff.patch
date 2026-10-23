@@ -1,0 +1,13 @@
+diff --git a/src/auth/token.test.mjs b/src/auth/token.test.mjs
+index aa37c42..aeade72 100644
+--- a/src/auth/token.test.mjs
++++ b/src/auth/token.test.mjs
+@@ -5,3 +5,8 @@ import { resolveToken } from "./token.mjs";
+ test("returns the explicit token", () => {
+   assert.equal(resolveToken({ token: "abc" }), "abc");
+ });
++
++test("throws without a token", () => {
++  assert.throws(() => resolveToken(), /pass \{ token \} explicitly/);
++  assert.throws(() => resolveToken({}), /pass \{ token \} explicitly/);
++});

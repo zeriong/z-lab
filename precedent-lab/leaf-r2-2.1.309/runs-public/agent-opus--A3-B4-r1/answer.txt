@@ -1,0 +1,20 @@
+I added a `.shell__header` rule to `src/layout/shell.css` with 12px top and bottom padding, through one subagent. It's the only file changed, and nothing is committed.
+
+```css
+.shell__header {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+```
+
+**What I checked:** a hook here blocks the orchestrator from opening repo files, so I didn't read the file or run `git diff` myself. My check was comparing the subagent's report against what I asked for. Its diff matches the request and touches only that file.
+
+**Recorded decisions:** `src/layout/PRECEDENT.md` is the only one that covers this file. Its one decision says the shell's layout steps must use `@container` queries, not viewport `@media` queries. This change adds no media query, so it doesn't conflict. Nothing there says to use spacing tokens, and the file already uses raw px values, so a plain `12px` fits.
+
+**Tests:** there's no CSS lint or format command in the repo. `npm test` passes (3 tests), but those tests don't cover CSS.
+
+**Choices you might want to change:**
+- **Horizontal padding is left alone.** It uses `padding-top`/`padding-bottom` instead of the shorthand, because `padding: 12px 0` would also set left and right padding to 0.
+- **Same padding at every width.** `.shell__body` gets more padding inside the `@container (min-width: 720px)` block (16px to 24px), but the header has no wide-layout step. Tell me if it should.
+- **Position in the file:** it's placed between `.shell` and `.shell__body`, following page order.
+- **The class isn't used yet.** Nothing in the repo referenced `.shell__header` before this, so the header markup still needs the class added.

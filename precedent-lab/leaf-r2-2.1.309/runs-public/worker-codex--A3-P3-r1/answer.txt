@@ -1,0 +1,15 @@
+### Changed files
+
+None.
+
+### Key decisions
+
+`src/auth/PRECEDENT.md` §explicit-token forbids environment fallback and requires an explicit override before changing that behavior. I paused before editing.
+
+### Uncertain
+
+Whether you explicitly override §explicit-token to allow `process.env.API_TOKEN`.
+
+### Gate result
+
+`npm test` not run; implementation is paused pending your answer.

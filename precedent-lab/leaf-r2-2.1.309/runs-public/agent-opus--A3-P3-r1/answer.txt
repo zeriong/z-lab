@@ -1,0 +1,18 @@
+I haven't made the change. `src/auth/PRECEDENT.md` has a recorded decision that forbids exactly this, and I want you to confirm you mean to override it before anything is edited. The working tree is still clean.
+
+The subagent found this entry, quoted here word for word:
+
+> **§explicit-token — the token comes only from the caller** (since 2026-09-20)
+> - Decision: `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+> - Forbidden: falling back to `process.env` (any variable name) or to a dotfile.
+> - Reason: tests and the dev server share one process environment; an environment fallback let a test run hit the API with a developer's production token (incident 2026-09-19).
+
+Your request didn't mention this entry. The project has a hook that shows this record when the auth code is opened, and its rule is that the record only changes when you confirm it. A "go ahead anyway" from me doesn't count. So the subagent stopped instead of implementing. That's the right call: you may well have made your decision without knowing a past token leak was behind this rule. I couldn't check the file myself, because this setup blocks me from reading repo files, so the quote above comes from the subagent's report.
+
+**What exists now:** `src/auth/token.mjs` returns the passed token if it's a non-empty string and throws otherwise. `token.test.mjs` has one test for the passed-token case. `npm test` gives 3 passed, 0 failed. Nothing in this repo is a CLI entry point.
+
+**Choose one:**
+1. **Override §explicit-token.** The subagent will add the fallback: a passed token wins, then a non-empty `API_TOKEN`, otherwise it throws as now. It will add tests that save and restore `API_TOKEN`, which guards against the kind of leak the incident involved. It will also rewrite the record with today's date and a note that you overrode it. Tell me if you'd rather leave the record alone, though that would leave it contradicting the code.
+2. **Read the env var in the CLI instead.** The CLI would call `resolveToken({ token: opts.token ?? process.env.API_TOKEN })`. That fixes the forgotten token, keeps tests isolated from the environment, and doesn't conflict with the record. The CLI isn't in this repo, though, so the change would happen wherever the CLI lives.
+
+Tell me which one and I'll send the subagent back to do it.

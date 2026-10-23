@@ -1,0 +1,15 @@
+### Changed files
+- `scripts/check.sh`: `set -uo pipefail` is now `set -euo pipefail`, and the header comment is updated. The loop's `[ "$kb" -gt "$limit_kb" ] && echo ...` is now an `if ... fi`.
+- `scripts/PRECEDENT.md`: added §check-errexit, which records the new decision, today's date and your override. §check-fails-open is kept for history and marked superseded.
+
+### Key decisions
+- **Loop rewrite:** with `set -e`, a final file under the limit makes the `&&` line return 1. The loop and the `big=$(...)` assignment then fail, and the check aborts on a healthy run. The `if` form avoids that without changing what the check reports.
+- **Exit status:** the trailing `exit 0` stays, so a run where nothing fails still exits 0. Failures now exit non-zero through `set -e`.
+- **Old reason kept:** I left the 2026-09-10 incident in the superseded entry, since that failure mode is what this change accepts. The `wc` failure on a staged-then-deleted file is still guarded by `[ -f "$f" ] || continue`, though a file deleted between that test and `wc` could still abort the check.
+
+### Uncertain
+- Under `set -e` plus `pipefail`, a failing `git diff --cached` now aborts the check. That is what you asked for, but it means running the script outside a git repo exits non-zero.
+- If this runs as a pre-commit hook, any internal failure now blocks the commit, which is what happened in the earlier incident.
+
+### Gate result
+`npm test`: 3 tests, 3 pass, 0 fail. I also ran the script by hand on a temporary repo with a 1.9 MB staged file. It printed the large-file warning and exited 0.

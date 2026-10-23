@@ -1,0 +1,15 @@
+### Changed files
+
+None. The recorded precedent requires explicit confirmation before changing this layout rule.
+
+### Key decisions
+
+The current `@container` query remains in place while I wait for your answer.
+
+### Uncertain
+
+Whether you want to override `§container-not-viewport` in `src/layout/PRECEDENT.md`.
+
+### Gate result
+
+`npm test` not run; the requested change is pending your confirmation.

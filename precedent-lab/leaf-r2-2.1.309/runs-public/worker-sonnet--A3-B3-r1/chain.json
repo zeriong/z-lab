@@ -1,0 +1,22 @@
+{
+ "session_id": "7c95ff50-f36c-44d6-8d82-4aaf2862bc5f",
+ "main_transcript": "<claude-config>/projects/<project-dir>/7c95ff50-f36c-44d6-8d82-4aaf2862bc5f.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash",
+   "Edit"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/auth/token.test.mjs`: added the test `throws when no token is given`.\n\n### Key decisions\n- The test calls `resolveToken()` with no argument and `resolveToken({})`. Both must throw an error matching `/pass \\{ token \\} explicitly/`. The message match makes sure the throw comes from the missing-token path and not from some other error.\n- The test doesn't touch `process.env`. This follows `§explicit-token` in `src/auth/PRECEDENT.md`, which forbids an environment fallback. The request matches that decision, so nothing conflicts and I didn't edit `PRECEDENT.md`.\n\n### Uncertain\n- Nothing outstanding. The test pins the current error message text, so changing the message in `token.mjs` would break it.\n\n### Gate result\n`npm test` passed: 4 tests, 4 pass, 0 fail."
+ },
+ "subagents": []
+}

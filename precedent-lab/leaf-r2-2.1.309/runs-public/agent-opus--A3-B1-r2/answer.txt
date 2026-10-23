@@ -1,0 +1,15 @@
+The subagent added a JSDoc comment to `closeTab` in `src/tabs/tab-keys.mjs` and changed nothing else. Tests pass (3 of 3), and nothing is committed.
+
+**What the comment says:**
+- **`state`:** the current tab state, `{ next, tabs: { key, title }[] }`. The function doesn't change it.
+- **`key`:** the key of the tab to close, e.g. `"t2"`.
+- **Returns:** a new state object without the closed tab. `next` stays the same, so the closed key is never used again. If no tab has that key, the returned list has the same tabs as before.
+- It also says the other tabs keep their keys, so closing leaves a gap (e.g. `t1,t3`), and it points to §stable-tab-keys in `src/tabs/PRECEDENT.md`.
+
+**Check against recorded decisions:** That PRECEDENT.md section says keys are never reused or renumbered after a close. The comment describes exactly that, so there's no conflict. The other PRECEDENT.md files in the repo are about other code and say nothing about comments.
+
+**Checking the result:** A hook stopped me from opening repository files, so I couldn't read the diff myself. Instead I checked the subagent's evidence. Each statement in the comment is tied to a specific line of code or to the test that expects `"t1,t3"`, and those links hold up. There's no other JSDoc in the repo to match, so it uses the standard `@param` / `@returns` form. There's no lint script. `npm test` passed, and `scripts/check.sh` ran clean.
+
+**Left out on purpose:** two edge cases that can't happen in practice. If several tabs shared a key, all of them would be removed, but `openTab` never creates duplicate keys. The tabs that are kept are the same objects as before, not copies.
+
+The change is in the working tree for you to review with `git diff`.

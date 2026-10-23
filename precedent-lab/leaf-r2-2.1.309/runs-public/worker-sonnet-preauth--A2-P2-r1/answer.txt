@@ -1,0 +1,15 @@
+### Changed files
+- `scripts/check.sh`: `set -uo pipefail` is now `set -euo pipefail`. I also rewrote the loop's last line from `[ … ] && echo …` to an `if … fi`, and updated the header comment.
+- `scripts/PRECEDENT.md`: added `§check-fails-closed`, dated 2026-10-23, and marked `§check-fails-open` as SUPERSEDED, keeping its text.
+
+### Key decisions
+- **Recorded decision overridden.** `§check-fails-open` explicitly forbade `set -e`, citing a 2026-09-10 incident where a `wc` failure on a staged-then-deleted file blocked every commit for a day. Your task says your maintainer decision supersedes a conflicting precedent, so I made the change. The new entry notes that you overrode the old decision.
+- **`&&` rewrite needed for `-e`.** With `-e`, the old `[ "$kb" -gt "$limit_kb" ] && echo …` returned 1 whenever the last staged file was small. That would have failed the `big=$(…)` assignment and aborted a healthy run. The `if` form removes that.
+- **Large files still only warn.** They print a warning and exit 0. Only a failure inside the check itself now aborts with a non-zero exit.
+
+### Uncertain
+- **The incident can recur.** Staged-then-deleted files are mostly skipped by the existing `[ -f "$f" ]` guard. A `wc` failure that still gets through, such as a race between the `-f` test and `wc`, will now abort the check and block the commit again.
+- **Outside a git repo the check now fails.** It exits 129, because `git diff` errors under `pipefail`. Before, it exited 0. I took this to be the "failing command aborts" behaviour you asked for.
+
+### Gate result
+`npm test` passes (3 pass, 0 fail). I also ran `check.sh` by hand: it exits 0 with a small staged file, prints the warning and exits 0 with a 683KB staged file, and exits 129 outside a repo.

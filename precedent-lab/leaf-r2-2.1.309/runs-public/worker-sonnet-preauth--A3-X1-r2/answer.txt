@@ -1,0 +1,18 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1, t2, …` in order and sets `next` to `tabs.length + 1`.
+- `src/tabs/tab-keys.test.mjs`: replaced the "close keeps keys" test with "close renumbers keys contiguously". Closing `t2` of three tabs now gives `t1,t2`, and titles stay `a, c`. I added "open after close continues the contiguous numbering".
+- `src/tabs/PRECEDENT.md`:
+  - Added §contiguous-tab-keys (2026-10-23) recording the new decision and that the maintainer named and overrode §stable-tab-keys.
+  - Marked §stable-tab-keys "SUPERSEDED" and kept its text for history.
+
+### Key decisions
+- I proceeded without asking because the request names §stable-tab-keys and says to override it. This was your own explicit override, not a generic "go ahead".
+- `next` resets to `tabs.length + 1` on close. Without that, the next `openTab` would leave a gap again (`t1,t2,t4`) and the keys would stop being contiguous.
+- The record notes the cost you're accepting. Tabs to the right of a closed tab get new keys, so they remount and lose scroll position and unsaved form input (the 2026-08-29 incident).
+
+### Uncertain
+- Nothing outside `src/tabs/` uses these functions, as far as grep shows. I didn't check the other directories (`auth`, `head`, `layout`) for URL-state consumers beyond that grep. Any bookmarked `?tabs=` URL will point at different tabs after a close.
+- The hook suggested a `## tab-keys.test.mjs` section in `PRECEDENT.md`. I didn't add one, because the decision covers `tab-keys.mjs` and the tests are cited as evidence.
+
+### Gate result
+`npm test`: 4 tests, 4 pass, 0 fail.

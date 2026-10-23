@@ -1,0 +1,17 @@
+The shell's layout step now uses a viewport media query, and I rewrote the decision record to match. Nothing is committed.
+
+**`src/layout/shell.css`**
+- `@container (min-width: 720px)` is now `@media (min-width: 720px)`, with the same rules inside.
+- I removed `container-type: inline-size` from `.shell`. It was only there for the container query, and leaving it on would still turn on inline-size containment for no reason. If anything outside this repo uses `.shell` as a container, put that line back.
+
+**`src/layout/PRECEDENT.md`**
+I rewrote the old block in place as `§viewport-not-container`, dated 2026-10-23. It records:
+- the new decision;
+- that you, as maintainer, overrode `§container-not-viewport` (2026-09-15);
+- what the old record required, and the incident behind it.
+
+I didn't keep the old "Forbidden" line, and I didn't add a new one, because you didn't state any new restriction. The record has no reason for the change beyond "maintainer override", so you may want to add your reasoning there.
+
+**The bug this brings back:** the shell now picks its layout from the browser window's width, not the pane's. In a split pane narrower than 720px on a wide screen, it will switch to two columns and the 240px sidebar can be clipped again, as in the 2026-09-14 incident. I noted this as "Known cost" in the record.
+
+`npm test` passes, but no test covers the CSS, so I haven't checked the layout in a browser.

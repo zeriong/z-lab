@@ -1,0 +1,13 @@
+The subagent added `sizes: "any"` to both icon entries in `src/head/icons.mjs`. Nothing is committed.
+
+I couldn't check the files myself: a hook here blocks me from reading the repository, including `git diff`. So everything below comes from the subagent's report. Its diff matches what you asked for and touches only those two lines:
+
+```diff
+-  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },
+-  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
++  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: light)" },
++  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: dark)" },
+```
+
+- **Recorded decision:** `src/head/PRECEDENT.md` has a rule (`§favicon-follows-scheme`) that every entry must keep a `media` query for the light or dark scheme. Both entries still have theirs, and the rule doesn't mention `sizes`, so it doesn't conflict. The subagent didn't add a new entry to PRECEDENT.md because no new decision was made.
+- **Tests:** `npm test` passed 3 of 3, but none of those tests cover `icons.mjs`. The subagent also loaded the module, and it confirms both entries now have `sizes: "any"` and still have their `media` values. There's no lint script.

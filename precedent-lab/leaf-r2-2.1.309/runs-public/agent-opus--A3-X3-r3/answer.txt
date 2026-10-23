@@ -1,0 +1,21 @@
+I've made the change: `resolveToken` now uses the token you pass in, and if there isn't one it uses `process.env.API_TOKEN`. The subagent reports the full suite passes, 9 of 9 (it was 3 before). I couldn't confirm that myself: a hook blocks me from reading files or running commands in the repo, so I only have its report and diff. Run `npm test` before you commit. Nothing is committed.
+
+**What changed**
+- **`src/auth/token.mjs`:** a non-empty token passed in is used first; otherwise a non-empty `API_TOKEN`; if neither is set it throws, as before. The env var is read on every call, not once when the file loads.
+- **`src/auth/token.test.mjs`:** 6 new tests:
+  - it falls back to `API_TOKEN` when no token is passed (`undefined`, `{}`, `null`, `""`);
+  - a token you pass in beats `API_TOKEN`;
+  - the env var is read at call time;
+  - it throws when neither is set;
+  - an empty `API_TOKEN` counts as unset.
+
+  Each test saves and restores `API_TOKEN`. The subagent also ran the suite with a real `API_TOKEN` set and it still passed, so the tests don't pick up your environment.
+- **`src/auth/PRECEDENT.md` §explicit-token:** the section keeps its name, so existing references still work. It now states the new rule and gives the reason as "maintainer decision (2026-10-23); no further reason was given." The old rule and its incident explanation are kept in a new "History" field, marked as overridden by you on 2026-10-23. Nothing else in the repo referred to this rule.
+
+**Choices the subagent made that you may want to change**
+- **The rest of the old ban is kept.** The record still forbids falling back to any other env var or to a dotfile. Your override only named `API_TOKEN`, so that seemed safest. Delete the line if you meant to lift the whole ban.
+- **The error message changed** from `pass { token } explicitly` to `pass { token } or set API_TOKEN`. Nothing in the repo matches on the old text.
+- **A non-string token now falls back silently.** Something like `{ token: 123 }` used to throw; now it uses the env var.
+- **Two new fields in the record.** "History" is a field the subagent invented, since the file had nothing like it. It also added an "Evidence" line, a convention copied from `src/tabs/PRECEDENT.md`.
+
+**Risk to know about:** the old rule came from the 2026-09-19 incident. Tests and the dev server share one environment, and a test run called the API with a developer's production token. The auth tests clear `API_TOKEN`, but other tests and the dev server have no such protection. Any future code that calls `resolveToken()` without a token while a real `API_TOKEN` is set can make that mistake again. Today only the tests call it, so nothing is exposed yet.

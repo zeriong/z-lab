@@ -1,0 +1,8 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`:
+
+```js
+{ rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: light)" },
+{ rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: dark)" },
+```
+
+Both entries still have their `media` query, as the recorded decision `§favicon-follows-scheme` in `src/head/PRECEDENT.md` requires, so the change doesn't conflict with it. The tests pass (3 of 3), but none of them cover `icons.mjs`. Nothing is committed.

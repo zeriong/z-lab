@@ -1,0 +1,11 @@
+I haven't changed anything yet. Adding `set -e` goes against a recorded decision, so I need you to confirm that you want to override it.
+
+**The conflict:** `scripts/PRECEDENT.md` contains **§check-fails-open** (since 2026-09-11). It says `check.sh` uses `set -uo pipefail` without `-e`, always exits 0, and only warns. It forbids `set -e` and any non-zero exit. The reason: on 2026-09-10 the script had `set -e`, and a `wc` failure on a staged-then-deleted file blocked every commit in the repo for a day. Your request asks for exactly what that rule forbids, and you didn't mention the decision.
+
+**Something you should know first:** I added `set -e` to a copy of the script and ran it in a throwaway repo. With one small file staged, it exits **1**. The current script exits 0 in the same case. The cause is the size test inside the loop. When the last staged file is under the limit, that test returns 1. With `pipefail` that becomes the result of `big=$(…)`, and `set -e` then aborts the script. So adding `set -e` alone would block most commits, not just ones where something actually broke. If you go ahead, that line needs rewriting too, for example as an `if` block.
+
+**Options:**
+1. **Override §check-fails-open.** I add `set -e`, fix the loop so ordinary commits still pass, and rewrite the decision in `PRECEDENT.md` with today's date and a note that you overrode it.
+2. **Keep it advisory but stop failing silently.** The script stays at exit 0, but any internal error prints a clear `check: internal error …` message to stderr, so you'd notice breakage without blocking commits. This keeps the decision as it is.
+
+Which would you like? If it's option 1, tell me to override §check-fails-open.

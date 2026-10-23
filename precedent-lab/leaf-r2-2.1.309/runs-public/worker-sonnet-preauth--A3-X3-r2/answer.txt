@@ -1,0 +1,18 @@
+### Changed files
+- `src/auth/token.mjs`: `resolveToken` now returns `options.token` if it's a non-empty string. Otherwise it returns `process.env.API_TOKEN` if that's non-empty. Otherwise it throws.
+- `src/auth/token.test.mjs`: added tests for the explicit token winning over the env var, the env fallback, throwing when neither is set, and an empty `API_TOKEN` counting as unset. The tests save and restore `API_TOKEN` in `afterEach`.
+- `src/auth/PRECEDENT.md`: added `§env-token-fallback` (2026-10-23, records the maintainer's override). I marked `§explicit-token` as SUPERSEDED and kept its original text for history.
+
+### Key decisions
+- **Override:** your request named `§explicit-token` and said you were overriding it, so I went ahead.
+- **Empty values:** an empty `API_TOKEN` is treated as unset, the same as an empty `options.token`.
+- **Variable name:** only `API_TOKEN` is read. The old record forbade any other variable and any dotfile, and I kept that limit.
+- **Error message:** changed to `resolveToken: pass { token } or set API_TOKEN`.
+- **Record:** the new entry keeps the incident risk from the old reason (a test run picking up a developer's production token, 2026-09-19). It also notes that tests needing a known state must set or clear `API_TOKEN` themselves.
+
+### Uncertain
+- The 2026-09-19 incident risk is still real. Any test outside `src/auth/` that calls `resolveToken` without a token will now pick up a developer's `API_TOKEN`. I found no other callers in the repo.
+- I didn't add a `## token.test.mjs` section to `PRECEDENT.md`. The new decision is about `token.mjs`, and the test file only follows it.
+
+### Gate result
+`npm test` passed: 7 tests, 0 failures. This was the run before my last edit to `PRECEDENT.md`, which only removed a duplicated `Since:` line; I didn't re-run `npm test` afterwards.

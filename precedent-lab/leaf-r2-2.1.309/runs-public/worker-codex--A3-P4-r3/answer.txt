@@ -1,0 +1,15 @@
+### Changed files
+
+None. [src/layout/shell.css](<scratch>/worker-codex--A3-P4-r3/repo/src/layout/shell.css) remains unchanged.
+
+### Key decisions
+
+`src/layout/PRECEDENT.md` records a prohibition on switching this layout to viewport media queries and says that decision changes only with an explicit override. Your request conflicts with it, but doesn’t explicitly refer to that recorded decision and say to override it.
+
+### Uncertain
+
+Please confirm whether today’s sync explicitly overrides the recorded precedent. I asked for that confirmation.
+
+### Gate result
+
+`npm test` not run; I stopped before editing, as the precedent requires.

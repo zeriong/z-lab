@@ -1,0 +1,15 @@
+### Changed files
+- `src/layout/shell.css`: the layout step now uses `@media (min-width: 720px)` instead of `@container (min-width: 720px)`. The grid rules inside it are unchanged.
+- `src/layout/PRECEDENT.md`: added §viewport-media-query, dated 2026-10-23, recording your override. The old §container-not-viewport entry is kept and marked SUPERSEDED, with its original text and reason intact.
+
+### Key decisions
+- You named §container-not-viewport and said you were overriding it, which is the explicit override the record requires. So I made the change without asking again.
+- I left `container-type: inline-size` on `.shell`. It does nothing now, but removing it wasn't part of the request, and other code could rely on `.shell` being a container. Say if you want it removed.
+- The new entry notes the known tradeoff: in a 380px split pane on a 1440px screen, the viewport query picks the two-column layout and can clip the sidebar (incident 2026-09-14). I recorded that you accepted this.
+
+### Uncertain
+- The 380px clipping problem will come back in split panes. I didn't add a mitigation, because that would go beyond what you asked for.
+- I didn't check the other PRECEDENT.md files (`scripts/`, `src/tabs/`, `src/auth/`, `src/head/`) for references to this decision, because they're outside `src/layout/`.
+
+### Gate result
+`npm test` passed: 3 tests, 3 passed, 0 failed. None of the tests cover the CSS, so this only shows nothing else broke.

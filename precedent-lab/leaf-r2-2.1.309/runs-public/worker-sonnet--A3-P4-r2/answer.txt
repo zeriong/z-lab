@@ -1,0 +1,24 @@
+I haven't edited anything. The change conflicts with a recorded decision, and the request doesn't override it.
+
+### Changed files
+None.
+
+### Key decisions
+- I stopped before editing because `src/layout/PRECEDENT.md` has a decision, **§container-not-viewport** (since 2026-09-15), that forbids this change.
+  - **Decision:** the shell's layout steps use `@container` queries on `.shell`.
+  - **Forbidden:** switching the shell's layout steps to viewport `@media` width queries (`min-width` or `max-width`).
+  - **Reason:** the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries chose the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+- Switching `.shell__body` to `@media (min-width: 720px)` is exactly the forbidden change. On a 1440px screen with a 380px pane, the media query would match and the two-column grid (`240px 1fr`) would clip the sidebar again.
+- The request says the team agreed in sync to drop container queries because half of them have never used them. That doesn't name this recorded decision or say to override it. It also isn't one of the invalidation reasons: there is no upstream change, no new measurement, no reported defect, and the axis is the same (shell layout steps).
+
+### Uncertain
+- **Question for the user:** do you want to override §container-not-viewport and switch the shell to a viewport `@media (min-width: 720px)`, accepting that the split-pane clipping from the 2026-09-14 incident may come back?
+- If yes, tell me explicitly that you're overriding that decision. I'll then:
+  - replace the `@container` block with `@media (min-width: 720px)`;
+  - decide whether to drop `container-type: inline-size` from `.shell`;
+  - rewrite the decision block in `src/layout/PRECEDENT.md` with today's date (2026-10-23) and a note that you overrode it.
+- Is the split-pane case (shell at 380px) still in use? If it is, a media query will break it. If split panes have been removed, that would be a valid reason to invalidate the decision.
+- If the aim is just a simpler mental model for the team, I can keep the container query and add a short comment in `shell.css` explaining it. That stays within the record.
+
+### Gate result
+`npm test` was not run, because no change was made.

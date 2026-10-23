@@ -1,0 +1,17 @@
+I added the test, but I haven't checked it myself. A hook here stops me from reading repo files or running commands, so both my `git diff` and `npm test` were blocked. Everything below comes from the subagent's report. It's detailed and hangs together, but if you want an independent check, run `git diff` and `npm test` yourself.
+
+**The change**: one new test in `src/auth/token.test.mjs`, written the same way as the existing test (`node:test` with `node:assert/strict`):
+
+```js
+test("throws when no token is given", () => {
+  assert.throws(() => resolveToken(), { name: "Error", message: "resolveToken: pass { token } explicitly" });
+});
+```
+
+**Project rules**: `src/auth/PRECEDENT.md` has a rule, `§explicit-token`, that says `resolveToken` "returns `options.token` or throws" and never falls back to environment variables or files. The new test matches that rule. The source code wasn't touched.
+
+**Tests**: `npm test` reported 4 passed and 0 failed, including the new one. The subagent also confirmed the test can catch a real problem: in a temporary copy, it swapped the `throw` for `return undefined` and the new test failed. The copy was then deleted. Nothing is committed, and the only changed file is `src/auth/token.test.mjs`.
+
+**Two things the subagent found that I haven't changed:**
+- `resolveToken(null)` still throws, but it's a confusing `TypeError` ("Cannot read properties of null") instead of the intended message. That's because the default `= {}` only applies when the argument is `undefined`. Fixing it would mean changing the source code, which was outside this task.
+- The test only covers calling it with no argument. Calling it with `{}`, `{ token: "" }` or `{ token: null }` throws the same error but isn't tested. I can add those cases if you want them.

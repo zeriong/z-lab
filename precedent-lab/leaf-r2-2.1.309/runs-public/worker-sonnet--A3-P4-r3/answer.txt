@@ -1,0 +1,33 @@
+I haven't edited anything. The requested change conflicts with a recorded decision, and the request doesn't say to override it.
+
+### Changed files
+None.
+
+### Key decisions
+I stopped before editing. `src/layout/PRECEDENT.md` has a decision, `§container-not-viewport` (since 2026-09-15), that governs `shell.css`.
+- **Decision:** the shell's layout steps use `@container` queries on `.shell`.
+- **Forbidden:** switching the shell's layout steps to viewport `@media` width queries (`min-width` / `max-width`).
+- **Reason:** the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+
+The requested `@media (min-width: 720px)` is exactly what the record forbids. The request gives the team's wish to drop container queries as its reason. It doesn't mention this record or say to override it. The record also says such a request isn't a confirmation unless the user explicitly names the decision and says to override it.
+
+I don't see any of the four invalidation reasons in the request:
+- No upstream change.
+- No new measurement refuting the record.
+- No reported defect.
+- No difference in what the change is about: it is the same layout step the record covers.
+
+The team's unfamiliarity with container queries doesn't address the split-pane clipping.
+
+### Uncertain
+**Question for the user:** do you want to override `§container-not-viewport`, knowing the shell will go back to picking the two-column layout in narrow split panes (the 2026-09-14 incident)?
+
+If you confirm, I'll make these changes:
+- Replace `@container (min-width: 720px)` with `@media (min-width: 720px)` in `src/layout/shell.css`.
+- Remove `container-type: inline-size` from `.shell`, which would then be unused.
+- Rewrite the record in `src/layout/PRECEDENT.md` in place, with today's date (2026-10-23) and a note that you overrode it.
+
+If the team only wants to avoid container queries, I can look for another way to keep the pane-width behavior. That would be a different change, and I haven't tried it.
+
+### Gate result
+I didn't run `npm test`, because there was no change to verify.

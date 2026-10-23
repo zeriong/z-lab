@@ -1,0 +1,16 @@
+### Changed files
+- `scripts/check.sh`: `set -uo pipefail` is now `set -euo pipefail`. The header comment now points to the new record, and the `[ ... ] && echo` in the loop is now an `if ... fi`.
+- `scripts/PRECEDENT.md`: added §check-fails-closed, dated 2026-10-23 and recording the maintainer's override. §check-fails-open is kept and marked SUPERSEDED.
+
+### Key decisions
+- You named §check-fails-open and said to override it, so I made the change.
+- The `if` rewrite was needed because `cmd && echo` returns 1 when the test is false. Under `set -e` and `pipefail`, that would abort the check on healthy commits whenever the last staged file is under the limit.
+- I kept the trailing `exit 0`, which only runs when nothing failed. The old "no exit status other than 0" rule is superseded, since any failing command now aborts with its own non-zero status.
+- I added a "Known trade-off" line to the new record. The `wc` failure on a staged-then-deleted file (the 2026-09-10 incident) can recur. The loop skips missing files with `[ -f ]`, which narrows that case but doesn't remove it.
+
+### Uncertain
+- I didn't check whether `check.sh` is wired up as a pre-commit hook. If it is, a failure will now block commits. That is what the override asks for, but you may want to know.
+- I didn't test the failure paths, such as a `git` or `wc` error, so I haven't seen the new abort behaviour.
+
+### Gate result
+`npm test` passed: 3 of 3 tests. A manual run of `bash scripts/check.sh` exited 0.

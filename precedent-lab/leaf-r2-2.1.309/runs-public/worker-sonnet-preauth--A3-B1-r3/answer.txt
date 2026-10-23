@@ -1,0 +1,15 @@
+The change is a comment only and records no new decision, so I left `PRECEDENT.md` unchanged.
+
+### Changed files
+- `src/tabs/tab-keys.mjs`: added a JSDoc block to `closeTab`.
+
+### Key decisions
+- The JSDoc says the remaining tabs keep their keys, with the example `t1,t2,t3` → `t1,t3`. This matches the recorded decision §stable-tab-keys in `src/tabs/PRECEDENT.md`, which this change doesn't contradict.
+- I wrote the state type inline as `{ next, tabs: Array<{ key, title }> }`. The file has no typedef, and I didn't add one.
+- The doc says an unknown key leaves the tabs unchanged and that the input state isn't mutated. Both follow from the `filter` implementation.
+
+### Uncertain
+- Nothing.
+
+### Gate result
+`npm test`: 3 tests run, 3 passed, 0 failed.

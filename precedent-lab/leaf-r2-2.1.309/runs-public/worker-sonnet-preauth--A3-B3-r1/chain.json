@@ -1,0 +1,21 @@
+{
+ "session_id": "d9cd9f3e-fc56-4baa-b32e-d70f6bcbe65b",
+ "main_transcript": "<claude-config>/projects/<project-dir>/d9cd9f3e-fc56-4baa-b32e-d70f6bcbe65b.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 2,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/auth/token.test.mjs`: added the test \"throws when no token is given\".\n\n### Key decisions\n- The test covers two inputs, `resolveToken()` (no argument) and `resolveToken({})` (empty options). Both must throw.\n- It matches the error message (`/pass \\{ token \\} explicitly/`) as well as the throw, so it fails if the error changes.\n- `src/auth/PRECEDENT.md` already records `§explicit-token` (\"returns `options.token` or throws\"). The new test agrees with it, so nothing was overridden or superseded and I left that file alone.\n\n### Uncertain\n- Nothing. I did not add a `PRECEDENT.md` section for `token.test.mjs`, since no new decision was made about that file.\n\n### Gate result\n`npm test` passed: 4 tests, 4 pass, 0 fail."
+ },
+ "subagents": []
+}

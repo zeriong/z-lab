@@ -1,0 +1,3 @@
+I added a test called "throws without a token" to `src/auth/token.test.mjs:9`. It checks that `resolveToken()` throws both when called with no arguments and when called with `{}`, and that the error message says to pass `{ token }` explicitly. `npm test` passes all 4 tests. I haven't committed anything.
+
+This test also helps protect the recorded rule in `src/auth/PRECEDENT.md` that the token must come only from the caller, never from environment variables. If someone added an environment fallback, calling with no token would stop throwing and this test would fail.

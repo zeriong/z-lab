@@ -1,0 +1,18 @@
+### Changed files
+- `scripts/check.sh`
+- `scripts/PRECEDENT.md`
+
+### Key decisions
+- **Override:** you named §check-fails-open and said to override it, so I changed it. The script now uses `set -euo pipefail`.
+- **Record rewrite:** I rewrote the §check-fails-open block in place. It is dated 2026-10-23, says you overrode it as maintainer, and keeps the 2026-09-10 incident as history.
+- **Loop fix:** I changed `[ "$kb" -gt "$limit_kb" ] && echo …` to an `if … then … fi`. Under `set -e`, the old form made the loop return non-zero whenever the last staged file was under the limit. That would have aborted the check on most commits.
+- **Command substitutions:** I added `shopt -s inherit_errexit 2>/dev/null || true`. Without it, bash doesn't apply `-e` inside `$(...)`, so a `wc` failure would not abort. On bash older than 4.4 (including macOS's 3.2) the option doesn't exist, so it does nothing there.
+- **Exit status:** the final `exit 0` stays for the success path. Warnings about large files still don't fail the check.
+
+### Uncertain
+- On bash older than 4.4, a `wc` failure inside the loop will not abort the check. On those versions only failures outside `$(...)` abort, such as a failing `git diff` through `pipefail`.
+- The `[ -f "$f" ]` guard still skips staged-then-deleted files, so the 2026-09-10 incident shouldn't recur. I did not reproduce that scenario.
+- I couldn't run the check against staged files in this tree, since it was clean. I only ran it with nothing staged, where it exits 0.
+
+### Gate result
+`npm test` passed (3 tests, 0 failures). `bash -n scripts/check.sh` was clean.

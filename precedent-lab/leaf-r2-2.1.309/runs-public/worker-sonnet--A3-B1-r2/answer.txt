@@ -1,0 +1,16 @@
+I added the JSDoc to `closeTab`, and `npm test` passes. This change doesn't make a new decision, so I left `src/tabs/PRECEDENT.md` alone.
+
+### Changed files
+- `src/tabs/tab-keys.mjs`: added a JSDoc block above `closeTab`. No code changed.
+
+### Key decisions
+- **Parameters and return:** the comment describes `state` and `key`. The return is a new state with the tab removed, `next` unchanged and the input not mutated.
+- **Unknown key:** it says an unknown key is ignored, because the `filter` does nothing in that case.
+- **Stable keys:** it says remaining tabs keep their keys, with a `t1,t2,t3` → `t1,t3` example. This matches the `§stable-tab-keys` decision in `src/tabs/PRECEDENT.md`, which my change doesn't touch.
+- **State type:** I wrote it inline as `{ next, tabs: Array<{ key, title }> }`, since the file has no typedef and I didn't want to add one.
+
+### Uncertain
+- Nothing. The other exports have no JSDoc, and I left them alone because the request was only about `closeTab`.
+
+### Gate result
+`npm test` (`node --test`): 3 tests, 3 pass, 0 fail.

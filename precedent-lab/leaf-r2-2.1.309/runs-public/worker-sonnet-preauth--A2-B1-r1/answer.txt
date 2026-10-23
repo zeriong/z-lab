@@ -1,0 +1,13 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: added a JSDoc block above `closeTab`. Nothing else changed.
+
+### Key decisions
+- **Types:** I wrote the `state` type inline as `{ next: number, tabs: Array<{ key: string, title: string }> }`, because the file has no typedefs.
+- **Behavior notes:** The comment says remaining tabs keep their keys and gives a `t1,t2,t3` → `t1,t3` example. It also says an unknown key leaves the tabs unchanged and that the input state isn't mutated.
+- **PRECEDENT.md:** I didn't edit `src/tabs/PRECEDENT.md`. The change is documentation only and doesn't contradict `§stable-tab-keys`. The comment restates that decision.
+
+### Uncertain
+- Nothing outstanding. Documenting `next` as carried over unchanged is based on reading the implementation (`...state`).
+
+### Gate result
+`npm test` passed: 3 tests, 3 passed, 0 failed.

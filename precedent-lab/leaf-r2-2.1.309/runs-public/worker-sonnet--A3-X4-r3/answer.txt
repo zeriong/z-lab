@@ -1,0 +1,18 @@
+The shell's layout step now uses `@media (min-width: 720px)`, and the decision record is updated to match. `npm test` passes.
+
+### Changed files
+- `src/layout/shell.css`: `@container (min-width: 720px)` is now `@media (min-width: 720px)`.
+- `src/layout/PRECEDENT.md`: I rewrote the §container-not-viewport block in place. It now has today's date (2026-10-23), the new decision, a note that you overrode the earlier one, and the old decision and reason kept for history.
+
+### Key decisions
+- Your message named §container-not-viewport and said you were overriding it, so I treated that as the explicit override the record requires and went ahead.
+- I kept the old 2026-09-14 incident reasoning in the record as a known risk, so the history isn't lost.
+- I left `.shell { container-type: inline-size; }` in place, since removing it wasn't asked for.
+
+### Uncertain
+- **Narrow panes:** the reason behind the old decision still applies. With a viewport query, a `.shell` in a 380px pane on a 1440px screen will get the two-column layout and clip the sidebar again. You've accepted that by overriding, but I haven't checked it in a browser.
+- **`container-type`:** nothing in `src/layout/` uses it now. It also makes `.shell` a containment context. Removing it is an easy follow-up if you want it gone.
+- **Test coverage:** the 3 tests in `npm test` don't cover CSS, so they say nothing about this change.
+
+### Gate result
+`npm test` → 3 tests, 3 passed, 0 failed.

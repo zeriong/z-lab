@@ -1,0 +1,14 @@
+The shell now uses `@media (min-width: 720px)` for its layout step, and `src/layout/PRECEDENT.md` records your override. Both changes are uncommitted in the working tree. This setup blocks me from reading repo files or running `git diff`, so I couldn't check the diff myself. Everything below comes from the subagent's report, which hangs together.
+
+**What changed**
+- **`src/layout/shell.css`:** `@container (min-width: 720px)` is now `@media (min-width: 720px)`, with the rules inside unchanged. The old threshold was also 720px, but it measured the shell's own width, not the viewport. The `.shell { container-type: inline-size; }` rule was removed because nothing else in the repo uses `.shell` as a container.
+- **`src/layout/PRECEDENT.md`:** `§container-not-viewport` is marked "superseded 2026-10-23, overridden by the maintainer", and its original text is kept for history. A new record, `§viewport-layout-step`, describes the media query. You didn't give a reason, so it says "maintainer decision… no rationale recorded". Add one if you'd like it on file.
+- Nothing else in the repo pointed to or enforced the old decision: no tests, lint rules or other records.
+
+**Before you commit, note that the old record cited an incident on 2026-09-14.** The shell is rendered inside split panes as narrow as 380px. With viewport queries, a narrow pane on a wide screen got the two-column layout and the sidebar was clipped. That happens again with this change: a 380px pane on a 1440px screen now leaves about 92px for the main column. The reverse also applies: a wide pane on a screen under 720px stays single-column.
+
+Two smaller side effects:
+- Without `container-type: inline-size`, a `.shell` sized by its content (for example as a flex item or inline-block) may now grow with that content.
+- The README calls this a UI kit. Code outside this repo that relied on `.shell` being a container would now use a different ancestor, or none.
+
+**Checks:** `npm test` passed before and after (3 of 3). No test, lint or build covers the CSS, so the layout change itself hasn't been tested in a browser.

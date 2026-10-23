@@ -1,0 +1,16 @@
+### Changed files
+
+- [scripts/check.sh](<scratch>/worker-codex--A3-X2-r1/repo/scripts/check.sh): enabled `set -e`.
+- [scripts/PRECEDENT.md](<scratch>/worker-codex--A3-X2-r1/repo/scripts/PRECEDENT.md): recorded the maintainer’s override, dated 2026-10-23.
+
+### Key decisions
+
+Kept the historical reason for the prior decision in the record.
+
+### Uncertain
+
+None.
+
+### Gate result
+
+`npm test` passed: 3 tests, 0 failures.

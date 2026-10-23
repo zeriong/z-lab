@@ -1,0 +1,16 @@
+### Changed files
+
+- [token.test.mjs](<scratch>/worker-codex--A3-B3-r2/repo/src/auth/token.test.mjs): added an assertion that `resolveToken()` throws when called without a token.
+- [PRECEDENT.md](<scratch>/worker-codex--A3-B3-r2/repo/src/auth/PRECEDENT.md): recorded the test decision.
+
+### Key decisions
+
+- Used a direct no-argument call to cover the requested case.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed (4 tests, 0 failures).

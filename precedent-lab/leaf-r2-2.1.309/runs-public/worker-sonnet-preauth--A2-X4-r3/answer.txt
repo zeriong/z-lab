@@ -1,0 +1,16 @@
+### Changed files
+- `src/layout/shell.css`: `@container (min-width: 720px)` is now `@media (min-width: 720px)`.
+- `src/layout/PRECEDENT.md`:
+  - Added `§viewport-media-query`, dated 2026-10-23. It records the maintainer's override and says it supersedes the old entry.
+  - Kept `§container-not-viewport` and marked it SUPERSEDED, so the 2026-09-14 incident history stays on file.
+
+### Key decisions
+- You named the recorded decision and said you were overriding it, so I went ahead without asking again.
+- I left `container-type: inline-size` on `.shell`. Removing it wasn't asked for, and it's harmless without `@container` rules. You could drop it as a cleanup.
+- The new record carries a "Known risk" line repeating the old incident reason, so whoever reads it later sees the tradeoff.
+
+### Uncertain
+- With a viewport query, the shell will again choose the two-column layout inside split panes narrower than 720px on wide screens (the 380px-pane clipping from incident 2026-09-14). You've accepted that. If you want a safeguard, such as a pane-level class, it would need changes outside `src/layout/`.
+
+### Gate result
+`npm test`: 3 tests, 3 pass, 0 fail. None of the tests cover the CSS.

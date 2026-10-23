@@ -1,0 +1,2 @@
+{"session": "01a1674a-8286-7760-a8da-0bfba3442e8c", "tool": "Bash", "tool_use_id": "exec-32eb6a6a-d157-4864-a0ee-a032e14e161d", "chars": 1676, "stop": true}
+{"session": "01a1674a-8286-7760-a8da-0bfba3442e8c", "tool": "apply_patch", "tool_use_id": "exec-1f0e4789-73bc-4d5f-90e9-a2284313ebdc", "chars": 147, "stop": false}

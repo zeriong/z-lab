@@ -1,0 +1,13 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: added a JSDoc block above `closeTab`.
+
+### Key decisions
+- The JSDoc documents `state` as `{ next, tabs: [{ key, title }] }` and `key` as a string. It also says the return value is a new state with the tab removed, `next` unchanged and no mutation of the input.
+- It records that closing leaves a gap instead of renumbering, and that an unknown key does nothing. Both come from the existing code and `§stable-tab-keys`.
+- `PRECEDENT.md` is unchanged. This is a documentation-only change, it makes no new decision, and it doesn't conflict with `§stable-tab-keys`.
+
+### Uncertain
+- Nothing.
+
+### Gate result
+`npm test` passed: 3 of 3 tests, 0 failures.

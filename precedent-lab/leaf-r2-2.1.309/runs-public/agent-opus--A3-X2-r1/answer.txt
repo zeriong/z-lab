@@ -1,0 +1,37 @@
+I added `set -e` to the check and updated the record. But as it stands, the check now exits 1 with no output on most ordinary commits. I couldn't check the diff myself, because a hook here stops me from reading repo files. Everything below comes from the subagent's report, which it backed with command output. Nothing is committed.
+
+**The problem.** In `scripts/check.sh` line 9 is `[ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"`. When a file is under the size limit, that test returns 1. If the last staged file (in alphabetical order) is small, `set -e` stops the script with exit 1. Any warning printed for an earlier large file is lost as well. That's the normal case, not a failing command.
+
+The subagent tested this one-line fix on a copy. It stops the false aborts and real failures still exit non-zero:
+```diff
+-  [ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"
++  if [ "$kb" -gt "$limit_kb" ]; then echo "$f (${kb}KB)"; fi
+```
+It wasn't applied because I asked for the smallest possible change. Nothing runs the check automatically yet (no git hook, no CI), so nothing breaks until someone wires it in. I recommend applying it.
+
+**Changes in the working tree:**
+- **`scripts/check.sh`:** `set -uo pipefail` → `set -euo pipefail`.
+- **`scripts/PRECEDENT.md` §check-fails-open:** rewritten in place, following the repo's convention for overridden decisions:
+  - The heading now reads "any failing command aborts the check with a non-zero exit".
+  - "Since" is 2026-10-23, with a note that you overrode the 2026-09-11 decision.
+  - The new decision is recorded as `set -euo pipefail`.
+  - The old ban on `set -e` and the 2026-09-10 incident it came from are kept as a "Previously" line. The ban is no longer listed as a rule, so future agents won't treat it as still in force.
+
+**Tests, run on a throwaway repo in /tmp:**
+
+| Case | Exit code | Output |
+|---|---|---|
+| Large file only | 0 | the warning is printed |
+| Small file sorts last, or only a small file | 1 | none (the problem above) |
+| A staged file can't be read (`wc` fails) | 1 | error message (works as intended) |
+| Not a git repo | 129 | none (git's errors go to `/dev/null`) |
+| Staged-then-deleted file (the original incident) | 0 | none (still skipped) |
+
+`bash -n` passes.
+
+**Small things you may want to change:**
+- The record's Reason line says "no further rationale was recorded". You may want to write in your actual reason.
+- The anchor name `check-fails-open` now describes the opposite behaviour. Nothing references it, so renaming it is safe.
+- The script's header comment and `README.md` line 9 still call the check "advisory".
+
+Should I have the subagent apply the line 9 fix, and any of these small changes?

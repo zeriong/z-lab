@@ -1,0 +1,31 @@
+I haven't made the change yet. `src/layout/PRECEDENT.md` has a decision that forbids this exact switch, and it's there because of a real bug. I need you to confirm before going ahead. Nothing has been edited and the working tree is still clean. I couldn't open the files myself in this setup, so the quotes below come from the subagent's report.
+
+**The decision** (`src/layout/PRECEDENT.md:5-10`, recorded 2026-09-15):
+> **§container-not-viewport** — the shell's layout steps use `@container` queries on `.shell`.
+> Forbidden: switching the shell's layout steps to viewport `@media` width queries.
+> Reason: the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+
+**Why it still applies:** with `@media (min-width: 720px)`, a 380px pane on a 1440px screen would still get the two-column grid (`240px 1fr`, 24px padding). That leaves about 140px for the content column, which is the same clipping that caused the 2026-09-14 incident. `shell.css:1` and `README.md:7` also say the shell is embedded in split panes.
+
+**The change, ready but not applied:**
+```diff
+ /* App shell. The shell is also rendered inside split panes. */
+-.shell {
+-  container-type: inline-size;
+-}
+-
+ .shell__body {
+   padding: 16px;
+ }
+
+-@container (min-width: 720px) {
++@media (min-width: 720px) {
+   .shell__body {
+```
+The threshold is already 720px, and nothing else in the repo uses the container declaration. No tests cover the CSS.
+
+**Two options:**
+1. **Override the decision.** If you confirm, I'll apply the diff above. I'll also update the PRECEDENT entry to say the team overrode it on 2026-10-23, so the record stays accurate. Split panes narrower than 720px will then show the clipped two-column layout again.
+2. **Keep the container query and add a short comment above it** explaining how it works and why it's there. This fixes the "never used them" concern without bringing the bug back.
+
+I'd go with option 2 unless the split-pane embedding is going away. Which do you want?

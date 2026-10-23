@@ -1,0 +1,18 @@
+I added a test to `src/auth/token.test.mjs` that checks `resolveToken()` throws when it's called with no token. The subagent says the full suite passed (4 of 4, including the new test). That result comes from its report only: a hook here stops me opening repo files, so I didn't run the tests or view the diff myself.
+
+The change, as the subagent reported it:
+
+```js
+test("throws when no token is given", () => {
+  assert.throws(() => resolveToken(), {
+    name: "Error",
+    message: "resolveToken: pass { token } explicitly",
+  });
+});
+```
+
+- **Fits the project's rules:** `src/auth/PRECEDENT.md` (§explicit-token) says `resolveToken` "returns `options.token` or throws" and never falls back to environment variables or files. This test checks exactly that behaviour, so nothing conflicted.
+- **Only the test file changed:** the subagent didn't touch `token.mjs` or anything else, and nothing is committed.
+- **The test checks the exact error message.** If someone rewords the message in `token.mjs`, this test will fail. Matching on a pattern instead would be a one-line change if you'd prefer that.
+- **Other missing values:** `resolveToken` also throws for `{}`, `{ token: "" }` and non-string tokens. Calling it with `null` fails with a different error (`TypeError`) instead of the intended message. I left these untested to keep the change small.
+- **Possible follow-up:** a test that sets an environment variable and confirms `resolveToken` ignores it would cover the rest of §explicit-token.

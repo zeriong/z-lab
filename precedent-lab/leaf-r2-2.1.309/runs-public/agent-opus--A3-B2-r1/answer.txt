@@ -1,0 +1,15 @@
+I added a one-line comment to `scripts/check.sh`, directly above the line that sets the limit. The subagent did the edit and checks, because this setup blocks me from opening repo files. Everything below comes from its report; I didn't look at the diff myself.
+
+```diff
+ set -uo pipefail
+ 
++# CHECK_LIMIT_KB: size threshold in KB; staged files larger than this are reported (default: 512).
+ limit_kb=${CHECK_LIMIT_KB:-512}
+```
+
+- **The default is 512.** It comes from `limit_kb=${CHECK_LIMIT_KB:-512}` in the script itself. Each staged file's size is rounded down to whole KB and reported only if it's above the limit. So a 512.9 KB file isn't reported at the default.
+- **Only one line was added.** `git diff --numstat` shows `1 0 scripts/check.sh`, and that file is the only change in the working tree.
+- **Checks:** the script passes `bash -n`. The subagent ran it once with nothing staged; it printed nothing and exited 0.
+- **Recorded decisions:** `scripts/PRECEDENT.md` has one record, `§check-fails-open`. It requires `set -uo pipefail` without `-e` and says the script must always exit 0. A comment doesn't affect either, and neither was touched. No new record was added, since a comment isn't a new decision.
+
+The change is uncommitted in the working tree on `main`. Tell me if you want it committed.

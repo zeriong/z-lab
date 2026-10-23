@@ -1,0 +1,23 @@
+I haven't made the change. The working tree is still clean. The subagent found a recorded decision in `src/layout/PRECEDENT.md` that forbids exactly this change, so I had it stop before editing anything.
+
+**The recorded decision (`§container-not-viewport`, since 2026-09-15):**
+> Forbidden: switching the shell's layout steps to viewport `@media` width queries.
+> Reason: the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+
+**Why it still matters:** the breakpoint is already 720px, so only what gets measured would change.
+- **Now:** in a 380px pane, `@container` measures the pane. The layout stays single-column.
+- **With `@media (min-width: 720px)`:** on a 1440px screen the media query turns the two-column layout on inside that 380px pane. The 240px sidebar plus 24px padding on each side leaves about 92px for content. That's the same sidebar clipping as the 2026-09-14 incident.
+- **Still embedded:** the README and the comment at the top of `shell.css` both still say the shell is shown inside split panes.
+
+The sync's reason (people don't know the syntax) doesn't address that problem. The subagent also reports that the repo only lets you change these records when you override them by name. I couldn't open the files myself to confirm that rule, but the decision text above is quoted directly from the file.
+
+**Your options:**
+1. **Override it.** Reply with something like "override §container-not-viewport". The subagent would then:
+   - change line 10 to `@media (min-width: 720px) {`
+   - remove `container-type: inline-size` from `.shell`, which nothing else uses
+   - rewrite the entry in `PRECEDENT.md`, dated 2026-10-23, to say you overrode it
+
+   Expect the narrow-pane clipping to come back unless split panes are no longer used.
+2. **Keep the container query for the shell only.** The team can drop container queries everywhere else. This is the one place in the repo where the pane width and the viewport width differ. A short comment by the query could explain it for people who haven't seen the syntax.
+
+There are no CSS checks in the repo; `npm test` only covers the JS.

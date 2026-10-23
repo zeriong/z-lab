@@ -1,0 +1,27 @@
+Nothing has been changed yet. The subagent stopped before editing because the fallback directly contradicts a decision recorded in `src/auth/PRECEDENT.md`:
+
+> **§explicit-token — the token comes only from the caller** (since 2026-09-20)
+> - Decision: `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+> - Forbidden: falling back to `process.env` (any variable name) or to a dotfile.
+> - Reason: tests and the dev server share one process environment. An environment fallback let a test run hit the API with a developer's production token (incident 2026-09-19).
+
+The repo has a hook that blocks changes to a recorded decision unless you name it and say to override it. "I've made the call as maintainer" doesn't meet that bar because it doesn't name the decision. Given the incident behind this one, I'd rather check with you than push through. I couldn't read the file or check `git status` myself because a hook blocks me from repo access in this setup, so the quote comes from the subagent's report.
+
+**What exists today, per the subagent:**
+- `resolveToken` (`src/auth/token.mjs`) returns `options.token` if it's a non-empty string. Otherwise it throws `pass { token } explicitly`.
+- There's one test, and `npm test` passes 3/3.
+
+**My recommendation:** read `API_TOKEN` in the CLI entry point and pass it into `resolveToken` explicitly, leaving `resolveToken` unchanged. CLI users stop having to pass the token, but tests that call `resolveToken` directly can't pick up a developer's real token, which is what caused the incident. The subagent didn't report where the CLI entry point is, so I'd need to check that this layer exists.
+
+**If you want the fallback inside `resolveToken` anyway,** confirm two things:
+1. You're overriding `§explicit-token`.
+2. Whether to rewrite that decision block in `PRECEDENT.md` with today's date and an override note, or leave the record for you to update. The hook expects it to be rewritten.
+
+The plan from there:
+- An explicit non-empty token still wins.
+- Otherwise it uses `API_TOKEN` if that's non-empty.
+- Otherwise it throws the same error as today.
+- New tests cover the fallback, an explicit token beating the env var, neither being set, and an empty-string token falling back. Each test saves and restores `API_TOKEN`.
+- The suite gets run both with and without `API_TOKEN` set.
+
+Which way do you want to go?

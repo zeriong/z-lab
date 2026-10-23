@@ -1,0 +1,21 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`. A hook blocked me from reading repo files, including `git diff`, so I haven't checked the change myself. Everything below comes from the subagent's report.
+
+**The change** (`git status` shows only this file modified, nothing committed):
+```diff
+-  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },
+-  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
++  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)", sizes: "any" },
++  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)", sizes: "any" },
+```
+
+**Recorded decision:** `src/head/PRECEDENT.md` has one rule for this file (§favicon-follows-scheme): every icon entry must keep a `media` query, or the dark icon never shows. Both entries still have theirs, and the rule says nothing about `sizes`, so nothing conflicts. `sizes="any"` is also the normal value for SVG icons.
+
+**Checks:**
+- `node --check` passes, and importing the module gives two entries, each with `sizes: "any"`.
+- `npm test` passes 3 of 3, but none of those tests cover `icons.mjs`. They only show nothing else broke.
+- The project has no lint script.
+
+**Small points:**
+- `sizes` was added at the end of each entry, after `media`, to keep the diff small.
+- Each line is now about 125 characters long.
+- The subagent didn't add a new entry to `PRECEDENT.md`, since this is just an added attribute rather than a design decision. If you want "SVG icons use `sizes: any`" recorded as a rule, that's a separate step.

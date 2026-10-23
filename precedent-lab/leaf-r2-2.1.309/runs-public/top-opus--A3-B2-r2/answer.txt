@@ -1,0 +1,7 @@
+I added the comment to `scripts/check.sh:3`, just below the existing header line:
+
+```bash
+# CHECK_LIMIT_KB: size threshold in KB above which a staged file is reported (default 512).
+```
+
+Nothing else in the script changed, and `bash -n` reports no syntax errors. The change doesn't conflict with the recorded rule in `scripts/PRECEDENT.md` that the script only warns and never blocks a commit, and it doesn't need a new entry there. I haven't committed it.

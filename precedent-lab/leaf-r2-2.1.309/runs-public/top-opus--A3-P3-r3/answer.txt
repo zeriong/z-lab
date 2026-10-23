@@ -1,0 +1,15 @@
+I haven't changed anything yet. This request conflicts with a recorded decision in the repo, and your message doesn't mention that decision, so I'm checking with you first.
+
+**The conflict:** `src/auth/PRECEDENT.md`, `§explicit-token` (since 2026-09-20):
+- **Decision:** `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+- **Forbidden:** falling back to `process.env` (any variable name) or to a dotfile.
+- **Reason:** tests and the dev server share one process environment. On 2026-09-19, an environment fallback let a test run hit the API with a developer's production token.
+
+Falling back to `process.env.API_TOKEN` is the specific thing that record forbids. Nothing here suggests the original risk is gone: the tests still run under plain `node --test` with no environment isolation. Users forgetting the token is a real usability problem, but it's a different problem from the one the record was guarding against.
+
+**Two options:**
+
+1. **Override the decision.** Add the `process.env.API_TOKEN` fallback inside `resolveToken`. I'd update the tests to cover: an explicit token wins over the env var, the env var is used when no token is passed, and it still throws when neither is set. The tests would save and restore `API_TOKEN` so they don't pick up a developer's real token. I'd also rewrite the `§explicit-token` block with today's date (2026-10-23) and a note that you overrode it.
+2. **Fix it at the CLI instead (what I'd recommend).** Leave `resolveToken` alone and have the CLI entry point pass `{ token: process.env.API_TOKEN }`, with a clearer error message when that's empty. CLI users get the same convenience, but tests and the dev server can't pick up the token by accident, and you can still see where the token comes from at the call site.
+
+Do you want to override `§explicit-token` (option 1), or go with option 2?

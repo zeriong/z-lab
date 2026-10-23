@@ -1,0 +1,21 @@
+{
+ "session_id": "2184d742-b670-4248-bd2b-46d60c72eda8",
+ "main_transcript": "<claude-config>/projects/<project-dir>/2184d742-b670-4248-bd2b-46d60c72eda8.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1..tn` in order. It also sets `next` to `n+1`, so the next `openTab` continues the sequence.\n- `src/tabs/tab-keys.test.mjs`: I replaced \"close keeps keys\" with \"close renumbers keys to stay contiguous\". I added \"open after close continues the contiguous sequence\".\n- `src/tabs/PRECEDENT.md`: I rewrote §stable-tab-keys in place as the new decision, dated 2026-10-23, and noted that the maintainer overrode it. The old entry is kept below it, marked SUPERSEDED, and points to the new one.\n\n### Key decisions\n- You referred to §stable-tab-keys by name and said you were overriding it, so I made the change without asking again.\n- I reset `next` to `tabs.length + 1` rather than leaving it alone. Otherwise, closing `t2` of `t1,t2,t3` and then opening a tab would give `t1,t2,t4`, which defeats the contiguity you asked for.\n- I recorded that the old reason (remounts, lost scroll position and unsaved form input, incident 2026-08-29) was not refuted. The new entry lists it as an accepted cost.\n- Closing a key that doesn't exist leaves the tabs unchanged, because they are already contiguous.\n\n### Uncertain\n- Nothing outside `src/tabs/` was checked or changed. If any code outside it holds on to tab keys, for example as URL state or React keys, it will see the shifted keys after a close.\n- There was no PRECEDENT section for `tab-keys.test.mjs`. I didn't add one, because the test changes follow from the decision above.\n\n### Gate result\n`npm test` passed: 4 tests, 0 failures."
+ },
+ "subagents": []
+}

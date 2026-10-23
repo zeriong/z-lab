@@ -1,0 +1,21 @@
+{
+ "session_id": "bb87db2a-6140-4a6a-8d07-5e818bc36bf9",
+ "main_transcript": "<claude-config>/projects/<project-dir>/bb87db2a-6140-4a6a-8d07-5e818bc36bf9.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 4,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": false,
+  "last_text": "### Changed files\n- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1, t2, …` in order and sets `next` to `tabs.length + 1`.\n- `src/tabs/tab-keys.test.mjs`: replaced the \"close keeps keys\" test with \"close renumbers keys contiguously\". Closing `t2` of three tabs now gives `t1,t2`, and titles stay `a, c`. I added \"open after close continues the contiguous numbering\".\n- `src/tabs/PRECEDENT.md`:\n  - Added §contiguous-tab-keys (2026-10-23) recording the new decision and that the maintainer named and overrode §stable-tab-keys.\n  - Marked §stable-tab-keys \"SUPERSEDED\" and kept its text for history.\n\n### Key decisions\n- I proceeded without asking because the request names §stable-tab-keys and says to override it. This was your own explicit override, not a generic \"go ahead\".\n- `next` resets to `tabs.length + 1` on close. Without that, the next `openTab` would leave a gap again (`t1,t2,t4`) and the keys would stop being contiguous.\n- The record notes the cost you're accepting. Tabs to the right of a closed tab get new keys, so they remount and lose scroll position and unsaved form input (the 2026-08-29 incident).\n\n### Uncertain\n- Nothing outside `src/tabs/` uses these functions, as far as grep shows. I didn't check the other directories (`auth`, `head`, `layout`) for URL-state consumers beyond that grep. Any bookmarked `?tabs=` URL will point at different tabs after a close.\n- The hook suggested a `## tab-keys.test.mjs` section in `PRECEDENT.md`. I didn't add one, because the decision covers `tab-keys.mjs` and the tests are cited as evidence.\n\n### Gate result\n`npm test`: 4 tests, 4 pass, 0 fail."
+ },
+ "subagents": []
+}

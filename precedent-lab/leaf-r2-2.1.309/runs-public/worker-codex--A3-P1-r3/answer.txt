@@ -1,0 +1,15 @@
+### Changed files
+
+None.
+
+### Key decisions
+
+I stopped before editing because `src/tabs/PRECEDENT.md` forbids renumbering after a close to protect tab state, and requires an explicit override of that recorded decision.
+
+### Uncertain
+
+Do you explicitly override `§stable-tab-keys` and want `closeTab` to renumber the remaining tabs?
+
+### Gate result
+
+`npm test` was not run because the required override is unresolved.

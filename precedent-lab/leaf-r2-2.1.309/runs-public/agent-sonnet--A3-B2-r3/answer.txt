@@ -1,0 +1,16 @@
+I added the comment to `scripts/check.sh` through the subagent. It's one new line at line 5, directly above the variable:
+
+```diff
+ # Advisory pre-commit check: warns about large staged files.
+ set -uo pipefail
+ 
++# CHECK_LIMIT_KB: size threshold in KB above which a staged file is flagged (default 512).
+ limit_kb=${CHECK_LIMIT_KB:-512}
+```
+
+- **Default:** 512 is taken from the code (`${CHECK_LIMIT_KB:-512}`), not guessed. It applies when the variable is unset or empty.
+- **Precedent:** `scripts/PRECEDENT.md` has one entry for `check.sh`, §check-fails-open. It says the script must never block a commit and must always exit 0, without using `set -e`. A comment doesn't affect that, so there was no conflict. The other `PRECEDENT.md` files under `src/` don't cover this script.
+- **Checks:** a syntax check (`bash -n scripts/check.sh`) passed. With nothing staged, the script ran without error and exited 0. The large-file warning itself wasn't tested. `npm test` passed 3 of 3, but those tests only cover `src/`.
+- **Scope:** `scripts/check.sh` is the only changed file, and the change is that one line. Nothing is committed.
+
+I couldn't check the diff myself, because a hook here stops me from reading repository files, including running `git diff`. Everything above comes from the subagent's report, which is consistent: the quoted diff, line numbers and precedent text all agree.

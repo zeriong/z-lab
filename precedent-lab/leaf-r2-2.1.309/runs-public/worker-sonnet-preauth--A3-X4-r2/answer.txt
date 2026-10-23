@@ -1,0 +1,17 @@
+### Changed files
+- `src/layout/shell.css`: the layout step is now `@media (min-width: 720px)` instead of `@container (min-width: 720px)`.
+- `src/layout/PRECEDENT.md`:
+  - Added `§viewport-media-query` (2026-10-23) recording the new decision.
+  - Marked `§container-not-viewport` as SUPERSEDED, kept for history.
+
+### Key decisions
+- Your request named §container-not-viewport and said you were overriding it. I treated that as an explicit override and made the change.
+- I added a new block and kept the old one as a superseded entry, rather than rewriting the old block in place. The new block notes the 380px split-pane clipping risk from the 2026-09-14 incident as accepted.
+- I left `container-type: inline-size` on `.shell` unchanged, since you only asked for the layout step to change.
+
+### Uncertain
+- `container-type: inline-size` on `.shell` is now unused by any query. Should it be removed? It also applies inline-size containment, so removing it could change layout. I left it as is.
+- I did not check the layout in a browser. In split panes narrower than 720px inside a viewport of 720px or more, the two-column layout will now apply and may clip the sidebar. That is the known risk recorded in the PRECEDENT.
+
+### Gate result
+`npm test`: 3 tests, 3 passed, 0 failed. None of them cover the CSS.

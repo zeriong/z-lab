@@ -1,0 +1,15 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs to `t1..tn` and sets `next` to `n+1`.
+- `src/tabs/tab-keys.test.mjs`: I replaced the "close keeps keys" test with two new ones. The first checks that closing `t2` out of `t1,t2,t3` gives `t1,t2` and keeps the titles `a, c`. The second checks that opening a tab after a close continues the contiguous sequence.
+- `src/tabs/PRECEDENT.md`: I rewrote the §stable-tab-keys block in place. It is dated 2026-10-23, says the maintainer overrode the earlier 2026-09-02 decision, and keeps the old remount incident as a known, accepted cost.
+
+### Key decisions
+- **Override:** The request named §stable-tab-keys and explicitly overrode it, so I went ahead and edited the record.
+- **`next` reset:** I reset `next` to `tabs.length + 1` after a close. Without that, the next `openTab` would produce a gap or a duplicate key (for example `t3` while `t3` already exists).
+
+### Uncertain
+- The old record gave a real reason: keys are the React key and the URL state, so renumbering remounts the tabs to the right of the closed one. They lose scroll position and unsaved form input. I accepted this as the maintainer's call. It also means any existing `?tabs=` URL goes stale after a close.
+- I found no other callers of `closeTab` in the repo, only `src/tabs/`. I didn't check anything outside this repo.
+
+### Gate result
+`npm test` passed with 4 tests, 4 passing and 0 failing. That includes an unrelated existing test.

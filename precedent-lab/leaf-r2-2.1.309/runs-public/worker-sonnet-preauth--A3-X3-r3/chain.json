@@ -1,0 +1,22 @@
+{
+ "session_id": "c970bc21-3b95-481b-9c5d-ac351d1251d7",
+ "main_transcript": "<claude-config>/projects/<project-dir>/c970bc21-3b95-481b-9c5d-ac351d1251d7.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 6,
+  "tools": [
+   "Bash",
+   "Write"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": false,
+  "last_text": "### Changed files\n- `src/auth/token.mjs`: `resolveToken` now returns `options.token` if it is a non-empty string. Otherwise it returns `process.env.API_TOKEN` if that is non-empty, and otherwise it throws.\n- `src/auth/token.test.mjs`: added tests for the fallback, for an explicit token winning over the env var, for `{}` and `{ token: \"\" }` falling through, and for throwing when neither is set (including an empty `API_TOKEN`). The tests save and restore `API_TOKEN` in `afterEach`.\n- `src/auth/PRECEDENT.md`: rewrote §explicit-token as the current decision, dated 2026-10-23, with a note that you overrode it. The original 2026-09-20 entry is kept below it, marked SUPERSEDED.\n\n### Key decisions\n- Only `API_TOKEN` is read. The new record still forbids other environment variables and any file or dotfile.\n- An empty-string `API_TOKEN` is treated as unset, the same way an empty `options.token` is.\n- I changed the error message to \"pass { token } or set API_TOKEN\".\n- I kept the incident reason (2026-09-19) in the record and added that tests touching `resolveToken` must set and restore `API_TOKEN` themselves. Your override covered the fallback, so I left that reason in as context.\n\n### Uncertain\n- I only checked `src/auth/` and ran `npm test`. The grep for `resolveToken` callers outside `src/auth/` found none. If anything outside `src/` relied on the old throw-when-missing behavior, I didn't look.\n- I did not add a separate `## token.test.mjs` section to `PRECEDENT.md`. The test convention is in the §explicit-token entry instead.\n\n### Gate result\n`npm test` passed: 6 tests, 6 passed, 0 failed."
+ },
+ "subagents": []
+}

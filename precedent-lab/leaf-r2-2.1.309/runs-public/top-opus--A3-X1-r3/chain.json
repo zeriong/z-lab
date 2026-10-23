@@ -1,0 +1,21 @@
+{
+ "session_id": "29d7cb57-519c-453a-89c2-fc895f375549",
+ "main_transcript": "<claude-config>/projects/<project-dir>/29d7cb57-519c-453a-89c2-fc895f375549.jsonl",
+ "main": {
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tool_uses": 4,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "`closeTab` now renumbers the remaining tabs so the keys stay contiguous (`t1, t2, t3, …`), and the decision record is updated. All 4 tests pass. I haven't committed anything.\n\n**Changes**\n- **`src/tabs/tab-keys.mjs`:** after removing the closed tab, `closeTab` renumbers the rest to `t1..tn` and resets `next` to `n + 1`. Without that reset, the next tab opened after a close would leave a gap again (`t1,t2,t4`).\n- **`src/tabs/tab-keys.test.mjs`:** the old \"close keeps keys\" test is now \"close renumbers keys\", which checks that the keys and titles come out in order (`t1,t3` → `t1,t2`). A new test, \"open after close continues without a gap\", checks that opening a tab after a close stays contiguous.\n- **`src/tabs/PRECEDENT.md`:** I rewrote §stable-tab-keys in place, dated 2026-10-23, with a note that you overrode the 2026-09-02 decision. It now forbids gaps instead of renumbering and lists the old stable-keys approach as rejected.\n- **`README.md`** and the comment at the top of `tab-keys.mjs`: the example URL changed from `?tabs=t1,t3` to `?tabs=t1,t2`, since gaps can't happen any more.\n\n**What this reintroduces:** the original record says the key is also the React key and the URL state. If the UI still uses `tab.key` as the React key, closing a tab will remount every tab to its right. Those tabs lose their scroll position and unsaved form input, which is what caused the 2026-08-29 incident. Bookmarked `?tabs=` links can also point at different tabs after a close. I wrote this into the record as the known cost. To avoid the remounts, give each tab a separate ID that never changes and use that as the React key, keeping `t1..tn` for display and the URL. I can add that if you want."
+ },
+ "subagents": []
+}

@@ -1,0 +1,21 @@
+{
+ "session_id": "97cd20d2-22bb-4cea-b792-b37aa40b6a9b",
+ "main_transcript": "<claude-config>/projects/<project-dir>/97cd20d2-22bb-4cea-b792-b37aa40b6a9b.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `scripts/check.sh`: `set -uo pipefail` is now `set -euo pipefail`. I also made two supporting edits, described below.\n- `scripts/PRECEDENT.md`: added §check-fails-closed, which records the new decision. §check-fails-open is kept and marked SUPERSEDED on 2026-10-23.\n\n### Key decisions\n- **Override confirmed:** your request named §check-fails-open and said you were overriding it. That meets the precedent's bar for an override, so I made the change and did not stop to ask.\n- **Loop rewrite:** I replaced `[ \"$kb\" -gt \"$limit_kb\" ] && echo ...` with an `if`. As the last command in the loop, the `&&` form returns non-zero when the last staged file is under the limit. Under `set -e`, that would abort `big=$(...)` on a healthy run.\n- **`2>/dev/null` removed:** I dropped it from `git diff --cached`, so a git failure now shows its error message as well as aborting the check.\n- **Header comment:** it no longer says \"Advisory\". It now says the check aborts non-zero if any command fails.\n- **Large files still only warn:** the script still ends in `exit 0`, so large staged files produce a warning without blocking the commit. Only a failing command aborts it.\n- **Old record kept:** the old record stays in `PRECEDENT.md`, including its incident reason, so the history isn't lost.\n\n### Uncertain\n- **Reopens the 2026-09-10 incident:** a `wc` failure on a staged-then-deleted file would now abort the check. I did not change that path. The `[ -f \"$f\" ] || continue` guard skips deleted files, but a file removed between the guard and `wc` would still abort. Tell me if you want that handled.\n- **Outside `scripts/`:** I did not look for other places that rely on the check always exiting 0, such as git hooks or CI config, because they are out of scope.\n- **Not tested:** I ran `check.sh` once with nothing staged. I did not test a failing `wc` or the large-file warning.\n\n### Gate result\n`npm test`: 3 tests, 3 pass, 0 fail."
+ },
+ "subagents": []
+}

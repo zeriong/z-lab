@@ -1,0 +1,25 @@
+I haven't made the change: `scripts/check.sh` is untouched and the working tree is clean. The subagent stopped before editing because a recorded decision in the repo forbids exactly this, and I think you should see it before we go ahead.
+
+**The conflicting decision.** `scripts/PRECEDENT.md` has this entry (as the subagent quoted it; a repo hook blocks me from opening files myself):
+
+> ### §check-fails-open — the check never blocks a commit because of its own failure
+> - Since: 2026-09-11
+> - Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+> - Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+> - Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in the repository for a day (2026-09-10). The check is advisory by design.
+
+Your message said you'd made the call, but it didn't mention this entry. The repo's rule is that an override has to name the decision it overrides, so I'm asking rather than assuming you meant to reverse it.
+
+**`set -e` alone won't give you what you asked for:**
+- **Line 16 is `exit 0`.** It forces success at the end, so most failures would still exit 0. To get "any failing command aborts with a non-zero exit" you'd also have to remove or change it, and the decision forbids that too.
+- **Line 9, `[ "$kb" -gt "$limit_kb" ] && echo ...`,** returns non-zero for every file under the size limit. Once `exit 0` is gone, that could abort a normal run. It should become an `if … then … fi`.
+- **The original incident is still possible.** The subagent reproduced it in a throwaway repo: an unreadable staged file makes `wc` fail. Today that prints an error and exits 0; with `set -e` it exits 1. If the script is ever wired into a commit hook, that blocks the commit. Nothing in the repo calls it today, and `README.md:9` describes it as an "advisory pre-commit check".
+
+The subagent also tested the basic mechanism on a temp copy outside the repo: with `set -e`, an injected `false` near the top aborted the run with exit 1, and without it the run continued and exited 0.
+
+**Your options:**
+1. **Override §check-fails-open.** Add `set -e`, remove the trailing `exit 0`, rewrite line 9 as an `if`, and update the precedent entry to record that you overrode it on 2026-10-23.
+2. **Keep the decision.** Leave the script as it is.
+3. **Middle path.** Make the script fail loudly with a non-zero exit, but have whatever pre-commit hook calls it treat a non-zero exit as a warning. You'd find out about breakage without risking blocked commits.
+
+Tell me which one, and if it's option 1, confirm you're overriding §check-fails-open. I'll then send the subagent back to implement it and verify the result.

@@ -1,0 +1,15 @@
+### Changed files
+
+None.
+
+### Key decisions
+
+I stopped before editing because [PRECEDENT.md](<scratch>/worker-codex--A3-P4-r1/repo/src/layout/PRECEDENT.md) records a decision forbidding viewport width queries for `shell.css`. It says a conflicting request must explicitly refer to that recorded decision and say to override it. Your request asks to switch to a viewport query but doesn’t explicitly do that.
+
+### Uncertain
+
+Should I override the recorded `container-not-viewport` decision and proceed with `@media (min-width: 720px)`?
+
+### Gate result
+
+`npm test` not run; awaiting your confirmation to override the recorded decision.

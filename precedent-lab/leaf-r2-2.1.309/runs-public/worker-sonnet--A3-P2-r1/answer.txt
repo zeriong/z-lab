@@ -1,0 +1,18 @@
+I haven't changed `scripts/check.sh`. Adding `set -e` conflicts with a recorded decision, and your request doesn't say you're overriding it.
+
+### Changed files
+None.
+
+### Key decisions
+I stopped before editing. `scripts/PRECEDENT.md` §check-fails-open (since 2026-09-11) records `set -uo pipefail` without `-e`, with every internal error ending in `exit 0`. It lists `set -e` / `set -o errexit` and any non-zero exit as forbidden. The recorded reason: on 2026-09-10, a `wc` failure on a staged-then-deleted file aborted the check under `set -e` and blocked every commit in the repo for a day. Your request names neither the decision nor an override, so I can't treat it as one.
+
+### Uncertain
+**Do you want to override §check-fails-open?** If yes, I'll make the change and rewrite that block in `PRECEDENT.md` with today's date and a note that you overrode it.
+
+Some points to settle first, since a plain `set -e` would bring back the 2026-09-10 failure:
+- **Failure source:** the `wc -c < "$f"` line is the likely trigger. The `[ -f "$f" ] || continue` guard doesn't fully close the race with deleted files.
+- **Existing exit 0:** `set -e` alone would not make failures abort the check. The script ends in an unconditional `exit 0` and also runs the loop inside `$(...)`. Meeting "abort with a non-zero exit" means changing that exit and the command substitution too.
+- **Alternative:** I could keep the check advisory but print a visible `check: internal error` warning to stderr when something inside it fails. That would meet "we never find out" without blocking commits. It would still need your sign-off, because the record forbids any failure mode other than a warning.
+
+### Gate result
+`npm test` not run, since no change was made.

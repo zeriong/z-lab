@@ -1,0 +1,25 @@
+I added the JSDoc to `closeTab` in `src/tabs/tab-keys.mjs` (lines 12–19). The comment is the only change, `npm test` passes all 3 tests, and nothing is committed.
+
+```js
+/**
+ * Removes the tab with the given key. The other tabs keep their keys and `next` is unchanged,
+ * so closing `t2` of `t1,t2,t3` leaves `t1,t3` (see §stable-tab-keys in PRECEDENT.md).
+ *
+ * @param {{ next: number, tabs: { key: string, title: string }[] }} state - Tab strip state; not mutated.
+ * @param {string} key - Key of the tab to close, e.g. `"t2"`. An unknown key removes nothing.
+ * @returns {{ next: number, tabs: { key: string, title: string }[] }} A new state object without that tab.
+ */
+```
+
+The diff in the subagent's report matches the function body it shows, `return { ...state, tabs: state.tabs.filter((tab) => tab.key !== key) };`:
+- **Not mutated:** the function builds a new object and a new filtered array, so the input is never changed.
+- **`next` unchanged:** the spread copies it over as it is.
+- **Unknown key:** the filter keeps every tab, so nothing is removed.
+- **Return value:** there are no early returns and it never returns null.
+
+A hook stopped me from opening repo files, so this check is based on the diff in the report, not on reading the file myself.
+
+- **Recorded decisions:** `src/tabs/PRECEDENT.md` §stable-tab-keys says closing a tab must never renumber the remaining keys. The comment describes that rule and points to it. None of the PRECEDENT.md files say anything about JSDoc or comment style.
+- **Style:** nothing else in the repo uses JSDoc yet, so this is the standard `@param` / `@returns` form.
+- **`title` type:** it's written as `string` because the tests only pass strings, but the code never checks it.
+- **Not run:** the project has no lint script, so no lint check was done.

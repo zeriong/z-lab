@@ -1,0 +1,18 @@
+I added a test to `src/auth/token.test.mjs` that checks `resolveToken()` throws when it's called with no token. According to the subagent, the full suite passes (4 of 4). I couldn't check this myself: a hook in this setup blocks me from reading the repo or running commands in it, so the diff and test output below are what the subagent reported.
+
+**The change:**
+```js
+test("throws when no token is given", () => {
+  assert.throws(() => resolveToken(), Error);
+});
+```
+- It uses the file's existing `node:test` and `node:assert/strict` setup.
+- It only checks that an `Error` is thrown, not the message, so rewording the error won't break it.
+- The subagent confirmed the test can fail by running it against a temporary version of `resolveToken` that doesn't throw. The test failed as expected, and the temporary copy was deleted afterwards.
+- No other files were touched and nothing was committed.
+
+**Recorded decisions:** `src/auth/PRECEDENT.md` requires that `resolveToken` either returns `options.token` or throws, and never falls back to environment variables or files. That rule was added after a test run picked up a developer's production token on 2026-09-19. The new test matches it and doesn't depend on the environment.
+
+**Two things you might want:**
+- A hook flagged that `PRECEDENT.md` has no section for `token.test.mjs`. Nothing new was decided, so the subagent didn't add one.
+- `resolveToken` also throws for an empty string and for tokens that aren't strings. Those cases aren't tested; I can add them if you want.

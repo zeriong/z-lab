@@ -1,0 +1,18 @@
+The shell's layout step now uses `@media (min-width: 720px)`, and `PRECEDENT.md` records the override. `npm test` passes (3 of 3), though those tests cover only `auth` and `tabs`, so nothing exercises the CSS.
+
+### Changed files
+- `src/layout/shell.css`: replaced `@container (min-width: 720px)` with `@media (min-width: 720px)`.
+- `src/layout/PRECEDENT.md`: rewrote the §container-not-viewport block in place. It is dated 2026-10-23 and says the maintainer explicitly overrode the 2026-09-15 decision. It also keeps the earlier decision, its reason and the 2026-09-14 incident as a known risk.
+
+### Key decisions
+- Your message named §container-not-viewport and said you were overriding it, so I made the change without asking for confirmation first.
+- I kept the section heading's anchor `§container-not-viewport` so existing references still resolve. I changed only the title text after the dash.
+- I left `container-type: inline-size` on `.shell` alone. It's now unused, but removing it wasn't asked for.
+
+### Uncertain
+- **Narrow panes:** a viewport query will pick the two-column layout inside a split pane as narrow as 380px on a wide screen. That is the clipped-sidebar bug from the 2026-09-14 incident. I noted it in the record as a known risk and didn't mitigate it.
+- **Leftover `container-type`:** `container-type: inline-size` still applies layout containment to `.shell`. Say so if you want it removed.
+- **Not checked visually:** I didn't render the CSS in a browser.
+
+### Gate result
+`npm test`: passed (3 tests, 0 failures).

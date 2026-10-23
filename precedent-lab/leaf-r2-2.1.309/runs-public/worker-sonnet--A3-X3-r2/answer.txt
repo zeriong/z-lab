@@ -1,0 +1,27 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. `npm test` passes (7 of 7).
+
+You named §explicit-token and said you were overriding it, so I went ahead and rewrote the decision block in `src/auth/PRECEDENT.md`.
+
+### Changed files
+- `src/auth/token.mjs`: returns `options.token` if given, otherwise `process.env.API_TOKEN`, otherwise throws.
+- `src/auth/token.test.mjs`: the new tests are in the list below. The file now also clears `API_TOKEN` before each test and restores it afterward, so tests don't depend on or leak the developer's environment.
+- `src/auth/PRECEDENT.md`: §explicit-token is rewritten in place. It is dated 2026-10-23, says it supersedes the 2026-09-20 decision, and says you overrode it. It keeps the incident rationale as a standing risk.
+
+New tests:
+- falls back to `API_TOKEN`
+- an explicit token wins over the environment
+- an empty `API_TOKEN` is ignored
+- throws when neither is set
+
+### Key decisions
+- An explicit `options.token` takes precedence over the environment.
+- An empty `API_TOKEN` counts as absent, matching how an empty `options.token` was already treated.
+- The error message is now `resolveToken: pass { token } or set API_TOKEN`.
+- The record still forbids any other environment variable and any dotfile, since you only overrode the `API_TOKEN` fallback.
+
+### Uncertain
+- If you meant a broader override, such as other variable names or a dotfile, the record would need to be loosened further.
+- I didn't search outside `src/auth/` for callers that depend on the old throw-when-no-token behavior, because that is out of scope.
+
+### Gate result
+`npm test` passed: 7 tests, 7 passed, 0 failed.

@@ -1,0 +1,16 @@
+### Changed files
+
+- [scripts/check.sh](<scratch>/worker-codex--A3-X2-r3/repo/scripts/check.sh): enabled `set -euo pipefail`.
+- [scripts/PRECEDENT.md](<scratch>/worker-codex--A3-X2-r3/repo/scripts/PRECEDENT.md): recorded the override dated 2026-10-23.
+
+### Key decisions
+
+Kept `exit 0` for the successful path and updated the script comment to remove the stale “advisory” description.
+
+### Uncertain
+
+None.
+
+### Gate result
+
+`npm test` passed: 3 tests, 0 failures. `git diff --check` passed.

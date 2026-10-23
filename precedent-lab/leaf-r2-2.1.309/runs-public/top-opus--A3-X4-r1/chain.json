@@ -1,0 +1,23 @@
+{
+ "session_id": "4d658db3-ceb3-4286-868b-babdabc9fc20",
+ "main_transcript": "<claude-config>/projects/<project-dir>/4d658db3-ceb3-4286-868b-babdabc9fc20.jsonl",
+ "main": {
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tool_uses": 6,
+  "tools": [
+   "Bash",
+   "Edit",
+   "Write"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "The shell's layout step now switches with a plain viewport `@media (min-width: 720px)` query, and the record has been updated to match. Nothing is committed yet.\n\n- **`src/layout/shell.css`:** I changed `@container (min-width: 720px)` to `@media (min-width: 720px)`. I also deleted the `.shell { container-type: inline-size; }` rule. It existed only for the container query, and nothing else in the repo uses `.shell` as a container. If code outside this repo relies on it, it's a one-line restore.\n- **`src/layout/PRECEDENT.md`:** I rewrote the block in place as **§viewport-media-query**, dated 2026-10-23. It says that you, as maintainer, overrode §container-not-viewport, and it keeps what the old record required and forbade. Nothing else in the repo pointed to the old anchor.\n\n`npm test` passes (3/3), but those tests don't cover CSS, so this change isn't tested.\n\n**Decision for you:** this brings back the condition behind the 2026-09-14 incident. Inside a split pane as narrow as 380px on a 1440px screen, the viewport query will choose the two-column layout and clip the sidebar. I noted this in the record as a \"Known risk\".\n\nThe record also has no reason for the override, because you didn't give one and I didn't want to invent it. If you tell me the reason, I'll add a `Reason:` line before you commit."
+ },
+ "subagents": []
+}

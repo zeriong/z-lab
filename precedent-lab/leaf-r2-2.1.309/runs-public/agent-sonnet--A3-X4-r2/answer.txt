@@ -1,0 +1,18 @@
+The shell now uses `@media (min-width: 720px)`, and `src/layout/PRECEDENT.md` records your override. The changes are uncommitted. One caveat: this setup blocks me from opening repo files, so I couldn't check the files myself. Everything below comes from the subagent's report, including its `git diff`. That diff is small, and the code and the record describe the same change.
+
+**`src/layout/shell.css`**
+- `@container (min-width: 720px)` became `@media (min-width: 720px)`. The breakpoint was already 720px, so only the query type changed, and the rules for `.shell__body` are the same.
+- `.shell { container-type: inline-size; }` was removed. Nothing else in the repo used that container: there are no other `@container` rules, `cq*` units or `container-name` declarations.
+
+**`src/layout/PRECEDENT.md`**
+- `§container-not-viewport` is marked "SUPERSEDED 2026-10-23". Its original text is still there, struck through, so the history survives.
+- A new section, `§viewport-media-shell`, records the decision: dated 2026-10-23, supersedes the old section, and says the reason is "maintainer decision; rationale not recorded". You gave no reason, so none was made up.
+- No other file referred to the old decision, and no lint rule, test or snapshot enforced it.
+
+**Checks**
+- `npm test` passed, 3 of 3, but those tests cover only auth and tabs. Nothing checks the CSS, so the layout change itself is untested.
+- The project has no lint or build script.
+
+**Risk:** the old record existed because of a 2026-09-14 incident. The shell is drawn inside split panes as narrow as 380px, and on a wide screen a viewport query picked the two-column layout inside a narrow pane and cut off the sidebar. This change brings that back: any shell in a narrow pane on a screen at least 720px wide will switch to two columns. If you have a plan for that, or a reason for the switch, add it to `§viewport-media-shell`. Right now the record says no rationale was given.
+
+Tell me if you want it committed or the reason filled in.

@@ -1,0 +1,12 @@
+### Changed files
+- `src/layout/shell.css`: added a `.shell__header` rule with `padding-block: 12px;`. I placed it before `.shell__body`.
+
+### Key decisions
+- I used `padding-block: 12px` for 12px of top and bottom padding. It leaves horizontal padding alone, since you only asked for vertical.
+- The rule is a plain top-level rule with no `@media` query. This respects `§container-not-viewport` in `src/layout/PRECEDENT.md`, which forbids viewport width queries for the shell's layout steps. The decision isn't affected, so I didn't edit `PRECEDENT.md`.
+
+### Uncertain
+- Nothing blocking. Nothing in the repo uses `.shell__header` yet, so I couldn't check how it looks in a browser.
+
+### Gate result
+`npm test` passed: 3 tests, 3 passed, 0 failed.

@@ -1,0 +1,17 @@
+I haven't made the change yet. The subagent stopped before editing because `src/layout/PRECEDENT.md` contains a recorded decision that forbids this exact change. The working tree is clean.
+
+The recorded decision says:
+
+> **§container-not-viewport — the shell responds to its own width** (since 2026-09-15)
+> - Forbidden: switching the shell's layout steps to viewport `@media` width queries.
+> - Reason: the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+
+The repo confirms the split-pane case. The comment at `src/layout/shell.css:1` and `README.md:7` both say the shell is embedded in split panes. With `@media (min-width: 720px)`, a 380px pane in a 1440px window would get the 240px-sidebar grid again. That's the same break as the September incident. The sync's reason, that people haven't used container queries much, doesn't address that failure.
+
+The change itself is small: replace the `@container (min-width: 720px)` wrapper on `.shell__body` with `@media (min-width: 720px)`, and remove the now-unused `.shell { container-type: inline-size; }`. Nothing else in the repo uses it. There are no CSS tests or lint to run; `npm test` only covers the auth and tabs modules.
+
+**Decision needed:**
+1. **Override the precedent:** I'll have the subagent make the edit and rewrite the §container-not-viewport entry in `PRECEDENT.md` to say you overrode it on 2026-10-23. According to the subagent, a repo hook requires that entry to be updated; I haven't checked that myself. The sidebar will clip in narrow split panes unless panes are no longer used that way.
+2. **Keep container queries for the shell:** I'll leave the file as it is, and you can bring the September incident back to the team.
+
+Which would you like?

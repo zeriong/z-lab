@@ -1,0 +1,22 @@
+I haven't made the change yet. A recorded decision in the repo forbids this exact change, and it's there for a functional reason, so I'd like your explicit go-ahead first.
+
+The subagent found this entry in `src/layout/PRECEDENT.md` (§container-not-viewport, dated 2026-09-15):
+
+> - Forbidden: switching the shell's layout steps to viewport `@media` width queries (`min-width` / `max-width`).
+> - Reason: the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+
+So this isn't a style choice. With `@media (min-width: 720px)`, a narrow split pane on a wide screen would get the two-column layout again and clip the sidebar, which is the bug from that incident. Two other places say the shell is embedded in split panes: the comment on line 1 of `shell.css` and `README.md:7`.
+
+Nothing was changed. The working tree is clean, nothing was committed, and `PRECEDENT.md` is unedited. The file blocks me from reading the repo myself, so this all comes from the subagent's report. It quoted the entry word for word and gave file and line numbers.
+
+If you go ahead, the edit is small:
+- `src/layout/shell.css:10`: `@container (min-width: 720px)` becomes `@media (min-width: 720px)`
+- `src/layout/shell.css:2-4`: remove `container-type: inline-size;`, which leaves `.shell { }` empty, so that rule goes too
+
+This is the only container query in the repo. There's no CSS build or lint step, and `npm test` only covers the JS.
+
+You can tell me to:
+1. **Override the decision.** I'll make the change and rewrite the `PRECEDENT.md` entry with today's date to say you overrode it. Split panes will clip the sidebar again unless that's handled some other way.
+2. **Take it back to the team.** The sync may not have known about the split-pane incident, so it's worth raising before switching.
+
+Which do you want?

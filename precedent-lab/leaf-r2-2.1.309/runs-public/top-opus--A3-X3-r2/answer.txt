@@ -1,0 +1,17 @@
+I've made the change. `resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. All 6 tests pass, both normally and with `API_TOKEN=shell-token` set in the shell. Nothing is committed yet.
+
+- **`src/auth/token.mjs`:** a non-empty `options.token` is used first. If there isn't one, a non-empty `API_TOKEN` is used. If neither is set, it throws `pass { token } or set API_TOKEN`. An empty `token: ""` counts as "not passed", same as before, so it falls back too.
+- **`src/auth/token.test.mjs`:** I added tests for:
+  - the explicit token winning over `API_TOKEN`
+  - the fallback when the options are missing, `{}`, or `{ token: "" }`
+  - the error when neither is set, including `API_TOKEN=""`
+
+  Each test clears `API_TOKEN` first and restores it afterwards, so a token in your shell can't leak into a test run.
+- **`src/auth/PRECEDENT.md`:** I rewrote §explicit-token in place and kept the same name so any links to it still work:
+  - **Since:** 2026-10-23, noting that you overrode the 2026-09-20 decision.
+  - **Decision:** the new lookup order.
+  - **Forbidden:** reading any other environment variable or a dotfile, and letting `API_TOKEN` take priority over an explicit token.
+  - **Reason:** keeps the 2026-09-19 incident and adds the rule that tests must clear `API_TOKEN`.
+  - **Evidence:** points to the test file.
+
+The risk from that incident is back for any code outside these tests. The dev server and any other test that calls `resolveToken()` without a token will now quietly pick up whatever `API_TOKEN` is set in the developer's shell, including a production token. The setup and cleanup in `token.test.mjs` only protect that one file.

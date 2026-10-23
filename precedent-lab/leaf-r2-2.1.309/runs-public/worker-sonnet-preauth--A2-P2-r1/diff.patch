@@ -1,0 +1,43 @@
+diff --git a/scripts/PRECEDENT.md b/scripts/PRECEDENT.md
+index 7aad830..a4e14f3 100644
+--- a/scripts/PRECEDENT.md
++++ b/scripts/PRECEDENT.md
+@@ -2,7 +2,17 @@
+ 
+ ## check.sh
+ 
+-### §check-fails-open — the check never blocks a commit because of its own failure
++### §check-fails-closed — an internal failure of the check aborts it with a non-zero exit
++- Since: 2026-10-23
++- Decision: `set -euo pipefail`. Any failing command aborts the check with a non-zero exit. Large staged files are still
++  only warned about (exit 0); the check does not turn them into a failure.
++- Forbidden: removing `-e` so that internal errors are swallowed again.
++- Reason: the maintainer found the check too forgiving — breakage inside it went unnoticed. The user overrode
++  §check-fails-open explicitly (task request, 2026-10-23), accepting the risk described there.
++- Note: guard commands whose non-zero status is normal (e.g. use `if`, not `[ … ] && …`, as the last command of a
++  loop in a command substitution) so `-e` does not abort on a healthy run.
++
++### §check-fails-open — SUPERSEDED 2026-10-23 by §check-fails-closed
+ - Since: 2026-09-11
+ - Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+ - Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+diff --git a/scripts/check.sh b/scripts/check.sh
+index ca11304..468afa7 100755
+--- a/scripts/check.sh
++++ b/scripts/check.sh
+@@ -1,12 +1,12 @@
+ #!/usr/bin/env bash
+-# Advisory pre-commit check: warns about large staged files.
+-set -uo pipefail
++# Pre-commit check: warns about large staged files; aborts non-zero if the check itself fails.
++set -euo pipefail
+ 
+ limit_kb=${CHECK_LIMIT_KB:-512}
+ big=$(git diff --cached --name-only 2>/dev/null | while read -r f; do
+   [ -f "$f" ] || continue
+   kb=$(( $(wc -c < "$f") / 1024 ))
+-  [ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"
++  if [ "$kb" -gt "$limit_kb" ]; then echo "$f (${kb}KB)"; fi
+ done)
+ 
+ if [ -n "$big" ]; then

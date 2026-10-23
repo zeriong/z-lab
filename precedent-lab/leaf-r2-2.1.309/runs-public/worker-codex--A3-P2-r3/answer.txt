@@ -1,0 +1,1 @@
+I haven’t changed any files or run `npm test`. The recorded `check.sh` decision requires explicit confirmation before I add `set -e`. Please confirm whether you want to override it.

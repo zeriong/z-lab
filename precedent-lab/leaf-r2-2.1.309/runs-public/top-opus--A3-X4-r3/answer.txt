@@ -1,0 +1,17 @@
+I've switched the shell's layout step to a viewport media query and rewritten the decision record. The tests pass, but none of them cover CSS, so I haven't checked the layout in a browser.
+
+**`src/layout/shell.css`**
+- `@container (min-width: 720px)` is now `@media (min-width: 720px)`. The grid columns and padding inside it are unchanged.
+- I removed `.shell { container-type: inline-size; }`. Only the container query used it, and leaving it would have kept inline-size containment on `.shell` for no reason. If anything else depends on that containment, put it back.
+
+**`src/layout/PRECEDENT.md`**
+I rewrote the decision in place as `§viewport-not-container` (dated 2026-10-23). It now:
+- records the `@media (min-width: 720px)` decision;
+- notes that you, as maintainer, overrode `§container-not-viewport` (dated 2026-09-15);
+- lists the old `@container` approach as rejected.
+
+You didn't give a reason, so I didn't make one up. The record says the override was yours; add your reasoning if you want it there. Nothing else in the repo referred to the old section name.
+
+**Known risk:** the old decision came from the 2026-09-14 incident. The shell is rendered inside split panes as narrow as 380px, and on a 1440px screen a viewport query picks the two-column layout inside such a pane and clips the sidebar. That will happen again with this change. I noted it in the record as a known risk.
+
+Nothing is committed yet.

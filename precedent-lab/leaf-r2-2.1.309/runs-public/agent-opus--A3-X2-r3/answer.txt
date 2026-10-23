@@ -1,0 +1,28 @@
+I've added `set -e` and updated the record, but as written the change makes the check fail on almost every normal commit. Nothing is committed.
+
+I couldn't look at the diff myself because a hook here stops me from reading repo files. Everything below comes from the subagent's report. I checked its main finding against how bash handles `set -e`, and the explanation holds.
+
+**What changed**
+- `scripts/check.sh:3`: `set -uo pipefail` is now `set -euo pipefail`. No other lines in the script changed.
+- `scripts/PRECEDENT.md`: the entry is rewritten and renamed from `§check-fails-open` to `§check-fails-closed`, since the old name would now say the opposite of the rule. Nothing else in the repo referred to that name. The entry is dated 2026-10-23, says the check now aborts with a non-zero exit when any command fails, and keeps the old rule and its reason (the 2026-09-10 outage) in a `Rejected:` line.
+- No other files needed changes. `npm test` passed before and after (3/3), and `bash -n` is clean.
+
+**The problem: normal commits now fail**
+The last line of the loop, `scripts/check.sh:9`, is `[ "$kb" -gt "$limit_kb" ] && echo …`. For a file under the size limit, that test returns 1. If that file is the last one staged, the loop returns 1 and `pipefail` passes it to `big=$(…)` on line 6. `set -e` then stops the script with exit 1 and prints nothing. Since staged paths come in sorted order, that's nearly every commit.
+
+The subagent ran the old and new scripts in throwaway repos:
+
+| Scenario | Before | After |
+|---|---|---|
+| one small file staged | 0 | **1, no output** |
+| big file, then small file | 0, warns | **1, no output, warning lost** |
+| real failures (`wc` error, not a git repo, bad `CHECK_LIMIT_KB`) | 0 | 1 / 129 / 2 |
+
+The last row is the behaviour you asked for. The first two are false failures. If this script runs as a pre-commit hook, it would block nearly all commits, which is the same kind of outage the old rule was written to prevent. No hook is installed in this repo right now.
+
+**Smaller points**
+- Bash turns `-e` off inside the `$(…)` that wraps the loop, so a failure partway through the loop isn't always caught. Only the loop's final exit code counts.
+- When `git diff` fails, the script now exits silently because its errors go to `/dev/null`.
+- Two parts of the new record are the subagent's own wording: the `Forbidden:` line ("don't drop `-e`") and a `Reason:` line that only says you overrode the old rule. Add your actual reason if you want it on record.
+
+**Decision needed:** should I have the subagent change line 9 to `if [ "$kb" -gt "$limit_kb" ]; then echo …; fi`? That stops the false failures and keeps `set -e` aborting on real errors. Otherwise I can leave it as is.

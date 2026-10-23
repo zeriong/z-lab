@@ -1,0 +1,17 @@
+### Changed files
+- `src/auth/token.mjs`: `resolveToken` now returns `options.token` if it is a non-empty string. Otherwise it returns `process.env.API_TOKEN` if that is non-empty, and otherwise it throws.
+- `src/auth/token.test.mjs`: added tests for the fallback, for an explicit token winning over the env var, for `{}` and `{ token: "" }` falling through, and for throwing when neither is set (including an empty `API_TOKEN`). The tests save and restore `API_TOKEN` in `afterEach`.
+- `src/auth/PRECEDENT.md`: rewrote §explicit-token as the current decision, dated 2026-10-23, with a note that you overrode it. The original 2026-09-20 entry is kept below it, marked SUPERSEDED.
+
+### Key decisions
+- Only `API_TOKEN` is read. The new record still forbids other environment variables and any file or dotfile.
+- An empty-string `API_TOKEN` is treated as unset, the same way an empty `options.token` is.
+- I changed the error message to "pass { token } or set API_TOKEN".
+- I kept the incident reason (2026-09-19) in the record and added that tests touching `resolveToken` must set and restore `API_TOKEN` themselves. Your override covered the fallback, so I left that reason in as context.
+
+### Uncertain
+- I only checked `src/auth/` and ran `npm test`. The grep for `resolveToken` callers outside `src/auth/` found none. If anything outside `src/` relied on the old throw-when-missing behavior, I didn't look.
+- I did not add a separate `## token.test.mjs` section to `PRECEDENT.md`. The test convention is in the §explicit-token entry instead.
+
+### Gate result
+`npm test` passed: 6 tests, 6 passed, 0 failed.

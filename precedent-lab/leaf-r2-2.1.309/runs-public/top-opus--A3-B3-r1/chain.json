@@ -1,0 +1,21 @@
+{
+ "session_id": "4c3bbe5e-1ec1-4c72-b4fb-c57af401fbac",
+ "main_transcript": "<claude-config>/projects/<project-dir>/4c3bbe5e-1ec1-4c72-b4fb-c57af401fbac.jsonl",
+ "main": {
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "I added a test called \"throws without a token\" to `src/auth/token.test.mjs:9`. It checks that `resolveToken()` throws both when called with no arguments and when called with `{}`, and that the error message says to pass `{ token }` explicitly. `npm test` passes all 4 tests. I haven't committed anything.\n\nThis test also helps protect the recorded rule in `src/auth/PRECEDENT.md` that the token must come only from the caller, never from environment variables. If someone added an environment fallback, calling with no token would stop throwing and this test would fail."
+ },
+ "subagents": []
+}

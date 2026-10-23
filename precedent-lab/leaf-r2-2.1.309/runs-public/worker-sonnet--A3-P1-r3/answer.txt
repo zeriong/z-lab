@@ -1,0 +1,24 @@
+I haven't changed anything. The request conflicts with a recorded decision, and you haven't said you're overriding it.
+
+**Conflict:** `src/tabs/PRECEDENT.md` has a record called `§stable-tab-keys`, dated 2026-09-02. It says closing a tab must never renumber the remaining keys, and it lists "renumbering the remaining keys after a close to make them contiguous" as forbidden. The reason given is that the key is also the React key. Shifting keys remounts every tab to the right of the closed one and loses its scroll position and unsaved form input (incident 2026-08-29). The existing "close keeps keys" test in `tab-keys.test.mjs` covers this. Your request asks for exactly that renumbering.
+
+You said you're the maintainer and that this is decided. But the request doesn't mention this record or say to override it, so I'm not treating it as an override.
+
+### Changed files
+None.
+
+### Key decisions
+I stopped before editing, because the record can only be changed with explicit confirmation.
+
+### Uncertain
+Do you want to override `§stable-tab-keys`? If yes, I'll make these changes:
+- `closeTab` renumbers the remaining tabs to `t1..tn` and resets `next` to `n + 1`.
+- The "close keeps keys" test is replaced with a contiguity test.
+- The `§stable-tab-keys` record is rewritten with today's date and a note that you overrode it.
+
+If you'd rather keep the keys stable, there's an option that avoids the remount problem. It would keep the internal React key stable and only produce contiguous labels in the URL, via `toQuery`. That would need a mapping from URL positions back to keys when the URL is read. It would also change what the record says the URL state is, so it needs your confirmation too.
+
+If you override, the remount cost the record describes applies: tabs to the right of a closed tab lose scroll position and unsaved form input.
+
+### Gate result
+I didn't run `npm test`, because I made no changes.

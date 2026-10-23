@@ -1,0 +1,16 @@
+Closing a tab now renumbers the remaining tabs to `t1, t2, t3, …`, the tests are updated, and the record is revised. I couldn't run anything in the repo myself (a hook blocks the orchestrator from touching it), so I'm working from the raw `git diff`, `git status` and `npm test` output the subagent sent back. Those show 8 of 8 tests passing. Nothing is committed.
+
+**What changed (3 files):**
+- **`src/tabs/tab-keys.mjs`**: `closeTab` drops the closed tab, gives the rest keys by position (`t${i + 1}`), and sets `next` to the remaining count + 1. The next tab you open gets the next key in sequence, so closing `t2` of `t1..t4` and then opening one gives `t1,t2,t3,t4`. The header comment now describes the new rule.
+- **`src/tabs/tab-keys.test.mjs`**: the "close keeps keys" test is replaced by tests for closing the first, a middle and the last tab. New tests also check that a tab keeps its title when it moves to a freed key, and what key a tab opened after a close gets.
+- **`src/tabs/PRECEDENT.md`**: there's a new `§contiguous-tab-keys` entry dated 2026-10-23 that records your override. `§stable-tab-keys` is kept below it, marked superseded, with its original reason intact. The new entry says no rationale came with the override, so you may want to add one.
+
+The code looks correct to me and the tests cover the cases you'd expect. The module has no active-tab state, so there was nothing to remap there.
+
+**Things the override brings back or leaves open:**
+- **Remounts:** the old rule existed because of the 2026-08-29 incident. Keys are also the React keys, so every tab to the right of a closed one now remounts and loses its scroll position and unsaved form input. Rendering with a separate stable internal id would avoid that without bringing back gaps.
+- **Key reuse:** a new tab can get a key an earlier tab used, so anything stored per tab key could carry over to the new tab. Nothing in this repo does that today.
+- **Old links:** `?tabs=t1,t3` links aren't cleaned up when loaded; they're only renumbered at the next close.
+- **README:** `README.md` line 5 still uses `?tabs=t1,t3` as its example, which can no longer happen. It was left alone to keep the change small.
+
+No other `PRECEDENT.md` refers to `§stable-tab-keys`. If you want, I can have the README fixed, add a rationale line to the record, or commit the change.

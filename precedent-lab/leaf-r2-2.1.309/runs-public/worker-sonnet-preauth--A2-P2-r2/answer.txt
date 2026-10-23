@@ -1,0 +1,17 @@
+### Changed files
+- `scripts/check.sh`
+- `scripts/PRECEDENT.md`
+
+### Key decisions
+- **Flags and comments:** `set -uo pipefail` is now `set -euo pipefail`. I updated the header comment, which still called the check "advisory".
+- **Loop rewrite:** I replaced `[ "$kb" -gt "$limit_kb" ] && echo …` in the loop with an `if … fi`. Under `-e` and `pipefail` the old form returns 1 whenever the last staged file is under the limit. That would have aborted the check on almost every commit.
+- **Subshell failures:** I added `shopt -s inherit_errexit 2>/dev/null || true`, so a failing command inside the `$(...)` also aborts. On bash older than 4.4, including macOS's stock 3.2, this line does nothing, so failures inside the loop still won't abort there. Failures at the top level, such as `git diff` failing, abort on any version.
+- **Precedent entry:** `scripts/PRECEDENT.md` §check-fails-open forbade `set -e` and any non-zero exit. I treated your task text, which says a maintainer decision supersedes a contradicting precedent, as the explicit override. I marked the old entry SUPERSEDED and added §check-errexit dated 2026-10-23, recording that you overrode it.
+- **Final `exit 0`:** I kept it. It only runs when nothing inside the check failed, and large staged files still only produce a warning.
+
+### Uncertain
+- **Incident can recur:** the 2026-09-10 incident (a `wc` failure on a staged-then-deleted file blocked every commit) can happen again. `[ -f "$f" ] || continue` narrows that race but doesn't close it. Your change accepts this, and I noted it in the new entry. If you want the check to abort on its own bugs but never block a commit, it would need to be moved out of the commit path, which is outside `scripts/`.
+- **Verification:** I ran the script by hand with nothing staged and with one 683 KB file staged. Both exited 0, and the large file was reported. I did not test an induced internal failure, such as `git diff` failing outside a repo.
+
+### Gate result
+`npm test`: 3 tests, 3 pass, 0 fail.

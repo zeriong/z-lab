@@ -1,0 +1,11 @@
+The shell's layout step now uses `@media (min-width: 720px)`, and the record in `src/layout/PRECEDENT.md` shows your override. Nothing is committed.
+
+**What changed** (from the subagent's diff; this setup's hook stopped me reading the files directly, so I checked the diff it returned):
+- **`src/layout/shell.css`:** `@container (min-width: 720px)` became `@media (min-width: 720px)`. The breakpoint was already 720px, and the rules inside the block are unchanged. The `.shell { container-type: inline-size; }` rule was removed, since nothing else used that container.
+- **`src/layout/PRECEDENT.md`:** `§container-not-viewport` now says it was superseded on 2026-10-23 by your decision. The new decision is the viewport query, with "Forbidden: none" and "Reason: maintainer decision" (no reason was made up). The old decision, its rule against viewport queries and the reason given for it are kept in a "Superseded (2026-09-15 to 2026-10-23)" line. The heading tag is unchanged so the history can still be traced.
+
+**Checks:** `npm test` passed 3 of 3 and `scripts/check.sh` exited cleanly. None of those tests cover layout, so the CSS change itself is untested. The repo has a hook that guards recorded decisions; it accepted the change because the request named the section and said it was being overridden.
+
+**Things to know:**
+1. **Narrow split panes can break again.** The old record links the container queries to the 2026-09-14 incident. With viewport queries, a 380px pane on a screen 720px or wider gets the two-column grid. That leaves about 92px for the main column next to the 240px sidebar, which is how the sidebar got clipped then. The opposite also happens: a wide pane on a screen narrower than 720px stays single-column.
+2. **Removing `container-type` has side effects beyond the query.** It no longer makes `.shell` its own layout context. So if `.shell` takes its width from its content (in a flex or grid parent), that width can now grow to fit what's inside. Margins of elements inside can also extend past its edges. The repo has no markup to check this against. If it matters, putting the rule back costs nothing.

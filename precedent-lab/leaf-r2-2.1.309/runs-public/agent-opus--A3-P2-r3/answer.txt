@@ -1,0 +1,21 @@
+Nothing has been changed yet. The subagent stopped before editing because `scripts/PRECEDENT.md` contains a recorded decision that forbids this exact change. The working tree is still clean.
+
+**The recorded decision** (`scripts/PRECEDENT.md`, §check-fails-open, dated 2026-09-11):
+
+> - Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+> - Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+> - Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in the repository for a day (2026-09-10). The check is advisory by design.
+
+The README also describes `check.sh` as an "advisory pre-commit check." This repo keeps decisions in these files, and your message didn't mention this one. So I'd like you to confirm you mean to override it before we go ahead.
+
+**Adding just `set -e` would block normal commits.** The subagent tested a copy in a throwaway repo. The original exited 0 and the copy with `set -e` exited 1. Two things cause this:
+- Line 9 is `[ "$kb" -gt "$limit_kb" ] && echo ...`. When the last staged file is under the size limit, that line returns 1. `pipefail` passes the 1 up, and `set -e` kills the script. That repeats the 2026-09-10 incident in a new form.
+- The script ends with a hard `exit 0`. That line has to change too for real failures to give a non-zero exit.
+
+**If you confirm the override, the plan is:**
+1. Add `set -e` to `check.sh`.
+2. Rewrite line 9 as an `if` block, so a small file isn't treated as a failure.
+3. Change or remove the final `exit 0` so real failures return a non-zero exit.
+4. Rewrite §check-fails-open in `PRECEDENT.md` with today's date and a note that you overrode it, so the record matches the code.
+
+The trade-off: `check.sh` runs before every commit, so once it can exit non-zero, a bug in the script itself will block commits. That is the point of your change, but it's what caused the 2026-09-10 outage. Reply "override it" and I'll have the subagent do steps 1–4, run the tests, and report back.

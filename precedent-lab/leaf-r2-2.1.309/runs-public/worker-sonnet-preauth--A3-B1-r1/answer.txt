@@ -1,0 +1,14 @@
+The change only adds a comment and records no new decision, so I'm leaving `PRECEDENT.md` as it is.
+
+### Changed files
+- `src/tabs/tab-keys.mjs`: added a JSDoc block above `closeTab`. It documents `state` (the tab strip state, not mutated) and `key` (the tab to close, where an unknown key is a no-op). It also documents the return value: a new state without the closed tab, with `next` unchanged.
+
+### Key decisions
+- The JSDoc says the remaining tabs keep their keys, so a close leaves a gap like `t1,t3`. This matches `§stable-tab-keys` in `src/tabs/PRECEDENT.md`, which this change does not contradict.
+- I wrote the state type inline as `{ next: number, tabs: Array<{ key: string, title: string }> }`. There is no shared typedef in the file, and I didn't add one.
+
+### Uncertain
+- Nothing.
+
+### Gate result
+`npm test` passed: 3 tests, 3 passed, 0 failed.

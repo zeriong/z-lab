@@ -1,0 +1,26 @@
+I added `set -e` to `scripts/check.sh` and rewrote the decision record. A failing command inside the check now stops it with a non-zero exit. Nothing is committed.
+
+**One extra fix was needed.** With only `-e` added, the check exited 1 on an ordinary commit with one small staged file. The `[ "$kb" -gt "$limit_kb" ] && echo …` line returns 1 when the last file is under the limit, and `-e` turned that into an abort. I rewrote that line as an `if`.
+
+**Changes in `scripts/check.sh`:**
+- `set -uo pipefail` → `set -euo pipefail`
+- the `&& echo` line → `if …; then echo …; fi`
+- I removed `2>/dev/null` from `git diff`. Without that, a git failure would now stop the check silently, with no message.
+- Updated the header comment to say failures stop the check.
+
+**Record (`scripts/PRECEDENT.md`):** I rewrote the block in place as `§check-fails-closed`, dated 2026-10-23, with a note that you overrode `§check-fails-open`. It also bans `test && action` at the end of a loop body. The old decision and the 2026-09-10 incident behind it are kept under "Rejected". Nothing else in the repo referred to the old name.
+
+**Tested with macOS's `/bin/bash` 3.2:**
+
+| Case | Exit |
+|---|---|
+| Nothing staged | 0 |
+| One small staged file | 0 |
+| Large file then small file (warning printed) | 0 |
+| Staged-then-deleted file (the 2026-09-10 case) | 0 (still skipped by the `[ -f ]` guard) |
+| Unreadable staged file (`wc` fails) | 1, stops |
+| Not inside a git repo | 129, stops with git's error |
+
+`npm test` passes (3/3).
+
+**What `-e` doesn't catch:** a failure inside an `if` condition, such as a non-numeric `CHECK_LIMIT_KB` breaking the `[ -gt ]` comparison, only prints an error and the check goes on. Covering that would need an explicit check of the limit.

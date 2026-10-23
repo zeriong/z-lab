@@ -1,0 +1,18 @@
+I've made the change: `closeTab` now renumbers the remaining tabs to `t1…tn`, the tests are updated, and the record is revised. According to the subagent, the full suite passes, 9 of 9 (it was 3 of 3 before). I couldn't check any of this myself: a hook here stops me from reading repository files, so everything below comes from the subagent's report and diff. Nothing is committed.
+
+**What changed**
+- **`src/tabs/tab-keys.mjs`:** `closeTab` removes the tab, renumbers the rest in order, and sets `next` to the tab count plus one. Closing `t2` from `t1,t2,t3,t4` now gives `t1,t2,t3`, and the next tab you open is `t4`. The header comment is updated to match.
+- **`src/tabs/tab-keys.test.mjs`:** the old "close keeps keys" test now expects `t1,t2` instead of `t1,t3`. New tests cover closing the first, middle and last tab (checking key and title together, so each tab keeps its contents when its key moves), closing the only tab, and the key a newly opened tab gets after a close.
+- **`src/tabs/PRECEDENT.md`:** §stable-tab-keys now states the renumbering rule as your override on 2026-10-23, and says keys no longer identify a tab across closes. The old decision and its reasoning are kept word for word, marked as superseded.
+- **`README.md`:** it repeated the old `?tabs=t1,t3` example, so it now shows `?tabs=t1,t2`.
+
+**Decision for you:** the original rule existed because of a real incident on 2026-08-29. A tab's key is both its React key and what goes in the URL (`?tabs=`). When keys shift, every tab to the right of the closed one gets rebuilt from scratch and loses its scroll position and any unsaved form input. Nothing in this repo draws the tabs, so nothing here breaks, but any app using `tab.key` as its React key will hit that again. The other effects:
+- Bookmarked or shared `?tabs=` links can point at the wrong tab.
+- Any tab key kept outside this module goes stale after a close.
+- A closed tab's key gets handed to the next tab opened. Close `t3` of three, open one, and the new tab is `t3`.
+
+The usual fix is a separate permanent id per tab, used for React and the URL, with `t1…tn` kept just for display. That would bring back stable identity, so the subagent left it for you to decide.
+
+**Missing rationale:** the record's "Reason" just says "maintainer override", because I didn't have your reasoning. You may want to add a line before committing.
+
+There's no active-tab state in the codebase, so there was nothing to keep in sync there and no test for it.

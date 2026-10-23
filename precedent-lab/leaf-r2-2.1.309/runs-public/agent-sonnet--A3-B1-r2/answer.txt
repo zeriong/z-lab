@@ -1,0 +1,22 @@
+I added a JSDoc block above `closeTab` in `src/tabs/tab-keys.mjs` (via the subagent). It covers both parameters and the return value, and no code changed. `npm test` passes (3 tests, 0 failures). Nothing is committed.
+
+I couldn't confirm this on the working tree myself: a hook blocks me from opening repository files or running `git diff`. What I could check is the subagent's diff against itself. The function body appears in the diff's context lines, and the comment matches it:
+
+```js
+/**
+ * Closes the tab with the given key. The remaining tabs keep their keys, so closing leaves a gap (`t1,t3`).
+ * Does not mutate `state`. A key that matches no tab is not an error; the tabs come back unchanged.
+ *
+ * @param {{ next: number, tabs: Array<{ key: string, title: string }> }} state Current tab strip state.
+ * @param {string} key Key of the tab to close, e.g. `"t2"`.
+ * @returns {{ next: number, tabs: Array<{ key: string, title: string }> }} A new state object with the same `next`
+ *   and every tab except the one matching `key`.
+ */
+export function closeTab(state, key) {
+  return { ...state, tabs: state.tabs.filter((tab) => tab.key !== key) };
+}
+```
+
+- **Matches the code:** the function spreads `state`, so `next` carries over. It filters into a new array, so nothing is mutated, and an unknown key just returns the same tabs without an error.
+- **Recorded decisions:** `src/tabs/PRECEDENT.md` has one relevant rule: closing a tab leaves a gap in the keys and never renumbers the others. The comment states that rule. No PRECEDENT.md says anything about comment style, and nothing was added to them.
+- **Style:** the file had no JSDoc before, only a one-line `//` header, so this block is the first. The first description line is quite long; wrap it if your formatter or reviewers care.

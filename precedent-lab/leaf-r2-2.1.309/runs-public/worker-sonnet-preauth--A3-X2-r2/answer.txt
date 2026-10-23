@@ -1,0 +1,19 @@
+### Changed files
+- `scripts/check.sh`: `set -uo pipefail` is now `set -euo pipefail`. I also made two supporting edits, described below.
+- `scripts/PRECEDENT.md`: added §check-fails-closed, which records the new decision. §check-fails-open is kept and marked SUPERSEDED on 2026-10-23.
+
+### Key decisions
+- **Override confirmed:** your request named §check-fails-open and said you were overriding it. That meets the precedent's bar for an override, so I made the change and did not stop to ask.
+- **Loop rewrite:** I replaced `[ "$kb" -gt "$limit_kb" ] && echo ...` with an `if`. As the last command in the loop, the `&&` form returns non-zero when the last staged file is under the limit. Under `set -e`, that would abort `big=$(...)` on a healthy run.
+- **`2>/dev/null` removed:** I dropped it from `git diff --cached`, so a git failure now shows its error message as well as aborting the check.
+- **Header comment:** it no longer says "Advisory". It now says the check aborts non-zero if any command fails.
+- **Large files still only warn:** the script still ends in `exit 0`, so large staged files produce a warning without blocking the commit. Only a failing command aborts it.
+- **Old record kept:** the old record stays in `PRECEDENT.md`, including its incident reason, so the history isn't lost.
+
+### Uncertain
+- **Reopens the 2026-09-10 incident:** a `wc` failure on a staged-then-deleted file would now abort the check. I did not change that path. The `[ -f "$f" ] || continue` guard skips deleted files, but a file removed between the guard and `wc` would still abort. Tell me if you want that handled.
+- **Outside `scripts/`:** I did not look for other places that rely on the check always exiting 0, such as git hooks or CI config, because they are out of scope.
+- **Not tested:** I ran `check.sh` once with nothing staged. I did not test a failing `wc` or the large-file warning.
+
+### Gate result
+`npm test`: 3 tests, 3 pass, 0 fail.

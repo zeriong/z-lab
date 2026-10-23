@@ -1,0 +1,15 @@
+diff --git a/src/layout/shell.css b/src/layout/shell.css
+index b71e94e..8706723 100644
+--- a/src/layout/shell.css
++++ b/src/layout/shell.css
+@@ -7,6 +7,10 @@
+   padding: 16px;
+ }
+ 
++.shell__header {
++  padding-block: 12px;
++}
++
+ @container (min-width: 720px) {
+   .shell__body {
+     display: grid;

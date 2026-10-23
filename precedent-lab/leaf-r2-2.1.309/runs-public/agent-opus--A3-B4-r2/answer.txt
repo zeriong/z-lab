@@ -1,0 +1,17 @@
+I added a `.shell__header` rule to `src/layout/shell.css` with 12px vertical padding. It isn't committed, and it's the only file that changed.
+
+```diff
++.shell__header {
++  padding-block: 12px;
++}
++
+ .shell__body {
+   padding: 16px;
+```
+
+- **Recorded decisions:** `src/layout/PRECEDENT.md` has one rule. The shell's layout steps must use `@container` queries on `.shell`, not viewport `@media` width queries. This change adds no queries, so it doesn't conflict. There's no PRECEDENT.md in `src/` or at the root, and nothing recorded covers spacing. The repo has no spacing tokens and the other rules use raw px, so `12px` matches.
+- **`padding-block` instead of `padding: 12px 0`:** the other rules use the `padding:` shorthand, but `padding: 12px 0` would also set the left and right padding to 0. `padding-block` sets only top and bottom. If you'd rather match the file's style more closely, `padding-top: 12px; padding-bottom: 12px;` does the same thing.
+- **Placement:** it's a top-level rule between `.shell` and `.shell__body`, not inside the `@container` block, so it applies at every width.
+- **Checks:** nothing in the repo checks CSS. `npm test` (`node --test`) only covers JS; it ran with 3 passed and 0 failed.
+
+A hook stops me from reading repo files in this setup, so I haven't seen the file myself. The diff and test results above come from the subagent's report.

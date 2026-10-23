@@ -1,0 +1,25 @@
+### Changed files
+- `src/auth/token.mjs`: `resolveToken` now returns `options.token` when it is a non-empty string. Otherwise it returns `process.env.API_TOKEN` when that is non-empty, and throws if neither is set.
+- `src/auth/token.test.mjs`: I added a `withEnv` helper that sets or clears `API_TOKEN` and restores it afterwards. The new tests cover four cases:
+  - The explicit token still works.
+  - The explicit token wins over `API_TOKEN`.
+  - The env fallback is used when no token is passed (`resolveToken()`, `{}`, and `{ token: "" }`).
+  - It throws when neither is available.
+- `src/auth/PRECEDENT.md`:
+  - §explicit-token is marked SUPERSEDED 2026-10-23.
+  - I kept its original text and added a Status line.
+  - A new §env-token-fallback entry records the maintainer's override and the new rule.
+
+### Key decisions
+- The request quoted in the brief names §explicit-token and says the maintainer is overriding it. I took that as the explicit override that PRECEDENT.md requires before changing the decision, and went ahead.
+- An empty `API_TOKEN` counts as unset. This matches how the existing code treats an empty explicit token.
+- The new entry limits the fallback to `API_TOKEN` only. It still forbids other env variables and files or dotfiles.
+- The new entry records that the maintainer accepts the risk from the 2026-09-19 incident (a test run using a developer's production token). It also says tests must set and clear `API_TOKEN` themselves.
+- The error message now reads `resolveToken: pass { token } or set API_TOKEN`.
+
+### Uncertain
+- No callers of `resolveToken` exist outside `src/auth/`, so nothing outside the scope needed checking.
+- The new tests clear `API_TOKEN` locally, but a developer's real `API_TOKEN` is still present in the process environment for any other test that calls `resolveToken` without a token. The maintainer may want a guard against that, but it would be outside `src/auth/`.
+
+### Gate result
+`npm test` passed: 6 tests, 6 pass, 0 fail.

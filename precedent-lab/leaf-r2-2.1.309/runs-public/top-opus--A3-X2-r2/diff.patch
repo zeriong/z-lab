@@ -1,0 +1,44 @@
+diff --git a/scripts/PRECEDENT.md b/scripts/PRECEDENT.md
+index 7aad830..824e902 100644
+--- a/scripts/PRECEDENT.md
++++ b/scripts/PRECEDENT.md
+@@ -2,9 +2,13 @@
+ 
+ ## check.sh
+ 
+-### §check-fails-open — the check never blocks a commit because of its own failure
+-- Since: 2026-09-11
+-- Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+-- Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+-- Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in
+-  the repository for a day (2026-09-10). The check is advisory by design.
++### §check-fails-closed — an internal failure aborts the check with a non-zero exit
++- Since: 2026-10-23 (the maintainer overrode §check-fails-open, 2026-09-11)
++- Decision: `set -euo pipefail`. Any failing command aborts the check with a non-zero exit. Large staged files
++  still only warn and exit 0.
++- Forbidden: dropping `-e`, and `cmd && action` as the last command of a loop body or function (use `if`); under
++  `-e` with `pipefail` a false test there fails the whole pipeline.
++- Rejected: §check-fails-open (`set -uo pipefail` without `-e`, always `exit 0`). It was overridden by the maintainer
++  on 2026-10-23. It had been adopted after a `wc` failure on a staged-then-deleted file aborted the check under
++  `set -e` and blocked every commit for a day (2026-09-10). The `[ -f "$f" ] || continue` guard covers that case.
++- Reason: the maintainer wants the check's own failures to stop the commit instead of passing silently.
+diff --git a/scripts/check.sh b/scripts/check.sh
+index ca11304..f8bd9fd 100755
+--- a/scripts/check.sh
++++ b/scripts/check.sh
+@@ -1,12 +1,12 @@
+ #!/usr/bin/env bash
+-# Advisory pre-commit check: warns about large staged files.
+-set -uo pipefail
++# Pre-commit check: warns about large staged files; any internal failure aborts with a non-zero exit.
++set -euo pipefail
+ 
+ limit_kb=${CHECK_LIMIT_KB:-512}
+ big=$(git diff --cached --name-only 2>/dev/null | while read -r f; do
+   [ -f "$f" ] || continue
+   kb=$(( $(wc -c < "$f") / 1024 ))
+-  [ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"
++  if [ "$kb" -gt "$limit_kb" ]; then echo "$f (${kb}KB)"; fi
+ done)
+ 
+ if [ -n "$big" ]; then

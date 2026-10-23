@@ -1,0 +1,13 @@
+The shell's breakpoint is now `@media (min-width: 720px)`, and `src/layout/PRECEDENT.md` records your override. The repo hook stopped me from opening files, so I checked the subagent's verbatim `git diff` rather than the files themselves. The diff matches what it described, and nothing is committed.
+
+**What changed**
+- **`src/layout/shell.css`:** `@container (min-width: 720px)` is now `@media (min-width: 720px)`. The rules inside are unchanged, and the old threshold was already 720px. The `.shell { container-type: inline-size; }` rule was deleted, because nothing else in the repo queries that container.
+- **`src/layout/PRECEDENT.md`:** a new section, `§shell-viewport-media-query`, dated 2026-10-23, records the decision. Its reason is given only as "maintainer decision", and it says it supersedes the old one. `§container-not-viewport` is kept word for word below it, with "(superseded 2026-10-23)" in its heading and a status line saying it is no longer in force.
+- Nothing else in the repo restates the old decision: no other PRECEDENT files, tests, lint rules or docs. Nothing else needed changing.
+
+**Tests:** `npm test` passes 3 of 3, but those tests only cover auth and tab keys. Nothing tests the shell's layout, and the project has no lint or build step.
+
+**Before you commit:**
+- **The old problem comes back.** The superseded record says the shell is shown in split panes as narrow as 380px on a 1440px screen. Under a viewport query, those panes get the two-column layout again and the sidebar clips (the 2026-09-14 incident). I assume you've accepted that, but it's now expected behaviour.
+- **The record's format may not match house style.** A repo hook (`.claude/hooks/precedent-context.py`) says an override should rewrite the record in place with today's date. I asked the subagent to keep the old section as history, so the file now has a live section plus a superseded one. If you prefer the in-place style, the old section can be folded into the new one.
+- **Side effect:** deleting `container-type` also removes `.shell`'s inline-size containment. That's a small layout change beyond the query itself.

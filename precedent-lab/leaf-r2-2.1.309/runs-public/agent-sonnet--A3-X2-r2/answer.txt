@@ -1,0 +1,18 @@
+I've added `set -e` to `scripts/check.sh` and updated the `§check-fails-open` record. Nothing is committed. A hook here blocks me from reading repository files, even through `git diff`, so I couldn't check the diff myself. I reviewed the subagent's reported diff and test results, and its reasoning holds up.
+
+**What changed**
+- **`scripts/check.sh`**: the existing line `set -uo pipefail` is now `set -euo pipefail`.
+- **One extra line in the script:** on its own, `set -e` broke normal passing runs. The loop over staged files ended with `[ "$kb" -gt "$limit_kb" ] && echo …`, so whenever the last file was under the size limit the loop returned 1 and the check exited 1 with no output. When a large file wasn't last, its warning was lost as well. The subagent changed that line to `if …; then echo …; fi` and added a one-line comment. It didn't use `|| true`, which would also hide real failures.
+- **`scripts/PRECEDENT.md`**: the entry is rewritten in place in the file's existing format, with Since 2026-10-23. The Decision line now says `set -euo pipefail`, and any failing command aborts the check with a non-zero exit. It says you made the change and that no further reason was recorded.
+  - The old fails-open rule is listed under "Rejected", and the old "Forbidden" line is gone.
+  - The original reason is kept for history: the 2026-09-10 `wc` failure that blocked every commit for a day.
+  - The anchor `check-fails-open` keeps its name, though it now describes the opposite rule. Nothing links to it.
+
+**Tests the subagent ran**
+- **Current tree:** the check exits 0, both before and after the change.
+- **Normal runs in a scratch repo:** a large staged file in the middle of others is still reported, with exit 0. Small files only, nothing staged, and a file staged then deleted all exit 0.
+- **Induced failures:** an unreadable staged file now exits 1, and running outside a git repo exits 129. Before the change, both exited 0.
+
+**Open decisions**
+1. **A bad `CHECK_LIMIT_KB` still passes.** With `CHECK_LIMIT_KB=abc`, the `if` treats the comparison error as false. The check prints an error to stderr but still exits 0. Fixing this needs a small check on the limit value at the top of the script. Do you want it?
+2. **The README still calls it an "advisory pre-commit check".** That's still true of the large-file warnings, so it was left alone. Nothing in the repo runs the check yet, but if it becomes a pre-commit hook, any failing command in it will now block commits.

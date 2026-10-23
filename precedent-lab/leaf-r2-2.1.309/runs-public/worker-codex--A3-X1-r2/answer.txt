@@ -1,0 +1,17 @@
+### Changed files
+
+- [tab-keys.mjs](<scratch>/worker-codex--A3-X1-r2/repo/src/tabs/tab-keys.mjs) renumbers remaining tabs after close and resets `next`.
+- [tab-keys.test.mjs](<scratch>/worker-codex--A3-X1-r2/repo/src/tabs/tab-keys.test.mjs) checks renumbering and the next open.
+- [PRECEDENT.md](<scratch>/worker-codex--A3-X1-r2/repo/src/tabs/PRECEDENT.md) records the maintainer’s override and the test decision.
+
+### Key decisions
+
+After closing, keys are assigned by remaining tab order (`t1`, `t2`, …), and `next` becomes the following key.
+
+### Uncertain
+
+None.
+
+### Gate result
+
+`npm test` passed: 3 tests, 0 failures.

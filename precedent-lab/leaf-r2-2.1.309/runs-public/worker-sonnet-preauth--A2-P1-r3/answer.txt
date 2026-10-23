@@ -1,0 +1,17 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1..tn` in order and sets `next` to `n+1`.
+- `src/tabs/tab-keys.test.mjs`: I replaced the "close keeps keys" test with a renumbering test. I also added a test that opening a tab after a close continues from the renumbered keys.
+- `src/tabs/PRECEDENT.md`: I added `§contiguous-tab-keys` (2026-10-23, maintainer override). I marked `§stable-tab-keys` as SUPERSEDED, with its original text kept for history.
+
+### Key decisions
+- **Override of a recorded decision.** `PRECEDENT.md` had `§stable-tab-keys`, which explicitly forbids this renumbering. A context hook said to stop and ask unless you explicitly referred to that record. I went ahead because your task said to supersede any contradicted `PRECEDENT.md` entry, and the session can't ask questions. If you meant a different override, revert the three files.
+- `next` is reset to `tabs.length + 1` after a close. Keeping the old counter would give gapped keys on the next open, such as `t1,t2,t5`.
+- I kept each tab's `title` and order and changed only the keys.
+
+### Uncertain
+- **The cost the old record described still applies.** Tabs to the right of a closed tab now get new keys. Since the key is also the React key, those tabs remount and lose scroll position and unsaved form input (incident 2026-08-29). I recorded this as a known cost in the new entry. Nothing in `src/tabs/` handles it, and any fix, such as a separate stable React id from the URL key, would be a follow-up.
+- Code outside `src/tabs/` that stores state by tab key, or parses `?tabs=`, would see keys change on close. I found no other references in the repo.
+- `PRECEDENT.md` has no section for `tab-keys.test.mjs`. I did not add one, since I made no separate decision about that file.
+
+### Gate result
+`npm test` passed with 4 of 4 tests and 0 failures.

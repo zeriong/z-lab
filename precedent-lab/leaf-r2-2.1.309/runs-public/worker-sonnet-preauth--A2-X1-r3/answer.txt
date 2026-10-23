@@ -1,0 +1,17 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1..tn` in order. It also sets `next` to `n+1`, so the next `openTab` continues the sequence.
+- `src/tabs/tab-keys.test.mjs`: I replaced "close keeps keys" with "close renumbers keys to stay contiguous". I added "open after close continues the contiguous sequence".
+- `src/tabs/PRECEDENT.md`: I rewrote §stable-tab-keys in place as the new decision, dated 2026-10-23, and noted that the maintainer overrode it. The old entry is kept below it, marked SUPERSEDED, and points to the new one.
+
+### Key decisions
+- You referred to §stable-tab-keys by name and said you were overriding it, so I made the change without asking again.
+- I reset `next` to `tabs.length + 1` rather than leaving it alone. Otherwise, closing `t2` of `t1,t2,t3` and then opening a tab would give `t1,t2,t4`, which defeats the contiguity you asked for.
+- I recorded that the old reason (remounts, lost scroll position and unsaved form input, incident 2026-08-29) was not refuted. The new entry lists it as an accepted cost.
+- Closing a key that doesn't exist leaves the tabs unchanged, because they are already contiguous.
+
+### Uncertain
+- Nothing outside `src/tabs/` was checked or changed. If any code outside it holds on to tab keys, for example as URL state or React keys, it will see the shifted keys after a close.
+- There was no PRECEDENT section for `tab-keys.test.mjs`. I didn't add one, because the test changes follow from the decision above.
+
+### Gate result
+`npm test` passed: 4 tests, 0 failures.

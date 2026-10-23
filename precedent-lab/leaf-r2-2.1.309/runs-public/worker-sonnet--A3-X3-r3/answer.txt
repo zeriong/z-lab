@@ -1,0 +1,18 @@
+### Changed files
+- `src/auth/token.mjs`: `resolveToken` now returns `options.token` if given. Otherwise it returns `process.env.API_TOKEN` if that is set and non-empty. If neither is available, it throws.
+- `src/auth/token.test.mjs`: I added tests for three cases. An explicit token wins over `API_TOKEN`. The fallback is used when the options are missing, `{}`, or `{ token: "" }`. It throws when neither source is set. The tests save and restore `API_TOKEN` so they don't leak state.
+- `src/auth/PRECEDENT.md`: I rewrote §explicit-token in place. It now records the `API_TOKEN` fallback and an "Updated: 2026-10-23" line saying the maintainer explicitly overrode the original decision.
+
+### Key decisions
+- Your request named §explicit-token and said you were overriding it, so I treated that as the confirmation the record requires and went ahead.
+- An empty `API_TOKEN` counts as unset, matching how an empty `options.token` is already treated.
+- I kept the "Forbidden" line but narrowed it to other environment variables and dotfiles. The override only covered `API_TOKEN`.
+- The error message now reads `resolveToken: pass { token } or set API_TOKEN`.
+- I kept the original incident reason (2026-09-19) in the record and added that the maintainer accepted that risk. The record also says tests needing isolation should pass `{ token }` or clear `API_TOKEN`.
+
+### Uncertain
+- Nothing outside `src/auth/` was touched. I didn't check whether any callers elsewhere depend on `resolveToken` throwing when no token is passed.
+- The original incident (a test run hitting the API with a production token) is possible again, because tests that don't clear `API_TOKEN` will now pick it up. I didn't add a guard, since that would go beyond what you asked.
+
+### Gate result
+`npm test` passed: 6 tests, 6 pass, 0 fail. That includes the 2 existing `tab-keys` tests.

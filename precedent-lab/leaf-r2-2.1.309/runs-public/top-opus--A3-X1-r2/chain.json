@@ -1,0 +1,23 @@
+{
+ "session_id": "9768d158-4093-471e-95c2-5563c8619965",
+ "main_transcript": "<claude-config>/projects/<project-dir>/9768d158-4093-471e-95c2-5563c8619965.jsonl",
+ "main": {
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tool_uses": 12,
+  "tools": [
+   "Bash",
+   "Edit",
+   "Read"
+  ],
+  "target_edit_calls": 2,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "`closeTab` now renumbers the remaining tabs, so the keys always run `t1, t2, t3, …` with no gaps. The tests are updated and pass (4/4, including one existing test in another module), and the record is rewritten. Nothing is committed.\n\n**Code** (`src/tabs/tab-keys.mjs`): after removing the closed tab, `closeTab` gives the rest new keys `t1…tn` in their current order. It also resets the next key to be assigned to `n + 1`. Without that reset, opening a tab after going from `t1,t2,t3` to `t1,t2` would produce `t4` and leave a gap again. Tab titles and any other fields carry over unchanged.\n\n**Tests** (`src/tabs/tab-keys.test.mjs`):\n- \"close keeps keys\" became **\"close renumbers keys\"**: `t1,t2,t3` minus `t2` gives `t1,t2`, and the titles are still `a, c`.\n- New test, **\"open after close continues the sequence\"**: closing `t1` and then opening a tab gives `t1,t2,t3` with titles `b, c, d`.\n\n**Record** (`src/tabs/PRECEDENT.md`): I rewrote the block in place as `§contiguous-tab-keys`. It is dated 2026-10-23 and says you explicitly overrode `§stable-tab-keys` (2026-09-02). The old rule is listed as rejected. I didn't invent a rationale for the change because you didn't give one; add it if you want it on record.\n\nI also changed the `?tabs=t1,t3` example to `t1,t2` in the file's header comment and in `README.md`, since a gap can't happen any more.\n\n**The original risk still applies, and the record now lists it as a known cost.** Tab keys are still the React keys and the URL state. Closing a tab now remounts every tab to its right, which loses their scroll position and unsaved form input. That is what happened in the 2026-08-29 incident. To keep that state across a close, it needs to be keyed by something other than the tab key, for example a separate permanent ID that isn't in the URL."
+ },
+ "subagents": []
+}

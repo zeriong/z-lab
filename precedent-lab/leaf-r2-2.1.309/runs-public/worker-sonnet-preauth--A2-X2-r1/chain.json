@@ -1,0 +1,22 @@
+{
+ "session_id": "b70ae69e-740e-400b-b7e1-021328bff450",
+ "main_transcript": "<claude-config>/projects/<project-dir>/b70ae69e-740e-400b-b7e1-021328bff450.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 4,
+  "tools": [
+   "Bash",
+   "Edit"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "The PRECEDENT.md entry is already updated in this change, so the hook's reminder is covered.\n\n### Changed files\n- `scripts/check.sh`: `set -uo pipefail` is now `set -euo pipefail`, and the header comment says so.\n- `scripts/PRECEDENT.md`: added `§check-aborts-on-failure` (dated 2026-10-23) as the decision now in force. `§check-fails-open` is kept but marked SUPERSEDED, with a note that you overrode it.\n\n### Key decisions\n- **Loop rewrite:** I replaced `[ \"$kb\" -gt \"$limit_kb\" ] && echo ...` with an `if ... then echo; fi`. Under `-e` and `pipefail`, the `&&` form returns non-zero whenever the last staged file is under the limit. That would have aborted the check on ordinary commits.\n- **Exit 0 kept:** I left the trailing `exit 0` in place. Finding large files still only warns. Only a failing command now aborts with a non-zero exit.\n- **Old reason kept:** The superseded record keeps its original reason, and the new one lists it as a known risk. That reason was the 2026-09-10 incident, where a `wc` failure on a staged-then-deleted file blocked every commit for a day.\n\n### Uncertain\n- The `[ -f \"$f\" ] || continue` guard covers the staged-then-deleted case. Other failures, such as `git diff` failing or `wc` hitting an unreadable file, will now block the commit. That follows from your request, so I did nothing about it.\n- I didn't check whether anything outside `scripts/`, such as a git hook, calls `check.sh` and would now be blocked by it. That's out of scope.\n\n### Gate result\n`npm test` passed (3 of 3 tests). I also ran `bash scripts/check.sh` directly and it exited 0."
+ },
+ "subagents": []
+}

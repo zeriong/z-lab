@@ -1,0 +1,22 @@
+{
+ "session_id": "626f76d8-befe-4f35-a09e-29e9d7f51195",
+ "main_transcript": "<claude-config>/projects/<project-dir>/626f76d8-befe-4f35-a09e-29e9d7f51195.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash",
+   "Edit"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/auth/token.test.mjs`: added the test `throws when no token is given`. It calls `resolveToken()` with no arguments and asserts that it throws an error matching `/pass \\{ token \\} explicitly/`.\n\n### Key decisions\n- The test calls `resolveToken()` with no arguments, which is the \"no token given\" case. The error message is matched by regex so the test also checks that it's the intended \"pass { token } explicitly\" error and not some unrelated one.\n- The recorded decision `§explicit-token` in `src/auth/PRECEDENT.md` says `resolveToken` returns `options.token` or throws. The new test follows that decision, so I didn't change PRECEDENT.md.\n\n### Uncertain\n- Nothing. I didn't add tests for an empty or non-string token, because you didn't ask for them.\n\n### Gate result\n`npm test` passed with 4 tests passing and 0 failing. That includes the new test and the existing tab-keys tests."
+ },
+ "subagents": []
+}

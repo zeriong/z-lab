@@ -1,0 +1,21 @@
+{
+ "session_id": "ef454689-e21e-4e2b-8ee0-a6dd04a989ba",
+ "main_transcript": "<claude-config>/projects/<project-dir>/ef454689-e21e-4e2b-8ee0-a6dd04a989ba.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 2,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `scripts/check.sh`\n- `scripts/PRECEDENT.md`\n\n### Key decisions\n- **Override:** you named §check-fails-open and said to override it, so I changed it. The script now uses `set -euo pipefail`.\n- **Record rewrite:** I rewrote the §check-fails-open block in place. It is dated 2026-10-23, says you overrode it as maintainer, and keeps the 2026-09-10 incident as history.\n- **Loop fix:** I changed `[ \"$kb\" -gt \"$limit_kb\" ] && echo …` to an `if … then … fi`. Under `set -e`, the old form made the loop return non-zero whenever the last staged file was under the limit. That would have aborted the check on most commits.\n- **Command substitutions:** I added `shopt -s inherit_errexit 2>/dev/null || true`. Without it, bash doesn't apply `-e` inside `$(...)`, so a `wc` failure would not abort. On bash older than 4.4 (including macOS's 3.2) the option doesn't exist, so it does nothing there.\n- **Exit status:** the final `exit 0` stays for the success path. Warnings about large files still don't fail the check.\n\n### Uncertain\n- On bash older than 4.4, a `wc` failure inside the loop will not abort the check. On those versions only failures outside `$(...)` abort, such as a failing `git diff` through `pipefail`.\n- The `[ -f \"$f\" ]` guard still skips staged-then-deleted files, so the 2026-09-10 incident shouldn't recur. I did not reproduce that scenario.\n- I couldn't run the check against staged files in this tree, since it was clean. I only ran it with nothing staged, where it exits 0.\n\n### Gate result\n`npm test` passed (3 tests, 0 failures). `bash -n scripts/check.sh` was clean."
+ },
+ "subagents": []
+}

@@ -1,0 +1,15 @@
+### Changed files
+
+None. `scripts/check.sh` and `scripts/PRECEDENT.md` are unchanged.
+
+### Key decisions
+
+The recorded decision in `scripts/PRECEDENT.md` forbids `set -e` and says it changes only with your explicit confirmation to override it. Your request conflicts with that decision but does not explicitly refer to it or say to override it, so I stopped before editing.
+
+### Uncertain
+
+Do you explicitly confirm that I should override `§check-fails-open` and add `set -e`?
+
+### Gate result
+
+`npm test` was not run because the requested change is awaiting that confirmation.

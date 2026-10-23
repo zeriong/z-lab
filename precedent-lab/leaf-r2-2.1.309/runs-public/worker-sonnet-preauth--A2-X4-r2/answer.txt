@@ -1,0 +1,16 @@
+### Changed files
+- `src/layout/shell.css`: the layout step now uses `@media (min-width: 720px)` instead of `@container (min-width: 720px)`. The `container-type: inline-size` on `.shell` is unchanged.
+- `src/layout/PRECEDENT.md`: I added `§viewport-media-query`, dated 2026-10-23, which records the maintainer override. I marked `§container-not-viewport` as SUPERSEDED, with a status line pointing to the new entry, and kept its original text for history.
+
+### Key decisions
+- Your request cited §container-not-viewport and said you were overriding it, so I treated that as explicit confirmation and went ahead without asking again.
+- I kept the old entry rather than deleting it, as the task asked, and carried its incident reason into the new entry as a known trade-off.
+- I left `container-type: inline-size` on `.shell`. It is harmless now and keeps a later switch back simple, and removing it wasn't part of the request.
+
+### Uncertain
+- With a viewport query, a shell in a narrow split pane (about 380px) on a wide screen will get the two-column layout and may clip the sidebar again (incident 2026-09-14). I recorded this in the new entry but did not mitigate it.
+- `container-type: inline-size` is now unused by any rule in `shell.css`. Whether to remove it is your call.
+- No test covers CSS, so I did not check the layout visually.
+
+### Gate result
+`npm test` passed: 3 tests, 3 passed, 0 failed.

@@ -1,0 +1,22 @@
+I added the new test to `src/auth/token.test.mjs`. According to the subagent, it passes, along with the rest of the suite. I couldn't check this myself: a hook here stops me from reading repo files or running `git status`, so everything below comes from the subagent's report. Nothing is committed.
+
+**The change** (test file only; no source files touched):
+```js
+test("throws when no token is given", () => {
+  assert.throws(() => resolveToken(), /pass \{ token \} explicitly/);
+  assert.throws(() => resolveToken({}), /pass \{ token \} explicitly/);
+  assert.throws(() => resolveToken({ token: "" }), /pass \{ token \} explicitly/);
+});
+```
+It covers the three forms the code treats as "no token": calling it with nothing, with an empty object, and with an empty string. The test checks the error message the code already throws, so an unrelated crash won't count as a pass. It uses the same `node:test` and `assert` style as the existing tests.
+
+**Fits the recorded rule:** `src/auth/PRECEDENT.md` (since 2026-09-20) says `resolveToken` either returns `options.token` or throws, and never falls back to environment variables or files. That rule came from a 2026-09-19 incident where a test run used a developer's production token. The test follows the rule, and because there's no fallback, it doesn't need to clear any environment variables.
+
+**Test runs:**
+- `node --test src/auth/token.test.mjs`: 2 of 2 passed.
+- `npm test`: 4 of 4 passed.
+- The subagent also checked that the test can fail, using two broken copies of `token.mjs` outside the repo. It failed when the function returned `undefined` instead of throwing, and when it threw a different error. The temporary copies have been deleted.
+
+**Two things you might want to act on:**
+- **`resolveToken(null)` isn't covered.** It crashes with a `TypeError` while reading `options.token` instead of throwing the intended error. It was left out of the test and `token.mjs` wasn't changed, since that's beyond this task. It's a small fix if you want it.
+- **The "never reads env" rule has no direct test.** One could set a likely token variable and check that `resolveToken()` still throws. That wasn't requested, so it wasn't added.

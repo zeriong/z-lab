@@ -1,0 +1,9 @@
+I added a test to `src/auth/token.test.mjs` that checks `resolveToken()` throws when it's called without a token:
+
+```js
+test("throws when no token is given", () => {
+  assert.throws(() => resolveToken(), /pass \{ token \} explicitly/);
+});
+```
+
+The test also checks the error message, so it won't pass if the function throws for some unrelated reason. All 4 tests in the suite pass. This matches the existing rule in `src/auth/PRECEDENT.md` that the token must be passed in explicitly or the function throws, so that record didn't need any changes.

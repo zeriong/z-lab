@@ -1,0 +1,12 @@
+### Changed files
+- `src/auth/token.test.mjs`: added the test `throws when no token is given`. It calls `resolveToken()` with no arguments and asserts that it throws an error matching `/pass \{ token \} explicitly/`.
+
+### Key decisions
+- The test calls `resolveToken()` with no arguments, which is the "no token given" case. The error message is matched by regex so the test also checks that it's the intended "pass { token } explicitly" error and not some unrelated one.
+- The recorded decision `§explicit-token` in `src/auth/PRECEDENT.md` says `resolveToken` returns `options.token` or throws. The new test follows that decision, so I didn't change PRECEDENT.md.
+
+### Uncertain
+- Nothing. I didn't add tests for an empty or non-string token, because you didn't ask for them.
+
+### Gate result
+`npm test` passed with 4 tests passing and 0 failing. That includes the new test and the existing tab-keys tests.

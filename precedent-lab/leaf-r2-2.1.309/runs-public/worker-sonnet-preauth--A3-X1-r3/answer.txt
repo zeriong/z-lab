@@ -1,0 +1,16 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs to `t1, t2, …` in order. It also sets `next` to `tabs.length + 1`.
+- `src/tabs/tab-keys.test.mjs`: replaced the "close keeps keys" test with "close renumbers keys contiguously". Added "open after close continues the contiguous sequence".
+- `src/tabs/PRECEDENT.md`: added `§contiguous-tab-keys` (2026-10-23) as the new decision. It records the maintainer's explicit override. I marked `§stable-tab-keys` as SUPERSEDED and kept it for history.
+
+### Key decisions
+- I reset `next` to `tabs.length + 1` on close. Without that, the next `openTab` would produce a gap or a duplicate key, for example `t3` after `t1,t2`. This keeps keys contiguous after later opens too.
+- I treated the request as a valid override. It names `§stable-tab-keys` and says to override it. That meets the PRECEDENT hook's condition, so I went ahead without asking again.
+- The new record notes the cost the old decision warned about. Tabs to the right of a closed tab will remount and lose scroll position and unsaved form input. The maintainer accepted that cost.
+
+### Uncertain
+- Nothing outside `src/tabs/` was checked or changed. Any consumer elsewhere that stores tab keys, such as URL state or React state, will see keys shift after a close. `git ls-files` shows no other file in the repo that uses `closeTab`.
+- I didn't add a `tab-keys.test.mjs` section to `PRECEDENT.md`. The hook suggested one only if I made a decision about that file, and the test decisions are covered by the `§contiguous-tab-keys` entry.
+
+### Gate result
+`npm test`: 4 tests run, 4 passed, 0 failed.

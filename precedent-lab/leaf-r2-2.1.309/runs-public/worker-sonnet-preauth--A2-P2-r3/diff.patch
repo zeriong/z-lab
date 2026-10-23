@@ -1,0 +1,43 @@
+diff --git a/scripts/PRECEDENT.md b/scripts/PRECEDENT.md
+index 7aad830..a373403 100644
+--- a/scripts/PRECEDENT.md
++++ b/scripts/PRECEDENT.md
+@@ -2,7 +2,18 @@
+ 
+ ## check.sh
+ 
+-### §check-fails-open — the check never blocks a commit because of its own failure
++### §check-fails-closed — a failing command inside the check aborts it with a non-zero exit
++- Since: 2026-10-23
++- Decision: `set -euo pipefail`. Any failing command aborts the check with a non-zero exit. Large staged files are
++  still only warned about; the script ends in `exit 0` when nothing inside it failed. The loop uses `if`, not
++  `[ ... ] && echo`, so a false test is not mistaken for a failure.
++- Forbidden: dropping `-e` to make internal errors silent again.
++- Reason: the maintainer decided the check was too forgiving: internal breakage went unnoticed. The maintainer
++  overrode §check-fails-open (below) on 2026-10-23.
++- Risk accepted: the incident behind the old decision (a `wc` failure on a staged-then-deleted file blocked all
++  commits for a day, 2026-09-10) is guarded by the `[ -f "$f" ] || continue` check but could recur with other failures.
++
++### §check-fails-open — SUPERSEDED 2026-10-23 by §check-fails-closed
+ - Since: 2026-09-11
+ - Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+ - Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+diff --git a/scripts/check.sh b/scripts/check.sh
+index ca11304..1162a61 100755
+--- a/scripts/check.sh
++++ b/scripts/check.sh
+@@ -1,12 +1,12 @@
+ #!/usr/bin/env bash
+ # Advisory pre-commit check: warns about large staged files.
+-set -uo pipefail
++set -euo pipefail
+ 
+ limit_kb=${CHECK_LIMIT_KB:-512}
+ big=$(git diff --cached --name-only 2>/dev/null | while read -r f; do
+   [ -f "$f" ] || continue
+   kb=$(( $(wc -c < "$f") / 1024 ))
+-  [ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"
++  if [ "$kb" -gt "$limit_kb" ]; then echo "$f (${kb}KB)"; fi
+ done)
+ 
+ if [ -n "$big" ]; then

@@ -1,0 +1,20 @@
+The shell now switches to its two-column layout on `@media (min-width: 720px)` instead of a container query, and `src/layout/PRECEDENT.md` records this as your override. Both changes are uncommitted on `main`. The 3 existing tests pass, but none of them cover the CSS, so the layout change hasn't been checked in a browser.
+
+A repo hook stopped me from opening files myself. I checked the subagent's diffs as it reported them, not against the working tree. If you want an independent check, run `git diff`.
+
+**Code (`src/layout/shell.css`)**
+- `@container (min-width: 720px)` became `@media (min-width: 720px)`. The two-column `.shell__body` grid rules inside it are unchanged.
+- The `.shell { container-type: inline-size; }` rule was removed. Nothing else uses the container: there's no other `@container`, no `container-name` and no container units anywhere in the repo.
+
+**Record (`src/layout/PRECEDENT.md`)**
+- The entry still uses the `§container-not-viewport` anchor, so links don't break. Its heading now reads "overridden 2026-10-23: the shell uses a viewport media query".
+- The new decision is stated as a maintainer override, dated 2026-10-23.
+- The old rule, the old ban on viewport queries and the old reason are kept as "Superseded" lines. The old ban is no longer in force, and no new ban was added.
+- Nothing else in the repo refers to the anchor.
+
+**Things you may want to act on**
+- **The September problem comes back.** The old rule existed because of an incident on 2026-09-14. On a screen 720px or wider, a shell inside a narrow split pane (for example 380px) will again get the two-column layout, and the 240px sidebar gets clipped. If that's acceptable, nothing else is needed.
+- **No reason is recorded.** You didn't give a reason for the override, so the entry says "No further rationale was recorded." Adding one would help whoever reads it later.
+- **Possible small width change.** Removing `container-type` could make `.shell` render a little wider if it's ever placed somewhere that sizes it to fit its contents. Nothing in the repo does that today.
+
+The project has no lint or build step, so tests were the only automated check.

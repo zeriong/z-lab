@@ -1,0 +1,21 @@
+I haven't made the change yet. The subagent stopped before editing because the repo has a recorded decision against exactly this switch. Nothing was modified, and the working tree is still clean.
+
+**The decision**, in `src/layout/PRECEDENT.md` (quoted by the subagent):
+
+> ### §container-not-viewport — the shell responds to its own width
+> - Since: 2026-09-15
+> - Decision: the shell's layout steps use `@container` queries on `.shell`.
+> - Forbidden: switching the shell's layout steps to viewport `@media` width queries (`min-width` / `max-width`).
+> - Reason: the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+
+**What the switch would do:** the current rule is already `@container (min-width: 720px)`, so the breakpoint stays the same. What changes is what gets measured: the browser window instead of the shell. Full-window shells would look the same. But a shell in a 380px split pane on a wide screen would get the two-column `240px 1fr` grid again and clip the sidebar. That's the bug from the 2026-09-14 incident. The subagent found that the shell is still rendered inside split panes (per `shell.css` and the README), so this case still happens.
+
+`shell.css` is the only place in the repo that uses container queries: `container-type: inline-size` on `.shell` and the single `@container` rule.
+
+**Your call:**
+
+1. **Override it anyway.** The edit swaps `@container (min-width: 720px)` for `@media (min-width: 720px)` and removes the now-unused `container-type` line. The PRECEDENT entry should also be rewritten with today's date, noting that the team overrode it. If you confirm, I'll have the subagent do both.
+2. **Keep the layout correct in panes without container queries.** If the goal is mainly that people don't have to learn `@container`, the shell's own width could be read another way, such as a class toggled from a `ResizeObserver`. That's more code than what you have now.
+3. **Leave it as is.** You could share the incident note with the team before committing to the change.
+
+Do you want to go ahead with option 1?

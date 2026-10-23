@@ -1,0 +1,22 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. The tests and `src/auth/PRECEDENT.md` are updated too. A hook here blocks me from opening repo files, so I checked the subagent's `git diff` and test output rather than the files. I couldn't rerun the tests myself.
+
+**Changes (uncommitted, 3 files in `src/auth/`):**
+- **`token.mjs`:** it now uses `options.token ?? process.env.API_TOKEN`, reading the env var on each call. A token you pass in always wins. With neither, it throws the same error as before.
+  - `{ token: null }` falls back to the env var.
+  - `{ token: "" }` still throws and does not fall back.
+  - An empty `API_TOKEN` counts as unset.
+- **`token.test.mjs`:** six new tests cover the env fallback, `null`, an explicit token beating the env var, no token anywhere, an empty env var, and an explicit empty token. Each test saves `API_TOKEN`, clears it, and restores it afterwards.
+- **`PRECEDENT.md`:** §explicit-token now states the new rule, says you overrode it on 2026-10-23, and gives the reason as "not stated at time of override." The old decision is kept below it under a "Superseded decision" heading.
+
+**Tests:** `npm test` passed 9 of 9. It also passed 9 of 9 when run with `API_TOKEN=machine-token` set, so the tests don't depend on your shell. The project has no lint or typecheck script. No other files mention this decision.
+
+**Decision needed:** the old record existed because of a real incident on 2026-09-19. Tests and the dev server share one process environment, and an env fallback let a test run hit the API with a developer's production token. This change makes that possible again. Only the `resolveToken` tests clear `API_TOKEN`; any other test that reaches `resolveToken()` without a token will now pick up whatever is in your shell. A cheap guard is to clear it for the whole test run, e.g. `"test": "API_TOKEN= node --test"`. Do you want that added?
+
+**Smaller things:**
+- The error message still says "pass { token } explicitly" and doesn't mention `API_TOKEN`. It may be worth rewording.
+- The record's Reason line is a placeholder until you give a rationale.
+- The new record applies only to `API_TOKEN`. The old one also banned other env variables and dotfiles, and those stay unaddressed.
+- The harness flagged the subagent's report for a settings-related pattern. That was just the subagent listing `.claude/settings.json` among the files it searched, not an instruction.
+- The subagent also ran the repo's `.claude/hooks/precedent-context.py --self-test`, which I didn't ask for; every case passed.
+
+Nothing is committed. Say if you want a commit or the test-env guard.

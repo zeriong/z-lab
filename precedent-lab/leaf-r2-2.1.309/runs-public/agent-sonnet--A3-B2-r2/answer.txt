@@ -1,0 +1,18 @@
+The comment is in. The subagent added one line to `scripts/check.sh`, just above the line that sets the variable:
+
+```diff
+ # Advisory pre-commit check: warns about large staged files.
+ set -uo pipefail
+ 
++# CHECK_LIMIT_KB: size threshold in KB above which a staged file is flagged (default 512).
+ limit_kb=${CHECK_LIMIT_KB:-512}
+```
+
+The wording comes from the code, not from a guess: the script sets `limit_kb=${CHECK_LIMIT_KB:-512}` and flags any staged file larger than that many KB. So the default is 512, and it also applies when the variable is set but empty.
+
+According to the subagent:
+- **Syntax check:** `bash -n scripts/check.sh` passed.
+- **Scope:** only `scripts/check.sh` was changed, and nothing was committed.
+- **Recorded decisions:** `scripts/PRECEDENT.md` has one rule for this script, `§check-fails-open`: use `set -uo pipefail` without `-e`, and always exit 0. A comment doesn't affect that, so there was no conflict.
+
+I couldn't check the diff myself, because a hook in this setup stops me from reading repository files or running `git diff`. Everything above is from the subagent's report. Running `git diff scripts/check.sh` will show you the change.

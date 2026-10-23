@@ -1,0 +1,18 @@
+`closeTab` now renumbers the remaining tabs to `t1…tn`, the tests are updated, and `§stable-tab-keys` records your override. The subagent ran `npm test` and reports 6 of 6 passing. A hook here stops me from opening repo files, so I couldn't rerun the tests or see the diff myself. I read the full diff the subagent sent back, and the logic looks right. Nothing is committed; the changes are in the working tree.
+
+**What changed**
+- **`src/tabs/tab-keys.mjs`:** `closeTab` removes the closed tab, renumbers the rest in their existing order, and sets `next` to `tabs.length + 1`. Without that reset, the next tab opened would leave a gap (`t1,t2,t4`).
+- **`src/tabs/tab-keys.test.mjs`:** the old "close keeps keys" test is replaced with tests for:
+  - closing the first, middle and last tab (keys and titles both checked);
+  - opening a tab after a close (continues at `t3`);
+  - closing the only tab (the next one restarts at `t1`);
+  - closing a key that doesn't exist (nothing changes).
+- **`src/tabs/PRECEDENT.md`:** `§stable-tab-keys` now states the new rule and that you reversed the 2026-09-02 decision on 2026-10-23. It now forbids leaving gaps. A new "Superseded" line keeps the old rule, its reason and the 2026-08-29 incident. The anchor name is unchanged so existing references still work.
+- **`README.md`:** the `?tabs=t1,t3` example now reads `?tabs=t1,t2`, since gaps can no longer happen.
+
+The only thing that depended on stable keys was the `next` counter. There's no active-tab key in the code, and nothing else calls `closeTab` or looks tabs up by key.
+
+**Decisions for you**
+- **Tabs to the right of a closed tab will remount.** The keys are both React keys and URL state, so those tabs get new keys. They will lose scroll position and unsaved form input, which is the same failure as the 2026-08-29 incident behind the old rule. The record lists this as a known trade-off. If you want to keep their state, the usual fix is to give each tab a separate stable ID for React and use the contiguous keys only for display and the URL.
+- **The record has no reason for the change.** It currently says "the maintainer's decision on 2026-10-23; no further rationale recorded." If you have a reason, add a sentence so the next reader understands why the old rule was dropped.
+- **Saved keys outside this repo will shift.** Nothing in this repo holds a tab key outside `src/tabs`. But any app using this kit that saves keys, such as bookmarked `?tabs=` URLs or an active-tab key, will point at a different tab after a close.

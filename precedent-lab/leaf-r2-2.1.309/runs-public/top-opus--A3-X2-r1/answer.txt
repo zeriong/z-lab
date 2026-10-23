@@ -1,0 +1,26 @@
+I added `set -e` to `scripts/check.sh`, and the check now exits non-zero when one of its own commands fails. I also rewrote the decision record to match. Nothing is committed yet.
+
+**One extra fix was needed.** With only `set -e` added, the check exited 1 with no output whenever the last staged file was under the size limit. That is almost every commit, so it would have blocked commits just as the old incident did. The cause was the line `[ "$kb" -gt "$limit_kb" ] && echo …`: when the test is false, the loop returns 1 and `-e` aborts. I changed it to `if … then … fi` (`scripts/check.sh:9`).
+
+**Changes:**
+- **`scripts/check.sh:3`**: `set -uo pipefail` is now `set -euo pipefail`, and the header comment says the check's own errors abort it.
+- **`scripts/PRECEDENT.md`**: I rewrote the block in place and renamed it from `§check-fails-open` to `§check-fails-closed`. Nothing else in the repo referenced the old name. The new block:
+  - dates the change 2026-10-23 and says you overrode the 2026-09-11 decision;
+  - notes that large files still only produce a warning;
+  - warns against ending the loop body with `&&`;
+  - explains why the 2026-09-10 incident doesn't come back: the `[ -f "$f" ] || continue` guard already skips files that were staged and then deleted.
+
+**Tested in temporary git repos:**
+
+| Scenario | Exit |
+|---|---|
+| Small file staged | 0 |
+| Large + small file (warns about the large one) | 0 |
+| Nothing staged | 0 |
+| Staged-then-deleted file (the 2026-09-10 case) | 0 |
+| Unreadable staged file (`wc` fails) | 1, with the error printed |
+| Run outside a git repo | 129, with **no message** |
+
+`npm test` passes (3/3).
+
+**One thing to decide:** the `git diff --cached` call still has `2>/dev/null`. That's why the last case aborts silently: git's error is thrown away, so a commit blocked that way gives no reason. I'd remove that redirect so the error shows, but I left it since it wasn't part of your request.

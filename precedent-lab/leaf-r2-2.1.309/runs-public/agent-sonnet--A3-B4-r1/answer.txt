@@ -1,0 +1,17 @@
+I added a `.shell__header` rule to `src/layout/shell.css` with 12px padding on the top and bottom. The subagent made the change, and nothing is committed. I couldn't check it myself: a hook here blocks me from reading the repo, including running `git diff`. What follows is the subagent's report.
+
+```css
+.shell__header {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+```
+
+- **Placement:** the rule sits between `.shell` and `.shell__body`, outside the `@container` block. There was no existing `.shell__header` rule.
+- **Top and bottom only:** it sets `padding-top` and `padding-bottom` separately rather than `padding: 12px 0`, which would also set left and right padding to zero.
+- **Raw px:** `shell.css` has no spacing tokens and its other rules use plain values like `16px`, so the new rule does the same.
+- **Recorded decisions:** `src/layout/PRECEDENT.md` has one record, which says the shell's layout steps must use `@container` queries rather than viewport `@media` queries. This change adds no query, so it doesn't conflict. The other `PRECEDENT.md` files in the repo cover unrelated scripts.
+- **Checks:** the repo has no CSS lint or format script. `npm test` passed 3 of 3, but none of those tests cover CSS.
+- **Not checked against markup:** no file in the repo uses `.shell__header` yet, so nothing shows how the rule looks on a real header.
+
+According to the subagent, `shell.css` is the only modified file.

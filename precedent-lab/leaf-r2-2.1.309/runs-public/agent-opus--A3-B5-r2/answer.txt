@@ -1,0 +1,15 @@
+Both icon entries in `src/head/icons.mjs` now have `sizes: "any"`. The subagent made the change and nothing is committed.
+
+```diff
+-  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },
+-  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
++  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)", sizes: "any" },
++  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)", sizes: "any" },
+```
+
+**How I checked it:** A hook stops me from opening repo files, so I checked the `git diff` the subagent returned rather than reading the file myself. The diff changes only those two lines. It follows the file's style and doesn't touch any other file.
+
+- **Recorded decisions:** `src/head/PRECEDENT.md` has one rule for this file: every icon entry must have a light or dark `media` query. Both entries still have theirs, so the change follows the rule. It says nothing about `sizes`.
+- **Tests:** `npm test` passes (3 of 3), but none of those tests cover `icons.mjs`. The subagent confirmed the changed file loads in Node and both entries have `sizes: "any"`. The repo has no lint script.
+
+After the edit, a repo hook said that new decisions about this file should be recorded in `src/head/PRECEDENT.md`. I had told the subagent to change only `icons.mjs`, so that file is untouched. This change looks too small to need an entry, but I can have one added if you want it recorded.

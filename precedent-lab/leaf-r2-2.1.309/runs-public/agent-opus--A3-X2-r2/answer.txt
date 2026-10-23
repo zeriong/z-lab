@@ -1,0 +1,32 @@
+I added `set -e` and recorded the override, but the check is now broken. When the last staged file is under the size limit, which is the usual case, it exits 1 and prints nothing. Nothing is committed.
+
+The subagent did the work. A hook here blocks me from reading repo files or running `git diff`, so I couldn't check the diff myself. What follows is from the subagent's report, including its test runs in a throwaway repo.
+
+**Changes**
+- **`scripts/check.sh`:** `set -uo pipefail` is now `set -euo pipefail`. Nothing else in the script changed.
+- **`scripts/PRECEDENT.md`:**
+  - A new section, §check-fails-closed (since 2026-10-23), says a failing command aborts the check with a non-zero exit.
+  - §check-fails-open stays as history, marked superseded by your override. Its anchor still works, though nothing else in the repo links to it.
+  - Its old "Decision" and "Forbidden" lines are now labelled with their dates (2026-09-11 to 2026-10-23). The repo's hook only shows lines that start exactly `- Decision:` or `- Forbidden:`, so future agents won't see the old ban on `set -e` as a current rule.
+- **Checks:** the syntax check passes, and the script exits 0 in the repo as it is. Nothing is staged right now, though, so that run didn't test the problem below.
+
+**The problem: almost every commit fails**
+The last command in the file loop is `[ "$kb" -gt "$limit_kb" ] && echo …`. When the last staged file is under the limit, that test is false and returns 1. With `set -e`, that status carries out of the `big=$(…)` line and stops the script. The subagent reproduced these cases:
+- **One small staged file:** before, exit 0; now exit 1 with no output.
+- **A large file followed by a small one:** before, it printed the warning; now it exits 1 and the warning never appears.
+
+A false test isn't a command failing, so this goes beyond what you asked for. Wherever `check.sh` runs as a pre-commit hook, it would block nearly every commit. That is worse than the 2026-09-10 incident the old record describes, when it blocked every commit for a day. It isn't wired into git in this clone, but the README calls it a pre-commit check.
+
+**Other new non-zero exits, all silent:**
+- git fails or the script runs outside a repo (exit 129).
+- A staged file can't be read, so `wc` fails (exit 1). That's the same kind of failure as the old incident.
+- `CHECK_LIMIT_KB` isn't a number, e.g. `1M` (exit 2).
+- stderr is closed (exit 1).
+
+These do match "any failing command aborts the check", but none of them print anything.
+
+**Decisions for you**
+1. **The size test.** I recommend rewriting it as `if [ "$kb" -gt "$limit_kb" ]; then echo …; fi`. A false test would then no longer abort the script, while real command failures still would under `set -e`. Should I have the subagent make that change?
+2. **Reason for the override.** The new record's `Reason` field is a placeholder. Give me a line of rationale and I'll have it filled in.
+3. **Exit status.** The old rule also allowed only exit 0, and the new one lifts that. I assumed that's what you want.
+4. **"Advisory" wording.** The script header and the README still call the check "advisory". I left them as they are. Should they change?

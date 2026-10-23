@@ -1,0 +1,19 @@
+I added a JSDoc block to `closeTab` in `src/tabs/tab-keys.mjs`; it's on lines 12–19, directly above the function. The subagent changed nothing else, and the 3 tests pass (`npm test`). The repo has no lint script, and nothing is committed.
+
+```js
+/**
+ * Closes the tab with `key`. Does not mutate `state`; other keys and `next` stay as they are,
+ * so closing leaves a gap (`t1,t3`) rather than renumbering.
+ * @param {{ next: number, tabs: { key: string, title: string }[] }} state Tab strip state.
+ * @param {string} key Key of the tab to close, e.g. `"t2"` (exact match).
+ * @returns {{ next: number, tabs: { key: string, title: string }[] }} A new state object with a new `tabs` array.
+ *   If no tab has `key`, the tabs are unchanged, but a new object is still returned (never `state` itself or null).
+ */
+```
+
+- **Past decisions:** `src/tabs/PRECEDENT.md` has one decision, §stable-tab-keys: a tab's key is never reused or renumbered, so closing a tab leaves a gap. The comment states that, so nobody "fixes" the gap later. The file says nothing about comment style, so nothing argued against adding JSDoc.
+- **Return value:** the subagent ran the function to check it. When no tab matches `key`, it still returns a new object, never the original `state` or `null`. It also never changes the `state` passed in.
+- **Style:** this is the first JSDoc in the repo. The other comments are short `//` lines, so the subagent kept the block brief.
+- **One guess:** `title: string` comes from the tests. Nothing in the code enforces it, so drop it or widen the type if titles can be something else.
+
+A hook here stops me from opening repo files, so I couldn't read the diff myself. It comes from the subagent's `git diff` output, which shows only the added comment lines. Run `git diff` to confirm before committing.

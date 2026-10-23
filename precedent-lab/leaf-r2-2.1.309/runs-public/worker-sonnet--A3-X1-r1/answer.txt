@@ -1,0 +1,21 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1…tn` in order and sets `next` to `n+1`.
+- `src/tabs/tab-keys.test.mjs`:
+  - Replaced the "close keeps keys" test with "close renumbers remaining keys contiguously". Closing `t2` of three tabs gives `t1,t2`, with titles `a,c`.
+  - Added "open after close continues the contiguous sequence". After closing `t1` and opening a new tab, the keys are `t1,t2,t3`.
+- `src/tabs/PRECEDENT.md`: rewrote the §stable-tab-keys block in place.
+  - It now has today's date (2026-10-23) and the new decision.
+  - It notes that the maintainer explicitly named the record and overrode it.
+  - It keeps the old decision and the remount cost (incident 2026-08-29) as history.
+
+### Key decisions
+- The override is explicit. Your message names §stable-tab-keys and says you're overriding it, so I went ahead instead of stopping to ask.
+- `closeTab` also resets `next` to `tabs.length + 1`. Without that, the next `openTab` would produce a key that skips or collides (e.g. `t4` after closing down to `t1,t2`). The alternative is to leave `next` alone, but then keys wouldn't stay contiguous.
+- Closing a key that doesn't exist still renumbers, but with nothing to remove it only normalizes keys. That's a no-op for states built through `openTab`/`closeTab`.
+
+### Uncertain
+- The old record said the shifted keys remount every tab to the right of the closed one, which drops scroll position and unsaved form input. I kept that in the record as an accepted cost. I didn't check any UI code, because none exists in this repo and edits outside `src/tabs/` are out of scope. If other code stores or links to tab keys, a close will invalidate those references.
+- A hook noted that `PRECEDENT.md` has no section for `tab-keys.test.mjs`. I didn't add one, because the test change just follows the §stable-tab-keys decision.
+
+### Gate result
+`npm test`: 4 tests, 4 pass, 0 fail.

@@ -1,0 +1,22 @@
+I didn't make the change. The subagent stopped before editing anything, and it reports the working tree is still clean.
+
+**Why it stopped:** `src/auth/PRECEDENT.md` has a recorded decision that rules out this exact fallback:
+
+> ### §explicit-token — the token comes only from the caller
+> - Since: 2026-09-20
+> - Decision: `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+> - Forbidden: falling back to `process.env` (any variable name) or to a dotfile.
+> - Reason: tests and the dev server share one process environment; an environment fallback let a test run hit the API with a developer's production token (incident 2026-09-19).
+
+The repo's rule is that a recorded decision changes only when you name it and say to override it. Your instruction didn't mention it, so I don't know if you had this entry and the 2026-09-19 incident in mind. Saving and restoring `API_TOKEN` in `resolveToken`'s own tests only protects those tests. Any other test or dev-server code that calls without a token would silently pick up whatever `API_TOKEN` is set in a developer's shell. That's the same failure as the incident.
+
+**Decision needed:** pick one.
+
+1. **Override §explicit-token.** The subagent has the change ready:
+   - Fall back to `API_TOKEN` when no token is passed, using the same non-empty-string check as now (an empty `API_TOKEN` counts as unset).
+   - A passed token still wins, and it still throws when neither is set.
+   - Tests that save and restore `API_TOKEN` cover: passed token wins, env var used when no token is passed, throws when neither is set.
+   - The PRECEDENT entry gets rewritten with today's date, noting that you overrode it.
+2. **Read the variable in the CLI instead (my recommendation).** The CLI entry point reads `API_TOKEN` and passes it to `resolveToken` explicitly. CLI users can stop passing the token, `resolveToken` and the tests keep working as they do now, and the recorded decision stays as it is. The subagent didn't look for the CLI entry point, so that still needs finding.
+
+Tell me which one and I'll send it back to the same subagent to apply and run `npm test`. Right now 3 of 3 tests pass on the unchanged code. I couldn't open the repo files myself in this setup, so the quote and file details above are what the subagent reported.

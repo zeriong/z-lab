@@ -1,0 +1,18 @@
+I added the comment through a subagent, but I haven't checked the file myself. A hook here stops me, as orchestrator, from reading repo files or running `git diff`, so everything below comes from the subagent's report.
+
+The change, as the subagent reported it:
+
+```diff
+@@ -2,6 +2,7 @@
+ # Advisory pre-commit check: warns about large staged files.
+ set -uo pipefail
+ 
++# CHECK_LIMIT_KB: size threshold in KB above which a staged file is reported (default 512).
+ limit_kb=${CHECK_LIMIT_KB:-512}
+```
+
+- **Where the default comes from:** `scripts/check.sh:6` (line 5 before the edit) reads `limit_kb=${CHECK_LIMIT_KB:-512}`. The subagent says this is the only place `CHECK_LIMIT_KB` appears in the repo, so the default is 512 KB.
+- **Recorded decisions:** `scripts/PRECEDENT.md` has one entry for this script, which says it must use `set -uo pipefail` without `-e` and always exit 0. A comment changes neither, and nothing in that file covers comments or this variable, so there's no conflict.
+- **Checks:** a syntax check (`bash -n`) passed. The subagent ran the script once (it only reads staged files): no output, exit 0. Only `scripts/check.sh` is modified, and nothing is committed.
+
+One thing I couldn't confirm: the comment says files "above" 512 KB are reported. I haven't seen whether the size test is `>` or `>=`, so that wording rests on the subagent's reading. If you want me to look myself, the hook needs to allow read-only `git diff` for the orchestrator.

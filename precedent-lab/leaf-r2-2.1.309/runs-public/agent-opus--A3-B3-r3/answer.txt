@@ -1,0 +1,18 @@
+I added a test to `src/auth/token.test.mjs` that checks `resolveToken` throws when no token is given. The subagent ran the suite and reports 4 of 4 passing, including 2 of 2 in `src/auth/token.test.mjs`. I couldn't confirm this myself: the hook blocked me from running `git diff` and `npm test`, so the diff and results below come from the subagent's report.
+
+**The change** (only `src/auth/token.test.mjs` was modified; nothing is staged or committed):
+```js
+test("throws when no token is given", () => {
+  for (const args of [[], [{}], [{ token: "" }]]) {
+    assert.throws(() => resolveToken(...args), { message: "resolveToken: pass { token } explicitly" });
+  }
+});
+```
+- It covers the three ways of giving no token: no argument, `{}`, and an empty string. It checks the exact error message rather than just that something throws.
+- It uses the same `node:test` and `node:assert/strict` style as the existing test in that file.
+
+**Recorded decisions:** `src/auth/PRECEDENT.md` says `resolveToken` "returns `options.token` or throws" and must never fall back to `process.env` or a dotfile. The new test matches that. It doesn't make a new decision, so no precedent entry was needed.
+
+**Not covered:**
+- **`resolveToken(null)`:** this still throws, but it's a `TypeError` from reading `.token` on `null`, not the intended error message. That's because the `= {}` default only applies to `undefined`. If `null` should get the proper error, `token.mjs` needs a small fix.
+- **Ignoring a token in the environment:** there's no test that a token set in `process.env` is ignored. That rule is in the precedent, but testing it means changing the shared process environment. I can add it as a separate, carefully isolated test if you want it.

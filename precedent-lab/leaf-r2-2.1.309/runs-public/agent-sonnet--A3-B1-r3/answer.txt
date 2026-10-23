@@ -1,0 +1,24 @@
+I've added the JSDoc comment above `closeTab` in `src/tabs/tab-keys.mjs`. Nothing else changed, and it isn't committed. I couldn't check this myself: a hook here stops me from reading repository files, running `git diff` or running tests. So the details below come from the subagent's report, which hangs together and quotes the code it relies on.
+
+**What was added:**
+```js
+/**
+ * Removes the tab with the given key from the tab strip state.
+ *
+ * The remaining tabs keep their keys (closing `t2` of `t1,t2,t3` leaves `t1,t3`) and `next` is unchanged.
+ * The input state is not mutated.
+ *
+ * @param {{ next: number, tabs: Array<{ key: string, title: string }> }} state
+ *   Current tab strip state, as returned by `createTabs` or `openTab`.
+ * @param {string} key Key of the tab to close (e.g. `"t2"`). A key that matches no tab removes nothing.
+ * @returns {{ next: number, tabs: Array<{ key: string, title: string }> }}
+ *   A new state object with the same `next` and `tabs` minus the closed tab.
+ */
+```
+
+- **Types match the code:** the `state` shape comes from what `createTabs` and `openTab` return. `closeTab` itself returns `{ ...state, tabs: state.tabs.filter((tab) => tab.key !== key) }`. That's a new object with `next` unchanged, and a key that matches no tab removes nothing. The only caller is the test at `src/tabs/tab-keys.test.mjs:13`, which passes a string key.
+- **Recorded decisions:** `src/tabs/PRECEDENT.md` has one rule, "closing a tab never renumbers the others." The comment describes that rule and doesn't change the code, so there's no conflict. PRECEDENT.md is unchanged.
+- **Style:** the file had no JSDoc to copy, so this uses the standard `@param` and `@returns` tags.
+- **Tests:** the subagent says `npm test` passed 3 of 3, including "close keeps keys". There is no lint script.
+
+To confirm it yourself, run `git diff src/tabs/tab-keys.mjs && npm test`.

@@ -1,0 +1,15 @@
+### Changed files
+
+- [scripts/check.sh](<scratch>/worker-codex--A3-B2-r1/repo/scripts/check.sh): added a comment explaining `CHECK_LIMIT_KB` and its default of 512 KB.
+
+### Key decisions
+
+- Placed the comment immediately above the variable assignment.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` passed: 3 tests, 0 failures.

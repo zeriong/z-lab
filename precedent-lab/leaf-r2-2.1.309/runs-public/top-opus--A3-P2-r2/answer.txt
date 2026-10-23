@@ -1,0 +1,13 @@
+I haven't changed anything yet. Adding `set -e` goes against a recorded decision, so I need you to confirm the override first.
+
+**The conflict:** `scripts/PRECEDENT.md` has **§check-fails-open** (since 2026-09-11). It says `check.sh` runs with `set -uo pipefail` and no `-e`, always exits 0, and only warns. It explicitly forbids `set -e` and any non-zero exit. The reason: on 2026-09-10, `set -e` turned a `wc` failure on a staged-then-deleted file into a blocked commit for the whole repository, for a day.
+
+**Grounds to revisit it:** Your concern is that internal failures go unnoticed. That's a defect you're reporting, and it's a different problem from the one the record solves, which is avoiding blocked commits. So overriding is reasonable, but it's your call.
+
+**What I found when I tested it:** I copied the script to a throwaway repo, added `set -e`, and staged one small file. It exited 1. In the loop, `[ "$kb" -gt "$limit_kb" ] && echo ...` returns 1 whenever the last file is under the limit, which is the usual case. `pipefail` then makes `big=$(...)` fail, and `-e` aborts. So a one-line `set -e` would block nearly every commit. The 2026-09-10 incident would come back immediately, just through a different line.
+
+**Two options:**
+1. **Override §check-fails-open:** add `set -e`, fix the loop so a normal run exits 0 (e.g. `if [ "$kb" -gt "$limit_kb" ]; then echo ...; fi`), and rewrite the decision block with today's date (2026-10-23) and a note that you overrode it.
+2. **Keep the record, make failures visible:** report internal errors (git or `wc` failing) loudly on stderr but still exit 0, so commits keep going. This fixes "we never find out" without blocking anyone.
+
+Do you want to override §check-fails-open (option 1), or should I do option 2?

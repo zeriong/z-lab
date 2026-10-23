@@ -1,0 +1,22 @@
+{
+ "session_id": "18191f10-7efd-4a12-bfef-8b3b23f6d0fb",
+ "main_transcript": "<claude-config>/projects/<project-dir>/18191f10-7efd-4a12-bfef-8b3b23f6d0fb.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash",
+   "Edit"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/auth/token.test.mjs`: added the test \"throws when no token is given\". It asserts that `resolveToken()` and `resolveToken({})` both throw with the message `pass { token } explicitly`.\n\n### Key decisions\n- I checked the test against `src/auth/PRECEDENT.md` §explicit-token (\"returns `options.token` or throws\"). It doesn't conflict, so I left `PRECEDENT.md` unchanged and nothing is marked superseded.\n- I covered two no-token cases, no argument and an empty object, and matched on the error message so the test fails if the throw comes from somewhere else.\n\n### Uncertain\n- Nothing.\n- The test doesn't set or clear environment variables. The no-env-fallback rule is already satisfied by the implementation, and the test doesn't enforce it.\n\n### Gate result\n`npm test` passed: 4 tests, 4 passed, 0 failed."
+ },
+ "subagents": []
+}

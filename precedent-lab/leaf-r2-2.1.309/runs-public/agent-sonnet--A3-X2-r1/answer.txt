@@ -1,0 +1,27 @@
+`set -e` is in `scripts/check.sh` and the record is updated, but the check is now broken for normal use. It exits 1 with no output whenever the last staged file is under the size limit, which is the usual case. The changes are uncommitted. A hook here stops me reading repo files, so I couldn't check the diff myself; everything below is from the subagent's report and its test runs.
+
+**What changed**
+- **`scripts/check.sh` line 3:** `set -uo pipefail` became `set -euo pipefail`. Nothing else in the script changed.
+- **`scripts/PRECEDENT.md` §check-fails-open:** marked "SUPERSEDED 2026-10-23" and now says the check fails closed. The old Decision, Forbidden and Reason lines (including the 2026-09-10 `wc` incident) are kept for history, and the stated reason is your sentence. The subagent also added "Forbidden: removing `set -e`" on its own initiative; drop it if you don't want it.
+
+**Why normal runs now fail**
+Line 9 is `[ "$kb" -gt "$limit_kb" ] && echo …`. For a file under the limit the `[` test returns 1, so that loop pass ends with status 1. If it's the last file, the `while` loop returns 1. `pipefail` passes that to the `big=$(git diff … | while …)` assignment on line 6, and `set -e` aborts there. That's an ordinary "this file is fine" result being treated as a failure. The subagent ran the script against throwaway repos before and after the change:
+
+| Scenario | Before | After |
+|---|---|---|
+| Nothing staged | 0 | 0 |
+| One small file staged | 0 | **1, no output** |
+| Large file first, small file last | 0, warning | **1, no output** |
+| Small file first, large file last | 0, warning | 0, warning |
+| Staged then deleted (the original incident) | 0 | 0 |
+| Unreadable staged file | 0 | **1** |
+| Not a git repo | 0 | **129** |
+
+The last two are real failures, so aborting there is what you asked for. The small-file rows are not. The fix is to write line 9 as `if [ "$kb" -gt "$limit_kb" ]; then echo "$f (${kb}KB)"; fi`. That doesn't hide any failures, and I recommend it. I held back because I'd told the subagent to leave the script's logic alone.
+
+**Other notes**
+- `npm test` passes before and after (3 of 3), but those tests don't cover `check.sh`. Nothing runs `check.sh` automatically: there's no CI, no installed git hook and no npm script.
+- `README.md` line 9 and `check.sh` line 2 still call the check "advisory". That's now only partly true, so you may want to reword them.
+- I left the section ID `§check-fails-open` unchanged so links to it still work, though the name no longer matches the rule.
+
+Should I have the subagent make the line 9 fix (and update the README wording)?

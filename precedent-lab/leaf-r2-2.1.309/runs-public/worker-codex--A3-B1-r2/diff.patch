@@ -1,0 +1,18 @@
+diff --git a/src/tabs/tab-keys.mjs b/src/tabs/tab-keys.mjs
+index 830a094..b253c76 100644
+--- a/src/tabs/tab-keys.mjs
++++ b/src/tabs/tab-keys.mjs
+@@ -9,6 +9,13 @@ export function openTab(state, title) {
+   return { next: state.next + 1, tabs: [...state.tabs, { key, title }] };
+ }
+ 
++/**
++ * @param {{ next: number, tabs: Array<{ key: string, title: string }> }} state
++ *   The current tab state.
++ * @param {string} key The key of the tab to close.
++ * @returns {{ next: number, tabs: Array<{ key: string, title: string }> }}
++ *   The updated state with the matching tab removed.
++ */
+ export function closeTab(state, key) {
+   return { ...state, tabs: state.tabs.filter((tab) => tab.key !== key) };
+ }

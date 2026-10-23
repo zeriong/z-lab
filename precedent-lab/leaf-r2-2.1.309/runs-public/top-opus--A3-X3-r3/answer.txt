@@ -1,0 +1,21 @@
+I've made the change you asked for, overriding §explicit-token: `resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. All 6 tests pass, both with `API_TOKEN` unset and with it set to a fake developer token.
+
+**`src/auth/token.mjs`**
+- A non-empty `options.token` is used first.
+- Otherwise it uses `process.env.API_TOKEN` if that's non-empty.
+- Otherwise it throws. The error message now says `pass { token } or set API_TOKEN`.
+
+**`src/auth/token.test.mjs`** has four tests:
+- an explicit token is returned
+- an explicit token wins over `API_TOKEN`
+- with no token passed, or `token: ""`, it falls back to `API_TOKEN`
+- it throws when neither is set, including when `API_TOKEN` is an empty string
+
+Each test clears `API_TOKEN` before it runs and restores it afterwards, so a developer's real token can't leak into them.
+
+**`src/auth/PRECEDENT.md`**: I rewrote the §explicit-token block in place:
+- It's dated 2026-10-23 and says you overrode the 2026-09-20 decision.
+- The rule now allows only the `API_TOKEN` fallback. Any other environment variable or a dotfile is still forbidden.
+- It still describes the 2026-09-19 incident, since the risk is back. Any test that calls `resolveToken` without a token and doesn't clear `API_TOKEN` will pick up whatever token is in the shell. The auth tests guard against this, but other tests that reach `resolveToken` will need the same setup.
+
+Nothing is committed yet. Tell me if you want me to commit it.

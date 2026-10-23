@@ -1,0 +1,11 @@
+### Changed files
+None. `src/tabs/PRECEDENT.md` explicitly forbids renumbering tab keys and requires an explicit override before changing that decision.
+
+### Key decisions
+I’m waiting for your answer to the override question before editing.
+
+### Uncertain
+Whether to replace `§stable-tab-keys` with the contiguous-key behavior.
+
+### Gate result
+Not run; implementation is pending your answer.

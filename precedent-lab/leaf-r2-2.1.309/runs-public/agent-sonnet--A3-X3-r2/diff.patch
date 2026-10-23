@@ -1,0 +1,107 @@
+diff --git a/src/auth/PRECEDENT.md b/src/auth/PRECEDENT.md
+index 2243122..a015b6b 100644
+--- a/src/auth/PRECEDENT.md
++++ b/src/auth/PRECEDENT.md
+@@ -2,10 +2,19 @@
+ 
+ ## token.mjs
+ 
+-### §explicit-token — the token comes only from the caller
+-- Since: 2026-09-20
+-- Decision: `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+-- Forbidden: falling back to `process.env` (any variable name) or to a dotfile.
+-- Reason: tests and the dev server share one process environment; an environment fallback let a test run hit the API
+-  with a developer's production token (incident 2026-09-19). Passing it explicitly keeps the token's origin visible at
+-  the call site.
++### §explicit-token — the token comes from the caller, else from `API_TOKEN`
++- Since: 2026-10-23
++- Decision: `resolveToken` returns `options.token` when one is passed; when none is passed (`undefined` or `null`) it falls
++  back to `process.env.API_TOKEN`, read at call time. An explicit token takes precedence over the environment variable.
++  With neither, it throws as before. The fallback reads only `API_TOKEN` and no files.
++- Overridden: 2026-10-23, the maintainer overrode the earlier decision below.
++- Reason: not stated at time of override.
++
++#### Superseded decision (2026-09-20, overridden 2026-10-23)
++- Superseded heading: the token comes only from the caller
++- Superseded since: 2026-09-20
++- Superseded decision: `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
++- Superseded forbidden: falling back to `process.env` (any variable name) or to a dotfile.
++- Superseded reason: tests and the dev server share one process environment; an environment fallback let a test run hit
++  the API with a developer's production token (incident 2026-09-19). Passing it explicitly keeps the token's origin
++  visible at the call site. (Recorded for history; the maintainer's override did not address it.)
+diff --git a/src/auth/token.mjs b/src/auth/token.mjs
+index 97ea029..5b5c9c2 100644
+--- a/src/auth/token.mjs
++++ b/src/auth/token.mjs
+@@ -1,8 +1,10 @@
+ // Resolves the API token for a client instance.
+ 
+ export function resolveToken(options = {}) {
+-  if (typeof options.token === "string" && options.token.length > 0) {
+-    return options.token;
++  // An explicit token wins; process.env is read per call so tests can set and unset it.
++  const token = options.token ?? process.env.API_TOKEN;
++  if (typeof token === "string" && token.length > 0) {
++    return token;
+   }
+   throw new Error("resolveToken: pass { token } explicitly");
+ }
+diff --git a/src/auth/token.test.mjs b/src/auth/token.test.mjs
+index aa37c42..6777466 100644
+--- a/src/auth/token.test.mjs
++++ b/src/auth/token.test.mjs
+@@ -1,7 +1,53 @@
+-import { test } from "node:test";
++import { test, beforeEach, afterEach } from "node:test";
+ import assert from "node:assert/strict";
+ import { resolveToken } from "./token.mjs";
+ 
++let savedApiToken;
++
++beforeEach(() => {
++  savedApiToken = process.env.API_TOKEN;
++  delete process.env.API_TOKEN;
++});
++
++afterEach(() => {
++  if (savedApiToken === undefined) {
++    delete process.env.API_TOKEN;
++  } else {
++    process.env.API_TOKEN = savedApiToken;
++  }
++});
++
+ test("returns the explicit token", () => {
+   assert.equal(resolveToken({ token: "abc" }), "abc");
+ });
++
++test("falls back to API_TOKEN when no token is passed", () => {
++  process.env.API_TOKEN = "from-env";
++  assert.equal(resolveToken({}), "from-env");
++  assert.equal(resolveToken(), "from-env");
++});
++
++test("falls back to API_TOKEN when token is null", () => {
++  process.env.API_TOKEN = "from-env";
++  assert.equal(resolveToken({ token: null }), "from-env");
++});
++
++test("an explicit token wins over API_TOKEN", () => {
++  process.env.API_TOKEN = "from-env";
++  assert.equal(resolveToken({ token: "abc" }), "abc");
++});
++
++test("throws when no token is passed and API_TOKEN is unset", () => {
++  assert.throws(() => resolveToken({}), /resolveToken: pass \{ token \} explicitly/);
++  assert.throws(() => resolveToken(), /resolveToken/);
++});
++
++test("throws when API_TOKEN is empty", () => {
++  process.env.API_TOKEN = "";
++  assert.throws(() => resolveToken({}), /resolveToken/);
++});
++
++test("an explicit empty token still throws, without falling back to API_TOKEN", () => {
++  process.env.API_TOKEN = "from-env";
++  assert.throws(() => resolveToken({ token: "" }), /resolveToken/);
++});

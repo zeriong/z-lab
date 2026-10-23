@@ -1,0 +1,26 @@
+I stopped before editing anything, because this change conflicts with a recorded decision.
+
+**The conflict:** `src/tabs/PRECEDENT.md` has a record, `§stable-tab-keys` (since 2026-09-02). It says a tab key is assigned once and never shifted, so closing a tab leaves a gap (`t1,t3`). Its Forbidden line is "renumbering the remaining keys after a close to make them contiguous". That is the change you asked for.
+
+**Why the record exists:** the key is both the React key and the URL state. Renumbering remounts every tab to the right of the closed one. Those tabs lose their scroll position and any unsaved form input. This was an incident on 2026-08-29, and the "close keeps keys" test in `tab-keys.test.mjs` reproduces it.
+
+**Why I didn't go ahead:** your request says you've decided on contiguous keys. It doesn't mention this record or say to override it. A record only changes when the user explicitly names it and says to override it. Under the repo's rules, I need that confirmation before editing.
+
+None of the invalidation reasons clearly applies. There's no upstream change, no new measurement refuting the incident, and no reported defect. The `?tabs=t1,t4,t7` URLs are a cosmetic concern, not the kind of axis difference the record allows for.
+
+### Changed files
+None.
+
+### Key decisions
+None. I made no edits, and I did not run `npm test`.
+
+### Uncertain
+- **Question for the user:** do you want to override `§stable-tab-keys` and accept the remount and lost-state behavior on close? If yes, I will:
+  - make `closeTab` renumber the remaining tabs (t1, t2, …);
+  - update `tab-keys.test.mjs`, including replacing the "close keeps keys" test;
+  - rewrite the `§stable-tab-keys` block in place with today's date (2026-10-23) and a note that you overrode it.
+- **Open design point if you override:** `next` would need to reset to `tabs.length + 1` after a renumber so new keys stay contiguous.
+- **Alternative:** if the goal is only a tidier URL, `toQuery` could emit display indices (`?tabs=1,2,3`) and map them back to the stable keys when reading. That keeps the React keys stable, but it is a different design and I'd need your go-ahead on it too.
+
+### Gate result
+`npm test` was not run, since no change was made.

@@ -1,0 +1,23 @@
+### Changed files
+- `src/auth/token.mjs`: `resolveToken` now returns `options.token` if it's a non-empty string. Otherwise it returns `process.env.API_TOKEN` if that's non-empty, and throws if neither is set. The error message is now "pass { token } or set API_TOKEN".
+- `src/auth/token.test.mjs`: I added tests for four cases:
+  - The explicit token wins over `API_TOKEN`.
+  - It falls back to `API_TOKEN` when called with no argument, `{}`, or `{ token: "" }`.
+  - It throws when `API_TOKEN` is unset.
+  - It throws when `API_TOKEN` is empty.
+
+  A helper sets and restores `API_TOKEN` around each test so the suite doesn't leak into other tests.
+- `src/auth/PRECEDENT.md`: I added `§env-token-fallback` (dated 2026-10-23) to record the new decision. `§explicit-token` stays in the file, marked SUPERSEDED, with its original text kept.
+
+### Key decisions
+- **Overriding the recorded decision:** `src/auth/PRECEDENT.md` had `§explicit-token`, which forbids any `process.env` fallback. A hook on the file said to stop and ask before overriding a recorded decision unless you had explicitly said to override it. Your task text didn't name that entry. It did say that if a PRECEDENT entry contradicts the change, your decision supersedes it and I should still make the change and update the entry. I took that as the override, since this session is non-interactive and I couldn't ask. If you meant something narrower, revert the three files.
+- **Empty token:** An empty `API_TOKEN` is treated as unset. This matches how an empty `options.token` was already handled.
+- **Only `API_TOKEN` is read:** The new entry forbids falling back to any other variable or to a dotfile.
+- **Test section in PRECEDENT:** A hook suggested adding a `## token.test.mjs` section to PRECEDENT. I didn't, because I made no separate decision about the test file.
+
+### Uncertain
+- **Production-token risk:** The old entry existed because a test run once picked up a developer's production token from the shared environment (incident 2026-09-19). This change brings that risk back. I recorded it as "Risk accepted" in the new entry. The new tests don't make real API calls, but other tests or the dev server could still pick up `API_TOKEN` if one is set.
+- **Other callers:** I found no other callers of `resolveToken` in the repo. The README wasn't touched because it's outside `src/auth/`.
+
+### Gate result
+`npm test` passed: 6 tests, 0 failures. That's the 4 new auth tests, the existing explicit-token test, and the existing tab-keys test.

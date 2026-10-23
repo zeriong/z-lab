@@ -1,0 +1,10 @@
+The shell's layout step now switches with a plain viewport `@media (min-width: 720px)` query, and the record has been updated to match. Nothing is committed yet.
+
+- **`src/layout/shell.css`:** I changed `@container (min-width: 720px)` to `@media (min-width: 720px)`. I also deleted the `.shell { container-type: inline-size; }` rule. It existed only for the container query, and nothing else in the repo uses `.shell` as a container. If code outside this repo relies on it, it's a one-line restore.
+- **`src/layout/PRECEDENT.md`:** I rewrote the block in place as **§viewport-media-query**, dated 2026-10-23. It says that you, as maintainer, overrode §container-not-viewport, and it keeps what the old record required and forbade. Nothing else in the repo pointed to the old anchor.
+
+`npm test` passes (3/3), but those tests don't cover CSS, so this change isn't tested.
+
+**Decision for you:** this brings back the condition behind the 2026-09-14 incident. Inside a split pane as narrow as 380px on a 1440px screen, the viewport query will choose the two-column layout and clip the sidebar. I noted this in the record as a "Known risk".
+
+The record also has no reason for the override, because you didn't give one and I didn't want to invent it. If you tell me the reason, I'll add a `Reason:` line before you commit.

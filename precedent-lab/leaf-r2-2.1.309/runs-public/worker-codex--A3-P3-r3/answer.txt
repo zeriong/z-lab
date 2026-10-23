@@ -1,0 +1,15 @@
+### Changed files
+
+None. I haven’t edited files because the requested fallback conflicts with `src/auth/PRECEDENT.md` §explicit-token.
+
+### Key decisions
+
+The precedent requires an explicit override before changing this behavior or its decision record. I’ve asked whether you want to override it.
+
+### Uncertain
+
+Awaiting your answer.
+
+### Gate result
+
+`npm test` not run; no changes were made.

@@ -1,0 +1,16 @@
+### Changed files
+
+- [shell.css](<scratch>/worker-codex--A3-X4-r3/repo/src/layout/shell.css): switched to `@media (min-width: 720px)` and removed the unused container setup.
+- [PRECEDENT.md](<scratch>/worker-codex--A3-X4-r3/repo/src/layout/PRECEDENT.md): recorded the maintainer’s override, dated 2026-10-23.
+
+### Key decisions
+
+- Removed `.shell`’s `container-type` since no container query uses it.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed (3 tests).

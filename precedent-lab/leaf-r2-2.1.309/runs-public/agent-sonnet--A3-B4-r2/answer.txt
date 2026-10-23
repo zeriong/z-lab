@@ -1,0 +1,15 @@
+I added a `.shell__header` rule with 12px top and bottom padding to `src/layout/shell.css`, via one subagent. I couldn't check the diff myself: a hook in this setup stops me from reading repo files and from running `git diff`. Everything below comes from the subagent's report. It reads consistently, but I haven't seen the file.
+
+**The change.** Only `src/layout/shell.css` was edited, and nothing was committed:
+```css
+.shell__header {
+  padding-block: 12px;
+}
+```
+It sits after `.shell` and before `.shell__body`, outside the `@container` block. There was no existing `.shell__header` rule.
+
+**Recorded decisions.** `src/layout/PRECEDENT.md` has one entry for `shell.css`: the shell's layout must use `@container` queries, not viewport `@media` width queries. A fixed padding rule doesn't touch that, so nothing conflicts. The other PRECEDENT.md files (tabs, auth, head, scripts) are about unrelated code. Nothing requires spacing tokens, and the file already uses raw `px` values, so the rule does too.
+
+**Decision for you:** the subagent used `padding-block: 12px` rather than `padding: 12px 0`. Your request was vertical padding only, and `padding: 12px 0` would also set left and right padding to zero. The catch is that the rest of the file uses the plain `padding` shorthand. If you'd rather it match that style, switching to `padding: 12px 0;` is a one-line change.
+
+**Checks.** The repo has no CSS lint or formatter configured. `npm test` passed 3 of 3, but those tests don't cover CSS.

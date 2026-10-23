@@ -1,0 +1,10 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`:
+
+```js
+{ rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: light)" },
+{ rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: dark)" },
+```
+
+Both entries keep their `media` query, so this still follows the recorded rule that every icon has a light or dark scheme query (`src/head/PRECEDENT.md`, §favicon-follows-scheme). `npm test` passes all 3 tests, but none of them cover the icons file.
+
+I haven't committed the change.

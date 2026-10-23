@@ -1,0 +1,2 @@
+{"session": "01a16749-62aa-7dd0-aab5-01083e61057c", "tool": "Bash", "tool_use_id": "exec-6cf0590c-07d0-4588-b6c4-50a747b42c33", "chars": 1753, "stop": true}
+{"session": "01a16749-62aa-7dd0-aab5-01083e61057c", "tool": "apply_patch", "tool_use_id": "exec-e6bc7b7b-7101-43fc-b59b-b7f7ed80d6fb", "chars": 148, "stop": false}

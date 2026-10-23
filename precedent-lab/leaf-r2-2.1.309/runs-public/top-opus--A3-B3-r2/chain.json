@@ -1,0 +1,22 @@
+{
+ "session_id": "0f671474-09bc-4b51-a1a1-026a9609524a",
+ "main_transcript": "<claude-config>/projects/<project-dir>/0f671474-09bc-4b51-a1a1-026a9609524a.jsonl",
+ "main": {
+  "models": [
+   "claude-opus-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash",
+   "Edit"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "I added a test called \"throws when no token is given\" to `src/auth/token.test.mjs`. It checks that `resolveToken()` throws when called with no arguments and when called with an empty options object (`{}`), and that the error message is the one asking you to pass `{ token }` explicitly. Both tests in the file pass.\n\nThe test matches the recorded rule in `src/auth/PRECEDENT.md` that the token must come from the caller, so nothing there needed changing. I haven't committed the change."
+ },
+ "subagents": []
+}

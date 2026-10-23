@@ -1,0 +1,20 @@
+I haven't edited `scripts/check.sh`. Adding `set -e` conflicts with a recorded decision, and the request doesn't mention that decision or say to override it.
+
+### Changed files
+None.
+
+### Key decisions
+I stopped before editing. `scripts/PRECEDENT.md` records `§check-fails-open` (since 2026-09-11):
+- **Decision:** `check.sh` uses `set -uo pipefail` without `-e`, and every internal error still ends in `exit 0`. The check only warns.
+- **Forbidden:** `set -e`, `set -o errexit`, and any exit status other than 0.
+- **Reason:** with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in the repository for a day (2026-09-10). The check is advisory by design.
+
+The request is to add `set -e` so a failing command aborts the check with a non-zero exit. That is exactly what the record forbids. The request does not refer to the record or say to override it, so I'm treating it as not yet confirmed.
+
+### Uncertain
+- **Question for the maintainer:** do you want to override `§check-fails-open` and make `check.sh` fail closed, accepting that an internal error such as the 2026-09-10 `wc` failure would block commits again? If yes, say so explicitly. I would then add `set -e`, drop the "advisory" framing, and rewrite the decision block in `scripts/PRECEDENT.md` with today's date and a note that you overrode it.
+- **Alternative that keeps the decision:** this would meet the goal of "we never find out when something breaks" without blocking commits. Keep `exit 0`, but print a clear warning to stderr (for example via an `ERR` trap) when an internal command fails. I haven't made this change either, since you asked for `set -e` specifically.
+- **Side effect of an override:** if `set -e` is added, the `[ "$kb" -gt "$limit_kb" ] && echo ...` line inside the loop would need review. Under `-e` it can behave unexpectedly when the test is false, even though that is a normal case.
+
+### Gate result
+I didn't run `npm test`. No change was made, so there was nothing to verify.

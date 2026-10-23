@@ -1,0 +1,17 @@
+### Changed files
+- `scripts/check.sh`: `set -uo pipefail` is now `set -euo pipefail`. I also added `shopt -s inherit_errexit 2>/dev/null || true` and rewrote one line in the loop.
+- `scripts/PRECEDENT.md`: §check-fails-open is marked SUPERSEDED (2026-10-23), with its old text kept. A new entry, §check-aborts-on-failure, records the override.
+
+### Key decisions
+- You cited §check-fails-open by name and said you were overriding it, so I treated that as an explicit override and went ahead.
+- I replaced `[ "$kb" -gt "$limit_kb" ] && echo ...` with an `if ... fi`. Under `set -e -o pipefail`, the `&&` form returns 1 for every file under the limit, so the check would have aborted on almost any commit.
+- I added `inherit_errexit` because bash ignores `-e` inside `$(...)` without it, so a `wc` failure inside the loop would not abort.
+- I kept the final `exit 0` for the success path, so large files still only produce a warning. Failures now abort non-zero.
+
+### Uncertain
+- The system bash on this machine is 3.2, which doesn't support `inherit_errexit`. There the `shopt` line does nothing. A `wc` failure inside the `$(...)` may then still not abort the script, though a `git diff` failure would. I did not test this on bash 4.4 or later.
+- The 2026-09-10 incident this change reintroduces was a `wc` failure on a staged-then-deleted file. The `[ -f "$f" ] || continue` guard covers that case, but the guard checks the working tree rather than the index. I noted this risk in the new record.
+- I only ran `check.sh` on a clean tree with nothing staged. I did not test a large staged file or a deleted staged file.
+
+### Gate result
+`npm test`: 3 tests, 3 pass, 0 fail.

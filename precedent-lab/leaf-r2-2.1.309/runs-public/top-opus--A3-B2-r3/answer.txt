@@ -1,0 +1,7 @@
+I added the comment to `scripts/check.sh:3`, just below the existing header line:
+
+```bash
+# CHECK_LIMIT_KB: size threshold in KB above which a staged file is reported (default 512).
+```
+
+That's the only change, and `bash -n` passes. The comment doesn't touch the decision recorded in `scripts/PRECEDENT.md` that the check must never block a commit, and it isn't a new decision, so I didn't change `PRECEDENT.md`. I haven't committed it.

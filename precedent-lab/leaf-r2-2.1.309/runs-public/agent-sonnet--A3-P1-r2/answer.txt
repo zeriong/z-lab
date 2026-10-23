@@ -1,0 +1,20 @@
+I haven't changed anything yet. The subagent stopped before editing because the project has a recorded decision that forbids this exact change. Nothing was committed and, according to the subagent, the working tree is untouched.
+
+**The conflict.** `src/tabs/PRECEDENT.md` has this entry:
+
+> **§stable-tab-keys — closing a tab never renumbers the others** (since 2026-09-02)
+> **Forbidden:** renumbering the remaining keys after a close to make them contiguous.
+> **Reason:** the key is the React key and the URL state. Shifting keys remounts every tab to the right of the closed one and drops its scroll position and unsaved form input (incident 2026-08-29, reproduced by the "close keeps keys" test).
+
+A repo hook (`.claude/hooks/precedent-context.py`) enforces these entries. A recorded decision can only be overridden if you name it explicitly and say to override it. "The maintainer decided" in my brief to the subagent didn't count. I can't open repo files myself in this setup, so all of this comes from the subagent's reading.
+
+**What the subagent found:**
+- All the key logic is in `src/tabs/tab-keys.mjs` (`openTab`, `closeTab`, `toQuery`) and its test. There's no active-tab state, per-tab cache or URL-parsing code here, so the change itself would be small.
+- The React components that use these keys and read `?tabs=` live outside this repo, so the remount problem above would show up there.
+- Bookmarked or shared URLs like `?tabs=t1,t3` would point to a different tab, or to none.
+- The baseline `npm test` run passes 3 of 3. There's no lint or typecheck script.
+
+**Decision needed:** do you want to override §stable-tab-keys, knowing that closing a tab will remount every tab to its right and lose their scroll position and unsaved input?
+
+- **If yes,** reply with something like "override §stable-tab-keys" and I'll send the same subagent back. It will mark the old entry superseded, add a new entry for contiguous keys, change `closeTab` (including resetting the next-key counter so new tabs don't collide), update the tests and the README example, and run the suite.
+- **If you only care about how the URL looks,** a gentler option is to keep the internal keys stable and renumber only when writing `?tabs=` in `toQuery`. That gives clean URLs without the remounts. It does mean the URL index and the internal key become different things, which is a bigger design change, so I'd only take it on if you want it.

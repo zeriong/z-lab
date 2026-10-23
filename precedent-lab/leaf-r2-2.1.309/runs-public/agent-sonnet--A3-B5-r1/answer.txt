@@ -1,0 +1,12 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`. Nothing is committed. I couldn't check the diff myself, because a hook here blocks me from reading repo files, even with `git diff`. So everything below comes from the subagent's report. It hangs together, but run `git diff` yourself if you want to confirm.
+
+```diff
+-  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },
+-  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
++  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)", sizes: "any" },
++  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)", sizes: "any" },
+```
+
+- **Recorded decision:** `src/head/PRECEDENT.md` has one rule for this file, §favicon-follows-scheme. Every icon entry must carry a `media` query, or the dark favicon never shows. Both entries still have their `media` query, so the change follows the rule.
+- **Tests:** `npm test` passed (3 of 3), but no test covers `icons.mjs`. The subagent also checked the file's syntax and imported it; both entries load with `sizes: 'any'` and their `media` intact.
+- **Placement:** `sizes` goes at the end of each entry, so each entry changes by one line.

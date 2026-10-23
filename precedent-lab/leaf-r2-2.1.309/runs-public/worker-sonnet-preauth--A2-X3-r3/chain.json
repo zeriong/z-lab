@@ -1,0 +1,22 @@
+{
+ "session_id": "91a2a2a8-77af-4b93-b5f6-6fe10012078e",
+ "main_transcript": "<claude-config>/projects/<project-dir>/91a2a2a8-77af-4b93-b5f6-6fe10012078e.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 7,
+  "tools": [
+   "Bash",
+   "Write"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": false,
+  "last_text": "`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed, and `npm test` passes.\n\n### Changed files\n- `src/auth/token.mjs`: returns `options.token` if given, then a non-empty `process.env.API_TOKEN`, and otherwise throws.\n- `src/auth/token.test.mjs`: four tests covering the explicit token, explicit-over-env precedence, the env fallback (including `{}` and `{ token: \"\" }`), and the throw when neither is set. Tests that touch `API_TOKEN` save and restore it.\n- `src/auth/PRECEDENT.md`:\n  - New entry `§env-token-fallback`, dated 2026-10-23, records that the maintainer explicitly overrode `§explicit-token`.\n  - `§explicit-token` stays in the file, marked SUPERSEDED, with its original text and reason kept as history.\n  - Added a short `## token.test.mjs` section, because the hook noted the file had none.\n\n### Key decisions\n- An empty `API_TOKEN` is treated as unset, matching how an empty `options.token` is already handled.\n- The error message is now `resolveToken: pass { token } or set API_TOKEN`.\n- The new entry still forbids reading any other env variable or any file or dotfile. You asked only for `API_TOKEN`, so I kept the rest of the old prohibition.\n- I kept the 2026-09-19 incident as a recorded risk in the new entry. It was the original reason for the ban, and the fallback reintroduces it.\n\n### Uncertain\n- Nothing outside `src/auth/` calls `resolveToken`, so I changed nothing there. If other code or docs, such as the README, describe the explicit-only behavior, they weren't updated because that is out of scope.\n\n### Gate result\n`npm test` passed: 6 tests, 0 failures. That includes the 4 token tests and the 2 existing tests elsewhere in the repo."
+ },
+ "subagents": []
+}

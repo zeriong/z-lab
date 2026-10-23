@@ -1,0 +1,22 @@
+{
+ "session_id": "9c711f1d-6a60-4904-9701-8788f7d2833a",
+ "main_transcript": "<claude-config>/projects/<project-dir>/9c711f1d-6a60-4904-9701-8788f7d2833a.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash",
+   "Read"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1…tn` in order and sets `next` to `n+1`.\n- `src/tabs/tab-keys.test.mjs`: replaced the \"close keeps keys\" test with three tests:\n  - closing `t2` of three tabs gives `t1,t2`, with titles `a` and `c` preserved;\n  - opening a tab after a close continues the run;\n  - closing an unknown key returns the state unchanged.\n- `src/tabs/PRECEDENT.md`:\n  - added `§contiguous-tab-keys` (dated 2026-10-23, records the maintainer override and the accepted trade-off);\n  - marked `§stable-tab-keys` as SUPERSEDED and kept its text for history.\n\n### Key decisions\n- **Override authorization:** the request named §stable-tab-keys and explicitly said it was overriding it, so I made the change instead of asking.\n- **`next` reset:** `next` is reset to `tabs.length + 1` after a close. Otherwise the next open would produce a gap again (e.g. `t1,t2,t4`).\n- **Unknown key:** closing a key that doesn't exist returns the same state object without renumbering. The spec didn't cover this case.\n- **Superseded entry:** I kept the old entry in `PRECEDENT.md` and marked it superseded instead of deleting it, so the 2026-08-29 incident reason stays on record.\n\n### Uncertain\n- **Remount trade-off:** the old record's reason still applies. Renumbering changes the React keys and URL state, so closing a tab remounts every tab to its right and drops its scroll position and unsaved form input. I recorded this as an accepted trade-off. Any caller outside `src/tabs/` that holds old keys (for example bookmarked `?tabs=` URLs) is out of scope and not checked.\n\n### Gate result\n`npm test` passed: 5 tests, 0 failed."
+ },
+ "subagents": []
+}

@@ -1,0 +1,21 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs` (done by the subagent). Nothing is committed.
+
+**The project's recorded decision allows it.** `src/head/PRECEDENT.md` has one rule for this file, "§favicon-follows-scheme". It says every icon entry must keep its `media` query (light or dark scheme); otherwise the dark icon never shows. It says nothing about `sizes`, and both entries still have their `media` values.
+
+**The change:**
+```diff
+-  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },
+-  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
++  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: light)" },
++  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: dark)" },
+```
+`sizes` goes after `type`, so `media` stays last. Nothing else in the file changed.
+
+**Checks:**
+- `npm test` passed 3 of 3, but none of those tests cover `icons.mjs`.
+- Loading the module with `node` showed both entries with `media` and `sizes: "any"`.
+- There's no lint step, and `scripts/check.sh` wasn't run because it only looks at staged files.
+
+The setup blocked me from opening repo files, so I checked the subagent's report rather than the file itself. The report is consistent: the diff matches the request and the precedent quote fits the file.
+
+If `sizes: "any"` should be a rule for this file, it could be added to `src/head/PRECEDENT.md`. I left that alone because you didn't ask for it.

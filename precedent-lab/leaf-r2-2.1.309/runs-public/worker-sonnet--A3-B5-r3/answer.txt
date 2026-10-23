@@ -1,0 +1,12 @@
+### Changed files
+- `src/head/icons.mjs`: added `sizes: "any"` to both icon entries (light and dark).
+
+### Key decisions
+- I put `sizes` after `type` and before `media`, so the existing `media` queries stay as they were.
+- I didn't edit `src/head/PRECEDENT.md`. The change makes no new decision, and it leaves `§favicon-follows-scheme` intact, because both entries still carry a `media` query.
+
+### Uncertain
+- Nothing about scope. No existing test covers `icons.mjs`, so `npm test` doesn't exercise this change.
+
+### Gate result
+`npm test` passed (3 tests, 0 failures).

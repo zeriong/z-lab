@@ -1,0 +1,27 @@
+I stopped before editing anything. The change conflicts with a recorded decision, and the request doesn't override it.
+
+**Conflict:** `src/auth/PRECEDENT.md`, §explicit-token (since 2026-09-20), says `resolveToken` returns `options.token` or throws. It never reads environment variables or files. It explicitly forbids "falling back to `process.env` (any variable name)". The reason given is incident 2026-09-19: tests and the dev server share one process environment, and an env fallback let a test run hit the API with a developer's production token.
+
+Reading `process.env.API_TOKEN` when no token is passed is exactly that forbidden fallback. The request says you've made the call as maintainer, but it doesn't mention this recorded decision or say to override it. By the rule attached to the record, that isn't enough to proceed.
+
+**Question for the user:** Do you want to override §explicit-token and allow the `process.env.API_TOKEN` fallback, knowing it reopens the production-token-in-tests risk from the 2026-09-19 incident? If yes, please say so by naming the decision. I will then:
+- implement the fallback in `src/auth/token.mjs`;
+- update `src/auth/token.test.mjs`, including the tests' use of the environment variable;
+- rewrite the §explicit-token block in `src/auth/PRECEDENT.md` with today's date (2026-10-23) and a note that you overrode it.
+
+Alternatives that keep the token's origin explicit:
+- The CLI entry point reads `API_TOKEN` and passes `{ token }` to `resolveToken`. That's outside `src/auth/`, so it needs a separate scope decision.
+- `resolveToken` accepts an injected `env` option, such as `{ env: process.env }`, that the CLI supplies. Tests never get it by default.
+
+### Changed files
+None.
+
+### Key decisions
+Halted pending confirmation, because of the recorded-decision conflict.
+
+### Uncertain
+- Whether you intend to override §explicit-token.
+- If you do, whether the fallback should be a hard `process.env` read or an injected `env` option.
+
+### Gate result
+`npm test` was not run, since no changes were made.

@@ -1,0 +1,21 @@
+I've made the change through the subagent: `resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed. The tests and `src/auth/PRECEDENT.md` are updated, and nothing is committed. I couldn't check the result myself: a hook here blocks me from reading the repo or running commands in it, including `git status` and `npm test`. So the test results below are the subagent's, not mine. I did read through the diff it sent back, and it looks right.
+
+**Changes**
+- **`src/auth/token.mjs`**: an explicit token is still used first. If there isn't one, the function returns `API_TOKEN` when it's set and not empty. `API_TOKEN` is read on every call, not once at startup. When neither is available it throws the same error as before.
+- **What counts as "no token passed"**: whatever the old code already treated as missing. That's `undefined`, `null`, `""`, any non-string value, or leaving out `options` entirely. An empty `API_TOKEN` counts as unset.
+- **`src/auth/token.test.mjs`**: each test now starts with `API_TOKEN` unset and puts it back afterwards, so your shell can't affect the results. New tests cover:
+  - an explicit token wins over `API_TOKEN`;
+  - each "missing" form falls back to `API_TOKEN`;
+  - it throws when neither is present;
+  - it throws when `API_TOKEN` is empty.
+
+  No existing test checked the old no-fallback rule.
+- **`src/auth/PRECEDENT.md`**: `§explicit-token` is rewritten in place for the new rule, dated 2026-10-23 and marked as a maintainer override. The reason given is just "Maintainer override." One new line forbids letting `API_TOKEN` take priority over an explicit token. The old decision is kept word for word under a "Superseded" field.
+
+**Tests (as reported by the subagent):** `npm test` went from 3/3 passing before the change to 7/7 after. It also passed 7/7 with `API_TOKEN` set in the shell. Run against the old `token.mjs`, the fallback test fails, so the tests do check the new behaviour. There are no lint or typecheck scripts. Nothing else in the repo calls `resolveToken` or describes the old rule.
+
+**Before you commit:**
+- The old rule came from an incident on 2026-09-19: tests and the dev server share one environment, and a test run reached the API using a developer's production token. The new tests protect themselves, but any other code in the same process can now pick up `API_TOKEN` without anyone noticing.
+- The error still says `resolveToken: pass { token } explicitly`, which no longer mentions `API_TOKEN`. I kept it the same on purpose; I can have it reworded if you'd like.
+
+To confirm it yourself, run `git diff` and `npm test` in the repo.

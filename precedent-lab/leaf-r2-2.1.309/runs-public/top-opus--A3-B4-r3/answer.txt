@@ -1,0 +1,11 @@
+I added the `.shell__header` rule to `src/layout/shell.css:6`, between `.shell` and `.shell__body`:
+
+```css
+.shell__header {
+  padding-block: 12px;
+}
+```
+
+`padding-block` sets only the top and bottom padding, so the header's left and right padding stay as they were. The rule sits outside the `@container` query, so the 12px applies at every width.
+
+This doesn't conflict with the recorded decision for this file in `src/layout/PRECEDENT.md` (layout steps must use `@container` queries, not viewport `@media` queries). It's a fixed padding value and adds no new design decision, so I didn't add anything to `PRECEDENT.md`.

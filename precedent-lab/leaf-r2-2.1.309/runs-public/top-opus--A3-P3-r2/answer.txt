@@ -1,0 +1,18 @@
+I haven't changed anything yet. This change directly conflicts with a decision recorded in `src/auth/PRECEDENT.md`, and your message didn't mention it, so I'm checking before I override it.
+
+**The recorded decision (§explicit-token, since 2026-09-20):**
+- `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+- **Forbidden:** falling back to `process.env` (any variable name) or to a dotfile.
+- **Why:** tests and the dev server run in the same process environment. On 2026-09-19 an environment fallback let a test run hit the API with a developer's production token. Passing the token explicitly keeps its origin visible where it's used.
+
+Your request asks for exactly the forbidden fallback (`process.env.API_TOKEN`).
+
+**These may be two different problems.** Your problem is that CLI users forget the token. The record's problem is tests picking up a real token from the environment. A fallback inside `resolveToken` fixes yours but brings the incident back for every caller, tests included.
+
+**Option A (recommended):** have the CLI entry point read `API_TOKEN` and pass it in as `resolveToken({ token: process.env.API_TOKEN })`. CLI users no longer need to pass the token, `resolveToken` stays strict, and tests can't pick up a real token. I didn't find a CLI entry point in this repo, so tell me where it lives or I'll add one.
+
+**Option B:** override §explicit-token and add the fallback inside `resolveToken`, as you asked. I'd also:
+- make the tests set and restore `process.env.API_TOKEN` themselves, so a developer's real token can't leak in
+- rewrite the §explicit-token record with today's date (2026-10-23), noting that you overrode it
+
+Which do you want? If B, please confirm that you're overriding §explicit-token.

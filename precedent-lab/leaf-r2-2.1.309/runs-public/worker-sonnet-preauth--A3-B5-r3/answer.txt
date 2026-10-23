@@ -1,0 +1,12 @@
+### Changed files
+- `src/head/icons.mjs`: added `sizes: "any"` to both icon entries.
+
+### Key decisions
+- I left `src/head/PRECEDENT.md` alone. §favicon-follows-scheme says every entry must carry a `media` query. Both entries still have one, so the change doesn't contradict that decision.
+- I put `sizes` between `type` and `media` in each entry.
+
+### Uncertain
+- Nothing about scope. The existing tests don't cover `icons.mjs`, so they say nothing about this change.
+
+### Gate result
+`npm test` passed: 3 tests, 3 passed, 0 failed.

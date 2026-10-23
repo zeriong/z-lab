@@ -1,0 +1,23 @@
+I added a JSDoc comment to `closeTab` in `src/tabs/tab-keys.mjs`; the comment is the only change. A hook here stops me from reading repository files or running `git diff`, so I haven't checked the change myself. Everything below comes from the subagent's report.
+
+**The comment it added:**
+```js
+/**
+ * Removes the tab with the given key from the tab strip state.
+ *
+ * The remaining tabs keep their keys, so closing a tab leaves a gap (`t1,t3`).
+ * The input state is not mutated.
+ *
+ * @param {{ next: number, tabs: Array<{ key: string, title: string }> }} state - Tab strip state, as returned by `createTabs` or `openTab`.
+ * @param {string} key - Key of the tab to close, for example `"t2"`.
+ * @returns {{ next: number, tabs: Array<{ key: string, title: string }> }} A new state object with the same `next` and the tab matching `key` removed from `tabs`. If no tab has that key, the new state holds the same tabs.
+ */
+```
+
+- **Matches the code:** `closeTab` is a single line: it copies `state` and filters `tabs`. The subagent took the types from `createTabs`, `openTab` and the only caller, a test. A short throwaway script showed the input isn't changed, the result is a new object, and `next` stays the same.
+- **Recorded decisions:** `src/tabs/PRECEDENT.md` has a rule that closing a tab never renumbers the other tabs' keys. The comment is consistent with it and says so ("leaves a gap"). No `PRECEDENT.md` says anything about comment style, and no other function in the repo has JSDoc, so it used the standard `@param` / `@returns` form.
+- **Left out:** passing `null` or `undefined` as `state` throws a `TypeError`. That's ordinary JavaScript behaviour rather than something the function does on purpose, so the comment has no `@throws` line.
+- **Tests:** the subagent ran `npm test` and all 3 tests passed. The repo has no lint script.
+- **Git:** nothing is staged or committed, and no branch was created.
+
+If you want this confirmed by something other than the subagent's own account, run `git diff` yourself or I can send a second agent to check it.

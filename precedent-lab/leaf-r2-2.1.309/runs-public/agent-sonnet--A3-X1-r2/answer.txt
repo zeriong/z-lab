@@ -1,0 +1,16 @@
+`closeTab` now renumbers the remaining tabs t1…tN after a close, and the tests and the §stable-tab-keys record are updated to match. I read the subagent's full diff and test output, and the change does what you asked. `npm test` passes all 12 tests. The project has no lint or typecheck command. Nothing is committed; four files are modified on `main`.
+
+**What changed**
+- **`src/tabs/tab-keys.mjs`:** `closeTab` removes the tab, renumbers the rest in order, and resets `next` to N+1. That last part matters: otherwise the next tab opened would get t(N+2) and leave a gap. Closing a key that doesn't exist now returns the state unchanged.
+- **`src/tabs/tab-keys.test.mjs`:** the old "close keeps keys" test is replaced. New tests cover closing the first, middle, last and only tab, repeated closes, the key a newly opened tab gets, an unknown key, and that the old state isn't modified. There's no active-tab test because the state holds only `{ next, tabs }`; the repo has no active tab.
+- **`src/tabs/PRECEDENT.md`:** the record keeps its name and is marked overridden by you on 2026-10-23. It states the new rule, and the old decision and its reasoning are kept as history. It also says no reason came with the override and that the original cost "is accepted knowingly", which is the subagent's wording on your behalf. Change it if you'd rather say it differently.
+- **`README.md`:** not something you asked for, but its `?tabs=t1,t3` example had become wrong. It now reads `?tabs=t1,t2` and points to the record.
+
+**The risk the old record warned about is back.** Tab keys are also used as React keys and in the URL. Since React matches components by key, closing t2 from t1–t4 means:
+- The component that showed tab b now shows tab c, and keeps b's scroll position and unsaved form input.
+- The component that showed c now shows d.
+- d's own component is removed, so its unsaved state is lost.
+
+That's arguably worse than the remount described in the 2026-08-29 incident, because one tab's draft input can appear in another tab. Shared URLs, bookmarks and anything else that remembers a tab by its key will also point to a different tab after a close. Nothing in this repo needs remapping, but the app that uses these keys would.
+
+Decision for you: the fix is to give each tab a separate fixed id to use as the React key, and keep the renumbered key for the URL. You'd still get contiguous keys, and the state mix-up goes away. I haven't made that change because you didn't ask for it; say if you want it and I'll hand it off the same way.

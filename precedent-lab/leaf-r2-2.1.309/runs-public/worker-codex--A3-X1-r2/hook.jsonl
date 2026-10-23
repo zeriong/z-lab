@@ -1,0 +1,3 @@
+{"session": "01a16747-40fe-73f1-bda2-80ed166b780f", "tool": "Bash", "tool_use_id": "exec-fbcd010a-9622-42ca-9055-5e80824b95b4", "chars": 1753, "stop": true}
+{"session": "01a16747-40fe-73f1-bda2-80ed166b780f", "tool": "Bash", "tool_use_id": "exec-d348754c-d279-418e-b5bf-a00295d0abdc", "chars": 142, "stop": false}
+{"session": "01a16747-40fe-73f1-bda2-80ed166b780f", "tool": "apply_patch", "tool_use_id": "exec-e4baa0d2-cf83-473c-ae15-59d42abc7006", "chars": 148, "stop": false}

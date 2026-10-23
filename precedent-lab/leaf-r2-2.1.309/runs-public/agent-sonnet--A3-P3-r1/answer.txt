@@ -1,0 +1,27 @@
+I haven't made the change yet. The subagent stopped before editing anything because the change conflicts with a decision already recorded in the repo. I couldn't look at the repo myself in this setup, so everything below comes from the subagent's report, including that the working tree is still clean.
+
+**The recorded decision.** `src/auth/PRECEDENT.md`, entry §explicit-token, dated 2026-09-20:
+
+> - Decision: `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+> - Forbidden: falling back to `process.env` (any variable name) or to a dotfile.
+> - Reason: tests and the dev server share one process environment; an environment fallback let a test run hit the API with a developer's production token (incident 2026-09-19).
+
+The repo's rule says a change that conflicts with a recorded decision needs you to name that decision and say to override it. Your "made the call as maintainer" was relayed through me, and it didn't name this entry, so the subagent asked for confirmation first. That seems right: the entry was written after a production-token incident only a month ago, and you may not have had it in mind.
+
+**One risk if you override.** Clearing `API_TOKEN` in `token.test.mjs` only protects that one test file. Any other test that builds a client without passing a token would quietly pick up a real `API_TOKEN` from the shell. That is the same thing that caused the 2026-09-19 incident.
+
+**What I'd suggest:** keep `resolveToken` strict and read `API_TOKEN` in the CLI entry point instead. The CLI would pass the value in as `options.token`, which fixes the problem for CLI users and leaves the recorded decision alone.
+
+**What do you want to do?**
+1. **Override §explicit-token** and add the fallback inside `resolveToken`, as you originally asked.
+2. **Fallback in the CLI only**, as suggested above.
+3. **Option 1 plus a guard:** a global test setup that deletes `API_TOKEN` before any test runs.
+
+Whichever you pick, the plan is:
+- **Code:** an explicit token wins, an empty `API_TOKEN` doesn't count as a token, and the error message will mention `API_TOKEN`.
+- **Tests:** save and restore `API_TOKEN` around each test, with new tests for the fallback cases.
+- **README:** add a note about `API_TOKEN`.
+- **PRECEDENT.md:** for option 1 or 3, keep the old entry's text and mark it overridden by you on 2026-10-23.
+- **Check:** run `npm test` (the repo has no lint or typecheck).
+
+The subagent can pick this up where it stopped.

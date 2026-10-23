@@ -1,0 +1,14 @@
+`closeTab` now renumbers the remaining tabs to t1..tn in their current order. The tests and `src/tabs/PRECEDENT.md` are updated too. Nothing is committed. The subagent reports 6 of 6 tests passing (3 of 3 before), but I couldn't rerun them myself: a hook here stops me from running commands in the repo. I reviewed the full diff the subagent sent back and it does what you asked.
+
+**What changed**
+- **`src/tabs/tab-keys.mjs`**: `closeTab` removes the closed tab and renumbers the rest. It also resets the next-key counter to n+1, so a tab opened after a close gets the next number in sequence. Before, closing `t3` of three left the counter at 4, so the next tab would have been `t4` and left a gap.
+- **`src/tabs/tab-keys.test.mjs`**: the "close keeps keys" test became "close renumbers keys" (closing `t2` of three now gives `t1,t2`). New tests cover closing the first tab, closing the last tab, and opening a tab after a close, including when the only tab was closed. The subagent ran the new tests against the old `closeTab`, and they fail there as they should.
+- **`src/tabs/PRECEDENT.md`**: I kept the `§stable-tab-keys` heading, now marked "superseded 2026-10-23" and stating the new rule as a maintainer override. The old rule and its reason are quoted word for word in a "Superseded" line. The old ban isn't on a `Forbidden:` line any more, so the precedent hook won't show it as still active.
+- **`README.md`**: the URL example changed from `?tabs=t1,t3` to `?tabs=t1,t2`, since a gap like `t1,t3` can't happen now.
+
+**Decision for you:** the old rule was there because the tab key is also the React key and the URL state (`?tabs=…`). With renumbering, closing a tab remounts every tab to its right, which loses their scroll position and any unsaved form input. That is the same problem as the 2026-08-29 incident the rule was written for. Also, a URL saved before a close can point to a different tab afterwards. Nothing in this repo uses the keys that way, so the problem would show up in whatever app renders the tab strip. The record lists this as an "Accepted cost". If you want contiguous keys without the remounts, the fix is to give each tab a separate permanent id to use as its React key. That would change code outside this repo, so I left it out.
+
+**Smaller notes**
+- The record's Reason line says only that you overrode the rule, because no reason came with the request. You may want to add one.
+- I skipped an active-tab test because the module doesn't track an active tab.
+- No other `PRECEDENT.md` mentions tab keys.

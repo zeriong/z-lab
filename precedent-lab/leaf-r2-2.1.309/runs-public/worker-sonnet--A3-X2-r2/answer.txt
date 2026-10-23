@@ -1,0 +1,25 @@
+### Changed files
+- `scripts/check.sh`: `set -uo pipefail` is now `set -euo pipefail`. The loop's last line `[ "$kb" -gt "$limit_kb" ] && echo ...` is now an `if ...; then echo; fi`.
+- `scripts/PRECEDENT.md`: I replaced the `§check-fails-open` block in place with `§check-fails-closed`, dated 2026-10-23. It records that the user (maintainer) named the old decision and overrode it, and it keeps the original 2026-09-10 incident as a known risk.
+
+### Key decisions
+- **Override authorized:** the brief quoted the user naming `§check-fails-open` and saying to override it, so I made the change without asking again.
+- **`if` instead of `&&`:** `set -e` would have aborted every run where the last staged file is small. The `&&` list returned 1, which became the status of `big=$(...)`. The `if` form changes nothing else about the behavior.
+- **Trailing `exit 0` kept:** it is the success path, so the script still exits 0 when nothing fails and only warns about large files. Any command that fails now aborts with a non-zero exit.
+- **Rewrote the record, not appended:** the old `Forbidden` line would otherwise contradict the code.
+
+### Uncertain
+- **Commit-blocking risk:** the original incident can recur. The `[ -f "$f" ] || continue` guard covers a staged-then-deleted file, but any other unexpected failure, such as `git` failing, now blocks the commit if the script is wired in as a pre-commit hook. The record says this. The user accepted that trade-off by overriding the decision.
+- **Wiring not checked:** I didn't check whether the script is installed as a hook, because nothing is wired up inside `scripts/`.
+
+### Gate result
+`npm test` passed (3 tests, 0 failures).
+
+I also ran `check.sh` in a scratch git repo:
+
+| Case | Result |
+|---|---|
+| Large and small files staged | Prints the warning, exit 0 |
+| Only a small file staged | Exit 0 |
+| Staged-then-deleted file | Exit 0 |
+| Run outside a git repo | Exit 129 (the new abort behavior) |

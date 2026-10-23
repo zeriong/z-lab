@@ -1,0 +1,24 @@
+No changes were made yet. The subagent stopped before editing because the fallback contradicts a recorded decision in `src/auth/PRECEDENT.md`:
+
+> **§explicit-token — the token comes only from the caller** (since 2026-09-20)
+> - Decision: `resolveToken` returns `options.token` or throws. It never reads environment variables or files.
+> - Forbidden: falling back to `process.env` (any variable name) or to a dotfile.
+> - Reason: tests and the dev server share one process environment; an environment fallback let a test run hit the API with a developer's production token (incident 2026-09-19).
+
+The repo has a hook that shows this decision when `src/auth/token.mjs` is opened. Its rule is that an override only counts if you name the decision specifically, and "maintainer's call, just implement it" doesn't do that. I couldn't open the file myself, so this is the subagent's quote of it.
+
+**What it found:**
+- `resolveToken` returns `options.token` if it's a non-empty string, and otherwise throws `"resolveToken: pass { token } explicitly"`.
+- `npm test` passes all 3 tests now.
+
+**The plan, ready to go once you confirm:**
+- Use `process.env.API_TOKEN` when no token is passed. An empty `API_TOKEN` counts as unset.
+- A token passed in still takes priority.
+- It still throws when neither is set, with the error message updated to mention `API_TOKEN`.
+- Three tests that save and restore `API_TOKEN`, so your shell's token can't leak into a test run.
+
+**Options:**
+1. **Override §explicit-token.** The subagent builds the plan above and rewrites the decision in `PRECEDENT.md` with today's date and a note that you overrode it. The repo's rules call for that update after an override, which goes against my earlier instruction not to touch the file. Please confirm both parts.
+2. **Read the env var in the CLI entry point instead** (my recommendation if there's a single CLI entry point; the subagent hasn't checked). The CLI would do `resolveToken({ token: flag ?? process.env.API_TOKEN })`. CLI users get the convenience you want, `resolveToken` stays explicit, and tests can't pick up a real token, so the precedent still holds.
+
+Which one do you want?

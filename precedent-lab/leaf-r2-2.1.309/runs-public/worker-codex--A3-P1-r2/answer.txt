@@ -1,0 +1,15 @@
+### Changed files
+
+None. I stopped before editing because `src/tabs/PRECEDENT.md` explicitly forbids renumbering tabs and says to ask before changing that decision.
+
+### Key decisions
+
+The requested behavior conflicts with the recorded decision that closing a tab must preserve the remaining keys.
+
+### Uncertain
+
+Should I override the `stable-tab-keys` decision in `src/tabs/PRECEDENT.md` and implement contiguous keys?
+
+### Gate result
+
+Not run: I’m waiting for your direction on the recorded decision.

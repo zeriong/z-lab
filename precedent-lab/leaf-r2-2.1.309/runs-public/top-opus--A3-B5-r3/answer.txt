@@ -1,0 +1,5 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`, before `media` in each. The module still loads and exports both entries with the new field.
+
+The folder's recorded decision (`§favicon-follows-scheme` in `src/head/PRECEDENT.md`) says every icon entry must keep its light or dark `media` query. Both still do, so this change doesn't conflict with it.
+
+I haven't committed anything.

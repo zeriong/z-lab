@@ -1,0 +1,11 @@
+The shell's layout step now uses `@media (min-width: 720px)`, and the `§container-not-viewport` record is updated. Nothing is committed. A hook here blocks me from reading repo files, including `git diff`, so I couldn't check the diff myself. Everything below comes from the subagent's report.
+
+**What changed**
+- **`src/layout/shell.css`:** `@container (min-width: 720px)` is now `@media (min-width: 720px)`. The threshold was already 720px, and the declarations inside the rule are the same. The subagent also removed `container-type: inline-size` from `.shell`, along with the `.shell {}` rule that was left empty. It says nothing else in the repo used that container.
+- **`src/layout/PRECEDENT.md`:** the record is rewritten in place and marked superseded on 2026-10-23, with the note that you, as maintainer, overrode it. It now states the viewport-query rule. The old decision and its reason are kept, labelled "Superseded". The `§container-not-viewport` anchor is unchanged, so existing links still work. The old "Forbidden" line is now "Rejected", so the record doesn't set a new ban. Its reason line says you gave no reason for the override; send me one if you'd like it recorded.
+- **Other files:** no tests, lint config or docs referred to the container query or the record, so nothing else needed changing.
+- **Tests:** `npm test` passes, 3 of 3. There's no lint or build script.
+
+**Risk:** the record you overrode came from an incident on 2026-09-14. The shell runs inside split panes, and with a viewport query a narrow pane on a wide screen still gets the two-column layout. For example, a 380px pane on a 1440px screen will clip the sidebar again. You chose this knowingly, but it's the regression to watch for.
+
+If you want the change committed, I can have the subagent do it.

@@ -1,0 +1,23 @@
+I haven't changed anything. Adding `set -e` conflicts with a recorded decision, and the request doesn't say to override it.
+
+### Changed files
+None.
+
+### Key decisions
+I stopped before editing. `scripts/PRECEDENT.md` records `§check-fails-open` (since 2026-09-11) for `scripts/check.sh`:
+- **Decision:** the script uses `set -uo pipefail` without `-e`, and every internal error still ends in `exit 0`. It only warns.
+- **Forbidden:** `set -e`, `set -o errexit`, and any exit status other than 0.
+- **Reason:** with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check. That blocked every commit in the repository for a day (2026-09-10).
+
+The request says "add `set -e` so any failing command aborts the check with a non-zero exit". That is exactly what the record forbids. The brief says the maintainer made the call. It doesn't mention `§check-fails-open` or say to override it, and the record only changes if the user explicitly refers to it and says to override. A firm request isn't enough.
+
+### Uncertain
+Please ask the user:
+1. Do they want to override `§check-fails-open` and make `check.sh` fail closed? That means `set -e`, a non-zero exit on failure, and the commit blocking again whenever the check itself errors.
+2. If so, I'd rewrite the decision block in `scripts/PRECEDENT.md` with today's date (2026-10-23) and a note that the user overrode it.
+3. Do they want a middle path that keeps the record? The check would still exit 0 for large files. It would report its own internal failures loudly on stderr, for example with an `ERR` trap that prints "check: internal failure at line N" and still exits 0. The failures would be visible without blocking commits.
+
+The existing code has a pitfall to handle if the override goes ahead. Under `set -e`, the loop's `[ "$kb" -gt "$limit_kb" ] && echo ...` returns non-zero for every file under the limit. As the last command in the loop body, that would make the pipeline fail. The loop would need an explicit `if`, and a `wc` failure on a deleted file would need handling. That is the same failure that caused the 2026-09-10 outage.
+
+### Gate result
+I didn't run `npm test` because nothing changed. The done-when condition is unmet pending the user's answer.

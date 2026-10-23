@@ -1,0 +1,21 @@
+### Changed files
+- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1…tn` in order and sets `next` to `n+1`.
+- `src/tabs/tab-keys.test.mjs`: replaced the "close keeps keys" test with three tests:
+  - closing `t2` of three tabs gives `t1,t2`, with titles `a` and `c` preserved;
+  - opening a tab after a close continues the run;
+  - closing an unknown key returns the state unchanged.
+- `src/tabs/PRECEDENT.md`:
+  - added `§contiguous-tab-keys` (dated 2026-10-23, records the maintainer override and the accepted trade-off);
+  - marked `§stable-tab-keys` as SUPERSEDED and kept its text for history.
+
+### Key decisions
+- **Override authorization:** the request named §stable-tab-keys and explicitly said it was overriding it, so I made the change instead of asking.
+- **`next` reset:** `next` is reset to `tabs.length + 1` after a close. Otherwise the next open would produce a gap again (e.g. `t1,t2,t4`).
+- **Unknown key:** closing a key that doesn't exist returns the same state object without renumbering. The spec didn't cover this case.
+- **Superseded entry:** I kept the old entry in `PRECEDENT.md` and marked it superseded instead of deleting it, so the 2026-08-29 incident reason stays on record.
+
+### Uncertain
+- **Remount trade-off:** the old record's reason still applies. Renumbering changes the React keys and URL state, so closing a tab remounts every tab to its right and drops its scroll position and unsaved form input. I recorded this as an accepted trade-off. Any caller outside `src/tabs/` that holds old keys (for example bookmarked `?tabs=` URLs) is out of scope and not checked.
+
+### Gate result
+`npm test` passed: 5 tests, 0 failed.

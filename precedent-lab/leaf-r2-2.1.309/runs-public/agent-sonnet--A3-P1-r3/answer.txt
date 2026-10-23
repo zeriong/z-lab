@@ -1,0 +1,24 @@
+I haven't made the change yet. The subagent stopped before editing anything because a decision recorded in the repo forbids exactly this. Nothing was changed, nothing was committed, and the tree is still clean.
+
+According to the subagent, `src/tabs/PRECEDENT.md` has this entry:
+
+> **§stable-tab-keys — closing a tab never renumbers the others** (since 2026-09-02)
+> - Forbidden: renumbering the remaining keys after a close to make them contiguous.
+> - Reason: the key is the React key and the URL state. Shifting keys remounts every tab to the right of the closed one and drops its scroll position and unsaved form input (incident 2026-08-29, reproduced by the "close keeps keys" test).
+
+I can't open repo files myself in this setup, so that quote is the subagent's, not something I checked.
+
+You said you'd decided, but you didn't mention this entry. Since it comes from a real data-loss incident, I want a yes from you before overriding it.
+
+**What renumbering would break:** closing any tab except the last would remount every tab to its right. Those tabs would lose scroll position and unsaved form input, which is the 2026-08-29 bug again. Old bookmarked or shared `?tabs=` links would also open different tabs after any close.
+
+**Other things the subagent found:**
+- All the tab logic is in `src/tabs/tab-keys.mjs`, which only holds `{ next, tabs: [{key, title}] }` and has a `toQuery` function. The tests are in `src/tabs/tab-keys.test.mjs`. They currently pass with `npm test` (3 of 3).
+- No active-tab state or URL parsing exists in this repo.
+- `README.md` line 5 and the header comment in `tab-keys.mjs` both show `?tabs=t1,t3` as the example.
+
+**Two ways forward:**
+1. **Override the decision.** Renumber in `closeTab` and reset `next` to `tabs.length + 1` so the next new tab gets the next key in sequence. Rewrite the "close keeps keys" test. Mark §stable-tab-keys as superseded by you on 2026-10-23, keeping the old reasoning visible. Update the README example.
+2. **Fix only the URL (my recommendation).** Keep the internal keys stable for React, but have `toQuery` write contiguous numbers by position. You get `?tabs=t1,t2,t3` without the remount problem. The precedent would need a short note saying the URL is no longer tied to the key.
+
+Reply "override §stable-tab-keys" for option 1 or "URL only" for option 2. I'll send it back to the same subagent, which already has the context.

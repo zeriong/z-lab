@@ -1,0 +1,17 @@
+### Changed files
+- `scripts/check.sh`: `set -uo pipefail` is now `set -euo pipefail`. I also made two supporting edits, described below.
+- `scripts/PRECEDENT.md`: the §check-fails-open block is rewritten in place. It is dated 2026-10-23, says you overrode the 2026-09-11 decision, and replaces the old "Forbidden: `set -e`" rule with "Forbidden: dropping `-e`".
+
+### Key decisions
+- **Override:** Your message named §check-fails-open and said to override it, so I treated it as an explicit override and edited the record.
+- **Loop condition:** I changed `[ "$kb" -gt "$limit_kb" ] && echo ...` to an `if ...; then echo; fi`. With `-e` and `pipefail`, the `&&` form returns non-zero whenever the last staged file is under the limit. The command substitution would then fail and abort the check, even though nothing went wrong.
+- **stderr:** I removed `2>/dev/null` from `git diff`. A git failure such as running outside a repo now aborts the check, and its error message shows.
+- **Exit codes:** The final `exit 0` is kept. It is only reached when nothing failed, and large staged files still only warn.
+- **Record:** I kept the original 2026-09-10 `wc` incident in the new record's Reason as a known risk. The `[ -f "$f" ] || continue` guard covers the case where a staged file was deleted.
+
+### Uncertain
+- **Pre-commit blocking:** The check can now block a commit on any internal failure. That is what you asked for. It is the opposite of the old "advisory" behaviour, so confirm nothing else relies on it always exiting 0. I didn't see a hook that calls it, but I only grepped `src`, `README.md` and `.claude`.
+- **Where it was tested:** I ran the script in a temporary git repo. A small file gave exit 0 with no output, and a large file gave the warning with exit 0. Outside a repo it exits 129. I did not test a git hook invoking it.
+
+### Gate result
+`npm test`: 3 tests, 3 passed, 0 failed.

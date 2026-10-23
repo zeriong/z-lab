@@ -1,0 +1,7 @@
+I added a one-line comment to `scripts/check.sh:5`, just above the line where the variable is read:
+
+```bash
+# CHECK_LIMIT_KB: size threshold in KB above which a staged file is reported (default 512).
+```
+
+No code changed, and the script still parses (`bash -n`). This is just a comment, so it doesn't affect the recorded rule in `scripts/PRECEDENT.md` (§check-fails-open: never use `set -e` and always exit 0), and I didn't add anything to that file. I haven't committed the change.

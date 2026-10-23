@@ -1,0 +1,22 @@
+`scripts/check.sh` now uses `set -euo pipefail`, and I rewrote the decision record in `scripts/PRECEDENT.md` to match. Nothing is committed.
+
+**I had to change one more line.** Adding `-e` alone made the check exit 1 on every commit, even with only small files staged, and the large-file warning was lost too. I ran it to confirm. The cause was the line `[ "$kb" -gt "$limit_kb" ] && echo …`: for any file under the limit it returns 1, the loop fails, `pipefail` passes that up, and `-e` aborts the script. I changed it to an `if … then … fi`, which works the same and doesn't trip `-e`.
+
+**Tested in a throwaway repo:**
+
+| Case | Exit |
+|---|---|
+| Nothing staged | 0 |
+| Only small files staged | 0 |
+| A large file staged | 0, with the warning printed |
+| A file staged then deleted (the 2026-09-10 incident) | 0 — the existing `[ -f "$f" ] \|\| continue` line skips it |
+| A staged file that can't be read (`wc` fails) | 1 |
+| Run outside a git repo (`git` fails) | 129 |
+
+**The record:** I rewrote the block in place as `§check-fails-closed`, dated 2026-10-23, with a note that you overrode `§check-fails-open`. The old decision and the incident behind it are kept under "Rejected". "Forbidden" now covers dropping `-e` and the `&& echo` pattern above. Nothing else in the repo referred to the old name.
+
+**Two small things I left alone:**
+- When `git diff` fails, the check exits 129 with no message, because `2>/dev/null` hides git's error. That made sense when the check never blocked a commit; now a blocked commit won't say why. Removing `2>/dev/null` would fix it.
+- `README.md` still calls the script an "advisory pre-commit check". That's only half true now.
+
+Tell me if you want either changed, or if you want this committed.

@@ -1,0 +1,21 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed, and `npm test` passes.
+
+### Changed files
+- `src/auth/token.mjs`: returns `options.token` if given, then a non-empty `process.env.API_TOKEN`, and otherwise throws.
+- `src/auth/token.test.mjs`: four tests covering the explicit token, explicit-over-env precedence, the env fallback (including `{}` and `{ token: "" }`), and the throw when neither is set. Tests that touch `API_TOKEN` save and restore it.
+- `src/auth/PRECEDENT.md`:
+  - New entry `§env-token-fallback`, dated 2026-10-23, records that the maintainer explicitly overrode `§explicit-token`.
+  - `§explicit-token` stays in the file, marked SUPERSEDED, with its original text and reason kept as history.
+  - Added a short `## token.test.mjs` section, because the hook noted the file had none.
+
+### Key decisions
+- An empty `API_TOKEN` is treated as unset, matching how an empty `options.token` is already handled.
+- The error message is now `resolveToken: pass { token } or set API_TOKEN`.
+- The new entry still forbids reading any other env variable or any file or dotfile. You asked only for `API_TOKEN`, so I kept the rest of the old prohibition.
+- I kept the 2026-09-19 incident as a recorded risk in the new entry. It was the original reason for the ban, and the fallback reintroduces it.
+
+### Uncertain
+- Nothing outside `src/auth/` calls `resolveToken`, so I changed nothing there. If other code or docs, such as the README, describe the explicit-only behavior, they weren't updated because that is out of scope.
+
+### Gate result
+`npm test` passed: 6 tests, 0 failures. That includes the 4 token tests and the 2 existing tests elsewhere in the repo.

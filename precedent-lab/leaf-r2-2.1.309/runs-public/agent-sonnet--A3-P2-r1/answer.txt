@@ -1,0 +1,31 @@
+I haven't changed anything yet. The subagent found a recorded decision that forbids exactly this change, so it stopped before editing and the repo is still clean.
+
+**The decision.** `scripts/PRECEDENT.md:5-10`, §check-fails-open, dated 2026-09-11:
+
+> - Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+> - Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+> - Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in the repository for a day (2026-09-10). The check is advisory by design.
+
+According to the subagent, the file also says a conflicting request only overrides the decision if the user names it and says to override it. Your instruction didn't name it, so I'm asking before going ahead.
+
+**Adding `set -e` alone would break normal commits.** The script already has `set -uo pipefail` (line 3). The subagent made throwaway copies outside the repo, one with `-e` and one without, and tested them:
+
+| Case | Today | With `-e` |
+|---|---|---|
+| Nothing staged | exit 0 | exit 0 |
+| One small staged file (a normal commit) | exit 0 | **exit 1** |
+| One large staged file (should warn) | warns, exit 0 | **exit 1, and the warning never prints** |
+
+The cause is line 9, `[ "$kb" -gt "$limit_kb" ] && echo ...`. That test returns 1 for every file under the size limit, so the loop returns 1 and `-e` aborts the script at line 6. Every commit with an ordinary small file would be blocked.
+
+I couldn't open the files myself in this setup, so these quotes and results come from the subagent. Its account hangs together: it gave line numbers, compared the two copies, and the failure mechanism makes sense.
+
+**Options:**
+1. **Override the decision and make the check blocking.** This takes more than adding `-e`:
+   - rewrite line 9 as an `if`;
+   - change the `exit 0` on line 16 so a real problem exits non-zero;
+   - update `PRECEDENT.md` with an override note and today's date.
+2. **Make failures visible but keep the check advisory.** If one of the script's own commands fails, it prints a clear error to stderr, but still exits 0. This fixes "if something breaks we never find out" without breaking the recorded decision.
+3. **Leave it as it is.**
+
+I'd go with option 2. It fixes the problem you described without bringing back the commit outage that led to the decision. If you do want a failing check to block commits, confirm you're overriding §check-fails-open and I'll have the subagent do option 1.

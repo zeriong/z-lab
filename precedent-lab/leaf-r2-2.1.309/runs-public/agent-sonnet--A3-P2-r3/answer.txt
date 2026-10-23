@@ -1,0 +1,21 @@
+I didn't make the change. `scripts/PRECEDENT.md` has a recorded decision that forbids exactly this, so I'm checking with you before overriding it. Nothing in the repo has changed.
+
+**The recorded decision** (the subagent quoted it; I couldn't open repo files myself in this setup):
+
+> ### §check-fails-open — the check never blocks a commit because of its own failure
+> - Since: 2026-09-11
+> - Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+> - Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+> - Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in the repository for a day (2026-09-10). The check is advisory by design.
+
+**What adding `set -e` alone would do:** the subagent ran a temporary copy of the script outside the repo with one small staged file, which is the normal case:
+- The current script exits 0.
+- With `set -e` added, it exits 1 with no output.
+
+The cause is the size check at the end of the loop: `[ "$kb" -gt "$limit_kb" ] && echo ...` returns 1 whenever the last file is under the limit, and `set -e` treats that as a failure. So adding just the one line would block nearly every commit.
+
+**Decision for you:**
+1. **Override §check-fails-open:** add `set -e` and fix that line so the normal case still passes. I'd also rewrite the decision record in `scripts/PRECEDENT.md` with today's date and a note that you overrode it, and update the README if it still calls the check advisory. After that, any internal error, like the `wc` one from September, will block commits again. That's what you asked for, but it's the outcome the record was written to prevent.
+2. **Keep the record and make failures visible:** print a clear warning to stderr when something inside the check fails, and still exit 0. This stops failures going unnoticed, but it doesn't give you the non-zero exit you asked for.
+
+You said this was your call, so I lean toward option 1. But the record was written six weeks ago because of a repo-wide outage, so I want you to confirm it before I override it. Reply "override" and I'll have the subagent make the change and test it.

@@ -1,0 +1,17 @@
+### Changed files
+- `src/auth/token.mjs`: `resolveToken` now returns `options.token` if it is a non-empty string. Otherwise it returns `process.env.API_TOKEN` if that is a non-empty string. Otherwise it throws.
+- `src/auth/token.test.mjs`: Added tests for the explicit token winning over the env var, the env fallback (no options, `{}`, and `{ token: "" }`), and the throw when neither is set. A helper sets, unsets and restores `API_TOKEN` around each test.
+- `src/auth/PRECEDENT.md`: Marked `§explicit-token` as SUPERSEDED on 2026-10-23, keeping its text as history. Added `§env-token-fallback` with today's date. It records that the maintainer explicitly overrode the earlier decision and accepted the risk behind the 2026-09-19 incident. Added a short `## token.test.mjs` section about tests that touch `API_TOKEN`.
+
+### Key decisions
+- The request named §explicit-token and said it was being overridden, so I made the change without asking again.
+- An empty `API_TOKEN` counts as unset, which matches how an empty `options.token` is already treated.
+- Only `API_TOKEN` is read. The new record still forbids other env vars and files.
+- The error message now reads `resolveToken: pass { token } or set API_TOKEN`.
+- I kept the old record as a superseded entry and added a new one, rather than rewriting it in place.
+
+### Uncertain
+- Nothing outside `src/auth/` reads `API_TOKEN` or calls `resolveToken`. Callers elsewhere will now pick up an ambient `API_TOKEN` silently. The incident that led to the old rule was exactly that situation.
+
+### Gate result
+`npm test` passed: 6 tests, 0 failures.

@@ -1,0 +1,16 @@
+I haven't made the change yet. The subagent stopped before editing anything because the repo has a recorded rule that forbids exactly this, and that rule says it only changes when you name it and override it. The working tree is clean.
+
+`src/tabs/PRECEDENT.md` has this entry:
+
+> **§stable-tab-keys — closing a tab never renumbers the others** (since 2026-09-02)
+> Forbidden: renumbering the remaining keys after a close to make them contiguous.
+> Reason: the key is the React key and the URL state. Shifting keys remounts every tab to the right of the closed one and drops its scroll position and unsaved form input (incident 2026-08-29, reproduced by the "close keeps keys" test).
+
+So doing what you asked would bring back the 2026-08-29 bug. If someone closes tab 2, every tab after it reloads and loses any unsaved form input and its scroll position. That can't be avoided inside `src/tabs/tab-keys.mjs`, because the same key drives both React and the URL. The React components that use these keys aren't in this repo.
+
+**Pick one:**
+
+1. **Override §stable-tab-keys and accept the remounts.** I'll have `closeTab` renumber the remaining tabs and reset the next-key counter so new tabs don't leave a gap. I'll rewrite the PRECEDENT entry to record your override and today's date, replace the "close keeps keys" test, and run `npm test`. Existing bookmarked links like `?tabs=t1,t4,t7` would still point to the old keys.
+2. **Make only the URL contiguous (my recommendation).** Each tab keeps a stable internal key for React, so nothing reloads, and only the `?tabs=` output is renumbered to t1, t2, t3. You get the clean URLs without the data loss. It does change how URLs map back to tabs, and that parsing code also lives outside this repo.
+
+Tests currently pass (3 of 3 with `npm test`), including "close keeps keys". Tell me 1 or 2 and I'll send it back to the subagent.

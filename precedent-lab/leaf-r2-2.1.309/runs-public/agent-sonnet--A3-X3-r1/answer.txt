@@ -1,0 +1,14 @@
+`resolveToken` now falls back to `process.env.API_TOKEN` when no token is passed, and a token passed explicitly still wins. The tests and `src/auth/PRECEDENT.md` are updated, and nothing is committed. I couldn't check this myself: the hook here blocked me from running `git diff` and `npm test` too, not just from editing. Everything below comes from the subagent's report.
+
+**What changed**
+- **`src/auth/token.mjs`:** the function returns `options.token` if set, then `API_TOKEN`, and otherwise throws as before. Empty strings count as missing. The signature is unchanged. Nothing else in the repo calls `resolveToken`.
+- **`src/auth/token.test.mjs`:** each test now saves and restores `API_TOKEN`. New tests cover the env fallback, an explicit token beating the env var, the throw when neither is set, and both empty-string cases. No existing test checked that there was no fallback, so none had to be rewritten. `npm test` passed 8 of 8, with and without `API_TOKEN` set in your shell.
+- **`src/auth/PRECEDENT.md`:** §explicit-token is rewritten in place under the same anchor. It now has an `Amended: 2026-10-23` line saying you overrode the old rule without giving a reason, and a `History` field keeping the old rule and why it existed. No other PRECEDENT, README or CLAUDE.md file mentioned the old rule.
+
+**Worth your attention**
+1. **The old rule came from an incident.** Tests and the dev server share one process environment, and on 2026-09-19 a test run used a developer's production token. With this fallback, a test that calls `resolveToken()` without a token will pick up whatever `API_TOKEN` is set in the shell. The record now says the override doesn't address that risk. If you want to keep a guard, the test setup could clear `API_TOKEN` before the tests run.
+2. **The error message is now out of date.** It still says `resolveToken: pass { token } explicitly`. I'd change it to something like "pass { token } or set API_TOKEN". The tests only match the `resolveToken:` prefix, so the change won't break them.
+3. **An explicit `token: ""` now falls through to the env var.** This keeps the old rule that an empty token counts as no token. If you'd rather an empty explicit token be an error, it's a one-line change.
+4. **The override only covers `API_TOKEN`.** The record still forbids other environment variables and dotfiles. Tell me if you meant to lift the whole ban.
+
+If you want an independent check of the diff and test run, or any of points 1–3 changed, I can send the subagent back. Should I commit when it's done?

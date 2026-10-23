@@ -1,0 +1,23 @@
+{
+ "session_id": "95e1bf90-c93e-475e-a955-6c14160fb008",
+ "main_transcript": "<claude-config>/projects/<project-dir>/95e1bf90-c93e-475e-a955-6c14160fb008.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 4,
+  "tools": [
+   "Bash",
+   "Edit",
+   "Read"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "The change is a comment only and records no new decision, so I left `PRECEDENT.md` unchanged.\n\n### Changed files\n- `src/tabs/tab-keys.mjs`: added a JSDoc block to `closeTab`.\n\n### Key decisions\n- The JSDoc says the remaining tabs keep their keys, with the example `t1,t2,t3` → `t1,t3`. This matches the recorded decision §stable-tab-keys in `src/tabs/PRECEDENT.md`, which this change doesn't contradict.\n- I wrote the state type inline as `{ next, tabs: Array<{ key, title }> }`. The file has no typedef, and I didn't add one.\n- The doc says an unknown key leaves the tabs unchanged and that the input state isn't mutated. Both follow from the `filter` implementation.\n\n### Uncertain\n- Nothing.\n\n### Gate result\n`npm test`: 3 tests run, 3 passed, 0 failed."
+ },
+ "subagents": []
+}

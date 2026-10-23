@@ -1,0 +1,20 @@
+`closeTab` now renumbers the remaining tabs so keys stay contiguous, and `npm test` passes. I made this change because your request named §stable-tab-keys and said you were overriding it.
+
+### Changed files
+- `src/tabs/tab-keys.mjs`: `closeTab` drops the closed tab, renumbers the rest `t1…tn` in order, and sets `next` to `tabs.length + 1`. I also updated the header comment.
+- `src/tabs/tab-keys.test.mjs`: replaced the "close keeps keys" test with two tests.
+  - Closing `t2` of three tabs gives `t1,t2`, and the titles keep their order.
+  - Opening a tab after a close continues the sequence: three tabs, close `t1`, open one, and you get `t1,t2,t3`.
+- `src/tabs/PRECEDENT.md`: added §contiguous-tab-keys (dated 2026-10-23, recorded as a maintainer override). §stable-tab-keys stays in the file, marked SUPERSEDED, with its old decision and prohibition labelled as no longer in force.
+
+### Key decisions
+- I reset `next` to `tabs.length + 1` on close. Without that, the next `openTab` would produce a gap or a duplicate key, so contiguity would break.
+- I kept the old entry instead of deleting it, so the history of the 2026-08-29 incident stays in the record.
+- I wrote the remount cost into the new entry as accepted. Shifted keys remount every tab to the right of the closed one and lose its scroll position and unsaved form input.
+
+### Uncertain
+- I only searched this repo for other users of `closeTab`/`tab-keys` and found none. Anything outside `src/tabs/` that stores keys (for example saved URLs like `?tabs=t1,t3`) is out of scope and unchecked.
+- I couldn't reproduce the remount behaviour here. It would only show up in the React layer, which isn't in this repo.
+
+### Gate result
+`npm test` passed with 4 of 4 tests and 0 failures.

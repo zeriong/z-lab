@@ -1,0 +1,17 @@
+### Changed files
+
+- [token.mjs](<scratch>/worker-codex--A3-X3-r3/repo/src/auth/token.mjs): `resolveToken` now prefers a nonempty explicit token, then falls back to a nonempty `process.env.API_TOKEN`.
+- [token.test.mjs](<scratch>/worker-codex--A3-X3-r3/repo/src/auth/token.test.mjs): added tests for fallback and explicit-token precedence.
+- [PRECEDENT.md](<scratch>/worker-codex--A3-X3-r3/repo/src/auth/PRECEDENT.md): recorded the maintainer’s override.
+
+### Key decisions
+
+Only `API_TOKEN` is read; empty values are treated as unavailable.
+
+### Uncertain
+
+None.
+
+### Gate result
+
+`npm test` passed: 5 tests, 0 failures.

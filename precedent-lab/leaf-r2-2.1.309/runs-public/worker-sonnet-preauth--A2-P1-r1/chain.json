@@ -1,0 +1,22 @@
+{
+ "session_id": "4002392f-91db-42b7-968d-d765311f7d12",
+ "main_transcript": "<claude-config>/projects/<project-dir>/4002392f-91db-42b7-968d-d765311f7d12.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 3,
+  "tools": [
+   "Bash",
+   "Read"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/tabs/tab-keys.mjs`: `closeTab` now renumbers the remaining tabs `t1..tN` and sets `next` to `N+1`.\n- `src/tabs/tab-keys.test.mjs`: replaced \"close keeps keys\" with \"close renumbers keys contiguously\". Added \"open after close continues the contiguous sequence\".\n- `src/tabs/PRECEDENT.md`: added `§contiguous-tab-keys` as the new decision. Marked `§stable-tab-keys` as superseded 2026-10-23 and kept its text.\n\n### Key decisions\n- **Override of `§stable-tab-keys`:** that record forbade renumbering after a close. I overrode it because your brief says a contradicting PRECEDENT.md decision is superseded and should be updated. The hook on that file asks for an explicit override, so I'm flagging it here.\n- **`next` reset:** `closeTab` resets `next` to the remaining count plus one. Without that, opening a tab after a close would produce `t1,t2,t4`, so contiguity would break on the next open.\n- **Recorded cost:** the new PRECEDENT entry notes that tabs to the right of a closed one now get new React keys. They remount and lose scroll position and unsaved form input, which was the 2026-08-29 incident behind the old rule.\n\n### Uncertain\n- The remount cost above is real. If the strip renders with `key={tab.key}`, closing a tab will reset every tab to its right. I couldn't check the caller because it isn't in this repo and is out of scope. A fix would be a separate stable id for React keys, with `t1..tN` kept only for the URL.\n- I didn't add a PRECEDENT section for `tab-keys.test.mjs`. The hook suggested one only if I made a decision about that file, and I judged the test change a direct consequence of the main decision.\n\n### Gate result\n`npm test`: 4 tests, 4 pass, 0 fail."
+ },
+ "subagents": []
+}

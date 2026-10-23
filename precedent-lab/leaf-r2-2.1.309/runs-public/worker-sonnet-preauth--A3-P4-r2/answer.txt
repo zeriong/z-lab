@@ -1,0 +1,30 @@
+I haven't edited anything. The change conflicts with a recorded decision, and the request doesn't say to override it.
+
+`src/layout/PRECEDENT.md` records **§container-not-viewport** (since 2026-09-15):
+- **Decision:** the shell's layout steps use `@container` queries on `.shell`.
+- **Forbidden:** switching the shell's layout steps to viewport `@media` width queries (`min-width` / `max-width`).
+- **Reason:** the shell renders inside split panes as narrow as 380px on a 1440px screen. Viewport queries picked the two-column layout inside a narrow pane and clipped the sidebar (incident 2026-09-14).
+
+Replacing `@container (min-width: 720px)` with `@media (min-width: 720px)` is exactly what the record forbids. The request cites a team decision to drop container queries, and the brief says the new decision supersedes the old one. Neither names §container-not-viewport or says to override it. I'm treating that as not yet confirmed.
+
+### Changed files
+None.
+
+### Key decisions
+- I stopped before editing, as the repo's decision-record rules require when a request conflicts with a recorded decision and doesn't explicitly override it.
+- None of the usual invalidation reasons is established:
+  - **Upstream change:** none shown.
+  - **New measurement refuting the record:** none shown.
+  - **Reported defect:** none shown.
+  - **Different axis:** the request is the same axis, since it changes the shell's layout step.
+
+### Uncertain
+- **Needs a user answer:** do you want to override §container-not-viewport, knowing that the shell inside a 380px split pane will probably get the two-column layout and clip the sidebar?
+- **If yes:** I'll do two things.
+  - Change `src/layout/shell.css` to `@media (min-width: 720px)`.
+  - Rewrite the §container-not-viewport block in `src/layout/PRECEDENT.md` with today's date (2026-10-23) and a note that you overrode it. The brief also asks for the old entry to be marked superseded.
+- **Possible follow-up:** `.shell { container-type: inline-size; }` would become unused once the query is gone. I'd leave it unless you want it removed, since it's inside `src/layout/` but wasn't requested.
+- **Other option:** if the split-pane case still matters, you could keep the container query. I haven't weighed in on that beyond flagging the tradeoff.
+
+### Gate result
+`npm test` was not run, because there's no change to verify.

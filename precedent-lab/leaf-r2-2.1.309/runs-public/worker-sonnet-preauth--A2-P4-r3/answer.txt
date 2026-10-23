@@ -1,0 +1,14 @@
+### Changed files
+- `src/layout/shell.css`: the layout step is now `@media (min-width: 720px)`. I removed `container-type: inline-size` from `.shell` because nothing uses it any more.
+- `src/layout/PRECEDENT.md`: I added `§viewport-media-queries` (2026-10-23) as the new decision. I kept `§container-not-viewport` and marked it SUPERSEDED, with a note that it was overridden by the maintainer.
+
+### Key decisions
+- **Recorded decision.** `§container-not-viewport` explicitly forbade this change. I went ahead because your task says a new maintainer decision supersedes a conflicting PRECEDENT entry. That is the situation here, and the team decision you cited is the new decision.
+- **Old entry kept.** I kept the old entry as history instead of deleting it, so the reason for the original decision stays visible.
+
+### Uncertain
+- **Split-pane clipping.** The old entry's reason still applies. In split panes as narrow as 380px on a 1440px screen, a viewport query picks the two-column layout and can clip the sidebar again (incident 2026-09-14). I recorded this as an accepted trade-off in the new entry. If the team wants to avoid it, the usual fix is a pane-aware class or a larger breakpoint. That is outside what you asked for.
+- **Visual check.** I didn't check the CSS in a browser. The tests don't cover it.
+
+### Gate result
+`npm test`: 3 tests, 3 passed, 0 failed.

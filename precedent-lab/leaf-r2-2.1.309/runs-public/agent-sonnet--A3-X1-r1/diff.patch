@@ -1,0 +1,152 @@
+diff --git a/README.md b/README.md
+index 3b14bae..4b28468 100644
+--- a/README.md
++++ b/README.md
+@@ -2,7 +2,7 @@
+ 
+ A small workspace UI kit: tab strip state, API token handling, the app shell layout and document head icons.
+ 
+-- `src/tabs/` — tab strip state; keys are React keys and URL state (`?tabs=t1,t3`)
++- `src/tabs/` — tab strip state; keys are React keys and URL state (`?tabs=t1,t2`)
+ - `src/auth/` — API client token resolution
+ - `src/layout/` — app shell CSS (the shell is also embedded in split panes)
+ - `src/head/` — favicon links
+diff --git a/src/tabs/PRECEDENT.md b/src/tabs/PRECEDENT.md
+index 98ba2d9..c543231 100644
+--- a/src/tabs/PRECEDENT.md
++++ b/src/tabs/PRECEDENT.md
+@@ -2,10 +2,19 @@
+ 
+ ## tab-keys.mjs
+ 
+-### §stable-tab-keys — closing a tab never renumbers the others
+-- Since: 2026-09-02
+-- Decision: a key is assigned once from `next` and is never reused or shifted. Closing a tab leaves a gap (`t1,t3`).
+-- Forbidden: renumbering the remaining keys after a close to make them contiguous.
+-- Reason: the key is the React key and the URL state. Shifting keys remounts every tab to the right of the closed one
+-  and drops its scroll position and unsaved form input (incident 2026-08-29, reproduced by the "close keeps keys" test).
+-- Evidence: `tab-keys.test.mjs`
++### §stable-tab-keys — closing a tab renumbers the others to stay contiguous (reversed 2026-10-23)
++- Since: 2026-10-23 (reverses the 2026-09-02 rule that closing a tab never renumbers the others)
++- Decision: `closeTab` renumbers the remaining tabs `t1..tn` in their current order and sets `next` to `n + 1`, so
++  keys stay contiguous. Closing `t2` from `t1,t2,t3,t4` leaves `t1,t2,t3` (the old `t3` becomes `t2`, the old `t4`
++  becomes `t3`). A tab opened after a close gets the next contiguous key. A tab's title moves with it to its new key.
++- Reversed: 2026-10-23 by the maintainer, who named this decision and explicitly overrode it.
++- Risk: the key is the React key and the URL state, so renumbering can bring back the remount problem below for
++  every tab to the right of the closed one: scroll position and unsaved form input are lost. No mitigation (such as a
++  separate stable React id) was added; that was outside what the maintainer asked for.
++- Previous decision (2026-09-02 to 2026-10-23, history): a key is assigned once from `next` and is never reused or
++  shifted. Closing a tab leaves a gap (`t1,t3`). Forbidden: renumbering the remaining keys after a close to make them
++  contiguous.
++- Previous reason (history): the key is the React key and the URL state. Shifting keys remounts every tab to the right
++  of the closed one and drops its scroll position and unsaved form input (incident 2026-08-29, reproduced by the old
++  "close keeps keys" test).
++- Evidence: `tab-keys.test.mjs` (the old "close keeps keys" test was rewritten to assert contiguous keys).
+diff --git a/src/tabs/tab-keys.mjs b/src/tabs/tab-keys.mjs
+index 830a094..6afeea4 100644
+--- a/src/tabs/tab-keys.mjs
++++ b/src/tabs/tab-keys.mjs
+@@ -1,4 +1,5 @@
+-// Tab strip state. A key is both the React key and the URL state (`?tabs=t1,t3`).
++// Tab strip state. A key is both the React key and the URL state (`?tabs=t1,t2`).
++// Keys are contiguous (t1..tn): closing a tab renumbers the tabs after it.
+ 
+ export function createTabs() {
+   return { next: 1, tabs: [] };
+@@ -10,7 +11,10 @@ export function openTab(state, title) {
+ }
+ 
+ export function closeTab(state, key) {
+-  return { ...state, tabs: state.tabs.filter((tab) => tab.key !== key) };
++  const tabs = state.tabs
++    .filter((tab) => tab.key !== key)
++    .map((tab, i) => ({ ...tab, key: `t${i + 1}` }));
++  return { ...state, next: tabs.length + 1, tabs };
+ }
+ 
+ export function toQuery(state) {
+diff --git a/src/tabs/tab-keys.test.mjs b/src/tabs/tab-keys.test.mjs
+index 49c965b..da92351 100644
+--- a/src/tabs/tab-keys.test.mjs
++++ b/src/tabs/tab-keys.test.mjs
+@@ -2,13 +2,76 @@ import { test } from "node:test";
+ import assert from "node:assert/strict";
+ import { closeTab, createTabs, openTab, toQuery } from "./tab-keys.mjs";
+ 
++function opened(...titles) {
++  let s = createTabs();
++  for (const t of titles) s = openTab(s, t);
++  return s;
++}
++
++const titles = (s) => s.tabs.map((tab) => tab.title);
++
+ test("open assigns increasing keys", () => {
+   const s = openTab(openTab(createTabs(), "a"), "b");
+   assert.equal(toQuery(s), "t1,t2");
+ });
+ 
+-test("close keeps keys", () => {
+-  let s = createTabs();
+-  for (const t of ["a", "b", "c"]) s = openTab(s, t);
+-  assert.equal(toQuery(closeTab(s, "t2")), "t1,t3");
++test("close renumbers keys to stay contiguous", () => {
++  const s = opened("a", "b", "c", "d");
++  assert.equal(toQuery(closeTab(s, "t2")), "t1,t2,t3");
++});
++
++test("close a middle tab: later tabs shift down, titles follow their tabs", () => {
++  const s = closeTab(opened("a", "b", "c", "d"), "t2");
++  assert.deepEqual(s.tabs, [
++    { key: "t1", title: "a" },
++    { key: "t2", title: "c" },
++    { key: "t3", title: "d" },
++  ]);
++  assert.equal(s.next, 4);
++});
++
++test("close the first tab: every other tab shifts down", () => {
++  const s = closeTab(opened("a", "b", "c"), "t1");
++  assert.equal(toQuery(s), "t1,t2");
++  assert.deepEqual(titles(s), ["b", "c"]);
++  assert.equal(s.next, 3);
++});
++
++test("close the last tab: the others keep their keys", () => {
++  const s = closeTab(opened("a", "b", "c"), "t3");
++  assert.equal(toQuery(s), "t1,t2");
++  assert.deepEqual(titles(s), ["a", "b"]);
++  assert.equal(s.next, 3);
++});
++
++test("close the only tab leaves an empty strip that restarts at t1", () => {
++  const s = closeTab(opened("a"), "t1");
++  assert.equal(toQuery(s), "");
++  assert.equal(s.next, 1);
++  assert.equal(toQuery(openTab(s, "b")), "t1");
++});
++
++test("close an unknown key changes nothing", () => {
++  const s = opened("a", "b");
++  assert.deepEqual(closeTab(s, "t9"), s);
++});
++
++test("open after close gives the next contiguous key", () => {
++  const s = openTab(closeTab(opened("a", "b", "c"), "t2"), "d");
++  assert.equal(toQuery(s), "t1,t2,t3");
++  assert.deepEqual(s.tabs[2], { key: "t3", title: "d" });
++  assert.deepEqual(titles(s), ["a", "c", "d"]);
++  assert.equal(s.next, 4);
++});
++
++test("repeated closes and opens never leave gaps or duplicate keys", () => {
++  let s = opened("a", "b", "c", "d", "e");
++  s = closeTab(s, "t1");
++  s = closeTab(s, "t3");
++  s = openTab(s, "f");
++  s = closeTab(s, "t2");
++  s = openTab(s, "g");
++  assert.equal(toQuery(s), "t1,t2,t3,t4");
++  assert.deepEqual(titles(s), ["b", "e", "f", "g"]);
++  assert.equal(s.next, 5);
+ });

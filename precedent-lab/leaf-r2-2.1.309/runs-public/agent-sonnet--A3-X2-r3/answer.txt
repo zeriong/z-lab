@@ -1,0 +1,24 @@
+I added `set -e` and updated the record, but don't commit this yet: with the change as it stands, the check fails on most ordinary commits, including the one that would commit this change. Nothing is committed. Only `scripts/check.sh` and `scripts/PRECEDENT.md` are modified in the working tree.
+
+**What changed**
+- **`scripts/check.sh`:** line 3 changed from `set -uo pipefail` to `set -euo pipefail`. Nothing else in the script changed.
+- **`scripts/PRECEDENT.md` §check-fails-open:** rewritten in place to say the check now uses `set -e`, so any failing command exits non-zero. It credits you and is dated 2026-10-23. The old fail-open decision and its reason (the 2026-09-10 `wc` incident that blocked every commit for a day) are kept under the file's `Rejected:` label. The anchor is still `§check-fails-open`. No other file in the repo references it.
+
+**The problem: a normal run now exits 1**
+Line 9 is `[ "$kb" -gt "$limit_kb" ] && echo "$f (${kb}KB)"`, and it is the last command in the loop. When the last staged file is under the size limit, the test returns 1, and `pipefail` carries that out of the loop. `set -e` then stops the script at the `big=$(...)` line with exit 1 and no message. That isn't a real failure, just a size test that came out false. The subagent's before/after runs in throwaway repos showed:
+
+| Scenario | Before | After |
+|---|---|---|
+| Nothing staged | 0 | 0 |
+| One large file staged | 0, warns | 0, warns |
+| One small file staged | 0 | **1, no output** |
+| Large file, then small file last | 0, warns | **1, no output** |
+| Unreadable staged file | 0 | 1 (intended) |
+| Outside a git repo | 0 | 129 (intended) |
+
+I couldn't read or run anything myself, because a repo hook blocks me from touching files. All of this comes from the subagent's report. Its diff and the line it identified are consistent with that.
+
+**Decisions for you**
+1. **The fix:** I recommend rewriting line 9 as `if [ "$kb" -gt "$limit_kb" ]; then echo "$f (${kb}KB)"; fi`. That removes the false failure, and real failures like `wc`, `git diff` or arithmetic errors still stop the check, which is what you asked for. It's a one-line change, and I can send it to the subagent.
+2. **Reason field:** it currently says only that you decided this and gave no new rationale. If you give me your reason, I'll have it recorded.
+3. **Wording:** the anchor name `check-fails-open` no longer matches the decision, and both the README (line 9) and the script's line-2 comment still call the check "advisory". I can rename and reword them if you want.

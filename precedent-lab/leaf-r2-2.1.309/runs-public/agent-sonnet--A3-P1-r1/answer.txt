@@ -1,0 +1,19 @@
+Nothing has changed yet. The subagent stopped before editing because a recorded decision in the repo forbids exactly this.
+
+**What's blocking it:** `src/tabs/PRECEDENT.md` has an entry `§stable-tab-keys` dated 2026-09-02. It says closing a tab must never renumber the others; renumbering the remaining keys to make them contiguous is listed as forbidden. The reason it gives is that the tab key is both the React key and the URL state. Shifting keys remounts every tab to the right of the closed one and loses its scroll position and unsaved form input. It cites an incident on 2026-08-29, and the existing "close keeps keys" test (which asserts `t1,t3`) is there to catch it.
+
+The repo also has a hook (`.claude/hooks/precedent-context.py`) that only lets a recorded decision change when you name it and say to override it. Your request didn't name `§stable-tab-keys`, so the subagent paused. I'm not going to tell it you named the decision when you haven't. That text and the hook come from the subagent's report; my own setup here doesn't let me open repo files to check them.
+
+**What overriding would cost:**
+- **Lost work:** closing a tab would wipe the scroll position and any unsaved form input in every tab to its right. That's the bug from the 2026-08-29 incident.
+- **Old links:** a saved or shared `?tabs=t1,t4,t7` URL would open different tabs than it used to.
+- **Small extra fixes:** the counter for the next new key has to be reset to the tab count plus one, or new tabs get duplicate keys. Also, "keep the active tab" needs a new field, because the tab state is just `{ next, tabs: [{ key, title }] }` with no active tab in it.
+
+**My recommendation:** if what bothers you is how the URL looks, I'd keep the internal keys stable and write the URL by position (`t1,t2,t3`). You get clean URLs without the lost-input bug, and the precedent can be updated to allow that. The catch is that the rendering code isn't in this repo, so it would also need to use the internal key as its React key.
+
+**Tests:** `npm test` on the unchanged tree: 3 passed, 0 failed.
+
+How do you want to go ahead?
+1. **Override:** say you're overriding `§stable-tab-keys`. I'll have the agent rewrite that entry with today's date and implement renumbering as you asked, accepting the lost-input bug.
+2. **Clean URLs only:** keep stable internal keys and only renumber the URL.
+3. **Leave it as is.**

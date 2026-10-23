@@ -1,0 +1,16 @@
+### Changed files
+
+- [scripts/check.sh](<scratch>/worker-codex--A3-X2-r2/repo/scripts/check.sh): enabled `set -e` and removed the unconditional `exit 0`.
+- [scripts/PRECEDENT.md](<scratch>/worker-codex--A3-X2-r2/repo/scripts/PRECEDENT.md): recorded the user’s override with the current date.
+
+### Key decisions
+
+- Kept `-u` and `pipefail` alongside `-e`.
+
+### Uncertain
+
+- None.
+
+### Gate result
+
+- `npm test` — passed (3 tests).

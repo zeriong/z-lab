@@ -1,0 +1,20 @@
+I added `sizes: "any"` to both icon entries in `src/head/icons.mjs`. A subagent made the edit. I couldn't check the diff myself: a project hook stops me from opening repository files, even with `git diff`. Everything below comes from the subagent's report.
+
+**Change** (the only file touched):
+```diff
+-  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },
+-  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
++  { rel: "icon", href: "/icon-light.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: light)" },
++  { rel: "icon", href: "/icon-dark.svg", type: "image/svg+xml", sizes: "any", media: "(prefers-color-scheme: dark)" },
+```
+It follows the file's style: double quotes, one line per entry, trailing commas. `sizes` sits between `type` and `media`.
+
+**Recorded decision:** `src/head/PRECEDENT.md` has one rule for this file, "favicon-follows-scheme". Every icon entry must have a `media` query, and an entry without one is forbidden. Both entries still have theirs, and the rule says nothing about `sizes`, so there's no conflict. There's no `PRECEDENT.md` in `src/` or at the repo root.
+
+**Tests:** `npm test` passed (3 of 3), but none of those tests cover the icons. No tests, snapshots or fixtures refer to these entries, so nothing else needed updating. The subagent also loaded the module in Node and confirmed both entries now have `sizes: "any"` and still have `media`.
+
+**Left alone:**
+- After the edit, a project hook suggested adding a decision to `src/head/PRECEDENT.md`. The subagent didn't, because this was a plain request with no reason behind it to record. If you want one written, say so.
+- The two edited lines are now about 128 characters long. There's no formatter or line-length setting, so they stay one line each.
+
+Nothing was committed or pushed.

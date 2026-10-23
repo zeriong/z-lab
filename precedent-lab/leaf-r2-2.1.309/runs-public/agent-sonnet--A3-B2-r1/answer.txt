@@ -1,0 +1,13 @@
+I added the comment to `scripts/check.sh`, just above the line that sets the variable. It isn't committed. I didn't open the file myself, because a hook here blocks me from reading the repo (even `git status`). Everything below comes from the subagent's report.
+
+```diff
+ # Advisory pre-commit check: warns about large staged files.
+ set -uo pipefail
+ 
++# CHECK_LIMIT_KB: size threshold in KB above which a staged file is flagged (default 512).
+ limit_kb=${CHECK_LIMIT_KB:-512}
+```
+
+- **Default:** 512 comes from `limit_kb=${CHECK_LIMIT_KB:-512}` on line 5 of the script, and isn't set anywhere else. The script divides the `wc -c` byte count by 1024 to get KB, and only flags files strictly larger than the limit (`-gt`), so "above which" in the comment is accurate.
+- **PRECEDENT.md:** `scripts/PRECEDENT.md` has one rule for this script: it must never block a commit (no `set -e`, always `exit 0`). The comment doesn't touch that, so nothing conflicts.
+- **Checks:** `bash -n scripts/check.sh` passed with no errors. Only `scripts/check.sh` is modified.

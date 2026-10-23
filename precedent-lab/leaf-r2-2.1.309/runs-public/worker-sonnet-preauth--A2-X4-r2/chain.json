@@ -1,0 +1,21 @@
+{
+ "session_id": "b5244d99-83bd-4ac5-b5ee-cb2fb18d1393",
+ "main_transcript": "<claude-config>/projects/<project-dir>/b5244d99-83bd-4ac5-b5ee-cb2fb18d1393.jsonl",
+ "main": {
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "tool_uses": 2,
+  "tools": [
+   "Bash"
+  ],
+  "target_edit_calls": 1,
+  "stop_attachments": 1,
+  "stop_before_first_target_edit": true,
+  "agent_calls": [],
+  "advisor_calls": 0,
+  "read_target": true,
+  "last_text": "### Changed files\n- `src/layout/shell.css`: the layout step now uses `@media (min-width: 720px)` instead of `@container (min-width: 720px)`. The `container-type: inline-size` on `.shell` is unchanged.\n- `src/layout/PRECEDENT.md`: I added `§viewport-media-query`, dated 2026-10-23, which records the maintainer override. I marked `§container-not-viewport` as SUPERSEDED, with a status line pointing to the new entry, and kept its original text for history.\n\n### Key decisions\n- Your request cited §container-not-viewport and said you were overriding it, so I treated that as explicit confirmation and went ahead without asking again.\n- I kept the old entry rather than deleting it, as the task asked, and carried its incident reason into the new entry as a known trade-off.\n- I left `container-type: inline-size` on `.shell`. It is harmless now and keeps a later switch back simple, and removing it wasn't part of the request.\n\n### Uncertain\n- With a viewport query, a shell in a narrow split pane (about 380px) on a wide screen will get the two-column layout and may clip the sidebar again (incident 2026-09-14). I recorded this in the new entry but did not mitigate it.\n- `container-type: inline-size` is now unused by any rule in `shell.css`. Whether to remove it is your call.\n- No test covers CSS, so I did not check the layout visually.\n\n### Gate result\n`npm test` passed: 3 tests, 3 passed, 0 failed."
+ },
+ "subagents": []
+}

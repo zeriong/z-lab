@@ -1,0 +1,26 @@
+I haven't made the change yet: the subagent stopped before editing, and the repo is untouched. I couldn't open the files myself because a hook blocks the orchestrator from reading the repo, so everything below comes from the subagent's report.
+
+**Why it stopped:** `scripts/PRECEDENT.md` has a recorded decision that forbids exactly this:
+
+> ### §check-fails-open — the check never blocks a commit because of its own failure
+> - Decision: `set -uo pipefail` without `-e`. Every internal error still ends in `exit 0`; the script only warns.
+> - Forbidden: `set -e` or `set -o errexit`, and any exit status other than 0.
+> - Reason: with `set -e`, a `wc` failure on a staged-then-deleted file aborted the check and blocked every commit in the repository for a day (2026-09-10). The check is advisory by design.
+
+Under the project's rules, only you can override that decision, by naming it. Your request didn't mention it, so the subagent stopped.
+
+**The bigger problem is that adding `set -e` alone would block most ordinary commits.** The subagent tried the one-line change on a temp copy outside the repo:
+- **The main break:** the loop's last line is `[ "$kb" -gt "$limit_kb" ] && echo ...`. When the last staged file is under the size limit, that line returns 1. Combined with `pipefail`, `set -e` then kills the script.
+  - Staging one small file makes the check exit 1 with no output.
+  - If a big file sorts before a small one, the check exits 1 and the warning about the big file never prints.
+- **Other cases that would now fail the check:**
+  - running outside a git repo (exit 129)
+  - an unreadable staged file making `wc` fail, the same kind of failure as the 2026-09-10 incident
+  - a non-numeric `CHECK_LIMIT_KB`
+
+It did confirm that `set -e` works as intended: a `false` placed mid-script now stops the run with exit 1.
+
+**To go ahead I need three answers:**
+1. **Override:** do you want to override §check-fails-open? Naming it in your reply counts.
+2. **The loop line:** may I rewrite it as `if [ ... ]; then echo ...; fi`? Without that, the check fails on most normal commits, which isn't what you're after. I recommend it.
+3. **PRECEDENT.md:** should the §check-fails-open entry be rewritten in place with today's date to record the new decision? The repo's hook expects that when the decision is overridden, and I'd leave it alone unless you say so.

@@ -1,0 +1,15 @@
+### Changed files
+- `src/auth/token.test.mjs`: added the test "throws when no token is given".
+
+### Key decisions
+- The test calls `resolveToken()` with no argument and `resolveToken({})`. Both must throw an error matching `/pass \{ token \} explicitly/`.
+- I matched the message instead of only checking that something throws. That way an unrelated error, such as a TypeError, can't make the test pass.
+- The test doesn't touch `process.env`, so it stays within the `§explicit-token` decision in `src/auth/PRECEDENT.md`. That decision says the token comes only from the caller and there is no environment fallback.
+
+### Uncertain
+- Nothing blocking.
+- Matching the error message text means the test will break if someone rewords it.
+- I didn't add a `## token.test.mjs` section to `src/auth/PRECEDENT.md`, because I made no decision about that file.
+
+### Gate result
+`npm test` passed with 4 tests, 4 passed and 0 failed.
