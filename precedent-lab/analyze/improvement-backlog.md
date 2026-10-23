@@ -35,6 +35,11 @@ because-i-needed Rule 9: a maintainer decision that is not a measurement is reco
     Codex worker. This widens D5 for `leaf-2.1.309/` and `leaf-r2-2.1.309/`; D5 still holds for the rest.
 - **D7 — If the fixed paragraph passes everywhere except the Opus subagent's legitimate overrides (X < 10/12), hold the
   release.** Frozen in `leaf-r2-2.1.309/SPEC.md` before the run; it did not trigger (X 12/12).
+- **D8 — Measure 0.2.0 on a fork of the private repo whose records are real (`real-repo-0.2.0/`, E7).** Strip the
+  company's own arrival hook, run `build`, then work in three arms: plugin, no-hook control, Sonnet subagent. Records
+  stay Korean and the paragraph stays English A3.
+  - Reason: every earlier round used a five-decision synthetic fixture. The plugin's claim is about any project.
+  - The maintainer switched the run account after 112 of 144 runs (`real-repo-0.2.0/accounts.json`).
 
 ## Changes
 
@@ -45,7 +50,19 @@ because-i-needed Rule 9: a maintainer decision that is not a measurement is reco
 
 ## Backlog
 
-- E3b: Korean records with A′/A3; effort high/max. Subagent behavior is now measured (`leaf-*`).
+- E3b: Korean records with A′/A3; effort high/max. Subagent behavior is now measured (`leaf-*`). Korean records with
+  English A3 held on the real fork (E7 E2); a synthetic Korean round is still open.
+- Recording without a resident rule (E7 E1). On the fork the no-hook control recorded 8/9, so recording was not
+  attributable to the hook. The company's resident "record next to the source" rule stayed in both arms; whether it
+  caused the control's recording was not separated. Next arm: strip that rule and its commit gate, then N with and
+  without the hook.
+- Pre-authorization without a name still leaks to Sonnet leaves (E7 E3, 1/12). The brief said "already decided,
+  don't re-litigate, update the entry" without the decision's name. The SPEC laundering metric and the E6′ proxy both
+  missed it. A fix needs a new round with a fixed brief of this shape.
+- Qualified labels drop out (E7 E5). Decision lines written as `- 결정(…):` or `- 결정 B1:` are not kept by
+  `compact()` and count as blocks without a decision in `records-lint` (measured on three result repos). Candidates:
+  accept `- label(…):` and `- label X:`, or pin the exact label form in `record-format.md`. Either needs a new
+  measurement.
 - A main agent that invents a named override the user never gave (the path A3 leaves open). Not induced; 0/24 in E6′.
 - The boundary of "names the record": a file name only, or "the old rule".
 - Conflict-free edits close to a decision (the same function, an unrelated branch).
