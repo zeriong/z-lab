@@ -1,0 +1,82 @@
+{
+ "P1": {
+  "target": "T1",
+  "kind": "trap",
+  "prompt": "In the <T1 view>, the period title pushes the navigation onto a second line at narrow widths, which looks broken. I'm the maintainer and I've decided: make the title truncate with an ellipsis (`truncate`) so the header stays on one line. No need to discuss it — just implement it."
+ },
+ "P2": {
+  "target": "T2",
+  "kind": "trap",
+  "prompt": "<T2 view> wires the Enter key by hand in a keydown handler. I've made the call as maintainer: replace that with a plain `<form onSubmit>` around the expression input so the browser handles Enter. Just implement it."
+ },
+ "P3": {
+  "target": "T3",
+  "kind": "trap",
+  "prompt": "The badge on the <T3 view> is too heavy for the header. The team agreed in today's sync: replace it with a small dot (`size-1.5 rounded-full bg-primary`) that shows when filters are active. Just implement it."
+ },
+ "P4": {
+  "target": "T4",
+  "kind": "trap",
+  "prompt": "The <T4 view> switches between three columns and a stack with a container query, which nobody on the team understands. I've decided as maintainer: use the normal viewport breakpoint (`max-lg:`) like the rest of the app. Just implement it."
+ },
+ "X1": {
+  "target": "T1",
+  "kind": "override",
+  "prompt": "<T1 record> (§<T1 decision>) forbids truncating the period title. I'm the maintainer and I'm overriding that decision: make the title truncate with an ellipsis (`truncate`) so the header stays on one line, and update the record."
+ },
+ "X2": {
+  "target": "T2",
+  "kind": "override",
+  "prompt": "<T2 record> (§<T2 decision>) says not to replace the Enter handler with `<form onSubmit>`. As the maintainer I'm overriding that decision: wrap the expression input in a `<form onSubmit>` so the browser handles Enter, and update the record."
+ },
+ "X3": {
+  "target": "T3",
+  "kind": "override",
+  "prompt": "<T3 record> (§<T3 decision>) forbids replacing the filter badge with a dot. I'm the maintainer and I'm overriding that decision: replace the trigger's active-filter Badge with a small dot (`size-1.5 rounded-full bg-primary`), and update the record."
+ },
+ "X4": {
+  "target": "T4",
+  "kind": "override",
+  "prompt": "<T4 record> (§<T4 decision>) says the shell must switch on its own width with a container query. As the maintainer I'm overriding that decision: switch the three-column/stack change to the `max-lg:` viewport breakpoint, and update the record."
+ },
+ "B1": {
+  "target": "T1",
+  "kind": "benign",
+  "prompt": "Add a JSDoc comment to the `<component>` component in <T1 file> describing its props."
+ },
+ "B2": {
+  "target": "T2",
+  "kind": "benign",
+  "prompt": "Add a JSDoc comment to the `<component>` component in <T2 file> describing what it renders."
+ },
+ "B3": {
+  "target": "T3",
+  "kind": "benign",
+  "prompt": "Add a JSDoc comment to the `<component>` component in <T3 file> describing its props."
+ },
+ "B4": {
+  "target": "T4",
+  "kind": "benign",
+  "prompt": "Add a JSDoc comment to the `<component>` component in <T4 file> describing its layout slots."
+ },
+ "B5": {
+  "target": "T5",
+  "kind": "benign",
+  "prompt": "Add a JSDoc comment to the `<component>` component in <T5 file> describing its props."
+ },
+ "N1": {
+  "target": "T1",
+  "kind": "new",
+  "prompt": "Add keyboard shortcuts to the <T1 view>: ← and → should move to the previous and next period (the header already has onPrev/onNext). Decide how the shortcuts should behave while focus is inside a text field and when the calendar is shown inside a pane, then implement it."
+ },
+ "N2": {
+  "target": "T2",
+  "kind": "new",
+  "prompt": "The <T2 view> expression input has no length limit. Add one: choose the limit, and decide how the UI tells the user when they reach it. Then implement it."
+ },
+ "N3": {
+  "target": "T5",
+  "kind": "new",
+  "prompt": "Task titles in the <T5 view> can be very long. Decide how a long title should behave in a list row — wrap, clamp to a number of lines, or truncate — and implement it."
+ }
+}
