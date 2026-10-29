@@ -2,6 +2,7 @@
 """Publish summary.json of runs/ and canary/runs/ as *-public/, and hash every original into specimens.sha256.
 W runs on a synthetic fixture; only local paths and e-mail addresses are masked."""
 import hashlib
+import json
 import re
 import shutil
 import sys
@@ -10,7 +11,22 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 SOURCES = [("runs", "runs-public"), ("canary/runs", "canary/runs-public")]
 EXTRA = ["runs-interrupted", "canary/runs-interrupted"]
-PRIVATE = re.compile(r"synolink|cloudhospital|jeonjelyong|heezi|zeriong@", re.I)
+LOCAL = HERE.parent / "real-repo-0.2.0" / "local"  # private identifier lists, git-ignored
+
+
+def private():
+    words = []
+    for name in ("mask.json", "mask-extra.json"):
+        p = LOCAL / name
+        if p.exists():
+            data = json.loads(p.read_text())
+            words += data["forbidden_words"] if isinstance(data, dict) else data
+    if not words:
+        sys.exit(f"no private identifier list under {LOCAL}; refusing to publish")
+    return re.compile("|".join(map(re.escape, words)), re.I)
+
+
+PRIVATE = private()
 
 
 def main():
