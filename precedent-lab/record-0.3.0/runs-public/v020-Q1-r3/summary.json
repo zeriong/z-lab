@@ -1,0 +1,38 @@
+{
+ "run": "v020-Q1-r3",
+ "arm": "v020",
+ "task": "Q1",
+ "rep": 3,
+ "kind": "quiet",
+ "rc": 0,
+ "seconds": 14.8,
+ "cost_usd": 0.25237740000000003,
+ "num_turns": 4,
+ "subtype": "success",
+ "version": "2.1.312",
+ "init_model": "claude-opus-5-5",
+ "check": {
+  "target_changed": true,
+  "requested": true,
+  "records_changed": 0,
+  "records_created": 0,
+  "governing_record_dir": null,
+  "record_at_target_dir": false,
+  "new_blocks": 0,
+  "decision_exact": false,
+  "decision_any": false,
+  "section_for_target": false,
+  "record_lines_removed": 0,
+  "other_records_changed": 0
+ },
+ "verdict": "COMPLETED",
+ "over_record": false,
+ "asked": false,
+ "hooks": {
+  "attachments": 0,
+  "paragraph": 0,
+  "no_record_line": 0,
+  "edit_reminder": 0,
+  "no_section_line": 0
+ }
+}

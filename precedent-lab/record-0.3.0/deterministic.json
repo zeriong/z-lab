@@ -1,0 +1,71 @@
+{
+ "v030": {
+  "governed_files": 2681,
+  "files_missing_slugs": 0,
+  "mode_regressions": 0,
+  "old_slugs": 1749,
+  "new_slugs": 1749,
+  "worst_new_chars": 6995,
+  "targets": {
+   "T1": {
+    "file_exists": true,
+    "forbid_line": true,
+    "slug": true,
+    "paragraph": true
+   },
+   "T2": {
+    "file_exists": true,
+    "forbid_line": true,
+    "slug": true,
+    "paragraph": true
+   },
+   "T3": {
+    "file_exists": true,
+    "forbid_line": true,
+    "slug": true,
+    "paragraph": true
+   },
+   "T4": {
+    "file_exists": true,
+    "forbid_line": true,
+    "slug": true,
+    "paragraph": true
+   }
+  }
+ },
+ "v020": {
+  "governed_files": 2681,
+  "files_missing_slugs": 3,
+  "mode_regressions": 2,
+  "old_slugs": 1749,
+  "new_slugs": 1726,
+  "worst_new_chars": 7000,
+  "targets": {
+   "T1": {
+    "file_exists": true,
+    "forbid_line": true,
+    "slug": true,
+    "paragraph": true
+   },
+   "T2": {
+    "file_exists": true,
+    "forbid_line": true,
+    "slug": true,
+    "paragraph": true
+   },
+   "T3": {
+    "file_exists": true,
+    "forbid_line": true,
+    "slug": true,
+    "paragraph": true
+   },
+   "T4": {
+    "file_exists": true,
+    "forbid_line": true,
+    "slug": true,
+    "paragraph": true
+   }
+  }
+ },
+ "snapshot": "origin/dev ef913238 (git archive)"
+}
