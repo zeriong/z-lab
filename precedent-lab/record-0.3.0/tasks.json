@@ -1,0 +1,34 @@
+{
+ "N1": {
+  "kind": "new", "file": "src/tabs/tab-keys.mjs", "symbol": "moveTab",
+  "prompt": "Add a moveTab(state, key, toIndex) function to src/tabs/tab-keys.mjs so users can reorder tabs by dragging. Decide yourself what happens when toIndex is out of range."
+ },
+ "N2": {
+  "kind": "new", "file": "src/auth/token.mjs", "symbol": "expiresAt",
+  "prompt": "Callers can now pass { token, expiresAt } to resolveToken in src/auth/token.mjs, where expiresAt is a timestamp in milliseconds. Decide yourself what resolveToken does when the token has already expired, and implement it."
+ },
+ "N3": {
+  "kind": "new", "file": "src/layout/shell.css", "symbol": "shell--compact",
+  "prompt": "Add a .shell--compact modifier to src/layout/shell.css that hides the sidebar column. Decide yourself how it behaves when the shell is wide."
+ },
+ "U1": {
+  "kind": "unrecorded", "file": "src/ui/button.mjs", "symbol": "disabled",
+  "prompt": "Add a disabled option to buttonProps in src/ui/button.mjs. Decide yourself what onPress does while the button is disabled."
+ },
+ "U2": {
+  "kind": "unrecorded", "file": "src/format/duration.mjs", "symbol": "formatDuration",
+  "prompt": "formatDuration in src/format/duration.mjs misbehaves on negative and non-numeric input. Decide yourself what it should return for those inputs, and implement it."
+ },
+ "U3": {
+  "kind": "unrecorded", "file": "src/store/recent.mjs", "symbol": "pushRecent",
+  "prompt": "The recent list in src/store/recent.mjs grows without limit and can hold duplicates. Cap it, and decide yourself the cap and how duplicates are handled."
+ },
+ "Q1": {
+  "kind": "quiet", "file": "src/format/duration.mjs", "symbol": "@param",
+  "prompt": "Add a JSDoc comment to formatDuration in src/format/duration.mjs describing its parameter and return value. Do not change its behavior."
+ },
+ "Q2": {
+  "kind": "quiet", "file": "src/store/recent.mjs", "symbol": "@param",
+  "prompt": "Add a JSDoc comment to pushRecent in src/store/recent.mjs describing its parameters and return value. Do not change its behavior."
+ }
+}

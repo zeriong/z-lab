@@ -1,0 +1,14 @@
+70379f9bdb0c6cc3a1b05aee9a803c7457d915542694ff6d9d56b7ccbef1e5a0  canary/runs/none-U1-r1/answer.txt
+4193d81078c6c2727f9969d54711f2debd51100d17fec0b9562014cc9a2854b5  canary/runs/none-U1-r1/diff.patch
+3ac20d41926c1f10fa94d6160b29768648bdc85204606e696695fd2d4e98e5d3  canary/runs/none-U1-r1/stream.jsonl
+7e7ff7d18c78fa1ef79187e997af415e9c53a0f77862061e69f5b0370ae5762e  canary/runs/none-U1-r1/summary.json
+39881fc9f26cc3761ba25305df768f4506d73a8ab8e6cc1d61286473baf092ff  canary/runs/v020-U1-r1/answer.txt
+47e8823cd4d7246217145f7ecbaf109edc6b2980900a373a0cbbb268a7c5cb8a  canary/runs/v020-U1-r1/diff.patch
+830ee3211874cc989af23d7ec125398db1a9c9fe413b5f7bccb6ce7b766444bd  canary/runs/v020-U1-r1/hook.jsonl
+2a493585ad01562fa2269aabeafa12c9e88b83460a203371b8b7fd3f307c199e  canary/runs/v020-U1-r1/stream.jsonl
+9877758d800c493646c991a2998f7237e66f21ad6225608a55aaf0b81decd356  canary/runs/v020-U1-r1/summary.json
+139aea95631adc616c8a54eb0e58051bb2c54a74970074c8c85deabd3622a8bc  canary/runs/v030-U1-r1/answer.txt
+32ffe67e6839af327b9739eb8b7c0c6a9ab3ec75f4ac4c17b12b1ea6b935ffb6  canary/runs/v030-U1-r1/diff.patch
+8376332b90c4f4c410837abdd4c108399cf74f977467e410716dcf1b728c42d4  canary/runs/v030-U1-r1/hook.jsonl
+694107f3092848d666cfd5d6be208180c66eaf8b03751e221f7b0dd36a6db177  canary/runs/v030-U1-r1/stream.jsonl
+4fe2c40e98aea7c6851fe7e59d85bfe4b1fac0c9fb09cff636f6d3007cf94f3a  canary/runs/v030-U1-r1/summary.json
