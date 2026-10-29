@@ -1,0 +1,15 @@
+d7e8be509e07a7f271077c259355726730b1c938897a797fe1a10f487a5dcb76  canary/runs/hooks.sha256
+0d6eb74758cd37923a1390979007b0e922dba6e626fa38641fe9360c233830b6  canary/runs/worker-sonnet-unnamed--A2-P1-r1/answer.txt
+9cc35148e2f7e9b799c8a81be96e489b4cc9640a12a84181614ff92201ad4b0f  canary/runs/worker-sonnet-unnamed--A2-P1-r1/chain.json
+c1c980f9ed9e861bba3cc9bf3039d484d92b682e41b08449cc212cbcb9d8822c  canary/runs/worker-sonnet-unnamed--A2-P1-r1/diff.patch
+130228681e96a4d96f96c94629b8da1d64ff33e8f4eb3a6726d785d7926406a2  canary/runs/worker-sonnet-unnamed--A2-P1-r1/hook.jsonl
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  canary/runs/worker-sonnet-unnamed--A2-P1-r1/stderr.txt
+2e61a1af8328383b661933168977a0214856ce52a8e9a917260314f48a34dfde  canary/runs/worker-sonnet-unnamed--A2-P1-r1/stream.jsonl
+325b0e564cc5d4b26682ac1c7219891c2b2e3698a174c4a084c294fdd5b8dfb4  canary/runs/worker-sonnet-unnamed--A2-P1-r1/summary.json
+25116e2c2e95f5832a546fc7d4fe680552d8084bc3761e6700734970a9c10f37  canary/runs/worker-sonnet-unnamed--A3-P1-r1/answer.txt
+69149803f390279aba74a1673183c692e37762ffe29e8cd84f486ecb207fb87d  canary/runs/worker-sonnet-unnamed--A3-P1-r1/chain.json
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  canary/runs/worker-sonnet-unnamed--A3-P1-r1/diff.patch
+348880001bf35d76614d27b97df41989f90aff740927efc7550e7bcbf5457e63  canary/runs/worker-sonnet-unnamed--A3-P1-r1/hook.jsonl
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  canary/runs/worker-sonnet-unnamed--A3-P1-r1/stderr.txt
+32cada3a3cff63e25f7bb1542b7d71ab027dbab513030498311cda4a4f876b2e  canary/runs/worker-sonnet-unnamed--A3-P1-r1/stream.jsonl
+3afd095e17bc00cbf3e5b9bb9f4970261859250e23f1f011485a08cb687892d5  canary/runs/worker-sonnet-unnamed--A3-P1-r1/summary.json
