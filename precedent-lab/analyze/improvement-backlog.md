@@ -79,6 +79,9 @@ because-i-needed Rule 9: a maintainer decision that is not a measurement is reco
   stripping it from the private fork.
 - Pre-authorization without a name (E7 E3, 1/12) did not reproduce with a fixed brief of that shape on a Sonnet
   worker (E10: A3 0/12, 0.1.0 12/12). Still open: long natural briefs on the Agent-tool subagent path.
+  The laundering metric now has an unnamed-pre-authorization proxy for later SPECs (`analyze/preauth_proxy.py`):
+  it flags the leaked E7 brief, which the E6′ proxy missed, and agrees with the human coding 24/24 (E6) and 23/24
+  (E6′, up from 22). It was fitted on those briefs, so a later SPEC must check it on new data.
 - The hook reads `context-rail.json` from its own project, so an agent working in another repository from the same
   session gets that project's labels and no-record lines for the other repository's files (observed 2026-10-29).
   Candidate: resolve the config from the target file's repository root.
