@@ -41,21 +41,39 @@ because-i-needed Rule 9: a maintainer decision that is not a measurement is reco
   - Reason: every earlier round used a five-decision synthetic fixture. The plugin's claim is about any project.
   - The maintainer switched the run account after 112 of 144 runs (`real-repo-0.2.0/accounts.json`).
 
+## Decisions (maintainer, 2026-10-26 – 2026-10-29)
+
+- **D9 — Fill the write side: when no record governs an edited file, say where to create one.** Ship it with the
+  compression fix as 0.3.0, then adopt 0.3.0 in the private repo (not 0.2.0).
+  - Reason: 0.2.0 said nothing on paths without a record. Its compression also gave the private repo fewer decisions
+    than the company's own hook (3 files, 1,749 → 1,726 slugs).
+- **D10 — E8 arms: no hook · 0.2.0 · 0.3.0 on a synthetic project with no recording rule; the keep-side regression
+  check is deterministic (company hook vs candidate over every governed file), not model runs.**
+
 ## Changes
 
 - **A3 paragraph → context-rail 0.2.0.** `leaf-2.1.309/` (E6) found the delegation gap: Sonnet subagents read a main
   agent's conditional pre-authorization as the user's override (6/9), and Opus subagents refused a correctly relayed
   named override (3/12). `leaf-r2-2.1.309/` (E6′) adopted A3, which says when a brief from another agent counts:
   every A3 arm 0/12 · 12/12 · 0/15, and the fixed pre-authorization brief 12/12 → 0/12.
+- **Write side and compression → context-rail 0.3.0.** `record-0.3.0/` (E8) adopted it on all four conditions:
+  - deterministic: 0 files missing decisions vs the company hook;
+  - paths without a record: 8/9 recorded (0.2.0 3/9, no hook 0/9);
+  - over-recording 0/6;
+  - files with a section 7/9 (0.2.0 8/9).
 
 ## Backlog
+
+- Shell writes are not edits (E8 R3). Every unrecorded 0.3.0 run wrote the file with `cat > file <<EOF`, so it got no
+  Edit reminder and no no-record line. Candidate: treat shell writes to a governed file (`>`, `>>`, `tee`, `sed -i`)
+  as edits. Needs a new measurement.
 
 - E3b: Korean records with A′/A3; effort high/max. Subagent behavior is now measured (`leaf-*`). Korean records with
   English A3 held on the real fork (E7 E2); a synthetic Korean round is still open.
 - Recording without a resident rule (E7 E1). On the fork the no-hook control recorded 8/9, so recording was not
-  attributable to the hook. The company's resident "record next to the source" rule stayed in both arms; whether it
-  caused the control's recording was not separated. Next arm: strip that rule and its commit gate, then N with and
-  without the hook.
+  attributable to the hook. E8 answered it on a synthetic project with no recording rule: no hook recorded 0/9 on
+  paths without a record and 2/9 on files with a section. Still open: the resident rule's own effect, measured by
+  stripping it from the private fork.
 - Pre-authorization without a name still leaks to Sonnet leaves (E7 E3, 1/12). The brief said "already decided,
   don't re-litigate, update the entry" without the decision's name. The SPEC laundering metric and the E6′ proxy both
   missed it. A fix needs a new round with a fixed brief of this shape.
