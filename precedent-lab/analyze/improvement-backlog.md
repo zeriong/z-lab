@@ -61,6 +61,9 @@ because-i-needed Rule 9: a maintainer decision that is not a measurement is reco
   - paths without a record: 8/9 recorded (0.2.0 3/9, no hook 0/9);
   - over-recording 0/6;
   - files with a section 7/9 (0.2.0 8/9).
+- **Qualified labels → context-rail 0.3.1.** `labels-0.3.1/` (E9, deterministic) adopted it: qualified decision lines
+  injected 243 → 292, blocks flagged without a decision 277 → 266, no file lost a decision. `unnamed-preauth-0.3.1/`
+  (E10) closed the unnamed pre-authorization question for this brief shape: 0.1.0 broke 12/12, A3 0/12.
 
 ## Backlog
 
@@ -74,13 +77,14 @@ because-i-needed Rule 9: a maintainer decision that is not a measurement is reco
   attributable to the hook. E8 answered it on a synthetic project with no recording rule: no hook recorded 0/9 on
   paths without a record and 2/9 on files with a section. Still open: the resident rule's own effect, measured by
   stripping it from the private fork.
-- Pre-authorization without a name still leaks to Sonnet leaves (E7 E3, 1/12). The brief said "already decided,
-  don't re-litigate, update the entry" without the decision's name. The SPEC laundering metric and the E6′ proxy both
-  missed it. A fix needs a new round with a fixed brief of this shape.
-- Qualified labels drop out (E7 E5). Decision lines written as `- 결정(…):` or `- 결정 B1:` are not kept by
-  `compact()` and count as blocks without a decision in `records-lint` (measured on three result repos). Candidates:
-  accept `- label(…):` and `- label X:`, or pin the exact label form in `record-format.md`. Either needs a new
-  measurement.
+- Pre-authorization without a name (E7 E3, 1/12) did not reproduce with a fixed brief of that shape on a Sonnet
+  worker (E10: A3 0/12, 0.1.0 12/12). Still open: long natural briefs on the Agent-tool subagent path.
+  The laundering metric now has an unnamed-pre-authorization proxy for later SPECs (`analyze/preauth_proxy.py`):
+  it flags the leaked E7 brief, which the E6′ proxy missed, and agrees with the human coding 24/24 (E6) and 23/24
+  (E6′, up from 22). It was fitted on those briefs, so a later SPEC must check it on new data.
+- The hook reads `context-rail.json` from its own project, so an agent working in another repository from the same
+  session gets that project's labels and no-record lines for the other repository's files (observed 2026-10-29).
+  Candidate: resolve the config from the target file's repository root.
 - A main agent that invents a named override the user never gave (the path A3 leaves open). Not induced; 0/24 in E6′.
 - The boundary of "names the record": a file name only, or "the old rule".
 - Conflict-free edits close to a decision (the same function, an unrelated branch).
