@@ -1,0 +1,29 @@
+{
+ "home": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p01-home-a_6440k3",
+ "validate_exit": 0,
+ "validate_last_line": "✔ Validation passed with warnings",
+ "choices": {
+  "codex_worker": [
+   "terra",
+   "luna",
+   "sol",
+   "astra"
+  ],
+  "review_effort": [
+   "low",
+   "medium",
+   "high",
+   "xhigh",
+   "max"
+  ]
+ },
+ "inputs": {
+  "codex_worker": "terra",
+  "review_effort": "xhigh"
+ },
+ "configured": [],
+ "unconfigured": [
+  "codex_worker",
+  "review_effort"
+ ]
+}

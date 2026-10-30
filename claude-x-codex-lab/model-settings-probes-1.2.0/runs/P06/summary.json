@@ -1,0 +1,20 @@
+{
+ "codex_home": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p06-codex-home-059ug_mh",
+ "binary": "/opt/homebrew/Caskroom/codex/0.166.0/bin/codex",
+ "add_exit": 0,
+ "add_stdout": "Added plugin `pc` from marketplace `probe-codex`.\nInstalled plugin root: /private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p06-codex-home-059ug_mh/plugins/cache/probe-codex/pc/0.1.0",
+ "config_toml": "[marketplaces.probe-codex]\nsource_type = \"local\"\nsource = \"/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/codex-mkt\"\n\n[plugins.\"pc@probe-codex\"]\nenabled = true\n",
+ "plugin_list_line": [
+  "pc@probe-codex  installed, enabled  0.1.0    /Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/codex-mkt/plugins/pc"
+ ],
+ "plugin_config_strings": [
+  "PluginConfigremote_plugin_idrelease_idauto_provisionmcp_servers",
+  "ice_tierMemoriesTomlremote_plugin_idrelease_idauto_provisionPluginConfigscreen-bottomTuiPetAnchorAppLinkConfigAppToolConfigca-certif",
+  "struct QuickDialstruct WindowsTomlstruct MemoriesTomlstruct PluginConfigstruct AppLinkConfigstruct AppToolConfigstruct OtelTlsConfig",
+  "wCompactClientAuthServerAuthInvalidNameContextPluginSelectedPluginConfigCompatibilityhost_owned_appsShutdownGuardResponseBodyTooLarg",
+  "riAccessTokenRefreshToken RegularReviewCompactPluginSelectedPluginConfigCompatibilityExtensionhost_owned_appsResponseBodyTooLargeCro"
+ ],
+ "request_user_input_rows": [
+  "default_mode_request_user_input          under development  false"
+ ]
+}

@@ -1,0 +1,173 @@
+{
+ "resolver": "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+ "table": [
+  {
+   "family": "terra",
+   "effort": "low",
+   "exit": 0,
+   "stdout": "gpt-6.1-terra",
+   "stderr": ""
+  },
+  {
+   "family": "terra",
+   "effort": "medium",
+   "exit": 0,
+   "stdout": "gpt-6.1-terra",
+   "stderr": ""
+  },
+  {
+   "family": "terra",
+   "effort": "high",
+   "exit": 0,
+   "stdout": "gpt-6.1-terra",
+   "stderr": ""
+  },
+  {
+   "family": "terra",
+   "effort": "xhigh",
+   "exit": 0,
+   "stdout": "gpt-6.1-terra",
+   "stderr": ""
+  },
+  {
+   "family": "terra",
+   "effort": "max",
+   "exit": 0,
+   "stdout": "gpt-6.1-terra",
+   "stderr": ""
+  },
+  {
+   "family": "terra",
+   "effort": "ultra",
+   "exit": 0,
+   "stdout": "gpt-6.1-terra",
+   "stderr": ""
+  },
+  {
+   "family": "luna",
+   "effort": "low",
+   "exit": 0,
+   "stdout": "gpt-6-luna",
+   "stderr": ""
+  },
+  {
+   "family": "luna",
+   "effort": "medium",
+   "exit": 0,
+   "stdout": "gpt-6-luna",
+   "stderr": ""
+  },
+  {
+   "family": "luna",
+   "effort": "high",
+   "exit": 0,
+   "stdout": "gpt-6-luna",
+   "stderr": ""
+  },
+  {
+   "family": "luna",
+   "effort": "xhigh",
+   "exit": 0,
+   "stdout": "gpt-6-luna",
+   "stderr": ""
+  },
+  {
+   "family": "luna",
+   "effort": "max",
+   "exit": 0,
+   "stdout": "gpt-6-luna",
+   "stderr": ""
+  },
+  {
+   "family": "luna",
+   "effort": "ultra",
+   "exit": 3,
+   "stdout": "",
+   "stderr": "latest-model: effort ultra is not supported by gpt-6-luna"
+  },
+  {
+   "family": "sol",
+   "effort": "low",
+   "exit": 0,
+   "stdout": "gpt-6.1-sol",
+   "stderr": ""
+  },
+  {
+   "family": "sol",
+   "effort": "medium",
+   "exit": 0,
+   "stdout": "gpt-6.1-sol",
+   "stderr": ""
+  },
+  {
+   "family": "sol",
+   "effort": "high",
+   "exit": 0,
+   "stdout": "gpt-6.1-sol",
+   "stderr": ""
+  },
+  {
+   "family": "sol",
+   "effort": "xhigh",
+   "exit": 0,
+   "stdout": "gpt-6.1-sol",
+   "stderr": ""
+  },
+  {
+   "family": "sol",
+   "effort": "max",
+   "exit": 0,
+   "stdout": "gpt-6.1-sol",
+   "stderr": ""
+  },
+  {
+   "family": "sol",
+   "effort": "ultra",
+   "exit": 0,
+   "stdout": "gpt-6.1-sol",
+   "stderr": ""
+  },
+  {
+   "family": "astra",
+   "effort": "low",
+   "exit": 0,
+   "stdout": "gpt-6-astra",
+   "stderr": ""
+  },
+  {
+   "family": "astra",
+   "effort": "medium",
+   "exit": 0,
+   "stdout": "gpt-6-astra",
+   "stderr": ""
+  },
+  {
+   "family": "astra",
+   "effort": "high",
+   "exit": 0,
+   "stdout": "gpt-6-astra",
+   "stderr": ""
+  },
+  {
+   "family": "astra",
+   "effort": "xhigh",
+   "exit": 0,
+   "stdout": "gpt-6-astra",
+   "stderr": ""
+  },
+  {
+   "family": "astra",
+   "effort": "max",
+   "exit": 0,
+   "stdout": "gpt-6-astra",
+   "stderr": ""
+  },
+  {
+   "family": "astra",
+   "effort": "ultra",
+   "exit": 0,
+   "stdout": "gpt-6-astra",
+   "stderr": ""
+  }
+ ]
+}

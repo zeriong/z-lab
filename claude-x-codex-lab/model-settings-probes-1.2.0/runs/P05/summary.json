@@ -1,0 +1,147 @@
+{
+ "a-project": {
+  "project": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p05a-project-z0550l8_",
+  "files": {
+   "settings.json": "luna"
+  },
+  "exit": 0,
+  "stream_values": [
+   "VALUE=[${user_config.codex_worker}] EFFORT=[${user_config.review_effort}]"
+  ],
+  "result": "VALUE=[${user_config.codex_worker}] EFFORT=[${user_config.review_effort}]\nNONE",
+  "models": [
+   "claude-haiku-5-5"
+  ],
+  "usage": {
+   "input_tokens": 6,
+   "cache_creation_input_tokens": 17138,
+   "cache_read_input_tokens": 50699,
+   "output_tokens": 314,
+   "output_tokens_details": {
+    "thinking_tokens": 126
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 17138,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 115,
+     "cache_read_input_tokens": 19993,
+     "cache_creation_input_tokens": 8997,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 8997
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  }
+ },
+ "b-local": {
+  "project": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p05b-project-ojlyrubx",
+  "files": {
+   "settings.local.json": "sol"
+  },
+  "exit": 0,
+  "stream_values": [
+   "VALUE=[${user_config.codex_worker}] EFFORT=[${user_config.review_effort}]"
+  ],
+  "result": "VALUE=[${user_config.codex_worker}] EFFORT=[${user_config.review_effort}]\nNONE",
+  "models": [
+   "claude-haiku-5-5"
+  ],
+  "usage": {
+   "input_tokens": 4,
+   "cache_creation_input_tokens": 16466,
+   "cache_read_input_tokens": 30708,
+   "output_tokens": 417,
+   "output_tokens_details": {
+    "thinking_tokens": 233
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 16466,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 275,
+     "cache_read_input_tokens": 18856,
+     "cache_creation_input_tokens": 9462,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 9462
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  }
+ },
+ "c-both": {
+  "project": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p05c-project-34stu9b4",
+  "files": {
+   "settings.json": "luna",
+   "settings.local.json": "sol"
+  },
+  "exit": 0,
+  "stream_values": [
+   "VALUE=[${user_config.codex_worker}] EFFORT=[${user_config.review_effort}]"
+  ],
+  "result": "VALUE=[${user_config.codex_worker}] EFFORT=[${user_config.review_effort}]\nNONE",
+  "models": [
+   "claude-haiku-5-5"
+  ],
+  "usage": {
+   "input_tokens": 4,
+   "cache_creation_input_tokens": 16463,
+   "cache_read_input_tokens": 30706,
+   "output_tokens": 586,
+   "output_tokens_details": {
+    "thinking_tokens": 403
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 16463,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 445,
+     "cache_read_input_tokens": 18854,
+     "cache_creation_input_tokens": 9461,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 9461
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  }
+ }
+}

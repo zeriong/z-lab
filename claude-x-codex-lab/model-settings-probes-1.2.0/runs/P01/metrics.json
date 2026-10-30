@@ -1,0 +1,52 @@
+[
+ {
+  "label": "01-validate",
+  "argv": [
+   "claude",
+   "plugin",
+   "validate",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/mkt/plugins/pc"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 738
+ },
+ {
+  "label": "02-marketplace-add",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "add",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/mkt"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 438
+ },
+ {
+  "label": "03-install-pc",
+  "argv": [
+   "claude",
+   "plugin",
+   "install",
+   "pc@probe-mkt"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 477
+ },
+ {
+  "label": "04-configure-json",
+  "argv": [
+   "claude",
+   "plugin",
+   "configure",
+   "pc@probe-mkt",
+   "--json"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 456
+ }
+]

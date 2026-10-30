@@ -1,0 +1,13 @@
+{
+ "home": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/r01-home-di86jhpp",
+ "project": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/r01-project-olq4gi3q",
+ "expect_exit": 0,
+ "elapsed_ms": 14471,
+ "screen_before_count_mark": "────────────────────────────────────────────────────────────────────── ⚠ Transcript saving is off — inherited CLAUDE_CODE_CHILD_SESSION marker · restart with CLAUDE_CODE_FORCE_SESSION_PERSISTENCE=1 to keep future transcripts ⏵⏵ auto mode on (shift+tab to cycle) · esc to interrupt Not logged in · Run /login ◐ medium · /effort \u001b]0;◑ Claude Code\u0007\u001b]0;◐ Claude Code\u0007\u001b]0;◑ Claude Code\u0007\u001b]0;◐ Claude Code\u0007 ",
+ "dir_lines": [
+  "DIR=$CLAUDE_CONFIG_DIR\"",
+  "DIR='",
+  "DIR=/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/r01-home-di86jhpp"
+ ],
+ "claude_version": "2.1.314 (Claude Code)"
+}

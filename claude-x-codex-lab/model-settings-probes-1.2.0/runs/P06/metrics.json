@@ -1,0 +1,71 @@
+[
+ {
+  "label": "01-marketplace-add",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "add",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/codex-mkt"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 86
+ },
+ {
+  "label": "02-plugin-add",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "pc@probe-codex"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 37
+ },
+ {
+  "label": "03-plugin-list",
+  "argv": [
+   "codex",
+   "plugin",
+   "list"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 25
+ },
+ {
+  "label": "04-strings",
+  "argv": [
+   "sh",
+   "-c",
+   "strings -n 6 '/opt/homebrew/Caskroom/codex/0.166.0/bin/codex' | grep -o '[A-Za-z_]*PluginConfig[A-Za-z_]*' | sort | uniq -c"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 295
+ },
+ {
+  "label": "05-strings-near",
+  "argv": [
+   "sh",
+   "-c",
+   "strings -n 6 '/opt/homebrew/Caskroom/codex/0.166.0/bin/codex' | grep -o '.\\{0,60\\}PluginConfig.\\{0,60\\}' | head -20"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 9112
+ },
+ {
+  "label": "06-features",
+  "argv": [
+   "codex",
+   "features",
+   "list"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 26
+ }
+]

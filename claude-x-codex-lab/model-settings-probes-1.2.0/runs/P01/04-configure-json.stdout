@@ -1,0 +1,55 @@
+{
+  "pluginId": "pc@probe-mkt",
+  "displayName": "pc",
+  "schema": {
+    "codex_worker": {
+      "type": "string",
+      "title": "Codex worker model",
+      "description": "family",
+      "default": "terra",
+      "options": [
+        "terra",
+        "luna",
+        "sol",
+        "astra"
+      ]
+    },
+    "review_effort": {
+      "type": "string",
+      "title": "Review effort",
+      "description": "effort",
+      "default": "xhigh",
+      "options": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ]
+    }
+  },
+  "inputs": {
+    "codex_worker": "terra",
+    "review_effort": "xhigh"
+  },
+  "choices": {
+    "codex_worker": [
+      "terra",
+      "luna",
+      "sol",
+      "astra"
+    ],
+    "review_effort": [
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max"
+    ]
+  },
+  "configured": [],
+  "unconfigured": [
+    "codex_worker",
+    "review_effort"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+ "name": "probe-codex",
+ "owner": {
+  "name": "z-lab"
+ },
+ "plugins": [
+  {
+   "name": "pc",
+   "source": "./plugins/pc",
+   "version": "0.1.0"
+  }
+ ]
+}

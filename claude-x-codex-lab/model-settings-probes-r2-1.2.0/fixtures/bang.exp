@@ -1,0 +1,14 @@
+set stty_init "rows 50 cols 160"
+log_file -noappend [lindex $argv 0]
+proc wait_for {n} { expect -timeout $n "@@never@@" {} timeout {} eof {} }
+spawn -noecho claude
+expect -timeout 40 "/effort"
+wait_for 2
+send "!"; wait_for 1
+send "env | grep -c '^CLAUDE_CONFIG_DIR='\r"; wait_for 4
+send_log "\n@@MARK count@@\n"
+send "!"; wait_for 1
+send "echo \"DIR=\$CLAUDE_CONFIG_DIR\"\r"; wait_for 4
+send_log "\n@@MARK dir@@\n"
+send "/exit\r"; wait_for 3
+exit

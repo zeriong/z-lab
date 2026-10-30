@@ -1,0 +1,26 @@
+{
+ "repo": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p08-repo-icca1las",
+ "worker": {
+  "requested": "gpt-6.1-terra",
+  "exit": 0,
+  "model": "gpt-6.1-terra",
+  "effort": "high",
+  "tokens_used": 7239,
+  "hello_txt": "hi\n",
+  "elapsed_ms": 15548
+ },
+ "reviewer": {
+  "requested": "gpt-6-astra",
+  "exit": 0,
+  "model": "gpt-6-astra",
+  "effort": "xhigh",
+  "tokens_used": 18980,
+  "parses": true,
+  "top_level_keys": [
+   "findings",
+   "resolved",
+   "verdict"
+  ],
+  "elapsed_ms": 44520
+ }
+}

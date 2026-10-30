@@ -1,0 +1,88 @@
+[
+ {
+  "label": "01-marketplace-add",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "add",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/mkt"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 434
+ },
+ {
+  "label": "02-install-pcmod",
+  "argv": [
+   "claude",
+   "plugin",
+   "install",
+   "pcmod@probe-mkt"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 464
+ },
+ {
+  "label": "03-a-installed-expect",
+  "argv": [
+   "expect",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/config-pick.exp",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/runs/P03/a-installed-pty.log"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p03a-project-0kmi_43z",
+  "exit": 0,
+  "elapsed_ms": 46342
+ },
+ {
+  "label": "04-b-plugin-dir-expect",
+  "argv": [
+   "expect",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/config-pick.exp",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/runs/P03/b-plugin-dir-pty.log",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/mkt/plugins/pcmod"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p03b-project-bpr09rah",
+  "exit": 0,
+  "elapsed_ms": 47256
+ },
+ {
+  "label": "05-marketplace-add",
+  "argv": [
+   "claude",
+   "plugin",
+   "marketplace",
+   "add",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/mkt"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 486
+ },
+ {
+  "label": "06-install-pcmod",
+  "argv": [
+   "claude",
+   "plugin",
+   "install",
+   "pcmod@probe-mkt"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 465
+ },
+ {
+  "label": "07-c-headless",
+  "argv": [
+   "claude",
+   "-p",
+   "hello",
+   "--output-format",
+   "json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p03c-project-g1yje24t",
+  "exit": 1,
+  "elapsed_ms": 704
+ }
+]

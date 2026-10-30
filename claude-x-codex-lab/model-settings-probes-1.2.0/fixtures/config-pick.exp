@@ -1,0 +1,24 @@
+set stty_init "rows 50 cols 160"
+log_file -noappend [lindex $argv 0]
+proc wait_for {n} { expect -timeout $n "@@never@@" {} timeout {} eof {} }
+if {[llength $argv] > 1} { spawn -noecho claude --plugin-dir [lindex $argv 1] } else { spawn -noecho claude }
+expect -timeout 40 "/effort"
+wait_for 2
+send "/config\r"
+expect -timeout 20 "Search settings"
+wait_for 1
+send "codex"
+expect -timeout 10 "Codex worker model" { send_log "\n@@MARK row@@\n" } timeout { send_log "\n@@MARK no-row@@\n" }
+wait_for 1
+send "\r"; wait_for 2
+send "\r"
+expect -timeout 15 "Enter to confirm" { send_log "\n@@MARK picker@@\n" } timeout { send_log "\n@@MARK no-picker@@\n" }
+wait_for 1
+send -- "\x1b\[B"; wait_for 2
+send_log "\n@@MARK down@@\n"
+send "\r"; wait_for 3
+send_log "\n@@MARK confirm@@\n"
+send "\x1b"; wait_for 2
+send "\x1b"; wait_for 2
+send "/exit\r"; wait_for 3
+exit

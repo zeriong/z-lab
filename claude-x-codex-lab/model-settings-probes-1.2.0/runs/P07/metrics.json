@@ -1,0 +1,338 @@
+[
+ {
+  "label": "01-terra-low",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "terra",
+   "--effort",
+   "low"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 470
+ },
+ {
+  "label": "02-terra-medium",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "terra",
+   "--effort",
+   "medium"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 116
+ },
+ {
+  "label": "03-terra-high",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "terra",
+   "--effort",
+   "high"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 113
+ },
+ {
+  "label": "04-terra-xhigh",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "terra",
+   "--effort",
+   "xhigh"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 118
+ },
+ {
+  "label": "05-terra-max",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "terra",
+   "--effort",
+   "max"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 122
+ },
+ {
+  "label": "06-terra-ultra",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "terra",
+   "--effort",
+   "ultra"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 147
+ },
+ {
+  "label": "07-luna-low",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "luna",
+   "--effort",
+   "low"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 151
+ },
+ {
+  "label": "08-luna-medium",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "luna",
+   "--effort",
+   "medium"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 112
+ },
+ {
+  "label": "09-luna-high",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "luna",
+   "--effort",
+   "high"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 107
+ },
+ {
+  "label": "10-luna-xhigh",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "luna",
+   "--effort",
+   "xhigh"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 123
+ },
+ {
+  "label": "11-luna-max",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "luna",
+   "--effort",
+   "max"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 130
+ },
+ {
+  "label": "12-luna-ultra",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "luna",
+   "--effort",
+   "ultra"
+  ],
+  "cwd": null,
+  "exit": 3,
+  "elapsed_ms": 153
+ },
+ {
+  "label": "13-sol-low",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "sol",
+   "--effort",
+   "low"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 227
+ },
+ {
+  "label": "14-sol-medium",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "sol",
+   "--effort",
+   "medium"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 184
+ },
+ {
+  "label": "15-sol-high",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "sol",
+   "--effort",
+   "high"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 218
+ },
+ {
+  "label": "16-sol-xhigh",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "sol",
+   "--effort",
+   "xhigh"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 186
+ },
+ {
+  "label": "17-sol-max",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "sol",
+   "--effort",
+   "max"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 166
+ },
+ {
+  "label": "18-sol-ultra",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "sol",
+   "--effort",
+   "ultra"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 134
+ },
+ {
+  "label": "19-astra-low",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "astra",
+   "--effort",
+   "low"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 140
+ },
+ {
+  "label": "20-astra-medium",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "astra",
+   "--effort",
+   "medium"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 155
+ },
+ {
+  "label": "21-astra-high",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "astra",
+   "--effort",
+   "high"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 238
+ },
+ {
+  "label": "22-astra-xhigh",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "astra",
+   "--effort",
+   "xhigh"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 241
+ },
+ {
+  "label": "23-astra-max",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "astra",
+   "--effort",
+   "max"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 149
+ },
+ {
+  "label": "24-astra-ultra",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "astra",
+   "--effort",
+   "ultra"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 213
+ }
+]

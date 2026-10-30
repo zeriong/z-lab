@@ -1,0 +1,58 @@
+{
+ "a-installed": {
+  "home": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p03a-home-vc7rp1xo",
+  "project": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p03a-project-0kmi_43z",
+  "expect_exit": 0,
+  "marks": [
+   "no-row",
+   "picker",
+   "down",
+   "confirm"
+  ],
+  "row_text": "Codex worker model · pcmod terra › Type to filter · Enter/↓ to sel",
+  "picker_text": "❯ 1. terra ✔ 2. luna 3. sol 4. astra",
+  "pluginConfigs_after": {
+   "pcmod@probe-mkt": {
+    "options": {
+     "codex_worker": "luna"
+    }
+   }
+  },
+  "project_claude_dir": []
+ },
+ "b-plugin-dir": {
+  "home": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p03b-home-_crp7a2x",
+  "project": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p03b-project-bpr09rah",
+  "expect_exit": 0,
+  "marks": [
+   "no-row",
+   "picker",
+   "down",
+   "confirm"
+  ],
+  "row_text": "Codex worker model · pcmod terra › Type to filter · Enter/↓ to sel",
+  "picker_text": "❯ 1. terra ✔ 2. luna 3. sol 4. astra",
+  "pluginConfigs_after": {
+   "pcmod@inline": {
+    "options": {
+     "codex_worker": "luna"
+    }
+   }
+  },
+  "project_claude_dir": []
+ },
+ "c-headless": {
+  "home": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p03c-home-g2nfh2qn",
+  "exit": 1,
+  "terminal_reason": "api_error",
+  "mod_probe": {
+   "options": {
+    "codex_worker": "terra",
+    "review_effort": "xhigh"
+   },
+   "count": 38,
+   "rows": [],
+   "configDirVars": "1"
+  }
+ }
+}
