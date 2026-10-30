@@ -1,0 +1,5 @@
+Marketplace `probe-codex`
+/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/codex-mkt/.claude-plugin/marketplace.json
+
+PLUGIN          STATUS              VERSION  SOURCE
+pc@probe-codex  installed, enabled  0.1.0    /Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/codex-mkt/plugins/pc

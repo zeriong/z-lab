@@ -1,0 +1,25 @@
+[
+ {
+  "label": "01-bash-tool",
+  "argv": [
+   "claude",
+   "-p",
+   "Run exactly this Bash command: env | grep -c '^CLAUDE_CONFIG_DIR=' || true . Reply with only its output.",
+   "--model",
+   "haiku",
+   "--setting-sources",
+   "project",
+   "--plugin-dir",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/mkt/plugins/pc",
+   "--plugin-dir",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/mkt/plugins/pcmod",
+   "--allowedTools",
+   "Bash(env:*)",
+   "--output-format",
+   "json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p09-project-5d4x33w8",
+  "exit": 1,
+  "elapsed_ms": 2136
+ }
+]

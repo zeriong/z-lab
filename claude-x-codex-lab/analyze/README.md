@@ -25,6 +25,7 @@
 |---|---|
 | 상호 리뷰는 Claude Opus·Codex `gpt-6-sol`, 둘 다 `xhigh`; 워커는 `high` | 값을 적기 전 CLI 확인: [`effort-flags-0.1.0`](../effort-flags-0.1.0/) (E1–E6) · backlog 8a |
 | 고위험 단계라도 최상위 모델·`max` 는 쓰기 전에 먼저 묻는다(Claude Code는 AskUserQuestion) | 측정 없음(비용·통제 결정) · backlog 8b |
+| 1.2.0: 모델·effort를 mode처럼 저장하는 설정으로(우선순위 env → 프로젝트 → `/config` → 전역 파일 → 기본값), Codex 워커 기본값 `luna` → `terra` | 측정 근거 [`model-settings-probes-1.2.0`](../model-settings-probes-1.2.0/) · [`model-settings-1.2.0`](../model-settings-1.2.0/), terra 기본값은 품질 측정 없는 결정 · backlog 1.2.0 |
 
 두 결정은 문서 변경이다. rev3 이후 다시 잰 것은 E03(Claude `--effort` 조합 3회)뿐이고, Codex를 `xhigh`·`high` 로 실제 실행한 기록은 없다
 (사용자의 Codex 계정 확인 전, E02는 인증 없는 헤더 확인).

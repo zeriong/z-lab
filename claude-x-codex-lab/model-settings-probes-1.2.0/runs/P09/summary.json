@@ -1,0 +1,42 @@
+{
+ "project": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p09-project-5d4x33w8",
+ "CLAUDE_CONFIG_DIR": "/Users/jeonjelyong/.claude",
+ "exit": 1,
+ "bash_tool": {
+  "result": "Failed to authenticate: OAuth session expired and could not be refreshed",
+  "models": [],
+  "usage": {
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "input_tokens": 0,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "output_tokens": 0,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "",
+   "iterations": [],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "terminal_reason": "api_error"
+ },
+ "hook_env": "CLAUDE_CONFIG_DIR=/Users/jeonjelyong/.claude\n",
+ "mod_probe": {
+  "options": {
+   "codex_worker": "terra",
+   "review_effort": "xhigh"
+  },
+  "count": 37,
+  "rows": [],
+  "configDirVars": "1"
+ }
+}

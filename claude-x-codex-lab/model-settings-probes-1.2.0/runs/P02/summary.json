@@ -1,0 +1,45 @@
+{
+ "home": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p02-home-ewrygjw5",
+ "settings_file": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p02-home-ewrygjw5/settings.json",
+ "steps": [
+  {
+   "step": "in-options",
+   "sent": {
+    "codex_worker": "luna"
+   },
+   "exit": 0,
+   "stdout": "Configuration saved. Restart Claude Code to apply it.",
+   "stderr": "",
+   "pluginConfigs": {
+    "pc@probe-mkt": {
+     "options": {
+      "codex_worker": "luna"
+     }
+    }
+   }
+  },
+  {
+   "step": "out-of-options",
+   "sent": {
+    "codex_worker": "bogus"
+   },
+   "exit": 1,
+   "stdout": "",
+   "stderr": "Failed to save configuration: Codex worker model must be one of: terra, luna, sol, astra",
+   "pluginConfigs": {
+    "pc@probe-mkt": {
+     "options": {
+      "codex_worker": "luna"
+     }
+    }
+   }
+  }
+ ],
+ "inputs_after": {
+  "codex_worker": "luna",
+  "review_effort": "xhigh"
+ },
+ "configured_after": [
+  "codex_worker"
+ ]
+}

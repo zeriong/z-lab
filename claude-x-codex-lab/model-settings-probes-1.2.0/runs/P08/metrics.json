@@ -1,0 +1,78 @@
+[
+ {
+  "label": "01-resolve-terra",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "terra",
+   "--effort",
+   "high"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 188
+ },
+ {
+  "label": "02-worker",
+  "argv": [
+   "codex",
+   "exec",
+   "-m",
+   "gpt-6.1-terra",
+   "-c",
+   "model_reasoning_effort=high",
+   "-C",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p08-repo-icca1las",
+   "-s",
+   "workspace-write",
+   "-c",
+   "project_doc_fallback_filenames=[\"CLAUDE.md\"]",
+   "-o",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/runs/P08/worker-return.md",
+   "Create a file named hello.txt containing exactly the text hi followed by a newline. Do nothing else."
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 15548
+ },
+ {
+  "label": "03-resolve-astra",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/scripts/latest-model.py",
+   "codex",
+   "astra",
+   "--effort",
+   "xhigh"
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 549
+ },
+ {
+  "label": "04-reviewer",
+  "argv": [
+   "codex",
+   "exec",
+   "-m",
+   "gpt-6-astra",
+   "-c",
+   "model_reasoning_effort=xhigh",
+   "-C",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p08-repo-icca1las",
+   "-s",
+   "read-only",
+   "-c",
+   "project_doc_fallback_filenames=[\"CLAUDE.md\"]",
+   "--output-schema",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/peer-coding/skills/run/references/review.schema.json",
+   "-o",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/runs/P08/review.json",
+   "You are reviewing the last commit of this repository (git show HEAD). Report findings only, as JSON in the given schema."
+  ],
+  "cwd": null,
+  "exit": 0,
+  "elapsed_ms": 44520
+ }
+]

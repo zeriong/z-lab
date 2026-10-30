@@ -1,0 +1,121 @@
+{
+ "base": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651",
+ "matrix": [
+  {
+   "present": "none",
+   "value": "sol",
+   "store": "default",
+   "expected": "sol",
+   "ok": true
+  },
+  {
+   "present": "file",
+   "value": "luna",
+   "store": "file",
+   "expected": "luna",
+   "ok": true
+  },
+  {
+   "present": "config",
+   "value": "astra",
+   "store": "config",
+   "expected": "astra",
+   "ok": true
+  },
+  {
+   "present": "config-file",
+   "value": "astra",
+   "store": "config",
+   "expected": "astra",
+   "ok": true
+  },
+  {
+   "present": "project",
+   "value": "terra",
+   "store": "project",
+   "expected": "terra",
+   "ok": true
+  },
+  {
+   "present": "project-file",
+   "value": "terra",
+   "store": "project",
+   "expected": "terra",
+   "ok": true
+  },
+  {
+   "present": "project-config",
+   "value": "terra",
+   "store": "project",
+   "expected": "terra",
+   "ok": true
+  },
+  {
+   "present": "project-config-file",
+   "value": "terra",
+   "store": "project",
+   "expected": "terra",
+   "ok": true
+  },
+  {
+   "present": "env",
+   "value": "gamma",
+   "store": "env",
+   "expected": "gamma",
+   "ok": true
+  },
+  {
+   "present": "env-file",
+   "value": "gamma",
+   "store": "env",
+   "expected": "gamma",
+   "ok": true
+  },
+  {
+   "present": "env-config",
+   "value": "gamma",
+   "store": "env",
+   "expected": "gamma",
+   "ok": true
+  },
+  {
+   "present": "env-config-file",
+   "value": "gamma",
+   "store": "env",
+   "expected": "gamma",
+   "ok": true
+  },
+  {
+   "present": "env-project",
+   "value": "gamma",
+   "store": "env",
+   "expected": "gamma",
+   "ok": true
+  },
+  {
+   "present": "env-project-file",
+   "value": "gamma",
+   "store": "env",
+   "expected": "gamma",
+   "ok": true
+  },
+  {
+   "present": "env-project-config",
+   "value": "gamma",
+   "store": "env",
+   "expected": "gamma",
+   "ok": true
+  },
+  {
+   "present": "env-project-config-file",
+   "value": "gamma",
+   "store": "env",
+   "expected": "gamma",
+   "ok": true
+  }
+ ],
+ "matched": 16,
+ "of": 16,
+ "inline_read_by_dev_copy": "astra",
+ "inline_read_by_installed_copy": "sol"
+}

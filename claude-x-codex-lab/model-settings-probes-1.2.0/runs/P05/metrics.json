@@ -1,0 +1,71 @@
+[
+ {
+  "label": "01-a-project",
+  "argv": [
+   "claude",
+   "-p",
+   "Use the Skill tool to run the skill pc:show. Then run exactly this Bash command: env | grep -i plugin_option || echo NONE . Reply with only two lines: the line starting VALUE= from the skill text, copied verbatim, and the command's output verbatim.",
+   "--model",
+   "haiku",
+   "--plugin-dir",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/mkt/plugins/pc",
+   "--setting-sources",
+   "project,local",
+   "--allowedTools",
+   "Skill",
+   "Bash(env:*)",
+   "--output-format",
+   "stream-json",
+   "--verbose"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p05a-project-z0550l8_",
+  "exit": 0,
+  "elapsed_ms": 6168
+ },
+ {
+  "label": "02-b-local",
+  "argv": [
+   "claude",
+   "-p",
+   "Use the Skill tool to run the skill pc:show. Then run exactly this Bash command: env | grep -i plugin_option || echo NONE . Reply with only two lines: the line starting VALUE= from the skill text, copied verbatim, and the command's output verbatim.",
+   "--model",
+   "haiku",
+   "--plugin-dir",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/mkt/plugins/pc",
+   "--setting-sources",
+   "project,local",
+   "--allowedTools",
+   "Skill",
+   "Bash(env:*)",
+   "--output-format",
+   "stream-json",
+   "--verbose"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p05b-project-ojlyrubx",
+  "exit": 0,
+  "elapsed_ms": 7103
+ },
+ {
+  "label": "03-c-both",
+  "argv": [
+   "claude",
+   "-p",
+   "Use the Skill tool to run the skill pc:show. Then run exactly this Bash command: env | grep -i plugin_option || echo NONE . Reply with only two lines: the line starting VALUE= from the skill text, copied verbatim, and the command's output verbatim.",
+   "--model",
+   "haiku",
+   "--plugin-dir",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-probes-1.2.0/fixtures/mkt/plugins/pc",
+   "--setting-sources",
+   "project,local",
+   "--allowedTools",
+   "Skill",
+   "Bash(env:*)",
+   "--output-format",
+   "stream-json",
+   "--verbose"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/p05c-project-34stu9b4",
+  "exit": 0,
+  "elapsed_ms": 7269
+ }
+]

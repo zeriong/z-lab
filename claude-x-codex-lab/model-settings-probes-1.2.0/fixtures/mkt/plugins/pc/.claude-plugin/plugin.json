@@ -1,0 +1,32 @@
+{
+ "name": "pc",
+ "version": "0.1.0",
+ "description": "probe",
+ "userConfig": {
+  "codex_worker": {
+   "type": "string",
+   "title": "Codex worker model",
+   "description": "family",
+   "default": "terra",
+   "options": [
+    "terra",
+    "luna",
+    "sol",
+    "astra"
+   ]
+  },
+  "review_effort": {
+   "type": "string",
+   "title": "Review effort",
+   "description": "effort",
+   "default": "xhigh",
+   "options": [
+    "low",
+    "medium",
+    "high",
+    "xhigh",
+    "max"
+   ]
+  }
+ }
+}

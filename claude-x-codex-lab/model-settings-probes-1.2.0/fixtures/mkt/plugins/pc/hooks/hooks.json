@@ -1,0 +1,14 @@
+{
+ "hooks": {
+  "UserPromptSubmit": [
+   {
+    "hooks": [
+     {
+      "type": "command",
+      "command": "sh -c 'env | grep -E \"^(CLAUDE_CONFIG_DIR|CLAUDE_PLUGIN_OPTION)\" > hook-env.txt; true'"
+     }
+    ]
+   }
+  ]
+ }
+}

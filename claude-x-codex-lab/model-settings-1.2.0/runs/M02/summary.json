@@ -1,0 +1,168 @@
+{
+ "a-defaults": {
+  "claude": {
+   "exit": 0,
+   "line": "🤝peer-coding: off   🛠peer workers: codex terra · claude sonnet · effort high   🔍peer reviewers: codex sol · claude opus · effort xhigh",
+   "entries": [
+    {
+     "label": "peer workers",
+     "value": "codex terra · claude sonnet",
+     "where": null,
+     "detail": "effort high",
+     "source": "default",
+     "project": null,
+     "global": null
+    },
+    {
+     "label": "peer reviewers",
+     "value": "codex sol · claude opus",
+     "where": null,
+     "detail": "effort xhigh",
+     "source": "default",
+     "project": null,
+     "global": null
+    }
+   ]
+  },
+  "codex": {
+   "exit": 0,
+   "line": "🤝peer-coding: off   🛠peer workers: codex terra · claude sonnet · effort high   🔍peer reviewers: codex sol · claude opus · effort xhigh",
+   "entries": [
+    {
+     "label": "peer workers",
+     "value": "codex terra · claude sonnet",
+     "where": null,
+     "detail": "effort high",
+     "source": "default",
+     "project": null,
+     "global": null
+    },
+    {
+     "label": "peer reviewers",
+     "value": "codex sol · claude opus",
+     "where": null,
+     "detail": "effort xhigh",
+     "source": "default",
+     "project": null,
+     "global": null
+    }
+   ]
+  }
+ },
+ "b-project": {
+  "claude": {
+   "exit": 0,
+   "line": "🤝peer-coding: off   🛠peer workers: codex terra · claude sonnet · effort high   🔍peer reviewers: codex astra · claude opus (project) · effort max",
+   "entries": [
+    {
+     "label": "peer workers",
+     "value": "codex terra · claude sonnet",
+     "where": null,
+     "detail": "effort high",
+     "source": "default",
+     "project": null,
+     "global": null
+    },
+    {
+     "label": "peer reviewers",
+     "value": "codex astra · claude opus",
+     "where": "project",
+     "detail": "effort max",
+     "source": "project",
+     "project": "codex astra · effort max",
+     "global": null
+    }
+   ]
+  },
+  "codex": {
+   "exit": 0,
+   "line": "🤝peer-coding: off   🛠peer workers: codex terra · claude sonnet · effort high   🔍peer reviewers: codex astra · claude opus (project) · effort max",
+   "entries": [
+    {
+     "label": "peer workers",
+     "value": "codex terra · claude sonnet",
+     "where": null,
+     "detail": "effort high",
+     "source": "default",
+     "project": null,
+     "global": null
+    },
+    {
+     "label": "peer reviewers",
+     "value": "codex astra · claude opus",
+     "where": "project",
+     "detail": "effort max",
+     "source": "project",
+     "project": "codex astra · effort max",
+     "global": null
+    }
+   ]
+  }
+ },
+ "c-config": {
+  "claude": {
+   "exit": 0,
+   "line": "🤝peer-coding: off   🛠peer workers: codex luna · claude sonnet · effort high   🔍peer reviewers: codex sol · claude opus · effort xhigh",
+   "entries": [
+    {
+     "label": "peer workers",
+     "value": "codex luna · claude sonnet",
+     "where": null,
+     "detail": "effort high",
+     "source": "global",
+     "project": null,
+     "global": "codex luna"
+    },
+    {
+     "label": "peer reviewers",
+     "value": "codex sol · claude opus",
+     "where": null,
+     "detail": "effort xhigh",
+     "source": "default",
+     "project": null,
+     "global": null
+    }
+   ]
+  },
+  "codex": {
+   "exit": 0,
+   "line": "🤝peer-coding: off   🛠peer workers: codex luna · claude sonnet · effort high   🔍peer reviewers: codex sol · claude opus · effort xhigh",
+   "entries": [
+    {
+     "label": "peer workers",
+     "value": "codex luna · claude sonnet",
+     "where": null,
+     "detail": "effort high",
+     "source": "global",
+     "project": null,
+     "global": "codex luna"
+    },
+    {
+     "label": "peer reviewers",
+     "value": "codex sol · claude opus",
+     "where": null,
+     "detail": "effort xhigh",
+     "source": "default",
+     "project": null,
+     "global": null
+    }
+   ]
+  }
+ },
+ "status_ms": {
+  "worker": [
+   140,
+   58,
+   58,
+   63,
+   60
+  ],
+  "reviewer": [
+   64,
+   60,
+   60,
+   64,
+   60
+  ]
+ }
+}
