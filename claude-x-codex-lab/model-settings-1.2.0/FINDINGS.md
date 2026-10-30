@@ -22,7 +22,7 @@ Claude Code 2.1.314, Codex CLI 0.166.0, macOS 27.0.1, 2026-10-30. Subject: `subj
   installed `settings.py set codex-worker luna` (exit 0; project file gained `codex_worker=luna`); `$peer-coding:mode
   status` ran the two status commands and showed `codex-worker luna project`. The login file's sha256 was unchanged
   and the temporary Codex home was removed.
-- **M04 — every documented dispatch form loads the settings.** The Codex worker, Codex reviewer and Claude worker
+- **M04 — the three standalone blocks it ran load the settings.** The Codex worker, Codex reviewer and Claude worker
   blocks of `transport-standalone.md` (each a subshell, the Claude one with its `cd` into a worktree) resolved: defaults
   → `gpt-6.1-terra` at `high`, `gpt-6.1-sol` at `xhigh`, `sonnet` at `high`; project `codex_worker=luna`,
   `worker_effort=max`, `claude_worker=haiku` → `gpt-6-luna` at `max` and `haiku` at `max`; `/config`
@@ -30,6 +30,8 @@ Claude Code 2.1.314, Codex CLI 0.166.0, macOS 27.0.1, 2026-10-30. Subject: `subj
 
 ## Not measured
 
+- The Claude reviewer block of `transport-standalone.md` and the Orca `worker-start` form: M04 ran the other three
+  standalone blocks, each up to the resolved id (not the child CLI).
 - A full orchestration run (plan, dispatch, review) on configured models end to end; M04 stops at the resolved id, and
   `../model-settings-probes-1.2.0/` P08 ran the worker and reviewer forms on terra and astra separately.
 - The Codex child's own model id in M03 (it ran `$peer-coding:mode` only; `model_requested` is the resolver's output).
