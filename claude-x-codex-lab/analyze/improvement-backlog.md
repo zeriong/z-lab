@@ -91,3 +91,10 @@
 - The shipped mechanism: [`../model-settings-1.2.0/`](../model-settings-1.2.0/) M01–M04.
 - Open: a full orchestration run on configured models; `mode.sh` still appends to an exclude file without a final
   newline (fixed in `settings.py`, deferred for `mode.sh`).
+- Product commit mapping: `model-settings-1.2.0/runs/PRODUCT` names because-i-needed `2334564`, a commit on the
+  never-pushed feature branch. Before the push that branch was rebuilt into one release commit on top of origin/main
+  (root Rule 2: sources, README copies, versions and CHANGELOG in one commit) — `7ecc96a`. `git diff --stat 2334564
+  7ecc96a -- plugins/peer-coding/scripts plugins/peer-coding/skills plugins/peer-coding/hooks
+  plugins/peer-coding/dashboard.json` is empty: the measured code and skill text ship unchanged; the release commit adds
+  the version strings, CHANGELOG and README edits. The frozen records are not edited; `subject/MANIFEST.sha256` still
+  lists the measured files.
