@@ -1,0 +1,38 @@
+{
+ "run": "v030-N1-r2",
+ "arm": "v030",
+ "task": "N1",
+ "rep": 2,
+ "kind": "new",
+ "rc": 0,
+ "seconds": 32.0,
+ "cost_usd": 0.3151734,
+ "num_turns": 5,
+ "subtype": "success",
+ "version": "2.1.312",
+ "init_model": "claude-opus-5-5",
+ "check": {
+  "target_changed": true,
+  "requested": true,
+  "records_changed": 0,
+  "records_created": 0,
+  "governing_record_dir": "src/tabs",
+  "record_at_target_dir": true,
+  "new_blocks": 0,
+  "decision_exact": false,
+  "decision_any": false,
+  "section_for_target": true,
+  "record_lines_removed": 0,
+  "other_records_changed": 0
+ },
+ "verdict": "NEW-UNRECORDED",
+ "over_record": false,
+ "asked": false,
+ "hooks": {
+  "attachments": 2,
+  "paragraph": 2,
+  "no_record_line": 0,
+  "edit_reminder": 0,
+  "no_section_line": 0
+ }
+}
