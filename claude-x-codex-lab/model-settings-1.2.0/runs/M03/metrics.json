@@ -1,0 +1,146 @@
+[
+ {
+  "label": "01-claude-a-set",
+  "argv": [
+   "claude",
+   "-p",
+   "/peer-coding:mode codex-reviewer astra",
+   "--model",
+   "sonnet",
+   "--plugin-dir",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-1.2.0/subject/peer-coding",
+   "--setting-sources",
+   "project",
+   "--permission-mode",
+   "bypassPermissions",
+   "--output-format",
+   "json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/repo",
+  "exit": 0,
+  "elapsed_ms": 7786
+ },
+ {
+  "label": "02-claude-b-reviewer-global",
+  "argv": [
+   "claude",
+   "-p",
+   "/peer-coding:mode reviewer astra --global",
+   "--model",
+   "sonnet",
+   "--plugin-dir",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-1.2.0/subject/peer-coding",
+   "--setting-sources",
+   "project",
+   "--permission-mode",
+   "bypassPermissions",
+   "--output-format",
+   "json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/repo",
+  "exit": 0,
+  "elapsed_ms": 13418
+ },
+ {
+  "label": "03-claude-c-status",
+  "argv": [
+   "claude",
+   "-p",
+   "/peer-coding:mode status",
+   "--model",
+   "sonnet",
+   "--plugin-dir",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-1.2.0/subject/peer-coding",
+   "--setting-sources",
+   "project",
+   "--permission-mode",
+   "bypassPermissions",
+   "--output-format",
+   "json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/repo",
+  "exit": 0,
+  "elapsed_ms": 8614
+ },
+ {
+  "label": "04-marketplace-add",
+  "argv": [
+   "codex",
+   "plugin",
+   "marketplace",
+   "add",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/market"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk",
+  "exit": 0,
+  "elapsed_ms": 149
+ },
+ {
+  "label": "05-plugin-add",
+  "argv": [
+   "codex",
+   "plugin",
+   "add",
+   "peer-coding@because-i-needed"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk",
+  "exit": 0,
+  "elapsed_ms": 52
+ },
+ {
+  "label": "06-resolve-sol",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-1.2.0/subject/peer-coding/scripts/latest-model.py",
+   "codex",
+   "sol",
+   "--effort",
+   "medium"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk",
+  "exit": 0,
+  "elapsed_ms": 956
+ },
+ {
+  "label": "07-codex-d-set",
+  "argv": [
+   "codex",
+   "exec",
+   "--json",
+   "--dangerously-bypass-hook-trust",
+   "-m",
+   "gpt-6.1-sol",
+   "-c",
+   "model_reasoning_effort=\"medium\"",
+   "-s",
+   "workspace-write",
+   "-C",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/repo",
+   "$peer-coding:mode codex-worker luna"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/repo",
+  "exit": 0,
+  "elapsed_ms": 35384
+ },
+ {
+  "label": "08-codex-e-status",
+  "argv": [
+   "codex",
+   "exec",
+   "--json",
+   "--dangerously-bypass-hook-trust",
+   "-m",
+   "gpt-6.1-sol",
+   "-c",
+   "model_reasoning_effort=\"medium\"",
+   "-s",
+   "workspace-write",
+   "-C",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/repo",
+   "$peer-coding:mode status"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/repo",
+  "exit": 0,
+  "elapsed_ms": 13378
+ }
+]

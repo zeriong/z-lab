@@ -1,0 +1,410 @@
+[
+ {
+  "label": "01-get-none",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 141
+ },
+ {
+  "label": "02-status-none",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "status",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 60
+ },
+ {
+  "label": "03-get-file",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 98
+ },
+ {
+  "label": "04-status-file",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "status",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 67
+ },
+ {
+  "label": "05-get-config",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 58
+ },
+ {
+  "label": "06-status-config",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "status",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 78
+ },
+ {
+  "label": "07-get-config-file",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 64
+ },
+ {
+  "label": "08-status-config-file",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "status",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 58
+ },
+ {
+  "label": "09-get-project",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 59
+ },
+ {
+  "label": "10-status-project",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "status",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 61
+ },
+ {
+  "label": "11-get-project-file",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 57
+ },
+ {
+  "label": "12-status-project-file",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "status",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 62
+ },
+ {
+  "label": "13-get-project-config",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 67
+ },
+ {
+  "label": "14-status-project-config",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "status",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 61
+ },
+ {
+  "label": "15-get-project-config-file",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 58
+ },
+ {
+  "label": "16-status-project-config-file",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "status",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 64
+ },
+ {
+  "label": "17-get-env",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 59
+ },
+ {
+  "label": "18-status-env",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "status",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 60
+ },
+ {
+  "label": "19-get-env-file",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 57
+ },
+ {
+  "label": "20-status-env-file",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "status",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 58
+ },
+ {
+  "label": "21-get-env-config",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 59
+ },
+ {
+  "label": "22-status-env-config",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "status",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 59
+ },
+ {
+  "label": "23-get-env-config-file",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 64
+ },
+ {
+  "label": "24-status-env-config-file",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "status",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 62
+ },
+ {
+  "label": "25-get-env-project",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 59
+ },
+ {
+  "label": "26-status-env-project",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "status",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 60
+ },
+ {
+  "label": "27-get-env-project-file",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 60
+ },
+ {
+  "label": "28-status-env-project-file",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "status",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 59
+ },
+ {
+  "label": "29-get-env-project-config",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 57
+ },
+ {
+  "label": "30-status-env-project-config",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "status",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 58
+ },
+ {
+  "label": "31-get-env-project-config-file",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 59
+ },
+ {
+  "label": "32-status-env-project-config-file",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "status",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 61
+ },
+ {
+  "label": "33-inline-dev",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-1.2.0/subject/peer-coding/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 60
+ },
+ {
+  "label": "34-inline-installed",
+  "argv": [
+   "python3",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py",
+   "get",
+   "codex-reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m01-pst63651/repo",
+  "exit": 0,
+  "elapsed_ms": 56
+ }
+]

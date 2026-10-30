@@ -1,0 +1,134 @@
+[
+ {
+  "label": "01-a-defaults-codex-worker",
+  "argv": [
+   "bash",
+   "-c",
+   "(\nF=\"$PWD/.claude-x-codex/f\"   # absolute, so the paths don't depend on where you cd\nS=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04a-te7btel0/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py\" env) && eval \"$S\" || exit\nM=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04a-te7btel0/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/latest-model.py\" codex \"$CXC_WORKER_MODEL\" --effort \"$CXC_WORKER_EFFORT\") || exit\necho \"M=$M EFFORT=$CXC_WORKER_EFFORT\"\n)"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04a-te7btel0/repo",
+  "exit": 0,
+  "elapsed_ms": 317
+ },
+ {
+  "label": "02-a-defaults-codex-reviewer",
+  "argv": [
+   "bash",
+   "-c",
+   "(\nF=\"$PWD/.claude-x-codex/f\"; P=\"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04a-te7btel0/plugins/cache/because-i-needed/peer-coding/1.2.0/skills/run/references\"\nS=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04a-te7btel0/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py\" env) && eval \"$S\" || exit\nM=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04a-te7btel0/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/latest-model.py\" codex \"$CXC_REVIEW_MODEL\" --effort \"$CXC_REVIEW_EFFORT\") || exit\necho \"M=$M EFFORT=$CXC_REVIEW_EFFORT\"\n)"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04a-te7btel0/repo",
+  "exit": 0,
+  "elapsed_ms": 170
+ },
+ {
+  "label": "03-a-defaults-claude-worker",
+  "argv": [
+   "bash",
+   "-c",
+   "(\nS=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04a-te7btel0/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py\" env) && eval \"$S\" || exit\ncd .claude-x-codex/wt/T1 || exit; R=../../f/returns\nM=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04a-te7btel0/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/latest-model.py\" claude \"$CXC_CLAUDE_WORKER\" --effort \"$CXC_WORKER_EFFORT\" --project \"$PWD\") || exit\necho \"M=$M EFFORT=$CXC_WORKER_EFFORT\"\n)"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04a-te7btel0/repo",
+  "exit": 0,
+  "elapsed_ms": 116
+ },
+ {
+  "label": "04-b-project-codex-worker",
+  "argv": [
+   "bash",
+   "-c",
+   "(\nF=\"$PWD/.claude-x-codex/f\"   # absolute, so the paths don't depend on where you cd\nS=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04b-qoi6vonu/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py\" env) && eval \"$S\" || exit\nM=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04b-qoi6vonu/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/latest-model.py\" codex \"$CXC_WORKER_MODEL\" --effort \"$CXC_WORKER_EFFORT\") || exit\necho \"M=$M EFFORT=$CXC_WORKER_EFFORT\"\n)"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04b-qoi6vonu/repo",
+  "exit": 0,
+  "elapsed_ms": 273
+ },
+ {
+  "label": "05-b-project-codex-reviewer",
+  "argv": [
+   "bash",
+   "-c",
+   "(\nF=\"$PWD/.claude-x-codex/f\"; P=\"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04b-qoi6vonu/plugins/cache/because-i-needed/peer-coding/1.2.0/skills/run/references\"\nS=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04b-qoi6vonu/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py\" env) && eval \"$S\" || exit\nM=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04b-qoi6vonu/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/latest-model.py\" codex \"$CXC_REVIEW_MODEL\" --effort \"$CXC_REVIEW_EFFORT\") || exit\necho \"M=$M EFFORT=$CXC_REVIEW_EFFORT\"\n)"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04b-qoi6vonu/repo",
+  "exit": 0,
+  "elapsed_ms": 189
+ },
+ {
+  "label": "06-b-project-claude-worker",
+  "argv": [
+   "bash",
+   "-c",
+   "(\nS=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04b-qoi6vonu/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py\" env) && eval \"$S\" || exit\ncd .claude-x-codex/wt/T1 || exit; R=../../f/returns\nM=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04b-qoi6vonu/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/latest-model.py\" claude \"$CXC_CLAUDE_WORKER\" --effort \"$CXC_WORKER_EFFORT\" --project \"$PWD\") || exit\necho \"M=$M EFFORT=$CXC_WORKER_EFFORT\"\n)"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04b-qoi6vonu/repo",
+  "exit": 0,
+  "elapsed_ms": 145
+ },
+ {
+  "label": "07-c-config-codex-worker",
+  "argv": [
+   "bash",
+   "-c",
+   "(\nF=\"$PWD/.claude-x-codex/f\"   # absolute, so the paths don't depend on where you cd\nS=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04c-hwa2sq70/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py\" env) && eval \"$S\" || exit\nM=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04c-hwa2sq70/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/latest-model.py\" codex \"$CXC_WORKER_MODEL\" --effort \"$CXC_WORKER_EFFORT\") || exit\necho \"M=$M EFFORT=$CXC_WORKER_EFFORT\"\n)"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04c-hwa2sq70/repo",
+  "exit": 0,
+  "elapsed_ms": 308
+ },
+ {
+  "label": "08-c-config-codex-reviewer",
+  "argv": [
+   "bash",
+   "-c",
+   "(\nF=\"$PWD/.claude-x-codex/f\"; P=\"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04c-hwa2sq70/plugins/cache/because-i-needed/peer-coding/1.2.0/skills/run/references\"\nS=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04c-hwa2sq70/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py\" env) && eval \"$S\" || exit\nM=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04c-hwa2sq70/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/latest-model.py\" codex \"$CXC_REVIEW_MODEL\" --effort \"$CXC_REVIEW_EFFORT\") || exit\necho \"M=$M EFFORT=$CXC_REVIEW_EFFORT\"\n)"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04c-hwa2sq70/repo",
+  "exit": 0,
+  "elapsed_ms": 183
+ },
+ {
+  "label": "09-c-config-claude-worker",
+  "argv": [
+   "bash",
+   "-c",
+   "(\nS=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04c-hwa2sq70/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py\" env) && eval \"$S\" || exit\ncd .claude-x-codex/wt/T1 || exit; R=../../f/returns\nM=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04c-hwa2sq70/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/latest-model.py\" claude \"$CXC_CLAUDE_WORKER\" --effort \"$CXC_WORKER_EFFORT\" --project \"$PWD\") || exit\necho \"M=$M EFFORT=$CXC_WORKER_EFFORT\"\n)"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04c-hwa2sq70/repo",
+  "exit": 0,
+  "elapsed_ms": 117
+ },
+ {
+  "label": "10-d-env-codex-worker",
+  "argv": [
+   "bash",
+   "-c",
+   "(\nF=\"$PWD/.claude-x-codex/f\"   # absolute, so the paths don't depend on where you cd\nS=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04d-gbsgnbyd/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py\" env) && eval \"$S\" || exit\nM=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04d-gbsgnbyd/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/latest-model.py\" codex \"$CXC_WORKER_MODEL\" --effort \"$CXC_WORKER_EFFORT\") || exit\necho \"M=$M EFFORT=$CXC_WORKER_EFFORT\"\n)"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04d-gbsgnbyd/repo",
+  "exit": 0,
+  "elapsed_ms": 284
+ },
+ {
+  "label": "11-d-env-codex-reviewer",
+  "argv": [
+   "bash",
+   "-c",
+   "(\nF=\"$PWD/.claude-x-codex/f\"; P=\"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04d-gbsgnbyd/plugins/cache/because-i-needed/peer-coding/1.2.0/skills/run/references\"\nS=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04d-gbsgnbyd/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py\" env) && eval \"$S\" || exit\nM=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04d-gbsgnbyd/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/latest-model.py\" codex \"$CXC_REVIEW_MODEL\" --effort \"$CXC_REVIEW_EFFORT\") || exit\necho \"M=$M EFFORT=$CXC_REVIEW_EFFORT\"\n)"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04d-gbsgnbyd/repo",
+  "exit": 0,
+  "elapsed_ms": 181
+ },
+ {
+  "label": "12-d-env-claude-worker",
+  "argv": [
+   "bash",
+   "-c",
+   "(\nS=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04d-gbsgnbyd/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/settings.py\" env) && eval \"$S\" || exit\ncd .claude-x-codex/wt/T1 || exit; R=../../f/returns\nM=$(python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04d-gbsgnbyd/plugins/cache/because-i-needed/peer-coding/1.2.0/scripts/latest-model.py\" claude \"$CXC_CLAUDE_WORKER\" --effort \"$CXC_WORKER_EFFORT\" --project \"$PWD\") || exit\necho \"M=$M EFFORT=$CXC_WORKER_EFFORT\"\n)"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m04d-gbsgnbyd/repo",
+  "exit": 0,
+  "elapsed_ms": 114
+ }
+]

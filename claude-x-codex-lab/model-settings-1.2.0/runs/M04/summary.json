@@ -1,0 +1,75 @@
+{
+ "blocks": {
+  "codex-worker": "(\nF=\"$PWD/.claude-x-codex/<feature>\"   # absolute, so the paths don't depend on where you cd\nS=$(python3 \"<plugin>/scripts/settings.py\" env) && eval \"$S\" || exit\nM=$(python3 \"<plugin>/scripts/latest-model.py\" codex \"$CXC_WORKER_MODEL\" --effort \"$CXC_WORKER_EFFORT\") || exit",
+  "codex-reviewer": "(\nF=\"$PWD/.claude-x-codex/<feature>\"; P=\"<plugin>/skills/run/references\"\nS=$(python3 \"<plugin>/scripts/settings.py\" env) && eval \"$S\" || exit\nM=$(python3 \"<plugin>/scripts/latest-model.py\" codex \"$CXC_REVIEW_MODEL\" --effort \"$CXC_REVIEW_EFFORT\") || exit",
+  "claude-worker": "(\nS=$(python3 \"<plugin>/scripts/settings.py\" env) && eval \"$S\" || exit\ncd .claude-x-codex/wt/<id> || exit; R=../../<feature>/returns\nM=$(python3 \"<plugin>/scripts/latest-model.py\" claude \"$CXC_CLAUDE_WORKER\" --effort \"$CXC_WORKER_EFFORT\" --project \"$PWD\") || exit"
+ },
+ "a-defaults": {
+  "codex-worker": {
+   "exit": 0,
+   "stdout": "M=gpt-6.1-terra EFFORT=high",
+   "stderr": ""
+  },
+  "codex-reviewer": {
+   "exit": 0,
+   "stdout": "M=gpt-6.1-sol EFFORT=xhigh",
+   "stderr": ""
+  },
+  "claude-worker": {
+   "exit": 0,
+   "stdout": "M=sonnet EFFORT=high",
+   "stderr": ""
+  }
+ },
+ "b-project": {
+  "codex-worker": {
+   "exit": 0,
+   "stdout": "M=gpt-6-luna EFFORT=max",
+   "stderr": ""
+  },
+  "codex-reviewer": {
+   "exit": 0,
+   "stdout": "M=gpt-6.1-sol EFFORT=xhigh",
+   "stderr": ""
+  },
+  "claude-worker": {
+   "exit": 0,
+   "stdout": "M=haiku EFFORT=max",
+   "stderr": ""
+  }
+ },
+ "c-config": {
+  "codex-worker": {
+   "exit": 0,
+   "stdout": "M=gpt-6.1-terra EFFORT=high",
+   "stderr": ""
+  },
+  "codex-reviewer": {
+   "exit": 0,
+   "stdout": "M=gpt-6-astra EFFORT=xhigh",
+   "stderr": ""
+  },
+  "claude-worker": {
+   "exit": 0,
+   "stdout": "M=sonnet EFFORT=high",
+   "stderr": ""
+  }
+ },
+ "d-env": {
+  "codex-worker": {
+   "exit": 0,
+   "stdout": "M=gpt-6.1-terra EFFORT=high",
+   "stderr": ""
+  },
+  "codex-reviewer": {
+   "exit": 0,
+   "stdout": "M=gpt-6.1-sol EFFORT=xhigh",
+   "stderr": ""
+  },
+  "claude-worker": {
+   "exit": 0,
+   "stdout": "M=sonnet EFFORT=high",
+   "stderr": ""
+  }
+ }
+}

@@ -1,0 +1,203 @@
+{
+ "base": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk",
+ "repo": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/repo",
+ "claude-a-set": {
+  "exit": 0,
+  "result": "`codex-reviewer` is now set to `astra` for this project. It's stored in `.claude-x-codex/settings`, so it applies only here.\n\nThis is the effective value now, from the project level. Nothing was changed outside this repo, and no orchestration run was started or touched.",
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "usage": {
+   "input_tokens": 4,
+   "cache_creation_input_tokens": 18332,
+   "cache_read_input_tokens": 32703,
+   "output_tokens": 225,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 18332,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 89,
+     "cache_read_input_tokens": 20851,
+     "cache_creation_input_tokens": 9333,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 9333
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "files_after": {
+   "project": "codex_reviewer=astra\n",
+   "global": null
+  }
+ },
+ "claude-b-reviewer-global": {
+  "exit": 0,
+  "result": "I set `codex-reviewer` to `astra` globally. It was already `astra` at the project level, so that value is what applies in this repo right now.\n\n- **Note:** The tool says `astra` is a Codex family, so this is a valid choice for the Codex reviewer. The project already sets it, so the global value only applies in projects that don't. To follow the global value here, run `peer-coding:mode codex-reviewer unset`.\n- **My mistake:** I also set `claude-reviewer` to `astra` by accident, and the tool warned that `astra` isn't a Claude family. I cleared it, and `claude-reviewer` is back to its default of `opus`.\n- **Settings file:** The global settings file is in a temporary `xdg` directory, not `~/.config`, so this session's global scope may not carry over to your normal shell.",
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "usage": {
+   "input_tokens": 6,
+   "cache_creation_input_tokens": 17453,
+   "cache_read_input_tokens": 64765,
+   "output_tokens": 882,
+   "output_tokens_details": {
+    "thinking_tokens": 171
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 17453,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 269,
+     "cache_read_input_tokens": 30435,
+     "cache_creation_input_tokens": 499,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 499
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "files_after": {
+   "project": "codex_reviewer=astra\n",
+   "global": "codex_reviewer=astra\n"
+  }
+ },
+ "claude-c-status": {
+  "exit": 0,
+  "result": "Peer-coding status for this project:\n\n**Mode:** off (default). Neither the project nor the global flag is set. `run` starts only when you ask for it explicitly.\n- hint: `peer-coding:mode on` turns it on for this project. Add `--global` to turn it on for every project.\n\n**Settings** (value · source):\n\n| Setting | Value | Source |\n|---|---|---|\n| `codex-worker` | terra | default |\n| `codex-reviewer` | astra | project |\n| `claude-worker` | sonnet | default |\n| `claude-reviewer` | opus | default |\n| `worker-effort` | high | default |\n| `review-effort` | xhigh | default |\n\n`codex-reviewer` is `astra`. It's set at the project level, which overrides the global setting and the `sol` default.\n\nSettings resolve in this order: `CXC_*` env var, then project, then Claude Code `/config`, then global, then default. To change one, use `peer-coding:mode <setting> <value>`, adding `--global` for every project. You can also use `/config` and search for \"peer-coding\".",
+  "models": [
+   "claude-sonnet-5-5"
+  ],
+  "usage": {
+   "input_tokens": 4,
+   "cache_creation_input_tokens": 17058,
+   "cache_read_input_tokens": 34316,
+   "output_tokens": 581,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 17058,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 353,
+     "cache_read_input_tokens": 20835,
+     "cache_creation_input_tokens": 9704,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 9704
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "files_after": {
+   "project": "codex_reviewer=astra\n",
+   "global": "codex_reviewer=astra\n"
+  }
+ },
+ "auth_sha256_before": "8c8355cffcb0835ce55c80534ca7b17f708e73ef220ff157d918b6fb2e7fd5e2",
+ "codex-d-set": {
+  "model_requested": "gpt-6.1-sol",
+  "exit": 0,
+  "commands": [
+   {
+    "command": "/bin/zsh -lc 'cat /private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/codex-home/plugins/cache/because-i-needed/peer-coding/1.1.1/skills/mode/SKILL.md'",
+    "exit_code": 0,
+    "output": "ms\n\nThe scripts are POSIX-tool bash (compatible with macOS's bash 3.2 and BSD utilities).\n\n| Platform | Status |\n|---|---|\n| Linux | Supported |\n| macOS | Supported |\n| Windows + WSL | Supported (behaves as Linux) |\n| Windows + Git Bash | Should work; paths follow Git Bash (`~` = `/c/Users/<you>`) |\n| Windows PowerShell / cmd only | Not supported — install Git for Windows or use WSL |\n\nOn Windows, scripts must stay LF. The plugin's `.gitattributes` enforces this; if you\ncopy files without git, convert line endings to LF.\n\n## How the switch reaches the main agent\n\n- **Claude Code and Codex**: the plugin's `UserPromptSubmit` hook runs `mode.sh get` on every\n  prompt and, when the mode is on, adds a short context note telling the main agent to\n  route implementation work through `peer-coding:run`. When off, it adds nothing, so\n  normal sessions pay no token cost. On Codex, review and trust the installed hook\n  in `/hooks`; installing the plugin alone does not trust it. Report whether this\n  automatic route is active before describing mode as automatic.\n- **Hosts without prompt hooks** (or if you prefer not to install the hook): add this\n  line to the project's `AGENTS.md` / `CLAUDE.md`:\n\n  ```markdown\n  Before starting any implementation task, run `<plugin>/scripts/mode.sh get`.\n  If it prints `on`, use the `peer-coding:run` skill for that task.\n  ```\n\n  This is weaker than the hook — it relies on the agent remembering to check — so\n  prefer the hook where the host supports it.\n"
+   },
+   {
+    "command": "/bin/zsh -lc 'python3 /private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/codex-home/plugins/cache/because-i-needed/peer-coding/1.1.1/scripts/settings.py set codex-worker luna'",
+    "exit_code": 0,
+    "output": "peer-coding codex-worker: set luna in /private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/repo/.claude-x-codex/settings → effective: luna (source: project)\n"
+   }
+  ],
+  "messages": [
+   "I’m using the peer-coding:mode skill to set this project’s Codex worker model to `luna`.\n",
+   "peer-coding codex-worker: set luna in /private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/repo/.claude-x-codex/settings → effective: luna (source: project)"
+  ],
+  "usage": [
+   {
+    "input_tokens": 54337,
+    "cached_input_tokens": 47616,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 277,
+    "reasoning_output_tokens": 0
+   }
+  ],
+  "files_after": {
+   "project": "codex_reviewer=astra\ncodex_worker=luna\n",
+   "global": "codex_reviewer=astra\n"
+  }
+ },
+ "codex-e-status": {
+  "model_requested": "gpt-6.1-sol",
+  "exit": 0,
+  "commands": [
+   {
+    "command": "/bin/zsh -lc '\"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/codex-home/plugins/cache/because-i-needed/peer-coding/1.1.1/scripts/mode.sh\" status && python3 \"/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/codex-home/plugins/cache/because-i-needed/peer-coding/1.1.1/scripts/settings.py\" status'",
+    "exit_code": 0,
+    "output": "peer-coding mode: off (source: default)\n  invoke skills with / in Claude Code or $ in Codex\n  project: unset   global: unset\n  hint: 'peer-coding:mode on' for this project, '--global' for every project\npeer-coding settings (value · source)\n  codex-worker     luna     project\n  codex-reviewer   astra    project\n  claude-worker    sonnet   default\n  claude-reviewer  opus     default\n  worker-effort    high     default\n  review-effort    xhigh    default\n  order: CXC_* env → project (/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/repo/.claude-x-codex/settings) → Claude Code /config → global (/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/xdg/claude-x-codex/settings) → default\n  set: 'peer-coding:mode <setting> <value>' for this project, add '--global' for every project; on Claude Code also /config (search \"peer-coding\")\n"
+   }
+  ],
+  "messages": [
+   "I’m using the peer-coding:mode skill to check the current mode and model settings.",
+   "```text\npeer-coding mode: off (source: default)\n  invoke skills with / in Claude Code or $ in Codex\n  project: unset   global: unset\n  hint: 'peer-coding:mode on' for this project, '--global' for every project\npeer-coding settings (value · source)\n  codex-worker     luna     project\n  codex-reviewer   astra    project\n  claude-worker    sonnet   default\n  claude-reviewer  opus     default\n  worker-effort    high     default\n  review-effort    xhigh    default\n  order: CXC_* env → project (/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/repo/.claude-x-codex/settings) → Claude Code /config → global (/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m03-6bswpobk/xdg/claude-x-codex/settings) → default\n  set: 'peer-coding:mode <setting> <value>' for this project, add '--global' for every project; on Claude Code also /config (search \"peer-coding\")\n```"
+  ],
+  "usage": [
+   {
+    "input_tokens": 33900,
+    "cached_input_tokens": 28928,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 414,
+    "reasoning_output_tokens": 0
+   }
+  ],
+  "files_after": {
+   "project": "codex_reviewer=astra\ncodex_worker=luna\n",
+   "global": "codex_reviewer=astra\n"
+  }
+ },
+ "codex_home_removed": true,
+ "auth_sha256_after": "8c8355cffcb0835ce55c80534ca7b17f708e73ef220ff157d918b6fb2e7fd5e2"
+}

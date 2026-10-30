@@ -71,3 +71,23 @@
 - Change: `mode.sh status --json` and `dashboard.json`.
 - Evidence: `dashboard-lab/run-0.1.0` D01, D02, D04.
 
+
+## peer-coding 1.2.0 — persistent model settings
+
+- Decisions (user, 2026-10-30): the worker and reviewer models and efforts become persistent settings set like the mode
+  (extend the `mode` skill, no new verb); Claude Code's `/config` ranks above the global file (env → project → `/config`
+  → global file → default) because `/config` can't say it is shadowed and the command can; efforts stay per role
+  (worker, review), shared by both vendors.
+- Decision (maintainer, 2026-10-30): the Codex worker default moves from `luna` to `terra`; the Codex reviewer default
+  stays `sol`. Not a measurement: no quality comparison was run (P08 shows only that the forms run on terra and astra).
+- Evidence for the design: [`../model-settings-probes-1.2.0/`](../model-settings-probes-1.2.0/) P01–P09 and
+  [`../model-settings-probes-r2-1.2.0/`](../model-settings-probes-r2-1.2.0/) R01 — `/config` draws `userConfig` options
+  as pickers and saves to `$CLAUDE_CONFIG_DIR/settings.json` under the installed or `@inline` id (P02, P03); project and
+  local settings files carry no plugin options (P05); `${user_config.*}` stays literal when unset and never reaches
+  the shell (P04); Codex has no plugin options (P06).
+- Review fixes (Codex review in the feature's own run, not a lab measurement): settings load before any `cd` into a
+  worktree and inside a subshell per dispatch, so a project setting reaches workers and a change reaches the next
+  dispatch even in a shell that exports everything.
+- The shipped mechanism: [`../model-settings-1.2.0/`](../model-settings-1.2.0/) M01–M04.
+- Open: a full orchestration run on configured models; `mode.sh` still appends to an exclude file without a final
+  newline (fixed in `settings.py`, deferred for `mode.sh`).

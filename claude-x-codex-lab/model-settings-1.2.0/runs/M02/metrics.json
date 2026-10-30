@@ -1,0 +1,238 @@
+[
+ {
+  "label": "01-a-defaults-claude",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/dashboard/scripts/dashboard.py",
+   "--host",
+   "claude",
+   "--cwd",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02a-hkm_y0ed/repo",
+   "--json",
+   "--enabled",
+   ""
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02a-hkm_y0ed/repo",
+  "exit": 0,
+  "elapsed_ms": 308
+ },
+ {
+  "label": "02-a-defaults-codex",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/dashboard/scripts/dashboard.py",
+   "--host",
+   "codex",
+   "--cwd",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02a-hkm_y0ed/repo",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02a-hkm_y0ed/repo",
+  "exit": 0,
+  "elapsed_ms": 189
+ },
+ {
+  "label": "03-b-project-claude",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/dashboard/scripts/dashboard.py",
+   "--host",
+   "claude",
+   "--cwd",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02b-viiny98n/repo",
+   "--json",
+   "--enabled",
+   ""
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02b-viiny98n/repo",
+  "exit": 0,
+  "elapsed_ms": 314
+ },
+ {
+  "label": "04-b-project-codex",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/dashboard/scripts/dashboard.py",
+   "--host",
+   "codex",
+   "--cwd",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02b-viiny98n/repo",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02b-viiny98n/repo",
+  "exit": 0,
+  "elapsed_ms": 193
+ },
+ {
+  "label": "05-c-config-claude",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/dashboard/scripts/dashboard.py",
+   "--host",
+   "claude",
+   "--cwd",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02c-s_jv2s01/repo",
+   "--json",
+   "--enabled",
+   ""
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02c-s_jv2s01/repo",
+  "exit": 0,
+  "elapsed_ms": 304
+ },
+ {
+  "label": "06-c-config-codex",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/because-i-needed/plugins/dashboard/scripts/dashboard.py",
+   "--host",
+   "codex",
+   "--cwd",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02c-s_jv2s01/repo",
+   "--json"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02c-s_jv2s01/repo",
+  "exit": 0,
+  "elapsed_ms": 196
+ },
+ {
+  "label": "07-time-worker-0",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-1.2.0/subject/peer-coding/scripts/settings.py",
+   "status",
+   "--json",
+   "--role",
+   "worker"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02t-lzx9j61k/repo",
+  "exit": 0,
+  "elapsed_ms": 140
+ },
+ {
+  "label": "08-time-worker-1",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-1.2.0/subject/peer-coding/scripts/settings.py",
+   "status",
+   "--json",
+   "--role",
+   "worker"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02t-lzx9j61k/repo",
+  "exit": 0,
+  "elapsed_ms": 58
+ },
+ {
+  "label": "09-time-worker-2",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-1.2.0/subject/peer-coding/scripts/settings.py",
+   "status",
+   "--json",
+   "--role",
+   "worker"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02t-lzx9j61k/repo",
+  "exit": 0,
+  "elapsed_ms": 58
+ },
+ {
+  "label": "10-time-worker-3",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-1.2.0/subject/peer-coding/scripts/settings.py",
+   "status",
+   "--json",
+   "--role",
+   "worker"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02t-lzx9j61k/repo",
+  "exit": 0,
+  "elapsed_ms": 62
+ },
+ {
+  "label": "11-time-worker-4",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-1.2.0/subject/peer-coding/scripts/settings.py",
+   "status",
+   "--json",
+   "--role",
+   "worker"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02t-lzx9j61k/repo",
+  "exit": 0,
+  "elapsed_ms": 60
+ },
+ {
+  "label": "12-time-reviewer-0",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-1.2.0/subject/peer-coding/scripts/settings.py",
+   "status",
+   "--json",
+   "--role",
+   "reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02t-lzx9j61k/repo",
+  "exit": 0,
+  "elapsed_ms": 64
+ },
+ {
+  "label": "13-time-reviewer-1",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-1.2.0/subject/peer-coding/scripts/settings.py",
+   "status",
+   "--json",
+   "--role",
+   "reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02t-lzx9j61k/repo",
+  "exit": 0,
+  "elapsed_ms": 60
+ },
+ {
+  "label": "14-time-reviewer-2",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-1.2.0/subject/peer-coding/scripts/settings.py",
+   "status",
+   "--json",
+   "--role",
+   "reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02t-lzx9j61k/repo",
+  "exit": 0,
+  "elapsed_ms": 59
+ },
+ {
+  "label": "15-time-reviewer-3",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-1.2.0/subject/peer-coding/scripts/settings.py",
+   "status",
+   "--json",
+   "--role",
+   "reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02t-lzx9j61k/repo",
+  "exit": 0,
+  "elapsed_ms": 64
+ },
+ {
+  "label": "16-time-reviewer-4",
+  "argv": [
+   "python3",
+   "/Users/jeonjelyong/WorkSpace/Z-Work/z-lab/claude-x-codex-lab/model-settings-1.2.0/subject/peer-coding/scripts/settings.py",
+   "status",
+   "--json",
+   "--role",
+   "reviewer"
+  ],
+  "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/m02t-lzx9j61k/repo",
+  "exit": 0,
+  "elapsed_ms": 59
+ }
+]
