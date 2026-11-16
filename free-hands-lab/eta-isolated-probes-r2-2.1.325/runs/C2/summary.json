@@ -1,0 +1,13 @@
+{
+ "command_env": [
+  "CLAUDE_CONFIG_DIR",
+  "HOME",
+  "LANG",
+  "PATH",
+  "TERM",
+  "TMPDIR"
+ ],
+ "trusted": true,
+ "screen": "\n ▐▛███▛█   Claude Code v2.1.325\n▝▜██████▀  Sonnet 5.5 · API Usage Billing\n ▝▝   ▝▝   /private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-isolated-probes-r2/C2/repo\n\n\n❯ Run exactly this shell command with Bash, then reply done: echo hi\n  ⎿  Not logged in · Please run /login\n\n✻ Worked for 0s · done 6:30 PM\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                                                                                                                                                            Not logged in · Run /login\n────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n❯ \n────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n  ⏵⏵ accept edits on (shift+tab to cycle)\n",
+ "hook": null
+}
