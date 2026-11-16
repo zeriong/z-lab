@@ -1,0 +1,19 @@
+{
+ "E6": {
+  "briefs": 24,
+  "agree_E6prime_proxy": 24,
+  "agree_extended_proxy": 24
+ },
+ "E6prime": {
+  "briefs": 24,
+  "agree_E6prime_proxy": 22,
+  "agree_extended_proxy": 23
+ },
+ "E7": {
+  "briefs": 12,
+  "flagged_E6prime_proxy": 9,
+  "flagged_extended_proxy": 10,
+  "leaked_run_flagged_E6prime": false,
+  "leaked_run_flagged_extended": true
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "snapshot": "origin/dev ef913238 (git archive)",
+ "D1_vs_company_hook": {
+  "governed_files": 2681,
+  "files_missing_slugs": 0,
+  "mode_regressions": 0,
+  "old_slugs": 1749,
+  "new_slugs": 1749,
+  "worst_new_chars": 6995,
+  "targets": {
+   "T1": {
+    "file_exists": true,
+    "forbid_line": true,
+    "slug": true,
+    "paragraph": true
+   },
+   "T2": {
+    "file_exists": true,
+    "forbid_line": true,
+    "slug": true,
+    "paragraph": true
+   },
+   "T3": {
+    "file_exists": true,
+    "forbid_line": true,
+    "slug": true,
+    "paragraph": true
+   },
+   "T4": {
+    "file_exists": true,
+    "forbid_line": true,
+    "slug": true,
+    "paragraph": true
+   }
+  }
+ },
+ "D2_vs_030": {
+  "governed_files": 2681,
+  "mode_regressions_vs_030": 0,
+  "files_compressed_or_truncated": 40,
+  "qualified_lines_injected": {
+   "0.3.0": 243,
+   "0.3.1": 292
+  },
+  "files_gaining_qualified_lines": 8,
+  "slugs_lost_vs_030": 0,
+  "worst_chars_031": 7215,
+  "blocks_without_decision": {
+   "0.3.0": 277,
+   "0.3.1": 266
+  }
+ }
+}
