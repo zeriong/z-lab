@@ -1,0 +1,10 @@
+V00: done
+p1-tally-sonnet: running (spent so far 0.00 USD)
+p1-tally-opus: running (spent so far 0.00 USD)
+p2-shelf-sonnet: running (spent so far 0.00 USD)
+p1-tally-sonnet: done (2.3356409000000005 USD, 943.7 s)
+p2-shelf-opus: running (spent so far 2.34 USD)
+p2-shelf-sonnet: done (2.7620639000000007 USD, 999.5 s)
+p3-orders-sonnet: running (spent so far 5.10 USD)
+p1-tally-opus: done (7.6962378000000005 USD, 1320.3 s)
+p3-orders-opus: running (spent so far 12.79 USD)

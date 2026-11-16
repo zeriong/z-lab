@@ -1,0 +1,35 @@
+cell,fixture,family,goal,item,cat,est,base,proj,online,project,actual,prior
+p1-tally-opus,p1-tally,opus,B,T1 docstrings: every function/class in tally.py has a docstring (one-line summar,1.09,8.0,1.01,1.01,1.01,1.0,1.81,0
+p1-tally-opus,p1-tally,opus,B,"T2 move TallyError, read_rows, check_column to csvio.py and import back; check =",0.59,6.0,0.76,0.76,0.88,1.0,2.66,0
+p1-tally-opus,p1-tally,opus,B,"T4 negative amounts: CSV k,amount/a,10/b,-5 with --column amount reports count 2",1.32,10.0,1.26,1.26,1.82,1.0,1.67,0
+p1-tally-opus,p1-tally,opus,B,"T5 --sort value|key|count for grouped output, value default, --top after sorting",2.25,15.0,1.89,1.89,2.69,1.0,1.73,0
+p1-tally-opus,p1-tally,opus,B,"T3 notes/exit-codes.md: `# Exit codes`, `## Paths` table (Trigger, Exit code, Me",3.18,20.0,2.52,2.52,3.37,1.0,3.12,0
+p1-tally-opus,p1-tally,opus,B,"Final: full suite passes, every function in tally.py and csvio.py has a docstrin",0.5,4.0,0.5,0.5,0.67,1.0,0.29,0
+p1-tally-opus,p1-tally,opus,C,"T1 rename function group_by -> group_rows in tally.py, test_tally.py (README if ",0.49,5.0,0.63,0.76,0.76,1.208,0.39,6
+p1-tally-opus,p1-tally,opus,C,"T4 value-sort ties A to Z: CSV k,v/a,5/b,5/c,5 with `--group-by k --column v` li",1.06,8.0,1.01,1.22,1.14,1.208,0.65,6
+p1-tally-opus,p1-tally,opus,C,"T2 `--format csv`: grouped header key,count[,sum] + one row per group; summary h",2.25,15.0,1.89,2.28,2.03,1.208,2.54,6
+p1-tally-opus,p1-tally,opus,C,T3 notes/performance.md: `# Row passes` with a table of the four modes (function,2.39,15.0,1.89,2.28,2.07,1.208,2.45,6
+p1-tally-opus,p1-tally,opus,C,"T5 README ""Development"" section: repository layout, how to run tests, step-by-st",1.63,12.0,1.51,1.83,1.68,1.208,0.99,6
+p1-tally-opus,p1-tally,opus,C,"Final: full suite passes on python3, no `group_by(` function references remain, ",0.5,4.0,0.5,0.61,0.54,1.208,0.25,6
+p1-tally-sonnet,p1-tally,sonnet,B,T1 docstrings: every function/class in tally.py has a docstring (one-line summar,0.49,6.0,0.48,0.48,0.48,1.0,0.47,0
+p1-tally-sonnet,p1-tally,sonnet,B,"T2 move TallyError, read_rows, check_column to csvio.py and import them back int",0.42,6.0,0.48,0.48,0.48,1.0,0.26,0
+p1-tally-sonnet,p1-tally,sonnet,B,"T4 negative amounts: parse_number accepts -5 / +5 / -1,200.50; `k,amount / a,10 ",0.71,8.0,0.64,0.64,0.56,1.0,0.46,0
+p1-tally-sonnet,p1-tally,sonnet,B,T5 --sort value|key|count (default value = current behavior; key A-Z; count desc,0.65,12.0,0.96,0.96,0.82,1.0,1.01,0
+p1-tally-sonnet,p1-tally,sonnet,B,"T3 notes/exit-codes.md with `# Exit codes`, `## Paths` table (Trigger, Exit code",1.6,15.0,1.2,1.2,1.05,1.0,4.28,0
+p1-tally-sonnet,p1-tally,sonnet,C,"G1 rename `group_by` -> `group_rows` in tally.py (definition, call in run, docst",0.28,4.0,0.32,0.33,0.33,1.046,0.21,5
+p1-tally-sonnet,p1-tally,sonnet,C,"G2 `--format csv`: grouped output is a `key,count[,sum]` header plus one row per",0.65,12.0,0.96,1.0,0.95,1.046,1.09,5
+p1-tally-sonnet,p1-tally,sonnet,C,"G3 notes/performance.md: `# Row passes`, a table with the four invocation modes ",1.6,15.0,1.2,1.25,1.21,1.046,1.68,5
+p1-tally-sonnet,p1-tally,sonnet,C,"G4 equal-total groups ordered A to Z: `k,v / a,5 / b,5 / c,5` with `--group-by k",0.71,8.0,0.64,0.67,0.66,1.046,0.95,5
+p1-tally-sonnet,p1-tally,sonnet,C,"G5 README `## Development` section: repository layout, how to run the tests, num",0.97,12.0,0.96,1.0,1.03,1.046,1.45,5
+p2-shelf-sonnet,p2-shelf,sonnet,B,T3: zero-day loan is not overdue on the day it is lent (isOverdue fix) + regress,0.71,8.0,0.64,0.64,0.64,1.0,0.47,0
+p2-shelf-sonnet,p2-shelf,sonnet,B,"T2: `sort` query param on GET /books (title/author/year, `-` prefix, id default,",0.81,15.0,1.2,1.2,1.11,1.0,0.96,0
+p2-shelf-sonnet,p2-shelf,sonnet,B,"T4: `src/persistence.js` with `loadSnapshot(file)` / `saveSnapshot(file, data)`,",0.7,10.0,0.8,0.8,0.72,1.0,0.5,0
+p2-shelf-sonnet,p2-shelf,sonnet,B,"T5: JSDoc (with @param, @returns, thrown errors) on `Store`, its constructor and",0.81,10.0,0.8,0.8,0.68,1.0,1.52,0
+p2-shelf-sonnet,p2-shelf,sonnet,B,"T1: `notes/persistence-risks.md` with `# Persistence risks`, `## Writes`, `## Sc",1.28,12.0,0.96,0.96,0.91,1.0,1.82,0
+p2-shelf-sonnet,p2-shelf,sonnet,B,"Final: `npm test` green on the last branch, stack of local branches/PRs recorded",0.4,5.0,0.4,0.4,0.41,1.0,0.29,0
+p2-shelf-sonnet,p2-shelf,sonnet,C,T1: `Store.addLoan` -> `createLoan` and `Store.returnLoan` -> `closeLoan` in src,0.42,6.0,0.48,0.48,0.48,0.995,0.39,6
+p2-shelf-sonnet,p2-shelf,sonnet,C,"T3: PATCH /books/:id with `{title:""""}` or `{title:null}` answers 422 with a `tit",0.62,7.0,0.56,0.56,0.55,0.995,0.38,6
+p2-shelf-sonnet,p2-shelf,sonnet,C,"T5: `POST /loans/:id/renew` (7 days or integer `days` 1-30, max 2 renewals then ",1.08,20.0,1.6,1.59,1.51,0.995,1.44,6
+p2-shelf-sonnet,p2-shelf,sonnet,C,"T2: README ""Data file format"" section (top-level keys, book + loan record with e",0.97,12.0,0.96,0.96,0.9,0.995,1.63,6
+p2-shelf-sonnet,p2-shelf,sonnet,C,"T4: notes/validation-coverage.md (`# Validation coverage`, table Endpoint | Inpu",2.67,25.0,2.0,1.99,1.97,0.995,4.1,6
+p2-shelf-sonnet,p2-shelf,sonnet,C,Final: `node --test` green on the last branch; stack of branches/PRs recorded in,0.4,5.0,0.4,0.4,0.41,0.995,0.6,6

@@ -1,0 +1,262 @@
+{
+ "cell": "p2-shelf-sonnet",
+ "fixture": "p2-shelf",
+ "family": "sonnet",
+ "goals": [
+  "B",
+  "C"
+ ],
+ "fixture_commit": "d344b22228e7a81ffad5181650e200e7750d75f5",
+ "runs": [
+  {
+   "goal": "B",
+   "argv": [
+    "claude",
+    "-p",
+    "/free-hands:run Complete these five tasks in this repository. 1) Investigate how the data file is written and write the answer to `notes/persistence-risks.md`: a top-level heading `# Persistence risks`, a section `## Writes` listing every method in `src/store.js` that causes the file to be written, a section `## Scenarios` with a table whose columns are Scenario, Current behavior, Risk and Suggested change covering at least a crash during a write, a corrupt or empty data file at start-up, two requests arriving at the same time, and a very large collection, and a section `## Recommendation` of at most five lines. 2) Add a `sort` query parameter to `GET /books` that accepts `title`, `author`, `year`, `-title`, `-author` and `-year` (a leading minus means descending), keeps ordering by id when absent, puts books without a year last for both `year` and `-year`, and answers 400 with the usual error body for any other value; sorting must happen before paging; document it in the README and add tests. 3) Users report that a book lent for zero days shows up as overdue the moment it is lent: after `POST /books/1/loans` with `{ \"borrower\": \"Ann\", \"days\": 0 }`, `GET /loans/overdue` already lists that loan, although the README says a loan is overdue only after its due date has passed. Make the behavior match the README and add a regression test. 4) Move the reading and writing of the data file out of `src/store.js` into a new module `src/persistence.js` that exports `loadSnapshot(file)` and `saveSnapshot(file, data)`, make `Store` use it, and keep every existing test passing unedited. 5) Add a JSDoc comment to the `Store` class, its constructor and every one of its methods in `src/store.js`, with `@param` and `@returns` tags and a mention of any error it throws.",
+    "…",
+    "--session-id",
+    "f3320d99-7f47-4cf4-9db0-5e12b726be8d",
+    "--plugin-dir",
+    "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-validate/p2-shelf-sonnet/free-hands",
+    "--plugin-dir",
+    "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-validate/p2-shelf-sonnet/witness",
+    "--setting-sources",
+    "project,local",
+    "--model",
+    "sonnet",
+    "--effort",
+    "xhigh",
+    "--max-budget-usd",
+    "15",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--include-hook-events",
+    "--permission-mode",
+    "acceptEdits",
+    "--allowedTools",
+    "Bash",
+    "Read",
+    "Write",
+    "Edit",
+    "Glob",
+    "Grep",
+    "Agent",
+    "ToolSearch",
+    "TodoWrite",
+    "Skill"
+   ],
+   "session_id": "f3320d99-7f47-4cf4-9db0-5e12b726be8d",
+   "prompt": "/free-hands:run Complete these five tasks in this repository. 1) Investigate how the data file is written and write the answer to `notes/persistence-risks.md`: a top-level heading `# Persistence risks`, a section `## Writes` listing every method in `src/store.js` that causes the file to be written, a section `## Scenarios` with a table whose columns are Scenario, Current behavior, Risk and Suggested change covering at least a crash during a write, a corrupt or empty data file at start-up, two requests arriving at the same time, and a very large collection, and a section `## Recommendation` of at most five lines. 2) Add a `sort` query parameter to `GET /books` that accepts `title`, `author`, `year`, `-title`, `-author` and `-year` (a leading minus means descending), keeps ordering by id when absent, puts books without a year last for both `year` and `-year`, and answers 400 with the usual error body for any other value; sorting must happen before paging; document it in the README and add tests. 3) Users report that a book lent for zero days shows up as overdue the moment it is lent: after `POST /books/1/loans` with `{ \"borrower\": \"Ann\", \"days\": 0 }`, `GET /loans/overdue` already lists that loan, although the README says a loan is overdue only after its due date has passed. Make the behavior match the README and add a regression test. 4) Move the reading and writing of the data file out of `src/store.js` into a new module `src/persistence.js` that exports `loadSnapshot(file)` and `saveSnapshot(file, data)`, make `Store` use it, and keep every existing test passing unedited. 5) Add a JSDoc comment to the `Store` class, its constructor and every one of its methods in `src/store.js`, with `@param` and `@returns` tags and a mention of any error it throws.",
+   "started": 1794812712.036983,
+   "records_before": 0,
+   "exit": 0,
+   "stderr": "",
+   "ended": 1794813094.104974,
+   "elapsed_s": 382.1,
+   "model": "claude-sonnet-5-5",
+   "init_plugins": [
+    "free-hands",
+    "eta-witness",
+    "orca-agent-view",
+    "cc-plugin-sec-default",
+    "cc-plugin-agents-md",
+    "cc-plugin-telemetry",
+    "cc-plugin-privacy",
+    "cc-plugin-plugin-authoring"
+   ],
+   "tool_uses": 28,
+   "advisor_calls": 0,
+   "cost": 0.9857493,
+   "usage": {
+    "input_tokens": 54,
+    "cache_creation_input_tokens": 88723,
+    "cache_read_input_tokens": 1764593,
+    "output_tokens": 45429,
+    "output_tokens_details": {
+     "thinking_tokens": 15224
+    },
+    "server_tool_use": {
+     "web_search_requests": 0,
+     "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 88723,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+     {
+      "input_tokens": 2,
+      "output_tokens": 1157,
+      "cache_read_input_tokens": 100906,
+      "cache_creation_input_tokens": 1240,
+      "cache_creation": {
+       "ephemeral_5m_input_tokens": 0,
+       "ephemeral_1h_input_tokens": 1240
+      },
+      "type": "message"
+     }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+   },
+   "num_turns": 29,
+   "duration_ms": 381084,
+   "result_subtype": "success",
+   "model_usage": {
+    "claude-sonnet-5-5": {
+     "inputTokens": 54,
+     "outputTokens": 45429,
+     "cacheReadInputTokens": 1764593,
+     "cacheCreationInputTokens": 88723,
+     "webSearchRequests": 0,
+     "costUSD": 0.9857493,
+     "contextWindow": 1000000,
+     "maxOutputTokens": 128000,
+     "thinkingTokens": 15224,
+     "cacheCreationEphemeral5mInputTokens": 0,
+     "cacheCreationEphemeral1hInputTokens": 88723,
+     "canonicalModel": "claude-sonnet-5-5",
+     "provider": "firstParty",
+     "costBasis": "list"
+    }
+   },
+   "result_text": "sts, because the repo has no remote. The full suite passes (59 tests, 0 failures), and the existing test files are untouched. Only new test files were added.\n\n`npm` is a recording stub in this environment, so I ran the tests with `node --test`.\n\n## What was done\n\n1. **Overdue bug:** `isOverdue` used `dueDate <= now`, so every loan counted as overdue on its own due day, not just zero-day loans. I changed it to `<`, which matches the README. A regression test in `test/overdue.test.js` fails without the fix.\n2. **`sort` on `GET /books`:**\n   - It accepts the six values and defaults to id order.\n   - Books without a year come last in both directions.\n   - Anything else, including an empty `sort=`, gets a 400 in the usual error shape.\n   - Sorting runs before paging, and the README is updated.\n   - The tests are in `test/books-sort.test.js`.\n3. **`src/persistence.js`:** it has `loadSnapshot` and `saveSnapshot`, `Store` uses them, and `store.js` no longer imports `fs`. Behavior is unchanged.\n4. **JSDoc:** the `Store` class, its constructor and all 12 methods have blocks with `@param`, `@returns` and `@throws`. A coverage script confirms it, and I spot-checked the documented errors against real behavior.\n5. **`notes/persistence-risks.md`:** all required sections are there, with 8 scenario rows. The figures come from throwaway scripts I ran, with sizes up to 50,000 books.\n   - The first write of a snapshot is non-atomic, so a crash mid-write can wipe the whole file.\n   - Concurrent requests in one process are safe, but two processes sharing a file lose updates.\n   - Each change rewrites the whole file, and the `available` filter is quadratic. It took about 6.7 s at 50,000 books.\n\n## Decisions (and how to revert)\n\n- **Fixed the comparison instead of special-casing `days: 0`.** To revert, `git revert 2eb3eb3`.\n- **Also fixed `paginate`.** It sliced `(offset, limit)` instead of `(offset, offset + limit)`, so any `offset > 0` returned a short or empty page. Sort-then-page can't work without this fix. To revert, restore the old slice, which I wouldn't do.\n- **Sort details.** Titles and authors compare case-insensitively, and ties keep id order. To revert, `git revert b7f3dd7`.\n- **A regression of my own, caught and fixed.** After the refactor, a data file containing `null` would have started an empty store and overwritten the file. It now throws as it did before (commit `9dc52e2`).\n\n## Branches (merge order)\n\nNo remote is configured and `gh` is a stub, so the push failed and nothing was opened. The branches are chained locally:\n\n1. `fix/zero-day-loan-not-overdue`, based on `main`\n2. `feat/books-sort`\n3. `refactor/persistence-module`\n4. `docs/store-jsdoc`\n5. `docs/persistence-risks`\n\nOnce a remote exists, open each as a PR against the previous branch, with titles ending ` (1)` through ` (5)`. `.free-hands/goal.md` holds the full decision log.\n\nThe host has no session-goal tool, so I couldn't pin the goal there. You can pin it with `/goal` if you want it shown.",
+   "transcript": "/Users/jeonjelyong/Library/Application Support/orca/claude-profiles/5e5abe09-7a58-4503-b610-94741c226282/home/projects/-private-var-folders-fd-j548rpgd0bz5n99xbntzf0100000gn-T-fh-eta-validate-p2-shelf-sonnet-repo/f3320d99-7f47-4cf4-9db0-5e12b726be8d.jsonl",
+   "tests_after": {
+    "exit": 0,
+    "tail": " writes through the persistence module (5.546ms)\n✔ Store with a file that does not exist yet starts empty and creates it on first change (0.447708ms)\n✔ matches static and parameterized routes (1.915792ms)\n✔ decodes URL-encoded parameters (0.132708ms)\n✔ tolerates a trailing slash (0.099291ms)\n✔ unknown path is a 404 (0.247417ms)\n✔ known path with the wrong method is a 405 (0.088375ms)\n✔ adds and fetches a book (4.324458ms)\n✔ rejects a duplicate ISBN (0.280792ms)\n✔ persists to disk and reloads (0.989542ms)\n✔ refuses to delete a book that is on loan (0.109334ms)\n✔ filters by title query and tag (0.904584ms)\n✔ a returned loan frees the book for a new loan (0.129625ms)\n✔ addDays crosses month and year boundaries (1.999125ms)\n✔ daysBetween counts whole days (0.090625ms)\n✔ isOverdue is true for past due dates and false for future ones (0.080667ms)\n✔ paginate returns the first page and totals (1.856208ms)\n✔ intParam applies the fallback and rejects garbage (0.8835ms)\n✔ boolParam parses true and false only (0.405041ms)\n✔ accepts a minimal book and trims strings (1.580167ms)\n✔ rejects a missing title with a field problem (0.256792ms)\n✔ rejects an out-of-range year (0.087625ms)\n✔ normalizes ISBN dashes and rejects bad ISBNs (0.17225ms)\n✔ lowercases tags (0.088333ms)\n✔ partial validation only checks supplied fields (0.062375ms)\n✔ loan defaults to 14 days and requires a borrower (0.1115ms)\nℹ tests 59\nℹ suites 0\nℹ pass 59\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 233.25775\n"
+   }
+  },
+  {
+   "goal": "C",
+   "argv": [
+    "claude",
+    "-p",
+    "/free-hands:run Complete these five tasks in this repository. 1) Rename the store methods `addLoan` to `createLoan` and `returnLoan` to `closeLoan` everywhere they are defined or called (the handler function exported from `src/handlers/loans.js` keeps its name), including the tests, and keep the whole suite passing. 2) Add a \"Data file format\" section to `README.md` that describes the JSON file the server writes: every top-level key, the shape of a book record and of a loan record with an example of each, how ids are assigned, when the file is written, and what happens when the file does not exist at start-up. 3) Users report that a book can be blanked by accident: `PATCH /books/1` with the body `{ \"title\": \"\" }` (or `{ \"title\": null }`) answers 200 and silently changes nothing, but it should be rejected with a 422 and a problem entry for the `title` field like a create request is. Correct this and add a regression test. 4) Investigate input validation across the whole API and write the answer to `notes/validation-coverage.md`: a top-level heading `# Validation coverage`, a table with the columns Endpoint, Input (path parameter, query parameter or body field), Validated in (file and function), Rule and Gap, with one row for every input every endpoint accepts, and a section `## Gaps` that lists the inputs that are not validated or only partly validated, ordered by how likely they are to cause a wrong response. 5) Add a `POST /loans/:id/renew` endpoint that moves the due date of an active loan back by 7 days or by an optional integer `days` from 1 to 30 in the request body, allows at most two renewals per loan (answering 409 afterwards), answers 409 for a loan that was already returned and 404 for an unknown loan, exposes a `renewals` count on every loan (0 for loans that were stored before this change), and is listed in the README endpoint table; add tests.",
+    "…",
+    "--session-id",
+    "d4f83a71-46cb-4d90-a1ac-5fcc57f4ca24",
+    "--plugin-dir",
+    "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-validate/p2-shelf-sonnet/free-hands",
+    "--plugin-dir",
+    "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-validate/p2-shelf-sonnet/witness",
+    "--setting-sources",
+    "project,local",
+    "--model",
+    "sonnet",
+    "--effort",
+    "xhigh",
+    "--max-budget-usd",
+    "15",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--include-hook-events",
+    "--permission-mode",
+    "acceptEdits",
+    "--allowedTools",
+    "Bash",
+    "Read",
+    "Write",
+    "Edit",
+    "Glob",
+    "Grep",
+    "Agent",
+    "ToolSearch",
+    "TodoWrite",
+    "Skill"
+   ],
+   "session_id": "d4f83a71-46cb-4d90-a1ac-5fcc57f4ca24",
+   "prompt": "/free-hands:run Complete these five tasks in this repository. 1) Rename the store methods `addLoan` to `createLoan` and `returnLoan` to `closeLoan` everywhere they are defined or called (the handler function exported from `src/handlers/loans.js` keeps its name), including the tests, and keep the whole suite passing. 2) Add a \"Data file format\" section to `README.md` that describes the JSON file the server writes: every top-level key, the shape of a book record and of a loan record with an example of each, how ids are assigned, when the file is written, and what happens when the file does not exist at start-up. 3) Users report that a book can be blanked by accident: `PATCH /books/1` with the body `{ \"title\": \"\" }` (or `{ \"title\": null }`) answers 200 and silently changes nothing, but it should be rejected with a 422 and a problem entry for the `title` field like a create request is. Correct this and add a regression test. 4) Investigate input validation across the whole API and write the answer to `notes/validation-coverage.md`: a top-level heading `# Validation coverage`, a table with the columns Endpoint, Input (path parameter, query parameter or body field), Validated in (file and function), Rule and Gap, with one row for every input every endpoint accepts, and a section `## Gaps` that lists the inputs that are not validated or only partly validated, ordered by how likely they are to cause a wrong response. 5) Add a `POST /loans/:id/renew` endpoint that moves the due date of an active loan back by 7 days or by an optional integer `days` from 1 to 30 in the request body, allows at most two renewals per loan (answering 409 afterwards), answers 409 for a loan that was already returned and 404 for an unknown loan, exposes a `renewals` count on every loan (0 for loans that were stored before this change), and is listed in the README endpoint table; add tests.",
+   "started": 1794813094.577726,
+   "records_before": 6,
+   "exit": 0,
+   "stderr": "",
+   "ended": 1794813711.991988,
+   "elapsed_s": 617.4,
+   "model": "claude-sonnet-5-5",
+   "init_plugins": [
+    "free-hands",
+    "eta-witness",
+    "orca-agent-view",
+    "cc-plugin-sec-default",
+    "cc-plugin-agents-md",
+    "cc-plugin-telemetry",
+    "cc-plugin-privacy",
+    "cc-plugin-plugin-authoring"
+   ],
+   "tool_uses": 45,
+   "advisor_calls": 0,
+   "cost": 1.7763146000000005,
+   "usage": {
+    "input_tokens": 74,
+    "cache_creation_input_tokens": 149124,
+    "cache_read_input_tokens": 3654806,
+    "output_tokens": 81419,
+    "output_tokens_details": {
+     "thinking_tokens": 30978
+    },
+    "server_tool_use": {
+     "web_search_requests": 0,
+     "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 149124,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+     {
+      "input_tokens": 2,
+      "output_tokens": 1428,
+      "cache_read_input_tokens": 161650,
+      "cache_creation_input_tokens": 2666,
+      "cache_creation": {
+       "ephemeral_5m_input_tokens": 0,
+       "ephemeral_1h_input_tokens": 2666
+      },
+      "type": "message"
+     }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+   },
+   "num_turns": 46,
+   "duration_ms": 616559,
+   "result_subtype": "success",
+   "model_usage": {
+    "claude-sonnet-5-5": {
+     "inputTokens": 74,
+     "outputTokens": 81419,
+     "cacheReadInputTokens": 3654806,
+     "cacheCreationInputTokens": 149124,
+     "webSearchRequests": 0,
+     "costUSD": 1.7763146000000005,
+     "contextWindow": 1000000,
+     "maxOutputTokens": 128000,
+     "thinkingTokens": 30978,
+     "cacheCreationEphemeral5mInputTokens": 0,
+     "cacheCreationEphemeral1hInputTokens": 149124,
+     "canonicalModel": "claude-sonnet-5-5",
+     "provider": "firstParty",
+     "costBasis": "list"
+    }
+   },
+   "result_text": "ks.md`. The only `returnLoan` left is the handler you said to keep, plus its route.\n2. **Blank title on PATCH** (`fix/patch-blank-title`): `validateBook` only checked a supplied title if it was truthy. `\"\"`, `null`, `0` and `false` now give 422 with a `title` problem, and the book stays unchanged. I added an API test and a unit test, and both fail without the fix.\n3. **Renew endpoint** (`feat/loan-renew`): `POST /loans/:id/renew` behaves as specified:\n   - It takes an optional `days` from 1 to 30 and adds 7 days when it is omitted.\n   - A third renewal, or renewing a returned loan, gives 409. An unknown loan gives 404.\n   - An invalid `days` gives 422 and a non-numeric id gives 400.\n   - Every loan has `renewals`. Loans stored before this change read as 0, and the file gains the field on the next write.\n   - The README table and a behaviour note are updated, and the new tests are in `test/renew.test.js`, `test/store.test.js` and `test/validate.test.js`.\n4. **Data file format** (`docs/readme-data-file-format`): the new README section covers the top-level keys, a book and a loan example, id assignment, when the file is written, and what happens when it is missing. I checked every statement in it against the running server with a script (29 checks).\n5. **Validation coverage** (`docs/validation-coverage`): `notes/validation-coverage.md` has 44 rows covering all 11 routes plus the inputs shared by every route, and a `## Gaps` section with 13 items, most likely first. I confirmed each gap against a running server. The top three:\n   - Unknown or misspelled body fields are silently ignored. For example `{\"day\":30}` on renew adds 7 days.\n   - Unknown query names are ignored.\n   - Empty query values are ignored, so `/loans?bookId=` returns every loan.\n\n   No code was changed for these gaps, since the task asked for an investigation only.\n\n## Decisions and how to revert them\n\n- **Stack base:** the earlier run's five commits are unpushed and unmerged, so this stack sits on top of them. PR 1 targets `main` and will also show those commits until they land. To undo, recreate the branches from `main` after that stack merges.\n- **\"Back by 7 days\" read as later:** a renewal extends the loan, and the days are added to the current due date rather than to today. Overdue loans can be renewed. To undo, change `addDays(loan.dueOn, days)` in `Store.renewLoan`.\n- **`renewals` for old loans:** `Store.load()` sets it to 0, so there is no migration step.\n- **Renew check order:** 400 for a bad id, then 404, then 422 for the body, then 409. This matches `createLoan`.\n- **Reverting any task:** `git revert` its commit. The commit ids are in `.free-hands/goal.md`.\n\n## Not done\n\nOpening the PRs. The branches, in merge order:\n1. `refactor/rename-loan-methods`\n2. `fix/patch-blank-title`\n3. `feat/loan-renew`\n4. `docs/readme-data-file-format`\n5. `docs/validation-coverage`\n\nOpen them with titles ending ` (1)` to ` (5)`.\n\n`npm` is also a stub here, so I ran the tests with `node --test`.",
+   "transcript": "/Users/jeonjelyong/Library/Application Support/orca/claude-profiles/5e5abe09-7a58-4503-b610-94741c226282/home/projects/-private-var-folders-fd-j548rpgd0bz5n99xbntzf0100000gn-T-fh-eta-validate-p2-shelf-sonnet-repo/d4f83a71-46cb-4d90-a1ac-5fcc57f4ca24.jsonl",
+   "tests_after": {
+    "exit": 0,
+    "tail": "th with the wrong method is a 405 (0.083625ms)\n✔ adds and fetches a book (1.828042ms)\n✔ rejects a duplicate ISBN (0.272375ms)\n✔ persists to disk and reloads (0.90475ms)\n✔ refuses to delete a book that is on loan (0.109208ms)\n✔ filters by title query and tag (0.872666ms)\n✔ a returned loan frees the book for a new loan (0.130417ms)\n✔ renewLoan extends the due date, counts renewals and stops after the second (0.142ms)\n✔ renewLoan answers 404 for an unknown loan and 409 for a returned one (0.112625ms)\n✔ addDays crosses month and year boundaries (1.837625ms)\n✔ daysBetween counts whole days (0.114917ms)\n✔ isOverdue is true for past due dates and false for future ones (0.0775ms)\n✔ paginate returns the first page and totals (0.863375ms)\n✔ intParam applies the fallback and rejects garbage (0.297584ms)\n✔ boolParam parses true and false only (0.095ms)\n✔ accepts a minimal book and trims strings (1.700375ms)\n✔ rejects a missing title with a field problem (0.261208ms)\n✔ rejects an out-of-range year (0.087667ms)\n✔ normalizes ISBN dashes and rejects bad ISBNs (0.172958ms)\n✔ lowercases tags (0.097958ms)\n✔ partial validation only checks supplied fields (0.057083ms)\n✔ partial validation rejects a supplied title that is blank, null or not a string (0.143375ms)\n✔ loan defaults to 14 days and requires a borrower (0.105458ms)\n✔ renewal days are optional and must be an integer from 1 to 30 (0.213ms)\nℹ tests 79\nℹ suites 0\nℹ pass 79\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 258.983416\n"
+   }
+  }
+ ],
+ "cost": 2.7620639000000007,
+ "elapsed_s": 999.5,
+ "git_status": "",
+ "diff_stat": " README.md                    | 117 ++++++++++++++++++++-\n notes/persistence-risks.md   |  37 +++++++\n notes/validation-coverage.md |  72 +++++++++++++\n src/handlers/books.js        |   6 +-\n src/handlers/loans.js        |  15 ++-\n src/persistence.js           |  37 +++++++\n src/server.js                |   1 +\n src/store.js                 | 240 +++++++++++++++++++++++++++++++++++++++++--\n src/util/dates.js            |   2 +-\n src/util/pagination.js       |   2 +-\n src/util/query.js            |  14 +++\n src/validate.js              |  19 +++-\n test/api.test.js             |  23 +++++\n test/books-sort.test.js      | 111 ++++++++++++++++++++\n test/overdue.test.js         |  61 +++++++++++\n test/persistence.test.js     |  83 +++++++++++++++\n test/renew.test.js           | 210 +++++++++++++++++++++++++++++++++++++\n test/store.test.js           |  33 +++++-\n test/validate.test.js        |  29 +++++-\n 19 files changed, 1087 insertions(+), 25 deletions(-)\n"
+}

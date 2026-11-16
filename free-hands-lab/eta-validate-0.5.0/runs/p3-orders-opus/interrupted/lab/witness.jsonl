@@ -1,0 +1,7 @@
+{"at": 1794814033.3138208, "event": "SessionStart", "tool": null, "agent": null, "duration_ms": null, "source": "startup", "marks": ""}
+{"at": 1794814033.44068, "event": "UserPromptSubmit", "tool": null, "agent": null, "duration_ms": null, "source": null, "marks": ""}
+{"at": 1794814038.791229, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 2200, "source": null, "marks": ""}
+{"at": 1794814042.36273, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 919, "source": null, "marks": ""}
+{"at": 1794814045.273261, "event": "PostToolUse", "tool": "Read", "agent": null, "duration_ms": 274, "source": null, "marks": ""}
+{"at": 1794814049.941877, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 1033, "source": null, "marks": ""}
+{"at": 1794814053.056227, "event": "PostToolUse", "tool": "Read", "agent": null, "duration_ms": 7, "source": null, "marks": ""}

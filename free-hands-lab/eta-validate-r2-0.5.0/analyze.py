@@ -1,0 +1,126 @@
+#!/usr/bin/env python3
+"""SPEC.md's analysis over E2's completed cells and this sibling's. Usage: python3 analyze.py  → METRICS.md, items.csv
+
+Per held-out item: the raw estimate, the estimate × the shipped factor (subject's eta-baseline.json) and that × the
+project factor from the records the same repository held before the goal started — each against the recorded actual.
+Per goal: the remaining time the dashboard showed when the checklist was first written (the witness ran the subject's
+`guard.py status` at every checklist change) against the wall-clock time until the goal's last completion.
+"""
+import csv
+import importlib.util
+import json
+import math
+from pathlib import Path
+import re
+import statistics
+
+LAB = Path(__file__).resolve().parent
+RUNS = LAB / "runs"
+POOLED = [LAB.parent / "eta-validate-0.5.0" / "runs", RUNS]  # E2's completed cells and this sibling's
+spec = importlib.util.spec_from_file_location("subject_eta", LAB / "subject" / "free-hands" / "scripts" / "eta.py")
+eta = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(eta)
+BASE = eta.baseline()
+CATEGORIES = json.loads((LAB.parent / "eta-calibrate-0.5.0" / "baseline-candidate.json").read_text())["families"]
+LEFT = re.compile(r"~(?:(\d+)h)?(\d+)m left")
+
+
+def rows_of(path):
+    timings = path / "timings.jsonl"
+    return [json.loads(line) for line in timings.read_text().splitlines()] if timings.exists() else []
+
+
+def usable(row):
+    return row.get("outcome") == "done" and (row.get("est_min") or 0) > 0 and (row.get("actual_min") or 0) > 0
+
+
+def err(actual, predicted):
+    return abs(math.log2(actual / predicted))
+
+
+def minutes_left(status):
+    match = LEFT.search((status or {}).get("detail") or "")
+    return (int(match.group(1) or 0) * 60 + int(match.group(2))) if match else None
+
+
+def main():
+    items, goals = [], []
+    for path in sorted(p for runs in POOLED for p in runs.iterdir()):
+        if path.name == "V00" or not (path / "DONE").exists():
+            continue
+        notes = json.loads((path / "summary.json").read_text())
+        notes["cell"] = f"{notes['cell']} ({path.parent.parent.name})"
+        witness = [json.loads(l) for l in (path / "lab" / "witness.jsonl").read_text().splitlines()] \
+            if (path / "lab" / "witness.jsonl").exists() else []
+        seen = 0
+        for run in notes["runs"]:
+            after = rows_of(path / f"free-hands-dir-after-{run['goal']}")
+            start, prior, mine = seen, [r for r in after[:seen] if usable(r)], after[seen:]
+            seen = len(after)
+            project = eta.project_factor(prior, BASE)
+            for index, r in enumerate(mine):
+                if not usable(r):
+                    continue
+                online = eta.project_factor([x for x in after[:start + index] if usable(x)], BASE)
+                fam = r.get("family") or notes["family"]
+                base = r["est_min"] * eta.factor(BASE, fam, r.get("cat"))
+                cat = r["est_min"] * eta.factor(CATEGORIES, fam, r.get("cat"))
+                items.append({"cell": notes["cell"], "fixture": notes["fixture"], "family": notes["family"],
+                              "goal": run["goal"], "item": r["item"][:80], "cat": r.get("cat"), "est": r["est_min"],
+                              "base": round(base, 2), "catpred": round(cat, 2), "proj": round(base * project, 2), "online": round(base * online, 2),
+                              "project": round(project, 3),
+                              "actual": r["actual_min"], "prior": len(prior)})
+            window = [w for w in witness if run["started"] <= w["at"] <= run["ended"]]
+            first = next((w for w in window if w.get("status") and w.get("marks") and set(w["marks"]) == {" "}), None)
+            done = [w["at"] for i, w in enumerate(window) if i and w.get("marks", "").count("x") + w.get("marks", "")
+                    .count("-") > window[i - 1].get("marks", "").count("x") + window[i - 1].get("marks", "").count("-")]
+            shown = minutes_left(first.get("status")) if first else None
+            wall = (max(done) - first["at"]) / 60.0 if first and done else None
+            goals.append({"cell": notes["cell"], "family": notes["family"], "goal": run["goal"],
+                          "shown_value": (first or {}).get("status", {}).get("value"), "shown_left_min": shown,
+                          "wall_min": round(wall, 2) if wall else None,
+                          "err": round(err(wall, shown), 2) if shown and wall else None,
+                          "cost": run.get("cost"), "elapsed_s": run.get("elapsed_s"), "exit": run.get("exit"),
+                          "tests_after": run.get("tests_after", {}).get("exit")})
+    with open(LAB / "items.csv", "w", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(items[0]) if items else ["cell"])
+        writer.writeheader()
+        writer.writerows(items)
+    lines = ["# Metrics", "", "Generated by analyze.py from runs/*/. Error = |log2(actual / predicted)| per item "
+             "(0 = exact, 1 = off by 2x). raw = the agent's estimate; base = estimate × the shipped factor; cat = estimate × "
+             "E1's family × category factor; proj = base "
+             "× the project factor from the records the repository held before the goal started (goal B: none, so "
+             "proj = base); online = base × the project factor from every record before that item, as the dashboard "
+             "computes it.", "", "## Goals", "",
+             "| Cell | Goal | Exit | Elapsed s | Cost USD | Tests after | Dashboard at start | Shown left min | "
+             "Wall min to last item | Error |", "|---|---|---:|---:|---:|---:|---|---:|---:|---:|"]
+    for g in goals:
+        lines.append(f"| {g['cell']} | {g['goal']} | {g['exit']} | {g['elapsed_s']} | "
+                     f"{(g['cost'] or 0):.2f} | {g['tests_after']} | {g['shown_value']} | {g['shown_left_min']} | "
+                     f"{g['wall_min']} | {g['err']} |")
+    lines += ["", f"Total cost {sum(g['cost'] or 0 for g in goals):.2f} USD.", "", "## Items", "",
+              "| Group | n | Raw median error | Base median error | Cat median error | Proj median error | Online median error |",
+              "|---|---:|---:|---:|---:|---:|---:|"]
+
+    def group(name, rows):
+        if not rows:
+            return
+        med = lambda key: statistics.median(err(r["actual"], r[key]) for r in rows)  # noqa: E731
+        lines.append(f"| {name} | {len(rows)} | {med('est'):.2f} | {med('base'):.2f} | {med('catpred'):.2f} | {med('proj'):.2f} | "
+                     f"{med('online'):.2f} |")
+    for fam in sorted({i["family"] for i in items}):
+        group(fam, [i for i in items if i["family"] == fam])
+        for goal in ("B", "C"):
+            group(f"{fam} goal {goal}", [i for i in items if i["family"] == fam and i["goal"] == goal])
+    group("all", items)
+    group("all goal C (with a project record)", [i for i in items if i["goal"] == "C"])
+    shown = [g for g in goals if g["err"] is not None]
+    if shown:
+        lines += ["", f"Dashboard at goal start: median error {statistics.median(g['err'] for g in shown):.2f} over "
+                  f"{len(shown)} goals."]
+    (LAB / "METRICS.md").write_text("\n".join(lines) + "\n")
+    print("\n".join(lines[-14:]))
+
+
+if __name__ == "__main__":
+    main()
