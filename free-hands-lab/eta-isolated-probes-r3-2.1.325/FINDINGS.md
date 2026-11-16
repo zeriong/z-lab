@@ -15,6 +15,10 @@ Claude Code 2.1.325, tmux 3.8, Python 3.9.6 (`runs/V00`), macOS, 2026-11-16. Cla
 - **I07 — The hook finds the CLI on `PATH`.** `shutil.which("claude")` gave `/opt/homebrew/bin/claude` in both cases;
   the hook's parent process and `CLAUDE_PID` were the `claude` process (`ps -o comm=` gives the name only).
 
+- **I08 — The hook's parent process is the `CLAUDE_PID` process.** Read from the recorded hook rows after the
+  run (post-hoc): C1 parent 72422 = `CLAUDE_PID` 72422; C2 73822 = 73822. A process started inside a Claude Code
+  session inherits `CLAUDECODE` and `CLAUDE_PID` but has another parent.
+
 ## Not measured
 
 Codex's hook environment (whether it sets `CLAUDECODE`); a `claude` that is not on `PATH`.
