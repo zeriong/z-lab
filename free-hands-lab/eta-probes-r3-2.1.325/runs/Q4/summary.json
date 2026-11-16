@@ -1,0 +1,64 @@
+{
+ "goal_before": "status: active\nmax_iterations: 6\niterations: 0\nowner: 710ca363-976a-498f-be0d-009951cba76c\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] item a: run `sleep 6`, then mark this item `- [x]`\n- [ ] item b: run `sleep 6`, then mark this item `- [x]`\n- [ ] item c: run `sleep 6`, then mark this item `- [x]`\n## Decisions\n## Resume\n",
+ "free_hands_commit": "34a786b92dc63f8a861514a0052ae1b01b4f644c",
+ "free_hands_version": "0.4.1",
+ "argv": [
+  "claude",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes-r3/Q4/mod-probe",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes-r3/Q4/free-hands",
+  "--session-id",
+  "710ca363-976a-498f-be0d-009951cba76c",
+  "--setting-sources",
+  "project,local",
+  "--model",
+  "sonnet",
+  "--effort",
+  "xhigh",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash",
+  "Read",
+  "Write",
+  "Edit"
+ ],
+ "session_id": "710ca363-976a-498f-be0d-009951cba76c",
+ "trust_dialog": true,
+ "trust_yes_selected": true,
+ "elapsed_ms": 57307,
+ "module_rows": [
+  {
+   "at": 1794809303038,
+   "event": "session.start"
+  },
+  {
+   "at": 1794809303633,
+   "event": "session.measure",
+   "changed": [
+    "context",
+    "rateLimits",
+    "cost"
+   ]
+  },
+  {
+   "at": 1794809309281,
+   "event": "turn.start",
+   "turnId": "e01eb992-765d-40c3-b7e3-3fa67e5c1282"
+  },
+  {
+   "at": 1794809351331,
+   "event": "turn.complete"
+  },
+  {
+   "at": 1794809351351,
+   "event": "session.measure",
+   "changed": [
+    "context",
+    "cost"
+   ]
+  }
+ ],
+ "goal_after": "status: done\nmax_iterations: 6\niterations: 1\nowner: 710ca363-976a-498f-be0d-009951cba76c\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [x] item a: run `sleep 6`, then mark this item `- [x]`\n- [x] item b: run `sleep 6`, then mark this item `- [x]`\n- [x] item c: run `sleep 6`, then mark this item `- [x]`\n## Decisions\n## Resume\n"
+}
