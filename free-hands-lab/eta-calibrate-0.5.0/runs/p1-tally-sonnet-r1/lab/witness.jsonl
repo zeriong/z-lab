@@ -1,0 +1,33 @@
+{"at": 1794809651.3314571, "event": "SessionStart", "tool": null, "agent": null, "duration_ms": null, "source": "startup", "marks": ""}
+{"at": 1794809651.4707808, "event": "UserPromptSubmit", "tool": null, "agent": null, "duration_ms": null, "source": null, "marks": ""}
+{"at": 1794809656.5216231, "event": "PostToolUseFailure", "tool": "Bash", "agent": null, "duration_ms": 2074, "source": null, "marks": ""}
+{"at": 1794809656.572333, "event": "PostToolUse", "tool": "Read", "agent": null, "duration_ms": 3, "source": null, "marks": ""}
+{"at": 1794809659.395144, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 800, "source": null, "marks": ""}
+{"at": 1794809719.390252, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 735, "source": null, "marks": "     "}
+{"at": 1794809719.4643378, "event": "PostToolUse", "tool": "ToolSearch", "agent": null, "duration_ms": 2, "source": null, "marks": "     "}
+{"at": 1794809724.701979, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 922, "source": null, "marks": "     "}
+{"at": 1794809732.2698061, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 708, "source": null, "marks": "     "}
+{"at": 1794809732.644265, "event": "PostToolUse", "tool": "Edit", "agent": null, "duration_ms": 7, "source": null, "marks": "     "}
+{"at": 1794809739.921848, "event": "PostToolUse", "tool": "Edit", "agent": null, "duration_ms": 7, "source": null, "marks": "     "}
+{"at": 1794809743.548754, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 906, "source": null, "marks": "     "}
+{"at": 1794809749.188952, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 739, "source": null, "marks": "x    "}
+{"at": 1794809755.7969549, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 807, "source": null, "marks": "x    "}
+{"at": 1794809768.166539, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 721, "source": null, "marks": "x    "}
+{"at": 1794809780.670047, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 783, "source": null, "marks": "x    "}
+{"at": 1794809784.1717901, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 735, "source": null, "marks": "x    "}
+{"at": 1794809790.4899049, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 907, "source": null, "marks": "x    "}
+{"at": 1794809797.376318, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 781, "source": null, "marks": "xx   "}
+{"at": 1794809803.247854, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 811, "source": null, "marks": "xx   "}
+{"at": 1794809810.422116, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 834, "source": null, "marks": "xx   "}
+{"at": 1794809815.851268, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 770, "source": null, "marks": "xxx  "}
+{"at": 1794809840.854672, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 1422, "source": null, "marks": "xxx  "}
+{"at": 1794809853.567822, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 1086, "source": null, "marks": "xxx  "}
+{"at": 1794809895.108695, "event": "PostToolUse", "tool": "Write", "agent": null, "duration_ms": 4, "source": null, "marks": "xxx  "}
+{"at": 1794809903.283951, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 775, "source": null, "marks": "xxx  "}
+{"at": 1794809912.744616, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 857, "source": null, "marks": "xxxx "}
+{"at": 1794809923.166592, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 904, "source": null, "marks": "xxxx "}
+{"at": 1794809930.591533, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 935, "source": null, "marks": "xxxx "}
+{"at": 1794809938.7740428, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 788, "source": null, "marks": "xxxxx"}
+{"at": 1794809946.564068, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 1027, "source": null, "marks": "xxxxx"}
+{"at": 1794809952.4170802, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 773, "source": null, "marks": "xxxxx"}
+{"at": 1794809959.0703921, "event": "Stop", "tool": null, "agent": null, "duration_ms": null, "source": null, "marks": "xxxxx"}
