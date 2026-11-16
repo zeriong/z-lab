@@ -1,0 +1,30 @@
+{"at": 1794821795.055388, "event": "SessionStart", "tool": null, "agent": null, "duration_ms": null, "source": "startup", "marks": ""}
+{"at": 1794821795.172639, "event": "UserPromptSubmit", "tool": null, "agent": null, "duration_ms": null, "source": null, "marks": ""}
+{"at": 1794821799.546871, "event": "PostToolUseFailure", "tool": "Bash", "agent": null, "duration_ms": 1598, "source": null, "marks": ""}
+{"at": 1794821802.219072, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 763, "source": null, "marks": ""}
+{"at": 1794821865.332528, "event": "PostToolUse", "tool": "ToolSearch", "agent": null, "duration_ms": 4, "source": null, "marks": ""}
+{"at": 1794821867.341999, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 1096, "source": null, "marks": ""}
+{"at": 1794821874.808407, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 700, "source": null, "marks": "      ", "status": {"value": "active 0/40 \u00b7 6 open", "source": "project", "project": "active 0/40 \u00b7 6 open", "global": null, "detail": "owner 265ac670", "watch": ["/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-isolated-run-r2/p1-tally-sonnet-B/repo/.free-hands/goal.md", "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-isolated-run-r2/p1-tally-sonnet-B/repo/.free-hands/estimates.jsonl"]}}
+{"at": 1794821879.6015942, "event": "PostToolUse", "tool": "Write", "agent": null, "duration_ms": 5, "source": null, "marks": "      "}
+{"at": 1794821881.960864, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 824, "source": null, "marks": "      "}
+{"at": 1794821886.419231, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 710, "source": null, "marks": "      "}
+{"at": 1794821886.5621362, "event": "PostToolUse", "tool": "Edit", "agent": null, "duration_ms": 7, "source": null, "marks": "      "}
+{"at": 1794821893.2933, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 899, "source": null, "marks": "      "}
+{"at": 1794821899.10938, "event": "PostToolUse", "tool": "Read", "agent": null, "duration_ms": 2, "source": null, "marks": "      "}
+{"at": 1794821918.9573162, "event": "PostToolUse", "tool": "Write", "agent": null, "duration_ms": 7, "source": null, "marks": "      "}
+{"at": 1794821924.936136, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 813, "source": null, "marks": "      "}
+{"at": 1794821935.801868, "event": "PostToolUse", "tool": "Read", "agent": null, "duration_ms": 6, "source": null, "marks": "      "}
+{"at": 1794821950.0994072, "event": "PostToolUse", "tool": "Edit", "agent": null, "duration_ms": 9, "source": null, "marks": "      "}
+{"at": 1794821955.252383, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 795, "source": null, "marks": "      "}
+{"at": 1794821959.911607, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 839, "source": null, "marks": "      "}
+{"at": 1794821969.191194, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 1530, "source": null, "marks": "      "}
+{"at": 1794821983.026817, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 1881, "source": null, "marks": "      "}
+{"at": 1794821987.816569, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 716, "source": null, "marks": "      "}
+{"at": 1794822007.2600472, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 994, "source": null, "marks": "      "}
+{"at": 1794822025.2288, "event": "PostToolUse", "tool": "Write", "agent": null, "duration_ms": 8, "source": null, "marks": "      "}
+{"at": 1794822033.422666, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 690, "source": null, "marks": "      "}
+{"at": 1794822037.686597, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 681, "source": null, "marks": "      "}
+{"at": 1794822045.391414, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 688, "source": null, "marks": "      "}
+{"at": 1794822054.406355, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 827, "source": null, "marks": "      "}
+{"at": 1794822065.132716, "event": "PostToolUse", "tool": "Bash", "agent": null, "duration_ms": 668, "source": null, "marks": "xxxxxx", "status": {"value": "done", "source": "project", "project": "done", "global": null, "detail": "owner 265ac670", "watch": ["/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-isolated-run-r2/p1-tally-sonnet-B/repo/.free-hands/goal.md", "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-isolated-run-r2/p1-tally-sonnet-B/repo/.free-hands/estimates.jsonl"]}}
+{"at": 1794822073.5205371, "event": "Stop", "tool": null, "agent": null, "duration_ms": null, "source": null, "marks": "xxxxxx"}
