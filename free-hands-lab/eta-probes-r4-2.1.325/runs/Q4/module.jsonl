@@ -1,0 +1,14 @@
+{"at":1794809647437,"event":"session.start"}
+{"at":1794809647819,"event":"session.measure","changed":["context","rateLimits","cost"]}
+{"at":1794809653732,"event":"turn.start","turnId":"9a9b9710-4244-4376-b48c-33376eb4fbaa"}
+{"at":1794809656030,"event":"tool.call","tool":"Read","agentId":null,"before":1794809655975,"after":1794809656004,"n":1,"spawnMs":25,"goalOpen":3,"goalDone":0}
+{"at":1794809665408,"event":"tool.call","tool":"Bash","agentId":null,"before":1794809658097,"after":1794809665363,"n":2,"spawnMs":37,"goalOpen":3,"goalDone":0}
+{"at":1794809667901,"event":"tool.call","tool":"Edit","agentId":null,"before":1794809667762,"after":1794809667791,"n":3,"spawnMs":107,"goalOpen":2,"goalDone":1}
+{"at":1794809678998,"event":"tool.call","tool":"Bash","agentId":null,"before":1794809672345,"after":1794809678966,"n":4,"spawnMs":27,"goalOpen":2,"goalDone":1}
+{"at":1794809681473,"event":"tool.call","tool":"Edit","agentId":null,"before":1794809681404,"after":1794809681442,"n":5,"spawnMs":30,"goalOpen":1,"goalDone":2}
+{"at":1794809691454,"event":"tool.call","tool":"Bash","agentId":null,"before":1794809684818,"after":1794809691414,"n":6,"spawnMs":34,"goalOpen":1,"goalDone":2}
+{"at":1794809694171,"event":"tool.call","tool":"Edit","agentId":null,"before":1794809694096,"after":1794809694139,"n":7,"spawnMs":31,"goalOpen":0,"goalDone":3}
+{"at":1794809694779,"event":"session.measure","changed":["context","rateLimits","cost"]}
+{"at":1794809694848,"event":"tool.call","tool":"Edit","agentId":null,"before":1794809694774,"after":1794809694817,"n":8,"spawnMs":29,"goalOpen":0,"goalDone":3}
+{"at":1794809696129,"event":"turn.complete"}
+{"at":1794809696147,"event":"session.measure","changed":["context","cost"]}
