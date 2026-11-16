@@ -1,0 +1,51 @@
+{
+ "case": "B1",
+ "argv": [
+  "claude",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/dashboard-run-030/B1/plugins/dashboard",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/dashboard-run-030/B1/plugins/free-hands",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/dashboard-run-030/B1/plugins/turn-log",
+  "--session-id",
+  "1c4c797d-ef43-4feb-999b-74232b253cb0",
+  "--setting-sources",
+  "project,local",
+  "--model",
+  "sonnet",
+  "--effort",
+  "xhigh",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash",
+  "Read",
+  "Write",
+  "Edit"
+ ],
+ "session_id": "1c4c797d-ef43-4feb-999b-74232b253cb0",
+ "goal_before": "status: active\nmax_iterations: 10\niterations: 0\nowner: 1c4c797d-ef43-4feb-999b-74232b253cb0\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] item a: run `sleep 20`, then mark this item `- [x]` (~2m ops)\n- [ ] item b: run `sleep 20`, then mark this item `- [x]` (~2m ops)\n- [ ] item c: run `sleep 20`, then mark this item `- [x]` (~2m ops)\n## Decisions\n## Resume\n",
+ "trust_yes_selected": true,
+ "prompt_at": 1794810197.054842,
+ "elapsed_ms": 96233,
+ "turn_log": [
+  {
+   "at": 1794810197172,
+   "event": "turn.start"
+  },
+  {
+   "at": 1794810275108,
+   "event": "turn.complete"
+  }
+ ],
+ "goal_after": "status: done\nmax_iterations: 10\niterations: 0\nowner: 1c4c797d-ef43-4feb-999b-74232b253cb0\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [x] item a: run `sleep 20`, then mark this item `- [x]` (~2m ops)\n- [x] item b: run `sleep 20`, then mark this item `- [x]` (~2m ops)\n- [x] item c: run `sleep 20`, then mark this item `- [x]` (~2m ops)\n## Decisions\n## Resume\n",
+ "eta.json": "{\"goal\": \"2f4fd8bd0e945355\", \"started\": 1794810189.031519, \"active\": 83.45643019676208, \"mark\": 83.45643019676208, \"last\": 1794810272.4879491, \"idle\": false, \"items\": {\"item a: run `sleep 20`, then mark this item `- [x]`\": {\"mark\": \"x\", \"est\": 2.0, \"cat\": \"ops\"}, \"item b: run `sleep 20`, then mark this item `- [x]`\": {\"mark\": \"x\", \"est\": 2.0, \"cat\": \"ops\"}, \"item c: run `sleep 20`, then mark this item `- [x]`\": {\"mark\": \"x\", \"est\": 2.0, \"cat\": \"ops\"}}, \"model\": \"claude-sonnet-5-5\", \"effort\": \"xhigh\"}",
+ "timings.jsonl": "{\"v\": 1, \"at\": \"2026-11-16T06:23:44Z\", \"goal\": \"2f4fd8bd0e945355\", \"item\": \"item a: run `sleep 20`, then mark this item `- [x]`\", \"cat\": \"ops\", \"est_min\": 2.0, \"actual_min\": 0.59, \"batch\": 1, \"outcome\": \"done\", \"model\": \"claude-sonnet-5-5\", \"family\": \"sonnet\", \"effort\": \"xhigh\"}\n{\"v\": 1, \"at\": \"2026-11-16T06:24:08Z\", \"goal\": \"2f4fd8bd0e945355\", \"item\": \"item b: run `sleep 20`, then mark this item `- [x]`\", \"cat\": \"ops\", \"est_min\": 2.0, \"actual_min\": 0.4, \"batch\": 1, \"outcome\": \"done\", \"model\": \"claude-sonnet-5-5\", \"family\": \"sonnet\", \"effort\": \"xhigh\"}\n{\"v\": 1, \"at\": \"2026-11-16T06:24:32Z\", \"goal\": \"2f4fd8bd0e945355\", \"item\": \"item c: run `sleep 20`, then mark this item `- [x]`\", \"cat\": \"ops\", \"est_min\": 2.0, \"actual_min\": 0.39, \"batch\": 1, \"outcome\": \"done\", \"model\": \"claude-sonnet-5-5\", \"family\": \"sonnet\", \"effort\": \"xhigh\"}\n",
+ "values_before_turn_complete": [
+  "active 0/10 · 3 open · ETA 15:29 (project) · ~6m left · owner 1c4c797d",
+  "active 0/10 · 2 open · ETA 15:26 (project) · ~3m left · owner 1c4c797d",
+  "active 0/10 · 1 open · ETA 15:25 (project) · ~1m left · owner 1c4c797d",
+  "done (project) · owner 1c4c797d"
+ ]
+}
