@@ -17,7 +17,9 @@ ran after it with the subject unchanged.
 - **E02 — Every agent wrote the estimates as asked.** All 76 items in the 13 final goal files carried `(~<minutes>m <category>)`; the agents split
   the five tasks into 5–7 items (a test item, an ops item for commits, a decision item), so categories `test` and `ops`
   appear beside the five task categories.
-- **E03 — Agents overestimate their own time by 5–12×, every family, every category, every fixture.** Ratio actual /
+- **E03 — Agents overestimate their own time: 5–12× on average per family, and in every category and fixture.**
+  (Corrected 2026-11-16: the first wording read 5–12× for every category; per family × category the geometric-mean
+  ratio ran from 0.42 — Fable refactor, n=1 — to 0.02 — Opus test, n=1 — so 2.4× to about 50×.) Ratio actual /
   estimate (geometric mean): Sonnet 0.08 (n=34), Opus 0.13 (n=34), Fable 0.20 (n=7, one fixture). The raw estimate's
   median error was 3.49 doublings (Sonnet), 3.02 (Opus), 2.29 (Fable); 0–17 % of items fell within ±50 % in any group.
   Per cell, Σ estimate vs Σ actual ran from 32 vs 3.7 min (p1 Sonnet) to 78 vs 12.2 min (p3 Opus).
