@@ -1,0 +1,1 @@
+{"name": "env-probe", "version": "0.0.0", "description": "lab: hook environment", "author": {"name": "lab"}, "hooks": "./hooks/hooks.json"}

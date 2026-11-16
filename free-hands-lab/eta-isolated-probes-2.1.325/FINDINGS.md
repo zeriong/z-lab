@@ -9,7 +9,9 @@ streams beside it. n=1 per case. Cost: S1 and S3 parents (Sonnet) plus two Haiku
   hook returned in 1.9 ms; the child (`start_new_session`, stdin from /dev/null, stdout and stderr to a file) ran on
   after the parent `claude -p` exited (child finished 13.1 s after the parent, its parent pid 1); the parent stream's
   `hook_response` output was `''`.
-- **I02 — The hook can tell it runs under Claude Code, and finds its executable.** The hook environment held
+- **I02 — (Corrected 2026-11-16: the runner passed on the lab session's own environment, so these values were
+  partly inherited; from a clean environment a hook gets `CLAUDECODE=1` and no `CLAUDE_CODE_EXECPATH` —
+  `../eta-isolated-probes-r3-2.1.325/` I06, I07.) The hook can tell it runs under Claude Code, and finds its executable.** The hook environment held
   `CLAUDE_CODE_EXECPATH` (the running `claude` binary), `CLAUDE_PID`, `CLAUDE_PROJECT_DIR`, `CLAUDE_CODE_ENTRYPOINT`
   (`sdk-cli` under `-p`), `CLAUDE_EFFORT`, `CLAUDE_CODE_SESSION_ATTENDED` (`0` under `-p`). It also held `CODEX_HOME`
   (set by the Orca app for this account), so a `CODEX_*` variable does not mean Codex.
