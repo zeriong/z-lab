@@ -1,0 +1,11 @@
+{
+  "name": "shelf",
+  "version": "0.3.0",
+  "description": "A small JSON API for a book collection and its loans.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  }
+}
