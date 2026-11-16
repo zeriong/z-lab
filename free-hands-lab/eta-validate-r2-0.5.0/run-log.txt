@@ -1,0 +1,9 @@
+V00: done
+p3-orders-sonnet: running (spent so far 0.00 USD)
+p2-shelf-opus: running (spent so far 0.00 USD)
+p3-orders-opus: running (spent so far 0.00 USD)
+p3-orders-sonnet: done (3.6878636 USD, 1231.8 s)
+p1-tally-fable: running (spent so far 3.69 USD)
+p2-shelf-opus: done (8.663991499999998 USD, 1577.7 s)
+p3-orders-opus: done (12.008440099999998 USD, 1822.3 s)
+p1-tally-fable: done (7.030190299999999 USD, 849.9 s)
