@@ -40,6 +40,14 @@ repository; the plan and triage log of the 0.1.0 work are in its `.claude-x-code
 | 12 | plugin-platform-lab mod-interactive I05: the ask guard blocked budget's `$.ui.ask`; budget-lab codex-gate B03: the stop guard kept a gated Codex turn going | 0.4.0: ask and stop guards stand aside while `budget/pending/<session>.json` is open; SKILL.md and the restore note name the one exception | measured: budget-lab run-0.1.0 R04, R07, r2 R12 |
 | 13 | Root Rule 11 (maintainer, 2026-10-14) | 0.4.0: `guard.py status` + `dashboard.json` | measured: dashboard-lab run-0.1.0 D01, D04 |
 
+| D14 | ETA work covers Claude Code only; the Codex side is led separately by the maintainer | User request, 2026-11-16: "codex에 대한 작업은 별도로 주도할 것이므로 무시하고 claude code의 실험 기록만을 진행" | user, 2026-11-16 |
+| D15 | Calibration arms: Sonnet and Opus twice per fixture, Fable once on one fixture ("minimal"); three fixtures × five items (one per category); about 100 USD for the whole ETA series | User's choice at the interview (recommended options) | user, 2026-11-16 |
+| D16 | The agent writes one estimate per item, `(~<minutes>m <category>)`, when it plans; actual times come only from the owner session's hooks, never from the agent | Agents rewrote the counter they were given (run-0.1.0 F04, r2 G03): a self-reported duration would not be a measurement | decision, 2026-11-16 |
+| D17 | Prediction = raw estimate × shipped factor (model family × category, measured in z-lab) × project factor (this project's `.free-hands/timings.jsonl`, shrunk toward 1 with weight 3). The agent does not read its record when estimating | One correction path: an agent that adjusted its own estimates from the record would be corrected twice by the script | decision, 2026-11-16 |
+| D18 | Calibration cells run at effort `xhigh` | The user's configured `effortLevel`; effort is recorded per item (probes T01) so other levels can be told apart later | decision, 2026-11-16 |
+| D19 | The dashboard shows the expected finish as a clock time (`ETA 14:32`, `+` when items have no estimate), the remaining minutes in the detail | The band refreshes on events, not on a timer; a clock time stays right between refreshes, a countdown does not | decision, 2026-11-16 |
+| 14 | eta-probes T01–T06: no hook input carries the model (the transcript does; tool and Stop inputs carry the effort); PostToolUse sees a goal-file edit by Bash `sed`, Edit, `python3 -c` and Write; PostToolUse reports `duration_ms`; subagent calls reach the parent's hooks with `agent_id`; `--safe-mode` disables `--plugin-dir` hooks, `--setting-sources project,local` isolates | Candidate 0.5.0: `eta.py` reads the model from the transcript tail, records on PostToolUse (all tools), counts a gap over 20 min only as far as `duration_ms` covers it, counts subagent calls; calibration runs isolate with `--setting-sources project,local` | measuring: eta-calibrate-0.5.0 |
+
 ## Not acted on
 
 | # | Observation | Judgment |
