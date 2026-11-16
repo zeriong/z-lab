@@ -1,0 +1,48 @@
+{
+ "unit": "e2-p1-tally-opus-B-r2",
+ "goal_run": "e2-p1-tally-opus-B",
+ "keys": [
+  "T1 docstrings: every function/class in tally.py has a docstring (one-line summary; Args/Returns where it takes params or returns a value); check = ast script reports no missing docstrings/sections",
+  "T2 move TallyError, read_rows, check_column to csvio.py and import back; check = test_tally.py unchanged (git diff empty) and `python3 -m unittest -q` passes, tally.TallyError is csvio.TallyError",
+  "T4 negative amounts: CSV k,amount/a,10/b,-5 with --column amount reports count 2 sum 5; regression test added; check = run the CLI on that CSV and unittest passes",
+  "T5 --sort value|key|count for grouped output, value default, --top after sorting; tests added; README updated; check = unittest passes and CLI runs show each order",
+  "T3 notes/exit-codes.md: `# Exit codes`, `## Paths` table (Trigger, Exit code, Message, Raised in (function), Tested), `## Untested paths`; check = every row reproduced by running the command and its exit code observed",
+  "Final: full suite passes, every function in tally.py and csvio.py has a docstring, git log shows one commit per task on the work branch"
+ ],
+ "rows": [
+  {
+   "key": "T1 docstrings: every function/class in tally.py has a docstring (one-line summary; Args/Returns where it takes params or returns a value); check = ast script reports no missing docstrings/sections",
+   "minutes": 8.0,
+   "category": "docs"
+  },
+  {
+   "key": "T2 move TallyError, read_rows, check_column to csvio.py and import back; check = test_tally.py unchanged (git diff empty) and `python3 -m unittest -q` passes, tally.TallyError is csvio.TallyError",
+   "minutes": 12.0,
+   "category": "refactor"
+  },
+  {
+   "key": "T4 negative amounts: CSV k,amount/a,10/b,-5 with --column amount reports count 2 sum 5; regression test added; check = run the CLI on that CSV and unittest passes",
+   "minutes": 7.0,
+   "category": "fix"
+  },
+  {
+   "key": "T5 --sort value|key|count for grouped output, value default, --top after sorting; tests added; README updated; check = unittest passes and CLI runs show each order",
+   "minutes": 22.0,
+   "category": "feature"
+  },
+  {
+   "key": "T3 notes/exit-codes.md: `# Exit codes`, `## Paths` table (Trigger, Exit code, Message, Raised in (function), Tested), `## Untested paths`; check = every row reproduced by running the command and its exit code observed",
+   "minutes": 15.0,
+   "category": "docs"
+  },
+  {
+   "key": "Final: full suite passes, every function in tally.py and csvio.py has a docstring, git log shows one commit per task on the work branch",
+   "minutes": 8.0,
+   "category": "test"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.00167439,
+ "elapsed_s": 5.9,
+ "git_status_after": ""
+}

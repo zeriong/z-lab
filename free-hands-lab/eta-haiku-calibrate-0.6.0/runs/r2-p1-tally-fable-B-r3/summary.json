@@ -1,0 +1,54 @@
+{
+ "unit": "r2-p1-tally-fable-B-r3",
+ "goal_run": "r2-p1-tally-fable-B",
+ "keys": [
+  "Task 1 — every function and class in `tally.py` has a docstring (one-line summary, Args and Returns); check: an `ast` script reports no function/class without them and `python3 -m unittest -q` passes",
+  "Task 2 — `TallyError`, `read_rows`, `check_column` live in `csvio.py` and are imported back into `tally.py`; check: `python3 -m unittest -q` passes with `git diff --quiet test_tally.py`, and `tally.TallyError is csvio.TallyError`",
+  "Task 4 — negative amounts are parsed; check: the `k,amount / a,10 / b,-5` CSV prints count 2 and sum 5, and a new regression test passes",
+  "Panel decision on the two places where the code contradicts README.md (tie order of the default sort, mean denominator); check: a record with question, options, positions, decision, dissent and revert is under `## Decisions`",
+  "Task 5 — `--sort value|key|count` for grouped output, `--top` applied after sorting, README updated; check: new tests for each order, the default and `--top` pass, and the CLI shows the three orders on `data/sample.csv`",
+  "Task 3 — `notes/exit-codes.md` with `# Exit codes`, `## Paths` (table: Trigger, Exit code, Message, Raised in, Tested) and `## Untested paths`; check: every row's exit code and message was reproduced by running the final code, and every named test exists",
+  "Final verification — `python3 -m unittest -q` passes, `git diff test_tally.py` has no removed or changed lines, the `ast` docstring check passes on `tally.py` and `csvio.py`, and the README examples run"
+ ],
+ "rows": [
+  {
+   "key": "Task 1 — every function and class in `tally.py` has a docstring (one-line summary, Args and Returns); check: an `ast` script reports no function/class without them and `python3 -m unittest -q` passes",
+   "minutes": 12.0,
+   "category": "docs"
+  },
+  {
+   "key": "Task 2 — `TallyError`, `read_rows`, `check_column` live in `csvio.py` and are imported back into `tally.py`; check: `python3 -m unittest -q` passes with `git diff --quiet test_tally.py`, and `tally.TallyError is csvio.TallyError`",
+   "minutes": 10.0,
+   "category": "refactor"
+  },
+  {
+   "key": "Task 4 — negative amounts are parsed; check: the `k,amount / a,10 / b,-5` CSV prints count 2 and sum 5, and a new regression test passes",
+   "minutes": 8.0,
+   "category": "fix"
+  },
+  {
+   "key": "Panel decision on the two places where the code contradicts README.md (tie order of the default sort, mean denominator); check: a record with question, options, positions, decision, dissent and revert is under `## Decisions`",
+   "minutes": 15.0,
+   "category": "research"
+  },
+  {
+   "key": "Task 5 — `--sort value|key|count` for grouped output, `--top` applied after sorting, README updated; check: new tests for each order, the default and `--top` pass, and the CLI shows the three orders on `data/sample.csv`",
+   "minutes": 25.0,
+   "category": "feature"
+  },
+  {
+   "key": "Task 3 — `notes/exit-codes.md` with `# Exit codes`, `## Paths` (table: Trigger, Exit code, Message, Raised in, Tested) and `## Untested paths`; check: every row's exit code and message was reproduced by running the final code, and every named test exists",
+   "minutes": 15.0,
+   "category": "docs"
+  },
+  {
+   "key": "Final verification — `python3 -m unittest -q` passes, `git diff test_tally.py` has no removed or changed lines, the `ast` docstring check passes on `tally.py` and `csvio.py`, and the README examples run",
+   "minutes": 8.0,
+   "category": "test"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.0019568800000000003,
+ "elapsed_s": 5.9,
+ "git_status_after": ""
+}

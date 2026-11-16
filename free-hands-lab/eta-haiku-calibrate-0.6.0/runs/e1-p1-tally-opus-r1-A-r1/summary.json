@@ -1,0 +1,48 @@
+{
+ "unit": "e1-p1-tally-opus-r1-A-r1",
+ "goal_run": "e1-p1-tally-opus-r1-A",
+ "keys": [
+  "Task 1: `column_stats` mean = sum / number of numeric cells; regression test for `k,v / a,10 / b, / c,20` → mean 15 passes; `python3 tally.py <that file> --column v` prints mean 15",
+  "Task 4: `--delimiter` option (default `,`, `tab` → `\\t`, other values longer than one char → `tally: error: …` on stderr, exit 2) with tests in a new test file; tests pass",
+  "Task 5: `format_cell`, `format_table`, `round_numbers`, `render` live in `render.py`, imported back into `tally.py`; `git diff --quiet main -- test_tally.py` succeeds and `python3 -m unittest -q` passes",
+  "Task 3: README \"Examples\" section with three invocations against `data/sample.csv` (amount summary, grouped by region, JSON top-2 products); a script re-runs each command and its output matches the README block byte for byte",
+  "Task 2: `notes/missing-values.md` with `# Missing values`, table (Function | Situation | Behavior | Described in README) covering every handling site, and a final `## Gaps` section; every row checked against the code by running a probe",
+  "Final check: full suite passes, `test_tally.py` unchanged, work committed on a feature branch (not main)"
+ ],
+ "rows": [
+  {
+   "key": "Task 1: `column_stats` mean = sum / number of numeric cells; regression test for `k,v / a,10 / b, / c,20` → mean 15 passes; `python3 tally.py <that file> --column v` prints mean 15",
+   "minutes": 5.0,
+   "category": "fix"
+  },
+  {
+   "key": "Task 4: `--delimiter` option (default `,`, `tab` → `\\t`, other values longer than one char → `tally: error: …` on stderr, exit 2) with tests in a new test file; tests pass",
+   "minutes": 12.0,
+   "category": "feature"
+  },
+  {
+   "key": "Task 5: `format_cell`, `format_table`, `round_numbers`, `render` live in `render.py`, imported back into `tally.py`; `git diff --quiet main -- test_tally.py` succeeds and `python3 -m unittest -q` passes",
+   "minutes": 10.0,
+   "category": "refactor"
+  },
+  {
+   "key": "Task 3: README \"Examples\" section with three invocations against `data/sample.csv` (amount summary, grouped by region, JSON top-2 products); a script re-runs each command and its output matches the README block byte for byte",
+   "minutes": 14.0,
+   "category": "docs"
+  },
+  {
+   "key": "Task 2: `notes/missing-values.md` with `# Missing values`, table (Function | Situation | Behavior | Described in README) covering every handling site, and a final `## Gaps` section; every row checked against the code by running a probe",
+   "minutes": 16.0,
+   "category": "docs"
+  },
+  {
+   "key": "Final check: full suite passes, `test_tally.py` unchanged, work committed on a feature branch (not main)",
+   "minutes": 6.0,
+   "category": "ops"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.00174457,
+ "elapsed_s": 6.5,
+ "git_status_after": ""
+}

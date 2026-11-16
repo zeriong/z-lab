@@ -1,0 +1,48 @@
+{
+ "unit": "e1-p3-orders-opus-r1-A-r3",
+ "goal_run": "e1-p3-orders-opus-r1-A",
+ "keys": [
+  "1. Order totals always equal subtotal - discount_total + tax_total (FLAT10 on A,B,C at 10.00 quotes $20.00); regression tests pass",
+  "2. `to_cents`/`from_cents` in orders/money.py used by every storage module; private helpers and inline cents arithmetic removed; existing tests pass unedited",
+  "3. `--format csv` for `report daily` and `report low-stock` via the csv module, with tests",
+  "4. \"Pricing pipeline\" section in docs/architecture.md with a worked example verified by running `quote`",
+  "5. notes/transactions.md with `# Transactions`, `## Write paths` table, `## Races`, `## Recommendations` (<=6 bullets)",
+  "6. Work committed on a feature branch; full test suite green; PR opened if a remote exists"
+ ],
+ "rows": [
+  {
+   "key": "1. Order totals always equal subtotal - discount_total + tax_total (FLAT10 on A,B,C at 10.00 quotes $20.00); regression tests pass",
+   "minutes": 25.0,
+   "category": "fix"
+  },
+  {
+   "key": "2. `to_cents`/`from_cents` in orders/money.py used by every storage module; private helpers and inline cents arithmetic removed; existing tests pass unedited",
+   "minutes": 30.0,
+   "category": "refactor"
+  },
+  {
+   "key": "3. `--format csv` for `report daily` and `report low-stock` via the csv module, with tests",
+   "minutes": 25.0,
+   "category": "feature"
+  },
+  {
+   "key": "4. \"Pricing pipeline\" section in docs/architecture.md with a worked example verified by running `quote`",
+   "minutes": 20.0,
+   "category": "docs"
+  },
+  {
+   "key": "5. notes/transactions.md with `# Transactions`, `## Write paths` table, `## Races`, `## Recommendations` (<=6 bullets)",
+   "minutes": 15.0,
+   "category": "docs"
+  },
+  {
+   "key": "6. Work committed on a feature branch; full test suite green; PR opened if a remote exists",
+   "minutes": 15.0,
+   "category": "ops"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.0015247600000000002,
+ "elapsed_s": 5.6,
+ "git_status_after": ""
+}

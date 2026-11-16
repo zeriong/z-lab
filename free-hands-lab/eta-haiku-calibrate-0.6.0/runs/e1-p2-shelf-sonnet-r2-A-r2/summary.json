@@ -1,0 +1,48 @@
+{
+ "unit": "e1-p2-shelf-sonnet-r2-A-r2",
+ "goal_run": "e1-p2-shelf-sonnet-r2-A",
+ "keys": [
+  "1. Paging: fix `paginate` so `GET /books?limit=2&offset=2` returns the 3rd and 4th of five books; new regression test file passes with `node --test`",
+  "2. `GET /books/stats` returns 200 `{total,onLoan,available,byAuthor}` (count desc, author asc), registered before `/books/:id`, listed in README table, new tests pass",
+  "3. `src/util/params.js` helper used by every handler that parses a route id; messages/status codes unchanged; existing test files unmodified (`git diff --stat -- test/` empty) and `node --test` passes",
+  "4. README \"API reference\": one `### METHOD /path` heading per endpoint in the table (10 + stats), each with params/body rules, success status + example JSON, error statuses; examples checked against the running server",
+  "5. `notes/status-codes.md`: `# Status codes`, table (Status, Error code, Raised in, Endpoints, Covered by a test), one row per status+code combination, `## Untested` section; claims verified by running the server",
+  "6. Final check: `node --test` green, existing tests untouched, README headings match the endpoint table"
+ ],
+ "rows": [
+  {
+   "key": "1. Paging: fix `paginate` so `GET /books?limit=2&offset=2` returns the 3rd and 4th of five books; new regression test file passes with `node --test`",
+   "minutes": 8.0,
+   "category": "fix"
+  },
+  {
+   "key": "2. `GET /books/stats` returns 200 `{total,onLoan,available,byAuthor}` (count desc, author asc), registered before `/books/:id`, listed in README table, new tests pass",
+   "minutes": 20.0,
+   "category": "feature"
+  },
+  {
+   "key": "3. `src/util/params.js` helper used by every handler that parses a route id; messages/status codes unchanged; existing test files unmodified (`git diff --stat -- test/` empty) and `node --test` passes",
+   "minutes": 12.0,
+   "category": "refactor"
+  },
+  {
+   "key": "4. README \"API reference\": one `### METHOD /path` heading per endpoint in the table (10 + stats), each with params/body rules, success status + example JSON, error statuses; examples checked against the running server",
+   "minutes": 30.0,
+   "category": "docs"
+  },
+  {
+   "key": "5. `notes/status-codes.md`: `# Status codes`, table (Status, Error code, Raised in, Endpoints, Covered by a test), one row per status+code combination, `## Untested` section; claims verified by running the server",
+   "minutes": 25.0,
+   "category": "research"
+  },
+  {
+   "key": "6. Final check: `node --test` green, existing tests untouched, README headings match the endpoint table",
+   "minutes": 8.0,
+   "category": "test"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.00256701,
+ "elapsed_s": 8.0,
+ "git_status_after": ""
+}

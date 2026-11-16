@@ -1,0 +1,48 @@
+{
+ "unit": "e2-p2-shelf-sonnet-B-r1",
+ "goal_run": "e2-p2-shelf-sonnet-B",
+ "keys": [
+  "T3: zero-day loan is not overdue on the day it is lent (isOverdue fix) + regression test; `npm test` green",
+  "T2: `sort` query param on GET /books (title/author/year, `-` prefix, id default, null year last, 400 otherwise, sorted before paging) + README + tests; `npm test` green",
+  "T4: `src/persistence.js` with `loadSnapshot(file)` / `saveSnapshot(file, data)`, `Store` uses it, existing tests pass unedited (`git diff main -- test/` shows no edits to existing files)",
+  "T5: JSDoc (with @param, @returns, thrown errors) on `Store`, its constructor and every method in `src/store.js`; checked by a script that lists methods lacking a JSDoc block",
+  "T1: `notes/persistence-risks.md` with `# Persistence risks`, `## Writes`, `## Scenarios` (table, 4 required scenarios), `## Recommendation` (<=5 lines)",
+  "Final: `npm test` green on the last branch, stack of local branches/PRs recorded in Resume"
+ ],
+ "rows": [
+  {
+   "key": "T3: zero-day loan is not overdue on the day it is lent (isOverdue fix) + regression test; `npm test` green",
+   "minutes": 8.0,
+   "category": "fix"
+  },
+  {
+   "key": "T2: `sort` query param on GET /books (title/author/year, `-` prefix, id default, null year last, 400 otherwise, sorted before paging) + README + tests; `npm test` green",
+   "minutes": 30.0,
+   "category": "feature"
+  },
+  {
+   "key": "T4: `src/persistence.js` with `loadSnapshot(file)` / `saveSnapshot(file, data)`, `Store` uses it, existing tests pass unedited (`git diff main -- test/` shows no edits to existing files)",
+   "minutes": 18.0,
+   "category": "refactor"
+  },
+  {
+   "key": "T5: JSDoc (with @param, @returns, thrown errors) on `Store`, its constructor and every method in `src/store.js`; checked by a script that lists methods lacking a JSDoc block",
+   "minutes": 15.0,
+   "category": "docs"
+  },
+  {
+   "key": "T1: `notes/persistence-risks.md` with `# Persistence risks`, `## Writes`, `## Scenarios` (table, 4 required scenarios), `## Recommendation` (<=5 lines)",
+   "minutes": 12.0,
+   "category": "docs"
+  },
+  {
+   "key": "Final: `npm test` green on the last branch, stack of local branches/PRs recorded in Resume",
+   "minutes": 7.0,
+   "category": "ops"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.00195758,
+ "elapsed_s": 6.9,
+ "git_status_after": ""
+}

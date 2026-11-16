@@ -1,0 +1,43 @@
+{
+ "unit": "e2-p1-tally-opus-C-r3",
+ "goal_run": "e2-p1-tally-opus-C",
+ "keys": [
+  "T1 rename function group_by -> group_rows in tally.py, test_tally.py (README if mentioned); `--group-by` and args.group_by unchanged; check = `grep -n 'group_by\\b'` shows only args.group_by/dest/flag uses, and `python3 -m unittest -q` passes",
+  "T4 value-sort ties A to Z: CSV k,v/a,5/b,5/c,5 with `--group-by k --column v` lists a, b, c; README states A to Z; regression test added; check = run the CLI on that CSV and unittest passes",
+  "T2 `--format csv`: grouped header key,count[,sum] + one row per group; summary header metric,value + one row per metric; csv module, missing values empty; tests added; README and exit-code notes updated; check = CLI runs in all four modes parse back with csv.reader and unittest passes",
+  "T3 notes/performance.md: `# Row passes` with a table of the four modes (functions looping over rows, total passes), `## Memory`, `## Streaming proposal` (<= 10 lines); check = pass counts measured by an instrumented run match the table",
+  "T5 README \"Development\" section: repository layout, how to run tests, step-by-step add a new `--format` choice with a short code example; check = the example's steps applied in a scratch copy produce a working format and the suite passes there",
+  "Final: full suite passes on python3, no `group_by(` function references remain, git log shows one commit per task on the work branch"
+ ],
+ "rows": [
+  {
+   "key": "T1 rename function group_by -> group_rows in tally.py, test_tally.py (README if mentioned); `--group-by` and args.group_by unchanged; check = `grep -n 'group_by\\b'` shows only args.group_by/dest/flag uses, and `python3 -m unittest -q` passes",
+   "minutes": 6.0,
+   "category": "refactor"
+  },
+  {
+   "key": "T4 value-sort ties A to Z: CSV k,v/a,5/b,5/c,5 with `--group-by k --column v` lists a, b, c; README states A to Z; regression test added; check = run the CLI on that CSV and unittest passes",
+   "minutes": 8.0,
+   "category": "fix"
+  },
+  {
+   "key": "T2 `--format csv`: grouped header key,count[,sum] + one row per group; summary header metric,value + one row per metric; csv module, missing values empty; tests added; README and exit-code notes updated; check = CLI runs in all four modes parse back with csv.reader and unittest passes",
+   "minutes": 25.0,
+   "category": "feature"
+  },
+  {
+   "key": "T3 notes/performance.md: `# Row passes` with a table of the four modes (functions looping over rows, total passes), `## Memory`, `## Streaming proposal` (<= 10 lines); check = pass counts measured by an instrumented run match the table",
+   "minutes": 15.0,
+   "category": "docs"
+  },
+  {
+   "key": "T5 README \"Development\" section: repository layout, how to run tests, step-by-step add a new `--format` choice with a short code example; check = the example's steps applied in a scratch copy produce a working format and the suite passes there",
+   "minutes": 15.0,
+   "category": "docs"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.0016751200000000002,
+ "elapsed_s": 6.1,
+ "git_status_after": ""
+}

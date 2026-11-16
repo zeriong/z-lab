@@ -1,0 +1,48 @@
+{
+ "unit": "r2-p3-orders-opus-C-r2",
+ "goal_run": "r2-p3-orders-opus-C",
+ "keys": [
+  "Task 2: a coupon is valid through its expiry date and rejected from the next day on; regression tests for 2026-03-31 (accepted) and 2026-04-01 (rejected) pass, and the reported CLI sequence succeeds",
+  "Task 3: `OrderService.place_order` renamed to `submit_order`; `grep -rn place_order` over orders/ tests/ README.md docs/ notes/ finds nothing, the `place` subcommand is unchanged, full test suite passes",
+  "Task 4: large-order discount (>= 500.00 after volume and tier, 2 percent, before coupon, constants in orders/config.py) shown as `large-order` in quote, spread and taxed like other order discounts, listed as `large-order` in report daily and not counted as coupon; engine, report and CLI tests pass",
+  "Task 5: notes/regions.md with `# Regions`, `## Usage sites` table (File, Function, What it does with the region, What happens for an unknown region) covering every region or tax-rate read in orders/, `## Adding a region` (US-WA, 6.5 percent, groceries exempt), `## Failure behavior`; each unknown-region behavior verified by running it",
+  "Task 1: README.md \"CLI reference\" with one heading per subcommand (synopsis, arguments/options with defaults and accepted values, one runnable example, exit codes) plus the `--db`/`ORDERS_DB` note; every example run by a script against a fresh database with the documented exit codes",
+  "Stacked branches committed per task and PRs requested in stack order; full test suite passes on the last branch"
+ ],
+ "rows": [
+  {
+   "key": "Task 2: a coupon is valid through its expiry date and rejected from the next day on; regression tests for 2026-03-31 (accepted) and 2026-04-01 (rejected) pass, and the reported CLI sequence succeeds",
+   "minutes": 15.0,
+   "category": "fix"
+  },
+  {
+   "key": "Task 3: `OrderService.place_order` renamed to `submit_order`; `grep -rn place_order` over orders/ tests/ README.md docs/ notes/ finds nothing, the `place` subcommand is unchanged, full test suite passes",
+   "minutes": 20.0,
+   "category": "refactor"
+  },
+  {
+   "key": "Task 4: large-order discount (>= 500.00 after volume and tier, 2 percent, before coupon, constants in orders/config.py) shown as `large-order` in quote, spread and taxed like other order discounts, listed as `large-order` in report daily and not counted as coupon; engine, report and CLI tests pass",
+   "minutes": 60.0,
+   "category": "feature"
+  },
+  {
+   "key": "Task 5: notes/regions.md with `# Regions`, `## Usage sites` table (File, Function, What it does with the region, What happens for an unknown region) covering every region or tax-rate read in orders/, `## Adding a region` (US-WA, 6.5 percent, groceries exempt), `## Failure behavior`; each unknown-region behavior verified by running it",
+   "minutes": 30.0,
+   "category": "docs"
+  },
+  {
+   "key": "Task 1: README.md \"CLI reference\" with one heading per subcommand (synopsis, arguments/options with defaults and accepted values, one runnable example, exit codes) plus the `--db`/`ORDERS_DB` note; every example run by a script against a fresh database with the documented exit codes",
+   "minutes": 45.0,
+   "category": "docs"
+  },
+  {
+   "key": "Stacked branches committed per task and PRs requested in stack order; full test suite passes on the last branch",
+   "minutes": 25.0,
+   "category": "ops"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.00193969,
+ "elapsed_s": 7.9,
+ "git_status_after": ""
+}
