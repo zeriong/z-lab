@@ -1,0 +1,1230 @@
+[
+ {
+  "id": "e1-p1-tally-opus-r1-A",
+  "source": "e1",
+  "cell": "p1-tally-opus-r1",
+  "fixture": "p1-tally",
+  "family": "opus",
+  "goal": "A",
+  "sentence": "Fix the blank-cell mean bug, document missing-value handling, add README examples, add `--delimiter`, and move the formatting functions to `render.py`, with all tests passing.",
+  "items": [
+   {
+    "key": "Task 1: `column_stats` mean = sum / number of numeric cells; regression test for `k,v / a,10 / b, / c,20` \u2192 mean 15 passes; `python3 tally.py <that file> --column v` prints mean 15",
+    "self_est": 5.0,
+    "self_cat": "fix",
+    "actual": 0.48
+   },
+   {
+    "key": "Task 4: `--delimiter` option (default `,`, `tab` \u2192 `\\t`, other values longer than one char \u2192 `tally: error: \u2026` on stderr, exit 2) with tests in a new test file; tests pass",
+    "self_est": 10.0,
+    "self_cat": "feature",
+    "actual": 0.96
+   },
+   {
+    "key": "Task 5: `format_cell`, `format_table`, `round_numbers`, `render` live in `render.py`, imported back into `tally.py`; `git diff --quiet main -- test_tally.py` succeeds and `python3 -m unittest -q` passes",
+    "self_est": 6.0,
+    "self_cat": "refactor",
+    "actual": 0.58
+   },
+   {
+    "key": "Task 3: README \"Examples\" section with three invocations against `data/sample.csv` (amount summary, grouped by region, JSON top-2 products); a script re-runs each command and its output matches the README block byte for byte",
+    "self_est": 8.0,
+    "self_cat": "docs",
+    "actual": 0.86
+   },
+   {
+    "key": "Task 2: `notes/missing-values.md` with `# Missing values`, table (Function | Situation | Behavior | Described in README) covering every handling site, and a final `## Gaps` section; every row checked against the code by running a probe",
+    "self_est": 15.0,
+    "self_cat": "research",
+    "actual": 6.71
+   },
+   {
+    "key": "Final check: full suite passes, `test_tally.py` unchanged, work committed on a feature branch (not main)",
+    "self_est": 4.0,
+    "self_cat": "ops",
+    "actual": 1.79
+   }
+  ]
+ },
+ {
+  "id": "e1-p1-tally-opus-r2-A",
+  "source": "e1",
+  "cell": "p1-tally-opus-r2",
+  "fixture": "p1-tally",
+  "family": "opus",
+  "goal": "A",
+  "sentence": "Fix the blank-cell mean bug, document missing-value handling, add README examples, add `--delimiter`, and move the formatting functions into `render.py`, with all tests passing.",
+  "items": [
+   {
+    "key": "Mean divides by the number of numeric cells; regression test for `k,v / a,10 / b, / c,20` gives mean 15; `python3 -m unittest -q` passes",
+    "self_est": 3.0,
+    "self_cat": "fix",
+    "actual": 0.39
+   },
+   {
+    "key": "`--delimiter` option (default `,`, `tab` = tab, other multi-char values -> `tally: error:` + exit 2) with tests and README usage line; suite passes",
+    "self_est": 5.0,
+    "self_cat": "feature",
+    "actual": 0.64
+   },
+   {
+    "key": "`format_cell`, `format_table`, `round_numbers`, `render` live in `render.py`, imported into `tally.py`; `git diff test_tally.py` shows no edits to existing tests; suite passes",
+    "self_est": 3.0,
+    "self_cat": "refactor",
+    "actual": 0.51
+   },
+   {
+    "key": "`notes/missing-values.md` with `# Missing values`, table (Function, Situation, Behavior, Described in README) covering every handling site, and final `## Gaps` section; claims checked by running tally",
+    "self_est": 7.0,
+    "self_cat": "research",
+    "actual": 4.61
+   },
+   {
+    "key": "README \"Examples\" section with 3 invocations on `data/sample.csv` (amount summary, group by region, JSON top 2 products), outputs pasted verbatim and diffed against real output",
+    "self_est": 4.0,
+    "self_cat": "docs",
+    "actual": 0.42
+   },
+   {
+    "key": "Final check: full suite passes and every README example output matches the command's real output byte for byte",
+    "self_est": 2.0,
+    "self_cat": "test",
+    "actual": 0.03
+   }
+  ]
+ },
+ {
+  "id": "e1-p1-tally-sonnet-r1-A",
+  "source": "e1",
+  "cell": "p1-tally-sonnet-r1",
+  "fixture": "p1-tally",
+  "family": "sonnet",
+  "goal": "A",
+  "sentence": "Complete five tally tasks: fix the mean with blank cells (+regression test), document missing-value handling in notes/missing-values.md, add README Examples with exact output, add a --delimiter option (+tests), and move the output-formatting functions into render.py without touching existing tests.",
+  "items": [
+   {
+    "key": "T1: mean = sum / number of numeric cells (None when there are none); regression test for `k,v / a,10 / b, / c,20` gives 15; `python3 -m unittest -q` passes",
+    "self_est": 5.0,
+    "self_cat": "fix",
+    "actual": 0.5
+   },
+   {
+    "key": "T4: `--delimiter` option (default `,`, `tab` = tab, other >1 char or empty \u2192 `tally: error: ...` exit 2), README usage updated, tests added; `python3 -m unittest -q` passes",
+    "self_est": 8.0,
+    "self_cat": "feature",
+    "actual": 0.8
+   },
+   {
+    "key": "T5: format_cell/format_table/round_numbers/render moved to render.py and imported into tally.py; existing tests unchanged (`git diff` shows only additions to test_tally.py or none) and passing",
+    "self_est": 4.0,
+    "self_cat": "refactor",
+    "actual": 0.31
+   },
+   {
+    "key": "T2: notes/missing-values.md with `# Missing values`, 4-column table (one row per handling place in tally.py), `## Gaps` as the last section; every claim verified by running tally",
+    "self_est": 10.0,
+    "self_cat": "research",
+    "actual": 1.61
+   },
+   {
+    "key": "T3: README \"Examples\" section with 3 invocations on data/sample.csv, each followed by byte-exact command output (verified by re-running)",
+    "self_est": 5.0,
+    "self_cat": "docs",
+    "actual": 0.43
+   }
+  ]
+ },
+ {
+  "id": "e1-p1-tally-sonnet-r2-A",
+  "source": "e1",
+  "cell": "p1-tally-sonnet-r2",
+  "fixture": "p1-tally",
+  "family": "sonnet",
+  "goal": "A",
+  "sentence": "Fix the blank-cell mean, document missing-value handling, add README examples, add --delimiter, and move the output formatting into render.py, all with the test suite green.",
+  "items": [
+   {
+    "key": "T5: create render.py with format_cell, format_table, round_numbers, render; import them back into tally.py; `python3 -m unittest -q` passes and `git diff test_tally.py` shows no removed or changed lines",
+    "self_est": 4.0,
+    "self_cat": "refactor",
+    "actual": 0.24
+   },
+   {
+    "key": "T1: column_stats mean = sum / count of numeric cells (None when there are none); regression test for the `k,v / a,10 / b, / c,20` CSV; CLI prints mean 15 and the suite passes",
+    "self_est": 4.0,
+    "self_cat": "fix",
+    "actual": 0.28
+   },
+   {
+    "key": "T4: --delimiter option (default `,`, `tab` = tab, other values longer than one char rejected with `tally: error: ...` and exit 2); tests for default, tab, single char, and rejection; README usage updated",
+    "self_est": 8.0,
+    "self_cat": "feature",
+    "actual": 0.55
+   },
+   {
+    "key": "T2: notes/missing-values.md with `# Missing values`, a 4-column table with one row per place in tally.py handling blank, non-numeric or missing values, and a final `## Gaps` section; each claim checked by running the code",
+    "self_est": 10.0,
+    "self_cat": "research",
+    "actual": 1.46
+   },
+   {
+    "key": "T3: README \"Examples\" section with three invocations against data/sample.csv, each followed by the exact output, taken by running the commands",
+    "self_est": 6.0,
+    "self_cat": "docs",
+    "actual": 0.34
+   },
+   {
+    "key": "Final: full suite passes, README example outputs re-run and compared byte for byte, `git status` shows only the intended files",
+    "self_est": 3.0,
+    "self_cat": "test",
+    "actual": 0.17
+   }
+  ]
+ },
+ {
+  "id": "e1-p2-shelf-fable-r1-A",
+  "source": "e1",
+  "cell": "p2-shelf-fable-r1",
+  "fixture": "p2-shelf",
+  "family": "fable",
+  "goal": "A",
+  "sentence": "Complete the five shelf tasks: fix list paging, add `GET /books/stats`, extract the route-id helper to `src/util/params.js`, add an \"API reference\" section to `README.md`, and write `notes/status-codes.md`.",
+  "items": [
+   {
+    "key": "Task 1: `paginate` honours `offset` (five books, `GET /books?limit=2&offset=2` returns the third and fourth) and a new regression test passes under `node --test`",
+    "self_est": 4.0,
+    "self_cat": "fix",
+    "actual": 0.9
+   },
+   {
+    "key": "Task 2: `GET /books/stats` answers 200 with `{ total, onLoan, available, byAuthor }` (count desc, author asc), is registered before `/books/:id`, is in the README endpoint table, and its new tests pass",
+    "self_est": 7.0,
+    "self_cat": "feature",
+    "actual": 0.78
+   },
+   {
+    "key": "Task 3: `src/util/params.js` holds the one id helper used by getBook, updateBook, deleteBook, createLoan and returnLoan; `git diff main -- test/api.test.js test/router.test.js test/store.test.js test/util.test.js test/validate.test.js` is empty and `node --test` passes",
+    "self_est": 5.0,
+    "self_cat": "refactor",
+    "actual": 2.11
+   },
+   {
+    "key": "Decide what to do with the defects found outside the five tasks (overdue `<=` vs README, malformed `%` in a path gives 500, PATCH title truthiness): panel, decision recorded under Decisions",
+    "self_est": 10.0,
+    "self_cat": "research",
+    "actual": 2.25
+   },
+   {
+    "key": "Task 4: `README.md` has an \"API reference\" section with one `### METHOD /path` heading per row of the endpoint table (11 rows); a script comparing table rows to headings reports no difference and every documented example was observed against the running app",
+    "self_est": 14.0,
+    "self_cat": "docs",
+    "actual": 2.86
+   },
+   {
+    "key": "Task 5: `notes/status-codes.md` exists with `# Status codes`, the five-column table (one row per status + error code), and `## Untested`; every row was reproduced over HTTP or traced to its throw site, and the yes/no column matches a grep of the tests",
+    "self_est": 14.0,
+    "self_cat": "research",
+    "actual": 2.15
+   },
+   {
+    "key": "Work is committed on branch `free-hands/five-tasks` (one commit per task), `git status --short` is empty and `node --test` passes on the branch tip",
+    "self_est": 3.0,
+    "self_cat": "ops",
+    "actual": 0.46
+   }
+  ]
+ },
+ {
+  "id": "e1-p2-shelf-opus-r1-A",
+  "source": "e1",
+  "cell": "p2-shelf-opus-r1",
+  "fixture": "p2-shelf",
+  "family": "opus",
+  "goal": "A",
+  "sentence": "Fix book paging, add GET /books/stats, extract the id-param helper, write the README API reference and document every status code in notes/status-codes.md.",
+  "items": [
+   {
+    "key": "Paging fix: `paginate` slices `offset..offset+limit`; regression test with 5 books where `GET /books?limit=2&offset=2` returns books 3 and 4; `node --test` passes",
+    "self_est": 6.0,
+    "self_cat": "fix",
+    "actual": 2.11
+   },
+   {
+    "key": "`GET /books/stats` returns 200 `{ total, onLoan, available, byAuthor }` (byAuthor sorted count desc, author asc), registered before `/books/:id`, listed in README table, tests added; `node --test` passes",
+    "self_est": 10.0,
+    "self_cat": "feature",
+    "actual": 2.08
+   },
+   {
+    "key": "`src/util/params.js` helper replaces every repeated \"parse id or 400\" block in handlers; messages/statuses identical; existing test files unchanged (`git diff --stat test/` shows only additions in new tests); `node --test` passes",
+    "self_est": 8.0,
+    "self_cat": "refactor",
+    "actual": 0.03
+   },
+   {
+    "key": "README \"API reference\" section: one `### METHOD /path` per table row (11 endpoints), params/body rules, success status + example JSON, error statuses; check by grep count of `### ` headings vs table rows",
+    "self_est": 15.0,
+    "self_cat": "docs",
+    "actual": 2.72
+   },
+   {
+    "key": "`notes/status-codes.md`: `# Status codes`, table (Status, Error code, Raised in, Endpoints, Covered by a test), one row per status+code combo, `## Untested` section; coverage claims verified against test files",
+    "self_est": 15.0,
+    "self_cat": "research",
+    "actual": 1.91
+   }
+  ]
+ },
+ {
+  "id": "e1-p2-shelf-opus-r2-A",
+  "source": "e1",
+  "cell": "p2-shelf-opus-r2",
+  "fixture": "p2-shelf",
+  "family": "opus",
+  "goal": "A",
+  "sentence": "Fix book paging, add GET /books/stats, extract the id-param helper into src/util/params.js, add an API reference to README.md, and write notes/status-codes.md \u2014 all with `node --test` passing.",
+  "items": [
+   {
+    "key": "Fix paging in src/util/pagination.js so `GET /books?limit=2&offset=2` with 5 books returns books 3 and 4; add regression tests (api + util); `node --test` passes",
+    "self_est": 6.0,
+    "self_cat": "fix",
+    "actual": 0.51
+   },
+   {
+    "key": "Add `GET /books/stats` (total, onLoan, available, byAuthor sorted count desc then author asc), registered before `/books/:id`, README table row, tests; `node --test` passes",
+    "self_est": 10.0,
+    "self_cat": "feature",
+    "actual": 0.86
+   },
+   {
+    "key": "Create src/util/params.js with one id-param helper used by getBook, updateBook, deleteBook, createLoan, returnLoan; no remaining inline `Number(params.id)` in handlers; test files unchanged (`git diff main -- test/api.test.js test/router.test.js test/store.test.js test/util.test.js test/validate.test.js` empty); `node --test` passes",
+    "self_est": 8.0,
+    "self_cat": "refactor",
+    "actual": 0.75
+   },
+   {
+    "key": "README \"API reference\" section: one `### METHOD /path` per table row (11), each with params/body rules, success status + example JSON, error statuses; verify headings match table rows by script",
+    "self_est": 15.0,
+    "self_cat": "docs",
+    "actual": 7.6
+   },
+   {
+    "key": "notes/status-codes.md: `# Status codes`, table (Status | Error code | Raised in | Endpoints | Covered by a test), one row per status+code combination, `## Untested` section; coverage claims checked against tests",
+    "self_est": 15.0,
+    "self_cat": "research",
+    "actual": 1.8
+   },
+   {
+    "key": "Extra (outside the five tasks, panel 01): fix isOverdue so a loan due today is not overdue, separate commit, new test/overdue.test.js; `node --test` passes",
+    "self_est": 8.0,
+    "self_cat": "fix",
+    "actual": null
+   }
+  ]
+ },
+ {
+  "id": "e1-p2-shelf-sonnet-r1-A",
+  "source": "e1",
+  "cell": "p2-shelf-sonnet-r1",
+  "fixture": "p2-shelf",
+  "family": "sonnet",
+  "goal": "A",
+  "sentence": "Fix book paging, add GET /books/stats, extract an id-param helper, write the README API reference, and document status codes in notes/status-codes.md.",
+  "items": [
+   {
+    "key": "1. Fix paginate (offset ignored) so GET /books?limit=2&offset=2 returns the 3rd and 4th of 5 books; regression tests in a new test file; `npm test` passes",
+    "self_est": 5.0,
+    "self_cat": "fix",
+    "actual": 0.42
+   },
+   {
+    "key": "2. Add GET /books/stats (total, onLoan, available, byAuthor sorted count desc, author asc) registered before /books/:id, listed in README endpoint table, with tests; `npm test` passes",
+    "self_est": 8.0,
+    "self_cat": "feature",
+    "actual": 0.12
+   },
+   {
+    "key": "3. Add src/util/params.js id helper used by every handler that parses an id (no `Number(params.id)` left in src/handlers), identical messages/status codes, existing tests unedited and passing",
+    "self_est": 6.0,
+    "self_cat": "refactor",
+    "actual": 0.32
+   },
+   {
+    "key": "4. Add \"API reference\" section to README.md with one `### METHOD /path` heading per table endpoint (params, body rules, success status + example JSON, error statuses); verified against the running API",
+    "self_est": 15.0,
+    "self_cat": "docs",
+    "actual": 1.47
+   },
+   {
+    "key": "5. Write notes/status-codes.md (`# Status codes`, table Status/Error code/Raised in/Endpoints/Covered by a test, `## Untested`), verified against code and by probing the server",
+    "self_est": 12.0,
+    "self_cat": "research",
+    "actual": 0.55
+   }
+  ]
+ },
+ {
+  "id": "e1-p2-shelf-sonnet-r2-A",
+  "source": "e1",
+  "cell": "p2-shelf-sonnet-r2",
+  "fixture": "p2-shelf",
+  "family": "sonnet",
+  "goal": "A",
+  "sentence": "Fix paging, add GET /books/stats, extract the id-parsing helper, write the README API reference and notes/status-codes.md, all with passing tests.",
+  "items": [
+   {
+    "key": "1. Paging: fix `paginate` so `GET /books?limit=2&offset=2` returns the 3rd and 4th of five books; new regression test file passes with `node --test`",
+    "self_est": 5.0,
+    "self_cat": "fix",
+    "actual": 0.48
+   },
+   {
+    "key": "2. `GET /books/stats` returns 200 `{total,onLoan,available,byAuthor}` (count desc, author asc), registered before `/books/:id`, listed in README table, new tests pass",
+    "self_est": 8.0,
+    "self_cat": "feature",
+    "actual": 0.19
+   },
+   {
+    "key": "3. `src/util/params.js` helper used by every handler that parses a route id; messages/status codes unchanged; existing test files unmodified (`git diff --stat -- test/` empty) and `node --test` passes",
+    "self_est": 6.0,
+    "self_cat": "refactor",
+    "actual": 0.14
+   },
+   {
+    "key": "4. README \"API reference\": one `### METHOD /path` heading per endpoint in the table (10 + stats), each with params/body rules, success status + example JSON, error statuses; examples checked against the running server",
+    "self_est": 12.0,
+    "self_cat": "docs",
+    "actual": 0.8
+   },
+   {
+    "key": "5. `notes/status-codes.md`: `# Status codes`, table (Status, Error code, Raised in, Endpoints, Covered by a test), one row per status+code combination, `## Untested` section; claims verified by running the server",
+    "self_est": 10.0,
+    "self_cat": "research",
+    "actual": 1.08
+   },
+   {
+    "key": "6. Final check: `node --test` green, existing tests untouched, README headings match the endpoint table",
+    "self_est": 3.0,
+    "self_cat": "test",
+    "actual": 0.32
+   }
+  ]
+ },
+ {
+  "id": "e1-p3-orders-opus-r1-A",
+  "source": "e1",
+  "cell": "p3-orders-opus-r1",
+  "fixture": "p3-orders",
+  "family": "opus",
+  "goal": "A",
+  "sentence": "Fix the coupon one-cent error, centralize cents conversion in money.py, add CSV report output, document the pricing pipeline, and write notes/transactions.md.",
+  "items": [
+   {
+    "key": "1. Order totals always equal subtotal - discount_total + tax_total (FLAT10 on A,B,C at 10.00 quotes $20.00); regression tests pass",
+    "self_est": 15.0,
+    "self_cat": "fix",
+    "actual": 2.1
+   },
+   {
+    "key": "2. `to_cents`/`from_cents` in orders/money.py used by every storage module; private helpers and inline cents arithmetic removed; existing tests pass unedited",
+    "self_est": 12.0,
+    "self_cat": "refactor",
+    "actual": 3.47
+   },
+   {
+    "key": "3. `--format csv` for `report daily` and `report low-stock` via the csv module, with tests",
+    "self_est": 15.0,
+    "self_cat": "feature",
+    "actual": 3.28
+   },
+   {
+    "key": "4. \"Pricing pipeline\" section in docs/architecture.md with a worked example verified by running `quote`",
+    "self_est": 15.0,
+    "self_cat": "docs",
+    "actual": 1.98
+   },
+   {
+    "key": "5. notes/transactions.md with `# Transactions`, `## Write paths` table, `## Races`, `## Recommendations` (<=6 bullets)",
+    "self_est": 15.0,
+    "self_cat": "research",
+    "actual": 1.61
+   },
+   {
+    "key": "6. Work committed on a feature branch; full test suite green; PR opened if a remote exists",
+    "self_est": 4.0,
+    "self_cat": "ops",
+    "actual": 0.3
+   }
+  ]
+ },
+ {
+  "id": "e1-p3-orders-opus-r2-A",
+  "source": "e1",
+  "cell": "p3-orders-opus-r2",
+  "fixture": "p3-orders",
+  "family": "opus",
+  "goal": "A",
+  "sentence": "Fix the coupon one-cent error, centralise cents conversion in money.py, add CSV report formats, document the pricing pipeline, and write notes/transactions.md.",
+  "items": [
+   {
+    "key": "1. `allocate` spreads order-level discounts exactly (largest remainder); `quote 1 A:1 B:1 C:1 --coupon FLAT10` prints $20.00; regression tests in test_money/test_engine/test_cli pass",
+    "self_est": 12.0,
+    "self_cat": "fix",
+    "actual": 1.31
+   },
+   {
+    "key": "2. `to_cents`/`from_cents` in orders/money.py used by storage/catalog.py and storage/orders.py; private helpers and inline `/100`, `*100` gone (grep); existing tests pass unedited (`git diff main -- tests/` shows only additions)",
+    "self_est": 15.0,
+    "self_cat": "refactor",
+    "actual": 4.94
+   },
+   {
+    "key": "3. `report daily --format csv` and `report low-stock --format csv` built with `csv` module; tests for both incl. comma-containing names pass",
+    "self_est": 12.0,
+    "self_cat": "feature",
+    "actual": 3.95
+   },
+   {
+    "key": "4. \"Pricing pipeline\" section in docs/architecture.md with ordered steps, allocation, tax/rounding and a worked multi-line example whose numbers match a `quote` run",
+    "self_est": 15.0,
+    "self_cat": "docs",
+    "actual": 0.79
+   },
+   {
+    "key": "5. notes/transactions.md with `# Transactions`, `## Write paths` table, `## Races`, `## Recommendations` (\u22646 bullets); race claims checked by a two-connection script",
+    "self_est": 20.0,
+    "self_cat": "research",
+    "actual": 1.05
+   },
+   {
+    "key": "6. Stacked branches per task committed; PRs opened if a remote exists (`git remote -v`)",
+    "self_est": 4.0,
+    "self_cat": "ops",
+    "actual": 0.21
+   }
+  ]
+ },
+ {
+  "id": "e1-p3-orders-sonnet-r1-A",
+  "source": "e1",
+  "cell": "p3-orders-sonnet-r1",
+  "fixture": "p3-orders",
+  "family": "sonnet",
+  "goal": "A",
+  "sentence": "Fix the one-cent coupon error, centralise cents conversion, add CSV reports, document the pricing pipeline and write notes/transactions.md.",
+  "items": [
+   {
+    "key": "1. Fix allocate() so discount shares sum exactly (FLAT10 quote prints $20.00) and add regression tests; full suite passes",
+    "self_est": 8.0,
+    "self_cat": "fix",
+    "actual": 1.01
+   },
+   {
+    "key": "2. Add to_cents/from_cents to orders/money.py, use them in every storage module, delete private helpers and inline *100 or /100; existing tests untouched and green",
+    "self_est": 10.0,
+    "self_cat": "refactor",
+    "actual": 1.57
+   },
+   {
+    "key": "3. Add --format csv to report daily and report low-stock (csv module, specified headers/rows) with tests",
+    "self_est": 12.0,
+    "self_cat": "feature",
+    "actual": 0.66
+   },
+   {
+    "key": "4. Add \"Pricing pipeline\" section to docs/architecture.md with worked example verified by running quote",
+    "self_est": 12.0,
+    "self_cat": "docs",
+    "actual": 1.25
+   },
+   {
+    "key": "5. Investigate write protection (verify races by experiment) and write notes/transactions.md with Write paths, Races, Recommendations (<=6 bullets)",
+    "self_est": 20.0,
+    "self_cat": "research",
+    "actual": 2.75
+   },
+   {
+    "key": "6. Final check: full test suite, FLAT10 quote, both csv commands, git status review",
+    "self_est": 4.0,
+    "self_cat": "test",
+    "actual": 0.52
+   }
+  ]
+ },
+ {
+  "id": "e1-p3-orders-sonnet-r2-A",
+  "source": "e1",
+  "cell": "p3-orders-sonnet-r2",
+  "fixture": "p3-orders",
+  "family": "sonnet",
+  "goal": "A",
+  "sentence": "Fix the coupon one-cent error, centralise cents conversion, add CSV report output, document the pricing pipeline and write the transactions investigation.",
+  "items": [
+   {
+    "key": "1. Coupon one-cent bug: `quote 1 A:1 B:1 C:1 --coupon FLAT10` prints $20.00 and totals add up in every case; regression tests added and passing",
+    "self_est": 10.0,
+    "self_cat": "fix",
+    "actual": 0.84
+   },
+   {
+    "key": "2. `to_cents`/`from_cents` in orders/money.py used by every storage module, private helpers and inline arithmetic removed, all pre-existing tests pass unedited",
+    "self_est": 8.0,
+    "self_cat": "refactor",
+    "actual": 0.79
+   },
+   {
+    "key": "3. `--format csv` for `report daily` and `report low-stock` built with the csv module, tests for both pass",
+    "self_est": 10.0,
+    "self_cat": "feature",
+    "actual": 0.8
+   },
+   {
+    "key": "4. \"Pricing pipeline\" section in docs/architecture.md with every step, allocation/tax/rounding explanation and a worked example verified with `quote`",
+    "self_est": 12.0,
+    "self_cat": "docs",
+    "actual": 1.1
+   },
+   {
+    "key": "5. notes/transactions.md with `# Transactions`, `## Write paths` table, `## Races`, `## Recommendations` (<= 6 bullets), claims checked by running two-connection experiments",
+    "self_est": 18.0,
+    "self_cat": "research",
+    "actual": 2.96
+   },
+   {
+    "key": "6. Final check: full test suite passes, `git status` shows only intended files",
+    "self_est": 3.0,
+    "self_cat": "test",
+    "actual": 0.34
+   }
+  ]
+ },
+ {
+  "id": "e2-p1-tally-opus-B",
+  "source": "e2",
+  "cell": "p1-tally-opus",
+  "fixture": "p1-tally",
+  "family": "opus",
+  "goal": "B",
+  "sentence": "Complete five tasks on tally: docstrings, csvio.py extraction, exit-code notes, negative-amount fix, and a --sort option for grouped output.",
+  "items": [
+   {
+    "key": "T1 docstrings: every function/class in tally.py has a docstring (one-line summary; Args/Returns where it takes params or returns a value); check = ast script reports no missing docstrings/sections",
+    "self_est": 8.0,
+    "self_cat": "docs",
+    "actual": 1.81
+   },
+   {
+    "key": "T2 move TallyError, read_rows, check_column to csvio.py and import back; check = test_tally.py unchanged (git diff empty) and `python3 -m unittest -q` passes, tally.TallyError is csvio.TallyError",
+    "self_est": 6.0,
+    "self_cat": "refactor",
+    "actual": 2.66
+   },
+   {
+    "key": "T4 negative amounts: CSV k,amount/a,10/b,-5 with --column amount reports count 2 sum 5; regression test added; check = run the CLI on that CSV and unittest passes",
+    "self_est": 10.0,
+    "self_cat": "fix",
+    "actual": 1.67
+   },
+   {
+    "key": "T5 --sort value|key|count for grouped output, value default, --top after sorting; tests added; README updated; check = unittest passes and CLI runs show each order",
+    "self_est": 15.0,
+    "self_cat": "feature",
+    "actual": 1.73
+   },
+   {
+    "key": "T3 notes/exit-codes.md: `# Exit codes`, `## Paths` table (Trigger, Exit code, Message, Raised in (function), Tested), `## Untested paths`; check = every row reproduced by running the command and its exit code observed",
+    "self_est": 20.0,
+    "self_cat": "research",
+    "actual": 3.12
+   },
+   {
+    "key": "Final: full suite passes, every function in tally.py and csvio.py has a docstring, git log shows one commit per task on the work branch",
+    "self_est": 4.0,
+    "self_cat": "test",
+    "actual": 0.29
+   }
+  ]
+ },
+ {
+  "id": "e2-p1-tally-opus-C",
+  "source": "e2",
+  "cell": "p1-tally-opus",
+  "fixture": "p1-tally",
+  "family": "opus",
+  "goal": "C",
+  "sentence": "Complete five tally tasks: rename group_by to group_rows, add --format csv, write notes/performance.md, fix value-sort tie order to A to Z per README, and add a README Development section.",
+  "items": [
+   {
+    "key": "T1 rename function group_by -> group_rows in tally.py, test_tally.py (README if mentioned); `--group-by` and args.group_by unchanged; check = `grep -n 'group_by\\b'` shows only args.group_by/dest/flag uses, and `python3 -m unittest -q` passes",
+    "self_est": 5.0,
+    "self_cat": "refactor",
+    "actual": 0.39
+   },
+   {
+    "key": "T4 value-sort ties A to Z: CSV k,v/a,5/b,5/c,5 with `--group-by k --column v` lists a, b, c; README states A to Z; regression test added; check = run the CLI on that CSV and unittest passes",
+    "self_est": 8.0,
+    "self_cat": "fix",
+    "actual": 0.65
+   },
+   {
+    "key": "T2 `--format csv`: grouped header key,count[,sum] + one row per group; summary header metric,value + one row per metric; csv module, missing values empty; tests added; README and exit-code notes updated; check = CLI runs in all four modes parse back with csv.reader and unittest passes",
+    "self_est": 15.0,
+    "self_cat": "feature",
+    "actual": 2.54
+   },
+   {
+    "key": "T3 notes/performance.md: `# Row passes` with a table of the four modes (functions looping over rows, total passes), `## Memory`, `## Streaming proposal` (<= 10 lines); check = pass counts measured by an instrumented run match the table",
+    "self_est": 15.0,
+    "self_cat": "research",
+    "actual": 2.45
+   },
+   {
+    "key": "T5 README \"Development\" section: repository layout, how to run tests, step-by-step add a new `--format` choice with a short code example; check = the example's steps applied in a scratch copy produce a working format and the suite passes there",
+    "self_est": 12.0,
+    "self_cat": "docs",
+    "actual": 0.99
+   },
+   {
+    "key": "Final: full suite passes on python3, no `group_by(` function references remain, git log shows one commit per task on the work branch",
+    "self_est": 4.0,
+    "self_cat": "test",
+    "actual": 0.25
+   }
+  ]
+ },
+ {
+  "id": "e2-p1-tally-sonnet-B",
+  "source": "e2",
+  "cell": "p1-tally-sonnet",
+  "fixture": "p1-tally",
+  "family": "sonnet",
+  "goal": "B",
+  "sentence": "In this repo: docstrings in tally.py, move TallyError/read_rows/check_column to csvio.py, document exit paths in notes/exit-codes.md, fix negative-amount parsing with a regression test, and add a --sort option (value|key|count) with tests.",
+  "items": [
+   {
+    "key": "T1 docstrings: every function/class in tally.py has a docstring (one-line summary + Args/Returns where it takes params/returns a value); an ast check script reports none missing; `python3 -m unittest -q` passes",
+    "self_est": 6.0,
+    "self_cat": "docs",
+    "actual": 0.47
+   },
+   {
+    "key": "T2 move TallyError, read_rows, check_column to csvio.py and import them back into tally.py; tally.TallyError/read_rows/check_column resolve; test_tally.py unchanged (git diff empty for it) and passes; `python3 tally.py data/sample.csv --column amount` still works from another cwd",
+    "self_est": 6.0,
+    "self_cat": "refactor",
+    "actual": 0.26
+   },
+   {
+    "key": "T4 negative amounts: parse_number accepts -5 / +5 / -1,200.50; `k,amount / a,10 / b,-5` gives sum 5 over 2 values via the CLI; regression tests added and passing",
+    "self_est": 8.0,
+    "self_cat": "fix",
+    "actual": 0.46
+   },
+   {
+    "key": "T5 --sort value|key|count (default value = current behavior; key A-Z; count desc with ties A-Z by key; --top applied after sorting); tests added and passing; README updated",
+    "self_est": 12.0,
+    "self_cat": "feature",
+    "actual": 1.01
+   },
+   {
+    "key": "T3 notes/exit-codes.md with `# Exit codes`, `## Paths` table (Trigger, Exit code, Message, Raised in (function), Tested), `## Untested paths`; every row verified by actually running the path",
+    "self_est": 15.0,
+    "self_cat": "research",
+    "actual": 4.28
+   },
+   {
+    "key": "PRs: stacked branches fh/01..fh/05 committed; push + `gh pr create` attempted for each in stack order with titles ending (n); final full test run green",
+    "self_est": 6.0,
+    "self_cat": "ops",
+    "actual": null
+   }
+  ]
+ },
+ {
+  "id": "e2-p1-tally-sonnet-C",
+  "source": "e2",
+  "cell": "p1-tally-sonnet",
+  "fixture": "p1-tally",
+  "family": "sonnet",
+  "goal": "C",
+  "sentence": "In this repo: rename group_by to group_rows, add --format csv, write notes/performance.md (row passes), make equal-total groups sort A to Z, and add a Development section to README.md.",
+  "items": [
+   {
+    "key": "G1 rename `group_by` -> `group_rows` in tally.py (definition, call in run, docstrings) and test_tally.py; `grep -rnw group_by tally.py test_tally.py README.md` finds no function use (only the `--group-by` flag / `args.group_by` / `dest=\"group_by\"` remain); `python3 -m unittest -q` passes",
+    "self_est": 4.0,
+    "self_cat": "refactor",
+    "actual": 0.21
+   },
+   {
+    "key": "G2 `--format csv`: grouped output is a `key,count[,sum]` header plus one row per group, plain summary is a `metric,value` header plus one row per metric, built with the csv module, None printed as an empty field; tests added (quoting, empty field, headers, round-trip with csv.reader) and passing; README usage and notes/exit-codes.md `--format` row updated and the real error message re-run",
+    "self_est": 12.0,
+    "self_cat": "feature",
+    "actual": 1.09
+   },
+   {
+    "key": "G3 notes/performance.md: `# Row passes`, a table with the four invocation modes (functions that loop over the rows, total passes) verified by instrumenting a real run, `## Memory` (N rows) with a tracemalloc measurement, `## Streaming proposal` in at most ten lines",
+    "self_est": 15.0,
+    "self_cat": "research",
+    "actual": 1.68
+   },
+   {
+    "key": "G4 equal-total groups ordered A to Z: `k,v / a,5 / b,5 / c,5` with `--group-by k --column v` lists a, b, c via the CLI; regression test added (fails on the old code, passes now); README and docstrings say A to Z; full suite passes",
+    "self_est": 8.0,
+    "self_cat": "fix",
+    "actual": 0.95
+   },
+   {
+    "key": "G5 README `## Development` section: repository layout, how to run the tests, numbered steps with a short code example for adding a `--format` choice; the steps are applied in a scratch copy of the repo and the tests pass there",
+    "self_est": 12.0,
+    "self_cat": "docs",
+    "actual": 1.45
+   },
+   {
+    "key": "PRs: stacked branches fh/06..fh/10 (one per task, each from the previous), pushed, with `gh pr create --base <previous branch>`, titles ending (1)..(5)",
+    "self_est": 5.0,
+    "self_cat": "ops",
+    "actual": null
+   }
+  ]
+ },
+ {
+  "id": "e2-p2-shelf-sonnet-B",
+  "source": "e2",
+  "cell": "p2-shelf-sonnet",
+  "fixture": "p2-shelf",
+  "family": "sonnet",
+  "goal": "B",
+  "sentence": "Complete five tasks in the shelf repo: persistence-risk notes, `sort` on GET /books, zero-day loan overdue fix, `src/persistence.js` extraction, and JSDoc on `Store`.",
+  "items": [
+   {
+    "key": "T3: zero-day loan is not overdue on the day it is lent (isOverdue fix) + regression test; `npm test` green",
+    "self_est": 8.0,
+    "self_cat": "fix",
+    "actual": 0.47
+   },
+   {
+    "key": "T2: `sort` query param on GET /books (title/author/year, `-` prefix, id default, null year last, 400 otherwise, sorted before paging) + README + tests; `npm test` green",
+    "self_est": 15.0,
+    "self_cat": "feature",
+    "actual": 0.96
+   },
+   {
+    "key": "T4: `src/persistence.js` with `loadSnapshot(file)` / `saveSnapshot(file, data)`, `Store` uses it, existing tests pass unedited (`git diff main -- test/` shows no edits to existing files)",
+    "self_est": 10.0,
+    "self_cat": "refactor",
+    "actual": 0.5
+   },
+   {
+    "key": "T5: JSDoc (with @param, @returns, thrown errors) on `Store`, its constructor and every method in `src/store.js`; checked by a script that lists methods lacking a JSDoc block",
+    "self_est": 10.0,
+    "self_cat": "docs",
+    "actual": 1.52
+   },
+   {
+    "key": "T1: `notes/persistence-risks.md` with `# Persistence risks`, `## Writes`, `## Scenarios` (table, 4 required scenarios), `## Recommendation` (<=5 lines)",
+    "self_est": 12.0,
+    "self_cat": "research",
+    "actual": 1.82
+   },
+   {
+    "key": "Final: `npm test` green on the last branch, stack of local branches/PRs recorded in Resume",
+    "self_est": 5.0,
+    "self_cat": "ops",
+    "actual": 0.29
+   }
+  ]
+ },
+ {
+  "id": "e2-p2-shelf-sonnet-C",
+  "source": "e2",
+  "cell": "p2-shelf-sonnet",
+  "fixture": "p2-shelf",
+  "family": "sonnet",
+  "goal": "C",
+  "sentence": "Complete five tasks in the shelf repo: rename Store.addLoan/returnLoan to createLoan/closeLoan, fix PATCH /books/:id blanking a title silently, add POST /loans/:id/renew, document the data file format in the README, and write notes/validation-coverage.md.",
+  "items": [
+   {
+    "key": "T1: `Store.addLoan` -> `createLoan` and `Store.returnLoan` -> `closeLoan` in src, tests and notes (handlers keep their names); `grep -rn \"addLoan\\|returnLoan\"` finds only the handler `returnLoan` in src/handlers/loans.js + src/server.js; `node --test` green; branch refactor/rename-loan-methods",
+    "self_est": 6.0,
+    "self_cat": "refactor",
+    "actual": 0.39
+   },
+   {
+    "key": "T3: PATCH /books/:id with `{title:\"\"}` or `{title:null}` answers 422 with a `title` problem, book unchanged; regression tests (API + validateBook); `node --test` green; branch fix/patch-blank-title",
+    "self_est": 7.0,
+    "self_cat": "fix",
+    "actual": 0.38
+   },
+   {
+    "key": "T5: `POST /loans/:id/renew` (7 days or integer `days` 1-30, max 2 renewals then 409, 409 returned loan, 404 unknown, 400 bad id, 422 bad body), `renewals` on every loan (0 for pre-existing stored loans), README endpoint table + behaviour note, tests; `node --test` green; branch feat/loan-renew",
+    "self_est": 20.0,
+    "self_cat": "feature",
+    "actual": 1.44
+   },
+   {
+    "key": "T2: README \"Data file format\" section (top-level keys, book + loan record with examples, id assignment, when written, missing file at start-up); every claim checked by a throwaway script run against the code; branch docs/readme-data-file-format",
+    "self_est": 12.0,
+    "self_cat": "docs",
+    "actual": 1.63
+   },
+   {
+    "key": "T4: notes/validation-coverage.md (`# Validation coverage`, table Endpoint | Input | Validated in | Rule | Gap with a row per input of every route incl. renew, `## Gaps` ordered by likelihood of a wrong response); every gap reproduced with a script; a check script confirms all routes/inputs have a row; branch docs/validation-coverage",
+    "self_est": 25.0,
+    "self_cat": "research",
+    "actual": 4.1
+   },
+   {
+    "key": "Final: `node --test` green on the last branch; stack of branches/PRs recorded in Resume",
+    "self_est": 5.0,
+    "self_cat": "ops",
+    "actual": 0.6
+   }
+  ]
+ },
+ {
+  "id": "r2-p1-tally-fable-B",
+  "source": "r2",
+  "cell": "p1-tally-fable",
+  "fixture": "p1-tally",
+  "family": "fable",
+  "goal": "B",
+  "sentence": "Complete the five tally tasks: docstrings in `tally.py`, move `TallyError`/`read_rows`/`check_column` to `csvio.py`, write `notes/exit-codes.md`, fix negative amounts with a regression test, and add `--sort value|key|count` with tests.",
+  "items": [
+   {
+    "key": "Task 1 \u2014 every function and class in `tally.py` has a docstring (one-line summary, Args and Returns); check: an `ast` script reports no function/class without them and `python3 -m unittest -q` passes",
+    "self_est": 3.0,
+    "self_cat": "docs",
+    "actual": 0.87
+   },
+   {
+    "key": "Task 2 \u2014 `TallyError`, `read_rows`, `check_column` live in `csvio.py` and are imported back into `tally.py`; check: `python3 -m unittest -q` passes with `git diff --quiet test_tally.py`, and `tally.TallyError is csvio.TallyError`",
+    "self_est": 2.0,
+    "self_cat": "refactor",
+    "actual": 0.66
+   },
+   {
+    "key": "Task 4 \u2014 negative amounts are parsed; check: the `k,amount / a,10 / b,-5` CSV prints count 2 and sum 5, and a new regression test passes",
+    "self_est": 3.0,
+    "self_cat": "fix",
+    "actual": 0.24
+   },
+   {
+    "key": "Panel decision on the two places where the code contradicts README.md (tie order of the default sort, mean denominator); check: a record with question, options, positions, decision, dissent and revert is under `## Decisions`",
+    "self_est": 8.0,
+    "self_cat": "research",
+    "actual": 5.36
+   },
+   {
+    "key": "Task 5 \u2014 `--sort value|key|count` for grouped output, `--top` applied after sorting, README updated; check: new tests for each order, the default and `--top` pass, and the CLI shows the three orders on `data/sample.csv`",
+    "self_est": 6.0,
+    "self_cat": "feature",
+    "actual": 1.1
+   },
+   {
+    "key": "Task 3 \u2014 `notes/exit-codes.md` with `# Exit codes`, `## Paths` (table: Trigger, Exit code, Message, Raised in, Tested) and `## Untested paths`; check: every row's exit code and message was reproduced by running the final code, and every named test exists",
+    "self_est": 9.0,
+    "self_cat": "research",
+    "actual": 1.31
+   },
+   {
+    "key": "Final verification \u2014 `python3 -m unittest -q` passes, `git diff test_tally.py` has no removed or changed lines, the `ast` docstring check passes on `tally.py` and `csvio.py`, and the README examples run",
+    "self_est": 2.0,
+    "self_cat": "test",
+    "actual": 0.19
+   }
+  ]
+ },
+ {
+  "id": "r2-p2-shelf-opus-B",
+  "source": "r2",
+  "cell": "p2-shelf-opus",
+  "fixture": "p2-shelf",
+  "family": "opus",
+  "goal": "B",
+  "sentence": "Complete the five shelf tasks: persistence-risk notes, `sort` on GET /books, zero-day overdue fix, `src/persistence.js` extraction, and JSDoc for `Store`.",
+  "items": [
+   {
+    "key": "Task 3: `isOverdue` treats a loan due today as not overdue; new regression test (zero-day loan absent from /loans/overdue today, present tomorrow) passes with `node --test`",
+    "self_est": 6.0,
+    "self_cat": "fix",
+    "actual": 2.07
+   },
+   {
+    "key": "Task 4: `src/persistence.js` exports `loadSnapshot(file)` / `saveSnapshot(file, data)`, `Store` uses it, no `node:fs` import left in `src/store.js`, `git diff main -- test/` shows no change to existing test files, all tests pass",
+    "self_est": 8.0,
+    "self_cat": "refactor",
+    "actual": 2.25
+   },
+   {
+    "key": "Panel: decide whether to fix the pre-existing `paginate` offset bug (`items.slice(offset, limit)`) found while planning task 2; decision recorded and applied",
+    "self_est": 12.0,
+    "self_cat": "research",
+    "actual": 1.09
+   },
+   {
+    "key": "Task 2: `sort` query parameter on GET /books (title/author/year/-title/-author/-year, id order when absent, null years last both ways, 400 with usual error body otherwise, sort before paging), README documents it, new tests pass",
+    "self_est": 15.0,
+    "self_cat": "feature",
+    "actual": 1.36
+   },
+   {
+    "key": "Task 5: JSDoc on `Store` class, constructor and every method with `@param`, `@returns` and thrown errors; check with a script that every method in `src/store.js` is preceded by a `/** ... */` block containing `@returns`",
+    "self_est": 8.0,
+    "self_cat": "docs",
+    "actual": 2.05
+   },
+   {
+    "key": "Task 1: `notes/persistence-risks.md` with `# Persistence risks`, `## Writes` (every Store method that writes), `## Scenarios` table (Scenario | Current behavior | Risk | Suggested change) covering crash during write, corrupt/empty file at start-up, concurrent requests, very large collection, and `## Recommendation` of at most 5 lines; claims checked by running experiments",
+    "self_est": 15.0,
+    "self_cat": "research",
+    "actual": 5.3
+   },
+   {
+    "key": "Final check: full `node --test` passes, existing test files byte-identical to `main`, every commit on the work branch, goal file updated",
+    "self_est": 4.0,
+    "self_cat": "test",
+    "actual": 0.23
+   }
+  ]
+ },
+ {
+  "id": "r2-p2-shelf-opus-C",
+  "source": "r2",
+  "cell": "p2-shelf-opus",
+  "fixture": "p2-shelf",
+  "family": "opus",
+  "goal": "C",
+  "sentence": "Complete the five shelf tasks: rename `addLoan`/`returnLoan` store methods, document the data file format in the README, reject blank/null `title` on PATCH, write `notes/validation-coverage.md`, and add `POST /loans/:id/renew`.",
+  "items": [
+   {
+    "key": "Task 1: store methods renamed to `createLoan`/`closeLoan` in src, tests and notes; `grep -rn \"addLoan\\|\\.returnLoan(\" src test notes` finds nothing; handler `returnLoan` in `src/handlers/loans.js` still exported; `node --test` passes",
+    "self_est": 6.0,
+    "self_cat": "refactor",
+    "actual": 0.32
+   },
+   {
+    "key": "Task 3: `PATCH /books/:id` with `{\"title\":\"\"}` and `{\"title\":null}` answers 422 with a `title` problem; regression test in a new test file passes; `node --test` passes",
+    "self_est": 8.0,
+    "self_cat": "fix",
+    "actual": 0.64
+   },
+   {
+    "key": "Task 5: `POST /loans/:id/renew` (default 7 days, optional integer `days` 1\u201330 \u2192 else 422, max 2 renewals \u2192 409, returned \u2192 409, unknown \u2192 404, non-integer id \u2192 400); `renewals` on every loan, 0 for loans loaded from an older file; README endpoint table row; new tests pass; `node --test` passes",
+    "self_est": 25.0,
+    "self_cat": "feature",
+    "actual": 1.93
+   },
+   {
+    "key": "Task 2: README \"Data file format\" section with every top-level key, book and loan record shapes with an example each, id assignment, when the file is written, missing file at start-up; every claim checked against a real data file written by the server",
+    "self_est": 12.0,
+    "self_cat": "docs",
+    "actual": 1.05
+   },
+   {
+    "key": "Task 4: `notes/validation-coverage.md` with `# Validation coverage`, table (Endpoint | Input | Validated in | Rule | Gap) with one row per input per endpoint (all 12 routes), `## Gaps` ordered by likelihood of a wrong response; gap claims checked with requests against a running server",
+    "self_est": 25.0,
+    "self_cat": "research",
+    "actual": null
+   },
+   {
+    "key": "Final check: `node --test` passes, existing test files changed only by the task-1 rename, one commit per task on `free-hands/shelf-tasks-2`, goal file updated",
+    "self_est": 4.0,
+    "self_cat": "test",
+    "actual": 0.3
+   },
+   {
+    "key": "Task 4: `notes/validation-coverage.md` with `# Validation coverage`, table (Endpoint | Input | Validated in | Rule | Gap) with one row per input per endpoint (all 11 routes), `## Gaps` ordered by likelihood of a wrong response; gap claims checked with requests against a running server",
+    "self_est": 25.0,
+    "self_cat": "research",
+    "actual": 3.68
+   }
+  ]
+ },
+ {
+  "id": "r2-p3-orders-opus-B",
+  "source": "r2",
+  "cell": "p3-orders-opus",
+  "fixture": "p3-orders",
+  "family": "opus",
+  "goal": "B",
+  "sentence": "Complete five tasks in the orders repo: place-order flow notes, low-stock fix, `report customers`, status constants, storage docstrings.",
+  "items": [
+   {
+    "key": "Task 4: six status constants defined once in orders/models.py and used everywhere (grep for the quoted literals in orders/ outside models.py finds none, SQL parameterised); 75 existing tests pass with tests/ unchanged",
+    "self_est": 15.0,
+    "self_cat": "refactor",
+    "actual": 1.0
+   },
+   {
+    "key": "Task 2: low-stock report filters on available (on_hand - reserved); regression test reproducing 20 stock / 18 ordered / threshold 5 at report and CLI level passes",
+    "self_est": 10.0,
+    "self_cat": "fix",
+    "actual": 0.87
+   },
+   {
+    "key": "Task 3: `report customers` with --from/--to/--limit/--format, new orders/reports/customers.py, new OrderRepo query, renderer; repository, report and CLI tests pass",
+    "self_est": 30.0,
+    "self_cat": "feature",
+    "actual": 2.32
+   },
+   {
+    "key": "Task 5: docstrings on every module, class and public method/function in orders/storage/ with summary, Args, Returns, Raises; an AST check script confirms none missing",
+    "self_est": 20.0,
+    "self_cat": "docs",
+    "actual": 2.28
+   },
+   {
+    "key": "Task 1: notes/place-order-flow.md with `# Place order flow`, `## Call sequence`, `## Data read and written` table (Step, Tables read, Tables written, Configuration used), `## Failure points`; each failure point verified by running the CLI",
+    "self_est": 25.0,
+    "self_cat": "docs",
+    "actual": 3.14
+   },
+   {
+    "key": "Stacked branches committed per task and PRs requested in stack order (1)-(5); full test suite passes on the last branch",
+    "self_est": 5.0,
+    "self_cat": "ops",
+    "actual": 0.34
+   }
+  ]
+ },
+ {
+  "id": "r2-p3-orders-opus-C",
+  "source": "r2",
+  "cell": "p3-orders-opus",
+  "fixture": "p3-orders",
+  "family": "opus",
+  "goal": "C",
+  "sentence": "Complete five tasks in the orders repo: README CLI reference, coupon last-day expiry fix, rename place_order to submit_order, large-order discount, notes/regions.md.",
+  "items": [
+   {
+    "key": "Task 2: a coupon is valid through its expiry date and rejected from the next day on; regression tests for 2026-03-31 (accepted) and 2026-04-01 (rejected) pass, and the reported CLI sequence succeeds",
+    "self_est": 10.0,
+    "self_cat": "fix",
+    "actual": 1.1
+   },
+   {
+    "key": "Task 3: `OrderService.place_order` renamed to `submit_order`; `grep -rn place_order` over orders/ tests/ README.md docs/ notes/ finds nothing, the `place` subcommand is unchanged, full test suite passes",
+    "self_est": 10.0,
+    "self_cat": "refactor",
+    "actual": 1.1
+   },
+   {
+    "key": "Task 4: large-order discount (>= 500.00 after volume and tier, 2 percent, before coupon, constants in orders/config.py) shown as `large-order` in quote, spread and taxed like other order discounts, listed as `large-order` in report daily and not counted as coupon; engine, report and CLI tests pass",
+    "self_est": 30.0,
+    "self_cat": "feature",
+    "actual": 9.41
+   },
+   {
+    "key": "Task 5: notes/regions.md with `# Regions`, `## Usage sites` table (File, Function, What it does with the region, What happens for an unknown region) covering every region or tax-rate read in orders/, `## Adding a region` (US-WA, 6.5 percent, groceries exempt), `## Failure behavior`; each unknown-region behavior verified by running it",
+    "self_est": 20.0,
+    "self_cat": "research",
+    "actual": 1.88
+   },
+   {
+    "key": "Task 1: README.md \"CLI reference\" with one heading per subcommand (synopsis, arguments/options with defaults and accepted values, one runnable example, exit codes) plus the `--db`/`ORDERS_DB` note; every example run by a script against a fresh database with the documented exit codes",
+    "self_est": 25.0,
+    "self_cat": "docs",
+    "actual": 2.94
+   },
+   {
+    "key": "Stacked branches committed per task and PRs requested in stack order; full test suite passes on the last branch",
+    "self_est": 5.0,
+    "self_cat": "ops",
+    "actual": 0.99
+   }
+  ]
+ },
+ {
+  "id": "r2-p3-orders-sonnet-B",
+  "source": "r2",
+  "cell": "p3-orders-sonnet",
+  "fixture": "p3-orders",
+  "family": "sonnet",
+  "goal": "B",
+  "sentence": "Complete five tasks in the orders repo: place-order flow notes, low-stock fix, `report customers` command, status constants, storage docstrings.",
+  "items": [
+   {
+    "key": "T4: status constants defined once in orders/models.py, used everywhere in orders/ (incl. SQL); `grep` for the six literals finds only models.py; existing tests pass unedited",
+    "self_est": 8.0,
+    "self_cat": "refactor",
+    "actual": 0.51
+   },
+   {
+    "key": "T2: low-stock report uses available (on_hand - reserved) with regression test (20 stock, order 18, threshold 5 lists it) at report and CLI level; suite passes",
+    "self_est": 5.0,
+    "self_cat": "fix",
+    "actual": 0.1
+   },
+   {
+    "key": "T3: `report customers` (--from/--to inclusive optional, --limit, --format text|json) via orders/reports/ module + new repo query + renderer; tests at repository, report and CLI level pass",
+    "self_est": 15.0,
+    "self_cat": "feature",
+    "actual": 1.82
+   },
+   {
+    "key": "T5: docstrings (summary, args, returns, raises) on every module, class and public method in orders/storage/; checked with an ast script listing zero missing",
+    "self_est": 10.0,
+    "self_cat": "docs",
+    "actual": 1.74
+   },
+   {
+    "key": "T1: notes/place-order-flow.md with required headings, numbered call sequence with files, table with the 4 columns, failure points verified by running the CLI",
+    "self_est": 12.0,
+    "self_cat": "docs",
+    "actual": 3.3
+   },
+   {
+    "key": "Final: full test suite green, README/architecture/config comment updated, end-to-end CLI run",
+    "self_est": 4.0,
+    "self_cat": "test",
+    "actual": 0.51
+   }
+  ]
+ },
+ {
+  "id": "r2-p3-orders-sonnet-C",
+  "source": "r2",
+  "cell": "p3-orders-sonnet",
+  "fixture": "p3-orders",
+  "family": "sonnet",
+  "goal": "C",
+  "sentence": "Complete five tasks in the orders repo: coupon last-valid-day fix, rename OrderService.place_order to submit_order, large-order discount, README CLI reference, and notes/regions.md.",
+  "items": [
+   {
+    "key": "A2: coupon `expires_on` is the last valid day: `--date 2026-03-31` accepted, `2026-04-01` rejected with \"coupon SPRING expired on 2026-03-31\"; regression tests (last day + day after) at engine and CLI level; suite passes",
+    "self_est": 6.0,
+    "self_cat": "fix",
+    "actual": 0.93
+   },
+   {
+    "key": "A3: `place_order` no longer appears anywhere (`grep -rn place_order` over source, tests, docs, notes, README is empty), `submit_order` defined/called/mentioned instead, CLI `place` subcommand unchanged; suite passes",
+    "self_est": 4.0,
+    "self_cat": "refactor",
+    "actual": 0.31
+   },
+   {
+    "key": "A4: `large-order` discount (>= 500.00 remaining after volume+tier, +2%, before coupon) with threshold and percent in orders/config.py; shows in `quote`, spread over lines and taxed like other order-level discounts, named `large-order` in `report daily` breakdown and not counted as coupon discount; engine, report and CLI tests added and passing",
+    "self_est": 15.0,
+    "self_cat": "feature",
+    "actual": 1.5
+   },
+   {
+    "key": "A1: README.md \"CLI reference\" section with one heading per subcommand (12) each with synopsis, args/options with defaults and accepted values, runnable example, exit codes, plus global `--db`/`ORDERS_DB` note; every example run against a scratch db and every default/choice checked against `--help`",
+    "self_est": 12.0,
+    "self_cat": "docs",
+    "actual": 3.44
+   },
+   {
+    "key": "A5: notes/regions.md with `# Regions`, `## Usage sites` table (File, Function, What it does with the region, What happens for an unknown region) covering every region/tax-rate read in orders/, `## Adding a region` (US-WA 6.5%, groceries exempt, exact edits, verified by running the CLI on a scratch copy), `## Failure behavior` (verified by removing a region in a scratch run)",
+    "self_est": 12.0,
+    "self_cat": "research",
+    "actual": 2.79
+   },
+   {
+    "key": "Final: full test suite green, docs/architecture.md and notes/place-order-flow.md consistent with the final code, end-to-end CLI run, work committed on stacked local branches",
+    "self_est": 4.0,
+    "self_cat": "test",
+    "actual": 1.44
+   }
+  ]
+ }
+]
