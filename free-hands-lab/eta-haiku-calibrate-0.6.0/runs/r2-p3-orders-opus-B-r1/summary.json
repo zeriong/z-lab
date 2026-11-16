@@ -1,0 +1,48 @@
+{
+ "unit": "r2-p3-orders-opus-B-r1",
+ "goal_run": "r2-p3-orders-opus-B",
+ "keys": [
+  "Task 4: six status constants defined once in orders/models.py and used everywhere (grep for the quoted literals in orders/ outside models.py finds none, SQL parameterised); 75 existing tests pass with tests/ unchanged",
+  "Task 2: low-stock report filters on available (on_hand - reserved); regression test reproducing 20 stock / 18 ordered / threshold 5 at report and CLI level passes",
+  "Task 3: `report customers` with --from/--to/--limit/--format, new orders/reports/customers.py, new OrderRepo query, renderer; repository, report and CLI tests pass",
+  "Task 5: docstrings on every module, class and public method/function in orders/storage/ with summary, Args, Returns, Raises; an AST check script confirms none missing",
+  "Task 1: notes/place-order-flow.md with `# Place order flow`, `## Call sequence`, `## Data read and written` table (Step, Tables read, Tables written, Configuration used), `## Failure points`; each failure point verified by running the CLI",
+  "Stacked branches committed per task and PRs requested in stack order (1)-(5); full test suite passes on the last branch"
+ ],
+ "rows": [
+  {
+   "key": "Task 4: six status constants defined once in orders/models.py and used everywhere (grep for the quoted literals in orders/ outside models.py finds none, SQL parameterised); 75 existing tests pass with tests/ unchanged",
+   "minutes": 25.0,
+   "category": "refactor"
+  },
+  {
+   "key": "Task 2: low-stock report filters on available (on_hand - reserved); regression test reproducing 20 stock / 18 ordered / threshold 5 at report and CLI level passes",
+   "minutes": 20.0,
+   "category": "fix"
+  },
+  {
+   "key": "Task 3: `report customers` with --from/--to/--limit/--format, new orders/reports/customers.py, new OrderRepo query, renderer; repository, report and CLI tests pass",
+   "minutes": 60.0,
+   "category": "feature"
+  },
+  {
+   "key": "Task 5: docstrings on every module, class and public method/function in orders/storage/ with summary, Args, Returns, Raises; an AST check script confirms none missing",
+   "minutes": 30.0,
+   "category": "docs"
+  },
+  {
+   "key": "Task 1: notes/place-order-flow.md with `# Place order flow`, `## Call sequence`, `## Data read and written` table (Step, Tables read, Tables written, Configuration used), `## Failure points`; each failure point verified by running the CLI",
+   "minutes": 35.0,
+   "category": "docs"
+  },
+  {
+   "key": "Stacked branches committed per task and PRs requested in stack order (1)-(5); full test suite passes on the last branch",
+   "minutes": 20.0,
+   "category": "ops"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.00141639,
+ "elapsed_s": 6.1,
+ "git_status_after": ""
+}

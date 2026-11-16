@@ -1,0 +1,288 @@
+{
+ "argv": [
+  "claude",
+  "-p",
+  "<ESTIMATE_PROMPT>",
+  "--safe-mode",
+  "--no-session-persistence",
+  "--model",
+  "haiku",
+  "--effort",
+  "low",
+  "--allowedTools",
+  "Read",
+  "Glob",
+  "Grep",
+  "--output-format",
+  "stream-json",
+  "--verbose",
+  "--include-hook-events",
+  "--max-budget-usd",
+  "0.5"
+ ],
+ "exit": 0,
+ "elapsed_ms": 4493,
+ "estimator": {
+  "init": {
+   "model": "claude-haiku-5-5",
+   "tools": [
+    "Task",
+    "Bash",
+    "CronCreate",
+    "CronDelete",
+    "CronList",
+    "DesignSync",
+    "Edit",
+    "EnterWorktree",
+    "ExitWorktree",
+    "Glob",
+    "Grep",
+    "ListAgents",
+    "Monitor",
+    "NotebookEdit",
+    "PublishPlugin",
+    "PushNotification",
+    "Read",
+    "RemoteTrigger",
+    "ReportFindings",
+    "ScheduleWakeup",
+    "SendMessage",
+    "ShareOnboardingGuide",
+    "Skill",
+    "TaskStop",
+    "ToolSearch",
+    "WebFetch",
+    "WebSearch",
+    "Workflow",
+    "Write"
+   ],
+   "plugins": [
+    {
+     "name": "orca-agent-view",
+     "path": "/Users/jeonjelyong/Library/Application Support/orca/claude-agent-view/bed635e6724f675384b5/orca-agent-view",
+     "source": "orca-agent-view@inline",
+     "version": "0.2.0"
+    },
+    {
+     "name": "ch-toolkit-general",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/ch-agents/ch-toolkit-general/1.0.9",
+     "source": "ch-toolkit-general@ch-agents",
+     "version": "1.0.9"
+    },
+    {
+     "name": "ch-toolkit-frontend",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/ch-agents/ch-toolkit-frontend/1.0.1",
+     "source": "ch-toolkit-frontend@ch-agents",
+     "version": "1.0.1"
+    },
+    {
+     "name": "github",
+     "path": "/Users/jeonjelyong/Library/Application Support/orca/claude-profiles/5e5abe09-7a58-4503-b610-94741c226282/home/plugins/cache/claude-plugins-official/github/b5b01ac4f889",
+     "source": "github@claude-plugins-official"
+    },
+    {
+     "name": "frontend-design",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/claude-plugins-official/frontend-design/1.1.1",
+     "source": "frontend-design@claude-plugins-official",
+     "version": "1.1.1"
+    },
+    {
+     "name": "chrome-devtools-mcp",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/claude-plugins-official/chrome-devtools-mcp/1.11.0",
+     "source": "chrome-devtools-mcp@claude-plugins-official",
+     "version": "1.11.0"
+    },
+    {
+     "name": "last30days",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/last30days-skill/last30days/3.8.0",
+     "source": "last30days@last30days-skill",
+     "version": "3.8.0"
+    },
+    {
+     "name": "indivisual-commit",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/zeriong-indivisual-plugins/indivisual-commit/2.0.0",
+     "source": "indivisual-commit@zeriong-indivisual-plugins",
+     "version": "2.0.0"
+    },
+    {
+     "name": "zeriong-frontend-conventions",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/zeriong-indivisual-plugins/zeriong-frontend-conventions/2.0.0",
+     "source": "zeriong-frontend-conventions@zeriong-indivisual-plugins",
+     "version": "2.0.0"
+    },
+    {
+     "name": "free-hands",
+     "path": "/Users/jeonjelyong/Library/Application Support/orca/claude-profiles/d1d05ace-c4ae-407e-a0a0-3012d1c1f39b/home/plugins/cache/because-i-needed/free-hands/0.5.0",
+     "source": "free-hands@because-i-needed",
+     "version": "0.5.0"
+    },
+    {
+     "name": "peer-coding",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/because-i-needed/peer-coding/1.2.0",
+     "source": "peer-coding@because-i-needed",
+     "version": "1.2.0"
+    },
+    {
+     "name": "ux-ui",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/because-i-needed/ux-ui/1.4.1",
+     "source": "ux-ui@because-i-needed",
+     "version": "1.4.1"
+    },
+    {
+     "name": "budget",
+     "path": "/Users/jeonjelyong/Library/Application Support/orca/claude-profiles/cd201108-8110-4df4-9642-f5980faa7bdc/home/plugins/cache/because-i-needed/budget/0.1.1",
+     "source": "budget@because-i-needed",
+     "version": "0.1.1"
+    },
+    {
+     "name": "dashboard",
+     "path": "/Users/jeonjelyong/Library/Application Support/orca/claude-profiles/d1d05ace-c4ae-407e-a0a0-3012d1c1f39b/home/plugins/cache/because-i-needed/dashboard/0.3.0",
+     "source": "dashboard@because-i-needed",
+     "version": "0.3.0"
+    },
+    {
+     "name": "context-rail",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/because-i-needed/context-rail/0.3.1",
+     "source": "context-rail@because-i-needed",
+     "version": "0.3.1"
+    },
+    {
+     "name": "cc-plugin-sec-default",
+     "path": "builtin",
+     "source": "cc-plugin-sec-default@builtin"
+    },
+    {
+     "name": "cc-plugin-agents-md",
+     "path": "builtin",
+     "source": "cc-plugin-agents-md@builtin"
+    },
+    {
+     "name": "cc-plugin-telemetry",
+     "path": "builtin",
+     "source": "cc-plugin-telemetry@builtin"
+    },
+    {
+     "name": "cc-plugin-privacy",
+     "path": "builtin",
+     "source": "cc-plugin-privacy@builtin"
+    },
+    {
+     "name": "cc-plugin-plugin-authoring",
+     "path": "builtin",
+     "source": "cc-plugin-plugin-authoring@builtin"
+    }
+   ],
+   "memory_paths": null,
+   "session_id": "053f1441-f0fc-444c-b90e-7bc7c0d68a49",
+   "permissionMode": "auto",
+   "claude_code_version": "2.1.325"
+  },
+  "hook_events": [],
+  "tools": [
+   {
+    "name": "Glob",
+    "input": {
+     "pattern": "**/*"
+    }
+   },
+   {
+    "name": "Grep",
+    "input": {
+     "pattern": "(?i)missing|blank|null|none|nan|dropna|isnan|strip|delimiter|csv",
+     "output_mode": "content",
+     "-n": true
+    }
+   }
+  ],
+  "results": [
+   {
+    "error": null,
+    "content": "tally.py\ndata/sample.csv\nREADME.md\ntest_tally.py\n.git/description\n.git/hooks/commit-msg.sample\n.git/hooks/pre-rebase.sample\n.git/hooks/sendemail-validate.sample\n.git/hooks/pre-commit.sample\n.git/hooks/applypatch-msg.sample\n.git/hooks/fsmonitor-watchman.sample\n.git/hooks/pre-receive.sample\n.git/hooks"
+   },
+   {
+    "error": null,
+    "content": "README.md:3:A small command-line tool that summarizes a CSV file. Python 3.9+, standard library only.\nREADME.md:20:- Numbers may contain thousands separators (`1,200.50`). Blank or non-numeric cells are\nREADME.md:25:- Leading and trailing spaces in a group key are ignored; an empty key is shown as `"
+   }
+  ],
+  "result": {
+   "subtype": "success",
+   "result": "{\"items\": [{\"n\": 1, \"minutes\": 8, \"category\": \"fix\"}, {\"n\": 2, \"minutes\": 15, \"category\": \"feature\"}, {\"n\": 3, \"minutes\": 10, \"category\": \"docs\"}]}",
+   "total_cost_usd": 0.0024443900000000003,
+   "duration_ms": 3339,
+   "num_turns": 3,
+   "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 9519,
+    "cache_read_input_tokens": 34419,
+    "output_tokens": 392,
+    "output_tokens_details": {
+     "thinking_tokens": 134
+    },
+    "server_tool_use": {
+     "web_search_requests": 0,
+     "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 9519,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+     {
+      "input_tokens": 2,
+      "output_tokens": 181,
+      "cache_read_input_tokens": 20996,
+      "cache_creation_input_tokens": 1946,
+      "cache_creation": {
+       "ephemeral_5m_input_tokens": 0,
+       "ephemeral_1h_input_tokens": 1946
+      },
+      "type": "message"
+     }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+   },
+   "modelUsage": {
+    "claude-haiku-5-5": {
+     "inputTokens": 4,
+     "outputTokens": 392,
+     "cacheReadInputTokens": 34419,
+     "cacheCreationInputTokens": 9519,
+     "webSearchRequests": 0,
+     "costUSD": 0.0024443900000000003,
+     "contextWindow": 1000000,
+     "maxOutputTokens": 128000,
+     "thinkingTokens": 134,
+     "cacheCreationEphemeral5mInputTokens": 0,
+     "cacheCreationEphemeral1hInputTokens": 9519,
+     "canonicalModel": "claude-haiku-5-5",
+     "provider": "firstParty",
+     "costBasis": "list"
+    }
+   }
+  }
+ },
+ "answer": {
+  "items": [
+   {
+    "n": 1,
+    "minutes": 8,
+    "category": "fix"
+   },
+   {
+    "n": 2,
+    "minutes": 15,
+    "category": "feature"
+   },
+   {
+    "n": 3,
+    "minutes": 10,
+    "category": "docs"
+   }
+  ]
+ },
+ "new_transcripts": [],
+ "git_status_after": ""
+}

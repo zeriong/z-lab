@@ -1,0 +1,54 @@
+{
+ "unit": "r2-p2-shelf-opus-C-r3",
+ "goal_run": "r2-p2-shelf-opus-C",
+ "keys": [
+  "Task 1: store methods renamed to `createLoan`/`closeLoan` in src, tests and notes; `grep -rn \"addLoan\\|\\.returnLoan(\" src test notes` finds nothing; handler `returnLoan` in `src/handlers/loans.js` still exported; `node --test` passes",
+  "Task 3: `PATCH /books/:id` with `{\"title\":\"\"}` and `{\"title\":null}` answers 422 with a `title` problem; regression test in a new test file passes; `node --test` passes",
+  "Task 5: `POST /loans/:id/renew` (default 7 days, optional integer `days` 1–30 → else 422, max 2 renewals → 409, returned → 409, unknown → 404, non-integer id → 400); `renewals` on every loan, 0 for loans loaded from an older file; README endpoint table row; new tests pass; `node --test` passes",
+  "Task 2: README \"Data file format\" section with every top-level key, book and loan record shapes with an example each, id assignment, when the file is written, missing file at start-up; every claim checked against a real data file written by the server",
+  "Task 4: `notes/validation-coverage.md` with `# Validation coverage`, table (Endpoint | Input | Validated in | Rule | Gap) with one row per input per endpoint (all 12 routes), `## Gaps` ordered by likelihood of a wrong response; gap claims checked with requests against a running server",
+  "Final check: `node --test` passes, existing test files changed only by the task-1 rename, one commit per task on `free-hands/shelf-tasks-2`, goal file updated",
+  "Task 4: `notes/validation-coverage.md` with `# Validation coverage`, table (Endpoint | Input | Validated in | Rule | Gap) with one row per input per endpoint (all 11 routes), `## Gaps` ordered by likelihood of a wrong response; gap claims checked with requests against a running server"
+ ],
+ "rows": [
+  {
+   "key": "Task 1: store methods renamed to `createLoan`/`closeLoan` in src, tests and notes; `grep -rn \"addLoan\\|\\.returnLoan(\" src test notes` finds nothing; handler `returnLoan` in `src/handlers/loans.js` still exported; `node --test` passes",
+   "minutes": 6.0,
+   "category": "refactor"
+  },
+  {
+   "key": "Task 3: `PATCH /books/:id` with `{\"title\":\"\"}` and `{\"title\":null}` answers 422 with a `title` problem; regression test in a new test file passes; `node --test` passes",
+   "minutes": 10.0,
+   "category": "fix"
+  },
+  {
+   "key": "Task 5: `POST /loans/:id/renew` (default 7 days, optional integer `days` 1–30 → else 422, max 2 renewals → 409, returned → 409, unknown → 404, non-integer id → 400); `renewals` on every loan, 0 for loans loaded from an older file; README endpoint table row; new tests pass; `node --test` passes",
+   "minutes": 25.0,
+   "category": "feature"
+  },
+  {
+   "key": "Task 2: README \"Data file format\" section with every top-level key, book and loan record shapes with an example each, id assignment, when the file is written, missing file at start-up; every claim checked against a real data file written by the server",
+   "minutes": 25.0,
+   "category": "docs"
+  },
+  {
+   "key": "Task 4: `notes/validation-coverage.md` with `# Validation coverage`, table (Endpoint | Input | Validated in | Rule | Gap) with one row per input per endpoint (all 12 routes), `## Gaps` ordered by likelihood of a wrong response; gap claims checked with requests against a running server",
+   "minutes": 35.0,
+   "category": "research"
+  },
+  {
+   "key": "Final check: `node --test` passes, existing test files changed only by the task-1 rename, one commit per task on `free-hands/shelf-tasks-2`, goal file updated",
+   "minutes": 8.0,
+   "category": "test"
+  },
+  {
+   "key": "Task 4: `notes/validation-coverage.md` with `# Validation coverage`, table (Endpoint | Input | Validated in | Rule | Gap) with one row per input per endpoint (all 11 routes), `## Gaps` ordered by likelihood of a wrong response; gap claims checked with requests against a running server",
+   "minutes": 35.0,
+   "category": "research"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.00267551,
+ "elapsed_s": 8.0,
+ "git_status_after": ""
+}

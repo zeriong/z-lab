@@ -1,0 +1,55 @@
+{
+ "case": "B1",
+ "argv": [
+  "claude",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-isolated-run-r2/B1/plugins/dashboard",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-isolated-run-r2/B1/plugins/free-hands",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-isolated-run-r2/B1/plugins/turn-log",
+  "--session-id",
+  "8d4d8fa0-c4c3-4f1c-8204-c78bdcea3215",
+  "--setting-sources",
+  "project,local",
+  "--model",
+  "sonnet",
+  "--effort",
+  "xhigh",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash",
+  "Read",
+  "Write",
+  "Edit"
+ ],
+ "session_id": "8d4d8fa0-c4c3-4f1c-8204-c78bdcea3215",
+ "goal_before": "status: active\nmax_iterations: 10\niterations: 0\nowner: 8d4d8fa0-c4c3-4f1c-8204-c78bdcea3215\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] item a: run `sleep 20`, then mark this item `- [x]`\n- [ ] item b: run `sleep 20`, then mark this item `- [x]`\n- [ ] item c: run `sleep 20`, then mark this item `- [x]`\n## Decisions\n## Resume\n",
+ "trust_yes_selected": true,
+ "prompt_at": 1794822382.438219,
+ "elapsed_ms": 98008,
+ "turn_log": [
+  {
+   "at": 1794822382568,
+   "event": "turn.start"
+  },
+  {
+   "at": 1794822462102,
+   "event": "turn.complete"
+  }
+ ],
+ "goal_after": "status: done\nmax_iterations: 10\niterations: 0\nowner: 8d4d8fa0-c4c3-4f1c-8204-c78bdcea3215\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [x] item a: run `sleep 20`, then mark this item `- [x]`\n- [x] item b: run `sleep 20`, then mark this item `- [x]`\n- [x] item c: run `sleep 20`, then mark this item `- [x]`\n## Decisions\n## Resume\n",
+ "estimator_lock_free": true,
+ "eta.json": "{\"goal\": \"2f4fd8bd0e945355\", \"started\": 1794822374.366399, \"active\": 74.38536286354065, \"mark\": 74.38536286354065, \"last\": 1794822456.942328, \"idle\": false, \"items\": {\"item a: run `sleep 20`, then mark this item `- [x]`\": {\"mark\": \"x\", \"est\": null, \"cat\": null}, \"item b: run `sleep 20`, then mark this item `- [x]`\": {\"mark\": \"x\", \"est\": null, \"cat\": null}, \"item c: run `sleep 20`, then mark this item `- [x]`\": {\"mark\": \"x\", \"est\": null, \"cat\": null}}, \"model\": \"claude-sonnet-5-5\", \"effort\": \"xhigh\"}",
+ "timings.jsonl": "{\"v\": 2, \"at\": \"2026-11-16T09:46:49Z\", \"goal\": \"2f4fd8bd0e945355\", \"run\": 1794822374.366, \"item\": \"item a: run `sleep 20`, then mark this item `- [x]`\", \"cat\": \"docs\", \"est_min\": 1.0, \"estimator\": \"haiku\", \"actual_min\": 0.45, \"batch\": 1, \"outcome\": \"done\", \"model\": \"claude-sonnet-5-5\", \"family\": \"sonnet\", \"effort\": \"xhigh\"}\n{\"v\": 2, \"at\": \"2026-11-16T09:47:13Z\", \"goal\": \"2f4fd8bd0e945355\", \"run\": 1794822374.366, \"item\": \"item b: run `sleep 20`, then mark this item `- [x]`\", \"cat\": \"docs\", \"est_min\": 1.0, \"estimator\": \"haiku\", \"actual_min\": 0.4, \"batch\": 1, \"outcome\": \"done\", \"model\": \"claude-sonnet-5-5\", \"family\": \"sonnet\", \"effort\": \"xhigh\"}\n{\"v\": 2, \"at\": \"2026-11-16T09:47:36Z\", \"goal\": \"2f4fd8bd0e945355\", \"run\": 1794822374.366, \"item\": \"item c: run `sleep 20`, then mark this item `- [x]`\", \"cat\": \"docs\", \"est_min\": 1.0, \"estimator\": \"haiku\", \"actual_min\": 0.4, \"batch\": 1, \"outcome\": \"done\", \"model\": \"claude-sonnet-5-5\", \"family\": \"sonnet\", \"effort\": \"xhigh\"}\n",
+ "estimates.jsonl": "{\"v\": 1, \"at\": \"2026-11-16T09:46:17Z\", \"run\": 1794822374.366, \"item\": \"item a: run `sleep 20`, then mark this item `- [x]`\", \"minutes\": 1.0, \"cat\": \"docs\", \"estimator\": \"haiku\", \"model\": \"claude-haiku-5-5\", \"seconds\": 3.4, \"cost_usd\": 0.0006977700000000001}\n{\"v\": 1, \"at\": \"2026-11-16T09:46:17Z\", \"run\": 1794822374.366, \"item\": \"item b: run `sleep 20`, then mark this item `- [x]`\", \"minutes\": 1.0, \"cat\": \"docs\", \"estimator\": \"haiku\", \"model\": \"claude-haiku-5-5\", \"seconds\": 3.4, \"cost_usd\": 0.0006977700000000001}\n{\"v\": 1, \"at\": \"2026-11-16T09:46:17Z\", \"run\": 1794822374.366, \"item\": \"item c: run `sleep 20`, then mark this item `- [x]`\", \"minutes\": 1.0, \"cat\": \"docs\", \"estimator\": \"haiku\", \"model\": \"claude-haiku-5-5\", \"seconds\": 3.4, \"cost_usd\": 0.0006977700000000001}\n",
+ "values_before_turn_complete": [
+  "active 0/10 · 3 open (project) · owner 8d4d8fa0",
+  "active 0/10 · 3 open · ETA 18:46 (project) · ~1m left · owner 8d4d8fa0",
+  "active 0/10 · 2 open · ETA 18:46 (project) · ~1m left · owner 8d4d8fa0",
+  "active 0/10 · 1 open · ETA 18:47 (project) · ~1m left · owner 8d4d8fa0",
+  "active (project) · owner 8d4d8fa0",
+  "done (project) · owner 8d4d8fa0"
+ ]
+}

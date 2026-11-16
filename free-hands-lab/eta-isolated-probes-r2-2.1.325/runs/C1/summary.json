@@ -1,0 +1,33 @@
+{
+ "argv": [
+  "claude",
+  "-p",
+  "Run exactly this shell command with Bash, then reply done: echo hi",
+  "--setting-sources",
+  "project,local",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-isolated-probes-r2/C1/env-probe",
+  "--model",
+  "sonnet",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash",
+  "--output-format",
+  "json"
+ ],
+ "env_passed": [
+  "CLAUDE_CONFIG_DIR",
+  "HOME",
+  "LANG",
+  "PATH",
+  "TERM",
+  "TMPDIR"
+ ],
+ "exit": 1,
+ "elapsed_ms": 970,
+ "stderr": "",
+ "cost": 0,
+ "result": "Not logged in · Please run /login",
+ "hook": null
+}

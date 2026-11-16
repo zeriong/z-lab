@@ -1,0 +1,48 @@
+{
+ "unit": "e2-p1-tally-sonnet-C-r3",
+ "goal_run": "e2-p1-tally-sonnet-C",
+ "keys": [
+  "G1 rename `group_by` -> `group_rows` in tally.py (definition, call in run, docstrings) and test_tally.py; `grep -rnw group_by tally.py test_tally.py README.md` finds no function use (only the `--group-by` flag / `args.group_by` / `dest=\"group_by\"` remain); `python3 -m unittest -q` passes",
+  "G2 `--format csv`: grouped output is a `key,count[,sum]` header plus one row per group, plain summary is a `metric,value` header plus one row per metric, built with the csv module, None printed as an empty field; tests added (quoting, empty field, headers, round-trip with csv.reader) and passing; README usage and notes/exit-codes.md `--format` row updated and the real error message re-run",
+  "G3 notes/performance.md: `# Row passes`, a table with the four invocation modes (functions that loop over the rows, total passes) verified by instrumenting a real run, `## Memory` (N rows) with a tracemalloc measurement, `## Streaming proposal` in at most ten lines",
+  "G4 equal-total groups ordered A to Z: `k,v / a,5 / b,5 / c,5` with `--group-by k --column v` lists a, b, c via the CLI; regression test added (fails on the old code, passes now); README and docstrings say A to Z; full suite passes",
+  "G5 README `## Development` section: repository layout, how to run the tests, numbered steps with a short code example for adding a `--format` choice; the steps are applied in a scratch copy of the repo and the tests pass there",
+  "PRs: stacked branches fh/06..fh/10 (one per task, each from the previous), pushed, with `gh pr create --base <previous branch>`, titles ending (1)..(5)"
+ ],
+ "rows": [
+  {
+   "key": "G1 rename `group_by` -> `group_rows` in tally.py (definition, call in run, docstrings) and test_tally.py; `grep -rnw group_by tally.py test_tally.py README.md` finds no function use (only the `--group-by` flag / `args.group_by` / `dest=\"group_by\"` remain); `python3 -m unittest -q` passes",
+   "minutes": 4.0,
+   "category": "refactor"
+  },
+  {
+   "key": "G2 `--format csv`: grouped output is a `key,count[,sum]` header plus one row per group, plain summary is a `metric,value` header plus one row per metric, built with the csv module, None printed as an empty field; tests added (quoting, empty field, headers, round-trip with csv.reader) and passing; README usage and notes/exit-codes.md `--format` row updated and the real error message re-run",
+   "minutes": 18.0,
+   "category": "feature"
+  },
+  {
+   "key": "G3 notes/performance.md: `# Row passes`, a table with the four invocation modes (functions that loop over the rows, total passes) verified by instrumenting a real run, `## Memory` (N rows) with a tracemalloc measurement, `## Streaming proposal` in at most ten lines",
+   "minutes": 20.0,
+   "category": "research"
+  },
+  {
+   "key": "G4 equal-total groups ordered A to Z: `k,v / a,5 / b,5 / c,5` with `--group-by k --column v` lists a, b, c via the CLI; regression test added (fails on the old code, passes now); README and docstrings say A to Z; full suite passes",
+   "minutes": 8.0,
+   "category": "fix"
+  },
+  {
+   "key": "G5 README `## Development` section: repository layout, how to run the tests, numbered steps with a short code example for adding a `--format` choice; the steps are applied in a scratch copy of the repo and the tests pass there",
+   "minutes": 15.0,
+   "category": "docs"
+  },
+  {
+   "key": "PRs: stacked branches fh/06..fh/10 (one per task, each from the previous), pushed, with `gh pr create --base <previous branch>`, titles ending (1)..(5)",
+   "minutes": 12.0,
+   "category": "ops"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.00145685,
+ "elapsed_s": 6.2,
+ "git_status_after": ""
+}

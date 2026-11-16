@@ -1,0 +1,1 @@
+{"name": "spawn-probe", "version": "0.0.0", "description": "lab: detached child from a hook", "author": {"name": "lab"}, "hooks": "./hooks/hooks.json"}

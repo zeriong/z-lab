@@ -1,0 +1,48 @@
+{
+ "unit": "r2-p3-orders-sonnet-B-r1",
+ "goal_run": "r2-p3-orders-sonnet-B",
+ "keys": [
+  "T4: status constants defined once in orders/models.py, used everywhere in orders/ (incl. SQL); `grep` for the six literals finds only models.py; existing tests pass unedited",
+  "T2: low-stock report uses available (on_hand - reserved) with regression test (20 stock, order 18, threshold 5 lists it) at report and CLI level; suite passes",
+  "T3: `report customers` (--from/--to inclusive optional, --limit, --format text|json) via orders/reports/ module + new repo query + renderer; tests at repository, report and CLI level pass",
+  "T5: docstrings (summary, args, returns, raises) on every module, class and public method in orders/storage/; checked with an ast script listing zero missing",
+  "T1: notes/place-order-flow.md with required headings, numbered call sequence with files, table with the 4 columns, failure points verified by running the CLI",
+  "Final: full test suite green, README/architecture/config comment updated, end-to-end CLI run"
+ ],
+ "rows": [
+  {
+   "key": "T4: status constants defined once in orders/models.py, used everywhere in orders/ (incl. SQL); `grep` for the six literals finds only models.py; existing tests pass unedited",
+   "minutes": 25.0,
+   "category": "refactor"
+  },
+  {
+   "key": "T2: low-stock report uses available (on_hand - reserved) with regression test (20 stock, order 18, threshold 5 lists it) at report and CLI level; suite passes",
+   "minutes": 25.0,
+   "category": "fix"
+  },
+  {
+   "key": "T3: `report customers` (--from/--to inclusive optional, --limit, --format text|json) via orders/reports/ module + new repo query + renderer; tests at repository, report and CLI level pass",
+   "minutes": 60.0,
+   "category": "feature"
+  },
+  {
+   "key": "T5: docstrings (summary, args, returns, raises) on every module, class and public method in orders/storage/; checked with an ast script listing zero missing",
+   "minutes": 25.0,
+   "category": "docs"
+  },
+  {
+   "key": "T1: notes/place-order-flow.md with required headings, numbered call sequence with files, table with the 4 columns, failure points verified by running the CLI",
+   "minutes": 30.0,
+   "category": "docs"
+  },
+  {
+   "key": "Final: full test suite green, README/architecture/config comment updated, end-to-end CLI run",
+   "minutes": 25.0,
+   "category": "test"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.00132411,
+ "elapsed_s": 6.1,
+ "git_status_after": ""
+}

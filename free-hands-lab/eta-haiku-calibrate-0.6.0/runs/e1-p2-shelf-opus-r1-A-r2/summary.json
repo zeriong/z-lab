@@ -1,0 +1,42 @@
+{
+ "unit": "e1-p2-shelf-opus-r1-A-r2",
+ "goal_run": "e1-p2-shelf-opus-r1-A",
+ "keys": [
+  "Paging fix: `paginate` slices `offset..offset+limit`; regression test with 5 books where `GET /books?limit=2&offset=2` returns books 3 and 4; `node --test` passes",
+  "`GET /books/stats` returns 200 `{ total, onLoan, available, byAuthor }` (byAuthor sorted count desc, author asc), registered before `/books/:id`, listed in README table, tests added; `node --test` passes",
+  "`src/util/params.js` helper replaces every repeated \"parse id or 400\" block in handlers; messages/statuses identical; existing test files unchanged (`git diff --stat test/` shows only additions in new tests); `node --test` passes",
+  "README \"API reference\" section: one `### METHOD /path` per table row (11 endpoints), params/body rules, success status + example JSON, error statuses; check by grep count of `### ` headings vs table rows",
+  "`notes/status-codes.md`: `# Status codes`, table (Status, Error code, Raised in, Endpoints, Covered by a test), one row per status+code combo, `## Untested` section; coverage claims verified against test files"
+ ],
+ "rows": [
+  {
+   "key": "Paging fix: `paginate` slices `offset..offset+limit`; regression test with 5 books where `GET /books?limit=2&offset=2` returns books 3 and 4; `node --test` passes",
+   "minutes": 5.0,
+   "category": "fix"
+  },
+  {
+   "key": "`GET /books/stats` returns 200 `{ total, onLoan, available, byAuthor }` (byAuthor sorted count desc, author asc), registered before `/books/:id`, listed in README table, tests added; `node --test` passes",
+   "minutes": 15.0,
+   "category": "feature"
+  },
+  {
+   "key": "`src/util/params.js` helper replaces every repeated \"parse id or 400\" block in handlers; messages/statuses identical; existing test files unchanged (`git diff --stat test/` shows only additions in new tests); `node --test` passes",
+   "minutes": 10.0,
+   "category": "refactor"
+  },
+  {
+   "key": "README \"API reference\" section: one `### METHOD /path` per table row (11 endpoints), params/body rules, success status + example JSON, error statuses; check by grep count of `### ` headings vs table rows",
+   "minutes": 15.0,
+   "category": "docs"
+  },
+  {
+   "key": "`notes/status-codes.md`: `# Status codes`, table (Status, Error code, Raised in, Endpoints, Covered by a test), one row per status+code combo, `## Untested` section; coverage claims verified against test files",
+   "minutes": 20.0,
+   "category": "docs"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.0031477400000000004,
+ "elapsed_s": 9.7,
+ "git_status_after": ""
+}

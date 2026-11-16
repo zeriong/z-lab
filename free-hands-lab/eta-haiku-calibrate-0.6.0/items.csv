@@ -1,0 +1,158 @@
+goal_run,source,fixture,family,goal,key,actual,self_est,haiku_runs,haiku,category
+e1-p1-tally-opus-r1-A,e1,p1-tally,opus,A,"Task 1: `column_stats` mean = sum / number of numeric cells; regression test for `k,v / a,",0.48,5.0,"[5.0, 6.0, 6.0]",6.0,fix
+e1-p1-tally-opus-r1-A,e1,p1-tally,opus,A,"Task 4: `--delimiter` option (default `,`, `tab` → `\t`, other values longer than one char",0.96,10.0,"[12.0, 15.0, 14.0]",14.0,feature
+e1-p1-tally-opus-r1-A,e1,p1-tally,opus,A,"Task 5: `format_cell`, `format_table`, `round_numbers`, `render` live in `render.py`, impo",0.58,6.0,"[10.0, 14.0, 12.0]",12.0,refactor
+e1-p1-tally-opus-r1-A,e1,p1-tally,opus,A,"Task 3: README ""Examples"" section with three invocations against `data/sample.csv` (amount",0.86,8.0,"[14.0, 12.0, 12.0]",12.0,docs
+e1-p1-tally-opus-r1-A,e1,p1-tally,opus,A,"Task 2: `notes/missing-values.md` with `# Missing values`, table (Function | Situation | B",6.71,15.0,"[16.0, 20.0, 16.0]",16.0,docs
+e1-p1-tally-opus-r1-A,e1,p1-tally,opus,A,"Final check: full suite passes, `test_tally.py` unchanged, work committed on a feature bra",1.79,4.0,"[6.0, 10.0, 6.0]",6.0,ops
+e1-p1-tally-opus-r2-A,e1,p1-tally,opus,A,"Mean divides by the number of numeric cells; regression test for `k,v / a,10 / b, / c,20` ",0.39,3.0,"[6.0, 6.0, 6.0]",6.0,fix
+e1-p1-tally-opus-r2-A,e1,p1-tally,opus,A,"`--delimiter` option (default `,`, `tab` = tab, other multi-char values -> `tally: error:`",0.64,5.0,"[15.0, 14.0, 16.0]",15.0,feature
+e1-p1-tally-opus-r2-A,e1,p1-tally,opus,A,"`format_cell`, `format_table`, `round_numbers`, `render` live in `render.py`, imported int",0.51,3.0,"[12.0, 10.0, 12.0]",12.0,refactor
+e1-p1-tally-opus-r2-A,e1,p1-tally,opus,A,"`notes/missing-values.md` with `# Missing values`, table (Function, Situation, Behavior, D",4.61,7.0,"[22.0, 15.0, 22.0]",22.0,docs
+e1-p1-tally-opus-r2-A,e1,p1-tally,opus,A,"README ""Examples"" section with 3 invocations on `data/sample.csv` (amount summary, group b",0.42,4.0,"[14.0, 10.0, 14.0]",14.0,docs
+e1-p1-tally-opus-r2-A,e1,p1-tally,opus,A,Final check: full suite passes and every README example output matches the command's real ,0.03,2.0,"[8.0, 5.0, 8.0]",8.0,test
+e1-p1-tally-sonnet-r1-A,e1,p1-tally,sonnet,A,T1: mean = sum / number of numeric cells (None when there are none); regression test for `,0.5,5.0,"[6.0, 8.0, 6.0]",6.0,fix
+e1-p1-tally-sonnet-r1-A,e1,p1-tally,sonnet,A,"T4: `--delimiter` option (default `,`, `tab` = tab, other >1 char or empty → `tally: error",0.8,8.0,"[14.0, 15.0, 12.0]",14.0,feature
+e1-p1-tally-sonnet-r1-A,e1,p1-tally,sonnet,A,T5: format_cell/format_table/round_numbers/render moved to render.py and imported into tal,0.31,4.0,"[9.0, 10.0, 9.0]",9.0,refactor
+e1-p1-tally-sonnet-r1-A,e1,p1-tally,sonnet,A,"T2: notes/missing-values.md with `# Missing values`, 4-column table (one row per handling ",1.61,10.0,"[11.0, 15.0, 14.0]",14.0,docs
+e1-p1-tally-sonnet-r1-A,e1,p1-tally,sonnet,A,"T3: README ""Examples"" section with 3 invocations on data/sample.csv, each followed by byte",0.43,5.0,"[8.0, 10.0, 10.0]",10.0,docs
+e1-p1-tally-sonnet-r2-A,e1,p1-tally,sonnet,A,"T5: create render.py with format_cell, format_table, round_numbers, render; import them ba",0.24,4.0,"[14.0, 12.0, 10.0]",12.0,refactor
+e1-p1-tally-sonnet-r2-A,e1,p1-tally,sonnet,A,T1: column_stats mean = sum / count of numeric cells (None when there are none); regressio,0.28,4.0,"[9.0, 8.0, 8.0]",8.0,fix
+e1-p1-tally-sonnet-r2-A,e1,p1-tally,sonnet,A,"T4: --delimiter option (default `,`, `tab` = tab, other values longer than one char reject",0.55,8.0,"[16.0, 16.0, 15.0]",16.0,feature
+e1-p1-tally-sonnet-r2-A,e1,p1-tally,sonnet,A,"T2: notes/missing-values.md with `# Missing values`, a 4-column table with one row per pla",1.46,10.0,"[12.0, 14.0, 15.0]",14.0,docs
+e1-p1-tally-sonnet-r2-A,e1,p1-tally,sonnet,A,"T3: README ""Examples"" section with three invocations against data/sample.csv, each followe",0.34,6.0,"[8.0, 9.0, 8.0]",8.0,docs
+e1-p1-tally-sonnet-r2-A,e1,p1-tally,sonnet,A,"Final: full suite passes, README example outputs re-run and compared byte for byte, `git s",0.17,3.0,"[6.0, 6.0, 5.0]",6.0,ops
+e1-p2-shelf-fable-r1-A,e1,p2-shelf,fable,A,"Task 1: `paginate` honours `offset` (five books, `GET /books?limit=2&offset=2` returns the",0.9,4.0,"[12.0, 12.0, 12.0]",12.0,fix
+e1-p2-shelf-fable-r1-A,e1,p2-shelf,fable,A,"Task 2: `GET /books/stats` answers 200 with `{ total, onLoan, available, byAuthor }` (coun",0.78,7.0,"[30.0, 25.0, 25.0]",25.0,feature
+e1-p2-shelf-fable-r1-A,e1,p2-shelf,fable,A,"Task 3: `src/util/params.js` holds the one id helper used by getBook, updateBook, deleteBo",2.11,5.0,"[15.0, 20.0, 15.0]",15.0,refactor
+e1-p2-shelf-fable-r1-A,e1,p2-shelf,fable,A,"Decide what to do with the defects found outside the five tasks (overdue `<=` vs README, m",2.25,10.0,"[15.0, 15.0, 15.0]",15.0,research
+e1-p2-shelf-fable-r1-A,e1,p2-shelf,fable,A,"Task 4: `README.md` has an ""API reference"" section with one `### METHOD /path` heading per",2.86,14.0,"[30.0, 30.0, 35.0]",30.0,docs
+e1-p2-shelf-fable-r1-A,e1,p2-shelf,fable,A,"Task 5: `notes/status-codes.md` exists with `# Status codes`, the five-column table (one r",2.15,14.0,"[40.0, 40.0, 40.0]",40.0,ops
+e1-p2-shelf-fable-r1-A,e1,p2-shelf,fable,A,"Work is committed on branch `free-hands/five-tasks` (one commit per task), `git status --s",0.46,3.0,"[10.0, 15.0, 10.0]",10.0,ops
+e1-p2-shelf-opus-r1-A,e1,p2-shelf,opus,A,Paging fix: `paginate` slices `offset..offset+limit`; regression test with 5 books where `,2.11,6.0,"[8.0, 5.0, 6.0]",6.0,fix
+e1-p2-shelf-opus-r1-A,e1,p2-shelf,opus,A,"`GET /books/stats` returns 200 `{ total, onLoan, available, byAuthor }` (byAuthor sorted c",2.08,10.0,"[15.0, 15.0, 12.0]",15.0,feature
+e1-p2-shelf-opus-r1-A,e1,p2-shelf,opus,A,"`src/util/params.js` helper replaces every repeated ""parse id or 400"" block in handlers; m",0.03,8.0,"[14.0, 10.0, 10.0]",10.0,refactor
+e1-p2-shelf-opus-r1-A,e1,p2-shelf,opus,A,"README ""API reference"" section: one `### METHOD /path` per table row (11 endpoints), param",2.72,15.0,"[14.0, 15.0, 15.0]",15.0,docs
+e1-p2-shelf-opus-r1-A,e1,p2-shelf,opus,A,"`notes/status-codes.md`: `# Status codes`, table (Status, Error code, Raised in, Endpoints",1.91,15.0,"[20.0, 20.0, 14.0]",20.0,docs
+e1-p2-shelf-opus-r2-A,e1,p2-shelf,opus,A,Fix paging in src/util/pagination.js so `GET /books?limit=2&offset=2` with 5 books returns,0.51,6.0,"[10.0, 8.0, 10.0]",10.0,fix
+e1-p2-shelf-opus-r2-A,e1,p2-shelf,opus,A,"Add `GET /books/stats` (total, onLoan, available, byAuthor sorted count desc then author a",0.86,10.0,"[18.0, 18.0, 18.0]",18.0,feature
+e1-p2-shelf-opus-r2-A,e1,p2-shelf,opus,A,"Create src/util/params.js with one id-param helper used by getBook, updateBook, deleteBook",0.75,8.0,"[9.0, 10.0, 12.0]",10.0,refactor
+e1-p2-shelf-opus-r2-A,e1,p2-shelf,opus,A,"README ""API reference"" section: one `### METHOD /path` per table row (11), each with param",7.6,15.0,"[22.0, 22.0, 20.0]",22.0,docs
+e1-p2-shelf-opus-r2-A,e1,p2-shelf,opus,A,"notes/status-codes.md: `# Status codes`, table (Status | Error code | Raised in | Endpoint",1.8,15.0,"[20.0, 20.0, 22.0]",20.0,docs
+e1-p2-shelf-opus-r2-A,e1,p2-shelf,opus,A,"Extra (outside the five tasks, panel 01): fix isOverdue so a loan due today is not overdue",,8.0,"[8.0, 8.0, 7.0]",8.0,fix
+e1-p2-shelf-sonnet-r1-A,e1,p2-shelf,sonnet,A,1. Fix paginate (offset ignored) so GET /books?limit=2&offset=2 returns the 3rd and 4th of,0.42,5.0,"[6.0, 8.0, 12.0]",8.0,fix
+e1-p2-shelf-sonnet-r1-A,e1,p2-shelf,sonnet,A,"2. Add GET /books/stats (total, onLoan, available, byAuthor sorted count desc, author asc)",0.12,8.0,"[15.0, 15.0, 22.0]",15.0,feature
+e1-p2-shelf-sonnet-r1-A,e1,p2-shelf,sonnet,A,3. Add src/util/params.js id helper used by every handler that parses an id (no `Number(pa,0.32,6.0,"[8.0, 10.0, 14.0]",10.0,refactor
+e1-p2-shelf-sonnet-r1-A,e1,p2-shelf,sonnet,A,"4. Add ""API reference"" section to README.md with one `### METHOD /path` heading per table ",1.47,15.0,"[25.0, 25.0, 28.0]",25.0,docs
+e1-p2-shelf-sonnet-r1-A,e1,p2-shelf,sonnet,A,"5. Write notes/status-codes.md (`# Status codes`, table Status/Error code/Raised in/Endpoi",0.55,12.0,"[20.0, 25.0, 30.0]",25.0,docs
+e1-p2-shelf-sonnet-r2-A,e1,p2-shelf,sonnet,A,1. Paging: fix `paginate` so `GET /books?limit=2&offset=2` returns the 3rd and 4th of five,0.48,5.0,"[8.0, 8.0, 8.0]",8.0,fix
+e1-p2-shelf-sonnet-r2-A,e1,p2-shelf,sonnet,A,"2. `GET /books/stats` returns 200 `{total,onLoan,available,byAuthor}` (count desc, author ",0.19,8.0,"[15.0, 20.0, 15.0]",15.0,feature
+e1-p2-shelf-sonnet-r2-A,e1,p2-shelf,sonnet,A,3. `src/util/params.js` helper used by every handler that parses a route id; messages/stat,0.14,6.0,"[12.0, 12.0, 12.0]",12.0,refactor
+e1-p2-shelf-sonnet-r2-A,e1,p2-shelf,sonnet,A,"4. README ""API reference"": one `### METHOD /path` heading per endpoint in the table (10 + ",0.8,12.0,"[25.0, 30.0, 20.0]",25.0,docs
+e1-p2-shelf-sonnet-r2-A,e1,p2-shelf,sonnet,A,"5. `notes/status-codes.md`: `# Status codes`, table (Status, Error code, Raised in, Endpoi",1.08,10.0,"[20.0, 25.0, 18.0]",20.0,docs
+e1-p2-shelf-sonnet-r2-A,e1,p2-shelf,sonnet,A,"6. Final check: `node --test` green, existing tests untouched, README headings match the e",0.32,3.0,"[6.0, 8.0, 5.0]",6.0,test
+e1-p3-orders-opus-r1-A,e1,p3-orders,opus,A,"1. Order totals always equal subtotal - discount_total + tax_total (FLAT10 on A,B,C at 10.",2.1,15.0,"[15.0, 25.0, 25.0]",25.0,fix
+e1-p3-orders-opus-r1-A,e1,p3-orders,opus,A,2. `to_cents`/`from_cents` in orders/money.py used by every storage module; private helper,3.47,12.0,"[25.0, 40.0, 30.0]",30.0,refactor
+e1-p3-orders-opus-r1-A,e1,p3-orders,opus,A,"3. `--format csv` for `report daily` and `report low-stock` via the csv module, with tests",3.28,15.0,"[20.0, 30.0, 25.0]",25.0,feature
+e1-p3-orders-opus-r1-A,e1,p3-orders,opus,A,"4. ""Pricing pipeline"" section in docs/architecture.md with a worked example verified by ru",1.98,15.0,"[20.0, 20.0, 20.0]",20.0,docs
+e1-p3-orders-opus-r1-A,e1,p3-orders,opus,A,"5. notes/transactions.md with `# Transactions`, `## Write paths` table, `## Races`, `## Re",1.61,15.0,"[12.0, 25.0, 15.0]",15.0,docs
+e1-p3-orders-opus-r1-A,e1,p3-orders,opus,A,6. Work committed on a feature branch; full test suite green; PR opened if a remote exists,0.3,4.0,"[8.0, 15.0, 15.0]",15.0,ops
+e1-p3-orders-opus-r2-A,e1,p3-orders,opus,A,1. `allocate` spreads order-level discounts exactly (largest remainder); `quote 1 A:1 B:1 ,1.31,12.0,"[25.0, 30.0, 25.0]",25.0,fix
+e1-p3-orders-opus-r2-A,e1,p3-orders,opus,A,2. `to_cents`/`from_cents` in orders/money.py used by storage/catalog.py and storage/order,4.94,15.0,"[30.0, 35.0, 30.0]",30.0,refactor
+e1-p3-orders-opus-r2-A,e1,p3-orders,opus,A,3. `report daily --format csv` and `report low-stock --format csv` built with `csv` module,3.95,12.0,"[30.0, 30.0, 30.0]",30.0,feature
+e1-p3-orders-opus-r2-A,e1,p3-orders,opus,A,"4. ""Pricing pipeline"" section in docs/architecture.md with ordered steps, allocation, tax/",0.79,15.0,"[20.0, 20.0, 20.0]",20.0,docs
+e1-p3-orders-opus-r2-A,e1,p3-orders,opus,A,"5. notes/transactions.md with `# Transactions`, `## Write paths` table, `## Races`, `## Re",1.05,20.0,"[35.0, 40.0, 40.0]",40.0,research
+e1-p3-orders-opus-r2-A,e1,p3-orders,opus,A,6. Stacked branches per task committed; PRs opened if a remote exists (`git remote -v`),0.21,4.0,"[15.0, 15.0, 15.0]",15.0,ops
+e1-p3-orders-sonnet-r1-A,e1,p3-orders,sonnet,A,1. Fix allocate() so discount shares sum exactly (FLAT10 quote prints $20.00) and add regr,1.01,8.0,"[15.0, 15.0, 15.0]",15.0,fix
+e1-p3-orders-sonnet-r1-A,e1,p3-orders,sonnet,A,"2. Add to_cents/from_cents to orders/money.py, use them in every storage module, delete pr",1.57,10.0,"[25.0, 15.0, 20.0]",20.0,refactor
+e1-p3-orders-sonnet-r1-A,e1,p3-orders,sonnet,A,"3. Add --format csv to report daily and report low-stock (csv module, specified headers/ro",0.66,12.0,"[30.0, 25.0, 25.0]",25.0,feature
+e1-p3-orders-sonnet-r1-A,e1,p3-orders,sonnet,A,"4. Add ""Pricing pipeline"" section to docs/architecture.md with worked example verified by ",1.25,12.0,"[20.0, 15.0, 15.0]",15.0,docs
+e1-p3-orders-sonnet-r1-A,e1,p3-orders,sonnet,A,5. Investigate write protection (verify races by experiment) and write notes/transactions.,2.75,20.0,"[40.0, 35.0, 30.0]",35.0,research
+e1-p3-orders-sonnet-r1-A,e1,p3-orders,sonnet,A,"6. Final check: full test suite, FLAT10 quote, both csv commands, git status review",0.52,4.0,"[10.0, 8.0, 8.0]",8.0,ops
+e1-p3-orders-sonnet-r2-A,e1,p3-orders,sonnet,A,1. Coupon one-cent bug: `quote 1 A:1 B:1 C:1 --coupon FLAT10` prints $20.00 and totals add,0.84,10.0,"[25.0, 30.0, 25.0]",25.0,fix
+e1-p3-orders-sonnet-r2-A,e1,p3-orders,sonnet,A,"2. `to_cents`/`from_cents` in orders/money.py used by every storage module, private helper",0.79,8.0,"[20.0, 60.0, 40.0]",40.0,refactor
+e1-p3-orders-sonnet-r2-A,e1,p3-orders,sonnet,A,"3. `--format csv` for `report daily` and `report low-stock` built with the csv module, tes",0.8,10.0,"[15.0, 35.0, 25.0]",25.0,feature
+e1-p3-orders-sonnet-r2-A,e1,p3-orders,sonnet,A,"4. ""Pricing pipeline"" section in docs/architecture.md with every step, allocation/tax/roun",1.1,12.0,"[15.0, 25.0, 25.0]",25.0,docs
+e1-p3-orders-sonnet-r2-A,e1,p3-orders,sonnet,A,"5. notes/transactions.md with `# Transactions`, `## Write paths` table, `## Races`, `## Re",2.96,18.0,"[30.0, 50.0, 45.0]",45.0,research
+e1-p3-orders-sonnet-r2-A,e1,p3-orders,sonnet,A,"6. Final check: full test suite passes, `git status` shows only intended files",0.34,3.0,"[5.0, 15.0, 10.0]",10.0,test
+e2-p1-tally-opus-B,e2,p1-tally,opus,B,T1 docstrings: every function/class in tally.py has a docstring (one-line summary; Args/Re,1.81,8.0,"[7.0, 8.0, 8.0]",8.0,docs
+e2-p1-tally-opus-B,e2,p1-tally,opus,B,"T2 move TallyError, read_rows, check_column to csvio.py and import back; check = test_tall",2.66,6.0,"[9.0, 12.0, 12.0]",12.0,refactor
+e2-p1-tally-opus-B,e2,p1-tally,opus,B,"T4 negative amounts: CSV k,amount/a,10/b,-5 with --column amount reports count 2 sum 5; re",1.67,10.0,"[8.0, 7.0, 20.0]",8.0,fix
+e2-p1-tally-opus-B,e2,p1-tally,opus,B,"T5 --sort value|key|count for grouped output, value default, --top after sorting; tests ad",1.73,15.0,"[18.0, 22.0, 12.0]",18.0,feature
+e2-p1-tally-opus-B,e2,p1-tally,opus,B,"T3 notes/exit-codes.md: `# Exit codes`, `## Paths` table (Trigger, Exit code, Message, Rai",3.12,20.0,"[14.0, 15.0, 22.0]",15.0,docs
+e2-p1-tally-opus-B,e2,p1-tally,opus,B,"Final: full suite passes, every function in tally.py and csvio.py has a docstring, git log",0.29,4.0,"[6.0, 8.0, 8.0]",8.0,test
+e2-p1-tally-opus-C,e2,p1-tally,opus,C,"T1 rename function group_by -> group_rows in tally.py, test_tally.py (README if mentioned)",0.39,5.0,"[4.0, 4.0, 6.0]",4.0,refactor
+e2-p1-tally-opus-C,e2,p1-tally,opus,C,"T4 value-sort ties A to Z: CSV k,v/a,5/b,5/c,5 with `--group-by k --column v` lists a, b, ",0.65,8.0,"[6.0, 6.0, 8.0]",6.0,fix
+e2-p1-tally-opus-C,e2,p1-tally,opus,C,"T2 `--format csv`: grouped header key,count[,sum] + one row per group; summary header metr",2.54,15.0,"[20.0, 22.0, 25.0]",22.0,feature
+e2-p1-tally-opus-C,e2,p1-tally,opus,C,T3 notes/performance.md: `# Row passes` with a table of the four modes (functions looping ,2.45,15.0,"[12.0, 12.0, 15.0]",12.0,docs
+e2-p1-tally-opus-C,e2,p1-tally,opus,C,"T5 README ""Development"" section: repository layout, how to run tests, step-by-step add a n",0.99,12.0,"[12.0, 12.0, 15.0]",12.0,docs
+e2-p1-tally-opus-C,e2,p1-tally,opus,C,"Final: full suite passes on python3, no `group_by(` function references remain, git log sh",0.25,4.0,[5.0],5.0,ops
+e2-p1-tally-sonnet-B,e2,p1-tally,sonnet,B,T1 docstrings: every function/class in tally.py has a docstring (one-line summary + Args/R,0.47,6.0,"[8.0, 10.0, 8.0]",8.0,docs
+e2-p1-tally-sonnet-B,e2,p1-tally,sonnet,B,"T2 move TallyError, read_rows, check_column to csvio.py and import them back into tally.py",0.26,6.0,"[12.0, 14.0, 15.0]",14.0,refactor
+e2-p1-tally-sonnet-B,e2,p1-tally,sonnet,B,"T4 negative amounts: parse_number accepts -5 / +5 / -1,200.50; `k,amount / a,10 / b,-5` gi",0.46,8.0,"[10.0, 12.0, 12.0]",12.0,fix
+e2-p1-tally-sonnet-B,e2,p1-tally,sonnet,B,T5 --sort value|key|count (default value = current behavior; key A-Z; count desc with ties,1.01,12.0,"[22.0, 25.0, 25.0]",25.0,feature
+e2-p1-tally-sonnet-B,e2,p1-tally,sonnet,B,"T3 notes/exit-codes.md with `# Exit codes`, `## Paths` table (Trigger, Exit code, Message,",4.28,15.0,"[20.0, 20.0, 20.0]",20.0,docs
+e2-p1-tally-sonnet-B,e2,p1-tally,sonnet,B,PRs: stacked branches fh/01..fh/05 committed; push + `gh pr create` attempted for each in ,,6.0,"[25.0, 18.0, 15.0]",18.0,ops
+e2-p1-tally-sonnet-C,e2,p1-tally,sonnet,C,"G1 rename `group_by` -> `group_rows` in tally.py (definition, call in run, docstrings) and",0.21,4.0,"[4.0, 3.0, 4.0]",4.0,refactor
+e2-p1-tally-sonnet-C,e2,p1-tally,sonnet,C,"G2 `--format csv`: grouped output is a `key,count[,sum]` header plus one row per group, pl",1.09,12.0,"[22.0, 18.0, 18.0]",18.0,feature
+e2-p1-tally-sonnet-C,e2,p1-tally,sonnet,C,"G3 notes/performance.md: `# Row passes`, a table with the four invocation modes (functions",1.68,15.0,"[15.0, 20.0, 20.0]",20.0,research
+e2-p1-tally-sonnet-C,e2,p1-tally,sonnet,C,"G4 equal-total groups ordered A to Z: `k,v / a,5 / b,5 / c,5` with `--group-by k --column ",0.95,8.0,"[7.0, 8.0, 8.0]",8.0,fix
+e2-p1-tally-sonnet-C,e2,p1-tally,sonnet,C,"G5 README `## Development` section: repository layout, how to run the tests, numbered step",1.45,12.0,"[12.0, 12.0, 15.0]",12.0,docs
+e2-p1-tally-sonnet-C,e2,p1-tally,sonnet,C,"PRs: stacked branches fh/06..fh/10 (one per task, each from the previous), pushed, with `g",,5.0,"[12.0, 12.0, 12.0]",12.0,ops
+e2-p2-shelf-sonnet-B,e2,p2-shelf,sonnet,B,T3: zero-day loan is not overdue on the day it is lent (isOverdue fix) + regression test; ,0.47,8.0,"[8.0, 10.0, 8.0]",8.0,fix
+e2-p2-shelf-sonnet-B,e2,p2-shelf,sonnet,B,"T2: `sort` query param on GET /books (title/author/year, `-` prefix, id default, null year",0.96,15.0,"[30.0, 30.0, 22.0]",30.0,feature
+e2-p2-shelf-sonnet-B,e2,p2-shelf,sonnet,B,"T4: `src/persistence.js` with `loadSnapshot(file)` / `saveSnapshot(file, data)`, `Store` u",0.5,10.0,"[18.0, 20.0, 14.0]",18.0,refactor
+e2-p2-shelf-sonnet-B,e2,p2-shelf,sonnet,B,"T5: JSDoc (with @param, @returns, thrown errors) on `Store`, its constructor and every met",1.52,10.0,"[15.0, 15.0, 15.0]",15.0,docs
+e2-p2-shelf-sonnet-B,e2,p2-shelf,sonnet,B,"T1: `notes/persistence-risks.md` with `# Persistence risks`, `## Writes`, `## Scenarios` (",1.82,12.0,"[12.0, 10.0, 9.0]",10.0,docs
+e2-p2-shelf-sonnet-B,e2,p2-shelf,sonnet,B,"Final: `npm test` green on the last branch, stack of local branches/PRs recorded in Resume",0.29,5.0,"[7.0, 8.0, 6.0]",7.0,ops
+e2-p2-shelf-sonnet-C,e2,p2-shelf,sonnet,C,"T1: `Store.addLoan` -> `createLoan` and `Store.returnLoan` -> `closeLoan` in src, tests an",0.39,6.0,"[10.0, 8.0, 10.0]",10.0,refactor
+e2-p2-shelf-sonnet-C,e2,p2-shelf,sonnet,C,"T3: PATCH /books/:id with `{title:""""}` or `{title:null}` answers 422 with a `title` proble",0.38,7.0,"[12.0, 12.0, 15.0]",12.0,fix
+e2-p2-shelf-sonnet-C,e2,p2-shelf,sonnet,C,"T5: `POST /loans/:id/renew` (7 days or integer `days` 1-30, max 2 renewals then 409, 409 r",1.44,20.0,"[30.0, 35.0, 40.0]",35.0,feature
+e2-p2-shelf-sonnet-C,e2,p2-shelf,sonnet,C,"T2: README ""Data file format"" section (top-level keys, book + loan record with examples, i",1.63,12.0,"[20.0, 15.0, 25.0]",20.0,docs
+e2-p2-shelf-sonnet-C,e2,p2-shelf,sonnet,C,"T4: notes/validation-coverage.md (`# Validation coverage`, table Endpoint | Input | Valida",4.1,25.0,"[35.0, 30.0, 45.0]",35.0,research
+e2-p2-shelf-sonnet-C,e2,p2-shelf,sonnet,C,Final: `node --test` green on the last branch; stack of branches/PRs recorded in Resume,0.6,5.0,"[5.0, 5.0, 8.0]",5.0,ops
+r2-p1-tally-fable-B,r2,p1-tally,fable,B,"Task 1 — every function and class in `tally.py` has a docstring (one-line summary, Args an",0.87,3.0,"[8.0, 8.0, 12.0]",8.0,docs
+r2-p1-tally-fable-B,r2,p1-tally,fable,B,"Task 2 — `TallyError`, `read_rows`, `check_column` live in `csvio.py` and are imported bac",0.66,2.0,"[12.0, 12.0, 10.0]",12.0,refactor
+r2-p1-tally-fable-B,r2,p1-tally,fable,B,"Task 4 — negative amounts are parsed; check: the `k,amount / a,10 / b,-5` CSV prints count",0.24,3.0,"[10.0, 15.0, 8.0]",10.0,fix
+r2-p1-tally-fable-B,r2,p1-tally,fable,B,Panel decision on the two places where the code contradicts README.md (tie order of the de,5.36,8.0,"[15.0, 10.0, 15.0]",15.0,research
+r2-p1-tally-fable-B,r2,p1-tally,fable,B,"Task 5 — `--sort value|key|count` for grouped output, `--top` applied after sorting, READM",1.1,6.0,"[25.0, 30.0, 25.0]",25.0,feature
+r2-p1-tally-fable-B,r2,p1-tally,fable,B,"Task 3 — `notes/exit-codes.md` with `# Exit codes`, `## Paths` (table: Trigger, Exit code,",1.31,9.0,"[15.0, 15.0, 15.0]",15.0,docs
+r2-p1-tally-fable-B,r2,p1-tally,fable,B,"Final verification — `python3 -m unittest -q` passes, `git diff test_tally.py` has no remo",0.19,2.0,"[8.0, 8.0, 8.0]",8.0,test
+r2-p2-shelf-opus-B,r2,p2-shelf,opus,B,Task 3: `isOverdue` treats a loan due today as not overdue; new regression test (zero-day ,2.07,6.0,"[8.0, 12.0, 10.0]",10.0,fix
+r2-p2-shelf-opus-B,r2,p2-shelf,opus,B,"Task 4: `src/persistence.js` exports `loadSnapshot(file)` / `saveSnapshot(file, data)`, `S",2.25,8.0,"[14.0, 14.0, 15.0]",14.0,refactor
+r2-p2-shelf-opus-B,r2,p2-shelf,opus,B,"Panel: decide whether to fix the pre-existing `paginate` offset bug (`items.slice(offset, ",1.09,12.0,"[5.0, 6.0, 8.0]",6.0,research
+r2-p2-shelf-opus-B,r2,p2-shelf,opus,B,"Task 2: `sort` query parameter on GET /books (title/author/year/-title/-author/-year, id o",1.36,15.0,"[25.0, 28.0, 25.0]",25.0,feature
+r2-p2-shelf-opus-B,r2,p2-shelf,opus,B,"Task 5: JSDoc on `Store` class, constructor and every method with `@param`, `@returns` and",2.05,8.0,"[15.0, 15.0, 15.0]",15.0,docs
+r2-p2-shelf-opus-B,r2,p2-shelf,opus,B,"Task 1: `notes/persistence-risks.md` with `# Persistence risks`, `## Writes` (every Store ",5.3,15.0,"[30.0, 35.0, 30.0]",30.0,research
+r2-p2-shelf-opus-B,r2,p2-shelf,opus,B,"Final check: full `node --test` passes, existing test files byte-identical to `main`, ever",0.23,4.0,"[10.0, 8.0, 10.0]",10.0,ops
+r2-p2-shelf-opus-C,r2,p2-shelf,opus,C,"Task 1: store methods renamed to `createLoan`/`closeLoan` in src, tests and notes; `grep -",0.32,6.0,"[8.0, 8.0, 6.0]",8.0,refactor
+r2-p2-shelf-opus-C,r2,p2-shelf,opus,C,"Task 3: `PATCH /books/:id` with `{""title"":""""}` and `{""title"":null}` answers 422 with a `ti",0.64,8.0,"[10.0, 10.0, 10.0]",10.0,fix
+r2-p2-shelf-opus-C,r2,p2-shelf,opus,C,"Task 5: `POST /loans/:id/renew` (default 7 days, optional integer `days` 1–30 → else 422, ",1.93,25.0,"[25.0, 30.0, 25.0]",25.0,feature
+r2-p2-shelf-opus-C,r2,p2-shelf,opus,C,"Task 2: README ""Data file format"" section with every top-level key, book and loan record s",1.05,12.0,"[20.0, 25.0, 25.0]",25.0,docs
+r2-p2-shelf-opus-C,r2,p2-shelf,opus,C,"Task 4: `notes/validation-coverage.md` with `# Validation coverage`, table (Endpoint | Inp",,25.0,"[25.0, 35.0, 35.0]",35.0,research
+r2-p2-shelf-opus-C,r2,p2-shelf,opus,C,"Final check: `node --test` passes, existing test files changed only by the task-1 rename, ",0.3,4.0,"[5.0, 10.0, 8.0]",8.0,test
+r2-p2-shelf-opus-C,r2,p2-shelf,opus,C,"Task 4: `notes/validation-coverage.md` with `# Validation coverage`, table (Endpoint | Inp",3.68,25.0,"[25.0, 35.0, 35.0]",35.0,research
+r2-p3-orders-opus-B,r2,p3-orders,opus,B,Task 4: six status constants defined once in orders/models.py and used everywhere (grep fo,1.0,15.0,"[25.0, 20.0, 20.0]",20.0,refactor
+r2-p3-orders-opus-B,r2,p3-orders,opus,B,Task 2: low-stock report filters on available (on_hand - reserved); regression test reprod,0.87,10.0,"[20.0, 15.0, 15.0]",15.0,fix
+r2-p3-orders-opus-B,r2,p3-orders,opus,B,"Task 3: `report customers` with --from/--to/--limit/--format, new orders/reports/customers",2.32,30.0,"[60.0, 50.0, 50.0]",50.0,feature
+r2-p3-orders-opus-B,r2,p3-orders,opus,B,"Task 5: docstrings on every module, class and public method/function in orders/storage/ wi",2.28,20.0,"[30.0, 25.0, 25.0]",25.0,docs
+r2-p3-orders-opus-B,r2,p3-orders,opus,B,"Task 1: notes/place-order-flow.md with `# Place order flow`, `## Call sequence`, `## Data ",3.14,25.0,"[35.0, 30.0, 35.0]",35.0,docs
+r2-p3-orders-opus-B,r2,p3-orders,opus,B,Stacked branches committed per task and PRs requested in stack order (1)-(5); full test su,0.34,5.0,"[20.0, 25.0, 25.0]",25.0,ops
+r2-p3-orders-opus-C,r2,p3-orders,opus,C,Task 2: a coupon is valid through its expiry date and rejected from the next day on; regre,1.1,10.0,"[15.0, 15.0, 20.0]",15.0,fix
+r2-p3-orders-opus-C,r2,p3-orders,opus,C,Task 3: `OrderService.place_order` renamed to `submit_order`; `grep -rn place_order` over ,1.1,10.0,"[12.0, 20.0, 25.0]",20.0,refactor
+r2-p3-orders-opus-C,r2,p3-orders,opus,C,"Task 4: large-order discount (>= 500.00 after volume and tier, 2 percent, before coupon, c",9.41,30.0,"[35.0, 60.0, 60.0]",60.0,feature
+r2-p3-orders-opus-C,r2,p3-orders,opus,C,"Task 5: notes/regions.md with `# Regions`, `## Usage sites` table (File, Function, What it",1.88,20.0,"[25.0, 30.0, 35.0]",30.0,research
+r2-p3-orders-opus-C,r2,p3-orders,opus,C,"Task 1: README.md ""CLI reference"" with one heading per subcommand (synopsis, arguments/opt",2.94,25.0,"[30.0, 45.0, 45.0]",45.0,docs
+r2-p3-orders-opus-C,r2,p3-orders,opus,C,Stacked branches committed per task and PRs requested in stack order; full test suite pass,0.99,5.0,"[20.0, 25.0, 30.0]",25.0,ops
+r2-p3-orders-sonnet-B,r2,p3-orders,sonnet,B,"T4: status constants defined once in orders/models.py, used everywhere in orders/ (incl. S",0.51,8.0,"[25.0, 20.0, 35.0]",25.0,refactor
+r2-p3-orders-sonnet-B,r2,p3-orders,sonnet,B,"T2: low-stock report uses available (on_hand - reserved) with regression test (20 stock, o",0.1,5.0,"[25.0, 20.0, 25.0]",25.0,fix
+r2-p3-orders-sonnet-B,r2,p3-orders,sonnet,B,"T3: `report customers` (--from/--to inclusive optional, --limit, --format text|json) via o",1.82,15.0,"[60.0, 45.0, 70.0]",60.0,feature
+r2-p3-orders-sonnet-B,r2,p3-orders,sonnet,B,"T5: docstrings (summary, args, returns, raises) on every module, class and public method i",1.74,10.0,"[25.0, 20.0, 30.0]",25.0,docs
+r2-p3-orders-sonnet-B,r2,p3-orders,sonnet,B,"T1: notes/place-order-flow.md with required headings, numbered call sequence with files, t",3.3,12.0,"[30.0, 25.0, 35.0]",30.0,docs
+r2-p3-orders-sonnet-B,r2,p3-orders,sonnet,B,"Final: full test suite green, README/architecture/config comment updated, end-to-end CLI r",0.51,4.0,"[25.0, 25.0, 25.0]",25.0,test
+r2-p3-orders-sonnet-C,r2,p3-orders,sonnet,C,"A2: coupon `expires_on` is the last valid day: `--date 2026-03-31` accepted, `2026-04-01` ",0.93,6.0,"[20.0, 25.0, 25.0]",25.0,fix
+r2-p3-orders-sonnet-C,r2,p3-orders,sonnet,C,"A3: `place_order` no longer appears anywhere (`grep -rn place_order` over source, tests, d",0.31,4.0,"[25.0, 15.0, 30.0]",25.0,refactor
+r2-p3-orders-sonnet-C,r2,p3-orders,sonnet,C,"A4: `large-order` discount (>= 500.00 remaining after volume+tier, +2%, before coupon) wit",1.5,15.0,"[50.0, 50.0, 60.0]",50.0,feature
+r2-p3-orders-sonnet-C,r2,p3-orders,sonnet,C,"A1: README.md ""CLI reference"" section with one heading per subcommand (12) each with synop",3.44,12.0,"[60.0, 70.0, 75.0]",70.0,docs
+r2-p3-orders-sonnet-C,r2,p3-orders,sonnet,C,"A5: notes/regions.md with `# Regions`, `## Usage sites` table (File, Function, What it doe",2.79,12.0,"[45.0, 45.0, 50.0]",45.0,research
+r2-p3-orders-sonnet-C,r2,p3-orders,sonnet,C,"Final: full test suite green, docs/architecture.md and notes/place-order-flow.md consisten",1.44,4.0,"[30.0, 35.0]",32.5,ops

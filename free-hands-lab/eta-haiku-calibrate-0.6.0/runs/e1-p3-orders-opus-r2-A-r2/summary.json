@@ -1,0 +1,48 @@
+{
+ "unit": "e1-p3-orders-opus-r2-A-r2",
+ "goal_run": "e1-p3-orders-opus-r2-A",
+ "keys": [
+  "1. `allocate` spreads order-level discounts exactly (largest remainder); `quote 1 A:1 B:1 C:1 --coupon FLAT10` prints $20.00; regression tests in test_money/test_engine/test_cli pass",
+  "2. `to_cents`/`from_cents` in orders/money.py used by storage/catalog.py and storage/orders.py; private helpers and inline `/100`, `*100` gone (grep); existing tests pass unedited (`git diff main -- tests/` shows only additions)",
+  "3. `report daily --format csv` and `report low-stock --format csv` built with `csv` module; tests for both incl. comma-containing names pass",
+  "4. \"Pricing pipeline\" section in docs/architecture.md with ordered steps, allocation, tax/rounding and a worked multi-line example whose numbers match a `quote` run",
+  "5. notes/transactions.md with `# Transactions`, `## Write paths` table, `## Races`, `## Recommendations` (≤6 bullets); race claims checked by a two-connection script",
+  "6. Stacked branches per task committed; PRs opened if a remote exists (`git remote -v`)"
+ ],
+ "rows": [
+  {
+   "key": "1. `allocate` spreads order-level discounts exactly (largest remainder); `quote 1 A:1 B:1 C:1 --coupon FLAT10` prints $20.00; regression tests in test_money/test_engine/test_cli pass",
+   "minutes": 30.0,
+   "category": "fix"
+  },
+  {
+   "key": "2. `to_cents`/`from_cents` in orders/money.py used by storage/catalog.py and storage/orders.py; private helpers and inline `/100`, `*100` gone (grep); existing tests pass unedited (`git diff main -- tests/` shows only additions)",
+   "minutes": 35.0,
+   "category": "refactor"
+  },
+  {
+   "key": "3. `report daily --format csv` and `report low-stock --format csv` built with `csv` module; tests for both incl. comma-containing names pass",
+   "minutes": 30.0,
+   "category": "feature"
+  },
+  {
+   "key": "4. \"Pricing pipeline\" section in docs/architecture.md with ordered steps, allocation, tax/rounding and a worked multi-line example whose numbers match a `quote` run",
+   "minutes": 20.0,
+   "category": "docs"
+  },
+  {
+   "key": "5. notes/transactions.md with `# Transactions`, `## Write paths` table, `## Races`, `## Recommendations` (≤6 bullets); race claims checked by a two-connection script",
+   "minutes": 40.0,
+   "category": "research"
+  },
+  {
+   "key": "6. Stacked branches per task committed; PRs opened if a remote exists (`git remote -v`)",
+   "minutes": 15.0,
+   "category": "ops"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.0009431700000000001,
+ "elapsed_s": 5.1,
+ "git_status_after": ""
+}

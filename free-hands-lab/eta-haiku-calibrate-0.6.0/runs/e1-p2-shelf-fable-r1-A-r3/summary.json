@@ -1,0 +1,54 @@
+{
+ "unit": "e1-p2-shelf-fable-r1-A-r3",
+ "goal_run": "e1-p2-shelf-fable-r1-A",
+ "keys": [
+  "Task 1: `paginate` honours `offset` (five books, `GET /books?limit=2&offset=2` returns the third and fourth) and a new regression test passes under `node --test`",
+  "Task 2: `GET /books/stats` answers 200 with `{ total, onLoan, available, byAuthor }` (count desc, author asc), is registered before `/books/:id`, is in the README endpoint table, and its new tests pass",
+  "Task 3: `src/util/params.js` holds the one id helper used by getBook, updateBook, deleteBook, createLoan and returnLoan; `git diff main -- test/api.test.js test/router.test.js test/store.test.js test/util.test.js test/validate.test.js` is empty and `node --test` passes",
+  "Decide what to do with the defects found outside the five tasks (overdue `<=` vs README, malformed `%` in a path gives 500, PATCH title truthiness): panel, decision recorded under Decisions",
+  "Task 4: `README.md` has an \"API reference\" section with one `### METHOD /path` heading per row of the endpoint table (11 rows); a script comparing table rows to headings reports no difference and every documented example was observed against the running app",
+  "Task 5: `notes/status-codes.md` exists with `# Status codes`, the five-column table (one row per status + error code), and `## Untested`; every row was reproduced over HTTP or traced to its throw site, and the yes/no column matches a grep of the tests",
+  "Work is committed on branch `free-hands/five-tasks` (one commit per task), `git status --short` is empty and `node --test` passes on the branch tip"
+ ],
+ "rows": [
+  {
+   "key": "Task 1: `paginate` honours `offset` (five books, `GET /books?limit=2&offset=2` returns the third and fourth) and a new regression test passes under `node --test`",
+   "minutes": 12.0,
+   "category": "fix"
+  },
+  {
+   "key": "Task 2: `GET /books/stats` answers 200 with `{ total, onLoan, available, byAuthor }` (count desc, author asc), is registered before `/books/:id`, is in the README endpoint table, and its new tests pass",
+   "minutes": 25.0,
+   "category": "feature"
+  },
+  {
+   "key": "Task 3: `src/util/params.js` holds the one id helper used by getBook, updateBook, deleteBook, createLoan and returnLoan; `git diff main -- test/api.test.js test/router.test.js test/store.test.js test/util.test.js test/validate.test.js` is empty and `node --test` passes",
+   "minutes": 15.0,
+   "category": "refactor"
+  },
+  {
+   "key": "Decide what to do with the defects found outside the five tasks (overdue `<=` vs README, malformed `%` in a path gives 500, PATCH title truthiness): panel, decision recorded under Decisions",
+   "minutes": 15.0,
+   "category": "research"
+  },
+  {
+   "key": "Task 4: `README.md` has an \"API reference\" section with one `### METHOD /path` heading per row of the endpoint table (11 rows); a script comparing table rows to headings reports no difference and every documented example was observed against the running app",
+   "minutes": 35.0,
+   "category": "docs"
+  },
+  {
+   "key": "Task 5: `notes/status-codes.md` exists with `# Status codes`, the five-column table (one row per status + error code), and `## Untested`; every row was reproduced over HTTP or traced to its throw site, and the yes/no column matches a grep of the tests",
+   "minutes": 40.0,
+   "category": "docs"
+  },
+  {
+   "key": "Work is committed on branch `free-hands/five-tasks` (one commit per task), `git status --short` is empty and `node --test` passes on the branch tip",
+   "minutes": 10.0,
+   "category": "ops"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.0013621500000000001,
+ "elapsed_s": 5.7,
+ "git_status_after": ""
+}

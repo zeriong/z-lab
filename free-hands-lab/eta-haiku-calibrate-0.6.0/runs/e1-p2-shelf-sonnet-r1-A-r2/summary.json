@@ -1,0 +1,42 @@
+{
+ "unit": "e1-p2-shelf-sonnet-r1-A-r2",
+ "goal_run": "e1-p2-shelf-sonnet-r1-A",
+ "keys": [
+  "1. Fix paginate (offset ignored) so GET /books?limit=2&offset=2 returns the 3rd and 4th of 5 books; regression tests in a new test file; `npm test` passes",
+  "2. Add GET /books/stats (total, onLoan, available, byAuthor sorted count desc, author asc) registered before /books/:id, listed in README endpoint table, with tests; `npm test` passes",
+  "3. Add src/util/params.js id helper used by every handler that parses an id (no `Number(params.id)` left in src/handlers), identical messages/status codes, existing tests unedited and passing",
+  "4. Add \"API reference\" section to README.md with one `### METHOD /path` heading per table endpoint (params, body rules, success status + example JSON, error statuses); verified against the running API",
+  "5. Write notes/status-codes.md (`# Status codes`, table Status/Error code/Raised in/Endpoints/Covered by a test, `## Untested`), verified against code and by probing the server"
+ ],
+ "rows": [
+  {
+   "key": "1. Fix paginate (offset ignored) so GET /books?limit=2&offset=2 returns the 3rd and 4th of 5 books; regression tests in a new test file; `npm test` passes",
+   "minutes": 8.0,
+   "category": "fix"
+  },
+  {
+   "key": "2. Add GET /books/stats (total, onLoan, available, byAuthor sorted count desc, author asc) registered before /books/:id, listed in README endpoint table, with tests; `npm test` passes",
+   "minutes": 15.0,
+   "category": "feature"
+  },
+  {
+   "key": "3. Add src/util/params.js id helper used by every handler that parses an id (no `Number(params.id)` left in src/handlers), identical messages/status codes, existing tests unedited and passing",
+   "minutes": 10.0,
+   "category": "refactor"
+  },
+  {
+   "key": "4. Add \"API reference\" section to README.md with one `### METHOD /path` heading per table endpoint (params, body rules, success status + example JSON, error statuses); verified against the running API",
+   "minutes": 25.0,
+   "category": "docs"
+  },
+  {
+   "key": "5. Write notes/status-codes.md (`# Status codes`, table Status/Error code/Raised in/Endpoints/Covered by a test, `## Untested`), verified against code and by probing the server",
+   "minutes": 25.0,
+   "category": "docs"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.00161779,
+ "elapsed_s": 5.7,
+ "git_status_after": ""
+}

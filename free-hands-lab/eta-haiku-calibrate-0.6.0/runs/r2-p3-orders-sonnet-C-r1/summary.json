@@ -1,0 +1,48 @@
+{
+ "unit": "r2-p3-orders-sonnet-C-r1",
+ "goal_run": "r2-p3-orders-sonnet-C",
+ "keys": [
+  "A2: coupon `expires_on` is the last valid day: `--date 2026-03-31` accepted, `2026-04-01` rejected with \"coupon SPRING expired on 2026-03-31\"; regression tests (last day + day after) at engine and CLI level; suite passes",
+  "A3: `place_order` no longer appears anywhere (`grep -rn place_order` over source, tests, docs, notes, README is empty), `submit_order` defined/called/mentioned instead, CLI `place` subcommand unchanged; suite passes",
+  "A4: `large-order` discount (>= 500.00 remaining after volume+tier, +2%, before coupon) with threshold and percent in orders/config.py; shows in `quote`, spread over lines and taxed like other order-level discounts, named `large-order` in `report daily` breakdown and not counted as coupon discount; engine, report and CLI tests added and passing",
+  "A1: README.md \"CLI reference\" section with one heading per subcommand (12) each with synopsis, args/options with defaults and accepted values, runnable example, exit codes, plus global `--db`/`ORDERS_DB` note; every example run against a scratch db and every default/choice checked against `--help`",
+  "A5: notes/regions.md with `# Regions`, `## Usage sites` table (File, Function, What it does with the region, What happens for an unknown region) covering every region/tax-rate read in orders/, `## Adding a region` (US-WA 6.5%, groceries exempt, exact edits, verified by running the CLI on a scratch copy), `## Failure behavior` (verified by removing a region in a scratch run)",
+  "Final: full test suite green, docs/architecture.md and notes/place-order-flow.md consistent with the final code, end-to-end CLI run, work committed on stacked local branches"
+ ],
+ "rows": [
+  {
+   "key": "A2: coupon `expires_on` is the last valid day: `--date 2026-03-31` accepted, `2026-04-01` rejected with \"coupon SPRING expired on 2026-03-31\"; regression tests (last day + day after) at engine and CLI level; suite passes",
+   "minutes": 20.0,
+   "category": "fix"
+  },
+  {
+   "key": "A3: `place_order` no longer appears anywhere (`grep -rn place_order` over source, tests, docs, notes, README is empty), `submit_order` defined/called/mentioned instead, CLI `place` subcommand unchanged; suite passes",
+   "minutes": 25.0,
+   "category": "refactor"
+  },
+  {
+   "key": "A4: `large-order` discount (>= 500.00 remaining after volume+tier, +2%, before coupon) with threshold and percent in orders/config.py; shows in `quote`, spread over lines and taxed like other order-level discounts, named `large-order` in `report daily` breakdown and not counted as coupon discount; engine, report and CLI tests added and passing",
+   "minutes": 50.0,
+   "category": "feature"
+  },
+  {
+   "key": "A1: README.md \"CLI reference\" section with one heading per subcommand (12) each with synopsis, args/options with defaults and accepted values, runnable example, exit codes, plus global `--db`/`ORDERS_DB` note; every example run against a scratch db and every default/choice checked against `--help`",
+   "minutes": 60.0,
+   "category": "docs"
+  },
+  {
+   "key": "A5: notes/regions.md with `# Regions`, `## Usage sites` table (File, Function, What it does with the region, What happens for an unknown region) covering every region/tax-rate read in orders/, `## Adding a region` (US-WA 6.5%, groceries exempt, exact edits, verified by running the CLI on a scratch copy), `## Failure behavior` (verified by removing a region in a scratch run)",
+   "minutes": 45.0,
+   "category": "research"
+  },
+  {
+   "key": "Final: full test suite green, docs/architecture.md and notes/place-order-flow.md consistent with the final code, end-to-end CLI run, work committed on stacked local branches",
+   "minutes": 30.0,
+   "category": "ops"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.00146423,
+ "elapsed_s": 6.1,
+ "git_status_after": ""
+}

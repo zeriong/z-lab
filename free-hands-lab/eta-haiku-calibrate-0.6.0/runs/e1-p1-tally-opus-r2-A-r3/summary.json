@@ -1,0 +1,48 @@
+{
+ "unit": "e1-p1-tally-opus-r2-A-r3",
+ "goal_run": "e1-p1-tally-opus-r2-A",
+ "keys": [
+  "Mean divides by the number of numeric cells; regression test for `k,v / a,10 / b, / c,20` gives mean 15; `python3 -m unittest -q` passes",
+  "`--delimiter` option (default `,`, `tab` = tab, other multi-char values -> `tally: error:` + exit 2) with tests and README usage line; suite passes",
+  "`format_cell`, `format_table`, `round_numbers`, `render` live in `render.py`, imported into `tally.py`; `git diff test_tally.py` shows no edits to existing tests; suite passes",
+  "`notes/missing-values.md` with `# Missing values`, table (Function, Situation, Behavior, Described in README) covering every handling site, and final `## Gaps` section; claims checked by running tally",
+  "README \"Examples\" section with 3 invocations on `data/sample.csv` (amount summary, group by region, JSON top 2 products), outputs pasted verbatim and diffed against real output",
+  "Final check: full suite passes and every README example output matches the command's real output byte for byte"
+ ],
+ "rows": [
+  {
+   "key": "Mean divides by the number of numeric cells; regression test for `k,v / a,10 / b, / c,20` gives mean 15; `python3 -m unittest -q` passes",
+   "minutes": 6.0,
+   "category": "fix"
+  },
+  {
+   "key": "`--delimiter` option (default `,`, `tab` = tab, other multi-char values -> `tally: error:` + exit 2) with tests and README usage line; suite passes",
+   "minutes": 16.0,
+   "category": "feature"
+  },
+  {
+   "key": "`format_cell`, `format_table`, `round_numbers`, `render` live in `render.py`, imported into `tally.py`; `git diff test_tally.py` shows no edits to existing tests; suite passes",
+   "minutes": 12.0,
+   "category": "refactor"
+  },
+  {
+   "key": "`notes/missing-values.md` with `# Missing values`, table (Function, Situation, Behavior, Described in README) covering every handling site, and final `## Gaps` section; claims checked by running tally",
+   "minutes": 22.0,
+   "category": "docs"
+  },
+  {
+   "key": "README \"Examples\" section with 3 invocations on `data/sample.csv` (amount summary, group by region, JSON top 2 products), outputs pasted verbatim and diffed against real output",
+   "minutes": 14.0,
+   "category": "docs"
+  },
+  {
+   "key": "Final check: full suite passes and every README example output matches the command's real output byte for byte",
+   "minutes": 8.0,
+   "category": "test"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.00175207,
+ "elapsed_s": 5.7,
+ "git_status_after": ""
+}

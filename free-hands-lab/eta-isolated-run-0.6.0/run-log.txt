@@ -1,0 +1,5 @@
+V00: running (spent so far 0.00 USD)
+V00: done
+p1-tally-sonnet-B: running (spent so far 0.00 USD)
+p1-tally-sonnet-B: done
+p2-shelf-sonnet-B: running (spent so far 0.80 USD)

@@ -1,0 +1,48 @@
+{
+ "unit": "e1-p1-tally-sonnet-r2-A-r1",
+ "goal_run": "e1-p1-tally-sonnet-r2-A",
+ "keys": [
+  "T5: create render.py with format_cell, format_table, round_numbers, render; import them back into tally.py; `python3 -m unittest -q` passes and `git diff test_tally.py` shows no removed or changed lines",
+  "T1: column_stats mean = sum / count of numeric cells (None when there are none); regression test for the `k,v / a,10 / b, / c,20` CSV; CLI prints mean 15 and the suite passes",
+  "T4: --delimiter option (default `,`, `tab` = tab, other values longer than one char rejected with `tally: error: ...` and exit 2); tests for default, tab, single char, and rejection; README usage updated",
+  "T2: notes/missing-values.md with `# Missing values`, a 4-column table with one row per place in tally.py handling blank, non-numeric or missing values, and a final `## Gaps` section; each claim checked by running the code",
+  "T3: README \"Examples\" section with three invocations against data/sample.csv, each followed by the exact output, taken by running the commands",
+  "Final: full suite passes, README example outputs re-run and compared byte for byte, `git status` shows only the intended files"
+ ],
+ "rows": [
+  {
+   "key": "T5: create render.py with format_cell, format_table, round_numbers, render; import them back into tally.py; `python3 -m unittest -q` passes and `git diff test_tally.py` shows no removed or changed lines",
+   "minutes": 14.0,
+   "category": "refactor"
+  },
+  {
+   "key": "T1: column_stats mean = sum / count of numeric cells (None when there are none); regression test for the `k,v / a,10 / b, / c,20` CSV; CLI prints mean 15 and the suite passes",
+   "minutes": 9.0,
+   "category": "fix"
+  },
+  {
+   "key": "T4: --delimiter option (default `,`, `tab` = tab, other values longer than one char rejected with `tally: error: ...` and exit 2); tests for default, tab, single char, and rejection; README usage updated",
+   "minutes": 16.0,
+   "category": "feature"
+  },
+  {
+   "key": "T2: notes/missing-values.md with `# Missing values`, a 4-column table with one row per place in tally.py handling blank, non-numeric or missing values, and a final `## Gaps` section; each claim checked by running the code",
+   "minutes": 12.0,
+   "category": "docs"
+  },
+  {
+   "key": "T3: README \"Examples\" section with three invocations against data/sample.csv, each followed by the exact output, taken by running the commands",
+   "minutes": 8.0,
+   "category": "docs"
+  },
+  {
+   "key": "Final: full suite passes, README example outputs re-run and compared byte for byte, `git status` shows only the intended files",
+   "minutes": 6.0,
+   "category": "ops"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.00170822,
+ "elapsed_s": 6.1,
+ "git_status_after": ""
+}

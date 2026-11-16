@@ -1,0 +1,48 @@
+{
+ "unit": "e2-p1-tally-sonnet-B-r2",
+ "goal_run": "e2-p1-tally-sonnet-B",
+ "keys": [
+  "T1 docstrings: every function/class in tally.py has a docstring (one-line summary + Args/Returns where it takes params/returns a value); an ast check script reports none missing; `python3 -m unittest -q` passes",
+  "T2 move TallyError, read_rows, check_column to csvio.py and import them back into tally.py; tally.TallyError/read_rows/check_column resolve; test_tally.py unchanged (git diff empty for it) and passes; `python3 tally.py data/sample.csv --column amount` still works from another cwd",
+  "T4 negative amounts: parse_number accepts -5 / +5 / -1,200.50; `k,amount / a,10 / b,-5` gives sum 5 over 2 values via the CLI; regression tests added and passing",
+  "T5 --sort value|key|count (default value = current behavior; key A-Z; count desc with ties A-Z by key; --top applied after sorting); tests added and passing; README updated",
+  "T3 notes/exit-codes.md with `# Exit codes`, `## Paths` table (Trigger, Exit code, Message, Raised in (function), Tested), `## Untested paths`; every row verified by actually running the path",
+  "PRs: stacked branches fh/01..fh/05 committed; push + `gh pr create` attempted for each in stack order with titles ending (n); final full test run green"
+ ],
+ "rows": [
+  {
+   "key": "T1 docstrings: every function/class in tally.py has a docstring (one-line summary + Args/Returns where it takes params/returns a value); an ast check script reports none missing; `python3 -m unittest -q` passes",
+   "minutes": 10.0,
+   "category": "docs"
+  },
+  {
+   "key": "T2 move TallyError, read_rows, check_column to csvio.py and import them back into tally.py; tally.TallyError/read_rows/check_column resolve; test_tally.py unchanged (git diff empty for it) and passes; `python3 tally.py data/sample.csv --column amount` still works from another cwd",
+   "minutes": 14.0,
+   "category": "refactor"
+  },
+  {
+   "key": "T4 negative amounts: parse_number accepts -5 / +5 / -1,200.50; `k,amount / a,10 / b,-5` gives sum 5 over 2 values via the CLI; regression tests added and passing",
+   "minutes": 12.0,
+   "category": "fix"
+  },
+  {
+   "key": "T5 --sort value|key|count (default value = current behavior; key A-Z; count desc with ties A-Z by key; --top applied after sorting); tests added and passing; README updated",
+   "minutes": 25.0,
+   "category": "feature"
+  },
+  {
+   "key": "T3 notes/exit-codes.md with `# Exit codes`, `## Paths` table (Trigger, Exit code, Message, Raised in (function), Tested), `## Untested paths`; every row verified by actually running the path",
+   "minutes": 20.0,
+   "category": "docs"
+  },
+  {
+   "key": "PRs: stacked branches fh/01..fh/05 committed; push + `gh pr create` attempted for each in stack order with titles ending (n); final full test run green",
+   "minutes": 18.0,
+   "category": "ops"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.0016553500000000003,
+ "elapsed_s": 5.7,
+ "git_status_after": ""
+}

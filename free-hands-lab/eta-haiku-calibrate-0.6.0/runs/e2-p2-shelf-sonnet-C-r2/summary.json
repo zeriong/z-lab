@@ -1,0 +1,48 @@
+{
+ "unit": "e2-p2-shelf-sonnet-C-r2",
+ "goal_run": "e2-p2-shelf-sonnet-C",
+ "keys": [
+  "T1: `Store.addLoan` -> `createLoan` and `Store.returnLoan` -> `closeLoan` in src, tests and notes (handlers keep their names); `grep -rn \"addLoan\\|returnLoan\"` finds only the handler `returnLoan` in src/handlers/loans.js + src/server.js; `node --test` green; branch refactor/rename-loan-methods",
+  "T3: PATCH /books/:id with `{title:\"\"}` or `{title:null}` answers 422 with a `title` problem, book unchanged; regression tests (API + validateBook); `node --test` green; branch fix/patch-blank-title",
+  "T5: `POST /loans/:id/renew` (7 days or integer `days` 1-30, max 2 renewals then 409, 409 returned loan, 404 unknown, 400 bad id, 422 bad body), `renewals` on every loan (0 for pre-existing stored loans), README endpoint table + behaviour note, tests; `node --test` green; branch feat/loan-renew",
+  "T2: README \"Data file format\" section (top-level keys, book + loan record with examples, id assignment, when written, missing file at start-up); every claim checked by a throwaway script run against the code; branch docs/readme-data-file-format",
+  "T4: notes/validation-coverage.md (`# Validation coverage`, table Endpoint | Input | Validated in | Rule | Gap with a row per input of every route incl. renew, `## Gaps` ordered by likelihood of a wrong response); every gap reproduced with a script; a check script confirms all routes/inputs have a row; branch docs/validation-coverage",
+  "Final: `node --test` green on the last branch; stack of branches/PRs recorded in Resume"
+ ],
+ "rows": [
+  {
+   "key": "T1: `Store.addLoan` -> `createLoan` and `Store.returnLoan` -> `closeLoan` in src, tests and notes (handlers keep their names); `grep -rn \"addLoan\\|returnLoan\"` finds only the handler `returnLoan` in src/handlers/loans.js + src/server.js; `node --test` green; branch refactor/rename-loan-methods",
+   "minutes": 8.0,
+   "category": "refactor"
+  },
+  {
+   "key": "T3: PATCH /books/:id with `{title:\"\"}` or `{title:null}` answers 422 with a `title` problem, book unchanged; regression tests (API + validateBook); `node --test` green; branch fix/patch-blank-title",
+   "minutes": 12.0,
+   "category": "fix"
+  },
+  {
+   "key": "T5: `POST /loans/:id/renew` (7 days or integer `days` 1-30, max 2 renewals then 409, 409 returned loan, 404 unknown, 400 bad id, 422 bad body), `renewals` on every loan (0 for pre-existing stored loans), README endpoint table + behaviour note, tests; `node --test` green; branch feat/loan-renew",
+   "minutes": 35.0,
+   "category": "feature"
+  },
+  {
+   "key": "T2: README \"Data file format\" section (top-level keys, book + loan record with examples, id assignment, when written, missing file at start-up); every claim checked by a throwaway script run against the code; branch docs/readme-data-file-format",
+   "minutes": 15.0,
+   "category": "docs"
+  },
+  {
+   "key": "T4: notes/validation-coverage.md (`# Validation coverage`, table Endpoint | Input | Validated in | Rule | Gap with a row per input of every route incl. renew, `## Gaps` ordered by likelihood of a wrong response); every gap reproduced with a script; a check script confirms all routes/inputs have a row; branch docs/validation-coverage",
+   "minutes": 30.0,
+   "category": "research"
+  },
+  {
+   "key": "Final: `node --test` green on the last branch; stack of branches/PRs recorded in Resume",
+   "minutes": 5.0,
+   "category": "test"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.00195564,
+ "elapsed_s": 6.2,
+ "git_status_after": ""
+}

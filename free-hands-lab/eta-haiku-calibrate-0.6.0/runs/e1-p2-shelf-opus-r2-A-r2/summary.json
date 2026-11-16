@@ -1,0 +1,48 @@
+{
+ "unit": "e1-p2-shelf-opus-r2-A-r2",
+ "goal_run": "e1-p2-shelf-opus-r2-A",
+ "keys": [
+  "Fix paging in src/util/pagination.js so `GET /books?limit=2&offset=2` with 5 books returns books 3 and 4; add regression tests (api + util); `node --test` passes",
+  "Add `GET /books/stats` (total, onLoan, available, byAuthor sorted count desc then author asc), registered before `/books/:id`, README table row, tests; `node --test` passes",
+  "Create src/util/params.js with one id-param helper used by getBook, updateBook, deleteBook, createLoan, returnLoan; no remaining inline `Number(params.id)` in handlers; test files unchanged (`git diff main -- test/api.test.js test/router.test.js test/store.test.js test/util.test.js test/validate.test.js` empty); `node --test` passes",
+  "README \"API reference\" section: one `### METHOD /path` per table row (11), each with params/body rules, success status + example JSON, error statuses; verify headings match table rows by script",
+  "notes/status-codes.md: `# Status codes`, table (Status | Error code | Raised in | Endpoints | Covered by a test), one row per status+code combination, `## Untested` section; coverage claims checked against tests",
+  "Extra (outside the five tasks, panel 01): fix isOverdue so a loan due today is not overdue, separate commit, new test/overdue.test.js; `node --test` passes"
+ ],
+ "rows": [
+  {
+   "key": "Fix paging in src/util/pagination.js so `GET /books?limit=2&offset=2` with 5 books returns books 3 and 4; add regression tests (api + util); `node --test` passes",
+   "minutes": 8.0,
+   "category": "fix"
+  },
+  {
+   "key": "Add `GET /books/stats` (total, onLoan, available, byAuthor sorted count desc then author asc), registered before `/books/:id`, README table row, tests; `node --test` passes",
+   "minutes": 18.0,
+   "category": "feature"
+  },
+  {
+   "key": "Create src/util/params.js with one id-param helper used by getBook, updateBook, deleteBook, createLoan, returnLoan; no remaining inline `Number(params.id)` in handlers; test files unchanged (`git diff main -- test/api.test.js test/router.test.js test/store.test.js test/util.test.js test/validate.test.js` empty); `node --test` passes",
+   "minutes": 10.0,
+   "category": "refactor"
+  },
+  {
+   "key": "README \"API reference\" section: one `### METHOD /path` per table row (11), each with params/body rules, success status + example JSON, error statuses; verify headings match table rows by script",
+   "minutes": 22.0,
+   "category": "docs"
+  },
+  {
+   "key": "notes/status-codes.md: `# Status codes`, table (Status | Error code | Raised in | Endpoints | Covered by a test), one row per status+code combination, `## Untested` section; coverage claims checked against tests",
+   "minutes": 20.0,
+   "category": "docs"
+  },
+  {
+   "key": "Extra (outside the five tasks, panel 01): fix isOverdue so a loan due today is not overdue, separate commit, new test/overdue.test.js; `node --test` passes",
+   "minutes": 8.0,
+   "category": "fix"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.0015368200000000002,
+ "elapsed_s": 7.3,
+ "git_status_after": ""
+}

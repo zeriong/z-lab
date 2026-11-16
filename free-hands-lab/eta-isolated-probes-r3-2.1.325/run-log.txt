@@ -1,0 +1,7 @@
+V00: running
+V00: done
+C1: running
+C1: done
+C2: running
+no server running on /private/tmp/tmux-501/default
+C2: done

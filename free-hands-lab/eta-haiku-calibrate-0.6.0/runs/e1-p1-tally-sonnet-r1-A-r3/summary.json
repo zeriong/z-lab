@@ -1,0 +1,42 @@
+{
+ "unit": "e1-p1-tally-sonnet-r1-A-r3",
+ "goal_run": "e1-p1-tally-sonnet-r1-A",
+ "keys": [
+  "T1: mean = sum / number of numeric cells (None when there are none); regression test for `k,v / a,10 / b, / c,20` gives 15; `python3 -m unittest -q` passes",
+  "T4: `--delimiter` option (default `,`, `tab` = tab, other >1 char or empty → `tally: error: ...` exit 2), README usage updated, tests added; `python3 -m unittest -q` passes",
+  "T5: format_cell/format_table/round_numbers/render moved to render.py and imported into tally.py; existing tests unchanged (`git diff` shows only additions to test_tally.py or none) and passing",
+  "T2: notes/missing-values.md with `# Missing values`, 4-column table (one row per handling place in tally.py), `## Gaps` as the last section; every claim verified by running tally",
+  "T3: README \"Examples\" section with 3 invocations on data/sample.csv, each followed by byte-exact command output (verified by re-running)"
+ ],
+ "rows": [
+  {
+   "key": "T1: mean = sum / number of numeric cells (None when there are none); regression test for `k,v / a,10 / b, / c,20` gives 15; `python3 -m unittest -q` passes",
+   "minutes": 6.0,
+   "category": "fix"
+  },
+  {
+   "key": "T4: `--delimiter` option (default `,`, `tab` = tab, other >1 char or empty → `tally: error: ...` exit 2), README usage updated, tests added; `python3 -m unittest -q` passes",
+   "minutes": 12.0,
+   "category": "feature"
+  },
+  {
+   "key": "T5: format_cell/format_table/round_numbers/render moved to render.py and imported into tally.py; existing tests unchanged (`git diff` shows only additions to test_tally.py or none) and passing",
+   "minutes": 9.0,
+   "category": "refactor"
+  },
+  {
+   "key": "T2: notes/missing-values.md with `# Missing values`, 4-column table (one row per handling place in tally.py), `## Gaps` as the last section; every claim verified by running tally",
+   "minutes": 14.0,
+   "category": "docs"
+  },
+  {
+   "key": "T3: README \"Examples\" section with 3 invocations on data/sample.csv, each followed by byte-exact command output (verified by re-running)",
+   "minutes": 10.0,
+   "category": "docs"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.0016658,
+ "elapsed_s": 6.0,
+ "git_status_after": ""
+}

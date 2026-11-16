@@ -1,0 +1,334 @@
+{
+ "argv": [
+  "claude",
+  "-p",
+  "Run exactly this shell command with Bash, then reply done: `echo hi`",
+  "--setting-sources",
+  "project,local",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-isolated-probes/S1/spawn-probe",
+  "--model",
+  "sonnet",
+  "--output-format",
+  "stream-json",
+  "--verbose",
+  "--include-hook-events",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash",
+  "Read"
+ ],
+ "child": [
+  "python3",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-isolated-probes/S1/spawn-probe/child.py"
+ ],
+ "parent_exit": 0,
+ "parent_start": 1794820039.721193,
+ "parent_end": 1794820045.930921,
+ "parent_elapsed_ms": 6210,
+ "parent": {
+  "init": {
+   "model": "claude-sonnet-5-5",
+   "tools": [
+    "Task",
+    "Bash",
+    "CronCreate",
+    "CronDelete",
+    "CronList",
+    "DesignSync",
+    "Edit",
+    "EnterWorktree",
+    "ExitWorktree",
+    "ListAgents",
+    "Monitor",
+    "NotebookEdit",
+    "PublishPlugin",
+    "PushNotification",
+    "Read",
+    "RemoteTrigger",
+    "ReportFindings",
+    "ScheduleWakeup",
+    "SendMessage",
+    "ShareOnboardingGuide",
+    "Skill",
+    "TaskStop",
+    "ToolSearch",
+    "WebFetch",
+    "WebSearch",
+    "Workflow",
+    "Write"
+   ],
+   "plugins": [
+    {
+     "name": "spawn-probe",
+     "path": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-isolated-probes/S1/spawn-probe",
+     "source": "spawn-probe@inline",
+     "version": "0.0.0"
+    },
+    {
+     "name": "orca-agent-view",
+     "path": "/Users/jeonjelyong/Library/Application Support/orca/claude-agent-view/bed635e6724f675384b5/orca-agent-view",
+     "source": "orca-agent-view@inline",
+     "version": "0.2.0"
+    },
+    {
+     "name": "cc-plugin-sec-default",
+     "path": "builtin",
+     "source": "cc-plugin-sec-default@builtin"
+    },
+    {
+     "name": "cc-plugin-agents-md",
+     "path": "builtin",
+     "source": "cc-plugin-agents-md@builtin"
+    },
+    {
+     "name": "cc-plugin-telemetry",
+     "path": "builtin",
+     "source": "cc-plugin-telemetry@builtin"
+    },
+    {
+     "name": "cc-plugin-privacy",
+     "path": "builtin",
+     "source": "cc-plugin-privacy@builtin"
+    },
+    {
+     "name": "cc-plugin-plugin-authoring",
+     "path": "builtin",
+     "source": "cc-plugin-plugin-authoring@builtin"
+    }
+   ],
+   "memory_paths": {
+    "auto": "/Users/jeonjelyong/Library/Application Support/orca/claude-profiles/d1d05ace-c4ae-407e-a0a0-3012d1c1f39b/home/projects/-private-var-folders-fd-j548rpgd0bz5n99xbntzf0100000gn-T-fh-eta-isolated-probes-S1-repo/memory/"
+   },
+   "session_id": "91f8c5b1-79ee-454c-9426-734b17c24f35",
+   "permissionMode": "acceptEdits",
+   "claude_code_version": "2.1.325"
+  },
+  "hook_events": [
+   {
+    "subtype": "hook_started",
+    "hook_event": "PostToolUse",
+    "hook_name": "PostToolUse:Bash",
+    "output": null
+   },
+   {
+    "subtype": "hook_response",
+    "hook_event": "PostToolUse",
+    "hook_name": "PostToolUse:Bash",
+    "output": ""
+   }
+  ],
+  "tools": [
+   {
+    "name": "Bash",
+    "input": {
+     "command": "echo hi",
+     "description": "Print hi"
+    }
+   }
+  ],
+  "results": [
+   {
+    "error": false,
+    "content": "hi"
+   }
+  ],
+  "result": {
+   "subtype": "success",
+   "result": "done",
+   "total_cost_usd": 0.042858,
+   "duration_ms": 5267,
+   "num_turns": 2,
+   "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 9782,
+    "cache_read_input_tokens": 29520,
+    "output_tokens": 77,
+    "output_tokens_details": {
+     "thinking_tokens": 0
+    },
+    "server_tool_use": {
+     "web_search_requests": 0,
+     "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+     "ephemeral_1h_input_tokens": 9782,
+     "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+     {
+      "input_tokens": 2,
+      "output_tokens": 3,
+      "cache_read_input_tokens": 17659,
+      "cache_creation_input_tokens": 3984,
+      "cache_creation": {
+       "ephemeral_5m_input_tokens": 0,
+       "ephemeral_1h_input_tokens": 3984
+      },
+      "type": "message"
+     }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+   },
+   "modelUsage": {
+    "claude-sonnet-5-5": {
+     "inputTokens": 4,
+     "outputTokens": 77,
+     "cacheReadInputTokens": 29520,
+     "cacheCreationInputTokens": 9782,
+     "webSearchRequests": 0,
+     "costUSD": 0.042858,
+     "contextWindow": 1000000,
+     "maxOutputTokens": 128000,
+     "thinkingTokens": 0,
+     "cacheCreationEphemeral5mInputTokens": 0,
+     "cacheCreationEphemeral1hInputTokens": 9782,
+     "canonicalModel": "claude-sonnet-5-5",
+     "provider": "firstParty",
+     "costBasis": "list"
+    }
+   }
+  }
+ },
+ "child_done_after_parent": true,
+ "hook.json": {
+  "start": 1794820044.026079,
+  "end": 1794820044.027979,
+  "env_names": [
+   "AI_AGENT",
+   "CLAUDECODE",
+   "CLAUDE_CODE_CHILD_SESSION",
+   "CLAUDE_CODE_ENTRYPOINT",
+   "CLAUDE_CODE_EXECPATH",
+   "CLAUDE_CODE_FORCE_TERMINAL_IMAGES",
+   "CLAUDE_CODE_MESSAGING_SOCKET",
+   "CLAUDE_CODE_MESSAGING_TOKEN",
+   "CLAUDE_CODE_PLUGIN_DIRS",
+   "CLAUDE_CODE_SESSION_ATTENDED",
+   "CLAUDE_CODE_SESSION_ID",
+   "CLAUDE_CONFIG_DIR",
+   "CLAUDE_EFFORT",
+   "CLAUDE_PID",
+   "CLAUDE_PLUGIN_DATA",
+   "CLAUDE_PLUGIN_ROOT",
+   "CLAUDE_PROJECT_DIR",
+   "CODEX_HOME",
+   "COLORTERM",
+   "COMMAND_MODE",
+   "COREPACK_ENABLE_AUTO_PIN",
+   "CPATH",
+   "CXC_MODE",
+   "FORCE_HYPERLINK",
+   "GCM_INTERACTIVE",
+   "GITHUB_PERSONAL_ACCESS_TOKEN",
+   "GIT_ASKPASS",
+   "GIT_AUTHOR_EMAIL",
+   "GIT_AUTHOR_NAME",
+   "GIT_COMMITTER_EMAIL",
+   "GIT_COMMITTER_NAME",
+   "GIT_EDITOR",
+   "GIT_TERMINAL_PROMPT",
+   "HISTFILE",
+   "HOME",
+   "JCODE_RUNTIME_DIR",
+   "LANG",
+   "LESS",
+   "LIBRARY_PATH",
+   "LOGNAME",
+   "LSCOLORS",
+   "LS_COLORS",
+   "LaunchInstanceID",
+   "MANPATH",
+   "MallocNanoZone",
+   "NVM_BIN",
+   "NVM_CD_FLAGS",
+   "NVM_DIR",
+   "NVM_INC",
+   "NoDefaultCurrentDirectoryInExePath",
+   "ORCA_AGENT_HOOK_ENDPOINT",
+   "ORCA_AGENT_HOOK_ENV",
+   "ORCA_AGENT_HOOK_OPENCODE_TUI",
+   "ORCA_AGENT_HOOK_PORT",
+   "ORCA_AGENT_HOOK_TOKEN",
+   "ORCA_AGENT_HOOK_TRANSPORT",
+   "ORCA_AGENT_HOOK_VERSION",
+   "ORCA_AGENT_LAUNCH",
+   "ORCA_AGENT_LAUNCH_TOKEN",
+   "ORCA_AGENT_PANE",
+   "ORCA_APP_VERSION",
+   "ORCA_CLAUDE_AGENT_VIEW_PLUGIN_DIR",
+   "ORCA_CLAUDE_CONFIG_DIR",
+   "ORCA_CLAUDE_INJECTED_CONFIG_DIR",
+   "ORCA_CLAUDE_PROFILE_POINTER",
+   "ORCA_CLI_BIN_DIR",
+   "ORCA_CODEX_HOME",
+   "ORCA_IMAGE_PROTOCOL",
+   "ORCA_OPENCODE_AGENT",
+   "ORCA_PANE_KEY",
+   "ORCA_PI_SOURCE_AGENT_DIR",
+   "ORCA_RUNTIME_SOURCE_ID",
+   "ORCA_RUNTIME_SOURCE_INCARNATION",
+   "ORCA_RUNTIME_SOURCE_PROFILE_PATH",
+   "ORCA_TAB_ID",
+   "ORCA_TERMINAL_HANDLE",
+   "ORCA_USER_DATA_PATH",
+   "ORCA_WORKSPACE_ID",
+   "ORCA_WORKTREE_ID",
+   "ORCA_WSL_HOSTS_GATE_STATE",
+   "OSLogRateLimit",
+   "PAGER",
+   "PATH",
+   "POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD",
+   "PROBE_CHILD",
+   "PROBE_CWD",
+   "PROBE_DIR",
+   "PWD",
+   "SDKROOT",
+   "SECURITYSESSIONID",
+   "SHELL",
+   "SHLVL",
+   "SSH_ASKPASS",
+   "SSH_AUTH_SOCK",
+   "TERM",
+   "TERM_PROGRAM",
+   "TERM_PROGRAM_VERSION",
+   "TMPDIR",
+   "USER",
+   "XPC_FLAGS",
+   "XPC_SERVICE_NAME",
+   "ZSH",
+   "_",
+   "__CFBundleIdentifier",
+   "__CF_USER_TEXT_ENCODING"
+  ],
+  "env": {
+   "CLAUDE_CODE_MESSAGING_TOKEN": "***",
+   "CLAUDE_EFFORT": "medium",
+   "CLAUDE_CODE_ENTRYPOINT": "sdk-cli",
+   "CODEX_HOME": "/Users/jeonjelyong/Library/Application Support/orca/codex-accounts/bc2098a8-db66-41a1-8312-8d19a6db0712/home",
+   "CLAUDE_PROJECT_DIR": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-isolated-probes/S1/repo",
+   "CLAUDE_PID": "20695",
+   "CLAUDE_CODE_CHILD_SESSION": "1",
+   "CLAUDE_PLUGIN_ROOT": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-isolated-probes/S1/spawn-probe",
+   "CLAUDE_CODE_PLUGIN_DIRS": "/Users/jeonjelyong/Library/Application Support/orca/claude-agent-view/bed635e6724f675384b5/orca-agent-view",
+   "CLAUDE_CODE_SESSION_ATTENDED": "0",
+   "CLAUDE_CODE_EXECPATH": "/opt/homebrew/Caskroom/claude-code@latest/2.1.325/claude",
+   "CLAUDE_CONFIG_DIR": "/Users/jeonjelyong/Library/Application Support/orca/claude-profiles/d1d05ace-c4ae-407e-a0a0-3012d1c1f39b/home",
+   "CLAUDE_CODE_SESSION_ID": "91f8c5b1-79ee-454c-9426-734b17c24f35",
+   "CLAUDE_PLUGIN_DATA": "/Users/jeonjelyong/Library/Application Support/orca/claude-profiles/d1d05ace-c4ae-407e-a0a0-3012d1c1f39b/home/plugins/data/spawn-probe-inline",
+   "CLAUDE_CODE_MESSAGING_SOCKET": "/tmp/cc-socks/20695.sock",
+   "CLAUDECODE": "1",
+   "CLAUDE_CODE_FORCE_TERMINAL_IMAGES": "1"
+  }
+ },
+ "marker.json": {
+  "start": 1794820044.0553448,
+  "end": 1794820059.06324,
+  "ppid": 1,
+  "pid": 22091
+ }
+}

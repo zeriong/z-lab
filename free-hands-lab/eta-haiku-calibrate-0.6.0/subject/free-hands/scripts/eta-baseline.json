@@ -1,0 +1,12 @@
+{
+  "source": "z-lab free-hands-lab: actual / estimate, geometric mean per working model family at effort xhigh. self = the working agent's own inline estimates (goals written by 0.5.0; eta-calibrate-0.5.0 E03, E04; eta-validate-r2-0.5.0 W01). default = mean of the measured families, not measured for others (backlog D20).",
+  "estimators": {
+    "self": {
+      "sonnet": {"all": 0.080, "n": 34},
+      "opus": {"all": 0.126, "n": 34},
+      "fable": {"all": 0.197, "n": 7},
+      "default": {"all": 0.125}
+    },
+    "haiku": {}
+  }
+}

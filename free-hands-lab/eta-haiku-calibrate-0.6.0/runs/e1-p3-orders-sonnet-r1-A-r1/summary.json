@@ -1,0 +1,48 @@
+{
+ "unit": "e1-p3-orders-sonnet-r1-A-r1",
+ "goal_run": "e1-p3-orders-sonnet-r1-A",
+ "keys": [
+  "1. Fix allocate() so discount shares sum exactly (FLAT10 quote prints $20.00) and add regression tests; full suite passes",
+  "2. Add to_cents/from_cents to orders/money.py, use them in every storage module, delete private helpers and inline *100 or /100; existing tests untouched and green",
+  "3. Add --format csv to report daily and report low-stock (csv module, specified headers/rows) with tests",
+  "4. Add \"Pricing pipeline\" section to docs/architecture.md with worked example verified by running quote",
+  "5. Investigate write protection (verify races by experiment) and write notes/transactions.md with Write paths, Races, Recommendations (<=6 bullets)",
+  "6. Final check: full test suite, FLAT10 quote, both csv commands, git status review"
+ ],
+ "rows": [
+  {
+   "key": "1. Fix allocate() so discount shares sum exactly (FLAT10 quote prints $20.00) and add regression tests; full suite passes",
+   "minutes": 15.0,
+   "category": "fix"
+  },
+  {
+   "key": "2. Add to_cents/from_cents to orders/money.py, use them in every storage module, delete private helpers and inline *100 or /100; existing tests untouched and green",
+   "minutes": 25.0,
+   "category": "refactor"
+  },
+  {
+   "key": "3. Add --format csv to report daily and report low-stock (csv module, specified headers/rows) with tests",
+   "minutes": 30.0,
+   "category": "feature"
+  },
+  {
+   "key": "4. Add \"Pricing pipeline\" section to docs/architecture.md with worked example verified by running quote",
+   "minutes": 20.0,
+   "category": "docs"
+  },
+  {
+   "key": "5. Investigate write protection (verify races by experiment) and write notes/transactions.md with Write paths, Races, Recommendations (<=6 bullets)",
+   "minutes": 40.0,
+   "category": "research"
+  },
+  {
+   "key": "6. Final check: full test suite, FLAT10 quote, both csv commands, git status review",
+   "minutes": 10.0,
+   "category": "ops"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.00171332,
+ "elapsed_s": 6.9,
+ "git_status_after": ""
+}

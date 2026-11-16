@@ -1,0 +1,54 @@
+{
+ "unit": "r2-p2-shelf-opus-B-r1",
+ "goal_run": "r2-p2-shelf-opus-B",
+ "keys": [
+  "Task 3: `isOverdue` treats a loan due today as not overdue; new regression test (zero-day loan absent from /loans/overdue today, present tomorrow) passes with `node --test`",
+  "Task 4: `src/persistence.js` exports `loadSnapshot(file)` / `saveSnapshot(file, data)`, `Store` uses it, no `node:fs` import left in `src/store.js`, `git diff main -- test/` shows no change to existing test files, all tests pass",
+  "Panel: decide whether to fix the pre-existing `paginate` offset bug (`items.slice(offset, limit)`) found while planning task 2; decision recorded and applied",
+  "Task 2: `sort` query parameter on GET /books (title/author/year/-title/-author/-year, id order when absent, null years last both ways, 400 with usual error body otherwise, sort before paging), README documents it, new tests pass",
+  "Task 5: JSDoc on `Store` class, constructor and every method with `@param`, `@returns` and thrown errors; check with a script that every method in `src/store.js` is preceded by a `/** ... */` block containing `@returns`",
+  "Task 1: `notes/persistence-risks.md` with `# Persistence risks`, `## Writes` (every Store method that writes), `## Scenarios` table (Scenario | Current behavior | Risk | Suggested change) covering crash during write, corrupt/empty file at start-up, concurrent requests, very large collection, and `## Recommendation` of at most 5 lines; claims checked by running experiments",
+  "Final check: full `node --test` passes, existing test files byte-identical to `main`, every commit on the work branch, goal file updated"
+ ],
+ "rows": [
+  {
+   "key": "Task 3: `isOverdue` treats a loan due today as not overdue; new regression test (zero-day loan absent from /loans/overdue today, present tomorrow) passes with `node --test`",
+   "minutes": 8.0,
+   "category": "fix"
+  },
+  {
+   "key": "Task 4: `src/persistence.js` exports `loadSnapshot(file)` / `saveSnapshot(file, data)`, `Store` uses it, no `node:fs` import left in `src/store.js`, `git diff main -- test/` shows no change to existing test files, all tests pass",
+   "minutes": 14.0,
+   "category": "refactor"
+  },
+  {
+   "key": "Panel: decide whether to fix the pre-existing `paginate` offset bug (`items.slice(offset, limit)`) found while planning task 2; decision recorded and applied",
+   "minutes": 5.0,
+   "category": "research"
+  },
+  {
+   "key": "Task 2: `sort` query parameter on GET /books (title/author/year/-title/-author/-year, id order when absent, null years last both ways, 400 with usual error body otherwise, sort before paging), README documents it, new tests pass",
+   "minutes": 25.0,
+   "category": "feature"
+  },
+  {
+   "key": "Task 5: JSDoc on `Store` class, constructor and every method with `@param`, `@returns` and thrown errors; check with a script that every method in `src/store.js` is preceded by a `/** ... */` block containing `@returns`",
+   "minutes": 15.0,
+   "category": "docs"
+  },
+  {
+   "key": "Task 1: `notes/persistence-risks.md` with `# Persistence risks`, `## Writes` (every Store method that writes), `## Scenarios` table (Scenario | Current behavior | Risk | Suggested change) covering crash during write, corrupt/empty file at start-up, concurrent requests, very large collection, and `## Recommendation` of at most 5 lines; claims checked by running experiments",
+   "minutes": 30.0,
+   "category": "research"
+  },
+  {
+   "key": "Final check: full `node --test` passes, existing test files byte-identical to `main`, every commit on the work branch, goal file updated",
+   "minutes": 10.0,
+   "category": "ops"
+  }
+ ],
+ "model": "claude-haiku-5-5",
+ "cost": 0.00173088,
+ "elapsed_s": 6.2,
+ "git_status_after": ""
+}
