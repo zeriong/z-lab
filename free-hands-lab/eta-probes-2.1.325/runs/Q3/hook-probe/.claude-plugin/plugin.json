@@ -1,0 +1,9 @@
+{
+ "name": "hook-probe",
+ "version": "0.0.0",
+ "description": "lab: log hook inputs",
+ "author": {
+  "name": "lab"
+ },
+ "hooks": "./hooks/hooks.json"
+}

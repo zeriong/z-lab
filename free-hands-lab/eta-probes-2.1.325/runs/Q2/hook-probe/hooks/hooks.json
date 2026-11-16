@@ -1,0 +1,66 @@
+{
+ "hooks": {
+  "SessionStart": [
+   {
+    "hooks": [
+     {
+      "type": "command",
+      "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/probe.py\" SessionStart"
+     }
+    ]
+   }
+  ],
+  "UserPromptSubmit": [
+   {
+    "hooks": [
+     {
+      "type": "command",
+      "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/probe.py\" UserPromptSubmit"
+     }
+    ]
+   }
+  ],
+  "PreToolUse": [
+   {
+    "hooks": [
+     {
+      "type": "command",
+      "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/probe.py\" PreToolUse"
+     }
+    ],
+    "matcher": "*"
+   }
+  ],
+  "PostToolUse": [
+   {
+    "hooks": [
+     {
+      "type": "command",
+      "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/probe.py\" PostToolUse"
+     }
+    ],
+    "matcher": "*"
+   }
+  ],
+  "Stop": [
+   {
+    "hooks": [
+     {
+      "type": "command",
+      "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/probe.py\" Stop"
+     }
+    ]
+   }
+  ],
+  "SubagentStop": [
+   {
+    "hooks": [
+     {
+      "type": "command",
+      "command": "python3 \"${CLAUDE_PLUGIN_ROOT}/probe.py\" SubagentStop"
+     }
+    ]
+   }
+  ]
+ }
+}

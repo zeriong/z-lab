@@ -1,0 +1,32 @@
+{
+ "goal_before": "status: active\nmax_iterations: 6\niterations: 0\nowner: fba0aef8-80a0-499c-9c1b-826804fc48e8\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] item a: run `sleep 6`, then mark this item `- [x]`\n- [ ] item b: run `sleep 6`, then mark this item `- [x]`\n- [ ] item c: run `sleep 6`, then mark this item `- [x]`\n## Decisions\n## Resume\n",
+ "free_hands_commit": "34a786b92dc63f8a861514a0052ae1b01b4f644c",
+ "free_hands_version": "0.4.1",
+ "argv": [
+  "claude",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes-r2/Q4/mod-probe",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes-r2/Q4/free-hands",
+  "--session-id",
+  "fba0aef8-80a0-499c-9c1b-826804fc48e8",
+  "--setting-sources",
+  "project,local",
+  "--model",
+  "sonnet",
+  "--effort",
+  "xhigh",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash",
+  "Read",
+  "Write",
+  "Edit"
+ ],
+ "session_id": "fba0aef8-80a0-499c-9c1b-826804fc48e8",
+ "trust_dialog": true,
+ "elapsed_ms": 314357,
+ "module_rows": [],
+ "goal_after": "status: active\nmax_iterations: 6\niterations: 0\nowner: fba0aef8-80a0-499c-9c1b-826804fc48e8\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] item a: run `sleep 6`, then mark this item `- [x]`\n- [ ] item b: run `sleep 6`, then mark this item `- [x]`\n- [ ] item c: run `sleep 6`, then mark this item `- [x]`\n## Decisions\n## Resume\n"
+}

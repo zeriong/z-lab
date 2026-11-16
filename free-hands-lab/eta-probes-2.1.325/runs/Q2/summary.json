@@ -1,0 +1,378 @@
+{
+ "argv": [
+  "claude",
+  "-p",
+  "List the absolute path of every CLAUDE.md or memory file whose contents were given to you in this session, one per line, or the word none. Then stop.",
+  "--safe-mode",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q2/hook-probe",
+  "--model",
+  "sonnet",
+  "--effort",
+  "xhigh",
+  "--output-format",
+  "stream-json",
+  "--verbose",
+  "--include-hook-events",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash",
+  "Read",
+  "Write",
+  "Edit",
+  "Agent"
+ ],
+ "01-Q2": {
+  "init": {
+   "type": "system",
+   "subtype": "init",
+   "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q2/repo",
+   "session_id": "7bbf99ba-d174-4250-a23e-65912f0d69e5",
+   "tools": [
+    "Task",
+    "Bash",
+    "CronCreate",
+    "CronDelete",
+    "CronList",
+    "DesignSync",
+    "Edit",
+    "EnterWorktree",
+    "ExitWorktree",
+    "ListAgents",
+    "Monitor",
+    "NotebookEdit",
+    "PublishPlugin",
+    "PushNotification",
+    "Read",
+    "RemoteTrigger",
+    "ReportFindings",
+    "ScheduleWakeup",
+    "SendMessage",
+    "ShareOnboardingGuide",
+    "Skill",
+    "TaskStop",
+    "ToolSearch",
+    "WebSearch",
+    "Workflow",
+    "Write"
+   ],
+   "mcp_servers": [],
+   "model": "claude-sonnet-5-5",
+   "permissionMode": "acceptEdits",
+   "slash_commands": [
+    "deep-research",
+    "design",
+    "design-sync",
+    "dataviz",
+    "update-config",
+    "verify",
+    "debug",
+    "code-review",
+    "simplify",
+    "batch",
+    "fewer-permission-prompts",
+    "doctor",
+    "loop",
+    "schedule",
+    "claude-api",
+    "workflow-authoring",
+    "run",
+    "run-skill-generator",
+    "plugin-authoring",
+    "advisor",
+    "agents",
+    "auto-mode-setup",
+    "autocompact",
+    "clear",
+    "color",
+    "compact",
+    "config",
+    "output-style",
+    "context",
+    "effort",
+    "fast",
+    "focus",
+    "heapdump",
+    "init",
+    "mcp",
+    "import",
+    "model",
+    "__remote-workflow",
+    "workflow-launch-exec",
+    "reload-plugins",
+    "reload-skills",
+    "rename",
+    "security-review",
+    "usage-credits",
+    "extra-usage",
+    "usage",
+    "insights",
+    "recap",
+    "skill-doctor",
+    "goal",
+    "design-consent",
+    "design-revoke",
+    "list-agents",
+    "team-onboarding"
+   ],
+   "terminal_slash_commands": [
+    "doctor",
+    "color",
+    "focus",
+    "reload-plugins"
+   ],
+   "apiKeySource": "none",
+   "claude_code_version": "2.1.325",
+   "output_style": "default",
+   "agents": [
+    "claude",
+    "Explore",
+    "general-purpose",
+    "Plan",
+    "web-fetch"
+   ],
+   "skills": [
+    "deep-research",
+    "design",
+    "design-sync",
+    "dataviz",
+    "update-config",
+    "verify",
+    "debug",
+    "code-review",
+    "simplify",
+    "batch",
+    "fewer-permission-prompts",
+    "doctor",
+    "loop",
+    "schedule",
+    "claude-api",
+    "workflow-authoring",
+    "run",
+    "run-skill-generator",
+    "plugin-authoring"
+   ],
+   "plugins": [
+    {
+     "name": "hook-probe",
+     "path": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q2/hook-probe",
+     "source": "hook-probe@inline",
+     "version": "0.0.0"
+    },
+    {
+     "name": "orca-agent-view",
+     "path": "/Users/jeonjelyong/Library/Application Support/orca/claude-agent-view/bed635e6724f675384b5/orca-agent-view",
+     "source": "orca-agent-view@inline",
+     "version": "0.2.0"
+    },
+    {
+     "name": "ch-toolkit-general",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/ch-agents/ch-toolkit-general/1.0.9",
+     "source": "ch-toolkit-general@ch-agents",
+     "version": "1.0.9"
+    },
+    {
+     "name": "ch-toolkit-frontend",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/ch-agents/ch-toolkit-frontend/1.0.1",
+     "source": "ch-toolkit-frontend@ch-agents",
+     "version": "1.0.1"
+    },
+    {
+     "name": "github",
+     "path": "/Users/jeonjelyong/Library/Application Support/orca/claude-profiles/5e5abe09-7a58-4503-b610-94741c226282/home/plugins/cache/claude-plugins-official/github/b5b01ac4f889",
+     "source": "github@claude-plugins-official"
+    },
+    {
+     "name": "frontend-design",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/claude-plugins-official/frontend-design/1.1.1",
+     "source": "frontend-design@claude-plugins-official",
+     "version": "1.1.1"
+    },
+    {
+     "name": "chrome-devtools-mcp",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/claude-plugins-official/chrome-devtools-mcp/1.11.0",
+     "source": "chrome-devtools-mcp@claude-plugins-official",
+     "version": "1.11.0"
+    },
+    {
+     "name": "last30days",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/last30days-skill/last30days/3.8.0",
+     "source": "last30days@last30days-skill",
+     "version": "3.8.0"
+    },
+    {
+     "name": "indivisual-commit",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/zeriong-indivisual-plugins/indivisual-commit/2.0.0",
+     "source": "indivisual-commit@zeriong-indivisual-plugins",
+     "version": "2.0.0"
+    },
+    {
+     "name": "zeriong-frontend-conventions",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/zeriong-indivisual-plugins/zeriong-frontend-conventions/2.0.0",
+     "source": "zeriong-frontend-conventions@zeriong-indivisual-plugins",
+     "version": "2.0.0"
+    },
+    {
+     "name": "free-hands",
+     "path": "/Users/jeonjelyong/Library/Application Support/orca/claude-profiles/cd201108-8110-4df4-9642-f5980faa7bdc/home/plugins/cache/because-i-needed/free-hands/0.4.1",
+     "source": "free-hands@because-i-needed",
+     "version": "0.4.1"
+    },
+    {
+     "name": "peer-coding",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/because-i-needed/peer-coding/1.2.0",
+     "source": "peer-coding@because-i-needed",
+     "version": "1.2.0"
+    },
+    {
+     "name": "ux-ui",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/because-i-needed/ux-ui/1.4.1",
+     "source": "ux-ui@because-i-needed",
+     "version": "1.4.1"
+    },
+    {
+     "name": "budget",
+     "path": "/Users/jeonjelyong/Library/Application Support/orca/claude-profiles/cd201108-8110-4df4-9642-f5980faa7bdc/home/plugins/cache/because-i-needed/budget/0.1.1",
+     "source": "budget@because-i-needed",
+     "version": "0.1.1"
+    },
+    {
+     "name": "dashboard",
+     "path": "/Users/jeonjelyong/Library/Application Support/orca/claude-profiles/cd201108-8110-4df4-9642-f5980faa7bdc/home/plugins/cache/because-i-needed/dashboard/0.2.0",
+     "source": "dashboard@because-i-needed",
+     "version": "0.2.0"
+    },
+    {
+     "name": "context-rail",
+     "path": "/Users/jeonjelyong/.claude/plugins/cache/because-i-needed/context-rail/0.3.1",
+     "source": "context-rail@because-i-needed",
+     "version": "0.3.1"
+    },
+    {
+     "name": "cc-plugin-sec-default",
+     "path": "builtin",
+     "source": "cc-plugin-sec-default@builtin"
+    },
+    {
+     "name": "cc-plugin-agents-md",
+     "path": "builtin",
+     "source": "cc-plugin-agents-md@builtin"
+    },
+    {
+     "name": "cc-plugin-telemetry",
+     "path": "builtin",
+     "source": "cc-plugin-telemetry@builtin"
+    },
+    {
+     "name": "cc-plugin-privacy",
+     "path": "builtin",
+     "source": "cc-plugin-privacy@builtin"
+    },
+    {
+     "name": "cc-plugin-plugin-authoring",
+     "path": "builtin",
+     "source": "cc-plugin-plugin-authoring@builtin"
+    }
+   ],
+   "capabilities": [
+    "interrupt_receipt_v1",
+    "interrupt_cancel_queued_v1",
+    "interrupt_send_now_v1",
+    "interrupt_requeue_taken_v1",
+    "msg_lifecycle_v1",
+    "request_marker_lists_v1",
+    "ask_user_question_unanswered_v1",
+    "lifecycle_wakeup_source_v1",
+    "sdk_mcp_tools_list_changed",
+    "sdk_mcp_manifests",
+    "mcp_read_resource_v1",
+    "mcp_tool_ui_meta_v1",
+    "ui_surface_v1",
+    "mcp_call_result_not_for_model_v1",
+    "mcp_call_check_permissions_v1",
+    "voice_call_talk_line_v1",
+    "withdrawn_files_note_v2",
+    "ui_pane_widget_v1",
+    "reload_plugins_refuse_if_busy_v1"
+   ],
+   "analytics_disabled": false,
+   "product_feedback_disabled": false,
+   "uuid": "ac8b9f1c-1c25-4ed6-b3d4-1ac2d5150e1e",
+   "original_cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q2/repo",
+   "additional_directories": [],
+   "messaging_socket_path": "/tmp/cc-socks/98967.sock",
+   "fast_mode_state": "off",
+   "fast_mode_disabled_reason": "sdk_opt_in_required",
+   "per_turn_effort_active": true,
+   "ultrathink_available": false,
+   "ultrathink_typed_raises": false,
+   "view_mode": "default"
+  },
+  "hook_events": [],
+  "tools": [],
+  "texts": [
+   "none"
+  ],
+  "result": "none",
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 7093,
+   "cache_read_input_tokens": 11861,
+   "output_tokens": 3,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 7093,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 3,
+     "cache_read_input_tokens": 11861,
+     "cache_creation_input_tokens": 7093,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 7093
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost": 0.029592100000000003,
+  "model_usage": {
+   "claude-sonnet-5-5": {
+    "inputTokens": 2,
+    "outputTokens": 3,
+    "cacheReadInputTokens": 11861,
+    "cacheCreationInputTokens": 7093,
+    "webSearchRequests": 0,
+    "costUSD": 0.029592100000000003,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 0,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 7093,
+    "canonicalModel": "claude-sonnet-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "num_turns": 1,
+  "duration_ms": 1827
+ },
+ "hook_rows": 0,
+ "hook_keys": {},
+ "transcripts": [],
+ "transcript_models": {}
+}

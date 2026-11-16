@@ -1,0 +1,698 @@
+{
+ "argv": [
+  "claude",
+  "-p",
+  "Do these steps in order, each with exactly the tool named, then reply with one short sentence.\n1. Bash: sed -i '' 's/- \\[ \\] one/- [x] one/' notes.md\n2. Edit tool: in notes.md change `- [ ] two` to `- [x] two`.\n3. Bash: python3 -c \"import pathlib; p=pathlib.Path('notes.md'); p.write_text(p.read_text().replace('- [ ] three','- [x] three'))\"\n4. Write tool: rewrite notes.md with its current content but `- [ ] four` changed to `- [x] four`.\n5. Agent tool with subagent_type general-purpose: tell the subagent to run exactly `echo sub` with Bash and return the output.",
+  "--setting-sources",
+  "project,local",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q1/hook-probe",
+  "--model",
+  "sonnet",
+  "--effort",
+  "xhigh",
+  "--output-format",
+  "stream-json",
+  "--verbose",
+  "--include-hook-events",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash",
+  "Read",
+  "Write",
+  "Edit",
+  "Agent"
+ ],
+ "01-Q1": {
+  "init": {
+   "type": "system",
+   "subtype": "init",
+   "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q1/repo",
+   "session_id": "6590e608-0ae9-4eb3-bf2d-a0f1661df302",
+   "tools": [
+    "Task",
+    "Bash",
+    "CronCreate",
+    "CronDelete",
+    "CronList",
+    "DesignSync",
+    "Edit",
+    "EnterWorktree",
+    "ExitWorktree",
+    "ListAgents",
+    "Monitor",
+    "NotebookEdit",
+    "PublishPlugin",
+    "PushNotification",
+    "Read",
+    "RemoteTrigger",
+    "ReportFindings",
+    "ScheduleWakeup",
+    "SendMessage",
+    "ShareOnboardingGuide",
+    "Skill",
+    "TaskStop",
+    "ToolSearch",
+    "WebSearch",
+    "Workflow",
+    "Write"
+   ],
+   "mcp_servers": [],
+   "model": "claude-sonnet-5-5",
+   "permissionMode": "acceptEdits",
+   "slash_commands": [
+    "deep-research",
+    "design",
+    "design-sync",
+    "dataviz",
+    "update-config",
+    "verify",
+    "debug",
+    "code-review",
+    "simplify",
+    "batch",
+    "fewer-permission-prompts",
+    "doctor",
+    "loop",
+    "schedule",
+    "claude-api",
+    "workflow-authoring",
+    "run",
+    "run-skill-generator",
+    "plugin-authoring",
+    "advisor",
+    "agents",
+    "auto-mode-setup",
+    "autocompact",
+    "clear",
+    "color",
+    "compact",
+    "config",
+    "output-style",
+    "context",
+    "effort",
+    "fast",
+    "focus",
+    "heapdump",
+    "init",
+    "mcp",
+    "import",
+    "model",
+    "__remote-workflow",
+    "workflow-launch-exec",
+    "reload-plugins",
+    "reload-skills",
+    "rename",
+    "security-review",
+    "usage-credits",
+    "extra-usage",
+    "usage",
+    "insights",
+    "recap",
+    "skill-doctor",
+    "goal",
+    "design-consent",
+    "design-revoke",
+    "list-agents",
+    "team-onboarding"
+   ],
+   "terminal_slash_commands": [
+    "doctor",
+    "color",
+    "focus",
+    "reload-plugins"
+   ],
+   "apiKeySource": "none",
+   "claude_code_version": "2.1.325",
+   "output_style": "default",
+   "agents": [
+    "claude",
+    "Explore",
+    "general-purpose",
+    "Plan",
+    "statusline-setup",
+    "web-fetch"
+   ],
+   "skills": [
+    "deep-research",
+    "design",
+    "design-sync",
+    "dataviz",
+    "update-config",
+    "verify",
+    "debug",
+    "code-review",
+    "simplify",
+    "batch",
+    "fewer-permission-prompts",
+    "doctor",
+    "loop",
+    "schedule",
+    "claude-api",
+    "workflow-authoring",
+    "run",
+    "run-skill-generator",
+    "plugin-authoring"
+   ],
+   "plugins": [
+    {
+     "name": "hook-probe",
+     "path": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q1/hook-probe",
+     "source": "hook-probe@inline",
+     "version": "0.0.0"
+    },
+    {
+     "name": "orca-agent-view",
+     "path": "/Users/jeonjelyong/Library/Application Support/orca/claude-agent-view/bed635e6724f675384b5/orca-agent-view",
+     "source": "orca-agent-view@inline",
+     "version": "0.2.0"
+    },
+    {
+     "name": "cc-plugin-sec-default",
+     "path": "builtin",
+     "source": "cc-plugin-sec-default@builtin"
+    },
+    {
+     "name": "cc-plugin-agents-md",
+     "path": "builtin",
+     "source": "cc-plugin-agents-md@builtin"
+    },
+    {
+     "name": "cc-plugin-telemetry",
+     "path": "builtin",
+     "source": "cc-plugin-telemetry@builtin"
+    },
+    {
+     "name": "cc-plugin-privacy",
+     "path": "builtin",
+     "source": "cc-plugin-privacy@builtin"
+    },
+    {
+     "name": "cc-plugin-plugin-authoring",
+     "path": "builtin",
+     "source": "cc-plugin-plugin-authoring@builtin"
+    }
+   ],
+   "capabilities": [
+    "interrupt_receipt_v1",
+    "interrupt_cancel_queued_v1",
+    "interrupt_send_now_v1",
+    "interrupt_requeue_taken_v1",
+    "msg_lifecycle_v1",
+    "request_marker_lists_v1",
+    "ask_user_question_unanswered_v1",
+    "lifecycle_wakeup_source_v1",
+    "sdk_mcp_tools_list_changed",
+    "sdk_mcp_manifests",
+    "mcp_read_resource_v1",
+    "mcp_tool_ui_meta_v1",
+    "ui_surface_v1",
+    "prompts_screened_v1",
+    "mcp_call_result_not_for_model_v1",
+    "mcp_call_check_permissions_v1",
+    "voice_call_talk_line_v1",
+    "withdrawn_files_note_v2",
+    "ui_pane_widget_v1",
+    "reload_plugins_refuse_if_busy_v1"
+   ],
+   "analytics_disabled": false,
+   "product_feedback_disabled": false,
+   "uuid": "3783de58-5fe6-420e-81c0-8f0f4c8ba00e",
+   "memory_paths": {
+    "auto": "/Users/jeonjelyong/Library/Application Support/orca/claude-profiles/5e5abe09-7a58-4503-b610-94741c226282/home/projects/-private-var-folders-fd-j548rpgd0bz5n99xbntzf0100000gn-T-fh-eta-probes-Q1-repo/memory/"
+   },
+   "original_cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q1/repo",
+   "additional_directories": [],
+   "messaging_socket_path": "/tmp/cc-socks/94444.sock",
+   "fast_mode_state": "off",
+   "fast_mode_disabled_reason": "sdk_opt_in_required",
+   "per_turn_effort_active": true,
+   "ultrathink_available": false,
+   "ultrathink_typed_raises": false,
+   "view_mode": "default"
+  },
+  "hook_events": [
+   {
+    "subtype": "hook_started",
+    "hook_name": "SessionStart:startup",
+    "hook_event": "SessionStart"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "SessionStart:startup",
+    "hook_event": "SessionStart",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "UserPromptSubmit",
+    "hook_event": "UserPromptSubmit"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "UserPromptSubmit",
+    "hook_event": "UserPromptSubmit",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "PreToolUse:Bash",
+    "hook_event": "PreToolUse"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "PreToolUse:Bash",
+    "hook_event": "PreToolUse",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "PostToolUse:Bash",
+    "hook_event": "PostToolUse"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "PostToolUse:Bash",
+    "hook_event": "PostToolUse",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "PreToolUse:Read",
+    "hook_event": "PreToolUse"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "PreToolUse:Read",
+    "hook_event": "PreToolUse",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "PostToolUse:Read",
+    "hook_event": "PostToolUse"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "PostToolUse:Read",
+    "hook_event": "PostToolUse",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "PreToolUse:Edit",
+    "hook_event": "PreToolUse"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "PreToolUse:Edit",
+    "hook_event": "PreToolUse",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "PostToolUse:Edit",
+    "hook_event": "PostToolUse"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "PostToolUse:Edit",
+    "hook_event": "PostToolUse",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "PreToolUse:Bash",
+    "hook_event": "PreToolUse"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "PreToolUse:Bash",
+    "hook_event": "PreToolUse",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "PostToolUse:Bash",
+    "hook_event": "PostToolUse"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "PostToolUse:Bash",
+    "hook_event": "PostToolUse",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "PreToolUse:Read",
+    "hook_event": "PreToolUse"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "PreToolUse:Read",
+    "hook_event": "PreToolUse",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "PostToolUse:Read",
+    "hook_event": "PostToolUse"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "PostToolUse:Read",
+    "hook_event": "PostToolUse",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "PreToolUse:Write",
+    "hook_event": "PreToolUse"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "PreToolUse:Write",
+    "hook_event": "PreToolUse",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "PostToolUse:Write",
+    "hook_event": "PostToolUse"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "PostToolUse:Write",
+    "hook_event": "PostToolUse",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "PreToolUse:Agent",
+    "hook_event": "PreToolUse"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "PreToolUse:Agent",
+    "hook_event": "PreToolUse",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "PreToolUse:Bash",
+    "hook_event": "PreToolUse"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "PreToolUse:Bash",
+    "hook_event": "PreToolUse",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "PostToolUse:Bash",
+    "hook_event": "PostToolUse"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "PostToolUse:Bash",
+    "hook_event": "PostToolUse",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "SubagentStop",
+    "hook_event": "SubagentStop"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "SubagentStop",
+    "hook_event": "SubagentStop",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "PostToolUse:Agent",
+    "hook_event": "PostToolUse"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "PostToolUse:Agent",
+    "hook_event": "PostToolUse",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   },
+   {
+    "subtype": "hook_started",
+    "hook_name": "Stop",
+    "hook_event": "Stop"
+   },
+   {
+    "subtype": "hook_response",
+    "hook_name": "Stop",
+    "hook_event": "Stop",
+    "output": "",
+    "exit_code": 0,
+    "outcome": "success"
+   }
+  ],
+  "tools": [
+   {
+    "name": "Bash",
+    "input": {
+     "command": "sed -i '' 's/- \\[ \\] one/- [x] one/' notes.md",
+     "description": "Mark item one as done in notes.md"
+    }
+   },
+   {
+    "name": "Read",
+    "input": {
+     "file_path": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q1/repo/notes.md"
+    }
+   },
+   {
+    "name": "Edit",
+    "input": {
+     "replace_all": false,
+     "file_path": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q1/repo/notes.md",
+     "old_string": "- [ ] two",
+     "new_string": "- [x] two"
+    }
+   },
+   {
+    "name": "Bash",
+    "input": {
+     "command": "python3 -c \"import pathlib; p=pathlib.Path('notes.md'); p.write_text(p.read_text().replace('- [ ] three','- [x] three'))\"",
+     "description": "Mark item three as done in notes.md"
+    }
+   },
+   {
+    "name": "Read",
+    "input": {
+     "file_path": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q1/repo/notes.md"
+    }
+   },
+   {
+    "name": "Write",
+    "input": {
+     "file_path": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q1/repo/notes.md",
+     "content": "## Checklist\n- [x] one\n- [x] two\n- [x] three\n- [x] four\n"
+    }
+   },
+   {
+    "name": "Agent",
+    "input": {
+     "description": "Run echo sub",
+     "subagent_type": "general-purpose",
+     "prompt": "Run exactly `echo sub` with the Bash tool and return the output.",
+     "run_in_background": false
+    }
+   },
+   {
+    "name": "Bash",
+    "input": {
+     "command": "echo sub",
+     "description": "Run echo sub"
+    }
+   }
+  ],
+  "texts": [
+   "All five steps are done: `notes.md` now has all four items checked, and the subagent ran `echo sub` and returned `sub`."
+  ],
+  "result": "All five steps are done: `notes.md` now has all four items checked, and the subagent ran `echo sub` and returned `sub`.",
+  "usage": {
+   "input_tokens": 12,
+   "cache_creation_input_tokens": 19506,
+   "cache_read_input_tokens": 150588,
+   "output_tokens": 1257,
+   "output_tokens_details": {
+    "thinking_tokens": 306
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 19506,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 44,
+     "cache_read_input_tokens": 30661,
+     "cache_creation_input_tokens": 706,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 706
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost": 0.1680453,
+  "model_usage": {
+   "claude-sonnet-5-5": {
+    "inputTokens": 16,
+    "outputTokens": 1337,
+    "cacheReadInputTokens": 170418,
+    "cacheCreationInputTokens": 43337,
+    "webSearchRequests": 0,
+    "costUSD": 0.1680453,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 306,
+    "cacheCreationEphemeral5mInputTokens": 23831,
+    "cacheCreationEphemeral1hInputTokens": 19506,
+    "canonicalModel": "claude-sonnet-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "num_turns": 8,
+  "duration_ms": 21433
+ },
+ "hook_rows": 20,
+ "hook_keys": {
+  "SessionStart": [
+   "cwd",
+   "hook_event_name",
+   "session_id",
+   "source",
+   "transcript_path"
+  ],
+  "UserPromptSubmit": [
+   "cwd",
+   "hook_event_name",
+   "permission_mode",
+   "prompt",
+   "prompt_id",
+   "session_id",
+   "transcript_path"
+  ],
+  "PreToolUse": [
+   "cwd",
+   "effort",
+   "hook_event_name",
+   "permission_mode",
+   "prompt_id",
+   "session_id",
+   "tool_input",
+   "tool_name",
+   "tool_use_id",
+   "transcript_path"
+  ],
+  "PostToolUse": [
+   "cwd",
+   "duration_ms",
+   "effort",
+   "hook_event_name",
+   "permission_mode",
+   "prompt_id",
+   "session_id",
+   "tool_input",
+   "tool_name",
+   "tool_response",
+   "tool_use_id",
+   "transcript_path"
+  ],
+  "SubagentStop": [
+   "agent_id",
+   "agent_transcript_path",
+   "agent_type",
+   "background_tasks",
+   "cwd",
+   "effort",
+   "hook_event_name",
+   "last_assistant_message",
+   "permission_mode",
+   "prompt_id",
+   "session_crons",
+   "session_id",
+   "stop_hook_active",
+   "transcript_path"
+  ],
+  "Stop": [
+   "background_tasks",
+   "cwd",
+   "effort",
+   "hook_event_name",
+   "last_assistant_message",
+   "permission_mode",
+   "prompt_id",
+   "session_crons",
+   "session_id",
+   "stop_hook_active",
+   "transcript_path"
+  ]
+ },
+ "transcripts": [
+  "/Users/jeonjelyong/Library/Application Support/orca/claude-profiles/5e5abe09-7a58-4503-b610-94741c226282/home/projects/-private-var-folders-fd-j548rpgd0bz5n99xbntzf0100000gn-T-fh-eta-probes-Q1-repo/6590e608-0ae9-4eb3-bf2d-a0f1661df302.jsonl"
+ ],
+ "transcript_models": {
+  "claude-sonnet-5-5": 10
+ },
+ "notes_after": "## Checklist\n- [x] one\n- [x] two\n- [x] three\n- [x] four\n"
+}

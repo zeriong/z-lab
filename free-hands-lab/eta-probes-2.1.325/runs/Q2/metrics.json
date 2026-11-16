@@ -1,0 +1,19 @@
+[
+ {
+  "step": "01-Q2",
+  "argv": [
+   "claude",
+   "-p",
+   "List the absolute path of every CLAUDE.md or memory file whose contents were given to you in this session, one per line, or the word none. Then stop.",
+   "--safe-mode",
+   "--plugin-dir",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q2/hook-probe",
+   "--model",
+   "sonnet",
+   "\u2026"
+  ],
+  "exit": 0,
+  "elapsed_ms": 3008,
+  "tokens": true
+ }
+]
