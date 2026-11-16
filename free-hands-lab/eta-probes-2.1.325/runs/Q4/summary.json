@@ -1,0 +1,32 @@
+{
+ "goal_before": "status: active\nmax_iterations: 6\niterations: 0\nowner: 4d51a9fb-75e9-4695-ae49-992a4213907a\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] item a: run `sleep 6`, then mark this item `- [x]`\n- [ ] item b: run `sleep 6`, then mark this item `- [x]`\n- [ ] item c: run `sleep 6`, then mark this item `- [x]`\n## Decisions\n## Resume\n",
+ "free_hands_commit": "34a786b92dc63f8a861514a0052ae1b01b4f644c",
+ "free_hands_version": "0.4.1",
+ "argv": [
+  "claude",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q4/mod-probe",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q4/free-hands",
+  "--session-id",
+  "4d51a9fb-75e9-4695-ae49-992a4213907a",
+  "--setting-sources",
+  "project,local",
+  "--model",
+  "sonnet",
+  "--effort",
+  "xhigh",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash",
+  "Read",
+  "Write",
+  "Edit"
+ ],
+ "session_id": "4d51a9fb-75e9-4695-ae49-992a4213907a",
+ "trust_dialog": "\n────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n Accessing workspace:\n\n /private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q4/repo\n\n Quick safety check: Is this a project you created or one you trust? (Like your own code, a well-known open source project, or work from your team). If not, take a moment to review what's in this\n folder first.\n\n Claude Code'll be able to read, edit, and execute files here.\n\n Security guide\n\n ❯ No, exit\n   Yes, I trust this folder\n\n Enter to confirm · Esc to cancel\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+ "elapsed_ms": 315351,
+ "module_rows": [],
+ "goal_after": "status: active\nmax_iterations: 6\niterations: 0\nowner: 4d51a9fb-75e9-4695-ae49-992a4213907a\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] item a: run `sleep 6`, then mark this item `- [x]`\n- [ ] item b: run `sleep 6`, then mark this item `- [x]`\n- [ ] item c: run `sleep 6`, then mark this item `- [x]`\n## Decisions\n## Resume\n"
+}

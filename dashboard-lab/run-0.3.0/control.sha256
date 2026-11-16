@@ -1,0 +1,15 @@
+cd3899ffdd5f179a08775d110886d2981ab0c8324c3399cd7d8e2115509da65d  ./dashboard-0.2.0/.claude-plugin/plugin.json
+9e1bbfa209a27af63aa583391ae56c07bbc51e64e9494f392063e1b21b7e753f  ./dashboard-0.2.0/.codex-plugin/plugin.json
+431c37c1bcea86e1ccae273629896a74ed4c3ef8fd8711c76f7925c308c62d03  ./dashboard-0.2.0/CHANGELOG.md
+78922a784ee78e9e50587e93628cd3b9d4dfbe49087adc4514e6781cea38cbb9  ./dashboard-0.2.0/hooks/codex.json
+ae69340778202da573caae98e922a69467ed1c60953d2bde1800085cc197c1b5  ./dashboard-0.2.0/hooks/hooks.json
+abce657876f12f0068885cb28dc07f2ae60497d33a6e12d6732e3726587498d4  ./dashboard-0.2.0/hooks/register.tsx
+31f0ba768c15fe2e20dc73b432c0df6e41a230f5cb1cf9a45678f00949676782  ./dashboard-0.2.0/README.ja.md
+b7a961dbe67e93ca51a64fab3b79170fb09bcb4b02c4b9eb15de22de6d7e7618  ./dashboard-0.2.0/README.ko.md
+b8189651fc58ba2f55851bae3c27c275519586a957d50f1ca484225ddda73d9c  ./dashboard-0.2.0/README.md
+2a550f4f2313bd8473d119df430e08e1a8736607768c1361d896651606bc9f7c  ./dashboard-0.2.0/README.zh-CN.md
+9559ea6c08f8ef2c9c3af3419f731af284c6a30c42b2daa9f5c08cf21f71d144  ./dashboard-0.2.0/README.zh-TW.md
+c84bca7aca42f09f91c107b86b968fc7ffda3fc3da0db5250b23371c5826de0c  ./dashboard-0.2.0/scripts/dashboard.py
+9aa4c84038779d7d77b5052e26d0b7aa85a3fa622f6e9fa5c49a14fdbb05bc1d  ./dashboard-0.2.0/skills/audit/agents/openai.yaml
+c77e10eadbb7e57b929210b29050bbffab26da50d95abdc707df05f4c25fffbc  ./dashboard-0.2.0/skills/audit/SKILL.md
+88ede69dac920db3d7fed6c0f382a5693ef844ecafd2d76ebed524f8a3ecc923  ./dashboard-0.2.0/types/index.d.ts

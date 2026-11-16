@@ -1,0 +1,169 @@
+{
+ "goal_before": "status: active\nmax_iterations: 6\niterations: 0\nowner: bb5c3f6e-6321-45a6-8686-dcd57871b3e7\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [ ] item a: run `sleep 6`, then mark this item `- [x]`\n- [ ] item b: run `sleep 6`, then mark this item `- [x]`\n- [ ] item c: run `sleep 6`, then mark this item `- [x]`\n## Decisions\n## Resume\n",
+ "free_hands_commit": "34a786b92dc63f8a861514a0052ae1b01b4f644c",
+ "free_hands_version": "0.4.1",
+ "argv": [
+  "claude",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes-r4/Q4/mod-probe",
+  "--plugin-dir",
+  "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes-r4/Q4/free-hands",
+  "--session-id",
+  "bb5c3f6e-6321-45a6-8686-dcd57871b3e7",
+  "--setting-sources",
+  "project,local",
+  "--model",
+  "sonnet",
+  "--effort",
+  "xhigh",
+  "--permission-mode",
+  "acceptEdits",
+  "--allowedTools",
+  "Bash",
+  "Read",
+  "Write",
+  "Edit"
+ ],
+ "session_id": "bb5c3f6e-6321-45a6-8686-dcd57871b3e7",
+ "trust_dialog": true,
+ "trust_yes_selected": true,
+ "elapsed_ms": 57382,
+ "module_rows": [
+  {
+   "at": 1794809647437,
+   "event": "session.start"
+  },
+  {
+   "at": 1794809647819,
+   "event": "session.measure",
+   "changed": [
+    "context",
+    "rateLimits",
+    "cost"
+   ]
+  },
+  {
+   "at": 1794809653732,
+   "event": "turn.start",
+   "turnId": "9a9b9710-4244-4376-b48c-33376eb4fbaa"
+  },
+  {
+   "at": 1794809656030,
+   "event": "tool.call",
+   "tool": "Read",
+   "agentId": null,
+   "before": 1794809655975,
+   "after": 1794809656004,
+   "n": 1,
+   "spawnMs": 25,
+   "goalOpen": 3,
+   "goalDone": 0
+  },
+  {
+   "at": 1794809665408,
+   "event": "tool.call",
+   "tool": "Bash",
+   "agentId": null,
+   "before": 1794809658097,
+   "after": 1794809665363,
+   "n": 2,
+   "spawnMs": 37,
+   "goalOpen": 3,
+   "goalDone": 0
+  },
+  {
+   "at": 1794809667901,
+   "event": "tool.call",
+   "tool": "Edit",
+   "agentId": null,
+   "before": 1794809667762,
+   "after": 1794809667791,
+   "n": 3,
+   "spawnMs": 107,
+   "goalOpen": 2,
+   "goalDone": 1
+  },
+  {
+   "at": 1794809678998,
+   "event": "tool.call",
+   "tool": "Bash",
+   "agentId": null,
+   "before": 1794809672345,
+   "after": 1794809678966,
+   "n": 4,
+   "spawnMs": 27,
+   "goalOpen": 2,
+   "goalDone": 1
+  },
+  {
+   "at": 1794809681473,
+   "event": "tool.call",
+   "tool": "Edit",
+   "agentId": null,
+   "before": 1794809681404,
+   "after": 1794809681442,
+   "n": 5,
+   "spawnMs": 30,
+   "goalOpen": 1,
+   "goalDone": 2
+  },
+  {
+   "at": 1794809691454,
+   "event": "tool.call",
+   "tool": "Bash",
+   "agentId": null,
+   "before": 1794809684818,
+   "after": 1794809691414,
+   "n": 6,
+   "spawnMs": 34,
+   "goalOpen": 1,
+   "goalDone": 2
+  },
+  {
+   "at": 1794809694171,
+   "event": "tool.call",
+   "tool": "Edit",
+   "agentId": null,
+   "before": 1794809694096,
+   "after": 1794809694139,
+   "n": 7,
+   "spawnMs": 31,
+   "goalOpen": 0,
+   "goalDone": 3
+  },
+  {
+   "at": 1794809694779,
+   "event": "session.measure",
+   "changed": [
+    "context",
+    "rateLimits",
+    "cost"
+   ]
+  },
+  {
+   "at": 1794809694848,
+   "event": "tool.call",
+   "tool": "Edit",
+   "agentId": null,
+   "before": 1794809694774,
+   "after": 1794809694817,
+   "n": 8,
+   "spawnMs": 29,
+   "goalOpen": 0,
+   "goalDone": 3
+  },
+  {
+   "at": 1794809696129,
+   "event": "turn.complete"
+  },
+  {
+   "at": 1794809696147,
+   "event": "session.measure",
+   "changed": [
+    "context",
+    "cost"
+   ]
+  }
+ ],
+ "goal_after": "status: done\nmax_iterations: 6\niterations: 2\nowner: bb5c3f6e-6321-45a6-8686-dcd57871b3e7\ndefault_branch: main\n## Goal\nlab goal\n## Checklist\n- [x] item a: run `sleep 6`, then mark this item `- [x]`\n- [x] item b: run `sleep 6`, then mark this item `- [x]`\n- [x] item c: run `sleep 6`, then mark this item `- [x]`\n## Decisions\n## Resume\n"
+}

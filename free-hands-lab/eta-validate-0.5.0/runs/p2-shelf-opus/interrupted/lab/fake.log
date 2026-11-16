@@ -1,0 +1,2 @@
+{"tool": "npm", "argv": ["test"], "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-validate/p2-shelf-opus/repo"}
+{"tool": "gh", "argv": ["repo", "view", "--json", "defaultBranchRef", "-q", ".defaultBranchRef.name"], "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-validate/p2-shelf-opus/repo"}

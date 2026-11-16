@@ -1,0 +1,4 @@
+{"tool": "gh", "argv": ["repo", "view", "--json", "defaultBranchRef", "-q", ".defaultBranchRef.name"], "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-calibrate/p1-tally-sonnet-r1/repo"}
+{"tool": "gh", "argv": ["pr", "view", "--json", "url"], "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-calibrate/p1-tally-sonnet-r1/repo"}
+{"tool": "gh", "argv": ["pr", "view", "readme-examples", "--json", "url"], "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-calibrate/p1-tally-sonnet-r1/repo"}
+{"tool": "gh", "argv": ["pr", "view", "readme-examples", "--json", "url"], "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-calibrate/p1-tally-sonnet-r1/repo"}

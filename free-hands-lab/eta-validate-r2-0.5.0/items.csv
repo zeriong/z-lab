@@ -1,0 +1,79 @@
+cell,fixture,family,goal,item,cat,est,base,catpred,proj,online,project,actual,prior
+p1-tally-opus (eta-validate-0.5.0),p1-tally,opus,B,T1 docstrings: every function/class in tally.py has a docstring (one-line summar,docs,8.0,1.01,1.09,1.01,1.01,1.0,1.81,0
+p1-tally-opus (eta-validate-0.5.0),p1-tally,opus,B,"T2 move TallyError, read_rows, check_column to csvio.py and import back; check =",refactor,6.0,0.76,0.59,0.76,0.88,1.0,2.66,0
+p1-tally-opus (eta-validate-0.5.0),p1-tally,opus,B,"T4 negative amounts: CSV k,amount/a,10/b,-5 with --column amount reports count 2",fix,10.0,1.26,1.32,1.26,1.82,1.0,1.67,0
+p1-tally-opus (eta-validate-0.5.0),p1-tally,opus,B,"T5 --sort value|key|count for grouped output, value default, --top after sorting",feature,15.0,1.89,2.25,1.89,2.69,1.0,1.73,0
+p1-tally-opus (eta-validate-0.5.0),p1-tally,opus,B,"T3 notes/exit-codes.md: `# Exit codes`, `## Paths` table (Trigger, Exit code, Me",research,20.0,2.52,3.18,2.52,3.37,1.0,3.12,0
+p1-tally-opus (eta-validate-0.5.0),p1-tally,opus,B,"Final: full suite passes, every function in tally.py and csvio.py has a docstrin",test,4.0,0.5,0.5,0.5,0.67,1.0,0.29,0
+p1-tally-opus (eta-validate-0.5.0),p1-tally,opus,C,"T1 rename function group_by -> group_rows in tally.py, test_tally.py (README if ",refactor,5.0,0.63,0.49,0.76,0.76,1.208,0.39,6
+p1-tally-opus (eta-validate-0.5.0),p1-tally,opus,C,"T4 value-sort ties A to Z: CSV k,v/a,5/b,5/c,5 with `--group-by k --column v` li",fix,8.0,1.01,1.06,1.22,1.14,1.208,0.65,6
+p1-tally-opus (eta-validate-0.5.0),p1-tally,opus,C,"T2 `--format csv`: grouped header key,count[,sum] + one row per group; summary h",feature,15.0,1.89,2.25,2.28,2.03,1.208,2.54,6
+p1-tally-opus (eta-validate-0.5.0),p1-tally,opus,C,T3 notes/performance.md: `# Row passes` with a table of the four modes (function,research,15.0,1.89,2.39,2.28,2.07,1.208,2.45,6
+p1-tally-opus (eta-validate-0.5.0),p1-tally,opus,C,"T5 README ""Development"" section: repository layout, how to run tests, step-by-st",docs,12.0,1.51,1.63,1.83,1.68,1.208,0.99,6
+p1-tally-opus (eta-validate-0.5.0),p1-tally,opus,C,"Final: full suite passes on python3, no `group_by(` function references remain, ",test,4.0,0.5,0.5,0.61,0.54,1.208,0.25,6
+p1-tally-sonnet (eta-validate-0.5.0),p1-tally,sonnet,B,T1 docstrings: every function/class in tally.py has a docstring (one-line summar,docs,6.0,0.48,0.49,0.48,0.48,1.0,0.47,0
+p1-tally-sonnet (eta-validate-0.5.0),p1-tally,sonnet,B,"T2 move TallyError, read_rows, check_column to csvio.py and import them back int",refactor,6.0,0.48,0.42,0.48,0.48,1.0,0.26,0
+p1-tally-sonnet (eta-validate-0.5.0),p1-tally,sonnet,B,"T4 negative amounts: parse_number accepts -5 / +5 / -1,200.50; `k,amount / a,10 ",fix,8.0,0.64,0.71,0.64,0.56,1.0,0.46,0
+p1-tally-sonnet (eta-validate-0.5.0),p1-tally,sonnet,B,T5 --sort value|key|count (default value = current behavior; key A-Z; count desc,feature,12.0,0.96,0.65,0.96,0.82,1.0,1.01,0
+p1-tally-sonnet (eta-validate-0.5.0),p1-tally,sonnet,B,"T3 notes/exit-codes.md with `# Exit codes`, `## Paths` table (Trigger, Exit code",research,15.0,1.2,1.6,1.2,1.05,1.0,4.28,0
+p1-tally-sonnet (eta-validate-0.5.0),p1-tally,sonnet,C,"G1 rename `group_by` -> `group_rows` in tally.py (definition, call in run, docst",refactor,4.0,0.32,0.28,0.33,0.33,1.046,0.21,5
+p1-tally-sonnet (eta-validate-0.5.0),p1-tally,sonnet,C,"G2 `--format csv`: grouped output is a `key,count[,sum]` header plus one row per",feature,12.0,0.96,0.65,1.0,0.95,1.046,1.09,5
+p1-tally-sonnet (eta-validate-0.5.0),p1-tally,sonnet,C,"G3 notes/performance.md: `# Row passes`, a table with the four invocation modes ",research,15.0,1.2,1.6,1.25,1.21,1.046,1.68,5
+p1-tally-sonnet (eta-validate-0.5.0),p1-tally,sonnet,C,"G4 equal-total groups ordered A to Z: `k,v / a,5 / b,5 / c,5` with `--group-by k",fix,8.0,0.64,0.71,0.67,0.66,1.046,0.95,5
+p1-tally-sonnet (eta-validate-0.5.0),p1-tally,sonnet,C,"G5 README `## Development` section: repository layout, how to run the tests, num",docs,12.0,0.96,0.97,1.0,1.03,1.046,1.45,5
+p2-shelf-sonnet (eta-validate-0.5.0),p2-shelf,sonnet,B,T3: zero-day loan is not overdue on the day it is lent (isOverdue fix) + regress,fix,8.0,0.64,0.71,0.64,0.64,1.0,0.47,0
+p2-shelf-sonnet (eta-validate-0.5.0),p2-shelf,sonnet,B,"T2: `sort` query param on GET /books (title/author/year, `-` prefix, id default,",feature,15.0,1.2,0.81,1.2,1.11,1.0,0.96,0
+p2-shelf-sonnet (eta-validate-0.5.0),p2-shelf,sonnet,B,"T4: `src/persistence.js` with `loadSnapshot(file)` / `saveSnapshot(file, data)`,",refactor,10.0,0.8,0.7,0.8,0.72,1.0,0.5,0
+p2-shelf-sonnet (eta-validate-0.5.0),p2-shelf,sonnet,B,"T5: JSDoc (with @param, @returns, thrown errors) on `Store`, its constructor and",docs,10.0,0.8,0.81,0.8,0.68,1.0,1.52,0
+p2-shelf-sonnet (eta-validate-0.5.0),p2-shelf,sonnet,B,"T1: `notes/persistence-risks.md` with `# Persistence risks`, `## Writes`, `## Sc",research,12.0,0.96,1.28,0.96,0.91,1.0,1.82,0
+p2-shelf-sonnet (eta-validate-0.5.0),p2-shelf,sonnet,B,"Final: `npm test` green on the last branch, stack of local branches/PRs recorded",ops,5.0,0.4,0.4,0.4,0.41,1.0,0.29,0
+p2-shelf-sonnet (eta-validate-0.5.0),p2-shelf,sonnet,C,T1: `Store.addLoan` -> `createLoan` and `Store.returnLoan` -> `closeLoan` in src,refactor,6.0,0.48,0.42,0.48,0.48,0.995,0.39,6
+p2-shelf-sonnet (eta-validate-0.5.0),p2-shelf,sonnet,C,"T3: PATCH /books/:id with `{title:""""}` or `{title:null}` answers 422 with a `tit",fix,7.0,0.56,0.62,0.56,0.55,0.995,0.38,6
+p2-shelf-sonnet (eta-validate-0.5.0),p2-shelf,sonnet,C,"T5: `POST /loans/:id/renew` (7 days or integer `days` 1-30, max 2 renewals then ",feature,20.0,1.6,1.08,1.59,1.51,0.995,1.44,6
+p2-shelf-sonnet (eta-validate-0.5.0),p2-shelf,sonnet,C,"T2: README ""Data file format"" section (top-level keys, book + loan record with e",docs,12.0,0.96,0.97,0.96,0.9,0.995,1.63,6
+p2-shelf-sonnet (eta-validate-0.5.0),p2-shelf,sonnet,C,"T4: notes/validation-coverage.md (`# Validation coverage`, table Endpoint | Inpu",research,25.0,2.0,2.67,1.99,1.97,0.995,4.1,6
+p2-shelf-sonnet (eta-validate-0.5.0),p2-shelf,sonnet,C,Final: `node --test` green on the last branch; stack of branches/PRs recorded in,ops,5.0,0.4,0.4,0.4,0.41,0.995,0.6,6
+p1-tally-fable (eta-validate-r2-0.5.0),p1-tally,fable,B,Task 1 — every function and class in `tally.py` has a docstring (one-line summar,docs,3.0,0.59,0.59,0.59,0.59,1.0,0.87,0
+p1-tally-fable (eta-validate-r2-0.5.0),p1-tally,fable,B,"Task 2 — `TallyError`, `read_rows`, `check_column` live in `csvio.py` and are im",refactor,2.0,0.39,0.39,0.39,0.43,1.0,0.66,0
+p1-tally-fable (eta-validate-r2-0.5.0),p1-tally,fable,B,"Task 4 — negative amounts are parsed; check: the `k,amount / a,10 / b,-5` CSV pr",fix,3.0,0.59,0.59,0.59,0.71,1.0,0.24,0
+p1-tally-fable (eta-validate-r2-0.5.0),p1-tally,fable,B,Panel decision on the two places where the code contradicts README.md (tie order,research,8.0,1.58,1.58,1.58,1.58,1.0,5.36,0
+p1-tally-fable (eta-validate-r2-0.5.0),p1-tally,fable,B,"Task 5 — `--sort value|key|count` for grouped output, `--top` applied after sort",feature,6.0,1.18,1.18,1.18,1.41,1.0,1.1,0
+p1-tally-fable (eta-validate-r2-0.5.0),p1-tally,fable,B,"Task 3 — `notes/exit-codes.md` with `# Exit codes`, `## Paths` (table: Trigger, ",research,9.0,1.77,1.77,1.77,2.05,1.0,1.31,0
+p1-tally-fable (eta-validate-r2-0.5.0),p1-tally,fable,B,"Final verification — `python3 -m unittest -q` passes, `git diff test_tally.py` h",test,2.0,0.39,0.39,0.39,0.43,1.0,0.19,0
+p2-shelf-opus (eta-validate-r2-0.5.0),p2-shelf,opus,B,Task 3: `isOverdue` treats a loan due today as not overdue; new regression test ,fix,6.0,0.76,0.79,0.76,0.76,1.0,2.07,0
+p2-shelf-opus (eta-validate-r2-0.5.0),p2-shelf,opus,B,"Task 4: `src/persistence.js` exports `loadSnapshot(file)` / `saveSnapshot(file, ",refactor,8.0,1.01,0.78,1.01,1.3,1.0,2.25,0
+p2-shelf-opus (eta-validate-r2-0.5.0),p2-shelf,opus,B,Panel: decide whether to fix the pre-existing `paginate` offset bug (`items.slic,research,12.0,1.51,1.91,1.51,2.17,1.0,1.09,0
+p2-shelf-opus (eta-validate-r2-0.5.0),p2-shelf,opus,B,Task 2: `sort` query parameter on GET /books (title/author/year/-title/-author/-,feature,15.0,1.89,2.25,1.89,2.42,1.0,1.36,0
+p2-shelf-opus (eta-validate-r2-0.5.0),p2-shelf,opus,B,"Task 5: JSDoc on `Store` class, constructor and every method with `@param`, `@re",docs,8.0,1.01,1.09,1.01,1.19,1.0,2.05,0
+p2-shelf-opus (eta-validate-r2-0.5.0),p2-shelf,opus,B,"Task 1: `notes/persistence-risks.md` with `# Persistence risks`, `## Writes` (ev",research,15.0,1.89,2.39,1.89,2.39,1.0,5.3,0
+p2-shelf-opus (eta-validate-r2-0.5.0),p2-shelf,opus,B,"Final check: full `node --test` passes, existing test files byte-identical to `m",test,4.0,0.5,0.5,0.5,0.7,1.0,0.23,0
+p2-shelf-opus (eta-validate-r2-0.5.0),p2-shelf,opus,C,"Task 1: store methods renamed to `createLoan`/`closeLoan` in src, tests and note",refactor,6.0,0.76,0.59,0.93,0.93,1.235,0.32,7
+p2-shelf-opus (eta-validate-r2-0.5.0),p2-shelf,opus,C,"Task 3: `PATCH /books/:id` with `{""title"":""""}` and `{""title"":null}` answers 422 ",fix,8.0,1.01,1.06,1.24,1.13,1.235,0.64,7
+p2-shelf-opus (eta-validate-r2-0.5.0),p2-shelf,opus,C,"Task 5: `POST /loans/:id/renew` (default 7 days, optional integer `days` 1–30 → ",feature,25.0,3.15,3.75,3.89,3.37,1.235,1.93,7
+p2-shelf-opus (eta-validate-r2-0.5.0),p2-shelf,opus,C,"Task 2: README ""Data file format"" section with every top-level key, book and loa",docs,12.0,1.51,1.63,1.87,1.55,1.235,1.05,7
+p2-shelf-opus (eta-validate-r2-0.5.0),p2-shelf,opus,C,"Task 4: `notes/validation-coverage.md` with `# Validation coverage`, table (Endp",research,25.0,3.15,3.98,3.89,3.14,1.235,3.68,7
+p2-shelf-opus (eta-validate-r2-0.5.0),p2-shelf,opus,C,"Final check: `node --test` passes, existing test files changed only by the task-",test,4.0,0.5,0.5,0.62,0.51,1.235,0.3,7
+p3-orders-opus (eta-validate-r2-0.5.0),p3-orders,opus,B,Task 4: six status constants defined once in orders/models.py and used everywher,refactor,15.0,1.89,1.47,1.89,1.89,1.0,1.0,0
+p3-orders-opus (eta-validate-r2-0.5.0),p3-orders,opus,B,Task 2: low-stock report filters on available (on_hand - reserved); regression t,fix,10.0,1.26,1.32,1.26,1.07,1.0,0.87,0
+p3-orders-opus (eta-validate-r2-0.5.0),p3-orders,opus,B,"Task 3: `report customers` with --from/--to/--limit/--format, new orders/reports",feature,30.0,3.78,4.5,3.78,3.09,1.0,2.32,0
+p3-orders-opus (eta-validate-r2-0.5.0),p3-orders,opus,B,"Task 5: docstrings on every module, class and public method/function in orders/s",docs,20.0,2.52,2.72,2.52,1.96,1.0,2.28,0
+p3-orders-opus (eta-validate-r2-0.5.0),p3-orders,opus,B,"Task 1: notes/place-order-flow.md with `# Place order flow`, `## Call sequence`,",docs,25.0,3.15,3.4,3.15,2.51,1.0,3.14,0
+p3-orders-opus (eta-validate-r2-0.5.0),p3-orders,opus,B,Stacked branches committed per task and PRs requested in stack order (1)-(5); fu,ops,5.0,0.63,0.61,0.63,0.52,1.0,0.34,0
+p3-orders-opus (eta-validate-r2-0.5.0),p3-orders,opus,C,Task 2: a coupon is valid through its expiry date and rejected from the next day,fix,10.0,1.26,1.32,0.99,0.99,0.782,1.1,6
+p3-orders-opus (eta-validate-r2-0.5.0),p3-orders,opus,C,Task 3: `OrderService.place_order` renamed to `submit_order`; `grep -rn place_or,refactor,10.0,1.26,0.98,0.99,1.0,0.782,1.1,6
+p3-orders-opus (eta-validate-r2-0.5.0),p3-orders,opus,C,"Task 4: large-order discount (>= 500.00 after volume and tier, 2 percent, before",feature,30.0,3.78,4.5,2.96,3.02,0.782,9.41,6
+p3-orders-opus (eta-validate-r2-0.5.0),p3-orders,opus,C,"Task 5: notes/regions.md with `# Regions`, `## Usage sites` table (File, Functio",research,20.0,2.52,3.18,1.97,2.21,0.782,1.88,6
+p3-orders-opus (eta-validate-r2-0.5.0),p3-orders,opus,C,"Task 1: README.md ""CLI reference"" with one heading per subcommand (synopsis, arg",docs,25.0,3.15,3.4,2.46,2.73,0.782,2.94,6
+p3-orders-opus (eta-validate-r2-0.5.0),p3-orders,opus,C,Stacked branches committed per task and PRs requested in stack order; full test ,ops,5.0,0.63,0.61,0.49,0.55,0.782,0.99,6
+p3-orders-sonnet (eta-validate-r2-0.5.0),p3-orders,sonnet,B,"T4: status constants defined once in orders/models.py, used everywhere in orders",refactor,8.0,0.64,0.56,0.64,0.64,1.0,0.51,0
+p3-orders-sonnet (eta-validate-r2-0.5.0),p3-orders,sonnet,B,T2: low-stock report uses available (on_hand - reserved) with regression test (2,fix,5.0,0.4,0.44,0.4,0.38,1.0,0.1,0
+p3-orders-sonnet (eta-validate-r2-0.5.0),p3-orders,sonnet,B,"T3: `report customers` (--from/--to inclusive optional, --limit, --format text|j",feature,15.0,1.2,0.81,1.2,0.87,1.0,1.82,0
+p3-orders-sonnet (eta-validate-r2-0.5.0),p3-orders,sonnet,B,"T5: docstrings (summary, args, returns, raises) on every module, class and publi",docs,10.0,0.8,0.81,0.8,0.66,1.0,1.74,0
+p3-orders-sonnet (eta-validate-r2-0.5.0),p3-orders,sonnet,B,"T1: notes/place-order-flow.md with required headings, numbered call sequence wit",docs,12.0,0.96,0.97,0.96,0.9,1.0,3.3,0
+p3-orders-sonnet (eta-validate-r2-0.5.0),p3-orders,sonnet,B,"Final: full test suite green, README/architecture/config comment updated, end-to",test,4.0,0.32,0.36,0.32,0.35,1.0,0.51,0
+p3-orders-sonnet (eta-validate-r2-0.5.0),p3-orders,sonnet,C,"A2: coupon `expires_on` is the last valid day: `--date 2026-03-31` accepted, `20",fix,6.0,0.48,0.53,0.55,0.55,1.153,0.93,6
+p3-orders-sonnet (eta-validate-r2-0.5.0),p3-orders,sonnet,C,A3: `place_order` no longer appears anywhere (`grep -rn place_order` over source,refactor,4.0,0.32,0.28,0.37,0.39,1.153,0.31,6
+p3-orders-sonnet (eta-validate-r2-0.5.0),p3-orders,sonnet,C,"A4: `large-order` discount (>= 500.00 remaining after volume+tier, +2%, before c",feature,15.0,1.2,0.81,1.38,1.43,1.153,1.5,6
+p3-orders-sonnet (eta-validate-r2-0.5.0),p3-orders,sonnet,C,"A1: README.md ""CLI reference"" section with one heading per subcommand (12) each ",docs,12.0,0.96,0.97,1.11,1.15,1.153,3.44,6
+p3-orders-sonnet (eta-validate-r2-0.5.0),p3-orders,sonnet,C,"A5: notes/regions.md with `# Regions`, `## Usage sites` table (File, Function, W",research,12.0,0.96,1.28,1.11,1.25,1.153,2.79,6
+p3-orders-sonnet (eta-validate-r2-0.5.0),p3-orders,sonnet,C,"Final: full test suite green, docs/architecture.md and notes/place-order-flow.md",test,4.0,0.32,0.36,0.37,0.44,1.153,1.44,6

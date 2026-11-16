@@ -1,0 +1,617 @@
+[
+ {
+  "at": 1794808472.159533,
+  "label": "start",
+  "screen": "\n────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n Accessing workspace:\n\n /private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q4/repo\n\n Quick safety check: Is this a project you created or one you trust? (Like your own code, a well-known open source project, or work from your team). If not, take a moment to review what's in this\n folder first.\n\n Claude Code'll be able to read, edit, and execute files here.\n\n Security guide\n\n ❯ No, exit\n   Yes, I trust this folder\n\n Enter to confirm · Esc to cancel\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+ },
+ {
+  "at": 1794808474.1792681,
+  "label": "after-trust",
+  "screen": ""
+ },
+ {
+  "at": 1794808538.866657,
+  "label": "ready",
+  "screen": ""
+ },
+ {
+  "at": 1794808541.419474,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808543.448372,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808545.458606,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808547.490186,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808549.52303,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808551.5393379,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808553.571754,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808555.600215,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808557.626206,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808559.649528,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808561.682742,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808563.710405,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808565.7450109,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808567.753985,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808569.768449,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808571.8093388,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808573.830147,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808575.861832,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808577.891871,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808579.922199,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808581.95792,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808583.986529,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808585.999413,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808588.0197382,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808590.043575,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808592.0825422,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808594.1058729,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808596.118539,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808598.13446,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808600.1645598,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808602.1929018,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808604.203098,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808606.242888,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808608.256705,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808610.270018,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808612.303738,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808614.3172338,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808616.346525,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808618.376937,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808620.404368,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808622.444646,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808624.459795,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808626.4900632,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808628.500649,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808630.51827,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808632.5527208,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808634.589752,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808636.6109152,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808638.646555,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808640.68644,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808642.728906,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808644.759995,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808646.791085,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808648.8265128,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808650.8591921,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808652.885875,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808654.9194298,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808656.954015,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808658.963619,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808660.9923358,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808663.0038779,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808665.016204,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808667.029508,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808669.0539122,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808671.094122,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808673.1225212,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808675.134926,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808677.150511,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808679.175243,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808681.193516,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808683.212864,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808685.241117,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808687.275167,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808689.287238,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808691.325898,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808693.3374379,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808695.370503,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808697.407962,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808699.422216,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808701.4521868,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808703.4875789,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808705.5092921,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808707.5466518,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808709.559584,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808711.5919402,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808713.632638,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808715.674078,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808717.7107468,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808719.7299619,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808721.761066,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808723.786051,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808725.8133938,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808727.8415701,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808729.860906,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808731.894484,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808733.924733,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808735.934742,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808737.9710379,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808740.012189,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808742.0403972,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808744.0802062,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808746.108499,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808748.141592,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808750.172149,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808752.198422,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808754.217309,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808756.248775,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808758.259064,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808760.2859619,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808762.330142,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808764.3388648,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808766.369322,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808768.37819,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808770.386121,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808772.397653,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808774.405138,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808776.4153411,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808778.4265049,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808780.437066,
+  "label": "tick",
+  "screen": ""
+ },
+ {
+  "at": 1794808785.445108,
+  "label": "end",
+  "screen": ""
+ }
+]

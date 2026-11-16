@@ -1,0 +1,28 @@
+{
+ "families": {
+  "fable": {
+   "all": 0.197,
+   "n": 7
+  },
+  "opus": {
+   "all": 0.126,
+   "n": 34,
+   "docs": 0.136,
+   "feature": 0.15,
+   "fix": 0.132,
+   "ops": 0.123,
+   "refactor": 0.098,
+   "research": 0.159
+  },
+  "sonnet": {
+   "all": 0.08,
+   "n": 34,
+   "docs": 0.081,
+   "feature": 0.054,
+   "fix": 0.089,
+   "refactor": 0.07,
+   "research": 0.107,
+   "test": 0.091
+  }
+ }
+}

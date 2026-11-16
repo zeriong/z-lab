@@ -1,0 +1,19 @@
+[
+ {
+  "step": "01-Q1",
+  "argv": [
+   "claude",
+   "-p",
+   "Do these steps in order, each with exactly the tool named, then reply with one short sentence.\n1. Bash: sed -i '' 's/- \\[ \\] one/- [x] one/' notes.md\n2. Edit tool: in notes.md change `- [ ] two` to `- [x] two`.\n3. Bash: python3 -c \"import pathlib; p=pathlib.Path('notes.md'); p.write_text(p.read_text().replace('- [ ] three','- [x] three'))\"\n4. Write tool: rewrite notes.md with its current content but `- [ ] four` changed to `- [x] four`.\n5. Agent tool with subagent_type general-purpose: tell the subagent to run exactly `echo sub` with Bash and return the output.",
+   "--setting-sources",
+   "project,local",
+   "--plugin-dir",
+   "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-probes/Q1/hook-probe",
+   "--model",
+   "\u2026"
+  ],
+  "exit": 0,
+  "elapsed_ms": 22400,
+  "tokens": true
+ }
+]
