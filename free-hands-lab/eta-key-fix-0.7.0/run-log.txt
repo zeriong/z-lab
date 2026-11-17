@@ -1,0 +1,4 @@
+p3-orders-sonnet-L1: running (spent so far 0.00 USD)
+p2-shelf-sonnet-L2: running (spent so far 0.00 USD)
+p2-shelf-sonnet-L2: done (2.2168141000000006 USD, 789.1 s)
+p3-orders-sonnet-L1: done (3.566977100000001 USD, 1083.8 s)
