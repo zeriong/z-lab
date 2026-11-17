@@ -1,0 +1,145 @@
+#!/usr/bin/env python3
+"""SPEC.md's replay. Usage: python3 replay.py  → data/lab.csv (once), METRICS.md"""
+import csv
+import math
+from pathlib import Path
+import statistics
+
+LAB = Path(__file__).resolve().parent
+DATA = LAB / "data"
+BASE = {"self": {"sonnet": 0.080, "opus": 0.126, "fable": 0.197, "default": 0.125},
+        "haiku": {"sonnet": 0.040, "opus": 0.070, "fable": 0.074, "default": 0.061}}  # free-hands 0.6.0's shipped
+PRIOR = 3
+
+
+def build_lab():
+    path = DATA / "lab.csv"
+    if path.exists():
+        return
+    rows = list(csv.DictReader(open(LAB.parent / "eta-haiku-calibrate-0.6.0" / "items.csv")))
+    out, order = [], {}
+    for r in rows:
+        project = r["goal_run"].rsplit("-", 1)[0]
+        key = (project, r["goal"])
+        order[key] = order.get(key, 0) + 1
+        out.append({"project": project, "goal": r["goal"], "order": order[key], "family": r["family"],
+                    "self_est": r["self_est"], "haiku_est": r["haiku"], "actual_min": r["actual"]})
+    with open(path, "w", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(out[0]))
+        writer.writeheader()
+        writer.writerows(out)
+
+
+def num(value):
+    try:
+        x = float(value)
+    except (TypeError, ValueError):
+        return None
+    return x if x > 0 and math.isfinite(x) else None
+
+
+def datasets():
+    """{name: [project rows in order]}; a row is {project, goal, family, estimator, est, actual}."""
+    lab = list(csv.DictReader(open(DATA / "lab.csv")))
+    real = list(csv.DictReader(open(DATA / "real-1.csv")))
+    sets = {}
+    for estimator in ("haiku", "self"):
+        sets[f"lab-{estimator}"] = [{"project": r["project"], "goal": r["goal"], "family": r["family"],
+                                     "estimator": estimator, "est": num(r[f"{estimator}_est"]),
+                                     "actual": num(r["actual_min"])} for r in lab]
+    sets["real-1"] = [{"project": r["project"], "goal": r["goal"], "family": r["family"], "estimator": r["estimator"],
+                       "est": num(r["est_min"]), "actual": num(r["actual_min"])} for r in real
+                      if r["outcome"] == "done"]
+    return {k: [r for r in v if r["est"] and r["actual"]] for k, v in sets.items()}
+
+
+def base(estimator, family):
+    cells = BASE.get(estimator, BASE["self"])
+    return cells.get(family, cells["default"])
+
+
+def pf(rows):
+    """0.6.0's project factor: residuals against each row's own shipped factor, shrunk with weight 3."""
+    res = [math.log(r["actual"] / (r["est"] * base(r["estimator"], r["family"]))) for r in rows]
+    return math.exp(sum(res) / (len(res) + PRIOR)) if res else 1.0
+
+
+def ratio(item, prior, method, k=1.0):
+    if method == "P0":
+        return base(item["estimator"], item["family"]) * pf(prior)
+    if method == "P2":
+        prior = prior[-30:]
+    same = [r for r in prior if r["estimator"] == item["estimator"]]
+    other = [r for r in prior if r["estimator"] != item["estimator"]]
+    start = base(item["estimator"], item["family"]) * pf(other)
+    logs = [math.log(r["actual"] / r["est"]) for r in same]
+    return math.exp((sum(logs) + k * math.log(start)) / (len(logs) + k))
+
+
+METHODS = [("P0", "P0", 0), ("P1 k=0.5", "P1", 0.5), ("P1 k=1", "P1", 1.0), ("P1 k=2", "P1", 2.0),
+           ("P2 k=1", "P2", 1.0)]
+
+
+def err(actual, predicted):
+    return abs(math.log2(actual / predicted))
+
+
+def evaluate(rows):
+    projects = {}
+    for r in rows:
+        projects.setdefault(r["project"], []).append(r)
+    item, start, after = {m[0]: [] for m in METHODS}, {m[0]: [] for m in METHODS}, {m[0]: [] for m in METHODS}
+    goals_counted = 0
+    for prows in projects.values():
+        goals = list(dict.fromkeys(r["goal"] for r in prows))
+        for index, r in enumerate(prows):
+            if index:
+                for name, method, k in METHODS:
+                    item[name].append(err(r["actual"], r["est"] * ratio(r, prows[:index], method, k)))
+        for g_index, goal in enumerate(goals):
+            if not g_index:
+                continue
+            earlier = [r for r in prows if r["goal"] in goals[:g_index]]
+            mine = [r for r in prows if r["goal"] == goal]
+            goals_counted += 1
+            for name, method, k in METHODS:
+                start[name].append(err(sum(r["actual"] for r in mine),
+                                       sum(r["est"] * ratio(r, earlier, method, k) for r in mine)))
+                if len(mine) > 1:
+                    seen = earlier + mine[:1]
+                    after[name].append(err(sum(r["actual"] for r in mine[1:]),
+                                           sum(r["est"] * ratio(r, seen, method, k) for r in mine[1:])))
+    return item, start, after, goals_counted
+
+
+def med(values):
+    return f"{statistics.median(values):.2f}" if values else "–"
+
+
+def main():
+    build_lab()
+    sets = datasets()
+    lines = ["# Metrics", "", "Generated by replay.py. Error = |log2(measured / predicted)| (0 = exact, 1 = off by 2x). "
+             "Item: every item with an earlier row in its project, predicted from those rows. Goal start: Σ over a goal "
+             "that has an earlier goal, predicted from earlier goals' rows only. After 1st: the goal's remaining items "
+             "once its first item is done.", ""]
+    pooled = {m[0]: [] for m in METHODS}
+    for name, rows in sets.items():
+        item, start, after, goals = evaluate(rows)
+        lines += [f"## {name}", "", f"{len(rows)} rows, {len({r['project'] for r in rows})} projects, {goals} goals "
+                  "with an earlier goal.", "", "| Predictor | Item n | Item median | Goal start median | After 1st median |",
+                  "|---|---:|---:|---:|---:|"]
+        for m in METHODS:
+            lines.append(f"| {m[0]} | {len(item[m[0]])} | {med(item[m[0]])} | {med(start[m[0]])} | {med(after[m[0]])} |")
+            if name in ("real-1", "lab-haiku"):
+                pooled[m[0]] += start[m[0]]
+        lines.append("")
+    lines += ["## Decision input: goal start, real-1 and lab-haiku pooled", "",
+              "| Predictor | Goals | Median |", "|---|---:|---:|"]
+    lines += [f"| {m[0]} | {len(pooled[m[0]])} | {med(pooled[m[0]])} |" for m in METHODS]
+    (LAB / "METRICS.md").write_text("\n".join(lines) + "\n")
+    print("\n".join(lines))
+
+
+if __name__ == "__main__":
+    main()
