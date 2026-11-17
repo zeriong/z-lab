@@ -1,0 +1,2 @@
+{"tool": "npm", "argv": ["test"], "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-large/p2-shelf-sonnet-L2/repo"}
+{"tool": "gh", "argv": ["auth", "status"], "cwd": "/private/var/folders/fd/j548rpgd0bz5n99xbntzf0100000gn/T/fh-eta-large/p2-shelf-sonnet-L2/repo"}
