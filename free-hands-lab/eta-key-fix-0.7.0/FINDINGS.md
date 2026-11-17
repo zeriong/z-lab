@@ -3,6 +3,8 @@
 Run 2026-11-17 as frozen (`frozen.sha256`, commit `1fcf7d4`): V00 and two Sonnet cells at the same time, both `success`,
 exit 0, the fixture's tests passing afterwards, the estimator's lock free at the end (`runs/*/summary.json`). Cost 5.78
 USD (2.22 and 3.57). Numbers: `METRICS.md` from `analyze.py`.
+The subject's `eta.py` and `estimator.py` are byte-identical to because-i-needed `36c4093` (the commit that ships the
+fix on `feat/free-hands-live-eta`).
 
 ## Measured
 
