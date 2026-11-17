@@ -1,0 +1,500 @@
+"""free-hands ETA: per-item estimates in the goal file, hook-measured actual times, and the expected finish.
+
+The agent ends each checklist item with its own estimate, `(~<minutes>m <category>)`. Hooks of the owner session call
+observe(): it keeps an active-time clock (gaps after a turn that really ended are not counted), and when an item turns
+`[x]` or `[-]` it appends the active time since the previous completion to `.free-hands/timings.jsonl`, the project's
+own record. predict() turns the open items' estimates into minutes: a factor per model family and category shipped in
+eta-baseline.json (measured in z-lab), times a project factor learned from that record. Every failure means no record
+and no ETA, never an error the session sees.
+"""
+import fcntl
+import hashlib
+import json
+import math
+import os
+from pathlib import Path
+import re
+import tempfile
+import time
+
+STATE = "eta.json"
+HISTORY = "timings.jsonl"
+ESTIMATES = "estimates.jsonl"
+TICK = "eta-tick"  # the expected finish as shown; rewritten only when it changes, so the dashboard redraws then
+BASELINE = Path(__file__).resolve().parent / "eta-baseline.json"
+CATEGORIES = ("docs", "fix", "feature", "refactor", "test", "research", "ops")
+ESTIMATE = re.compile(r"\(~\s*(\d+(?:\.\d+)?)\s*m(?:in)?\b[ ,]*([A-Za-z]*)\s*\)")
+ITEM = re.compile(r"^\s*- \[([ xX-])\]\s?(.*)$")
+NEEDS_USER = re.compile(r"\s+—\s+needs the user\b.*$")
+FAMILIES = ("fable", "opus", "sonnet", "haiku")
+CAP = 20 * 60          # a quiet gap longer than this is not work, unless a tool call ran that long
+FLOOR = 0.1            # an item near its prediction keeps this share of it
+RECENT = 60            # project factor: the newest records only
+PRIOR = 3              # project factor: weight of "no adjustment" against the project's own records
+TAIL = 256 * 1024      # bytes read from the end of the transcript (the model) and of the record
+LONGEST = 24 * 60      # minutes: an estimate or a measured item beyond a day is not a usable record
+REF = 200              # characters of an item's text the record files keep (estimates.jsonl, timings.jsonl)
+
+
+def checklist(text):
+    """[(mark, key, minutes or None, category or None)] for `- [ ]`/`[x]`/`[-]` lines under `## Checklist`, outside
+    fenced code (the same scope guard.open_items uses). A text that repeats gets ` #2`, ` #3` so each line keeps its
+    own key."""
+    items, in_checklist, fence, seen = [], False, None, {}
+    for line in (text or "").splitlines():
+        stripped = line.strip()
+        if fence is None:
+            opening = re.match(r"(`{3,}|~{3,})", stripped)
+            if opening:
+                fence = opening.group(1)
+                continue
+        else:
+            closing = re.match(r"(`{3,}|~{3,})\s*$", stripped)
+            if closing and closing.group(1)[0] == fence[0] and len(closing.group(1)) >= len(fence):
+                fence = None
+            continue
+        if re.match(r"^##\s", line):
+            in_checklist = re.match(r"^##\s+Checklist\s*$", line) is not None
+            continue
+        match = ITEM.match(line) if in_checklist else None
+        if not match:
+            continue
+        body = match.group(2)
+        estimate = ESTIMATE.search(body)
+        minutes = category = None
+        if estimate:
+            value = float(estimate.group(1))
+            minutes = value if 0 < value <= LONGEST else None
+            word = estimate.group(2).lower()
+            category = word if minutes and word in CATEGORIES else None
+            body = body[:estimate.start()]
+        key = NEEDS_USER.sub("", body).strip()
+        if key:
+            seen[key] = seen.get(key, 0) + 1
+            items.append((match.group(1).lower(), key if seen[key] == 1 else f"{key} #{seen[key]}", minutes, category))
+    return items
+
+
+def section(text, name):
+    match = re.search(r"^##\s+%s\s*$(.*?)(?=^##\s|\Z)" % re.escape(name), text or "", re.MULTILINE | re.DOTALL)
+    return match.group(1) if match else ""
+
+
+def goal_id(text):
+    """A run's identity: its `## Goal` section. A new goal (the old file renamed) starts a new clock."""
+    return hashlib.sha256(section(text, "Goal").strip().encode()).hexdigest()[:16]
+
+
+def run_of(state):
+    """The run's id in the estimates file: when its clock started."""
+    return round(number(state.get("started")), 3) if isinstance(state, dict) else None
+
+
+def ref(key):
+    """An item's key as the record files hold it. Every write and lookup goes through here: an estimate stored under
+    the cut text of an item longer than REF once never matched it, so the item stayed out of the total and was asked
+    again every minute (z-lab eta-large-calibrate-0.7.0)."""
+    return key[:REF] if isinstance(key, str) else None
+
+
+def estimates(folder, run):
+    """{key: (minutes or None, category, estimator)} the isolated estimator wrote for this run; the newest row wins. A
+    row without minutes marks an item that was asked and got no answer."""
+    found = {}
+    for line in tail_lines(folder / ESTIMATES):
+        try:
+            row = json.loads(line)
+        except ValueError:
+            continue
+        if isinstance(row, dict) and row.get("run") == run and isinstance(row.get("item"), str):
+            minutes = row.get("minutes") if usable(row.get("minutes")) else None
+            category = row.get("cat") if row.get("cat") in CATEGORIES else None
+            estimator = row.get("estimator") if isinstance(row.get("estimator"), str) else "haiku"
+            found[ref(row["item"])] = (minutes, category, estimator)
+    return found
+
+
+def estimate_of(item, found, known=None):
+    """(minutes, category, estimator) for a checklist entry: the agent's own inline estimate (goals written by 0.5.0),
+    else the isolated estimator's — under the item's earlier text when the agent reworded it — else (None, None,
+    None)."""
+    _, key, minutes, category = item
+    if minutes:
+        return minutes, category, "self"
+    entry = (known or {}).get(key)
+    was = entry.get("was") if isinstance(entry, dict) else None
+    hit = found.get(ref(key)) or (found.get(ref(was)) if was else None)
+    return hit if hit and hit[0] else (None, None, None)
+
+
+def rename(known, items):
+    """Keep an item whose text the agent rewrote — often in the edit that checks it: open keys that vanished pair, in
+    order, with keys that appeared in the same edit (z-lab eta-isolated-run-r2-0.6.0). A vanished key left over is
+    marked gone, so the clock does not wait for it."""
+    keys = [key for _, key, _, _ in items]
+    present = set(keys)
+    vanished = [k for k, v in known.items() if isinstance(v, dict) and v.get("mark") == " " and k not in present]
+    appeared = [k for k in keys if k not in known]
+    for old, new in zip(vanished, appeared):
+        entry = known.pop(old)
+        entry["was"] = entry.get("was") or old
+        known[new] = entry
+    for old in vanished[len(appeared):]:
+        known[old]["mark"] = "gone"
+
+
+def unestimated(folder, text):
+    """(run, [open keys the estimator has not been asked about]) for the run the clock holds, or (None, [])."""
+    state = read_json(folder / STATE)
+    if not state or not isinstance(state.get("items"), dict) or not same_run(state, goal_id(text), text):
+        return None, []
+    run, known = run_of(state), state["items"]
+    asked = estimates(folder, run)
+
+    def was(key):
+        entry = known.get(key)
+        return entry.get("was") if isinstance(entry, dict) else None
+    return run, [key for mark, key, minutes, _ in checklist(text)
+                 if mark == " " and not minutes and ref(key) not in asked and ref(was(key)) not in asked]
+
+
+def family(model):
+    name = model.lower() if isinstance(model, str) else ""
+    return next((f for f in FAMILIES if f in name), None)
+
+
+def number(value, default=0.0):
+    """A finite float from a state field, else the default (a hand-edited state must not stop the clock)."""
+    if isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value):
+        return float(value)
+    return default
+
+
+def tail_lines(path):
+    """The lines in the last TAIL bytes of a file (a partial first line is dropped), or [] when unreadable."""
+    if not isinstance(path, (str, Path)) or not str(path):
+        return []
+    try:
+        with open(path, "rb") as handle:
+            handle.seek(0, os.SEEK_END)
+            size = handle.tell()
+            handle.seek(max(0, size - TAIL))
+            lines = handle.read().decode("utf-8", "replace").splitlines()
+    except (OSError, ValueError):
+        return []
+    return lines[1:] if size > TAIL else lines
+
+
+def model_from_transcript(path):
+    """The model of the newest assistant message in the session transcript (hook inputs carry no model; z-lab
+    eta-probes T01)."""
+    for line in reversed(tail_lines(path)):
+        if '"assistant"' not in line:
+            continue
+        try:
+            entry = json.loads(line)
+        except ValueError:
+            continue
+        message = entry.get("message") if isinstance(entry, dict) and entry.get("type") == "assistant" else None
+        model = message.get("model") if isinstance(message, dict) else None
+        if isinstance(model, str) and model and not model.startswith("<"):
+            return model
+    return None
+
+
+def read_json(path):
+    try:
+        data = json.loads(Path(path).read_text(encoding="utf-8"))
+    except (OSError, ValueError, UnicodeDecodeError):
+        return None
+    return data if isinstance(data, dict) else None
+
+
+def write_json(path, data):
+    fd, tmp = tempfile.mkstemp(dir=path.parent, prefix=path.name + ".tmp.")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as out:
+            json.dump(data, out)
+        os.replace(tmp, path)
+    finally:
+        if os.path.exists(tmp):
+            os.unlink(tmp)
+
+
+class Locked:
+    """An exclusive lock on `.free-hands/eta.lock`; acquired is False after a 2 s timeout (the caller then skips)."""
+
+    def __init__(self, folder):
+        self.path, self.handle, self.acquired = folder / "eta.lock", None, False
+
+    def __enter__(self):
+        self.handle = open(self.path, "a")
+        deadline = time.monotonic() + 2
+        while True:
+            try:
+                fcntl.flock(self.handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                self.acquired = True
+                return self
+            except BlockingIOError:
+                if time.monotonic() > deadline:
+                    return self
+                time.sleep(0.02)
+
+    def __exit__(self, *exc):
+        self.handle.close()
+
+
+def fresh(goal, now):
+    return {"goal": goal, "started": now, "active": 0.0, "mark": 0.0, "last": now, "idle": False, "items": {},
+            "model": None, "effort": None}
+
+
+def advance(state, now, event, data):
+    """Add the gap since the previous event to the active clock. Not counted: the gap after a turn that ended (an
+    allowed Stop), before a new session, or before a prompt (the user's time — a turn interrupted with Esc sends no
+    Stop); a gap over CAP counts only as long as the tool call reports it ran."""
+    last = number(state.get("last"), None)
+    gap = max(0.0, now - last) if last is not None else 0.0
+    starting = event == "prompt" or (event == "session" and data.get("source") in ("startup", "resume", "clear"))
+    active = number(state.get("active"))
+    if not state.get("idle") and not starting:
+        if gap > CAP:
+            ran = number(data.get("duration_ms"))
+            gap = min(gap, ran / 1000.0) if ran > 0 else 0.0
+        active += gap
+    state["active"] = active
+    state["last"] = max(now, last) if last is not None else now  # a late process never moves the clock back
+    state["idle"] = False
+
+
+def share(finished, elapsed):
+    """Split the active time since the previous completion among the items finished in one edit, by estimate."""
+    weights = [entry[1] or 0 for entry in finished]
+    total = sum(weights)
+    if total <= 0 or 0 in weights:
+        return [elapsed / len(finished)] * len(finished)
+    return [elapsed * w / total for w in weights]
+
+
+def same_run(state, goal, text):
+    """The clock belongs to this goal: the same `## Goal` text, or — after the agent rewords the goal — most items in
+    common both ways. One shared boilerplate item ("run the tests") does not carry a finished goal's clock into the
+    next one."""
+    if state.get("goal") == goal:
+        return True
+    keys, known = {key for _, key, _, _ in checklist(text)}, set(state["items"])
+    shared = len(keys & known)
+    return shared * 2 > len(keys) and shared * 2 > len(known)
+
+
+def observe(folder, text, event, data, now=None, ended=False):
+    """Record one hook event of the owner session. `ended` marks a Stop that lets the turn end. The goal file is read
+    again under the lock, so a hook process that waited for it never records an older checklist."""
+    if not folder.is_dir():
+        return
+    with Locked(folder) as lock:
+        if not lock.acquired:
+            return
+        try:
+            text = (folder / "goal.md").read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            pass
+        now = time.time() if now is None else now
+        state_path = folder / STATE
+        goal = goal_id(text)
+        state = read_json(state_path)
+        if not state or not isinstance(state.get("items"), dict) or not same_run(state, goal, text):
+            state = fresh(goal, now)
+        state["goal"] = goal
+        advance(state, now, event, data)
+        effort = data.get("effort")
+        if isinstance(effort, dict) and isinstance(effort.get("level"), str):
+            state["effort"] = effort["level"]
+        finished = []
+        known = state.setdefault("items", {})
+        running = bool(known)  # a run already under way: an item that first appears finished was done just now
+        items = checklist(text)
+        rename(known, items)
+        for mark, key, minutes, category in items:
+            previous = known.get(key)
+            if not isinstance(previous, dict):
+                known[key] = {"mark": mark, "est": minutes, "cat": category}
+                if running and mark in ("x", "-"):
+                    finished.append((key, minutes, category, mark))
+                continue
+            if previous.get("est") is None and minutes is not None:
+                previous.update(est=minutes, cat=category)
+            if previous.get("mark") == " " and mark in ("x", "-"):
+                finished.append((key, previous.get("est"), previous.get("cat"), mark))
+            previous["mark"] = mark
+        if finished or not isinstance(state.get("model"), str):
+            found = model_from_transcript(data.get("transcript_path"))
+            state["model"] = found or (state.get("model") if isinstance(state.get("model"), str) else None)
+        if finished:
+            elapsed = max(0.0, state["active"] - number(state.get("mark")))
+            stamp = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(now))
+            run, found = run_of(state), estimates(folder, run_of(state))
+            finished = [(key, *estimate_of((mark, key, minutes, category), found, known), mark)
+                        for key, minutes, category, mark in finished]
+            rows = []
+            for (key, minutes, category, estimator, mark), seconds in zip(finished, share(finished, elapsed)):
+                was = known.get(key, {}).get("was")
+                rows.append({"v": 2, "at": stamp, "goal": goal, "run": run, "item": ref(key),
+                             **({"was": ref(was)} if was else {}), "cat": category,
+                             "est_min": minutes, "estimator": estimator, "actual_min": round(seconds / 60.0, 2),
+                             "batch": len(finished), "outcome": "done" if mark == "x" else "skipped",
+                             "model": state["model"], "family": family(state["model"]), "effort": state.get("effort")})
+            with open(folder / HISTORY, "a", encoding="utf-8") as history:
+                history.write("".join(json.dumps(row) + "\n" for row in rows))
+            state["mark"] = state["active"]
+        if ended:
+            state["idle"] = True
+        write_json(state_path, state)
+        tick(folder, text, now)
+
+
+def tick(folder, text, now):
+    """Rewrite `eta-tick` when the expected finish as shown changes — it moves while an item overruns — so a dashboard
+    that watches the file redraws then, and only then."""
+    expected = predict(folder, text, now)
+    shown = f"{clock(expected['eta'], now)}{'+' if expected['unestimated'] else ''}" if expected else ""
+    path = folder / TICK
+    try:
+        if path.read_text(encoding="utf-8") == shown:
+            return
+    except (OSError, UnicodeDecodeError):
+        pass
+    path.write_text(shown, encoding="utf-8")
+
+
+def pending(folder, text):
+    """True while the clock of this goal still holds an open item (the last item's edit may also end the run)."""
+    state = read_json(folder / STATE)
+    if not state or not isinstance(state.get("items"), dict) or not same_run(state, goal_id(text), text):
+        return False
+    # an open item whose text the agent rewrote still counts: the next observe pairs it with its new text, or marks it
+    # gone, so this turns false after one edit at most
+    return any(isinstance(item, dict) and item.get("mark") == " " for item in state["items"].values())
+
+
+def baseline():
+    """{estimator: {family: {"all": factor, …}}}: who wrote the estimate (`self`, the working agent in 0.5.0 goals; or
+    the isolated estimator), then the model family doing the work."""
+    data = read_json(BASELINE) or {}
+    if isinstance(data.get("estimators"), dict):
+        return data["estimators"]
+    return {"self": data["families"]} if isinstance(data.get("families"), dict) else {}
+
+
+def factor(base, fam, category, estimator="self"):
+    """The factor for this estimator and working family, for the category, else for all its items; a family without
+    one takes the estimator's `default`."""
+    cells = base.get(estimator) if isinstance(base.get(estimator), dict) else {}
+    for cell in (cells.get(fam) if fam else None, cells.get("default")):
+        if isinstance(cell, dict):
+            for key in (category, "all"):
+                value = cell.get(key) if key else None
+                if isinstance(value, (int, float)) and value > 0:
+                    return float(value)
+    return 1.0
+
+
+def usable(value):
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and 0 < value <= LONGEST
+
+
+def records(folder):
+    """The project's finished items with both an estimate and a measured time, newest last. A hand-edited or broken
+    row (`Infinity`, `NaN`, zero, beyond a day) is skipped."""
+    rows, late = [], {}
+    for line in tail_lines(folder / ESTIMATES):  # an estimate may land after its item was already done
+        try:
+            entry = json.loads(line)
+        except ValueError:
+            continue
+        if isinstance(entry, dict) and usable(entry.get("minutes")) and isinstance(entry.get("item"), str):
+            late[(entry.get("run"), ref(entry["item"]))] = (entry["minutes"], entry.get("cat"), entry.get("estimator"))
+    for line in tail_lines(folder / HISTORY):
+        try:
+            row = json.loads(line)
+        except ValueError:
+            continue
+        if not isinstance(row, dict) or row.get("outcome") != "done" or not usable(row.get("actual_min")):
+            continue
+        minutes, category, estimator = row.get("est_min"), row.get("cat"), row.get("estimator") or "self"
+        if not usable(minutes):
+            minutes, category, estimator = late.get((row.get("run"), ref(row.get("item")))) \
+                or late.get((row.get("run"), ref(row.get("was")))) or (None, None, None)
+        if usable(minutes):
+            rows.append({"est_min": minutes, "actual_min": row["actual_min"],
+                         "family": row.get("family") if isinstance(row.get("family"), str) else None,
+                         "cat": category if isinstance(category, str) else None,
+                         "estimator": estimator if isinstance(estimator, str) else "self"})
+    return rows[-RECENT:]
+
+
+def project_factor(rows, base):
+    """How much longer (or shorter) this project's items took than the shipped baseline predicted — the project's
+    complexity — shrunk toward 1 while the record is small."""
+    residuals = [math.log(r["actual_min"] / (r["est_min"] * factor(base, r.get("family"), r.get("cat"),
+                                                                     r.get("estimator") or "self")))
+                 for r in rows]
+    return math.exp(sum(residuals) / (len(residuals) + PRIOR)) if residuals else 1.0
+
+
+def predict(folder, text, now=None):
+    """{"eta": epoch seconds, "minutes": remaining, "unestimated": n} for the open items, or None when no open item
+    has an estimate."""
+    now = time.time() if now is None else now
+    state = read_json(folder / STATE)
+    if state and (not isinstance(state.get("items"), dict) or not same_run(state, goal_id(text), text)):
+        state = None
+    found = estimates(folder, run_of(state)) if state else {}
+    known = state.get("items") if state else {}
+    open_items = [(item[1], *estimate_of(item, found, known)) for item in checklist(text) if item[0] == " "]
+    estimated = [entry for entry in open_items if entry[1]]
+    if not estimated:
+        return None
+    base = baseline()
+    fam = family(state.get("model")) if state else None
+    adjust = project_factor(records(folder), base)
+    elapsed = 0.0
+    known = state.get("items") if state and isinstance(state.get("items"), dict) else {}
+    # an item the goal file shows finished but the clock has not recorded yet finished just now (the dashboard may
+    # read the file before the PostToolUse hook has run): the next item has used no time yet
+    unrecorded = any(isinstance(known.get(key), dict) and known[key].get("mark") == " " and mark in ("x", "-")
+                     for mark, key, _, _ in checklist(text))
+    if state and not unrecorded:
+        last = number(state.get("last"), None)
+        live = max(0.0, now - last) if last is not None else 0.0
+        elapsed = number(state.get("active")) - number(state.get("mark"))
+        elapsed += live if not state.get("idle") and live <= CAP else 0.0
+    expected = [minutes * factor(base, fam, category, estimator) * adjust
+                 for _, minutes, category, estimator in estimated]
+    if open_items[0][0] == estimated[0][0]:  # the item in progress has already used part of its time
+        spent, first = elapsed / 60.0, expected[0]
+        if spent > first:
+            # it ran past its prediction: the rest of the goal is likely under-predicted too — half the elapsed time
+            # again for this item, the later ones scaled by the square root of the overrun (z-lab eta-live-replay V01)
+            total = 0.5 * spent + math.sqrt(spent / first) * sum(expected[1:])
+        else:
+            total = max(first - spent, first * FLOOR) + sum(expected[1:])
+    else:
+        total = sum(expected)
+    if not math.isfinite(total) or total > 365 * LONGEST:  # a broken state must not reach the clock
+        return None
+    return {"eta": now + total * 60.0, "minutes": total, "unestimated": len(open_items) - len(estimated),
+            "family": fam, "project": adjust}
+
+
+def clock(epoch, now=None):
+    """A local wall-clock time, with the date when it is not today."""
+    now = time.time() if now is None else now
+    local, today = time.localtime(epoch), time.localtime(now)
+    same = (local.tm_year, local.tm_yday) == (today.tm_year, today.tm_yday)
+    return time.strftime("%H:%M" if same else "%m-%d %H:%M", local)
+
+
+def duration(minutes):
+    minutes = max(1, int(round(minutes)))
+    return f"{minutes}m" if minutes < 60 else f"{minutes // 60}h{minutes % 60:02d}m"
