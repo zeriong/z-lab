@@ -1,0 +1,32 @@
+{
+ "decision": "no change",
+ "M2": {
+  "slope": 0.951,
+  "opus": {
+   "all": 0.0933
+  },
+  "sonnet": {
+   "all": 0.0544
+  },
+  "fable": {
+   "all": 0.0787
+  },
+  "default": {
+   "all": 0.0736
+  }
+ },
+ "M1": {
+  "opus": {
+   "all": 0.0814
+  },
+  "sonnet": {
+   "all": 0.0473
+  },
+  "fable": {
+   "all": 0.0689
+  },
+  "default": {
+   "all": 0.0658
+  }
+ }
+}

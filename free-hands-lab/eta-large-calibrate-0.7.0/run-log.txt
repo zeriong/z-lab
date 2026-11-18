@@ -1,0 +1,8 @@
+p3-orders-opus-L1: running (spent so far 0.00 USD)
+p2-shelf-sonnet-L2: running (spent so far 0.00 USD)
+p2-shelf-sonnet-L2: done (2.3093891 USD, 891.3 s)
+p2-shelf-opus-L2: running (spent so far 2.31 USD)
+p3-orders-opus-L1: done (10.839565900000004 USD, 1293.7 s)
+p3-orders-sonnet-L1: running (spent so far 13.15 USD)
+p3-orders-sonnet-L1: done (3.4537996999999994 USD, 1042.5 s)
+p2-shelf-opus-L2: done (12.836867800000006 USD, 2299.5 s)
